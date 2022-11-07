@@ -12,17 +12,19 @@
     , nixpkgs
     }:
 
-    flake-utils.lib.eachDefaultSystem (system:
     let
       overlays = [
-        (self: super: rec {
+        (self: super: {
           nodejs = super.nodejs-18_x;
           pnpm = super.nodePackages.pnpm;
         })
       ];
+    in
+    flake-utils.lib.eachDefaultSystem (system:
+    let
       pkgs = import nixpkgs { inherit overlays system; };
 
-      common = with pkgs; [ nodejs pnpm ];
+      common = with pkgs; [ nodejs pnpm python38 ];
       scripts = with pkgs; [
         (writeScriptBin "setup" ''
           pnpm install
@@ -36,6 +38,12 @@
         (writeScriptBin "dev" ''
           setup
           pnpm run dev
+        '')
+
+        (writeScriptBin "preview" ''
+          build
+          pnpm run export
+          python3 -m http.server -d out 3000
         '')
       ];
     in
