@@ -6,10 +6,12 @@ import {
 } from "contentlayer/source-files";
 
 const computedFields: ComputedFields = {
+  // Convert docs/foo/bar into /docs/foo/bar
   path: {
     type: "string",
     resolve: (doc: LocalDocument) => `/${doc._raw.flattenedPath}`,
   },
+  // Convert /docs/foo/bar into /foo/bar
   relativePath: {
     type: "string",
     resolve: (doc: LocalDocument) =>
@@ -33,5 +35,4 @@ export const Doc = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Doc],
-  mdx: {},
 });

@@ -28,6 +28,7 @@
       scripts = with pkgs; [
         (writeScriptBin "setup" ''
           pnpm install
+          pnpm run content
         '')
 
         (writeScriptBin "build" ''
