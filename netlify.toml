@@ -3,4 +3,4 @@ publish = "out"
 command = "npm run publish"
 
 [build.environment]
-NETLIFY_NEXT_PLUGIN_SKIP = true
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
