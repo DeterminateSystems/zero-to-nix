@@ -1,6 +1,7 @@
 import { ParsedUrlQuery } from "querystring";
 
 import Content from "components/docs/Content";
+import Page from "components/docs/Page";
 import Pagination from "components/docs/Pagination";
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
@@ -61,54 +62,8 @@ const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 
 // Doc page template
-const Page: NextPage<Props> = ({ doc }: Props) => {
-  const {
-    title,
-    description,
-    weight,
-    body: { code },
-  } = doc;
-
-  const fullTitle = `${title} | ${site.title}`;
-
-  const next: Doc | undefined = allDocs.find((d) => d.weight === weight + 1);
-  const previous: Doc | undefined = allDocs.find(
-    (d) => d.weight === weight - 1
-  );
-
-  return (
-    <>
-      <Head>
-        <title>{fullTitle}</title>
-        <meta name="description" content={description} />
-      </Head>
-
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-1">
-          <Navbar />
-          <article>
-            <div className="px-6 pt-12">
-              <div className="container mx-auto">
-                <div className="flex flex-col space-y-8">
-                  <section className="grow">
-                    <div className="flex flex-col space-y-4">
-                      <h1 className="text-4xl">{title}</h1>
-                      <h2 className="text-2xl">{description}</h2>
-                      <Content code={code} />
-                    </div>
-                  </section>
-                </div>
-              </div>
-            </div>
-          </article>
-        </main>
-        <Pagination previous={previous} next={next} />
-        <Footer />
-      </div>
-    </>
-  );
-};
+const DocsPage: NextPage<Props> = ({ doc }: Props) => <Page doc={doc} />;
 
 export { getStaticPaths, getStaticProps };
 
-export default Page;
+export default DocsPage;

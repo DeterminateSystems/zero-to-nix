@@ -2,8 +2,15 @@ import create from "zustand";
 import createContext from "zustand/context";
 import { persist } from "zustand/middleware";
 
-const systems: string[] = ["Linux", "macOS"];
-const languages: string[] = ["JavaScript", "Python", "Go", "Rust", "Ruby"];
+export const systems: string[] = ["Linux", "macOS"];
+
+export const languages: string[] = [
+  "JavaScript",
+  "Python",
+  "Go",
+  "Rust",
+  "Ruby",
+];
 
 interface State {
   system: string;
@@ -23,7 +30,7 @@ const guessSystem = (): string => {
   }
 };
 
-const state = create<State>()(
+export const state = create<State>()(
   persist(
     (set, _get) => ({
       system: guessSystem(),
@@ -38,5 +45,3 @@ const state = create<State>()(
     }
   )
 );
-
-export { systems, state };
