@@ -21,12 +21,16 @@ const Home = () => {
         <meta name="description" content={description} />
       </Head>
 
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col space-y-2">
-          <h1 className="text-3xl">{title} ❄️</h1>
-          <h2 className="text-xl">{description}</h2>
+      <div className="px-6 pt-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col space-y-6">
+            <div className="space-y-2">
+              <h1 className="text-3xl">{title} ❄️</h1>
+              <h2 className="text-xl">{description}</h2>
+            </div>
 
-          <Tiles docs={sortedByWeight} />
+            <Tiles docs={sortedByWeight} />
+          </div>
         </div>
       </div>
     </>

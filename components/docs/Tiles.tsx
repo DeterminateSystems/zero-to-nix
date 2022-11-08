@@ -10,8 +10,8 @@ const DocTile = ({ doc }: { doc: Doc }) => {
 
   return (
     <Link href={path}>
-      <div className="border-2 shadow rounded-xl hover:border-blue-500 py-4 px-6">
-        <div className="flex items-center space-x-6">
+      <div className="border-2 shadow rounded-xl hover:border-blue-500 py-4 px-6 h-full">
+        <div className="flex items-start space-x-6">
           <div>
             <span className="text-lg font-bold">{weight}.</span>
           </div>
@@ -27,7 +27,7 @@ const DocTile = ({ doc }: { doc: Doc }) => {
 
 const Tiles = ({ docs }: Props) => {
   return (
-    <div className="grid grid-cols-2 gap-2 md:gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
       {docs.map((d) => (
         <DocTile key={d._id} doc={d} />
       ))}
