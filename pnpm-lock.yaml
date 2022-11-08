@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@headlessui/react': ^1.7.4
   '@tailwindcss/typography': ^0.5.8
   '@types/node': 18.11.9
   '@types/react': 18.0.25
@@ -21,6 +22,7 @@ specifiers:
   zustand: ^4.1.4
 
 dependencies:
+  '@headlessui/react': 1.7.4_biqbaboplfbrettd7655fr4n2y
   '@types/node': 18.11.9
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.8
@@ -298,6 +300,18 @@ packages:
       long: 4.0.0
       protobufjs: 7.1.2
       yargs: 16.2.0
+    dev: false
+
+  /@headlessui/react/1.7.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-D8n5yGCF3WIkPsjEYeM8knn9jQ70bigGGb5aUvN6y4BGxcT3OcOQOKcM3zRGllRCZCFxCZyQvYJF6ZE7bQUOyQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.11.7:

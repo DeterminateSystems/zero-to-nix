@@ -12,6 +12,7 @@
     "publish": "npm run content && npm run build && npm run export"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
