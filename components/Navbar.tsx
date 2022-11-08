@@ -1,4 +1,4 @@
-import { Menu } from "@headlessui/react";
+import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { state, systems } from "lib/state";
 import Link from "next/link";
@@ -31,30 +31,42 @@ const Navbar = () => {
 
         <div>
           <Menu as="div" className="relative inline-block">
-            <Menu.Button
-              as="button"
-              className="w-24 bg-black text-white py-2 px-3 rounded-lg font-semibold tracking-tight"
+            <div>
+              <Menu.Button
+                as="button"
+                className="w-24 bg-black text-white py-2 px-3 rounded-lg font-semibold tracking-tight"
+              >
+                {sys}
+              </Menu.Button>
+            </div>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
             >
-              {sys}
-            </Menu.Button>
-            <Menu.Items className="absolute bg-slate-100 right-0 w-36 mt-2 text-right p-4 shadow">
-              {systems
-                .filter((s) => s != sys)
-                .map((s) => (
-                  <Menu.Item key={s} as={Fragment}>
-                    {({ active }: State) => (
-                      <button
-                        onClick={() => setSystem(s)}
-                        className={clsx(
-                          active ? "text-blue-500" : "text-black"
-                        )}
-                      >
-                        {s}
-                      </button>
-                    )}
-                  </Menu.Item>
-                ))}
-            </Menu.Items>
+              <Menu.Items className="absolute bg-slate-100 right-0 w-36 mt-2 text-right p-4 shadow">
+                {systems
+                  .filter((s) => s != sys)
+                  .map((s) => (
+                    <Menu.Item key={s} as={Fragment}>
+                      {({ active }: State) => (
+                        <button
+                          onClick={() => setSystem(s)}
+                          className={clsx(
+                            active ? "text-blue-500" : "text-black"
+                          )}
+                        >
+                          {s}
+                        </button>
+                      )}
+                    </Menu.Item>
+                  ))}
+              </Menu.Items>
+            </Transition>
           </Menu>
         </div>
       </div>
