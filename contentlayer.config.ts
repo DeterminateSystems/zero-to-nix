@@ -32,6 +32,10 @@ export const Doc = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    weight: {
+      type: "number",
+      required: true,
+    },
   },
   computedFields,
 }));
