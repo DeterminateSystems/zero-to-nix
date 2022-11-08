@@ -3,10 +3,13 @@ import createContext from "zustand/context";
 import { persist } from "zustand/middleware";
 
 const systems: string[] = ["Linux", "macOS"];
+const languages: string[] = ["JavaScript", "Python", "Go", "Rust", "Ruby"];
 
 interface State {
   system: string;
+  language: string;
   setSystem: (s: string) => void;
+  setLanguage: (l: string) => void;
 }
 
 const ctx = createContext();
@@ -24,7 +27,9 @@ const state = create<State>()(
   persist(
     (set, _get) => ({
       system: guessSystem(),
+      language: languages[0],
       setSystem: (s: string) => set({ system: s }),
+      setLanguage: (l: string) => set({ language: l }),
     }),
     {
       name: "zero-to-nix",
