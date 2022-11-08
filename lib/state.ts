@@ -12,10 +12,18 @@ interface State {
 const ctx = createContext();
 export const Provider = ctx.Provider;
 
+const guessSystem = (): string => {
+  if (typeof window !== "undefined") {
+    return window.navigator.userAgent.indexOf("Mac") != -1 ? "macOS" : "Linux";
+  } else {
+    return "Linux";
+  }
+};
+
 const state = create<State>()(
   persist(
     (set, _get) => ({
-      system: systems[0],
+      system: guessSystem(),
       setSystem: (s: string) => set({ system: s }),
     }),
     {
