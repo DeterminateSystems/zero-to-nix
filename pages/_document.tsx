@@ -1,3 +1,4 @@
+import Layout from "components/Layout";
 import { Head, Html, Main, NextScript } from "next/document";
 
 const Document = () => {
@@ -5,9 +6,7 @@ const Document = () => {
     <Html>
       <Head />
       <body>
-        <main className="p-8">
-          <Main />
-        </main>
+        <Main />
         <NextScript />
       </body>
     </Html>

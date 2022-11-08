@@ -28,6 +28,10 @@ export const Doc = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    description: {
+      type: "string",
+      required: true,
+    },
   },
   computedFields,
 }));

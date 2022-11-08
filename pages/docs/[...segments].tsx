@@ -4,6 +4,7 @@ import Content from "components/Content";
 import { Doc, allDocs } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import site from "site";
 
 // Helper types for generic stuff
 type WithRelativePath = { relativePath: string };
@@ -60,17 +61,21 @@ const getStaticPaths: GetStaticPaths<Params> = async () => {
 const Page: NextPage<Props> = ({ doc }: Props) => {
   const {
     title,
+    description,
     body: { code },
   } = doc;
+
+  const fullTitle = `${title} | ${site.title}`;
 
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{fullTitle}</title>
       </Head>
 
       <div className="flex flex-col space-y-4">
         <h1 className="text-4xl">{title}</h1>
+        <h2 className="text-2xl">{description}</h2>
         <Content code={code} />
       </div>
     </>
