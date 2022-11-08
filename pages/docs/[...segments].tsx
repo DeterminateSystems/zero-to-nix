@@ -4,6 +4,7 @@ import Content from "components/Content";
 import { Doc, allDocs } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import site from "site";
 
 // Helper types for generic stuff
@@ -62,10 +63,16 @@ const Page: NextPage<Props> = ({ doc }: Props) => {
   const {
     title,
     description,
+    weight,
     body: { code },
   } = doc;
 
   const fullTitle = `${title} | ${site.title}`;
+
+  const next: Doc | undefined = allDocs.find((d) => d.weight === weight + 1);
+  const previous: Doc | undefined = allDocs.find(
+    (d) => d.weight === weight - 1
+  );
 
   return (
     <>
@@ -78,6 +85,32 @@ const Page: NextPage<Props> = ({ doc }: Props) => {
         <h2 className="text-2xl">{description}</h2>
         <Content code={code} />
       </div>
+
+      {(next || previous) && (
+        <div className="flex justify-between items-center mt-8">
+          <div>
+            {previous && (
+              <>
+                <span className="mr-2">Previous:</span>
+                <Link href={previous.path} className="font-semibold">
+                  {previous.title}
+                </Link>
+              </>
+            )}
+          </div>
+
+          <div>
+            {next && (
+              <>
+                <span className="mr-2">Next:</span>
+                <Link href={next.path} className="font-semibold">
+                  {next.title}
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 };

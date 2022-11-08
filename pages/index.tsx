@@ -10,9 +10,9 @@ const DocTile = ({ doc }: { doc: Doc }) => {
   return (
     <Link href={path}>
       <div className="border-2 shadow rounded-xl hover:border-blue-500 py-4 px-6">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
           <div>
-            <span className="text-xl font-semibold">{weight}</span>
+            <span className="text-lg font-bold">{weight}.</span>
           </div>
           <div>
             <p className="text-lg">{title}</p>
