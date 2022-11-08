@@ -2,7 +2,6 @@ import "highlight.js/styles/obsidian.css";
 
 import "../styles/globals.css";
 
-import Layout from "components/Layout";
 import hljs from "highlight.js";
 import nix from "highlight.js/lib/languages/nix";
 import shell from "highlight.js/lib/languages/shell";
