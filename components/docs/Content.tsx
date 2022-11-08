@@ -1,6 +1,6 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 
-import InstallNix from "../../mdx/InstallNix";
+import Harmonic from "../../mdx/Harmonic";
 
 type Props = {
   code: string;
@@ -11,7 +11,7 @@ const Content = ({ code }: Props) => {
 
   return (
     <div className="max-w-none prose">
-      <MDXContent components={{ InstallNix }} />
+      <MDXContent components={{ Harmonic }} />
     </div>
   );
 };
