@@ -1,6 +1,6 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 
-import InstallNix from "../mdx/InstallNix";
+import InstallNix from "../../mdx/InstallNix";
 
 type Props = {
   code: string;

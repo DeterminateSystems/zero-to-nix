@@ -1,6 +1,6 @@
 import { ParsedUrlQuery } from "querystring";
 
-import Content from "components/Content";
+import Content from "components/docs/Content";
 import { Doc, allDocs } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";

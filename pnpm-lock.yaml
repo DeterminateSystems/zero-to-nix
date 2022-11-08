@@ -10,6 +10,7 @@ specifiers:
   contentlayer: ^0.2.9
   eslint: 8.27.0
   eslint-config-next: 13.0.2
+  highlight.js: ^11.6.0
   next: 13.0.2
   next-contentlayer: ^0.2.9
   postcss: ^8.4.18
@@ -27,6 +28,7 @@ dependencies:
   contentlayer: 0.2.9_esbuild@0.14.54
   eslint: 8.27.0
   eslint-config-next: 13.0.2_rmayb2veg2btbq6mbmnyivgasy
+  highlight.js: 11.6.0
   next: 13.0.2_biqbaboplfbrettd7655fr4n2y
   next-contentlayer: 0.2.9_3x2xe4shh3gnowpy2uhpcinrs4
   react: 18.2.0
@@ -2267,6 +2269,11 @@ packages:
 
   /hast-util-whitespace/2.0.0:
     resolution: {integrity: sha512-Pkw+xBHuV6xFeJprJe2BBEoDV+AvQySaz3pPDRUs5PNZEMQjpXJJueqrpcHIXxnWTcAGi/UOCgVShlkY6kLoqg==}
+    dev: false
+
+  /highlight.js/11.6.0:
+    resolution: {integrity: sha512-ig1eqDzJaB0pqEvlPVIpSSyMaO92bH1N2rJpLMN/nX396wTpDA4Eq0uK+7I/2XG17pFaaKE0kjV/XPeGt7Evjw==}
+    engines: {node: '>=12.0.0'}
     dev: false
 
   /html-void-elements/2.0.1:

@@ -21,7 +21,7 @@ const computedFields: ComputedFields = {
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
-  filePathPattern: "docs/**/*.mdx",
+  filePathPattern: "docs/**/*.{md,mdx}",
   contentType: "mdx",
   fields: {
     title: {

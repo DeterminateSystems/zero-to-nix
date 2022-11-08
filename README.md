@@ -1,7 +1,7 @@
 # Zero to Nix
 
 ```shell
-# Active Nix shell environment
+# Activate Nix shell environment
 direnv allow
 
 # Develop the site

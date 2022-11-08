@@ -8,7 +8,9 @@ const InstallNix = () => {
     setSys(system);
   }, [system]);
 
-  const script = `harmonic install ${sys.toLowerCase()}`;
+  const arch = sys == "Linux" ? "linux" : "darwin";
+
+  const script = `harmonic install ${arch}-multi`;
 
   return (
     <pre>
