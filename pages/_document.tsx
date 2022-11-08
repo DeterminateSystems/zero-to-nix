@@ -1,11 +1,10 @@
-import Layout from "components/Layout";
 import { Head, Html, Main, NextScript } from "next/document";
 
 const Document = () => {
   return (
-    <Html>
+    <Html lang="en">
       <Head />
-      <body>
+      <body className="font-sans antialiased">
         <Main />
         <NextScript />
       </body>

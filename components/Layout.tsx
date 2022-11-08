@@ -1,5 +1,6 @@
 import React from "react";
 
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 type Props = {
@@ -8,10 +9,13 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <>
-      <Navbar />
-      <main className="p-6">{children}</main>
-    </>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-1">
+        <Navbar />
+        <div className="p-6">{children}</div>
+      </main>
+      <Footer />
+    </div>
   );
 };
 

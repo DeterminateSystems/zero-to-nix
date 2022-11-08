@@ -27,7 +27,7 @@ const DocTile = ({ doc }: { doc: Doc }) => {
 
 const Tiles = ({ docs }: Props) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+    <div className="grid grid-cols-2 gap-2 md:gap-4">
       {docs.map((d) => (
         <DocTile key={d._id} doc={d} />
       ))}
