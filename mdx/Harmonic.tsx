@@ -22,8 +22,10 @@ const Harmonic = ({ command }: Props) => {
   switch (command) {
     case "plan":
       script = `harmonic plan install ${arch}-multi`;
+      break;
     case "install":
       script = `harmonic install ${arch}-multi`;
+      break;
   }
 
   return (
