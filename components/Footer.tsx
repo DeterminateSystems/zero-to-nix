@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-slate-100 pt-8 pb-16 px-6">
-      <div className="mx-auto max-w-6xl">
+      <div className="container mx-auto">
         <p>
           Copyright &copy; {year}{" "}
           <Link

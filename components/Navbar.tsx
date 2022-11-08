@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-slate-100 py-4 px-6 shadow">
-      <div className="mx-auto max-w-6xl flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center">
         <div>
           <Link href="/" className="text-xl font-semibold hover:text-blue-500">
             {title} ❄️

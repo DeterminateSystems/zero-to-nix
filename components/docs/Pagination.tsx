@@ -10,33 +10,37 @@ const Pagination = ({ previous, next }: Props) => {
   return (
     <>
       {(previous || next) && (
-        <div className="inline-flex justify-between items-center">
-          <div>
-            {previous && (
-              <>
-                <span className="mr-2">Previous:</span>
-                <Link
-                  href={previous.path}
-                  className="font-semibold hover:text-blue-500"
-                >
-                  {previous.title}
-                </Link>
-              </>
-            )}
-          </div>
+        <div className="px-6 py-4">
+          <div className="container mx-auto">
+            <div className="flex justify-between items-center">
+              <div>
+                {previous && (
+                  <>
+                    <span className="mr-2">Previous:</span>
+                    <Link
+                      href={previous.path}
+                      className="font-semibold hover:text-blue-500"
+                    >
+                      {previous.title}
+                    </Link>
+                  </>
+                )}
+              </div>
 
-          <div>
-            {next && (
-              <>
-                <span className="mr-2">Next:</span>
-                <Link
-                  href={next.path}
-                  className="font-semibold hover:text-blue-500"
-                >
-                  {next.title}
-                </Link>
-              </>
-            )}
+              <div>
+                {next && (
+                  <>
+                    <span className="mr-2">Next:</span>
+                    <Link
+                      href={next.path}
+                      className="font-semibold hover:text-blue-500"
+                    >
+                      {next.title}
+                    </Link>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}

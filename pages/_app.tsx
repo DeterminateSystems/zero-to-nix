@@ -21,9 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <Provider createStore={() => state}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
     </Provider>
   );
 };
