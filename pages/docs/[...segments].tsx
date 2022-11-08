@@ -80,37 +80,39 @@ const Page: NextPage<Props> = ({ doc }: Props) => {
         <title>{fullTitle}</title>
       </Head>
 
-      <div className="flex flex-col space-y-4">
-        <h1 className="text-4xl">{title}</h1>
-        <h2 className="text-2xl">{description}</h2>
-        <Content code={code} />
-      </div>
-
-      {(next || previous) && (
-        <div className="flex justify-between items-center mt-8">
-          <div>
-            {previous && (
-              <>
-                <span className="mr-2">Previous:</span>
-                <Link href={previous.path} className="font-semibold">
-                  {previous.title}
-                </Link>
-              </>
-            )}
-          </div>
-
-          <div>
-            {next && (
-              <>
-                <span className="mr-2">Next:</span>
-                <Link href={next.path} className="font-semibold">
-                  {next.title}
-                </Link>
-              </>
-            )}
-          </div>
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col space-y-4">
+          <h1 className="text-4xl">{title}</h1>
+          <h2 className="text-2xl">{description}</h2>
+          <Content code={code} />
         </div>
-      )}
+
+        {(next || previous) && (
+          <div className="flex justify-between items-center mt-8">
+            <div>
+              {previous && (
+                <>
+                  <span className="mr-2">Previous:</span>
+                  <Link href={previous.path} className="font-semibold">
+                    {previous.title}
+                  </Link>
+                </>
+              )}
+            </div>
+
+            <div>
+              {next && (
+                <>
+                  <span className="mr-2">Next:</span>
+                  <Link href={next.path} className="font-semibold">
+                    {next.title}
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };

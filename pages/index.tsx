@@ -14,9 +14,9 @@ const DocTile = ({ doc }: { doc: Doc }) => {
           <div>
             <span className="text-lg font-bold">{weight}.</span>
           </div>
-          <div>
-            <p className="text-lg">{title}</p>
-            <p className="text-sm">{description}</p>
+          <div className="space-y-2">
+            <p className="text-lg leading-tight">{title}</p>
+            <p className="text-sm text-slate-600">{description}</p>
           </div>
         </div>
       </div>
@@ -40,14 +40,16 @@ const Home = () => {
         <meta name="description" content={description} />
       </Head>
 
-      <div className="flex flex-col space-y-2">
-        <h1 className="text-3xl">{title} ❄️</h1>
-        <h2 className="text-xl">{description}</h2>
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col space-y-2">
+          <h1 className="text-3xl">{title} ❄️</h1>
+          <h2 className="text-xl">{description}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-          {allDocs.map((d) => (
-            <DocTile key={d._id} doc={d} />
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+            {allDocs.map((d) => (
+              <DocTile key={d._id} doc={d} />
+            ))}
+          </div>
         </div>
       </div>
     </>
