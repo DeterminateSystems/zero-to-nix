@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .prose code::before,
+  .prose code::after {
+    content: "";
+  }
+}

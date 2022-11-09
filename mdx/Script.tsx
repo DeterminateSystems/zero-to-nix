@@ -5,11 +5,13 @@ let script: string;
 
 const Script = () => {
   const [language] = state((s) => [s.language]);
-  const [lang, setLang] = useState<string>();
+  const [_, setLang] = useState<string>();
 
   useEffect(() => {
     setLang(language);
-    script = `nix flake init --template github:DeterminateSystems/template?dir=${language.toLowerCase()}`;
+    const lang = language.toLowerCase();
+    const dir = `nix-${lang}`;
+    script = `mkdir ${dir} && cd ${dir}\nnix flake init --template "github:DeterminateSystems/template?dir=${lang}"`;
   }, [language]);
 
   return (

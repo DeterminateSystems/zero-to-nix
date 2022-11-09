@@ -1,0 +1,88 @@
+import { Dialog, Transition } from "@headlessui/react";
+import MDX from "components/docs/MDX";
+import { allConcepts } from "contentlayer/generated";
+import { Fragment, useState } from "react";
+
+type Props = {
+  text: string;
+  id: string;
+};
+
+const Concept = ({ text, id }: Props) => {
+  const [open, setOpen] = useState<boolean>(true);
+
+  const concept = allConcepts.find((c) => c.id === id)!;
+  const {
+    title,
+    body: { code },
+  } = concept;
+
+  return (
+    <>
+      <button
+        className="underline hover:text-blue-500"
+        onClick={() => setOpen(true)}
+      >
+        {text}
+      </button>
+
+      <div className="hidden">
+        <Transition appear show={open}>
+          <Dialog
+            as="div"
+            className="relative z-10"
+            onClose={() => setOpen(false)}
+          >
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
+
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                    <div className="space-y-3">
+                      <Dialog.Title as="h3" className="text-lg font-semibold">
+                        {title}
+                      </Dialog.Title>
+                      <Dialog.Description>
+                        <MDX code={code} />
+                      </Dialog.Description>
+                    </div>
+
+                    <div className="flex justify-end">
+                      <button
+                        onClick={() => setOpen(false)}
+                        className="bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition>
+      </div>
+    </>
+  );
+};
+
+export default Concept;

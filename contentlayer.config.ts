@@ -40,6 +40,25 @@ export const Doc = defineDocumentType(() => ({
   computedFields,
 }));
 
+export const Concept = defineDocumentType(() => ({
+  name: "Concept",
+  filePathPattern: "concepts/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+  },
+  computedFields: {
+    id: {
+      type: "string",
+      resolve: (doc: LocalDocument) =>
+        doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+  },
+}));
+
 export const Topic = defineDocumentType(() => ({
   name: "Topic",
   filePathPattern: "topics/**/*.mdx",
@@ -61,5 +80,5 @@ export const Topic = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Doc, Topic],
+  documentTypes: [Concept, Doc, Topic],
 });
