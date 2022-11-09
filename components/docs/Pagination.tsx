@@ -10,9 +10,9 @@ const Pagination = ({ previous, next }: Props) => {
   return (
     <>
       {(previous || next) && (
-        <div className="px-6 py-4">
+        <div className="mt-12 px-6 py-4">
           <div className="container mx-auto">
-            <div className="flex justify-between items-center">
+            <div className="md:flex justify-between items-center">
               <div>
                 {previous && (
                   <>

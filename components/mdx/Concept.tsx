@@ -4,13 +4,13 @@ import { allConcepts } from "contentlayer/generated";
 import { Fragment, useState } from "react";
 
 type Props = {
-  text: string;
   id: string;
+  text?: string;
 };
 
-const Concept = ({ text, id }: Props) => {
-  const [open, setOpen] = useState<boolean>(true);
-
+const Concept = ({ id, text }: Props) => {
+  const finalText = text ?? id;
+  const [open, setOpen] = useState<boolean>(false);
   const concept = allConcepts.find((c) => c.id === id)!;
   const {
     title,
@@ -23,7 +23,7 @@ const Concept = ({ text, id }: Props) => {
         className="underline hover:text-blue-500"
         onClick={() => setOpen(true)}
       >
-        {text}
+        {finalText}
       </button>
 
       <div className="hidden">
@@ -42,7 +42,7 @@ const Concept = ({ text, id }: Props) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black bg-opacity-25" />
+              <div className="fixed inset-0 bg-black bg-opacity-50" />
             </Transition.Child>
 
             <div className="fixed inset-0 overflow-y-auto">
@@ -56,7 +56,7 @@ const Concept = ({ text, id }: Props) => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                     <div className="space-y-3">
                       <Dialog.Title as="h3" className="text-lg font-semibold">
                         {title}

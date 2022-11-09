@@ -4,7 +4,7 @@ import Concept from "../mdx/Concept";
 import Harmonic from "../mdx/Harmonic";
 import Language from "../mdx/Language";
 import Languages from "../mdx/Languages";
-import Script from "../mdx/Script";
+import Shell from "../mdx/Shell";
 import Topic from "../mdx/Topic";
 
 type Props = {
@@ -15,9 +15,9 @@ const MDX = ({ code }: Props) => {
   const MDXContent = useMDXComponent(code);
 
   return (
-    <div className="max-w-none prose">
+    <div className="prose max-w-none">
       <MDXContent
-        components={{ Concept, Harmonic, Language, Languages, Script, Topic }}
+        components={{ Concept, Harmonic, Language, Languages, Shell, Topic }}
       />
     </div>
   );

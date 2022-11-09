@@ -1,5 +1,5 @@
 ---
-title: Install Nix
+title: Installation
 description: Use Harmonic to get up and running
 weight: 1
 ---
@@ -12,6 +12,8 @@ curl https://harmonic.dev | sh
 
 <Topic id="harmonic" />
 
+## Install Nix
+
 With Harmonic installed, check to make sure that you can install Nix on your machine:
 
 <Harmonic command="plan" />
@@ -19,5 +21,21 @@ With Harmonic installed, check to make sure that you can install Nix on your mac
 With Harmonic installed, you can now install Nix:
 
 <Harmonic command="install" />
+
+## Verify
+
+To verify that the Nix CLI has been installed:
+
+```shell
+nix --help
+```
+
+You should see help output that begins like this:
+
+```shell
+Name
+
+    nix - a tool for reproducible and declarative configuration management
+```
 
 [harmonic]: https://github.com/DeterminateSystems/harmonic

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 let script: string;
 
-const Script = () => {
+const Shell = () => {
   const [language] = state((s) => [s.language]);
   const [_, setLang] = useState<string>();
 
@@ -21,4 +21,4 @@ const Script = () => {
   );
 };
 
-export default Script;
+export default Shell;

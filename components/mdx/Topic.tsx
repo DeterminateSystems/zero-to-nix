@@ -13,7 +13,7 @@ const Topic = ({ id }: Props) => {
   } = allTopics.find((e) => e.id === id)!;
 
   return (
-    <div className="not-prose border-teal-500 border-2 rounded-xl py-3 px-5 bg-teal-50">
+    <div className="not-prose border-teal-500 border-2 rounded-xl py-3 px-5 bg-teal-50 space-y-4">
       <p className="text-xl font-semibold">{title}</p>
 
       <MDX code={code} />
