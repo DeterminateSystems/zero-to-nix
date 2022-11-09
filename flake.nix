@@ -53,5 +53,21 @@
         {
           buildInputs = common ++ scripts;
         };
+
+      packages.default = pkgs.stdenv.mkDerivation {
+        name = "dev-to-nix";
+        src = ./.;
+        buildInputs = with pkgs; [ pnpm ];
+        installPhase = ''
+          mkdir -p $out
+        '';
+        buildPhase = ''
+          pnpm install
+          pnpm run build
+          pnpm run export
+
+          cp -R out/ $out/
+        '';
+      };
     });
 }

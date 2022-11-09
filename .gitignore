@@ -10,3 +10,6 @@ next-env.d.ts
 
 # Contentlayer artifacts
 /.contentlayer/
+
+# Nix artifacts
+result
