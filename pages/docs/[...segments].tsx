@@ -1,6 +1,6 @@
 import { ParsedUrlQuery } from "querystring";
 
-import Content from "components/docs/Content";
+import Content from "components/docs/MDX";
 import Page from "components/docs/Page";
 import Pagination from "components/docs/Pagination";
 import Footer from "components/Footer";

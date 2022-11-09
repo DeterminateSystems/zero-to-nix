@@ -40,9 +40,9 @@ export const Doc = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Explanation = defineDocumentType(() => ({
-  name: "Explanation",
-  filePathPattern: "explanations/**/*.md",
+export const Topic = defineDocumentType(() => ({
+  name: "Topic",
+  filePathPattern: "topics/**/*.md",
   fields: {
     title: {
       type: "string",
@@ -60,5 +60,5 @@ export const Explanation = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Doc, Explanation],
+  documentTypes: [Doc, Topic],
 });

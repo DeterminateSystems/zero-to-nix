@@ -1,12 +1,11 @@
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
 import { Doc, allDocs } from "contentlayer/generated";
-import { languages } from "lib/state";
 import { NextPage } from "next";
 import Head from "next/head";
 import site from "site";
 
-import Content from "./Content";
+import MDX from "./MDX";
 import Pagination from "./Pagination";
 
 type Props = {
@@ -44,7 +43,7 @@ const Page: NextPage<Props> = ({ doc }: Props) => {
                 <h1 className="text-4xl">{title}</h1>
                 <h2 className="text-2xl text-slate-500">{description}</h2>
               </header>
-              <Content code={code} />
+              <MDX code={code} />
             </div>
           </div>
         </main>
