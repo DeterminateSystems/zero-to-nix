@@ -26,7 +26,12 @@
 
       common = with pkgs; [ nodejs pnpm python38 ];
       scripts = with pkgs; [
+        (writeScriptBin "clean" ''
+          rm -rf .next out
+        '')
+
         (writeScriptBin "setup" ''
+          clean
           pnpm install
           pnpm run content
         '')
@@ -47,12 +52,24 @@
           python3 -m http.server -d out 3000
         '')
       ];
+
+      runLocal = pkgs.writeScriptBin "run-local" ''
+        rm -rf .next out
+        pnpm install
+        pnpm run build
+        pnpm run export
+        python3 -m http.server -d out 3000
+      '';
     in
     {
       devShells.default = pkgs.mkShell
         {
           buildInputs = common ++ scripts;
         };
+
+      apps.default = flake-utils.lib.mkApp {
+        drv = runLocal;
+      };
 
       packages.default = pkgs.stdenv.mkDerivation {
         name = "dev-to-nix";

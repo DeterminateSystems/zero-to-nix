@@ -19,3 +19,11 @@ The site is also a package output:
 ```shell
 nix build
 ```
+
+And an app:
+
+```shell
+nix run
+
+# Open up http://localhost:3000
+```
