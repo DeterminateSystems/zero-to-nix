@@ -42,7 +42,8 @@ export const Doc = defineDocumentType(() => ({
 
 export const Topic = defineDocumentType(() => ({
   name: "Topic",
-  filePathPattern: "topics/**/*.md",
+  filePathPattern: "topics/**/*.mdx",
+  contentType: "mdx",
   fields: {
     title: {
       type: "string",
