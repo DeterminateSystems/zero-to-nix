@@ -40,7 +40,25 @@ export const Doc = defineDocumentType(() => ({
   computedFields,
 }));
 
+export const Explanation = defineDocumentType(() => ({
+  name: "Explanation",
+  filePathPattern: "explanations/**/*.md",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+  },
+  computedFields: {
+    id: {
+      type: "string",
+      resolve: (doc: LocalDocument) =>
+        doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+  },
+}));
+
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Doc],
+  documentTypes: [Doc, Explanation],
 });

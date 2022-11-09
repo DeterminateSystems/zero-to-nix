@@ -14,7 +14,7 @@ const Script = () => {
 
   return (
     <pre>
-      <code>{script}</code>
+      <code className="language-shell">{script}</code>
     </pre>
   );
 };

@@ -1,6 +1,7 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 
 // Custom MDX components
+import Explainer from "../../mdx/Explainer";
 import Harmonic from "../../mdx/Harmonic";
 import Language from "../../mdx/Language";
 import Languages from "../../mdx/Languages";
@@ -15,7 +16,9 @@ const Content = ({ code }: Props) => {
 
   return (
     <div className="max-w-none prose">
-      <MDXContent components={{ Harmonic, Language, Languages, Script }} />
+      <MDXContent
+        components={{ Explainer, Harmonic, Language, Languages, Script }}
+      />
     </div>
   );
 };
