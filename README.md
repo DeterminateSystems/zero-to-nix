@@ -13,3 +13,9 @@ build
 # Preview the site (run using a Python web server to mimic non-Node environment)
 preview
 ```
+
+The site is also a package output:
+
+```shell
+nix build
+```
