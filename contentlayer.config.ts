@@ -59,26 +59,7 @@ export const Concept = defineDocumentType(() => ({
   },
 }));
 
-export const Topic = defineDocumentType(() => ({
-  name: "Topic",
-  filePathPattern: "topics/**/*.mdx",
-  contentType: "mdx",
-  fields: {
-    title: {
-      type: "string",
-      required: true,
-    },
-  },
-  computedFields: {
-    id: {
-      type: "string",
-      resolve: (doc: LocalDocument) =>
-        doc._raw.flattenedPath.split("/").slice(1).join("/"),
-    },
-  },
-}));
-
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Concept, Doc, Topic],
+  documentTypes: [Concept, Doc],
 });

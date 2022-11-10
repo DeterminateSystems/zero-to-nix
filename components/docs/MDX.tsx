@@ -1,11 +1,10 @@
+import Concept from "components/mdx/Concept";
+import Harmonic from "components/mdx/Harmonic";
+import Language from "components/mdx/Language";
+import Languages from "components/mdx/Languages";
+import NixStorePath from "components/mdx/NixStorePath";
+import Shell from "components/mdx/Shell";
 import { useMDXComponent } from "next-contentlayer/hooks";
-
-import Concept from "../mdx/Concept";
-import Harmonic from "../mdx/Harmonic";
-import Language from "../mdx/Language";
-import Languages from "../mdx/Languages";
-import Shell from "../mdx/Shell";
-import Topic from "../mdx/Topic";
 
 type Props = {
   code: string;
@@ -17,7 +16,14 @@ const MDX = ({ code }: Props) => {
   return (
     <div className="prose max-w-none">
       <MDXContent
-        components={{ Concept, Harmonic, Language, Languages, Shell, Topic }}
+        components={{
+          Concept,
+          Harmonic,
+          Language,
+          Languages,
+          NixStorePath,
+          Shell,
+        }}
       />
     </div>
   );

@@ -11,7 +11,7 @@ const Shell = () => {
     setLang(language);
     const lang = language.toLowerCase();
     const dir = `nix-${lang}`;
-    script = `mkdir ${dir} && cd ${dir}\nnix flake init --template "github:DeterminateSystems/template?dir=${lang}"`;
+    script = `mkdir ${dir} && cd ${dir}\nnix flake init --template "github:DeterminateSystems/template#${lang}"`;
   }, [language]);
 
   return (
