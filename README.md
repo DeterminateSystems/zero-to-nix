@@ -4,6 +4,9 @@
 # Activate Nix shell environment
 direnv allow
 
+# Recommended
+alias npm=pnpm
+
 # Develop the site
 dev
 

@@ -7,6 +7,7 @@ import site from "site";
 
 import MDX from "./MDX";
 import Pagination from "./Pagination";
+import Sidebar from "./Sidebar";
 
 type Props = {
   doc: Doc;
@@ -39,11 +40,16 @@ const Page: NextPage<Props> = ({ doc }: Props) => {
           <Navbar />
           <div className="px-6 pt-12">
             <div className="container mx-auto flex flex-col space-y-4">
-              <header className="space-y-3">
-                <h1 className="text-4xl">{title}</h1>
-                <h2 className="text-2xl text-slate-500">{description}</h2>
-              </header>
-              <MDX code={code} />
+              <div className="flex space-x-8">
+                <Sidebar />
+                <div className="flex-1">
+                  <header className="space-y-3">
+                    <h1 className="text-4xl">{title}</h1>
+                    <h2 className="text-2xl text-slate-500">{description}</h2>
+                  </header>
+                  <MDX code={code} />
+                </div>
+              </div>
             </div>
           </div>
         </main>
