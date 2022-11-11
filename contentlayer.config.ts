@@ -5,20 +5,6 @@ import {
   makeSource,
 } from "contentlayer/source-files";
 
-const computedFields: ComputedFields = {
-  // Convert docs/foo/bar into /docs/foo/bar
-  path: {
-    type: "string",
-    resolve: (doc: LocalDocument) => `/${doc._raw.flattenedPath}`,
-  },
-  // Convert /docs/foo/bar into /foo/bar
-  relativePath: {
-    type: "string",
-    resolve: (doc: LocalDocument) =>
-      doc._raw.flattenedPath.split("/").slice(1).join("/"),
-  },
-};
-
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
   filePathPattern: "docs/**/*.{md,mdx}",
@@ -37,7 +23,17 @@ export const Doc = defineDocumentType(() => ({
       required: true,
     },
   },
-  computedFields,
+  computedFields: {
+    path: {
+      type: "string",
+      resolve: (doc: LocalDocument) => `/${doc._raw.flattenedPath}`,
+    },
+    relativePath: {
+      type: "string",
+      resolve: (doc: LocalDocument) =>
+        doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+  },
 }));
 
 export const Concept = defineDocumentType(() => ({
@@ -51,6 +47,10 @@ export const Concept = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    path: {
+      type: "string",
+      resolve: (doc: LocalDocument) => `/${doc._raw.flattenedPath}`,
+    },
     id: {
       type: "string",
       resolve: (doc: LocalDocument) =>

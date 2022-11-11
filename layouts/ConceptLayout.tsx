@@ -1,20 +1,19 @@
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
-import { allDocs } from "contentlayer/generated";
+import { Concept } from "contentlayer/generated";
 import Head from "next/head";
 
-import site from "../site";
+type Props = {
+  concept: Concept;
+};
 
-const Home = () => {
-  const { title, description } = site;
-
-  const metaTitle = `${title}: ${description.toLowerCase()}`;
+const ConceptLayout = ({ concept }: Props) => {
+  const { title } = concept;
 
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
-        <meta name="description" content={description} />
+        <title>{title}</title>
       </Head>
 
       <div className="flex flex-col min-h-screen">
@@ -24,8 +23,7 @@ const Home = () => {
             <div className="container mx-auto">
               <div className="flex flex-col space-y-6">
                 <div className="space-y-2">
-                  <h1 className="text-3xl">{title} ❄️</h1>
-                  <h2 className="text-xl">{description}</h2>
+                  <h1 className="text-3xl">{title}</h1>
                 </div>
               </div>
             </div>
@@ -37,4 +35,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ConceptLayout;

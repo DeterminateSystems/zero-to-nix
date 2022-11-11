@@ -1,19 +1,17 @@
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
-import { allDocs } from "contentlayer/generated";
+import { allConcepts } from "contentlayer/generated";
 import Head from "next/head";
+import Link from "next/link";
 
-import site from "../site";
-
-const Home = () => {
-  const { title, description } = site;
-
-  const metaTitle = `${title}: ${description.toLowerCase()}`;
+const ConceptsHome = () => {
+  const title = "Concepts";
+  const description = "Dig a bit deeper!";
 
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
+        <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
 
@@ -27,6 +25,16 @@ const Home = () => {
                   <h1 className="text-3xl">{title} ❄️</h1>
                   <h2 className="text-xl">{description}</h2>
                 </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {allConcepts.map((c) => (
+                    <Link key={c._id} href={c.path}>
+                      <div className="border-2 rounded-lg py-4 px-6 hover:border-blue-500">
+                        <p className="text-2xl">{c.title}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -37,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ConceptsHome;

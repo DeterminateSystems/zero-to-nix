@@ -1,19 +1,19 @@
+import Tiles from "components/docs/Tiles";
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
 import { allDocs } from "contentlayer/generated";
 import Head from "next/head";
 
-import site from "../site";
+const QuickStartHome = () => {
+  const title = "Quick start";
+  const description = "Jump start your life with Nix!";
 
-const Home = () => {
-  const { title, description } = site;
-
-  const metaTitle = `${title}: ${description.toLowerCase()}`;
+  const sortedByWeight = allDocs.sort((d1, d2) => d1.weight - d2.weight);
 
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
+        <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
 
@@ -27,6 +27,8 @@ const Home = () => {
                   <h1 className="text-3xl">{title} ❄️</h1>
                   <h2 className="text-xl">{description}</h2>
                 </div>
+
+                <Tiles docs={sortedByWeight} />
               </div>
             </div>
           </div>
@@ -37,4 +39,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default QuickStartHome;

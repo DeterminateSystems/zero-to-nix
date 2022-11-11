@@ -2,6 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { state, systems } from "lib/state";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import site from "site";
 import shallow from "zustand/shallow";
@@ -9,6 +10,16 @@ import shallow from "zustand/shallow";
 type State = {
   active: boolean;
 };
+
+type NavLink = {
+  text: string;
+  href: string;
+};
+
+const links: NavLink[] = [
+  { text: "Quick start", href: "/docs" },
+  { text: "Concepts", href: "/concepts" },
+];
 
 const Navbar = () => {
   const [system, setSystem] = state((s) => [s.system, s.setSystem], shallow);
@@ -20,6 +31,8 @@ const Navbar = () => {
 
   const { title } = site;
 
+  const here = useRouter().asPath;
+
   return (
     <nav className="bg-slate-100 py-4 px-6 shadow">
       <div className="container mx-auto flex justify-between items-center">
@@ -29,7 +42,19 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div>
+        <div className="flex items-center space-x-6">
+          {links.map((link) => (
+            <Link
+              key={link.text}
+              href={link.href}
+              className={clsx(
+                here.startsWith(link.href) ? "font-bold" : "font-normal"
+              )}
+            >
+              {link.text}
+            </Link>
+          ))}
+
           <Menu as="div" className="relative inline-block">
             <div>
               <Menu.Button
