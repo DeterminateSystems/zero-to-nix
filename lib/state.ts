@@ -5,11 +5,11 @@ import { persist } from "zustand/middleware";
 export const systems: string[] = ["Linux", "macOS"];
 
 export const languages: string[] = [
-  "JavaScript",
+  //"JavaScript",
   "Python",
-  "Go",
-  "Rust",
-  "Ruby",
+  //"Go",
+  //"Rust",
+  //"Ruby",
 ];
 
 interface State {
