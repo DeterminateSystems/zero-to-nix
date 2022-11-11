@@ -1,6 +1,5 @@
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
-import { allDocs } from "contentlayer/generated";
 import Head from "next/head";
 
 import site from "../site";
@@ -31,6 +30,7 @@ const Home = () => {
             </div>
           </div>
         </main>
+
         <Footer />
       </div>
     </>

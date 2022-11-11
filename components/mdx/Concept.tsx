@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
-import MDX from "components/docs/MDX";
 import { allConcepts } from "contentlayer/generated";
+import Link from "next/link";
 import { Fragment, useState } from "react";
 
 type Props = {
@@ -12,10 +12,7 @@ const Concept = ({ id, text }: Props) => {
   const finalText = text ?? id;
   const [open, setOpen] = useState<boolean>(false);
   const concept = allConcepts.find((c) => c.id === id)!;
-  const {
-    title,
-    body: { code },
-  } = concept;
+  const { title, path, snippet } = concept;
 
   return (
     <>
@@ -61,12 +58,13 @@ const Concept = ({ id, text }: Props) => {
                       <Dialog.Title as="h3" className="text-lg font-semibold">
                         {title}
                       </Dialog.Title>
-                      <Dialog.Description>
-                        <MDX code={code} />
-                      </Dialog.Description>
+                      <Dialog.Description>{snippet}</Dialog.Description>
                     </div>
 
                     <div className="flex justify-end">
+                      <button className="bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow">
+                        <Link href={path}>Read more</Link>
+                      </button>
                       <button
                         onClick={() => setOpen(false)}
                         className="bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"

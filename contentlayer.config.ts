@@ -45,6 +45,16 @@ export const Concept = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    snippet: {
+      type: "string",
+      required: true,
+    },
+    related: {
+      type: "list",
+      of: { type: "string" },
+      required: false,
+      default: [],
+    },
   },
   computedFields: {
     path: {

@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "content": "contentlayer build",
-    "publish": "npm run content && npm run build && npm run export"
+    "content": "contentlayer build"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",

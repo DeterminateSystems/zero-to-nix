@@ -1,14 +1,34 @@
+import MDX from "components/docs/MDX";
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
-import { Concept } from "contentlayer/generated";
+import { Concept, allConcepts } from "contentlayer/generated";
 import Head from "next/head";
+import Link from "next/link";
 
 type Props = {
   concept: Concept;
 };
 
+const Related = ({ concept }: Props) => {
+  const { title, path } = concept;
+
+  return (
+    <Link href={path} className="hover:text-blue-500">
+      {title}
+    </Link>
+  );
+};
+
 const ConceptLayout = ({ concept }: Props) => {
-  const { title } = concept;
+  const {
+    title,
+    body: { code },
+    related,
+  } = concept;
+
+  const relatedConcepts: Concept[] = related.map(
+    (r) => allConcepts.find((c) => c.id === r)!
+  );
 
   return (
     <>
@@ -25,6 +45,18 @@ const ConceptLayout = ({ concept }: Props) => {
                 <div className="space-y-2">
                   <h1 className="text-3xl">{title}</h1>
                 </div>
+
+                <MDX code={code} />
+
+                {related.length > 0 && (
+                  <div>
+                    <p>Related concepts</p>
+
+                    {relatedConcepts.map((c) => (
+                      <Related key={c._id} concept={c} />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>

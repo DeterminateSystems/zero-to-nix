@@ -27,7 +27,7 @@
       common = with pkgs; [ nodejs pnpm python38 ];
       scripts = with pkgs; [
         (writeScriptBin "clean" ''
-          rm -rf .next out
+          rm -rf .contentlayer .next out
         '')
 
         (writeScriptBin "setup" ''
