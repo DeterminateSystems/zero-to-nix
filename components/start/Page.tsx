@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import site from "site";
 
-import MDX from "./MDX";
+import MDX from "../MDX";
 import Pagination from "./Pagination";
 import Sidebar from "./Sidebar";
 

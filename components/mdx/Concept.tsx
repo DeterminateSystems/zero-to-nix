@@ -4,14 +4,14 @@ import Link from "next/link";
 import { Fragment, useState } from "react";
 
 type Props = {
-  id: string;
+  slug: string;
   text?: string;
 };
 
-const Concept = ({ id, text }: Props) => {
-  const finalText = text ?? id;
+const Concept = ({ slug, text }: Props) => {
+  const finalText = text ?? slug;
   const [open, setOpen] = useState<boolean>(false);
-  const concept = allConcepts.find((c) => c.id === id)!;
+  const concept = allConcepts.find((c) => c.slug === slug)!;
   const { title, path, snippet } = concept;
 
   return (

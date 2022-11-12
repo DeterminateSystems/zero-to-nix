@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { state, systems } from "lib/state";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import site from "site";
 import shallow from "zustand/shallow";
@@ -17,7 +17,7 @@ type NavLink = {
 };
 
 const links: NavLink[] = [
-  { text: "Quick start", href: "/docs" },
+  { text: "Quick start", href: "/start" },
   { text: "Concepts", href: "/concepts" },
 ];
 
@@ -31,14 +31,14 @@ const Navbar = () => {
 
   const { title } = site;
 
-  const here = useRouter().asPath;
+  const here = usePathname()!;
 
   return (
-    <nav className="bg-slate-100 py-4 px-6 shadow">
+    <nav className="sticky top-0 bg-slate-100 py-4 px-6 shadow">
       <div className="container mx-auto flex justify-between items-center">
         <div>
           <Link href="/" className="text-xl font-semibold hover:text-blue-500">
-            {title} ❄️
+            {title}
           </Link>
         </div>
 

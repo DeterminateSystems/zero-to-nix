@@ -1,12 +1,16 @@
-import { Doc } from "contentlayer/generated";
+import { allSteps, Step } from "contentlayer/generated";
 import Link from "next/link";
 
 type Props = {
-  previous?: Doc;
-  next?: Doc;
+  weight: number;
 };
 
-const Pagination = ({ previous, next }: Props) => {
+const Pagination = ({ weight }: Props) => {
+  const next: Step | undefined = allSteps.find((s) => s.weight === weight + 1);
+  const previous: Step | undefined = allSteps.find(
+    (s) => s.weight === weight - 1
+  );
+
   return (
     <>
       {(previous || next) && (

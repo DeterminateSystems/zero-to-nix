@@ -1,13 +1,12 @@
 import {
-  ComputedFields,
   LocalDocument,
   defineDocumentType,
   makeSource,
 } from "contentlayer/source-files";
 
-export const Doc = defineDocumentType(() => ({
-  name: "Doc",
-  filePathPattern: "docs/**/*.{md,mdx}",
+export const Step = defineDocumentType(() => ({
+  name: "Step",
+  filePathPattern: "start/**/*.{md,mdx}",
   contentType: "mdx",
   fields: {
     title: {
@@ -28,7 +27,7 @@ export const Doc = defineDocumentType(() => ({
       type: "string",
       resolve: (doc: LocalDocument) => `/${doc._raw.flattenedPath}`,
     },
-    relativePath: {
+    slug: {
       type: "string",
       resolve: (doc: LocalDocument) =>
         doc._raw.flattenedPath.split("/").slice(1).join("/"),
@@ -61,7 +60,7 @@ export const Concept = defineDocumentType(() => ({
       type: "string",
       resolve: (doc: LocalDocument) => `/${doc._raw.flattenedPath}`,
     },
-    id: {
+    slug: {
       type: "string",
       resolve: (doc: LocalDocument) =>
         doc._raw.flattenedPath.split("/").slice(1).join("/"),
@@ -71,5 +70,5 @@ export const Concept = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Concept, Doc],
+  documentTypes: [Concept, Step],
 });

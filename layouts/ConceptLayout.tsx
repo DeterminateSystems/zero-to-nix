@@ -1,4 +1,4 @@
-import MDX from "components/docs/MDX";
+import MDX from "components/MDX";
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
 import { Concept, allConcepts } from "contentlayer/generated";
@@ -27,7 +27,7 @@ const ConceptLayout = ({ concept }: Props) => {
   } = concept;
 
   const relatedConcepts: Concept[] = related.map(
-    (r) => allConcepts.find((c) => c.id === r)!
+    (r) => allConcepts.find((c) => c.slug === r)!
   );
 
   return (
@@ -52,9 +52,11 @@ const ConceptLayout = ({ concept }: Props) => {
                   <div>
                     <p>Related concepts</p>
 
-                    {relatedConcepts.map((c) => (
-                      <Related key={c._id} concept={c} />
-                    ))}
+                    <div className="flex flex-col space-y-2">
+                      {relatedConcepts.map((c) => (
+                        <Related key={c._id} concept={c} />
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
