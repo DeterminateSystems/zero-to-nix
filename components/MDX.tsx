@@ -1,3 +1,5 @@
+"use client";
+
 import Concept from "components/mdx/Concept";
 import Harmonic from "components/mdx/Harmonic";
 import Language from "components/mdx/Language";

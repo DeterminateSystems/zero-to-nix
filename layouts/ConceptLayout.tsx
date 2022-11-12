@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "components/Footer";
 import MDX from "components/MDX";
 import Navbar from "components/Navbar";

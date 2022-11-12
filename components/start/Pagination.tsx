@@ -1,4 +1,4 @@
-import { allSteps, Step } from "contentlayer/generated";
+import { Step, allSteps } from "contentlayer/generated";
 import Link from "next/link";
 
 type Props = {

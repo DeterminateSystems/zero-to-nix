@@ -2,7 +2,6 @@
 
 import "../styles/globals.css";
 
-import Footer from "components/Footer";
 import hljs from "highlight.js";
 import nix from "highlight.js/lib/languages/nix";
 import shell from "highlight.js/lib/languages/shell";

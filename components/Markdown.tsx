@@ -1,3 +1,5 @@
+"use client";
+
 // We're not using this yet but it may come in handy
 type Props = {
   html: string;

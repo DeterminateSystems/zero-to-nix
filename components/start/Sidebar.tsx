@@ -1,4 +1,4 @@
-import { allDocs } from "contentlayer/generated";
+import { allSteps } from "contentlayer/generated";
 import Link from "next/link";
 
 const Sidebar = () => {
@@ -6,10 +6,10 @@ const Sidebar = () => {
     <div className="w-1/3">
       <div className="border-2 rounded-lg p-6">
         <ul>
-          {allDocs.map((d) => (
-            <li key={d._id}>
-              <Link href={d.path} className="text-xl hover:text-blue-500">
-                {d.title}
+          {allSteps.map((s) => (
+            <li key={s._id}>
+              <Link href={s.path} className="text-xl hover:text-blue-500">
+                {s.title}
               </Link>
             </li>
           ))}

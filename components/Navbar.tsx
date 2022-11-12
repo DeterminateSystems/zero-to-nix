@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { state } from "lib/state";
 import Link from "next/link";
