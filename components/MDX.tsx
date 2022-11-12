@@ -4,6 +4,7 @@ import Language from "components/mdx/Language";
 import Languages from "components/mdx/Languages";
 import NixStorePath from "components/mdx/NixStorePath";
 import Shell from "components/mdx/Shell";
+import Systems from "components/mdx/Systems";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
 type Props = {
@@ -23,6 +24,7 @@ const MDX = ({ code }: Props) => {
           Languages,
           NixStorePath,
           Shell,
+          Systems,
         }}
       />
     </div>

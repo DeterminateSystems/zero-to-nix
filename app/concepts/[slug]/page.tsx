@@ -1,7 +1,7 @@
 "use client";
 
-import MDX from "components/MDX";
 import Footer from "components/Footer";
+import MDX from "components/MDX";
 import Navbar from "components/Navbar";
 import { Concept, allConcepts } from "contentlayer/generated";
 import Link from "next/link";
