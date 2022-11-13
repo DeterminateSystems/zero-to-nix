@@ -1,0 +1,21 @@
+---
+import Container from '../components/Container.astro';
+import Content from '../components/Content.astro';
+import Hero from '../components/Hero.astro';
+import Standard from "../layouts/Standard.astro";
+import type { ConceptProps } from '../types';
+
+type Props = ConceptProps;
+
+const { frontmatter: { title }} = Astro.props;
+---
+
+<Standard>
+  <Container>
+    <Hero title={title} />
+
+    <Content>
+      <slot />
+    </Content>
+  </Container>
+</Standard>

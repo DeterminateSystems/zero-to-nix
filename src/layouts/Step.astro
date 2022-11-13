@@ -1,0 +1,33 @@
+---
+import type { MarkdownLayoutProps } from 'astro';
+import Container from '../components/Container.astro';
+import Content from '../components/Content.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Navbar from '../components/Navbar.astro';
+import Pagination from '../components/Pagination.astro';
+import Root from './Root.astro';
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  weight: number;
+}>;
+
+const { frontmatter: { title, weight }} = Astro.props;
+---
+
+<Root>
+  <main class="flex-1">
+    <Navbar title={title} />
+    <Container>
+      <Hero title={`${weight}. ${title}`} />
+
+      <Content>
+        <slot />
+      </Content>
+    </Container>
+  </main>
+
+  <Pagination weight={weight} />
+  <Footer />
+</Root>

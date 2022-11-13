@@ -10,7 +10,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.11.6",
     "@astrojs/react": "^1.2.2",
+    "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.2",
     "@headlessui/react": "^1.7.4",
     "@nanostores/persistent": "^0.7.0",

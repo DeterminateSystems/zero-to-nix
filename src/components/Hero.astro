@@ -1,0 +1,12 @@
+---
+import type { HeroProps } from "../types";
+
+type Props = HeroProps;
+
+const { title, description } = Astro.props;
+---
+
+<section class="py-12 space-y-4">
+  <h1 class="text-4xl">{title}</h1>
+  {description && <h2>{description}</h2>}
+</section>

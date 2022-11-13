@@ -1,9 +1,11 @@
 ---
 const title = "Zero to Nix";
 const description = "Up and running in no time";
+
+const { url } = Astro.props;
 ---
 
-<html lang="en" class="h-screen">
+<html lang="en-us" class="h-screen">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -13,6 +15,7 @@ const description = "Up and running in no time";
 		<title>{title}</title>
 	</head>
 	<body class="font-sans antialiased flex flex-col min-h-full">
+    <p>{url}</p>
     <slot />
 	</body>
 </html>

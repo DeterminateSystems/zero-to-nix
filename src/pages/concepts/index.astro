@@ -1,9 +1,25 @@
 ---
+import Container from "../../components/Container.astro";
+import Hero from "../../components/Hero.astro";
 import Standard from "../../layouts/Standard.astro";
+
+const pages = await Astro.glob("./*.{md,mdx}");
+
+const title = "Concepts"
 ---
 
 <Standard>
-  <div class="container mx-auto px-6">
-    <p>Concepts</p>
-  </div>
+  <Container>
+    <Hero title={title} />
+
+    <ul>
+      {pages.map((page) =>
+        <li>
+          <a href={page.url} class="hover:text-blue-500">
+            {page.frontmatter.title}
+          </a>
+        </li>
+      )}
+    </ul>
+  </Container>
 </Standard>

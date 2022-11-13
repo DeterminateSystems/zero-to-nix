@@ -1,0 +1,20 @@
+---
+import Container from "./Container.astro";
+
+const { weight } = Astro.props;
+const steps = await Astro.glob("../pages/start/*.mdx");
+const next = await steps.find(s => s.frontmatter.weight === weight + 1);
+const previous = await steps.find(s => s.frontmatter.weight === weight - 1);
+---
+
+<Container>
+  <div class="py-6 flex flex-col md:flex-row items-center justify-between">
+    <div>
+      {next && <a href={next.url}>Next: {next.frontmatter.title}</a>}
+    </div>
+
+    <div>
+      {previous && <a href={previous.url}>Previous: {previous.frontmatter.title}</a>}
+    </div>
+  </div>
+</Container>
