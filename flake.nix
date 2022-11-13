@@ -52,10 +52,10 @@
       ];
 
       runLocal = pkgs.writeScriptBin "run-local" ''
-        rm -rf .next out
+        rm -rf dist
         pnpm install
         pnpm run build
-        python3 -m http.server -d out 3000
+        python3 -m http.server -d dist 3000
       '';
     in
     {

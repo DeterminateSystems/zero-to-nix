@@ -1,5 +1,6 @@
-import { state } from "lib/state";
-import { useEffect, useState } from "react";
+import { useStore } from "@nanostores/react";
+
+import { system } from "../data/store";
 
 type Command = "plan" | "install";
 
@@ -8,14 +9,9 @@ type Props = {
 };
 
 const Harmonic = ({ command }: Props) => {
-  const [system] = state((s) => [s.system]);
-  const [sys, setSys] = useState<string>("");
+  const $system = useStore(system);
 
-  useEffect(() => {
-    setSys(system);
-  }, [system]);
-
-  const arch = sys == "Linux" ? "linux" : "darwin";
+  const arch = $system == "Linux" ? "linux" : "darwin";
 
   let script: string;
 

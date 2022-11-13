@@ -5,9 +5,10 @@ description: Use Harmonic to get up and running
 weight: 1
 ---
 
+import Harmonic from "../../components/Harmonic";
 import Systems from "../../components/Systems";
 
-The first step is to install TODO:
+The first step is to install [Harmonic]:
 
 ```shell
 curl https://harmonic.dev | sh
@@ -21,11 +22,11 @@ First, select your platform:
 
 With Harmonic installed, check to make sure that you can install Nix on your machine OK:
 
-TODO
+<Harmonic command="plan" client:only />
 
 With Harmonic installed, you can now install Nix:
 
-TODO
+<Harmonic command="install" client:only />
 
 ## Verify
 
