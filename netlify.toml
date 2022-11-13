@@ -1,6 +1,4 @@
 [build]
-publish = "out"
-command = "npm run publish"
+publish = "dist"
+command = "npm run build"
 
-[build.environment]
-NETLIFY_NEXT_PLUGIN_SKIP = "true"
