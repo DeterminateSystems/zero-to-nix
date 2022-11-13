@@ -1,15 +1,8 @@
 # Dependencies
 /node_modules
 
-# Next.js
-/.next/
-/out/
-
-# Typescript
-next-env.d.ts
-
-# Contentlayer artifacts
-/.contentlayer/
+# Astro
+/dist/
 
 # Nix artifacts
 result

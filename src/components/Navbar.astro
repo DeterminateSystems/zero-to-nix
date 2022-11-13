@@ -1,0 +1,32 @@
+---
+type Link = {
+  text: string;
+  href: string;
+};
+
+const links: Link[] = [
+  {text: "Quick start", href: "/start"},
+  {text: "Concepts", href: "/concepts"},
+];
+
+const { title } = Astro.props;
+const url = Astro.url.pathname;
+---
+
+<nav class="sticky top-0 bg-slate-200 py-4">
+  <div class="container mx-auto flex justify-between items-center px-6">
+    <div>
+      <a href="/" class="text-2xl font-semibold hover:text-blue-500">{title}</a>
+    </div>
+
+    <div>
+      <ul class="flex items-center space-x-4">
+        {links.map((link) => <li>
+          <a href={link.href} class:list={["hover:text-blue-500", url.startsWith(link.href) ? "font-bold" : "font-normal"]}>
+            {link.text}
+          </a>
+        </li>)}
+      </ul>
+    </div>
+  </div>
+</nav>

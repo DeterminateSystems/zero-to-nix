@@ -17,13 +17,7 @@ build
 preview
 ```
 
-The site is also a package output:
-
-```shell
-nix build
-```
-
-And an app:
+Or run the app locally using Nix:
 
 ```shell
 nix run

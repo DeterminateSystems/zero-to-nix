@@ -1,0 +1,17 @@
+---
+import { site } from "../../site";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import Root from "./Root.astro";
+
+const { title } = site;
+---
+
+<Root>
+  <main class="flex-1">
+    <Navbar title={title} />
+    <slot />
+  </main>
+
+  <Footer />
+</Root>

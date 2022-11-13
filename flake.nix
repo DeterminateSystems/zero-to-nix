@@ -27,13 +27,12 @@
       common = with pkgs; [ nodejs pnpm python38 ];
       scripts = with pkgs; [
         (writeScriptBin "clean" ''
-          rm -rf .contentlayer .next out
+          rm -rf dist
         '')
 
         (writeScriptBin "setup" ''
           clean
           pnpm install
-          pnpm run content
         '')
 
         (writeScriptBin "build" ''
@@ -48,7 +47,6 @@
 
         (writeScriptBin "preview" ''
           build
-          pnpm run export
           python3 -m http.server -d out 3000
         '')
       ];
@@ -57,7 +55,6 @@
         rm -rf .next out
         pnpm install
         pnpm run build
-        pnpm run export
         python3 -m http.server -d out 3000
       '';
     in
@@ -69,22 +66,6 @@
 
       apps.default = flake-utils.lib.mkApp {
         drv = runLocal;
-      };
-
-      packages.default = pkgs.stdenv.mkDerivation {
-        name = "dev-to-nix";
-        src = ./.;
-        buildInputs = with pkgs; [ pnpm ];
-        installPhase = ''
-          mkdir -p $out
-        '';
-        buildPhase = ''
-          pnpm install
-          pnpm run build
-          pnpm run export
-
-          cp -R out/ $out/
-        '';
       };
     });
 }
