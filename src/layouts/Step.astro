@@ -1,5 +1,6 @@
 ---
 import type { MarkdownLayoutProps } from 'astro';
+import { site } from '../../site';
 import Container from '../components/Container.astro';
 import Content from '../components/Content.astro';
 import Footer from '../components/Footer.astro';
@@ -15,7 +16,7 @@ type Props = MarkdownLayoutProps<{
 
 const { frontmatter: { title, weight }} = Astro.props;
 
-const siteTitle = "Zero to Nix";
+const { title: siteTitle } = site;
 ---
 
 <Root>

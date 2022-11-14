@@ -7,12 +7,13 @@ import Hero from '../components/Hero.astro';
 import Navbar from '../components/Navbar.astro';
 import type { ConceptProps } from '../types';
 import Root from './Root.astro';
+import { site } from '../../site';
 
 type Props = ConceptProps;
 
 const { frontmatter: { title, related, readMore }} = Astro.props;
 
-const siteTitle = "Zero to Nix";
+const { title: siteTitle } = site;
 ---
 
 <Root>
