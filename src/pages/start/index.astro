@@ -6,8 +6,6 @@ import Standard from "../../layouts/Standard.astro";
 const pages = await Astro.glob("./*.{md,mdx}");
 
 const sorted = pages.sort((p1, p2) => p1.frontmatter.weight - p2.frontmatter.weight);
-
-import { FaFastForward } from "react-icons/fa";
 ---
 
 <Standard>
@@ -19,7 +17,6 @@ import { FaFastForward } from "react-icons/fa";
         <li>
           <a href={page.url} class="border-2 hover:border-teal-500 block rounded py-2 px-4">
             <span class="flex items-center space-x-4">
-              <FaFastForward className="text-black" client:load />
               <span class="text-xl tracking-tight">
                 {page.frontmatter.title}
               </span>
