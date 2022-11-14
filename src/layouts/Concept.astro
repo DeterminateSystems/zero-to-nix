@@ -1,6 +1,5 @@
 ---
-import { snippets } from '../../content/snippets';
-
+import { snippets } from '../pages/concepts/snippets';
 import Container from '../components/Container.astro';
 import Content from '../components/Content.astro';
 import Footer from '../components/Footer.astro';
@@ -11,12 +10,14 @@ import Root from './Root.astro';
 
 type Props = ConceptProps;
 
-const { frontmatter: { title, related }} = Astro.props;
+const { frontmatter: { title, related, readMore }} = Astro.props;
+
+const siteTitle = "Zero to Nix";
 ---
 
 <Root>
   <main class="flex-1">
-    <Navbar title="Zero to Nix" />
+    <Navbar title={siteTitle} />
     <Container>
       <Hero title={title} />
 
@@ -25,6 +26,24 @@ const { frontmatter: { title, related }} = Astro.props;
       </Content>
     </Container>
   </main>
+
+  {readMore && (<Container>
+    <div class="py-6">
+      <div class="space-y-4">
+        <p class="text-2xl font-semibold">
+          Read more
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+          {readMore.map((link: Link) =>
+            <a href={link.href} class="border-2 rounded-lg hover:border-teal-500 py-2 px-4 text-lg">
+              {link.title}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </Container>)}
 
 
   {related.length > 0 && (<Container>

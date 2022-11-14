@@ -25,6 +25,7 @@
       pkgs = import nixpkgs { inherit overlays system; };
 
       common = with pkgs; [ nodejs pnpm python38 ];
+
       scripts = with pkgs; [
         (writeScriptBin "clean" ''
           rm -rf dist

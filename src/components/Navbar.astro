@@ -1,12 +1,12 @@
 ---
 type Link = {
-  text: string;
+  title: string;
   href: string;
 };
 
 const links: Link[] = [
-  {text: "Quick start", href: "/start"},
-  {text: "Concepts", href: "/concepts"},
+  {title: "Quick start", href: "/start"},
+  {title: "Concepts", href: "/concepts"},
 ];
 
 const { title } = Astro.props;
@@ -23,7 +23,7 @@ const url = Astro.url.pathname;
       <ul class="flex items-center space-x-4">
         {links.map((link) => <li>
           <a href={link.href} class:list={["hover:text-blue-500", url.startsWith(link.href) ? "font-bold" : "font-normal"]}>
-            {link.text}
+            {link.title}
           </a>
         </li>)}
       </ul>

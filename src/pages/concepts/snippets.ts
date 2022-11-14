@@ -26,6 +26,11 @@ export const snippets: Snippet[] = [
     text: "An easy way to get started with Nix flake projects",
   },
   {
+    id: "flakes",
+    title: "Flakes",
+    text: "A way of organizing and referring to Nix code...",
+  },
+  {
     id: "harmonic",
     title: "Harmonic",
     text: "A quick and dirty Nix installer from Determinate Systems",
@@ -36,8 +41,18 @@ export const snippets: Snippet[] = [
     text: "The filesystem place where the good Nix stuff happend",
   },
   {
+    id: "packages",
+    title: "Packages",
+    text: "In Nix, packages are the result of derivations...",
+  },
+  {
     id: "pinning",
     title: "Pinning dependencies",
     text: "A totally awesome thing that you should always do, trust us",
+  },
+  {
+    id: "shell-environments",
+    title: "Shell environments",
+    text: "Nix shell environments are heremetically sealed...",
   },
 ];

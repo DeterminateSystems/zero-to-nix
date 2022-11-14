@@ -1,7 +1,7 @@
 import { Dialog, Tab, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-import { snippets } from "../../content/snippets";
+import { snippets } from "../pages/concepts/snippets";
 
 type Props = {
   id: string;
