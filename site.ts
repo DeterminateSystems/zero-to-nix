@@ -7,7 +7,8 @@ export type Site = {
 
 export const site: Site = {
   title: "Zero to Nix",
-  description: "Up and running in no time",
+  description:
+    "An unofficial and highly opinionated getting started guide for Nix",
   systems: ["Linux", "macOS"],
   languages: ["Go", "Rust"],
 };

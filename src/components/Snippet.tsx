@@ -42,7 +42,7 @@ const Snippet = ({ id, show }: Props) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black bg-opacity-50" />
+              <div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70" />
             </Transition.Child>
 
             <div className="fixed inset-0 overflow-y-auto">
@@ -58,7 +58,10 @@ const Snippet = ({ id, show }: Props) => {
                 >
                   <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                     <div>
-                      <Dialog.Title as="h3" className="text-lg font-semibold">
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg font-semibold dark:text-black"
+                      >
                         {title}
                       </Dialog.Title>
                       <Dialog.Description as="div" className="pt-4 pb-6">
@@ -69,7 +72,7 @@ const Snippet = ({ id, show }: Props) => {
                           <Tab>
                             <a
                               href={url}
-                              className="bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
+                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
                             >
                               Read more
                             </a>
@@ -77,7 +80,7 @@ const Snippet = ({ id, show }: Props) => {
                           <Tab>
                             <button
                               onClick={() => setOpen(false)}
-                              className="bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
+                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
                             >
                               Close
                             </button>
