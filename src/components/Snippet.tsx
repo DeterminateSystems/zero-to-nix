@@ -20,7 +20,7 @@ const Snippet = ({ id, show }: Props) => {
   return (
     <>
       <button
-        className="font-semibold underline hover:text-blue-500"
+        className="inline-block font-semibold underline hover:text-blue-500"
         onClick={() => setOpen(true)}
       >
         {finalText}

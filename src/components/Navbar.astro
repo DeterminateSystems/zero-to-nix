@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon";
+
 type Link = {
   title: string;
   href: string;
@@ -13,9 +15,10 @@ const { title } = Astro.props;
 const url = Astro.url.pathname;
 ---
 
-<nav class="sticky top-0 bg-slate-200 py-4">
+<nav class="sticky top-0 bg-slate-200 py-4 shadow">
   <div class="container mx-auto flex justify-between items-center px-6">
-    <div>
+    <div class="flex space-x-2 items-center">
+      <Icon name="simple-icons:nixos" class="h-6 w-6 text-sky-600" client:only />
       <a href="/" class="text-2xl font-semibold hover:text-blue-500">{title}</a>
     </div>
 
