@@ -1,0 +1,11 @@
+# Lint rule for keeping us from describing things as easy or simple
+extends: existence
+message: Replace "%s" or remove it entirely
+level: error
+ignorecase: true
+tokens:
+  - easier
+  - easiest
+  - easy
+  - simple
+  - simply

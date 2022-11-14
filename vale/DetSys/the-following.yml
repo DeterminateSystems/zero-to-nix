@@ -1,0 +1,7 @@
+# Lint rule for keeping us from using "the following" too much
+extends: existence
+message: Consider replacing '%s' with "this," "these," or something similar
+level: warning
+ignorecase: true
+tokens:
+  - "the following"

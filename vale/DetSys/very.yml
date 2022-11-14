@@ -1,0 +1,7 @@
+# Lint rule for keeping us from using "very," the laziest of all adjectives
+extends: existence
+message: Replace "%s" with a more descriptive adjective or remove it
+level: error
+ignorecase: true
+tokens:
+  - very

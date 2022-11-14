@@ -1,0 +1,7 @@
+# Lint rule for keeping us from using "like so"
+extends: existence
+message: Replace "%s" with ~"like this" or remove
+level: error
+ignorecase: true
+tokens:
+  - "like so"

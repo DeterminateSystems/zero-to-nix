@@ -1,0 +1,3 @@
+DirectoryPath: dist
+CheckExternal: false
+IgnoreDirectoryMissingTrailingSlash: true

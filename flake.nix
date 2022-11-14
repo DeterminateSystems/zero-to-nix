@@ -17,6 +17,7 @@
         (self: super: {
           nodejs = super.nodejs-18_x;
           pnpm = super.nodePackages.pnpm;
+          alex = super.nodePackages.alex;
         })
       ];
     in
@@ -24,7 +25,7 @@
     let
       pkgs = import nixpkgs { inherit overlays system; };
 
-      common = with pkgs; [ nodejs pnpm python38 ];
+      common = with pkgs; [ vale alex htmltest nodejs pnpm python38 ];
 
       scripts = with pkgs; [
         (writeScriptBin "clean" ''
@@ -49,6 +50,28 @@
         (writeScriptBin "preview" ''
           build
           python3 -m http.server -d dist 3000
+        '')
+
+        (writeScriptBin "check-internal-links" ''
+          htmltest --conf ./.htmltest.internal.yml
+        '')
+
+        (writeScriptBin "check-external-links" ''
+          htmltest --conf ./.htmltest.external.yml
+        '')
+
+        (writeScriptBin "lint-style" ''
+          vale src/pages
+        '')
+
+        (writeScriptBin "check-sensitivity" ''
+          alex --quiet src/pages
+        '')
+
+        (writeScriptBin "checks" ''
+          check-internal-links
+          lint-style
+          check-sensitivity
         '')
       ];
 

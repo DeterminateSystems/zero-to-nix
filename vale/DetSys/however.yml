@@ -1,0 +1,7 @@
+# Lint rule for "However," at the beginning of a sentence
+extends: existence
+message: Replace "%s"
+level: error
+ignorecase: false
+tokens:
+  - '\bHowever\b'

@@ -1,0 +1,5 @@
+detsys
+ds
+href
+nixpkgs
+readMore

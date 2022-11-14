@@ -1,0 +1,7 @@
+# Lint rule for keeping us from using "as per" anywhere, ever
+extends: existence
+message: Replace "as per" with something like "according to" or "following"
+level: error
+ignorecase: true
+tokens:
+  - "as per"
