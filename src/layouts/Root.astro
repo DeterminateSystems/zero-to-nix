@@ -6,6 +6,12 @@ const { title, description } = site;
 
 <html lang="en-us" class="h-screen">
 	<head>
+    <script is:inline>
+      if (localStorage.getItem('theme') === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
@@ -13,7 +19,7 @@ const { title, description } = site;
     <meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
-	<body class="font-sans antialiased flex flex-col min-h-full dark:bg-black dark:text-white">
+	<body class="font-sans antialiased flex flex-col min-h-full bg-white text-black dark:bg-black dark:text-white">
     <slot />
 	</body>
 </html>

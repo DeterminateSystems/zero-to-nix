@@ -7,14 +7,6 @@ import { theme } from "../data/store";
 const ThemeToggler = () => {
   const $theme = useStore(theme);
 
-  useEffect(() => {
-    if ($theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  });
-
   const toggle = () => {
     theme.set($theme === "dark" ? "light" : "dark");
   };

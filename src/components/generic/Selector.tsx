@@ -14,7 +14,7 @@ const Selector = ({ title, options, atom }: Props) => {
   const $item: string = useStore(atom);
 
   return (
-    <div className="not-prose inline-flex items-center space-x-6 border-2 rounded-xl py-4 px-6 shadow-sm bg-slate-50 dark:bg-black">
+    <div className="not-prose inline-flex items-center space-x-6 border-2 rounded-xl py-4 px-6 shadow-sm dark:bg-black dark:border-slate-400">
       <p className="text-xl font-semibold">{title}</p>
       <Tab.Group onChange={(idx: number) => atom.set(options[idx]!)}>
         <Tab.List as="div" className="space-x-3">
@@ -24,10 +24,10 @@ const Selector = ({ title, options, atom }: Props) => {
                 key={o}
                 onClick={() => atom.set(o)}
                 className={clsx(
-                  "py-1 px-4 rounded-lg shadow font-semibold",
+                  "px-3 rounded-lg shadow font-semibold",
                   $item === o
                     ? "bg-violet-300 text-black"
-                    : "border-2 border-slate-200 bg-slate-50 text-black hover:bg-purple-200"
+                    : "bg-slate-100 text-black hover:bg-purple-200"
                 )}
               >
                 {o}

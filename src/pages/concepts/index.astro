@@ -14,7 +14,7 @@ const title = "Concepts";
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
       {pages.map((page) =>
-        <a href={page.url} class="border-2 rounded-lg hover:border-teal-500 py-4 px-6 text-xl">
+        <a href={page.url} class="border-2 rounded-lg hover:border-teal-500 py-4 px-6 text-xl dark:border-slate-500 dark:hover:border-teal-500">
           {page.frontmatter.title}
         </a>
       )}
