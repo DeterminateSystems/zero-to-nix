@@ -33,12 +33,14 @@ export const snippets: Snippet[] = [
   {
     id: "harmonic",
     title: "Harmonic",
-    text: "A quick and dirty Nix installer from Determinate Systems",
+    text: `
+A Nix installer created by Determinate Systems. Harmonic is not the official installer for Nix,
+but that may change in the future.`,
   },
   {
     id: "nix-store",
     title: "The Nix store",
-    text: "The filesystem place where the good Nix stuff happend",
+    text: "The filesystem place where the good Nix stuff happens",
   },
   {
     id: "packages",

@@ -57,11 +57,13 @@ const Snippet = ({ id, show }: Props) => {
                   leaveTo="opacity-0 scale-95"
                 >
                   <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                    <div className="space-y-6">
+                    <div>
                       <Dialog.Title as="h3" className="text-lg font-semibold">
                         {title}
                       </Dialog.Title>
-                      <Dialog.Description>{text}</Dialog.Description>
+                      <Dialog.Description as="div" className="pt-4 pb-6">
+                        {text}
+                      </Dialog.Description>
                       <Tab.Group>
                         <Tab.List className="text-right space-x-2">
                           <Tab>

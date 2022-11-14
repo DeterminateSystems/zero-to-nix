@@ -1,14 +1,15 @@
 ---
 layout: ../../layouts/Step.astro
-title: Installation
+title: Install Nix
 description: Use Harmonic to get up and running
 weight: 1
 ---
 
 import Harmonic from "../../components/Harmonic";
+import Snippet from "../../components/Snippet";
 import Systems from "../../components/Systems";
 
-The first step is to install [Harmonic]:
+First, install the <Snippet id="harmonic" show="Harmonic" client:only /> Nix installer.
 
 ```shell
 curl https://harmonic.dev | sh
@@ -50,3 +51,4 @@ Name
 
 [harmonic]: https://github.com/DeterminateSystems/harmonic
 [multi]: https://nixos.org/manual/nix/stable/installation/multi-user.html
+[nix]: https://nixos.org
