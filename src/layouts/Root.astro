@@ -7,6 +7,8 @@ const { title, description } = site;
 <html lang="en-us" class="h-screen">
 	<head>
     <script is:inline>
+      function showBody(){document.body.style.visibility='visible'};
+
       if (localStorage.getItem('theme') === "dark") {
         document.documentElement.classList.add("dark");
       } else {
@@ -21,7 +23,11 @@ const { title, description } = site;
     <meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
-	<body class="font-sans antialiased flex flex-col min-h-full bg-white text-black dark:bg-black dark:text-white">
+	<body
+    class="font-sans antialiased flex flex-col min-h-full bg-white text-black dark:bg-black dark:text-white"
+    onload="showBody()"
+    style="visibility: hidden;"
+  >
     <slot />
 	</body>
 </html>
