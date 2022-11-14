@@ -1,5 +1,9 @@
 import { persistentAtom } from "@nanostores/persistent";
 
+import { site } from "../../site";
+
+export const { systems, languages } = site;
+
 const defaultTheme: string =
   typeof window !== "undefined"
     ? window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -14,10 +18,6 @@ const defaultSystem: string =
       : "Linux"
     : "Linux";
 
-export const systems: string[] = ["Linux", "macOS"];
-
-export const languages: string[] = ["Python", "JavaScript", "Rust"];
-
-export const language = persistentAtom<string>("language", "Python");
+export const language = persistentAtom<string>("language", languages[0]);
 export const system = persistentAtom<string>("system", defaultSystem);
 export const theme = persistentAtom<string>("theme", defaultTheme);

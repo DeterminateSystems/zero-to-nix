@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { useEffect } from "react";
-import { FaMoon, FaSun, FaUber } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 import { theme } from "../data/store";
 

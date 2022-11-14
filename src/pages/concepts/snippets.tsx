@@ -44,8 +44,10 @@ export const snippets: Snippet[] = [
       <>
         A Nix installer created by{" "}
         <a href="https://determinate.systems">Determinate Systems</a>. Harmonic
-        is not the official installer for Nix, but that may change in the
-        future.
+        is <em>not</em> the official installer for Nix. If you'd prefer to use
+        the official installer, see the{" "}
+        <a href="https://nixos.org/download.html">Download</a> page on the
+        official <a href="https://nixos.org">Nix website</a>.
       </>
     ),
   },
