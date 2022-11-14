@@ -1,10 +1,8 @@
 ---
+import { site } from "../../site";
 import Grid2 from "../components/Grid2.astro";
 import Standard from "../layouts/Standard.astro";
 import type { Link } from "../types";
-
-const title = "Zero to Nix";
-const description = "Up and running in no time";
 
 const links: Link[] = [
   {
@@ -15,7 +13,9 @@ const links: Link[] = [
     title: "Concepts",
     href: "/concepts"
   }
-]
+];
+
+const { title, description } = site;
 ---
 
 <Standard>
