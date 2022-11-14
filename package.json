@@ -22,7 +22,6 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "astro": "^1.6.7",
-    "astro-compress": "^1.1.6",
     "astro-icon": "^0.8.0",
     "clsx": "^1.2.1",
     "eslint": "8.27.0",
