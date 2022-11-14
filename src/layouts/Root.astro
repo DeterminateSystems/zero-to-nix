@@ -9,6 +9,8 @@ const { title, description } = site;
     <script is:inline>
       if (localStorage.getItem('theme') === "dark") {
         document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
       }
     </script>
 
