@@ -5,9 +5,10 @@ import Content from '../components/Content.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Navbar from '../components/Navbar.astro';
-import type { ConceptProps } from '../types';
+import type { ConceptProps, Link } from '../types';
 import Root from './Root.astro';
 import { site } from '../../site';
+import Grid3 from '../components/Grid3.astro';
 
 type Props = ConceptProps;
 
@@ -35,13 +36,13 @@ const { title: siteTitle } = site;
           Read more
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+        <Grid3>
           {readMore.map((link: Link) =>
             <a href={link.href} class="border-2 rounded-lg hover:border-teal-500 py-2 px-4 text-lg">
               {link.title}
             </a>
           )}
-        </div>
+        </Grid3>
       </div>
     </div>
   </Container>)}

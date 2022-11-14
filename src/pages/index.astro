@@ -1,9 +1,10 @@
 ---
+import Grid2 from "../components/Grid2.astro";
 import Standard from "../layouts/Standard.astro";
+import type { Link } from "../types";
 
 const title = "Zero to Nix";
 const description = "Up and running in no time";
-
 
 const links: Link[] = [
   {
@@ -25,13 +26,13 @@ const links: Link[] = [
     </section>
 
     <section>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-        {links.map((link) =>
+      <Grid2>
+        {links.map((link: Link) =>
           <a href={link.href} class="border-2 rounded-lg hover:border-teal-500 py-4 px-6 text-xl">
             {link.title}
           </a>
         )}
-      </div>
+      </Grid2>
     </section>
   </article>
 </Standard>

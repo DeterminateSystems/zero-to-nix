@@ -1,5 +1,6 @@
 ---
 import Container from "../../components/Container.astro";
+import Grid2 from "../../components/Grid2.astro";
 import Hero from "../../components/Hero.astro";
 import Standard from "../../layouts/Standard.astro";
 
@@ -12,18 +13,16 @@ const sorted = pages.sort((p1, p2) => p1.frontmatter.weight - p2.frontmatter.wei
   <Container>
     <Hero title="Quick start" description="Feel the power of Nix in no time" />
 
-    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-4">
+    <Grid2>
       {sorted.map((page) => (
-        <li>
-          <a href={page.url} class="border-2 hover:border-teal-500 block rounded py-2.5 px-4">
-            <span class="flex items-center space-x-4">
-              <span class="text-xl">
-                <span class="font-semibold">{page.frontmatter.weight}</span>. {page.frontmatter.title}
-              </span>
+        <a href={page.url} class="border-2 hover:border-teal-500 block rounded py-2.5 px-4 h-full">
+          <span class="flex items-center space-x-4">
+            <span class="text-xl">
+              <span class="font-semibold">{page.frontmatter.weight}</span>. {page.frontmatter.title}
             </span>
-          </a>
-        </li>
+          </span>
+        </a>
       ))}
-    </ul>
+    </Grid2>
   </Container>
 </Standard>

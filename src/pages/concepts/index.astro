@@ -1,6 +1,7 @@
 ---
 import Container from "../../components/Container.astro";
 import Hero from "../../components/Hero.astro";
+import Grid3 from "../../components/Grid3.astro";
 import Standard from "../../layouts/Standard.astro";
 
 const pages = await Astro.glob("./*.{md,mdx}");
@@ -12,12 +13,12 @@ const title = "Concepts";
   <Container>
     <Hero title={title} />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
+    <Grid3>
       {pages.map((page) =>
         <a href={page.url} class="border-2 rounded-lg hover:border-teal-500 py-4 px-6 text-xl dark:border-slate-500 dark:hover:border-teal-500">
           {page.frontmatter.title}
         </a>
       )}
-    </div>
+    </Grid3>
   </Container>
 </Standard>
