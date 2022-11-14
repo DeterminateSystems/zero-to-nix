@@ -23,12 +23,14 @@ const { title: siteTitle } = site;
     <Container>
       <Hero title={`${weight}. ${title}`} />
 
-      <div class="space-y-4">
+      <div class="space-y-6">
         {summary && <Summary items={summary} />}
 
-        <Content>
-          <slot />
-        </Content>
+        <div class="border-2 p-6 rounded-xl shadow-sm">
+          <Content>
+            <slot />
+          </Content>
+        </div>
       </div>
     </Container>
   </main>
