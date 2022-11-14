@@ -14,11 +14,13 @@ type Props = MarkdownLayoutProps<{
 }>;
 
 const { frontmatter: { title, weight }} = Astro.props;
+
+const siteTitle = "Zero to Nix";
 ---
 
 <Root>
   <main class="flex-1">
-    <Navbar title={title} />
+    <Navbar title={siteTitle} />
     <Container>
       <Hero title={`${weight}. ${title}`} />
 
