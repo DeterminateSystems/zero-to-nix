@@ -18,8 +18,6 @@ First, download the <Snippet id="harmonic" show="Harmonic" client:only="react" /
 curl https://harmonic.dev | sh
 ```
 
-First, select your platform:
-
 <Systems client:only />
 
 With Harmonic installed, check to make sure that you can install Nix on your machine:
@@ -33,22 +31,6 @@ Harmonic doesn't even support single-user mode&mdash;because... REASONS.
 With Harmonic installed, you can now install Nix:
 
 <Harmonic command="install" client:visible />
-
-## Verify
-
-To verify that the Nix CLI has been installed:
-
-```shell
-nix --help
-```
-
-You should see help output that begins like this:
-
-```shell
-Name
-
-    nix - a tool for reproducible and declarative configuration management
-```
 
 [harmonic]: https://github.com/DeterminateSystems/harmonic
 [multi]: https://nixos.org/manual/nix/stable/installation/multi-user.html
