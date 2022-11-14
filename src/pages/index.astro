@@ -3,15 +3,39 @@ import Standard from "../layouts/Standard.astro";
 
 const title = "Zero to Nix";
 const description = "Up and running in no time";
+
+type Link = {
+  title: string;
+  href: string;
+};
+
+const links: Link[] = [
+  {
+    title: "Quick start",
+    href: "/start"
+  },
+  {
+    title: "Concepts",
+    href: "/concepts"
+  }
+]
 ---
 
 <Standard>
-  <div class="bg-slate-100">
-    <article class="container mx-auto px-6">
-      <section class="py-12 space-y-4">
-        <h1 class="text-4xl">{title}</h1>
-        <h2>{description}</h2>
-      </section>
-    </article>
-  </div>
+  <article class="container mx-auto px-6">
+    <section class="py-12 space-y-4">
+      <h1 class="text-4xl">{title}</h1>
+      <h2>{description}</h2>
+    </section>
+
+    <section>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
+        {links.map((link) =>
+          <a href={link.href} class="border-2 rounded-lg hover:border-teal-500 py-4 px-6 text-xl">
+            {link.title}
+          </a>
+        )}
+      </div>
+    </section>
+  </article>
 </Standard>

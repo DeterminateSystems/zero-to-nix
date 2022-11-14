@@ -3,12 +3,7 @@ import Container from "../../components/Container.astro";
 import Hero from "../../components/Hero.astro";
 import Standard from "../../layouts/Standard.astro";
 
-interface Frontmatter {
-  title: string;
-  weight: number;
-}
-
-const pages = await Astro.glob<Frontmatter>("./*.{md,mdx}");
+const pages = await Astro.glob("./*.{md,mdx}");
 
 const sorted = pages.sort((p1, p2) => p1.frontmatter.weight - p2.frontmatter.weight);
 ---

@@ -28,6 +28,8 @@ const { frontmatter: { title, weight }} = Astro.props;
     </Container>
   </main>
 
-  <Pagination weight={weight} />
+  <div class="pt-12 pb-6">
+    <Pagination weight={weight} />
+  </div>
   <Footer />
 </Root>

@@ -1,7 +1,9 @@
 import type { MarkdownLayoutProps } from "astro";
 
 export type ConceptProps = MarkdownLayoutProps<{
+  id: string;
   title: string;
+  related: string[];
 }>;
 
 export type StepProps = MarkdownLayoutProps<{

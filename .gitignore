@@ -6,3 +6,6 @@
 
 # Nix artifacts
 result
+
+# Tailwind
+.temp.*.tailwind.config.cjs

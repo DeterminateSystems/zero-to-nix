@@ -1,21 +1,49 @@
 ---
+import { snippets } from '../../content/snippets';
+
 import Container from '../components/Container.astro';
 import Content from '../components/Content.astro';
+import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import Standard from "../layouts/Standard.astro";
+import Navbar from '../components/Navbar.astro';
 import type { ConceptProps } from '../types';
+import Root from './Root.astro';
 
 type Props = ConceptProps;
 
-const { frontmatter: { title }} = Astro.props;
+const { frontmatter: { title, related }} = Astro.props;
 ---
 
-<Standard>
-  <Container>
-    <Hero title={title} />
+<Root>
+  <main class="flex-1">
+    <Navbar title="Zero to Nix" />
+    <Container>
+      <Hero title={title} />
 
-    <Content>
-      <slot />
-    </Content>
-  </Container>
-</Standard>
+      <Content>
+        <slot />
+      </Content>
+    </Container>
+  </main>
+
+
+  {related.length > 0 && (<Container>
+    <div class="py-6">
+      <div class="space-y-4">
+        <p class="text-2xl font-semibold">
+          Related
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+          {related.map((id: string) => {
+            const title = snippets.find((s) => s.id === id)!.title;
+            const url = `/concepts/${id}`;
+
+            return (<a href={url} class="border-2 rounded-lg hover:border-teal-500 py-2 px-4 text-lg">{title}</a>);
+          })}
+        </div>
+      </div>
+    </div>
+  </Container>)}
+  <Footer />
+</Root>
