@@ -1,4 +1,6 @@
 ---
+import ThemeToggler from "./ThemeToggler";
+
 type Link = {
   title: string;
   href: string;
@@ -13,20 +15,24 @@ const { title } = Astro.props;
 const url = Astro.url.pathname;
 ---
 
-<nav class="sticky top-0 bg-slate-200 py-4 shadow">
+<nav class="sticky top-0 bg-slate-200 py-4 shadow dark:bg-black">
   <div class="container mx-auto flex justify-between items-center px-6">
     <div class="flex space-x-2 items-center">
-      <a href="/" class="text-2xl font-semibold hover:text-blue-500">{title}</a>
+      <a href="/" class="text-2xl font-semibold hover:text-blue-500 dark:text-slate-100">{title}</a>
     </div>
 
-    <div>
+    <div class="flex items-center space-x-6">
       <ul class="flex items-center space-x-4">
         {links.map((link) => <li>
-          <a href={link.href} class:list={["hover:text-blue-500", url.startsWith(link.href) ? "font-bold" : "font-normal"]}>
+          <a href={link.href} class:list={["dark:text-slate-100 hover:text-blue-500", url.startsWith(link.href) ? "font-bold" : "font-normal"]}>
             {link.title}
           </a>
         </li>)}
       </ul>
+
+      <div>
+        <ThemeToggler client:only />
+      </div>
     </div>
   </div>
 </nav>
