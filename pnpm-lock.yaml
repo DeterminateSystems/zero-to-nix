@@ -20,6 +20,7 @@ specifiers:
   postcss: ^8.4.18
   react: ^18.0.0
   react-dom: ^18.0.0
+  shiki: ^0.11.1
   tailwindcss: ^3.0.24
 
 dependencies:
@@ -42,6 +43,7 @@ dependencies:
   postcss: 8.4.18
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  shiki: 0.11.1
   tailwindcss: 3.2.2_postcss@8.4.18
 
 packages:

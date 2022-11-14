@@ -20,13 +20,13 @@ const Snippet = ({ id, show }: Props) => {
   return (
     <>
       <button
-        className="inline-block font-semibold underline hover:text-blue-500"
+        className="inline-block font-semibold underline decoration-dotted hover:text-blue-500"
         onClick={() => setOpen(true)}
       >
         {finalText}
       </button>
 
-      <div className="hidden">
+      <div className="hidden not-prose">
         <Transition appear show={open}>
           <Dialog
             as="div"
@@ -62,7 +62,7 @@ const Snippet = ({ id, show }: Props) => {
                         {title}
                       </Dialog.Title>
                       <Dialog.Description as="div" className="pt-4 pb-6">
-                        {text}
+                        <div className="prose max-w-none">{text}</div>
                       </Dialog.Description>
                       <Tab.Group>
                         <Tab.List className="text-right space-x-2">

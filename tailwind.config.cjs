@@ -6,6 +6,13 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            a: {
+              "font-weight": theme("weights.semibold"),
+              "text-decoration": "none !important",
+              "&:hover": {
+                color: theme("colors.blue.500"),
+              },
+            },
             code: {
               "&::before": {
                 content: '"" !important',

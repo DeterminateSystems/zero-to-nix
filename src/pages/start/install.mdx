@@ -9,21 +9,22 @@ import Harmonic from "../../components/Harmonic";
 import Snippet from "../../components/Snippet";
 import Systems from "../../components/Systems";
 
-First, install the <Snippet id="harmonic" show="Harmonic" client:only /> Nix installer.
+It's great to see that you're interested in [Nix]! This guide gets Nix installed on your system,
+provides you with a small taste of Nix's feature set, and gets you accomplishing practical things.
+
+First, download the <Snippet id="harmonic" show="Harmonic" client:only="react" /> Nix installer.
 
 ```shell
 curl https://harmonic.dev | sh
 ```
 
-## Install Nix
-
 First, select your platform:
 
 <Systems client:only />
 
-With Harmonic installed, check to make sure that you can install Nix on your machine OK:
+With Harmonic installed, check to make sure that you can install Nix on your machine:
 
-<Harmonic command="plan" client:only />
+<Harmonic command="plan install" client:visible />
 
 The `multi` in the plan command indicates that Harmonic will install Nix in [multi-user
 mode][multi] (as opposed to single-user mode). We recommend multi-user mode&mdash;and in fact
@@ -31,7 +32,7 @@ Harmonic doesn't even support single-user mode&mdash;because... REASONS.
 
 With Harmonic installed, you can now install Nix:
 
-<Harmonic command="install" client:only />
+<Harmonic command="install" client:visible />
 
 ## Verify
 

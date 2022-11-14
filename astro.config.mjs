@@ -6,6 +6,11 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://zero-to-nix.dev",
+  markdown: {
+    shikiConfig: {
+      theme: "dracula",
+    },
+  },
   integrations: [
     mdx(),
     react(),
