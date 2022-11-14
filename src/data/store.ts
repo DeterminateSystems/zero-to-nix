@@ -18,6 +18,6 @@ const defaultSystem: string =
       : "Linux"
     : "Linux";
 
-export const language = persistentAtom<string>("language", languages[0]);
+export const language = persistentAtom<string>("language", languages[0]!);
 export const system = persistentAtom<string>("system", defaultSystem);
 export const theme = persistentAtom<string>("theme", defaultTheme);

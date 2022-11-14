@@ -9,5 +9,5 @@ export const site: Site = {
   title: "Zero to Nix",
   description: "Up and running in no time",
   systems: ["Linux", "macOS"],
-  languages: ["Rust"],
+  languages: ["Go", "Rust"],
 };
