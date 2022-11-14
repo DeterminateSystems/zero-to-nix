@@ -7,6 +7,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Navbar from '../components/Navbar.astro';
 import Pagination from '../components/Pagination.astro';
+import TLDR from '../components/TLDR.astro';
 import Root from './Root.astro';
 
 type Props = MarkdownLayoutProps<{
@@ -14,7 +15,7 @@ type Props = MarkdownLayoutProps<{
   weight: number;
 }>;
 
-const { frontmatter: { title, weight }} = Astro.props;
+const { frontmatter: { title, tldr, weight }} = Astro.props;
 
 const { title: siteTitle } = site;
 ---
@@ -25,9 +26,13 @@ const { title: siteTitle } = site;
     <Container>
       <Hero title={`${weight}. ${title}`} />
 
-      <Content>
-        <slot />
-      </Content>
+      <div class="space-y-4">
+        <TLDR text={tldr} />
+
+        <Content>
+          <slot />
+        </Content>
+      </div>
     </Container>
   </main>
 

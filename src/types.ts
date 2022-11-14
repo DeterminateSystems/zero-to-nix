@@ -14,6 +14,7 @@ export type ConceptProps = MarkdownLayoutProps<{
 
 export type StepProps = MarkdownLayoutProps<{
   title: string;
+  tldr: string;
   weight: number;
 }>;
 
