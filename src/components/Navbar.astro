@@ -1,5 +1,6 @@
 ---
 import ThemeToggler from "./ThemeToggler";
+import NixOSIcon from "../icons/NixOSIcon";
 
 type Link = {
   title: string;
@@ -17,8 +18,12 @@ const url = Astro.url.pathname;
 
 <nav class="sticky top-0 bg-slate-200 py-4 shadow-lg dark:bg-black dark:border-b dark:border-b-slate-500">
   <div class="container mx-auto flex justify-between items-center px-6">
-    <div class="flex space-x-2 items-center">
+    <div class="flex space-x-3 items-center">
       <a href="/" class="text-3xl tracking-tighter font-semibold hover:text-blue-500 dark:text-slate-100 dark:hover:text-blue-500">{title}</a>
+
+      <span>
+        <NixOSIcon client:only />
+      </span>
     </div>
 
     <div class="flex items-center space-x-6">
