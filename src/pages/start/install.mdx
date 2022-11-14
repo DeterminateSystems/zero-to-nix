@@ -24,6 +24,10 @@ With Harmonic installed, check to make sure that you can install Nix on your mac
 
 <Harmonic command="plan" client:only />
 
+The `multi` in the plan command indicates that Harmonic will install Nix in [multi-user
+mode][multi] (as opposed to single-user mode). We recommend multi-user mode&mdash;and in fact
+Harmonic doesn't even support single-user mode&mdash;because... REASONS.
+
 With Harmonic installed, you can now install Nix:
 
 <Harmonic command="install" client:only />
@@ -45,3 +49,4 @@ Name
 ```
 
 [harmonic]: https://github.com/DeterminateSystems/harmonic
+[multi]: https://nixos.org/manual/nix/stable/installation/multi-user.html

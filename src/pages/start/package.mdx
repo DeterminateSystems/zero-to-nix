@@ -22,7 +22,7 @@ Take a look at the imported `flake.nix`:
 ```nix
 {
   inputs = {
-    # TODO
+    # Add some inputs here
   };
 
   outputs = { self, nixpkgs, flake-utils }:
@@ -33,7 +33,7 @@ Take a look at the imported `flake.nix`:
       {
         packages.default = pkgs.mkDerivation {
           name = "mypkg";
-          # TODO
+          # Add more derivation stuff here
         };
       });
 }

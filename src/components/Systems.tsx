@@ -10,7 +10,7 @@ const Systems = () => {
 
   return (
     <>
-      <Tab.Group>
+      <Tab.Group onChange={(idx: number) => system.set(systems[idx]!)}>
         <Tab.List as="div" className="space-x-2">
           {systems.map((s) => (
             <Tab as={Fragment}>

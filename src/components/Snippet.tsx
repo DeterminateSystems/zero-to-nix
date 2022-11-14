@@ -13,14 +13,14 @@ const Snippet = ({ id, show }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const snippet = snippets.find((s) => s.id === id)!;
 
-  const { title, text, related } = snippet;
+  const { title, text } = snippet;
 
   const url = `/concepts/${id}`;
 
   return (
     <>
       <button
-        className="underline hover:text-blue-500"
+        className="font-semibold underline hover:text-blue-500"
         onClick={() => setOpen(true)}
       >
         {finalText}

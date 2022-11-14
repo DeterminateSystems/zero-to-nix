@@ -10,7 +10,7 @@ const Languages = () => {
 
   return (
     <>
-      <Tab.Group>
+      <Tab.Group onChange={(idx: number) => language.set(languages[idx]!)}>
         <Tab.List as="div" className="space-x-2">
           {languages.map((l) => (
             <Tab as={Fragment}>
