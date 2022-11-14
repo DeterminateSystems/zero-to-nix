@@ -10,11 +10,11 @@ const previous = await steps.find(s => s.frontmatter.weight === weight - 1);
 <Container>
   <div class="flex flex-col md:flex-row items-center justify-between">
     <div>
-      {previous && <span>Previous: <a href={previous.url} class="hover:text-blue-500">{previous.frontmatter.title}</a></span>}
+      {previous && <span>Previous: <a href={previous.url} class="font-semibold hover:text-blue-500">{previous.frontmatter.title}</a></span>}
     </div>
 
     <div>
-      {next && <span>Next: <a href={next.url} class="hover:text-blue-500">{next.frontmatter.title}</a></span>}
+      {next && <span>Next: <a href={next.url} class="font-semibold hover:text-blue-500">{next.frontmatter.title}</a></span>}
     </div>
   </div>
 </Container>

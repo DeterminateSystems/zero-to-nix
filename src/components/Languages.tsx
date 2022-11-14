@@ -10,15 +10,13 @@ const Languages = () => {
 
   return (
     <>
-      <Tab.Group
-        defaultIndex={languages.indexOf($language)}
-        onChange={(idx: number) => language.set(languages[idx]!)}
-      >
+      <Tab.Group>
         <Tab.List as="div" className="space-x-2">
           {languages.map((l) => (
             <Tab as={Fragment}>
               <button
                 key={l}
+                onClick={() => language.set(l)}
                 className={clsx(
                   "py-1 px-3 rounded-lg shadow font-semibold",
                   $language === l
