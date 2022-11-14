@@ -48,7 +48,7 @@
 
         (writeScriptBin "preview" ''
           build
-          python3 -m http.server -d out 3000
+          python3 -m http.server -d dist 3000
         '')
       ];
 
