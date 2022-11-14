@@ -7,7 +7,6 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              "font-weight": theme("weights.semibold"),
               "text-decoration": "none !important",
               "&:hover": {
                 color: theme("colors.blue.500"),

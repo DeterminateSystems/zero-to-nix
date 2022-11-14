@@ -1,0 +1,12 @@
+---
+const { items } = Astro.props;
+---
+
+<div class="flex items-start space-x-4 border-2 border-purple-400 rounded-lg bg-purple-50 py-2 px-3.5 lg:py-3 lg:px-5">
+  <span class="text-xl font-bold">
+    In this guide
+  </span>
+  <span class="text-lg">
+    {items.map((item: string) => <p class="space-x-2"><span>&RightArrow;</span><span>{item}</span></p>)}
+  </span>
+</div>
