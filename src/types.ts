@@ -25,7 +25,7 @@ export type StepProps = MarkdownLayoutProps<{
 
 export type HeroProps = MarkdownLayoutProps<{
   title: string;
-  description: string;
+  description?: string;
   breadcrumb?: {
     back: {
       title: string;

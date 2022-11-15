@@ -7,6 +7,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Navbar from '../components/Navbar.astro';
 import Pagination from '../components/Pagination.astro';
+import Panel from '../components/Panel.astro';
 import Summary from '../components/Summary.astro';
 import type { StepProps } from '../types';
 import Root from './Root.astro';
@@ -32,7 +33,7 @@ const { title: siteTitle } = site;
         </div>
 
         <div class="space-y-6">
-          <div class="border-2 dark:border-slate-400 rounded-xl shadow-sm p-6">
+          <Panel>
             <Content>
               <slot />
             </Content>
@@ -40,7 +41,7 @@ const { title: siteTitle } = site;
             <div class="mt-16">
               <Pagination weight={weight} />
             </div>
-          </div>
+          </Panel>
         </div>
       </div>
     </Container>
