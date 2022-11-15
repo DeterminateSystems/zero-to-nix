@@ -1,6 +1,7 @@
 ---
 import { site } from "../../site";
 
+const canonical = new URL(Astro.url.pathname, Astro.site);
 const { title, description } = site;
 ---
 
@@ -18,10 +19,12 @@ const { title, description } = site;
 
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="id=edge">
 		<meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
 		<title>{title}</title>
+    <link rel="canonical" href={canonical} />
 	</head>
 	<body
     class="font-sans antialiased flex flex-col min-h-full bg-white text-black dark:bg-black dark:text-white"

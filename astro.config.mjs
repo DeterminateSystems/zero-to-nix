@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://zero-to-nix.dev",
+  site: "https://zero-to-nix.dev/",
   markdown: {
     shikiConfig: {
       theme: "dracula",
