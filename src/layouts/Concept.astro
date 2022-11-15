@@ -40,7 +40,7 @@ const { title: siteTitle } = site;
 
         <Grid3>
           {readMore.map((link: Link) =>
-            <a href={link.href} class="border-2 rounded-lg hover:border-teal-500 py-2 px-4 text-lg">
+            <a href={link.href} class="border-2 rounded-lg hover:border-detsys py-2 px-4 text-lg">
               {link.title}
             </a>
           )}
@@ -62,7 +62,7 @@ const { title: siteTitle } = site;
             const title = snippets.find((s) => s.id === id)!.title;
             const url = `/concepts/${id}`;
 
-            return (<a href={url} class="border-2 rounded-lg hover:border-teal-500 py-2 px-4 text-lg">{title}</a>);
+            return (<a href={url} class="border-2 rounded-lg hover:border-detsys py-2 px-4 text-lg">{title}</a>);
           })}
         </div>
       </div>

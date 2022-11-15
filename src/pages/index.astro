@@ -1,6 +1,7 @@
 ---
 import { site } from "../../site";
 import Grid2 from "../components/Grid2.astro";
+import Grid3 from "../components/Grid3.astro";
 import Standard from "../layouts/Standard.astro";
 import type { Link } from "../types";
 
@@ -21,18 +22,18 @@ const { title, description } = site;
 <Standard>
   <article class="container mx-auto px-6">
     <section class="py-12 space-y-4">
-      <h1 class="text-6xl">{title}</h1>
-      <h2 class="text-3xl font-light">{description}</h2>
+      <h1 class="text-5xl md:text-6xl">{title}</h1>
+      <h2 class="text-xl md:text-2xl font-light">{description}</h2>
     </section>
 
     <section>
-      <Grid2>
+      <Grid3>
         {links.map((link: Link) =>
-          <a href={link.href} class="border-2 rounded-lg hover:border-teal-500 py-4 px-6 text-xl">
+          <a href={link.href} class="border-2 rounded-lg hover:border-detsys py-4 px-6 text-2xl">
             {link.title}
           </a>
         )}
-      </Grid2>
+      </Grid3>
     </section>
   </article>
 </Standard>
