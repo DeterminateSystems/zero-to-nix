@@ -11,7 +11,9 @@ const sorted = pages.sort((p1, p2) => p1.frontmatter.weight - p2.frontmatter.wei
 
 <Standard>
   <Container>
-    <Hero title="Quick start" description="Feel the power of Nix in no time" />
+    <div class="py-16">
+      <Hero title="Quick start" description="Feel the power of Nix in no time" />
+    </div>
 
     <Grid2>
       {sorted.map((page) => (

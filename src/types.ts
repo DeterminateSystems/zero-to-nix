@@ -5,6 +5,11 @@ export type Link = {
   href: string;
 };
 
+export type Breadcrumb = {
+  section: string;
+  page: string;
+};
+
 export type ConceptProps = MarkdownLayoutProps<{
   id: string;
   title: string;
@@ -21,4 +26,11 @@ export type StepProps = MarkdownLayoutProps<{
 export type HeroProps = MarkdownLayoutProps<{
   title: string;
   description: string;
+  breadcrumb?: {
+    back: {
+      title: string;
+      href: string;
+    };
+    page: string;
+  };
 }>;

@@ -21,7 +21,9 @@ const { title: siteTitle } = site;
   <main class="flex-1">
     <Navbar title={siteTitle} />
     <Container>
-      <Hero title={title} />
+      <div class="py-16 space-y-4">
+        <Hero title={title} breadcrumb={{ back: { title: "Concepts", href: "/concepts" }, page: title }} />
+      </div>
 
       <Content>
         <slot />
@@ -29,7 +31,7 @@ const { title: siteTitle } = site;
     </Container>
   </main>
 
-  {readMore && (<Container>
+  {readMore && readMore.length > 0 && (<Container>
     <div class="py-6">
       <div class="space-y-4">
         <p class="text-2xl font-semibold">

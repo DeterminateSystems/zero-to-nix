@@ -4,6 +4,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        detsys: "rgb(80, 116, 191)",
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

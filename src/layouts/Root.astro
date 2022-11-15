@@ -7,8 +7,11 @@ const { title, description } = site;
 
 <html lang="en-us" class="h-screen">
 	<head>
+    <!-- This gets run before anything else -->
     <script is:inline>
-      function showBody(){document.body.style.visibility='visible'};
+      function showBody() {
+        document.body.style.visibility = "visible";
+      };
 
       if (localStorage.getItem('theme') === "dark") {
         document.documentElement.classList.add("dark");

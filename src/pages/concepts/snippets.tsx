@@ -8,6 +8,20 @@ export type Snippet = {
 
 export const snippets: Snippet[] = [
   {
+    id: "channels",
+    title: "Channels",
+    text: (
+      <>
+        A way of consuming and distributing Nix code that remains official that
+        was standard for most of Nix's history. Although channels remain fully
+        supported in Nix, we at{" "}
+        <a href="https://determinate.systems">Determinate Systems</a> strongly
+        recommand using <a href="/concepts/flakes">flakes</a> instead, despite
+        flakes' current official status as experimental.
+      </>
+    ),
+  },
+  {
     id: "derivation",
     title: "Derivation",
     text: <>A set of build instructions for producing packages</>,
@@ -15,7 +29,7 @@ export const snippets: Snippet[] = [
   {
     id: "flake-inputs",
     title: "Flake inputs",
-    text: <>Just, you know, flake inputs</>,
+    text: <>Just, you know, flake inputs.</>,
   },
   {
     id: "flake-outputs",
@@ -30,7 +44,7 @@ export const snippets: Snippet[] = [
   {
     id: "flake-templates",
     title: "Flake templates",
-    text: <>An easy way to get started with Nix flake projects</>,
+    text: <>An easy way to get started with Nix flake projects.</>,
   },
   {
     id: "flakes",
@@ -54,7 +68,12 @@ export const snippets: Snippet[] = [
   {
     id: "nix-store",
     title: "The Nix store",
-    text: <>The filesystem place where the good Nix stuff happens</>,
+    text: <>The filesystem place where the good Nix stuff happens.</>,
+  },
+  {
+    id: "nixpkgs",
+    title: "Nixpkgs",
+    text: <>The biggest ball of Nix code ya ever did see.</>,
   },
   {
     id: "packages",
@@ -64,7 +83,17 @@ export const snippets: Snippet[] = [
   {
     id: "pinning",
     title: "Pinning dependencies",
-    text: <>A totally awesome thing that you should always do, trust us</>,
+    text: <>A totally awesome thing that you should always do, trust us.</>,
+  },
+  {
+    id: "reproducibility",
+    title: "Reproducibility",
+    text: (
+      <>
+        A totally bad-ass thing you should totally do with your software because
+        it rocks.
+      </>
+    ),
   },
   {
     id: "shell-environments",

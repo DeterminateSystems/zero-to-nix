@@ -1,5 +1,6 @@
 ---
 import { site } from '../../site';
+import Breadcrumb from '../components/Breadcrumb.astro';
 import Container from '../components/Container.astro';
 import Content from '../components/Content.astro';
 import Footer from '../components/Footer.astro';
@@ -21,18 +22,24 @@ const { title: siteTitle } = site;
   <main class="flex-1 mb-12">
     <Navbar title={siteTitle} />
     <Container>
-      <Hero title={`${weight}. ${title}`} />
+      <div class="space-y-4">
+        <div class="space-y-4">
+          <div class="py-12">
+            <Hero title={title} breadcrumb={{ back: { title: "Quick start", href: "/start" }, page: title }} />
+          </div>
 
-      <div class="space-y-6">
-        {summary && <Summary items={summary} />}
+          {summary && <Summary items={summary} />}
+        </div>
 
-        <div class="border-2 dark:border-slate-400 rounded-xl shadow-sm p-6">
-          <Content>
-            <slot />
-          </Content>
+        <div class="space-y-6">
+          <div class="border-2 dark:border-slate-400 rounded-xl shadow-sm p-6">
+            <Content>
+              <slot />
+            </Content>
 
-          <div class="mt-16">
-            <Pagination weight={weight} />
+            <div class="mt-16">
+              <Pagination weight={weight} />
+            </div>
           </div>
         </div>
       </div>
