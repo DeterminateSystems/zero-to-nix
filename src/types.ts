@@ -1,36 +1,47 @@
 import type { MarkdownLayoutProps } from "astro";
 
-export type Link = {
+export type NavLink = {
   title: string;
   href: string;
 };
 
-export type Breadcrumb = {
-  section: string;
-  page: string;
+type HasTitle = {
+  title: string;
 };
 
-export type ConceptProps = MarkdownLayoutProps<{
-  id: string;
-  title: string;
-  related: string[];
-  readMore?: Link[];
-}>;
+type HasDescription = {
+  description: string;
+};
 
-export type StepProps = MarkdownLayoutProps<{
-  title: string;
-  summary?: string[];
+type Ordered = {
   weight: number;
-}>;
+};
 
-export type HeroProps = MarkdownLayoutProps<{
-  title: string;
-  description?: string;
-  breadcrumb?: {
-    back: {
-      title: string;
-      href: string;
-    };
-    page: string;
+export type Breadcrumb = {
+  back: {
+    title: string;
+    href: string;
   };
-}>;
+};
+
+export type ConceptProps = MarkdownLayoutProps<
+  HasTitle & {
+    id: string;
+    related: string[];
+    readMore?: NavLink[];
+  }
+>;
+
+export type StepProps = MarkdownLayoutProps<
+  HasTitle &
+    Ordered & {
+      summary?: string[];
+    }
+>;
+
+export type HeroProps = MarkdownLayoutProps<
+  HasTitle &
+    HasDescription & {
+      breadcrumb?: Breadcrumb;
+    }
+>;
