@@ -4,6 +4,7 @@ import Content from "../components/Content.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
 import HorizontalContainer from "../components/HorizontalContainer.astro";
+import Main from "../components/Main.astro";
 import Navbar from "../components/Navbar.astro";
 import Pagination from "../components/Pagination.astro";
 import Panel from "../components/Panel.astro";
@@ -21,15 +22,15 @@ const { title: siteTitle } = site;
 ---
 
 <Root>
-  <main class="flex-1 mb-12">
+  <Main>
     <Navbar title={siteTitle} />
     <HorizontalContainer>
       <div class="space-y-4">
         <div class="space-y-4">
           <Hero
-              title={title}
-              breadcrumb={{ back: { title: "Quick start", href: "/start" } }}
-            />
+            title={title}
+            breadcrumb={{ back: { title: "Quick start", href: "/start" } }}
+          />
 
           {summary && <Summary items={summary} />}
         </div>
@@ -47,7 +48,7 @@ const { title: siteTitle } = site;
         </div>
       </div>
     </HorizontalContainer>
-  </main>
+  </Main>
 
   <Footer />
 </Root>
