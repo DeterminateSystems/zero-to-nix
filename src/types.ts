@@ -6,7 +6,7 @@ export type NavLink = {
 };
 
 export type HoverableLinkProps = NavLink & {
-  size: "normal" | "sm";
+  size?: "normal" | "sm";
 };
 
 type HasTitle = {

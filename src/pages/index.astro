@@ -1,23 +1,11 @@
 ---
 import { site } from "../../site";
-import Grid2 from "../components/Grid2.astro";
 import Grid3 from "../components/Grid3.astro";
 import HoverableLink from "../components/HoverableLink.astro";
 import Standard from "../layouts/Standard.astro";
-import type { Link } from "../types";
+import type { NavLink } from "../types";
 
-const links: Link[] = [
-  {
-    title: "Quick start",
-    href: "/start"
-  },
-  {
-    title: "Concepts",
-    href: "/concepts"
-  }
-];
-
-const { title, description } = site;
+const { title, description, navbarLinks } = site;
 ---
 
 <Standard>
@@ -29,7 +17,7 @@ const { title, description } = site;
 
     <section>
       <Grid3>
-        {links.map((link: Link) =>
+        {navbarLinks.map((link: NavLink) =>
           <HoverableLink {...link} />
         )}
       </Grid3>
