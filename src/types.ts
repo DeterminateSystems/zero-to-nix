@@ -36,6 +36,14 @@ export type HeroProps = HasTitle &
     breadcrumb?: Breadcrumb;
   };
 
+export type ReadMoreProps = {
+  links: NavLink[];
+};
+
+export type RelatedProps = {
+  related: string[];
+};
+
 // Page layout props
 export type ConceptProps = MarkdownLayoutProps<
   HasTitle & {

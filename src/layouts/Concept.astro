@@ -2,26 +2,21 @@
 import { snippets } from '../pages/concepts/snippets';
 import Container from '../components/Container.astro';
 import Content from '../components/Content.astro';
-import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import Navbar from '../components/Navbar.astro';
-import type { ConceptProps, NavLink } from '../types';
-import Root from './Root.astro';
-import { site } from '../../site';
-import Grid3 from '../components/Grid3.astro';
+import type { ConceptProps } from '../types';
 import HoverableLink from '../components/HoverableLink.astro';
 import Panel from '../components/Panel.astro';
+import Standard from './Standard.astro';
+import ReadMore from '../components/ReadMore.astro';
+import Related from '../components/Related.astro';
 
 type Props = ConceptProps;
 
 const { frontmatter: { title, related, readMore }} = Astro.props;
-
-const { title: siteTitle } = site;
 ---
 
-<Root>
-  <main class="flex-1">
-    <Navbar title={siteTitle} />
+<Standard>
+  <div class="space-y-12">
     <Container>
       <div class="py-16 space-y-4">
         <Hero title={title} breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }} />
@@ -33,42 +28,9 @@ const { title: siteTitle } = site;
         </Content>
       </Panel>
     </Container>
-  </main>
 
-  {readMore && readMore.length > 0 && (<Container>
-    <div class="py-6">
-      <div class="space-y-4">
-        <p class="text-2xl font-semibold">
-          Read more
-        </p>
+    {readMore && readMore.length > 0 && (<ReadMore links={readMore} />)}
 
-        <Grid3>
-          {readMore.map((link: NavLink) =>
-            <HoverableLink {...link} size="sm" />
-          )}
-        </Grid3>
-      </div>
-    </div>
-  </Container>)}
-
-
-  {related.length > 0 && (<Container>
-    <div class="py-6">
-      <div class="space-y-4">
-        <p class="text-2xl font-semibold">
-          Related
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-          {related.map((id: string) => {
-            const title = snippets.find((s) => s.id === id)!.title;
-            const href = `/concepts/${id}`;
-
-            return (<HoverableLink title={title} href={href} size="sm" />);
-          })}
-        </div>
-      </div>
-    </div>
-  </Container>)}
-  <Footer />
-</Root>
+    {related.length > 0 && <Related relatedConceptIds={related} />}
+  </div>
+</Standard>
