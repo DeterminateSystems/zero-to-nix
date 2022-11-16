@@ -24,10 +24,8 @@ const Selector = ({ title, options, atom }: Props) => {
                 key={o}
                 onClick={() => atom.set(o)}
                 className={clsx(
-                  "px-3 rounded-lg shadow font-semibold text-normal",
-                  $item === o
-                    ? "bg-detsys text-white"
-                    : "bg-slate-200 text-black hover:bg-purple-100"
+                  "px-3 rounded-lg font-semibold text-normal",
+                  $item === o && "bg-detsys text-white"
                 )}
               >
                 {o}
