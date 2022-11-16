@@ -28,6 +28,15 @@ export type Breadcrumb = {
   };
 };
 
+// Component props
+export type BreadcrumbProps = Breadcrumb & HasTitle;
+
+export type HeroProps = HasTitle &
+  HasDescription & {
+    breadcrumb?: Breadcrumb;
+  };
+
+// Page layout props
 export type ConceptProps = MarkdownLayoutProps<
   HasTitle & {
     id: string;
@@ -40,12 +49,5 @@ export type StepProps = MarkdownLayoutProps<
   HasTitle &
     Ordered & {
       summary?: string[];
-    }
->;
-
-export type HeroProps = MarkdownLayoutProps<
-  HasTitle &
-    HasDescription & {
-      breadcrumb?: Breadcrumb;
     }
 >;

@@ -1,0 +1,17 @@
+---
+import type { BreadcrumbProps } from "../types";
+
+type Props = BreadcrumbProps;
+
+const { back: { title: backTitle, href }, title } = Astro.props;
+---
+
+<div class="flex items-center text-slate-700 dark:text-slate-300 space-x-2.5 text-xl">
+  <span>
+    <a href={href} class="hover:text-detsys">{backTitle}</a>
+  </span>
+  <span class="font-bold">/</span>
+  <span class="underline decoration-dotted">
+    {title}
+  </span>
+</div>
