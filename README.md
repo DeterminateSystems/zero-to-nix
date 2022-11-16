@@ -15,6 +15,9 @@ build
 
 # Preview the site (run using a Python web server to mimic non-Node environment)
 preview
+
+# Format Astro layouts and .ts/.tsx files
+format
 ```
 
 Or run the app locally using Nix:

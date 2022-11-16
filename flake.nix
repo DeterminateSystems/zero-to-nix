@@ -47,6 +47,11 @@
           pnpm run dev
         '')
 
+        (writeScriptBin "format" ''
+          setup
+          pnpm run format
+        '')
+
         (writeScriptBin "preview" ''
           build
           python3 -m http.server -d dist 3000
