@@ -1,5 +1,6 @@
 ---
 import type { HeroProps } from "../types";
+import Breadcrumb from "./Breadcrumb.astro";
 
 type Props = HeroProps;
 
@@ -7,15 +8,14 @@ const { title, description, breadcrumb } = Astro.props;
 ---
 
 <section class="space-y-4">
-  <h1 class="text-5xl tracking-tight">{title}</h1>
+  <h1 class="text-6xl tracking-tight">{title}</h1>
   {description && <h2 class="text-2xl">{description}</h2>}
-  {breadcrumb && <div class="flex items-center text-slate-700 dark:text-slate-300 space-x-1">
-    <span>
-      <a href={breadcrumb.back.href} class="hover:text-detsys">{breadcrumb.back.title}</a>
-    </span>
-    <span class="text-xl font-bold px-1">/</span>
-    <span>
-      {title}
-    </span>
-  </div>}
+  {
+    breadcrumb && (
+      <Breadcrumb
+        back={{ title: breadcrumb.back.title, href: breadcrumb.back.href }}
+        title={title}
+      />
+    )
+  }
 </section>

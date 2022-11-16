@@ -1,20 +1,22 @@
 ---
-import { site } from '../../site';
-import Breadcrumb from '../components/Breadcrumb.astro';
-import Container from '../components/Container.astro';
-import Content from '../components/Content.astro';
-import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import Navbar from '../components/Navbar.astro';
-import Pagination from '../components/Pagination.astro';
-import Panel from '../components/Panel.astro';
-import Summary from '../components/Summary.astro';
-import type { StepProps } from '../types';
-import Root from './Root.astro';
+import { site } from "../../site";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Container from "../components/Container.astro";
+import Content from "../components/Content.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import Navbar from "../components/Navbar.astro";
+import Pagination from "../components/Pagination.astro";
+import Panel from "../components/Panel.astro";
+import Summary from "../components/Summary.astro";
+import type { StepProps } from "../types";
+import Root from "./Root.astro";
 
 type Props = StepProps;
 
-const { frontmatter: { title, summary, weight }} = Astro.props;
+const {
+  frontmatter: { title, summary, weight },
+} = Astro.props;
 
 const { title: siteTitle } = site;
 ---
@@ -25,8 +27,11 @@ const { title: siteTitle } = site;
     <Container>
       <div class="space-y-4">
         <div class="space-y-4">
-          <div class="py-12">
-            <Hero title={title} breadcrumb={{ back: { title: "Quick start", href: "/start" } }} />
+          <div class="py-16">
+            <Hero
+              title={title}
+              breadcrumb={{ back: { title: "Quick start", href: "/start" } }}
+            />
           </div>
 
           {summary && <Summary items={summary} />}

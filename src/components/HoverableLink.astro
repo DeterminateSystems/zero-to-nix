@@ -10,9 +10,10 @@ const size = initialSize ?? "normal";
 <a
   href={href}
   class:list={[
-    "border-2 rounded-lg hover:border-detsys",
-    size === "normal" && "py-4 px-6 text-2xl",
-    size === "sm" && "py-2 px-3.5 text-lg",
-  ]}>
+    "border-2 border-slate-300 dark:border-slate-500 rounded-lg hover:border-detsys dark:hover:border-detsys",
+    size === "normal" && "py-3.5 px-5 text-2xl tracking-tight",
+    size === "sm" && "py-2 px-3.5 text-xl",
+  ]}
+>
   {title}
 </a>

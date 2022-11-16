@@ -17,9 +17,11 @@ const title = "Concepts";
     </div>
 
     <Grid3>
-      {pages.map((page) =>
-        <HoverableLink title={page.frontmatter.title} href={page.url} />
-      )}
+      {
+        pages.map((page) => (
+          <HoverableLink title={page.frontmatter.title} href={page.url} />
+        ))
+      }
     </Grid3>
   </Container>
 </Standard>

@@ -1,0 +1,20 @@
+---
+import type { NavLink, ReadMoreProps } from "../types";
+import Container from "./Container.astro";
+import Grid3 from "./Grid3.astro";
+import HoverableLink from "./HoverableLink.astro";
+
+type Props = ReadMoreProps;
+
+const { links } = Astro.props;
+---
+
+<Container>
+  <div class="space-y-4">
+    <p class="text-2xl font-semibold">Read more</p>
+
+    <Grid3>
+      {links.map((link: NavLink) => <HoverableLink {...link} size="sm" />)}
+    </Grid3>
+  </div>
+</Container>
