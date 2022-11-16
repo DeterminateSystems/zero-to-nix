@@ -16,8 +16,7 @@ import Systems from "../../components/Systems";
 
 **Welcome!** . It's great to see that you're interested in [Nix]!
 This guide explains how to install Nix on your system, followed by a
-simple examples of running a program with Nix. Let’s get right into
-it…
+short examples of running a program with Nix. Let’s get right into it…
 
 <Systems client:only />
 
@@ -34,8 +33,8 @@ Harmonic follows different steps based on the *build plan* you select.
 
 Currently there are only two: *linux-multi* (for 64bit Linux systems)
 and *darwin-multi* (for 64bit Intel and ARM macOS systems).  The
-*-multi* refers to the type of installation being performed
-(i.e. [“multi-user”]).
+*-multi* refers to the type of installation being performed (meaning
+[“multi-user”]).
 
 If this seems confusing, don’t worry about it too much for now. We
 will go into the technical side of what a Nix installation entails in
@@ -49,8 +48,8 @@ $ nix --help
 
 This should print the help output of the *nix* command.
 
-Alternatively you can run the following command to get a friendly
-message appear in your terminal 🙂
+Alternatively you can run this command to get a friendly message
+appear in your terminal 🙂:
 
 ```
 $ echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
