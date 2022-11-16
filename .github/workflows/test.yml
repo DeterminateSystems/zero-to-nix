@@ -1,0 +1,42 @@
+name: Run Zero to Nix site tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v3
+
+      - name: Set up htmltest cache
+        uses: actions/cache@v3
+        with:
+          key: zero-to-nix-${{ hashFiles('.htmltest.external.yml') }}
+          path: |
+            tmp/
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build site
+        run: nix develop --command build
+
+      - name: Check internal links using htmltest
+        run: nix develop --command check-internal-links
+
+      #- name: Check external links using htmltest
+      #  run: nix develop --command check-external-links
+
+      - name: Lint prose using Vale
+        run: nix develop --command lint-style
+
+      - name: Catch insensitive or inconsiderate writing with Alex
+        run: nix develop --command check-sensitivity
