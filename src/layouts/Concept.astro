@@ -1,5 +1,4 @@
 ---
-import Container from "../components/Container.astro";
 import Content from "../components/Content.astro";
 import Hero from "../components/Hero.astro";
 import type { ConceptProps } from "../types";
@@ -17,20 +16,19 @@ const {
 
 <Standard>
   <div class="space-y-12">
-    <Container>
-      <div class="py-16 space-y-4">
-        <Hero
-          title={title}
-          breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }}
-        />
-      </div>
+    <div class="py-16 space-y-4">
+      <Hero
+        title={title}
+        breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }}
+      />
+    </div>
 
-      <Panel>
-        <Content>
-          <slot />
-        </Content>
-      </Panel>
-    </Container>
+    <Panel>
+      <Content>
+        <slot />
+      </Content>
+    </Panel>
+
 
     {readMore && readMore.length > 0 && <ReadMore links={readMore} />}
 

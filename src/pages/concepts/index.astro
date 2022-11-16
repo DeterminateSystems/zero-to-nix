@@ -1,5 +1,4 @@
 ---
-import Container from "../../components/Container.astro";
 import Hero from "../../components/Hero.astro";
 import Grid3 from "../../components/Grid3.astro";
 import Standard from "../../layouts/Standard.astro";
@@ -11,17 +10,15 @@ const title = "Concepts";
 ---
 
 <Standard>
-  <Container>
-    <div class="py-16">
-      <Hero title={title} />
-    </div>
+  <div class="py-16">
+    <Hero title={title} />
+  </div>
 
-    <Grid3>
-      {
-        pages.map((page) => (
-          <HoverableLink title={page.frontmatter.title} href={page.url} />
-        ))
-      }
-    </Grid3>
-  </Container>
+  <Grid3>
+    {
+      pages.map((page) => (
+        <HoverableLink title={page.frontmatter.title} href={page.url} />
+      ))
+    }
+  </Grid3>
 </Standard>

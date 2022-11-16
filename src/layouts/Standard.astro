@@ -1,6 +1,7 @@
 ---
 import { site } from "../../site";
 import Footer from "../components/Footer.astro";
+import HorizontalContainer from "../components/HorizontalContainer.astro";
 import Navbar from "../components/Navbar.astro";
 import Root from "../layouts/Root.astro";
 
@@ -10,7 +11,9 @@ const { title } = site;
 <Root>
   <main class="flex-1">
     <Navbar title={title} />
-    <slot />
+    <HorizontalContainer>
+      <slot />
+    </HorizontalContainer>
   </main>
 
   <Footer />

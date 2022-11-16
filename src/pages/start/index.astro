@@ -1,5 +1,4 @@
 ---
-import Container from "../../components/Container.astro";
 import Grid2 from "../../components/Grid2.astro";
 import Hero from "../../components/Hero.astro";
 import HoverableLink from "../../components/HoverableLink.astro";
@@ -13,24 +12,22 @@ const sorted = pages.sort(
 ---
 
 <Standard>
-  <Container>
-    <div class="py-16">
-      <Hero
-        title="Quick start"
-        description="Feel the power of Nix in no time"
-      />
-    </div>
+  <div class="py-16">
+    <Hero
+      title="Quick start"
+      description="Feel the power of Nix in no time"
+    />
+  </div>
 
-    <Grid2>
-      {
-        sorted.map((page) => (
-          <HoverableLink
-            title={`${page.frontmatter.weight}. ${page.frontmatter.title}`}
-            href={page.frontmatter.url}
-            href={page.url}
-          />
-        ))
-      }
-    </Grid2>
-  </Container>
+  <Grid2>
+    {
+      sorted.map((page) => (
+        <HoverableLink
+          title={`${page.frontmatter.weight}. ${page.frontmatter.title}`}
+          href={page.frontmatter.url}
+          href={page.url}
+        />
+      ))
+    }
+  </Grid2>
 </Standard>

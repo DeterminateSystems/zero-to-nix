@@ -1,10 +1,9 @@
 ---
 import { site } from "../../site";
-import Breadcrumb from "../components/Breadcrumb.astro";
-import Container from "../components/Container.astro";
 import Content from "../components/Content.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
+import HorizontalContainer from "../components/HorizontalContainer.astro";
 import Navbar from "../components/Navbar.astro";
 import Pagination from "../components/Pagination.astro";
 import Panel from "../components/Panel.astro";
@@ -24,7 +23,7 @@ const { title: siteTitle } = site;
 <Root>
   <main class="flex-1 mb-12">
     <Navbar title={siteTitle} />
-    <Container>
+    <HorizontalContainer>
       <div class="space-y-4">
         <div class="space-y-4">
           <div class="py-16">
@@ -49,7 +48,7 @@ const { title: siteTitle } = site;
           </Panel>
         </div>
       </div>
-    </Container>
+    </HorizontalContainer>
   </main>
 
   <Footer />
