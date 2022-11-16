@@ -7,19 +7,30 @@ import Standard from "../../layouts/Standard.astro";
 
 const pages = await Astro.glob("./*.{md,mdx}");
 
-const sorted = pages.sort((p1, p2) => p1.frontmatter.weight - p2.frontmatter.weight);
+const sorted = pages.sort(
+  (p1, p2) => p1.frontmatter.weight - p2.frontmatter.weight
+);
 ---
 
 <Standard>
   <Container>
     <div class="py-16">
-      <Hero title="Quick start" description="Feel the power of Nix in no time" />
+      <Hero
+        title="Quick start"
+        description="Feel the power of Nix in no time"
+      />
     </div>
 
     <Grid2>
-      {sorted.map((page) => (
-        <HoverableLink title={`${page.frontmatter.weight}. ${page.frontmatter.title}`} href={page.frontmatter.url} href={page.url} />
-      ))}
+      {
+        sorted.map((page) => (
+          <HoverableLink
+            title={`${page.frontmatter.weight}. ${page.frontmatter.title}`}
+            href={page.frontmatter.url}
+            href={page.url}
+          />
+        ))
+      }
     </Grid2>
   </Container>
 </Standard>

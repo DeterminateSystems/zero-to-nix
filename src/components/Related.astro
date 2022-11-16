@@ -1,8 +1,8 @@
 ---
-import { snippets } from '../pages/concepts/snippets';
+import { snippets } from "../pages/concepts/snippets";
 import type { RelatedProps } from "../types";
-import Container from './Container.astro';
-import HoverableLink from './HoverableLink.astro';
+import Container from "./Container.astro";
+import HoverableLink from "./HoverableLink.astro";
 
 type Props = RelatedProps;
 
@@ -11,17 +11,17 @@ const { relatedConceptIds } = Astro.props;
 
 <Container>
   <div class="space-y-4">
-    <p class="text-2xl font-semibold">
-      Related
-    </p>
+    <p class="text-2xl font-semibold">Related</p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-      {relatedConceptIds.map((id: string) => {
-        const title = snippets.find((s) => s.id === id)!.title;
-        const href = `/concepts/${id}`;
+      {
+        relatedConceptIds.map((id: string) => {
+          const title = snippets.find((s) => s.id === id)!.title;
+          const href = `/concepts/${id}`;
 
-        return (<HoverableLink title={title} href={href} size="sm" />);
-      })}
+          return <HoverableLink title={title} href={href} size="sm" />;
+        })
+      }
     </div>
   </div>
 </Container>

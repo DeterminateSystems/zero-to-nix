@@ -8,18 +8,24 @@ type Link = {
 };
 
 const links: Link[] = [
-  {title: "Quick start", href: "/start"},
-  {title: "Concepts", href: "/concepts"},
+  { title: "Quick start", href: "/start" },
+  { title: "Concepts", href: "/concepts" },
 ];
 
 const { title } = Astro.props;
 const url = Astro.url.pathname;
 ---
 
-<nav class="sticky top-0 bg-white py-4 dark:bg-black border-b-2 border-slate-300 dark:border-b-slate-500">
+<nav
+  class="sticky top-0 bg-white py-4 dark:bg-black border-b-2 border-slate-300 dark:border-b-slate-500"
+>
   <div class="container mx-auto flex justify-between items-center px-6">
     <div class="flex space-x-3 items-center">
-      <a href="/" class="text-3xl tracking-tighter font-semibold hover:text-detsys dark:text-slate-100 dark:hover:text-detsys">{title}</a>
+      <a
+        href="/"
+        class="text-3xl tracking-tighter font-semibold hover:text-detsys dark:text-slate-100 dark:hover:text-detsys"
+        >{title}</a
+      >
 
       <span>
         <NixOSIcon client:only />
@@ -28,11 +34,21 @@ const url = Astro.url.pathname;
 
     <div class="flex items-center space-x-6">
       <ul class="flex items-center space-x-4">
-        {links.map((link) => <li>
-          <a href={link.href} class:list={["dark:text-slate-100 hover:text-blue-500 dark:hover:text-blue-300", url.startsWith(link.href) ? "font-bold" : "font-normal"]}>
-            {link.title}
-          </a>
-        </li>)}
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  "dark:text-slate-100 hover:text-blue-500 dark:hover:text-blue-300",
+                  url.startsWith(link.href) ? "font-bold" : "font-normal",
+                ]}
+              >
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
       </ul>
 
       <div>

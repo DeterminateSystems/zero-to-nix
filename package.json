@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "start": "astro start",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "format": "prettier --write **/*.{astro,ts,tsx}"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.11.6",
@@ -32,5 +33,9 @@
     "react-icons": "^4.6.0",
     "shiki": "^0.11.1",
     "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.7.0"
   }
 }

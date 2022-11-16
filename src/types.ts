@@ -41,7 +41,7 @@ export type ReadMoreProps = {
 };
 
 export type RelatedProps = {
-  related: string[];
+  relatedConceptIds: string[];
 };
 
 // Page layout props

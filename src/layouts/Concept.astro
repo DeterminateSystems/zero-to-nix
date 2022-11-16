@@ -1,25 +1,28 @@
 ---
-import { snippets } from '../pages/concepts/snippets';
-import Container from '../components/Container.astro';
-import Content from '../components/Content.astro';
-import Hero from '../components/Hero.astro';
-import type { ConceptProps } from '../types';
-import HoverableLink from '../components/HoverableLink.astro';
-import Panel from '../components/Panel.astro';
-import Standard from './Standard.astro';
-import ReadMore from '../components/ReadMore.astro';
-import Related from '../components/Related.astro';
+import Container from "../components/Container.astro";
+import Content from "../components/Content.astro";
+import Hero from "../components/Hero.astro";
+import type { ConceptProps } from "../types";
+import Panel from "../components/Panel.astro";
+import Standard from "./Standard.astro";
+import ReadMore from "../components/ReadMore.astro";
+import Related from "../components/Related.astro";
 
 type Props = ConceptProps;
 
-const { frontmatter: { title, related, readMore }} = Astro.props;
+const {
+  frontmatter: { title, related, readMore },
+} = Astro.props;
 ---
 
 <Standard>
   <div class="space-y-12">
     <Container>
       <div class="py-16 space-y-4">
-        <Hero title={title} breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }} />
+        <Hero
+          title={title}
+          breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }}
+        />
       </div>
 
       <Panel>
@@ -29,7 +32,7 @@ const { frontmatter: { title, related, readMore }} = Astro.props;
       </Panel>
     </Container>
 
-    {readMore && readMore.length > 0 && (<ReadMore links={readMore} />)}
+    {readMore && readMore.length > 0 && <ReadMore links={readMore} />}
 
     {related.length > 0 && <Related relatedConceptIds={related} />}
   </div>
