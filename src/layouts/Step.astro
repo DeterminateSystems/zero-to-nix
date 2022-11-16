@@ -26,12 +26,10 @@ const { title: siteTitle } = site;
     <HorizontalContainer>
       <div class="space-y-4">
         <div class="space-y-4">
-          <div class="py-16">
-            <Hero
+          <Hero
               title={title}
               breadcrumb={{ back: { title: "Quick start", href: "/start" } }}
             />
-          </div>
 
           {summary && <Summary items={summary} />}
         </div>

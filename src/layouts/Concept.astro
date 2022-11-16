@@ -15,20 +15,13 @@ const {
 ---
 
 <Standard>
+  <Hero title={title} breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }} />
   <div class="space-y-12">
-    <div class="py-16 space-y-4">
-      <Hero
-        title={title}
-        breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }}
-      />
-    </div>
-
     <Panel>
       <Content>
         <slot />
       </Content>
     </Panel>
-
 
     {readMore && readMore.length > 0 && <ReadMore links={readMore} />}
 
