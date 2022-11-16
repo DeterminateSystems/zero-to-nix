@@ -9,6 +9,7 @@ import type { ConceptProps, Link } from '../types';
 import Root from './Root.astro';
 import { site } from '../../site';
 import Grid3 from '../components/Grid3.astro';
+import HoverableLink from '../components/HoverableLink.astro';
 
 type Props = ConceptProps;
 
@@ -40,9 +41,7 @@ const { title: siteTitle } = site;
 
         <Grid3>
           {readMore.map((link: Link) =>
-            <a href={link.href} class="border-2 rounded-lg hover:border-detsys py-2 px-4 text-lg">
-              {link.title}
-            </a>
+            <HoverableLink {...link} size="sm" />
           )}
         </Grid3>
       </div>
@@ -60,9 +59,9 @@ const { title: siteTitle } = site;
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
           {related.map((id: string) => {
             const title = snippets.find((s) => s.id === id)!.title;
-            const url = `/concepts/${id}`;
+            const href = `/concepts/${id}`;
 
-            return (<a href={url} class="border-2 rounded-lg hover:border-detsys py-2 px-4 text-lg">{title}</a>);
+            return (<HoverableLink title={title} href={href} size="sm" />);
           })}
         </div>
       </div>

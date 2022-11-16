@@ -2,6 +2,7 @@
 import { site } from "../../site";
 import Grid2 from "../components/Grid2.astro";
 import Grid3 from "../components/Grid3.astro";
+import HoverableLink from "../components/HoverableLink.astro";
 import Standard from "../layouts/Standard.astro";
 import type { Link } from "../types";
 
@@ -29,9 +30,7 @@ const { title, description } = site;
     <section>
       <Grid3>
         {links.map((link: Link) =>
-          <a href={link.href} class="border-2 rounded-lg hover:border-detsys py-4 px-6 text-2xl">
-            {link.title}
-          </a>
+          <HoverableLink {...link} />
         )}
       </Grid3>
     </section>

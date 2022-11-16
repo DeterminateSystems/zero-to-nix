@@ -5,6 +5,10 @@ export type NavLink = {
   href: string;
 };
 
+export type HoverableLinkProps = NavLink & {
+  size: "normal" | "sm";
+};
+
 type HasTitle = {
   title: string;
 };

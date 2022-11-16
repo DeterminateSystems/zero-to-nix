@@ -1,0 +1,18 @@
+---
+import type { HoverableLinkProps } from "../types";
+
+type Props = HoverableLinkProps;
+
+const { title, href, size: initialSize } = Astro.props;
+const size = initialSize ?? "normal";
+---
+
+<a
+  href={href}
+  class:list={[
+    "border-2 rounded-lg hover:border-detsys",
+    size === "normal" && "py-4 px-6 text-2xl",
+    size === "sm" && "py-2 px-3.5 text-lg",
+  ]}>
+  {title}
+</a>

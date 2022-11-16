@@ -3,6 +3,7 @@ import Container from "../../components/Container.astro";
 import Hero from "../../components/Hero.astro";
 import Grid3 from "../../components/Grid3.astro";
 import Standard from "../../layouts/Standard.astro";
+import HoverableLink from "../../components/HoverableLink.astro";
 
 const pages = await Astro.glob("./*.{md,mdx}");
 
@@ -17,9 +18,7 @@ const title = "Concepts";
 
     <Grid3>
       {pages.map((page) =>
-        <a href={page.url} class="border-2 rounded-lg hover:border-detsys py-4 px-6 text-xl dark:border-slate-500 dark:hover:border-detsys">
-          {page.frontmatter.title}
-        </a>
+        <HoverableLink title={page.frontmatter.title} href={page.url} />
       )}
     </Grid3>
   </Container>
