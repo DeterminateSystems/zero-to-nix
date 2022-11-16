@@ -26,8 +26,8 @@ const Selector = ({ title, options, atom }: Props) => {
                 className={clsx(
                   "px-3 rounded-lg shadow font-semibold text-normal",
                   $item === o
-                    ? "bg-violet-300 text-black"
-                    : "bg-slate-100 text-black hover:bg-purple-200"
+                    ? "bg-detsys text-white"
+                    : "bg-slate-200 text-black hover:bg-purple-100"
                 )}
               >
                 {o}
