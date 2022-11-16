@@ -10,6 +10,7 @@ import Root from './Root.astro';
 import { site } from '../../site';
 import Grid3 from '../components/Grid3.astro';
 import HoverableLink from '../components/HoverableLink.astro';
+import Panel from '../components/Panel.astro';
 
 type Props = ConceptProps;
 
@@ -26,9 +27,11 @@ const { title: siteTitle } = site;
         <Hero title={title} breadcrumb={{ back: { title: "Concepts", href: "/concepts" } }} />
       </div>
 
-      <Content>
-        <slot />
-      </Content>
+      <Panel>
+        <Content>
+          <slot />
+        </Content>
+      </Panel>
     </Container>
   </main>
 

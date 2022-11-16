@@ -12,7 +12,7 @@ module.exports = {
           css: {
             a: {
               "&:hover": {
-                color: theme("colors.blue.500"),
+                color: theme("colors.detsys"),
               },
             },
             code: {
