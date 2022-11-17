@@ -1,6 +1,9 @@
 ---
 import { site } from "../../site";
 
+import "@fontsource/fira-mono";
+import "@fontsource/rubik";
+
 const root = Astro.site!;
 const canonical = new URL(Astro.url.pathname, root);
 const sitemap = new URL("sitemap-index.xml", root);

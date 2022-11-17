@@ -5,6 +5,8 @@ specifiers:
   '@astrojs/react': ^1.2.2
   '@astrojs/sitemap': ^1.0.0
   '@astrojs/tailwind': ^2.1.2
+  '@fontsource/fira-mono': ^4.5.10
+  '@fontsource/rubik': ^4.5.11
   '@headlessui/react': ^1.7.4
   '@nanostores/persistent': ^0.7.0
   '@nanostores/react': ^0.4.0
@@ -51,6 +53,8 @@ dependencies:
   tailwindcss: 3.2.2_postcss@8.4.18
 
 devDependencies:
+  '@fontsource/fira-mono': 4.5.10
+  '@fontsource/rubik': 4.5.11
   prettier: 2.7.1
   prettier-plugin-astro: 0.7.0
 
@@ -510,6 +514,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+
+  /@fontsource/fira-mono/4.5.10:
+    resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
+    dev: true
+
+  /@fontsource/rubik/4.5.11:
+    resolution: {integrity: sha512-m0/4GKOqJjF9cB4wuLgDhRdRVt35WzqI5n7SgddRjRD+yzsO0eEq/ak0ezgfbR3+f91ydDCek1+RuOVB8dNYwg==}
+    dev: true
 
   /@headlessui/react/1.7.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-D8n5yGCF3WIkPsjEYeM8knn9jQ70bigGGb5aUvN6y4BGxcT3OcOQOKcM3zRGllRCZCFxCZyQvYJF6ZE7bQUOyQ==}
