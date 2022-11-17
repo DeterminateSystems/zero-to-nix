@@ -6,11 +6,12 @@ import HoverableLink from "../../components/HoverableLink.astro";
 
 const pages = await Astro.glob("./*.{md,mdx}");
 
-const title = "Concepts";
+const title = "Nix concepts";
+const description = "The whys and the hows of Nix";
 ---
 
 <Standard>
-  <Hero title={title} />
+  <Hero title={title} description={description} size="normal" />
 
   <Grid3>
     {

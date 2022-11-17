@@ -1,6 +1,7 @@
 ---
 import { site } from "../../site";
 import Grid3 from "../components/Grid3.astro";
+import Hero from "../components/Hero.astro";
 import HoverableLink from "../components/HoverableLink.astro";
 import Standard from "../layouts/Standard.astro";
 import type { NavLink } from "../types";
@@ -9,10 +10,7 @@ const { title, description, navbarLinks } = site;
 ---
 
 <Standard>
-  <section class="py-12 space-y-4">
-    <h1 class="text-5xl md:text-6xl">{title}</h1>
-    <h2 class="text-xl md:text-2xl font-light">{description}</h2>
-  </section>
+  <Hero title={title} description={description} size="lg" />
 
   <section>
     <Grid3>

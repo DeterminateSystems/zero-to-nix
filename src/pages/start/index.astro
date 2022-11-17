@@ -9,10 +9,13 @@ const pages = await Astro.glob("./*.{md,mdx}");
 const sorted = pages.sort(
   (p1, p2) => p1.frontmatter.weight - p2.frontmatter.weight
 );
+
+const title = "Quick start";
+const description = "Feel the power of Nix in no time";
 ---
 
 <Standard>
-  <Hero title="Quick start" description="Feel the power of Nix in no time" />
+  <Hero title={title} description={description} size="normal" />
 
   <Grid2>
     {
