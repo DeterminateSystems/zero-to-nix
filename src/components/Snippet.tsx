@@ -57,7 +57,7 @@ const Snippet = ({ id, show }: Props) => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white dark:bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white dark:bg-white p-6 text-left align-middle transition-all">
                     <div>
                       <Dialog.Title
                         as="h3"
@@ -73,7 +73,7 @@ const Snippet = ({ id, show }: Props) => {
                           <Tab>
                             <a
                               href={url}
-                              className="py-2 px-3 text-sm shadow font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
+                              className="py-2 px-3 text-sm font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
                             >
                               Read more
                             </a>
@@ -82,7 +82,7 @@ const Snippet = ({ id, show }: Props) => {
                             <button
                               aria-label="Close the currently open modal dialog"
                               onClick={() => setOpen(false)}
-                              className="py-2 px-3 text-sm shadow font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
+                              className="py-2 px-3 text-sm font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
                             >
                               Close
                             </button>
