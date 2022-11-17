@@ -1,6 +1,6 @@
 import type React from "react";
 
-import { language, system } from "../data/store";
+import { system } from "../data/store";
 import Specific from "./generic/Specific";
 
 type Props = {
