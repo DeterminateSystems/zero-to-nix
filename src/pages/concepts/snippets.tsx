@@ -27,6 +27,11 @@ export const snippets: Snippet[] = [
     text: <>A set of build instructions for producing packages</>,
   },
   {
+    id: "det-sys",
+    title: "Determinate Systems",
+    text: <>The good folks who made this website.</>,
+  },
+  {
     id: "flake-inputs",
     title: "Flake inputs",
     text: <>Just, you know, flake inputs.</>,
