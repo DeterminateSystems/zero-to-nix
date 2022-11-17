@@ -20,6 +20,7 @@ const Snippet = ({ id, show }: Props) => {
   return (
     <>
       <button
+        aria-label={`Open modal describing the ${snippet.title} concept`}
         className="inline-block font-semibold underline decoration-dotted hover:text-detsys"
         onClick={() => setOpen(true)}
       >
@@ -72,15 +73,16 @@ const Snippet = ({ id, show }: Props) => {
                           <Tab>
                             <a
                               href={url}
-                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
+                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm"
                             >
                               Read more
                             </a>
                           </Tab>
                           <Tab>
                             <button
+                              aria-label="Close the currently open modal dialog"
                               onClick={() => setOpen(false)}
-                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
+                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm"
                             >
                               Close
                             </button>

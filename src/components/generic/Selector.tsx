@@ -14,13 +14,16 @@ const Selector = ({ title, options, atom }: Props) => {
   const $item: string = useStore<StoreValue<string>>(atom);
 
   return (
-    <div className="not-prose inline-flex items-center space-x-6 border-2 bg-slate-50 border-slate-300 rounded-xl py-4 px-6 shadow-sm dark:bg-black dark:border-slate-500">
-      <p className="text-xl font-semibold tracking-tight">{title}</p>
+    <div className="not-prose inline-flex items-center space-x-6 border-2 bg-slate-50 border-slate-300 rounded-xl py-4 px-6 dark:bg-black dark:border-slate-500">
+      <p className="text-normal md:text-lg lg:text-xl font-semibold tracking-tight">
+        {title}
+      </p>
       <Tab.Group onChange={(idx: number) => atom.set(options[idx]!)}>
         <Tab.List as="div" className="flex space-x-3">
           {options.map((o) => (
             <Tab as={Fragment}>
               <button
+                aria-label={title}
                 key={o}
                 onClick={() => atom.set(o)}
                 className={clsx(
