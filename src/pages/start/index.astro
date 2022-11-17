@@ -19,7 +19,6 @@ const sorted = pages.sort(
       sorted.map((page) => (
         <HoverableLink
           title={`${page.frontmatter.weight}. ${page.frontmatter.title}`}
-          href={page.frontmatter.url}
           href={page.url}
         />
       ))
