@@ -54,13 +54,6 @@ Now that we've entered the shell, we can do some exploring, starting with <Snipp
 Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`. Try running it in the Nix shell:
 
 ```shell
-which go
-```
-</SpecificLanguage>
-<SpecificLanguage lang="Go" client:only>
-Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
-
-```shell
 which python
 ```
 
@@ -68,6 +61,19 @@ You should see a (rather strange) path like this:
 
 ```shell
 /nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Go" client:only>
+Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
+
+```shell
+which go
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/hvnp4a2wlqhfx6yfvfm4zw0vxh3jadzh-go-1.19.3/bin/go
 ```
 </SpecificLanguage>
 <SpecificLanguage lang="Rust" client:only>
