@@ -2,10 +2,10 @@
 import { site } from "../../site";
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const { title, description } = site;
+const { title, description, languageCode } = site;
 ---
 
-<html lang="en-us" class="h-screen">
+<html lang="en-us" class="h-screen" lang={languageCode}>
   <head>
     <!-- This gets run before anything else -->
     <script is:inline>
