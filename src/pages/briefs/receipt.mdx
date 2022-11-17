@@ -1,8 +1,15 @@
-Harmonic differs from the [official Nix installer][official] in two important ways:
+Harmonic differs from the [official Nix installer][official] in a few important ways:
 
 1. It installs Nix with [flakes] and the `nix-command` feature already enabled rather than requiring users to enable those features.
 1. It stores a **receipt** for the install process in the [Nix store][store] at `/nix/receipt.json`. This receipt enables Harmonic to seamlessly uninstall Nix, whereas the official Nix installer doesn't provide any kind of offboarding path.
+1. Much like [Terraform], Harmonic enables you to [plan] your installation to see what Harmonic *will* do prior committing to installing Nix.
+1. Harmonic is written in [Rust] rather than [Bash], which enables it to avoid any subtle differences in shell implementations across machines.
+1. If the installation fails for some reason, Harmonic can revert all of the changes that it's made to your system, minimizing the likelihood that the Nix installation process leaves your system in an undesirable state.
 
+[bash]: https://en.wikipedia.org/Bash_(Unix_shell)
 [flakes]: /concepts/flakes
 [official]: https://nixos.org/download
+[plan]: https://developer.hashicorp.com/terraform/cli/commands/plan
+[rust]: https://rust-lang.org
 [store]: /nix/store
+[terraform]: https://terraform.io
