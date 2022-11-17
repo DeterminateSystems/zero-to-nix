@@ -3,6 +3,7 @@ import type { NavLink } from "./src/types";
 export type Site = {
   title: string;
   description: string;
+  languageCode: string;
   systems: string[];
   languages: string[];
   navbarLinks: NavLink[];
@@ -12,6 +13,7 @@ export const site: Site = {
   title: "Zero to Nix",
   description:
     "An unofficial and highly opinionated getting started guide for Nix",
+  languageCode: "en",
   systems: ["Linux", "macOS"],
   languages: ["Go", "Rust"],
   navbarLinks: [

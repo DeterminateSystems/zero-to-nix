@@ -13,7 +13,7 @@ const previous = await steps.find((s) => s.frontmatter.weight === weight - 1);
       previous && (
         <span class="flex space-x-4">
           <span>&larr;</span>
-          <a href={previous.url} class="font-semibold hover:text-detsys">
+          <a href={previous.url} class="font-semibold hover:text-primary">
             {previous.frontmatter.title}
           </a>
         </span>
@@ -25,7 +25,7 @@ const previous = await steps.find((s) => s.frontmatter.weight === weight - 1);
     {
       next && (
         <span class="flex space-x-4">
-          <a href={next.url} class="font-semibold hover:text-detsys">
+          <a href={next.url} class="font-semibold hover:text-primary">
             {next.frontmatter.title}
           </a>
           <span>&rarr;</span>

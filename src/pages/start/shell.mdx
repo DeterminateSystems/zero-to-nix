@@ -14,8 +14,7 @@ import Language from "../../components/Language";
 import Languages from "../../components/Languages";
 import Shell from "../../components/Shell";
 import Snippet from "../../components/Snippet";
-import Specific from "../../components/Specific";
-import Switch from "../../components/Switch";
+import SpecificLanguage from "../../components/SpecificLanguage";
 
 [Nix] enables you to create <Snippet id="shell-environments" show="shell environments" client:only />
 that are "sealed" from the rest of your system&mdash;they ignore directories like `/usr/bin` and
@@ -51,38 +50,33 @@ nix develop
 
 Now that we've entered the shell, we can do some exploring, starting with <Snippet id="nix-store" show="Nix store paths" client:only />.
 
-<Switch>
-  <Specific lang="Go" client:only>
-    Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try
-    running it in the Nix shell:
 
-    ```shell
-    which go
-    ```
+<SpecificLanguage lang="Go" client:only>
+Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
 
-    You should see a (rather strange) path like this:
+```shell
+which go
+```
 
-    ```shell
-    /nix/store/hvnp4a2wlqhfx6yfvfm4zw0vxh3jadzh-go-1.19.3/bin/go
-    ```
+You should see a (rather strange) path like this:
 
-  </Specific>
-  <Specific lang="Rust" client:only>
-    Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`. Try
-    running it in the Nix shell:
+```shell
+/nix/store/hvnp4a2wlqhfx6yfvfm4zw0vxh3jadzh-go-1.19.3/bin/go
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Rust" client:only>
+Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`. Try running it in the Nix shell:
 
-    ```shell
-    which cargo
-    ```
+```shell
+which cargo
+```
 
-    You should see a (rather strange) path like this:
+You should see a (rather strange) path like this:
 
-    ```shell
-    /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
-    ```
-
-  </Specific>
-</Switch>
+```shell
+/nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
+```
+</SpecificLanguage>
 
 Probably not what you expected! What happened here? A few things:
 
