@@ -1,8 +1,10 @@
 ---
 import { site } from "../../site";
 
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const { title, description, languageCode } = site;
+const root = Astro.site!;
+const canonical = new URL(Astro.url.pathname, root);
+const sitemap = new URL("sitemap-index.xml", root);
+const { title, description, author, languageCode } = site;
 ---
 
 <html lang="en-us" class="h-screen" lang={languageCode}>
@@ -27,10 +29,14 @@ const { title, description, languageCode } = site;
       content="width=device-width,initial-scale=1,shrink-to-fit=no"
     />
     <meta http-equiv="x-ua-compatible" content="id=edge" />
+    <meta property="HandheldFriendly" content="True">
+    <meta property="MobileOptimized" content="320" />
+    <meta property="author" content={author} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta content={languageCode} http-equiv="Content-Language" />
     <title>{title}</title>
+    <link rel="sitemap" href={sitemap}>
     <link rel="canonical" href={canonical} />
   </head>
   <body
