@@ -21,7 +21,7 @@ const Snippet = ({ id, show }: Props) => {
     <>
       <button
         aria-label={`Open modal describing the ${snippet.title} concept`}
-        className="inline-block font-semibold underline decoration-dotted hover:text-detsys"
+        className="inline-block font-semibold underline decoration-dotted hover:text-primary"
         onClick={() => setOpen(true)}
       >
         {finalText}
@@ -57,7 +57,7 @@ const Snippet = ({ id, show }: Props) => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white dark:bg-white p-6 text-left align-middle shadow-xl transition-all">
                     <div>
                       <Dialog.Title
                         as="h3"
@@ -73,7 +73,7 @@ const Snippet = ({ id, show }: Props) => {
                           <Tab>
                             <a
                               href={url}
-                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
+                              className="py-2 px-3 text-sm shadow font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
                             >
                               Read more
                             </a>
@@ -82,7 +82,7 @@ const Snippet = ({ id, show }: Props) => {
                             <button
                               aria-label="Close the currently open modal dialog"
                               onClick={() => setOpen(false)}
-                              className="dark:text-black bg-slate-200 py-2 px-3 font-semibold rounded-lg hover:bg-slate-300 text-sm shadow"
+                              className="py-2 px-3 text-sm shadow font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
                             >
                               Close
                             </button>
