@@ -28,7 +28,12 @@ const ThemeToggler = () => {
 
   return (
     <div onClick={() => toggle()} className="flex items-center">
-      <button onClick={() => toggle()}>{icon}</button>
+      <button
+        aria-label="Toggle the site theme between light and dark"
+        onClick={() => toggle()}
+      >
+        {icon}
+      </button>
     </div>
   );
 };

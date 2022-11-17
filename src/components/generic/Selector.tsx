@@ -21,6 +21,7 @@ const Selector = ({ title, options, atom }: Props) => {
           {options.map((o) => (
             <Tab as={Fragment}>
               <button
+                aria-label={title}
                 key={o}
                 onClick={() => atom.set(o)}
                 className={clsx(
