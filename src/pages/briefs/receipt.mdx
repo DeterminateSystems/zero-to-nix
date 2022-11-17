@@ -1,0 +1,8 @@
+Harmonic differs from the [official Nix installer][official] in two important ways:
+
+1. It installs Nix with [flakes] and the `nix-command` feature already enabled rather than requiring users to enable those features.
+1. It stores a **receipt** for the install process in the [Nix store][store] at `/nix/receipt.json`. This receipt enables Harmonic to seamlessly uninstall Nix, whereas the official Nix installer doesn't provide any kind of offboarding path.
+
+[flakes]: /concepts/flakes
+[official]: https://nixos.org/download
+[store]: /nix/store

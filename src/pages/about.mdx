@@ -3,16 +3,31 @@ title: About Zero to Nix
 layout: ../layouts/Page.astro
 ---
 
-[**Zero to Nix**](/) is a learning resource for [Nix] created by [Determinate Systems][ds]. We created it for two reasons:
+import Receipt from "./briefs/receipt.mdx";
 
-1. We find the existing documentation for Nix and its ecosystem to be difficult to navigate for beginners. This includes sources like the [Nixpkgs manual][manual], the [official website][nix], and semi-official sources like [nix.dev].
-2. We strongly believe that [flakes] are the future of Nix and that people onboarding into Nix should learn how to use them from the get-go. But flakes are currently marked as as experimental feature of Nix and are thus not discussed in any of the official Nix documentation sources (with the exception of the [Wiki entry][wiki] for flakes).
+[**Zero to Nix**](/) is a highly opinionated learning resource for [Nix] created by [Determinate Systems][ds]. We created Zero to Nix for four reasons:
 
-These two reasons left us little choice but to proceed on our own outside of official channels.
+1. We find the existing documentation for Nix and its ecosystem to be difficult to navigate for beginners. This includes sources like the [Nixpkgs manual][manual], the [official website][nix], [Nix Pills][pills], and semi-official sources like [nix.dev]. These are all great sources of information *on their own*, but together they can be quite daunting to the uninitiated.
+1. We strongly believe that [flakes] are the future of Nix and that people onboarding into Nix should learn how to use them from the get-go. But flakes are currently marked as experimental feature of Nix and are thus not discussed in any of the official Nix documentation sources (with the exception of the [Wiki entry][wiki] for flakes).
 
+These things together left us little choice but to proceed on our own outside of official channels.
+
+## What's opinionated about Zero to Nix
+
+First, as mentioned above, Zero to Nix is opinionated because it advocates learning and using [flakes] and treating [channels] as deprecated. But Zero to Nix also deviates from official recommendations in that it recommends installing Nix using [Harmonic] rather than the [official Nix installer][install].
+
+<Receipt />
+
+There's nothing *wrong* with the official Nix installer and we don't dissuade you from using it. But we feel pretty strongly that Harmonic is more friendly to Nix newcomers.
+
+[channels]: /concepts/channels
 [ds]: /concepts/det-sys
 [flakes]: /concepts/flakes
+[harmonic]: /concepts/harmonic
+[install]: https://nixos.org/download
 [nix]: https://nixos.org
 [nix.dev]: https://nix.dev
+[pills]: https://nixos.org/guides/nix-pills
+[store]: /concepts/nix-store
 [wiki]: https://nixos.wiki/wiki/Flakes
 [manual]: https://nixos.org/manual/nixpkgs/stable

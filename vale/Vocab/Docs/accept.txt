@@ -6,4 +6,6 @@ linux
 nixlang
 nixos
 nixpkgs
+offboarding
+onboarding
 readMore
