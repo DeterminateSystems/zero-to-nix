@@ -52,6 +52,12 @@ export type RelatedProps = {
 };
 
 // Page layout props
+export type StandardProps = MarkdownLayoutProps<
+  HasTitle & {
+    description?: string;
+  }
+>;
+
 export type ConceptProps = MarkdownLayoutProps<
   HasTitle & {
     id: string;

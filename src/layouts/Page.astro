@@ -1,0 +1,21 @@
+---
+import Content from "../components/Content.astro";
+import Hero from "../components/Hero.astro";
+import Panel from "../components/Panel.astro";
+import type { StandardProps } from "../types";
+import Standard from "./Standard.astro";
+
+type Props = StandardProps;
+
+const { frontmatter: { title, description } } = Astro.props;
+---
+
+<Standard>
+  <Hero title={title} description={description} />
+
+  <Panel>
+    <Content>
+      <slot />
+    </Content>
+  </Panel>
+</Standard>

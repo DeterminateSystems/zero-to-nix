@@ -28,6 +28,10 @@ export const site: Site = {
       title: "Concepts",
       href: "/concepts",
     },
+    {
+      title: "About",
+      href: "/about",
+    },
   ],
   nixTerms: [
     {
