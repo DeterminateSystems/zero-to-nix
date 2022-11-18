@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/Step.astro
-title: Create a shell environment using Nix
+title: Create a development environment using Nix
 summary:
   [
     "Initialize a starter project in the language of your choice",
@@ -16,32 +16,28 @@ import Shell from "../../components/Shell";
 import Snippet from "../../components/Snippet";
 import SpecificLanguage from "../../components/SpecificLanguage";
 
-[Nix] enables you to create <Snippet id="shell-environments" show="shell environments" client:only />
-that are "sealed" from the rest of your system&mdash;they ignore directories like `/usr/bin` and
-only use packages available in the <Snippet id="nix-store" show="Nix store" client:only />. To get
-started, tell us which language you prefer:
+[Nix] enables you to create <Snippet id="shell-environments"
+show="shell environments" client:only /> that are "sealed" from the
+rest of your system&mdash;they ignore directories like `/usr/bin` and
+only use packages available in the <Snippet id="nix-store" show="Nix
+store" client:only />. To get started, tell us which language you
+prefer:
 
 <Languages client:only />
 
-To get started in your <Language client:only /> project, create an empty directory and initialize
-a <Snippet id="flake-templates" show="flake template" client:only /> for your
-preferred language:
+To get started in your <Language client:only /> project,
+create an empty directory and initialize a <Snippet id="flake-templates" show="flake template" client:only /> for your preferred language:
 
 <Shell client:only />
 
-Once the template has been initialized, run `ls .` to see the contents of the directory, which
-should include two important files:
+Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
 
 - The `flake.nix` file defines the <Snippet id="flakes" show="flake" client:only /> for your project.
-- The `flake.lock` <Snippet id="pinning" show="pins" client:only /> all of the
-  <Snippet id="flake-inputs" show="flake inputs" client:only />
-  &mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific
-  [Git revisions][rev].
+- The `flake.lock` <Snippet id="pinning" show="pins" client:only /> all of the <Snippet id="flake-inputs" show="flake inputs" client:only /> &mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
 
 ## Exploring the Nix shell for <Language client:only />
 
-One of the <Snippet id="flake-outputs" show="outputs" client:only /> of this Nix <Snippet id="flakes" show="flake" client:only />
-is a <Snippet id="shell-environments" show="shell environment" client:only /> for <Language client:only />.
+One of the <Snippet id="flake-outputs" show="outputs" client:only /> of this Nix <Snippet id="flakes" show="flake" client:only /> is a <Snippet id="shell-environments" show="shell environment" client:only /> for <Language client:only />.
 To enter that shell environment:
 
 ```shell
