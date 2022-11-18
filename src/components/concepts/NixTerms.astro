@@ -1,0 +1,51 @@
+---
+import NixOSIcon from "../../icons/NixOSIcon";
+import type { Term } from "../../types";
+import Content from "../Content.astro";
+import Grid2 from "../Grid2.astro";
+
+const terms: Term[] = [
+  {
+    title: "Nix",
+    description: "A build tool and package manager",
+    href: "/concepts/nix",
+  },
+  {
+    title: "Nix or Nixlang",
+    description: "A language used to do Nix-y things",
+    href: "/concepts/nixlang",
+  },
+  {
+    title: "NixOS",
+    description: "A Linux distribution built on Nix",
+    href: "/concepts/nixos",
+  },
+  {
+    title: "Nixpkgs",
+    description: "The biggest ball of Nix you ever did see",
+    href: "/concepts/nixpkgs",
+  },
+];
+---
+
+<div class="space-y-4">
+  <h2 class="text-3xl" id="key-terms">Core Nix terms</h2>
+
+  <Grid2>
+    {
+      terms.map((term: Term) => (
+        <a
+          href={term.href}
+          class="border-2 border-light-gray rounded-lg p-3 md:p-4 lg:p-5 hover:border-primary dark:border-gray dark:hover:border-primary"
+        >
+          <div class="space-y-2">
+            <p class="text-xl md:text-2xl lg:text-3xl">{term.title}</p>
+            <p class="text-dark-gray dark:text-light-gray">
+              {term.description}
+            </p>
+          </div>
+        </a>
+      ))
+    }
+  </Grid2>
+</div>

@@ -1,5 +1,6 @@
 ---
 import { site } from "../../site";
+import NixTerms from "../components/concepts/NixTerms.astro";
 import Grid3 from "../components/Grid3.astro";
 import Hero from "../components/Hero.astro";
 import HoverableLink from "../components/HoverableLink.astro";
@@ -12,9 +13,11 @@ const { title, description, navbarLinks } = site;
 <Standard>
   <Hero title={title} description={description} size="lg" />
 
-  <section>
+  <section class="space-y-16">
     <Grid3>
       {navbarLinks.map((link: NavLink) => <HoverableLink {...link} />)}
     </Grid3>
+
+    <NixTerms />
   </section>
 </Standard>

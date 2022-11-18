@@ -1,5 +1,11 @@
 import type { MarkdownLayoutProps } from "astro";
 
+export type Term = {
+  title: string;
+  description: string;
+  href: string;
+};
+
 export type NavLink = {
   title: string;
   href: string;

@@ -1,5 +1,3 @@
-// Source: https://simpleicons.org/?q=nixos
-// Modified by SVG OMG: https://jakearchibald.github.io/svgomg
 const NixOSIcon = () => {
   return (
     <svg
