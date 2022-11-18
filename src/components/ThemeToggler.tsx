@@ -21,9 +21,9 @@ const ThemeToggler = () => {
 
   const icon =
     $theme === "dark" ? (
-      <FaSun className="h-4 md:h-5 w-4 md:w-5 text-yellow hover:text-dark-yellow" />
+      <FaSun className="h-4 w-4 text-yellow hover:text-dark-yellow md:h-5 md:w-5" />
     ) : (
-      <FaMoon className="h-4 md:h-5 w-4 md:w-5 text-light-blue hover:text-blue" />
+      <FaMoon className="h-4 w-4 text-light-blue hover:text-blue md:h-5 md:w-5" />
     );
 
   return (

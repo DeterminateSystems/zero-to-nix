@@ -11,21 +11,33 @@ const size = initialSize ?? "normal";
 
 <section
   class:list={[
-    size === "normal" && "space-y-2 md:space-y-3 lg:space-y-4 py-10 md:py-12 lg:py-14",
-    size === "lg" && "space-y-3 md:space-y-4 lg:space-y-5 py-16 md:py-20 lg:py-24"
+    size === "normal" &&
+      "space-y-2 md:space-y-3 lg:space-y-4 py-10 md:py-12 lg:py-14",
+    size === "lg" &&
+      "space-y-3 md:space-y-4 lg:space-y-5 py-16 md:py-20 lg:py-24",
   ]}
 >
   <h1
     class:list={[
       "tracking-tight",
       size === "normal" && "text-4xl md:text-5xl lg:text-6xl",
-      size === "lg" && "text-5xl md:text-6xl lg:text-7xl"
+      size === "lg" && "text-5xl md:text-6xl lg:text-7xl",
     ]}
-  >{title}</h1>
-  {description && <h2 class:list={[
-    size === "normal" && "text-lg md:text-xl lg:text-2xl",
-    size === "lg" && "text-xl md:text-2xl lg:text-3xl"
-  ]}>{description}</h2>}
+  >
+    {title}
+  </h1>
+  {
+    description && (
+      <h2
+        class:list={[
+          size === "normal" && "text-lg md:text-xl lg:text-2xl",
+          size === "lg" && "text-xl md:text-2xl lg:text-3xl",
+        ]}
+      >
+        {description}
+      </h2>
+    )
+  }
   {
     breadcrumb && (
       <Breadcrumb
