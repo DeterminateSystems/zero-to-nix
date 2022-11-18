@@ -2,5 +2,8 @@ declarativity
 detsys
 ds
 href
+linux
+nixlang
+nixos
 nixpkgs
 readMore
