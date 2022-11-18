@@ -1,29 +1,8 @@
 ---
+import { site } from "../../../site";
 import type { Term } from "../../types";
 import Grid2 from "../Grid2.astro";
-
-const terms: Term[] = [
-  {
-    title: "Nix",
-    description: "A build tool and package manager",
-    href: "/concepts/nix",
-  },
-  {
-    title: "Nix or Nixlang",
-    description: "A language used to do Nix-y things",
-    href: "/concepts/nixlang",
-  },
-  {
-    title: "NixOS",
-    description: "A Linux distribution built on Nix",
-    href: "/concepts/nixos",
-  },
-  {
-    title: "Nixpkgs",
-    description: "The biggest ball of Nix you ever did see",
-    href: "/concepts/nixpkgs",
-  },
-];
+const { nixTerms } = site;
 ---
 
 <div class="space-y-4">
@@ -31,7 +10,7 @@ const terms: Term[] = [
 
   <Grid2>
     {
-      terms.map((term: Term) => (
+      nixTerms.map((term: Term) => (
         <a
           href={term.href}
           class="rounded-lg border-2 border-light-gray p-3 hover:border-primary dark:border-gray dark:hover:border-primary md:p-4 lg:p-5"

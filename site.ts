@@ -1,4 +1,4 @@
-import type { NavLink } from "./src/types";
+import type { NavLink, Term } from "./src/types";
 
 export type Site = {
   title: string;
@@ -8,6 +8,7 @@ export type Site = {
   systems: string[];
   languages: string[];
   navbarLinks: NavLink[];
+  nixTerms: Term[];
 };
 
 export const site: Site = {
@@ -26,6 +27,32 @@ export const site: Site = {
     {
       title: "Concepts",
       href: "/concepts",
+    },
+  ],
+  nixTerms: [
+    {
+      title: "Nix",
+      description:
+        "A build tool and package manager used to create declarative, reproducible software systems",
+      href: "/concepts/nix",
+    },
+    {
+      title: "Nix or Nixlang",
+      description:
+        "An expression language used to instruct Nix how to build packages and create environments.",
+      href: "/concepts/nixlang",
+    },
+    {
+      title: "NixOS",
+      description:
+        "A Linux distribution built on Nix and with its core principles in mind.",
+      href: "/concepts/nixos",
+    },
+    {
+      title: "Nixpkgs",
+      description:
+        "A vast collection of Nix packages and Nixlang libraries and helpers.",
+      href: "/concepts/nixpkgs",
     },
   ],
 };
