@@ -27,7 +27,7 @@ const Snippet = ({ id, show }: Props) => {
         {finalText}
       </button>
 
-      <div className="hidden not-prose">
+      <div className="not-prose hidden">
         <Transition appear show={open}>
           <Dialog
             as="div"
@@ -57,7 +57,7 @@ const Snippet = ({ id, show }: Props) => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white dark:bg-white p-6 text-left align-middle transition-all">
+                  <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle transition-all dark:bg-white">
                     <div>
                       <Dialog.Title
                         as="h3"
@@ -69,11 +69,11 @@ const Snippet = ({ id, show }: Props) => {
                         <div className="prose max-w-none">{text}</div>
                       </Dialog.Description>
                       <Tab.Group>
-                        <Tab.List className="text-right space-x-2">
+                        <Tab.List className="space-x-2 text-right">
                           <Tab>
                             <a
                               href={url}
-                              className="py-2 px-3 text-sm font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
+                              className="rounded-lg bg-soft-gray py-2 px-3 text-sm font-semibold hover:bg-primary hover:text-white dark:text-black dark:hover:text-white"
                             >
                               Read more
                             </a>
@@ -82,7 +82,7 @@ const Snippet = ({ id, show }: Props) => {
                             <button
                               aria-label="Close the currently open modal dialog"
                               onClick={() => setOpen(false)}
-                              className="py-2 px-3 text-sm font-semibold rounded-lg dark:text-black bg-soft-gray hover:bg-primary hover:text-white dark:hover:text-white"
+                              className="rounded-lg bg-soft-gray py-2 px-3 text-sm font-semibold hover:bg-primary hover:text-white dark:text-black dark:hover:text-white"
                             >
                               Close
                             </button>
