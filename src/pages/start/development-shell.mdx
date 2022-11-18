@@ -46,7 +46,19 @@ nix develop
 
 Now that we've entered the shell, we can do some exploring, starting with <Snippet id="nix-store" show="Nix store paths" client:only />.
 
+<SpecificLanguage lang="Python" client:only>
+Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`. Try running it in the Nix shell:
 
+```shell
+which python
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
+```
+</SpecificLanguage>
 <SpecificLanguage lang="Go" client:only>
 Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
 
