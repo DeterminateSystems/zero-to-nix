@@ -17,7 +17,7 @@ export const site: Site = {
   author: "Determinate Systems",
   languageCode: "en",
   systems: ["Linux", "macOS"],
-  languages: ["Go", "Rust"],
+  languages: ["JavaScript", "Go", "Rust"],
   navbarLinks: [
     {
       title: "Quick start",
