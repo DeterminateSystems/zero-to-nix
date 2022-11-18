@@ -2,7 +2,7 @@ import { useStore } from "@nanostores/react";
 import { useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-import { theme } from "../data/store";
+import { theme } from "../../data/store";
 
 const ThemeToggler = () => {
   const $theme = useStore(theme);

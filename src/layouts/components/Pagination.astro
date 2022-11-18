@@ -1,6 +1,6 @@
 ---
 const { order } = Astro.props;
-const steps = await Astro.glob("../pages/start/*.mdx");
+const steps = await Astro.glob("../../pages/start/*.mdx");
 const next = await steps.find((s) => s.frontmatter.order === order + 1);
 const previous = await steps.find((s) => s.frontmatter.order === order - 1);
 ---

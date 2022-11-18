@@ -31,11 +31,11 @@ export type Breadcrumb = {
 // Component props
 export type BreadcrumbProps = Breadcrumb & HasTitle;
 
-export type HeroProps = HasTitle &
-  HasDescription & {
-    size?: "normal" | "lg";
-    breadcrumb?: Breadcrumb;
-  };
+export type HeroProps = HasTitle & {
+  description?: string;
+  size?: "normal" | "lg";
+  breadcrumb?: Breadcrumb;
+};
 
 export type ReadMoreProps = {
   links: NavLink[];
