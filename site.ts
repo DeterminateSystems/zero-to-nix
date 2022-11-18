@@ -33,13 +33,13 @@ export const site: Site = {
     {
       title: "Nix",
       description:
-        "A build tool and package manager used to create declarative, reproducible software systems",
+        "A build tool and package manager used to create declarative, reproducible software systems.",
       href: "/concepts/nix",
     },
     {
-      title: "Nix or Nixlang",
+      title: "Nix language",
       description:
-        "An expression language used to instruct Nix how to build packages and create environments.",
+        "A for instructing Nix how to build packages and create environments and systems.",
       href: "/concepts/nixlang",
     },
     {
