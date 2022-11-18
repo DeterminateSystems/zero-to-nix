@@ -12,7 +12,7 @@ const { items } = Astro.props;
     <span>
       {
         items.map((item: string) => (
-          <p class="text-sm md:text-normal lg:text-lg space-x-3">
+          <p class="md:text-normal space-x-3 text-sm lg:text-lg">
             <>
               <span class="font-semibold">&RightArrow;</span>
               <span class="first-letter:text-bold">{item}</span>

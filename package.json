@@ -38,6 +38,7 @@
     "@fontsource/fira-mono": "^4.5.10",
     "@fontsource/rubik": "^4.5.11",
     "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.7.0"
+    "prettier-plugin-astro": "^0.7.0",
+    "prettier-plugin-tailwindcss": "^0.1.13"
   }
 }
