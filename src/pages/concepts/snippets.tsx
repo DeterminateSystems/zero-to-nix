@@ -78,12 +78,17 @@ export const snippets: Snippet[] = [
   {
     id: "nixlang",
     title: "Nixlang",
-    text: <>The language used to power Nix. You write Nixlang in <code>.nix</code> files.</>,
+    text: (
+      <>
+        The language used to power Nix. You write Nixlang in <code>.nix</code>{" "}
+        files.
+      </>
+    ),
   },
   {
     id: "nixos",
     title: "NixOS",
-    text: <>A Linux distribution built on top of Nix.</>
+    text: <>A Linux distribution built on top of Nix.</>,
   },
   {
     id: "nixpkgs",
