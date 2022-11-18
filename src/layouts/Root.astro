@@ -3,6 +3,7 @@ import { site } from "../../site";
 
 import "@fontsource/fira-mono";
 import "@fontsource/rubik";
+import ModeTransition from "../components/ModeTransition.astro";
 
 const root = Astro.site!;
 const canonical = new URL(Astro.url.pathname, root);
@@ -47,6 +48,8 @@ const { title, description, author, languageCode } = site;
     onload="showBody()"
     style="visibility: hidden;"
   >
-    <slot />
+    <ModeTransition>
+      <slot />
+    </ModeTransition>
   </body>
 </html>
