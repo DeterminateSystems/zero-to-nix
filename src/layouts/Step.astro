@@ -15,7 +15,7 @@ import Root from "./Root.astro";
 type Props = StepProps;
 
 const {
-  frontmatter: { title, summary, weight },
+  frontmatter: { title, summary, order },
 } = Astro.props;
 
 const { title: siteTitle } = site;
@@ -45,7 +45,7 @@ const { title: siteTitle } = site;
             </div>
 
             <div class="mt-16">
-              <Pagination weight={weight} />
+              <Pagination order={order} />
             </div>
           </Panel>
         </div>

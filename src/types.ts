@@ -24,7 +24,7 @@ type HasDescription = {
 };
 
 type Ordered = {
-  weight: number;
+  order: number;
 };
 
 export type Breadcrumb = {

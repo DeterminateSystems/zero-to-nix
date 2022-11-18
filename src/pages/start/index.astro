@@ -6,8 +6,8 @@ import Standard from "../../layouts/Standard.astro";
 
 const pages = await Astro.glob("./*.{md,mdx}");
 
-const sorted = pages.sort(
-  (p1, p2) => p1.frontmatter.weight - p2.frontmatter.weight
+const sortedByOrderParam = pages.sort(
+  (p1, p2) => p1.frontmatter.order - p2.frontmatter.order
 );
 
 const title = "Quick start";
@@ -19,9 +19,9 @@ const description = "Feel the power of Nix in no time";
 
   <Grid2>
     {
-      sorted.map((page) => (
+      sortedByOrderParam.map((page) => (
         <HoverableLink
-          title={`${page.frontmatter.weight}. ${page.frontmatter.title}`}
+          title={`${page.frontmatter.order}. ${page.frontmatter.title}`}
           href={page.url}
         />
       ))

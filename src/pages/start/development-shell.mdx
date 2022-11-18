@@ -7,7 +7,7 @@ summary:
     "Explore a Nix shell environment for your preferred language",
     "Run some commands inside the shell",
   ]
-weight: 2
+order: 3
 ---
 
 import Language from "../../components/Language";
@@ -46,7 +46,32 @@ nix develop
 
 Now that we've entered the shell, we can do some exploring, starting with <Snippet id="nix-store" show="Nix store paths" client:only />.
 
+<SpecificLanguage lang="JavaScript" client:only>
+Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`. Try running it in the Nix shell:
 
+```shell
+which node
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Python" client:only>
+Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`. Try running it in the Nix shell:
+
+```shell
+which python
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
+```
+</SpecificLanguage>
 <SpecificLanguage lang="Go" client:only>
 Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
 
@@ -82,6 +107,5 @@ Probably not what you expected! What happened here? A few things:
 - Nix built the packages specified under `buildInputs` and stored them in the
   <Snippet id="nix-store" show="Nix store" client:only /> under `/nix/store`.
 
-[cargo]: https://doc.rust-lang.org/cargo
 [nix]: https://nixos.org
 [rev]: https://git-scm.com/docs/revisions
