@@ -28,7 +28,7 @@ const Shell = () => {
           <span style={{ color: "#F8F8F2" }}>nix flake init --template </span>
           <span style={{ color: "#E9F284" }}>"</span>
           <span style={{ color: "#F1FA8C" }}>
-            github:DeterminateSystems/templates#{lang}
+            github:DeterminateSystems/zero-to-nix#{lang}
           </span>
           <span style={{ color: "#E9F284" }}>"</span>
         </span>
