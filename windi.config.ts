@@ -31,6 +31,9 @@ export default defineConfig({
         rose: colors.rose[500],
         orange: colors.orange[500],
       },
+      transitionProperty: {
+        "bg-color": "background-color",
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -52,5 +55,9 @@ export default defineConfig({
       },
     },
   },
-  plugins: [typography({})],
+  plugins: [
+    typography({
+      dark: true,
+    }),
+  ],
 });
