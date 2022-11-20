@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
-
-const props = defineProps<{
+const breadcrumbProps = defineProps<{
   breadcrumb?: {
     back: {
       title: string;
@@ -11,7 +9,7 @@ const props = defineProps<{
   };
 }>();
 
-const { breadcrumb } = props;
+const { breadcrumb } = breadcrumbProps;
 </script>
 
 <template>

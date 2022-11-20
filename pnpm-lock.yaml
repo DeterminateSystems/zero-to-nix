@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@fontsource/fira-mono': ^4.5.10
   '@fontsource/rubik': ^4.5.11
+  '@headlessui/vue': ^1.7.4
   '@iconify-json/fa': ^1.1.2
   '@iconify-json/fa-solid': ^1.1.2
   '@islands/headings': ^0.8.1
@@ -23,6 +24,7 @@ specifiers:
 devDependencies:
   '@fontsource/fira-mono': 4.5.10
   '@fontsource/rubik': 4.5.11
+  '@headlessui/vue': 1.7.4_vue@3.2.45
   '@iconify-json/fa': 1.1.2
   '@iconify-json/fa-solid': 1.1.2
   '@islands/headings': 0.8.1
@@ -110,6 +112,15 @@ packages:
 
   /@fontsource/rubik/4.5.11:
     resolution: {integrity: sha512-m0/4GKOqJjF9cB4wuLgDhRdRVt35WzqI5n7SgddRjRD+yzsO0eEq/ak0ezgfbR3+f91ydDCek1+RuOVB8dNYwg==}
+    dev: true
+
+  /@headlessui/vue/1.7.4_vue@3.2.45:
+    resolution: {integrity: sha512-QHRlKCK/zRpjSjhth7c2CZvx5eMDFflXauqRdRJgp1CwScx6PwCpWiwDsjQcYM4z8Yik2ZvyX8W4PFT2Wsqqyw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: 3.2.45
     dev: true
 
   /@iconify-json/fa-solid/1.1.2:

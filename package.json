@@ -13,6 +13,7 @@
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
     "@fontsource/rubik": "^4.5.11",
+    "@headlessui/vue": "^1.7.4",
     "@iconify-json/fa": "^1.1.2",
     "@iconify-json/fa-solid": "^1.1.2",
     "@islands/headings": "^0.8.1",

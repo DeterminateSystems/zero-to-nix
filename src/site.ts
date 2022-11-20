@@ -15,6 +15,8 @@ export type Site = {
   languageCode: string;
   navbarLinks: NavLink[];
   year: number;
+  systems: string[];
+  languages: string[];
   nixTerms: Term[];
 };
 
@@ -28,6 +30,9 @@ const site: Site = {
     { text: "Concepts", href: "/concepts" },
   ],
   year: new Date().getFullYear(),
+
+  systems: ["Linux", "macOS"],
+  languages: ["JavaScript", "Python", "Go", "Rust"],
 
   // Nix stuff
   nixTerms: [

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 
-const props = defineProps<{
+const linkProps = defineProps<{
   text: string;
   href: string;
   size?: "normal" | "sm";
 }>();
 
-const { text, href, size = "normal" } = props;
+const { text, href, size = "normal" } = linkProps;
 const normal = size === "normal";
 const small = size === "sm";
 </script>

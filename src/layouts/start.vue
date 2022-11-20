@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { usePage } from "iles";
 const {
-  frontmatter: { title, description },
+  frontmatter: { title, description, summary, order },
 } = usePage<{
   title: string;
   description?: string;
+  summary: string[];
+  order: number;
 }>();
 </script>
 
@@ -20,11 +22,22 @@ const {
             back: { title: 'Quick start', href: '/start' },
             title,
           }"
+          :size="normal"
         />
 
-        <Content>
-          <slot />
-        </Content>
+        <Panel>
+          <div class="space-y-6">
+            <Summary :items="summary" />
+
+            <Content>
+              <slot />
+            </Content>
+          </div>
+
+          <div class="mt-16">
+            <Pagination :order="order" />
+          </div>
+        </Panel>
       </HorizontalContainer>
     </Top>
 

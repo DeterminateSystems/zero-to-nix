@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
-
-const props = defineProps<{
+const heroProps = defineProps<{
   title: string;
   description?: string;
   size?: "normal" | "lg";
@@ -14,9 +12,9 @@ const props = defineProps<{
   };
 }>();
 
-const { title, description, size = "normal" } = props;
-const normal = size === "normal";
-const large = size === "lg";
+const { size: heroSize = "normal" } = heroProps;
+const normal = heroSize === "normal";
+const large = heroSize === "lg";
 </script>
 
 <template>

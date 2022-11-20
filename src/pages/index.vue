@@ -1,7 +1,3 @@
-<script setup>
-const size = "lg";
-</script>
-
 <template>
   <HorizontalContainer>
     <Hero :title="$site.title" :description="$site.description" :size="size" />
@@ -13,7 +9,7 @@ const size = "lg";
           :key="link.text"
           :text="link.text"
           :href="link.href"
-          :size="lg"
+          :size="'normal'"
         />
       </Grid3>
 
