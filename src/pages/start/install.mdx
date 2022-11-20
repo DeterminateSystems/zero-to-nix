@@ -1,64 +1,11 @@
 ---
-layout: ../../layouts/Step.astro
 title: Install Nix
-summary:
-  [
-    "Verify that Nix can be installed on your system",
-    "Get Nix running on your Linux or macOS system",
-    "Verify that your installed Nix is working as expected",
-  ]
-order: 1
 ---
 
-import Harmonic from "../../components/Harmonic";
-import Snippet from "../../components/Snippet";
-import Systems from "../../components/Systems";
+Some code:
 
-**Welcome!** . It's great to see that you're interested in [Nix]!
-This guide explains how to install Nix on your system, followed by a short examples of running a program with Nix.
-Let’s get right into it…
-
-<Systems client:only />
-
-First, download our Nix installer <Snippet id="harmonic" show="Harmonic" client:only="react" />.
-This is not yet the official installer for Nix/ NixOS, however this will probably change in the future.
-
-```shell
-$ curl https://harmonic.dev | sh
+```nix
+{
+  description = "My special flake";
+}
 ```
-
-Harmonic follows different steps based on the *build plan* you select.
-
-Currently there are only two: `linux-multi` (for 64-bit Linux systems) and `darwin-multi` (for 64-bit Intel and ARM macOS systems).
-The `-multi` refers to the type of installation being performed (meaning [“multi-user”]).
-
-If this seems confusing, don’t worry about it too much for now.
-We will go into the technical side of what a Nix installation entails in the **Concepts** section of this guide.
-
-Once Harmonic has finished you should verify the installation by running:
-
-```bash
-$ nix --help
-```
-
-This should print the help output of the *nix* command.
-
-Alternatively you can run this command to get a friendly message appear in your terminal 🙂:
-
-```
-$ echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
-___________
-< Hello Nix >
- -----------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-```
-
-Read on to the next section to learn what this last command just did!
-
-[nix]: https://nixos.org
-[detsys]: https://determinate.systems
-[“multi-user”]: https://nixos.org/manual/nix/stable/installation/multi-user.html

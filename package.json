@@ -4,41 +4,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "start": "astro start",
-    "preview": "astro preview",
-    "format": "prettier --write **/*.{astro,cjs,mjs,ts,tsx}"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^0.11.6",
-    "@astrojs/react": "^1.2.2",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^2.1.2",
-    "@headlessui/react": "^1.7.4",
-    "@nanostores/persistent": "^0.7.0",
-    "@nanostores/react": "^0.4.0",
-    "@tailwindcss/typography": "^0.5.8",
-    "@types/node": "18.11.9",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "astro": "^1.6.7",
-    "clsx": "^1.2.1",
-    "eslint": "8.27.0",
-    "highlight.js": "^11.6.0",
-    "nanostores": "^0.7.0",
-    "postcss": "^8.4.18",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-icons": "^4.6.0",
-    "shiki": "^0.11.1",
-    "tailwindcss": "^3.0.24"
+    "dev": "iles dev --open --port 3000",
+    "build": "iles build",
+    "preview": "iles preview --open --port 3000",
+    "format": "prettier --write **/*.{cjs,ts,vue}"
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
     "@fontsource/rubik": "^4.5.11",
+    "@islands/headings": "^0.8.1",
+    "@islands/prism": "^0.8.0",
+    "@nanostores/persistent": "^0.7.0",
+    "@nanostores/vue": "^0.6.1",
+    "iles": "^0.8.7",
+    "nanostores": "^0.7.0",
     "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.7.0",
-    "prettier-plugin-tailwindcss": "^0.1.13"
+    "prettier-plugin-windicss": "^1.0.0",
+    "rehype-external-links": "^2.0.1",
+    "vite-plugin-windicss": "^1.8.8",
+    "windicss": "^3.5.6"
   }
 }

@@ -1,8 +1,20 @@
 {
-  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "importsNotUsedAsValues": "error",
-    "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "baseUrl": "./",
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "skipLibCheck": true
   }
 }
