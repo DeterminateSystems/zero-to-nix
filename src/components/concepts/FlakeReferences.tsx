@@ -1,7 +1,5 @@
 import type React from "react";
 
-import { Code } from "./Shared";
-
 type Prefix = {
   name: string;
   description: React.ReactNode;
@@ -80,9 +78,9 @@ type Wrapper = {
   children: React.ReactNode;
 };
 
-const ConceptPanel = ({ children }: Wrapper) => {
+export const ConceptPanel = ({ children }: Wrapper) => {
   return (
-    <div className="not-prose rounded-lg border-2 border-light-gray bg-pale py-3 px-5 dark:border-gray dark:bg-black">
+    <div className="not-prose overflow-auto rounded-lg border-2 border-light-gray bg-pale py-3 px-5 dark:border-gray dark:bg-black">
       {children}
     </div>
   );
@@ -91,42 +89,48 @@ const ConceptPanel = ({ children }: Wrapper) => {
 export const FlakeURLs = () => {
   return (
     <ConceptPanel>
-      <div className="space-y-4">
-        <pre className="flex overflow-auto text-3xl">
-          <span className="text-blue dark:text-orange">prefix</span>
-          <span>:</span>
-          <span className="text-rose dark:text-cerulean">path</span>
-        </pre>
+      <div className="space-y-1 md:space-y-1.5 lg:space-y-2">
+        <span className="text-xs sm:text-sm lg:text-base">
+          Flake URL structure
+        </span>
 
-        <div>
-          <p>Prefixes</p>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {prefixes.map((prefix: Prefix) => (
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <code className="text-xl font-bold tracking-tight text-blue dark:text-orange">
-                    {prefix.name}
-                  </code>
-                  <p className="text-base">{prefix.description}</p>
-                </div>
-                <div className="space-y-1.5">
-                  <p className="text-base">Examples</p>
-                  <div className="flex flex-col space-y-0.5">
-                    {prefix.examples.map((e: string) => (
-                      <code className="text-sm">
-                        <span className="text-blue dark:text-orange">
-                          {prefix.name}
-                        </span>
-                        :
-                        <span className="text-rose dark:text-cerulean">
-                          {e}
-                        </span>
-                      </code>
-                    ))}
+        <div className="space-y-4">
+          <pre className="flex overflow-auto text-3xl">
+            <span className="text-blue dark:text-orange">prefix</span>
+            <span>:</span>
+            <span className="text-rose dark:text-cerulean">path</span>
+          </pre>
+
+          <div>
+            <p>Prefixes</p>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {prefixes.map((prefix: Prefix) => (
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <code className="text-xl font-bold tracking-tight text-blue dark:text-orange">
+                      {prefix.name}
+                    </code>
+                    <p className="text-base">{prefix.description}</p>
+                  </div>
+                  <div className="space-y-1.5">
+                    <p className="text-base">Examples</p>
+                    <div className="flex flex-col space-y-0.5">
+                      {prefix.examples.map((e: string) => (
+                        <code className="text-sm">
+                          <span className="text-blue dark:text-orange">
+                            {prefix.name}
+                          </span>
+                          :
+                          <span className="text-rose dark:text-cerulean">
+                            {e}
+                          </span>
+                        </code>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

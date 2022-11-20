@@ -4,11 +4,19 @@ related: ["flake-inputs", "flake-outputs", "flake-templates"]
 layout: ../../layouts/Concept.astro
 ---
 
-import { FlakeURLs, SpecialCases } from "../../components/concepts/FlakeReferences";
+import FlakeFileStructure from "../../components/concepts/FlakeFileStructure";
+import {
+  FlakeURLs,
+  SpecialCases,
+} from "../../components/concepts/FlakeReferences";
 
 Nix **flakes** are a way of organizing and referring to Nix code that's pretty awesome. We think they're better than [channels](/concepts/channels).
 
 Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/nixpkgs), and provide [flake outputs](/concepts/flake-outputs) that other flakes can consume.
+
+## The structure of `flake.nix`
+
+<FlakeFileStructure client:only />
 
 ## Flake references
 
