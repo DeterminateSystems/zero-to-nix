@@ -7,21 +7,27 @@
     "dev": "iles dev --open --port 3000",
     "build": "iles build",
     "preview": "iles preview --open --port 3000",
-    "format": "prettier --write **/*.{cjs,ts,vue}"
+    "format": "prettier --write **/*.{cjs,ts,vue}",
+    "typecheck": "vue-tsc --noEmit"
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
     "@fontsource/rubik": "^4.5.11",
+    "@iconify-json/fa": "^1.1.2",
+    "@iconify-json/fa-solid": "^1.1.2",
     "@islands/headings": "^0.8.1",
+    "@islands/icons": "^0.8.0",
     "@islands/prism": "^0.8.0",
     "@nanostores/persistent": "^0.7.0",
     "@nanostores/vue": "^0.6.1",
+    "@vueuse/core": "^9.5.0",
     "iles": "^0.8.7",
     "nanostores": "^0.7.0",
     "prettier": "^2.7.1",
     "prettier-plugin-windicss": "^1.0.0",
     "rehype-external-links": "^2.0.1",
     "vite-plugin-windicss": "^1.8.8",
+    "vue-tsc": "^1.0.9",
     "windicss": "^3.5.6"
   }
 }

@@ -8,7 +8,7 @@ const { languageCode } = site;
 
 export default defineApp({
   head: {
-    bodyAttrs: { class: "bg-white font-sans antialiased dark:bg-black" },
+    bodyAttrs: { class: "font-sans antialiased" },
     htmlAttrs: {
       lang: languageCode,
     },

@@ -1,4 +1,5 @@
 import headings from "@islands/headings";
+import icons from "@islands/icons";
 import prism from "@islands/prism";
 import { RawPageMatter, defineConfig } from "iles";
 import windicss from "vite-plugin-windicss";
@@ -14,8 +15,9 @@ export default defineConfig({
   markdown: {
     rehypePlugins: ["rehype-external-links"],
   },
-  modules: [headings(), prism()],
+  modules: [headings(), icons(), prism()],
   prettyUrls: true,
+  ssg: {},
   vite: {
     plugins: [windicss()],
   },

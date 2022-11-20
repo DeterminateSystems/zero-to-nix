@@ -8,11 +8,19 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BaseLayout: typeof import('./src/layouts/base.vue')['default']
+    Breadcrumb: typeof import('./src/components/Breadcrumb.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
+    Hero: typeof import('./src/components/Hero.vue')['default']
+    HorizontalContainer: typeof import('./src/components/HorizontalContainer.vue')['default']
+    IconAppNix: typeof import('~icons/app/nix')['default']
+    IconFaSolidMoon: typeof import('~icons/fa-solid/moon')['default']
+    IconFaSolidSun: typeof import('~icons/fa-solid/sun')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
+    NixLogo: typeof import('./src/components/NixLogo.vue')['default']
     Page: typeof import('./src/components/Page.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SunIcon: typeof import('./src/components/SunIcon.vue')['default']
     Top: typeof import('./src/components/Top.vue')['default']
   }
 }
