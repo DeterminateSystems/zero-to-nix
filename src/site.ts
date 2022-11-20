@@ -8,6 +8,7 @@ export type Site = {
   description: string;
   languageCode: string;
   navbarLinks: NavLink[];
+  year: number;
 };
 
 const site: Site = {
@@ -19,6 +20,7 @@ const site: Site = {
     { text: "Quick start", href: "/start" },
     { text: "Concepts", href: "/concepts" },
   ],
+  year: new Date().getFullYear(),
 };
 
 export default site;
