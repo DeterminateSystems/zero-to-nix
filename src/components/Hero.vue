@@ -14,11 +14,9 @@ const props = defineProps<{
   };
 }>();
 
-const { title, description, size } = props;
-
-const finalSize = size ?? "normal";
-const normal = finalSize === "normal";
-const large = finalSize === "lg";
+const { title, description, size = "normal" } = props;
+const normal = size === "normal";
+const large = size === "lg";
 </script>
 
 <template>
