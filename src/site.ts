@@ -46,7 +46,7 @@ const site: Site = {
       title: "Nix language",
       description:
         "A for instructing Nix how to build packages and create environments and systems.",
-      href: "/concepts/nixlang",
+      href: "/concepts/nix-language",
     },
     {
       title: "NixOS",
@@ -56,8 +56,7 @@ const site: Site = {
     },
     {
       title: "Nixpkgs",
-      description:
-        "A vast collection of Nix packages and Nixlang libraries and helpers.",
+      description: "A vast collection of Nix packages, libraries, and helpers.",
       href: "/concepts/nixpkgs",
     },
   ],

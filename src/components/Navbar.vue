@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { isDark, toggleTheme } from "~/logic/theme";
 const {
   route: { path },
 } = usePage();
@@ -27,25 +26,14 @@ const {
               :href="link.href"
               class="text-normal md:text-lg lg:text-xl hover:text-blue dark:hover:text-light-blue"
               :class="{
-                'font-bold': path.startsWith(link.href),
+                'font-semibold': path.startsWith(link.href),
                 'font-normal': !path.startsWith(link.href),
               }"
               >{{ link.text }}</a
             >
           </li>
           <li class="flex items-center">
-            <IconFaSolidSun
-              v-bind="$attrs"
-              v-if="isDark"
-              @click="toggleTheme()"
-              class="h-4 text-yellow w-4 md:h-5 md:w-5 hover:text-dark-yellow"
-            />
-            <IconFaSolidMoon
-              v-bind="$attrs"
-              v-if="!isDark"
-              @click="toggleTheme()"
-              class="h-4 text-light-blue w-4 md:h-5 md:w-5 hover:text-blue"
-            />
+            <ThemeSwitcher client:load />
           </li>
         </ul>
       </div>

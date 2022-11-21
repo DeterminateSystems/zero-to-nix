@@ -39,6 +39,7 @@ declare module '@vue/runtime-core' {
     Summary: typeof import('./src/components/Summary.vue')['default']
     SunIcon: typeof import('./src/components/SunIcon.vue')['default']
     Systems: typeof import('./src/components/Systems.vue')['default']
+    ThemeSwitcher: typeof import('./src/components/ThemeSwitcher.vue')['default']
     Top: typeof import('./src/components/Top.vue')['default']
   }
 }

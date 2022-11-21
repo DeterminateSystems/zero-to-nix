@@ -1,4 +1,3 @@
-import initializeTheme from "~/logic/initialize-theme?raw";
 import site from "~/site";
 import { defineApp } from "iles";
 
@@ -10,6 +9,5 @@ export default defineApp({
     htmlAttrs: {
       lang: languageCode,
     },
-    script: [{ children: initializeTheme, once: true }],
   },
 });
