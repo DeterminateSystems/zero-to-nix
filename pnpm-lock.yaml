@@ -12,6 +12,7 @@ specifiers:
   '@nanostores/persistent': ^0.7.0
   '@nanostores/vue': ^0.6.1
   '@tailwindcss/typography': ^0.5.8
+  '@types/node': ^18.11.9
   '@vueuse/core': ^9.5.0
   autoprefixer: ^10.4.13
   iles: ^0.8.7
@@ -37,9 +38,10 @@ devDependencies:
   '@nanostores/persistent': 0.7.0_nanostores@0.7.0
   '@nanostores/vue': 0.6.1_zzt5tcdxgl3jsilh3f4jgfjwue
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
+  '@types/node': 18.11.9
   '@vueuse/core': 9.5.0_vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.19
-  iles: 0.8.7
+  iles: 0.8.7_@types+node@18.11.9
   nanostores: 0.7.0
   postcss: 8.4.19
   prettier: 2.7.1
@@ -378,6 +380,10 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
+  /@types/node/18.11.9:
+    resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+    dev: true
+
   /@types/throttle-debounce/2.1.0:
     resolution: {integrity: sha512-5eQEtSCoESnh2FsiLTxE121IiE60hnMqcb435fShf4bpLRjEu1Eoekht23y6zXS9Ts3l+Szu3TARnTsA0GkOkQ==}
     dev: true
@@ -397,7 +403,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.3
+      vite: 3.2.3_@types+node@18.11.9
       vue: 3.2.45
     dev: true
 
@@ -1583,7 +1589,7 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /iles/0.8.7:
+  /iles/0.8.7_@types+node@18.11.9:
     resolution: {integrity: sha512-tAP9/VGU5ASt+fL21GaXQUwufHckjNAGLcaoiL27+HKwreqOl2G5oc6wVsJhgeZooyHGR33Wf//23Yp/ebHHUQ==}
     engines: {node: ^14.18 || >= 16.0.0}
     hasBin: true
@@ -1610,7 +1616,7 @@ packages:
       picocolors: 1.0.0
       unist-util-visit: 4.1.1
       unplugin-vue-components: 0.21.2_vite@3.2.3+vue@3.2.45
-      vite: 3.2.3
+      vite: 3.2.3_@types+node@18.11.9
       vue: 3.2.45
       vue-router: 4.1.6_vue@3.2.45
     transitivePeerDependencies:
@@ -2996,7 +3002,7 @@ packages:
     dependencies:
       acorn: 8.8.1
       chokidar: 3.5.3
-      vite: 3.2.3
+      vite: 3.2.3_@types+node@18.11.9
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.4.6
     dev: true
@@ -3082,7 +3088,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/3.2.3:
+  /vite/3.2.3_@types+node@18.11.9:
     resolution: {integrity: sha512-h8jl1TZ76eGs3o2dIBSsvXDLb1m/Ec1iej8ZMdz+PsaFUsftZeWe2CZOI3qogEsMNaywc17gu0q6cQDzh/weCQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3107,6 +3113,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 18.11.9
       esbuild: 0.15.13
       postcss: 8.4.19
       resolve: 1.22.1

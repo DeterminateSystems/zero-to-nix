@@ -27,9 +27,6 @@ module.exports = {
         orange: "#F97316", // orange-500
         primary: "rgb(80, 116, 191)", // Determinate Systems light purple
       },
-      transitionProperty: {
-        mode: "background-color, color",
-      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {

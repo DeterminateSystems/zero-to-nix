@@ -1,17 +1,13 @@
 <script setup lang="ts">
-type HasTitle = {
-  title: string;
-};
-
-const conceptPages = useDocuments<HasTitle>("~/pages/concepts");
-
-const conceptsTitle = "Nix concepts";
-const conceptsDescription = "The whys and the hows of Nix";
+import { conceptPages } from "../../logic/content";
 </script>
 
 <template>
   <HorizontalContainer>
-    <Hero :title="conceptsTitle" :description="conceptsDescription" />
+    <Hero
+      :title="'Nix concepts'"
+      :description="'The whys and the hows of Nix'"
+    />
 
     <Grid3>
       <HoverableLink

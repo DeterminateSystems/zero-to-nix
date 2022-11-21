@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { Doc } from "../types";
+import { Document } from "iles";
+import { getPrevious, getNext, QuickStartPage } from "../logic/content";
 
 const { order } = defineProps<{
   order: number;
 }>();
 
-type Ordered = {
-  order: number;
-};
-
-const pages = useDocuments<Ordered>("~/pages/start").value;
-const next = pages.find((p) => p.frontmatter.order === order + 1);
-const previous = pages.find((p) => p.frontmatter.order === order - 1);
+const previous: Document<QuickStartPage> | undefined = getPrevious(order);
+const next: Document<QuickStartPage> | undefined = getNext(order);
 </script>
 
 <template>
