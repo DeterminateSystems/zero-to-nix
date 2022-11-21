@@ -2,13 +2,13 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{ts,vue}"],
   darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
         mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
-        sans: ["Rubik", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         // https://tailwindcss.com/docs/customizing-colors
@@ -26,6 +26,9 @@ module.exports = {
         rose: "#F43F5E", // rose-500
         orange: "#F97316", // orange-500
         primary: "rgb(80, 116, 191)", // Determinate Systems light purple
+      },
+      transitionProperty: {
+        mode: "background-color, color",
       },
       typography: ({ theme }) => ({
         DEFAULT: {

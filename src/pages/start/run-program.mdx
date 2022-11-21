@@ -1,0 +1,35 @@
+---
+layout: ../../layouts/Step.astro
+title: Run an executable using Nix
+summary:
+  [
+    "Learn about Nix flakes and packages",
+    "Download and run a program from Nixpkgs",
+  ]
+order: 2
+---
+
+Hi there! In the last section we covered a basic Nix installation with **Harmonic**.
+At this point in the guide you should be able to run this command to get a friendly message in your terminal:
+
+```shell
+echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
+```
+
+This guide expands on the idea of running programs with Nix,
+and introduces you to some concepts such as **packages** and **flakes**.
+Let's go!
+
+Every program in Nix is contained by a package (also sometimes called **Derivations**).
+A package can contain different **outputs** around the same program (for example `ffmpeg` and `ffprobe` are both provided in the `ffmpeg` package).
+
+A flake is a collection of Nix packages. You can think of a flake as an index of what packages are available to you.
+**Nixpkgs** is the main and official NixOS package collection with over 80,000 packages!
+But many other flakes exist, for example **foo** and **bar**.
+
+To break down the command above:
+
+- `echo "Hello Nix" |` — prints the string “Hello Nix” and pipes it to the next application in the chain
+- `nix run` — this command will run a single program from a provided flake
+- `github:nixos/nixpkgs` — this is the flakes URL for **nixpgs**, the official NixOS package repository.
+- `#cowsay` — select the **cowsay** output of the provided flake. The `#` syntax is used to separate the flake URL from the package output

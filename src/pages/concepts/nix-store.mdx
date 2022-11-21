@@ -1,10 +1,7 @@
 ---
 title: The Nix store
 related: ["derivation"]
-layout: ../../layouts/Concept.astro
 ---
-
-import NixStorePath from "../../components/concepts/NixStorePath";
 
 The **Nix store** is a storage system in your filesystem with its root at `/nix/store` by default. Nix stores several things in the Nix store:
 
@@ -22,6 +19,6 @@ Let's break store paths down into their constituent elements:
 
 Some important things to note about store paths in Nix:
 
-* The root path at `/nix/store` doesn't conflict with other standard system paths like `/usr/bin`.
-* The hash ensures that two packages with the same name have completely different paths if the inputs to the package differ *at all*. If you were to change one letter in one file in the inputs to `my-package-1.0`, for example, you may end up with a store path like `/nix/store/1aq3wchnvv7yn0d6y1r3j129hjqmv2k3-my-package-1.0`.
-* Package names are fundamentally arbitrary. You can provide whatever naming conventions you wish. If you don't want your packages to have a concept of version, you can name them `my-package` and distinguish based on the input hash.
+- The root path at `/nix/store` doesn't conflict with other standard system paths like `/usr/bin`.
+- The hash ensures that two packages with the same name have completely different paths if the inputs to the package differ *at all*. If you were to change one letter in one file in the inputs to `my-package-1.0`, for example, you may end up with a store path like `/nix/store/1aq3wchnvv7yn0d6y1r3j129hjqmv2k3-my-package-1.0`.
+- Package names are fundamentally arbitrary. You can provide whatever naming conventions you wish. If you don't want your packages to have a concept of version, you can name them `my-package` and distinguish based on the input hash.

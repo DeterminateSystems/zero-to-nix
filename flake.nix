@@ -12,89 +12,117 @@
     , nixpkgs
     }:
 
-    let
-      overlays = [
-        (self: super: {
-          nodejs = super.nodejs-18_x;
-          pnpm = super.nodePackages.pnpm;
-          alex = super.nodePackages.alex;
-        })
-      ];
-    in
-    flake-utils.lib.eachDefaultSystem (system:
-    let
-      pkgs = import nixpkgs { inherit overlays system; };
-
-      common = with pkgs; [ vale alex htmltest nodejs pnpm python38 ];
-
-      scripts = with pkgs; [
-        (writeScriptBin "clean" ''
-          rm -rf dist
-        '')
-
-        (writeScriptBin "setup" ''
-          clean
-          pnpm install
-        '')
-
-        (writeScriptBin "build" ''
-          setup
-          pnpm run build
-        '')
-
-        (writeScriptBin "dev" ''
-          setup
-          pnpm run dev
-        '')
-
-        (writeScriptBin "format" ''
-          setup
-          pnpm run format
-        '')
-
-        (writeScriptBin "preview" ''
-          build
-          python3 -m http.server -d dist 3000
-        '')
-
-        (writeScriptBin "check-internal-links" ''
-          htmltest --conf ./.htmltest.internal.yml
-        '')
-
-        (writeScriptBin "check-external-links" ''
-          htmltest --conf ./.htmltest.external.yml
-        '')
-
-        (writeScriptBin "lint-style" ''
-          vale src/pages
-        '')
-
-        (writeScriptBin "check-sensitivity" ''
-          alex --quiet src/pages
-        '')
-
-        (writeScriptBin "checks" ''
-          check-internal-links
-          lint-style
-          check-sensitivity
-        '')
-      ];
-
-      runLocal = pkgs.writeScriptBin "run-local" ''
-        rm -rf dist
-        pnpm install
-        pnpm run build
-        python3 -m http.server -d dist 3000
-      '';
-    in
     {
-      devShells.default = pkgs.mkShell
-        {
-          buildInputs = common ++ scripts;
+      templates = {
+        go = {
+          path = ./nix/templates/go;
+          description = "Go starter template for Zero to Nix";
         };
 
-      apps.default = flake-utils.lib.mkApp {
-        drv = runLocal;
+        javascript = {
+          path = ./nix/templates/javascript;
+          description = "JavaScript starter template for Zero to Nix";
+        };
+
+        python = {
+          path = ./nix/templates/python;
+          description = "Python starter template for Zero to Nix";
+        };
+
+        rust = {
+          path = ./nix/templates/rust;
+          description = "Rust starter template for Zero to Nix";
+        };
       };
-    });
+    }
+
+    //
+
+    (
+      let
+        overlays = [
+          (self: super: {
+            nodejs = super.nodejs-18_x;
+            pnpm = super.nodePackages.pnpm;
+            alex = super.nodePackages.alex;
+          })
+        ];
+      in
+      flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit overlays system; };
+
+        common = with pkgs; [ vale alex htmltest nodejs pnpm python38 ];
+
+        scripts = with pkgs; [
+          (writeScriptBin "clean" ''
+            rm -rf dist
+          '')
+
+          (writeScriptBin "setup" ''
+            clean
+            pnpm install
+          '')
+
+          (writeScriptBin "build" ''
+            setup
+            pnpm run build
+          '')
+
+          (writeScriptBin "dev" ''
+            setup
+            pnpm run dev
+          '')
+
+          (writeScriptBin "format" ''
+            setup
+            pnpm run format
+          '')
+
+          (writeScriptBin "preview" ''
+            build
+            python3 -m http.server -d dist 3000
+          '')
+
+          (writeScriptBin "check-internal-links" ''
+            htmltest --conf ./.htmltest.internal.yml
+          '')
+
+          (writeScriptBin "check-external-links" ''
+            htmltest --conf ./.htmltest.external.yml
+          '')
+
+          (writeScriptBin "lint-style" ''
+            vale src/pages
+          '')
+
+          (writeScriptBin "check-sensitivity" ''
+            alex --quiet src/pages
+          '')
+
+          (writeScriptBin "checks" ''
+            check-internal-links
+            lint-style
+            check-sensitivity
+          '')
+        ];
+
+        runLocal = pkgs.writeScriptBin "run-local" ''
+          rm -rf dist
+          pnpm install
+          pnpm run build
+          python3 -m http.server -d dist 3000
+        '';
+      in
+      {
+        devShells.default = pkgs.mkShell
+          {
+            buildInputs = common ++ scripts;
+          };
+
+        apps.default = flake-utils.lib.mkApp {
+          drv = runLocal;
+        };
+      })
+    );
 }
