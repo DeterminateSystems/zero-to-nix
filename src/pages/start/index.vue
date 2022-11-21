@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { sortedQuickStartPages } from "../../content";
-
-const title = "Quick start";
-const description = "Feel the power of Nix in no time";
+import { sortedQuickStartPages } from "../../logic/content";
 </script>
 
 <template>
   <HorizontalContainer>
-    <Hero :title="title" :description="description" />
+    <Hero
+      :title="'Quick start'"
+      :description="'Feel the power of Nix in no time'"
+    />
 
     <Grid2>
       <HoverableLink

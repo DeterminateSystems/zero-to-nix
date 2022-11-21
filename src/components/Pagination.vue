@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getPrevious, getNext, QuickStartPage } from "../content";
+import { getPrevious, getNext, QuickStartPage } from "../logic/content";
 
 const { order } = defineProps<{
   order: number;

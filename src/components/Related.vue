@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { relatedConceptPages, ConceptPage } from "../content";
+import { Document } from "iles";
+import { relatedConceptPages, ConceptPage } from "../logic/content";
 
 const { related } = defineProps<{
   related: string[];
 }>();
 
-type HasId = {
-  id: string;
-};
-
-const relatedPages: ConceptPage[] = relatedConceptPages(related);
+const relatedPages: Document<ConceptPage>[] = relatedConceptPages(related);
 </script>
 
 <template>
