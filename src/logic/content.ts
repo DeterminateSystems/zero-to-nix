@@ -26,10 +26,12 @@ export const conceptPages: Document<ConceptPage>[] =
   useDocuments<ConceptPage>("~/pages/concepts").value;
 
 // Pagination
-export const getPrevious = (order: number): QuickStartPage | undefined =>
+export const getPrevious = (
+  order: number
+): Document<QuickStartPage> | undefined =>
   quickStartPages.find((p: QuickStartPage) => p.order === order - 1);
 
-export const getNext = (order: number): QuickStartPage | undefined =>
+export const getNext = (order: number): Document<QuickStartPage> | undefined =>
   quickStartPages.find((p: QuickStartPage) => p.order === order + 1);
 
 // Related concepts

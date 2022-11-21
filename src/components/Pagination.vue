@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import { Document } from "iles";
 import { getPrevious, getNext, QuickStartPage } from "../logic/content";
 
 const { order } = defineProps<{
   order: number;
 }>();
 
-const previous: QuickStartPage | undefined = getPrevious(order);
-const next: QuickStartPage | undefined = getNext(order);
+const previous: Document<QuickStartPage> | undefined = getPrevious(order);
+const next: Document<QuickStartPage> | undefined = getNext(order);
 </script>
 
 <template>
