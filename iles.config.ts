@@ -2,7 +2,6 @@ import headings from "@islands/headings";
 import icons from "@islands/icons";
 import prism from "@islands/prism";
 import { RawPageMatter, defineConfig } from "iles";
-import windicss from "vite-plugin-windicss";
 
 export default defineConfig({
   siteUrl: "https://zero-to-nix.vercel.app",
@@ -18,7 +17,4 @@ export default defineConfig({
   modules: [headings(), icons(), prism()],
   prettyUrls: true,
   ssg: {},
-  vite: {
-    plugins: [windicss()],
-  },
 });

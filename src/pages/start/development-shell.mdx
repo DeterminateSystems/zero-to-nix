@@ -1,0 +1,120 @@
+---
+layout: ../../layouts/Step.astro
+title: Create a development environment using Nix
+summary:
+  [
+    "Initialize a starter project in the language of your choice",
+    "Explore a Nix shell environment for your preferred language",
+    "Run some commands inside the shell",
+  ]
+order: 3
+---
+
+```shell
+mkdir nix-rust && cd nix-rust
+nix flake init --template "github:DeterminateSystems/zero-to-nix#rust"
+```
+
+[Nix] enables you to create [shell environments][shell] that are "sealed" from the
+rest of your system&mdash;they ignore directories like `/usr/bin` and
+only use packages available in the [Nix store][store]. To get started, tell us which language you
+prefer:
+
+<Languages />
+
+To get started in your <Language /> project,
+create an empty directory and initialize a [flake template][flake-templates] for your preferred language:
+
+<Shell />
+
+Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
+
+- The `flake.nix` file defines the [flake][flakes] for your project.
+- The `flake.lock` [pinning] all of the [flake inputs][flake-inputs] &mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
+
+## Exploring the Nix shell for <Language />
+
+One of the [flake outputs][flake-outputs] of this Nix [flake][flakes] is a [shell environment][shell] for <Language />.
+To enter that shell environment:
+
+```shell
+nix develop
+```
+
+Now that we've entered the shell, we can do some exploring, starting with [Nix store paths][store].
+
+<SpecificLanguage lang="JavaScript">
+Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`. Try running it in the Nix shell:
+
+```shell
+which node
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Python">
+Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`. Try running it in the Nix shell:
+
+```shell
+which python
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Go">
+Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
+
+```shell
+which go
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/hvnp4a2wlqhfx6yfvfm4zw0vxh3jadzh-go-1.19.3/bin/go
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Rust">
+Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`. Try running it in the Nix shell:
+
+```shell
+which cargo
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
+```
+
+</SpecificLanguage>
+
+Probably not what you expected! What happened here? A few things:
+
+- Nix looked at the `devShells` [flake outputs][flake-outputs] in
+  `flake.nix` to figure out which [Nix packages][packages] to
+  include in the shell environment (Nix specifically looked at the `buildInputs` array).
+- Nix built the packages specified under `buildInputs` and stored them in the
+  [Nix store][store] under `/nix/store`.
+
+[flake-inputs]: /concepts/flake-inputs
+[flake-outputs]: /concepts/flake-outputs
+[flake-templates]: /concepts/flake-templates
+[flakes]: /concepts/flakes
+[nix]: https://nixos.org
+[packages]: /concepts/packages
+[pinning]: /concepts/pinning
+[rev]: https://git-scm.com/docs/revisions
+[shell]: /concepts/nix-shell
+[store]: /concepts/nix-store

@@ -20,8 +20,8 @@ const large = heroSize === "lg";
 <template>
   <section
     :class="{
-      'space-y-2 py-10 md:(space-y-3 py-12) lg:(space-y-4 py-14)': normal,
-      'space-y-3 py-16 md:(space-y-4 py-20) lg:(space-y-5 py-24)': large,
+      'space-y-2 py-10 md:space-y-3 md:py-12 lg:space-y-4 lg:py-14': normal,
+      'space-y-3 py-16 md:space-y-4 md:py-20) lg:space-y-5 lg:py-24': large,
     }"
   >
     <h1

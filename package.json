@@ -21,14 +21,16 @@
     "@islands/prism": "^0.8.0",
     "@nanostores/persistent": "^0.7.0",
     "@nanostores/vue": "^0.6.1",
+    "@tailwindcss/typography": "^0.5.8",
     "@vueuse/core": "^9.5.0",
+    "autoprefixer": "^10.4.13",
     "iles": "^0.8.7",
     "nanostores": "^0.7.0",
+    "postcss": "^8.4.19",
     "prettier": "^2.7.1",
-    "prettier-plugin-windicss": "^1.0.0",
     "rehype-external-links": "^2.0.1",
-    "vite-plugin-windicss": "^1.8.8",
-    "vue-tsc": "^1.0.9",
-    "windicss": "^3.5.6"
+    "tailwindcss": "^3.2.4",
+    "vite-plugin-tailwindcss": "0.0.0-0",
+    "vue-tsc": "^1.0.9"
   }
 }

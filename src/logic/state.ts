@@ -1,4 +1,5 @@
 import { persistentAtom } from "@nanostores/persistent";
+import { useStore } from "@nanostores/vue";
 import site from "~/site";
 import { WritableAtom } from "nanostores";
 
@@ -20,3 +21,6 @@ export const systemState: WritableAtom<string> = persistentAtom<string>(
   "zero-to-nix:system",
   defaultSystem
 );
+
+export const language = useStore(languageState);
+export const system = useStore(systemState);

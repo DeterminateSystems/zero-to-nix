@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import site from "~/site";
-const { systems } = site;
+const { languages } = site;
 
-import { system, systemState } from "~/logic/state";
+import { language, languageState } from "~/logic/state";
 </script>
 
 <template>
@@ -12,17 +12,17 @@ import { system, systemState } from "~/logic/state";
     <p
       className="text-normal font-semibold tracking-tight md:text-lg lg:text-xl"
     >
-      Select your platform
+      Select your language
     </p>
 
     <button
-      v-for="sys in systems"
-      :key="sys"
-      @click="systemState.set(sys)"
+      v-for="lang in languages"
+      :key="lang"
+      @click="languageState.set(lang)"
       class="mg:text-normal rounded-lg py-0 px-2 text-sm font-semibold md:py-0.5 md:px-3 lg:py-1 lg:px-4 lg:text-lg"
-      :class="{ 'bg-primary text-white': sys === system }"
+      :class="{ 'bg-primary text-white': lang === language }"
     >
-      {{ sys }}
+      {{ lang }}
     </button>
   </div>
 </template>

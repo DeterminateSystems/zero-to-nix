@@ -13,6 +13,48 @@ summary:
 This guide explains how to install Nix on your system, followed by a short examples of running a program with Nix.
 Let's get right into it…
 
-<Systems client:load />
+<Systems />
 
+First, download our Nix installer [Harmonic].
+This is not yet the official installer for Nix/ NixOS, however this will probably change in the future.
+
+```shell
+curl https://harmonic.dev | sh
+```
+
+Harmonic follows different steps based on the _build plan_ you select.
+
+Currently there are only two: `linux-multi` (for 64-bit Linux systems) and `darwin-multi` (for 64-bit Intel and ARM macOS systems).
+The `-multi` refers to the type of installation being performed (meaning [multi-user][multi]).
+
+If this seems confusing, don't worry about it too much for now.
+We will go into the technical side of what a Nix installation entails in the **Concepts** section of this guide.
+
+Once Harmonic has finished you should verify the installation by running:
+
+```bash
+nix --help
+```
+
+This should print the help output of the _nix_ command.
+
+Alternatively you can run this command to get a friendly message appear in your terminal 🙂:
+
+```
+$ echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
+___________
+< Hello Nix >
+ -----------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+Read on to the next section to learn what this last command just did!
+
+[detsys]: https://determinate.systems
+[harmonic]: /concepts/harmonic
+[multi]: https://nixos.org/manual/nix/stable/installation/multi-user
 [nix]: https://nixos.org
