@@ -7,30 +7,34 @@ const Shell = () => {
   const lang = $language.toLowerCase();
   const dir = `nix-${lang}`;
 
+  const bg = "#0d1117";
+  const command = "#C9D1D9";
+  const operator = "#FF7B72";
+  const quote = "#A5D6FF";
+  const cd = "#8BE9FD";
+
   return (
     // TODO: make this not hard-coded
     <pre
       className="astro-code"
-      style={{ backgroundColor: "#282A36", overflowX: "auto" }}
+      style={{ backgroundColor: bg, overflowX: "auto" }}
     >
       <code>
         <span className="line">
-          <span style={{ color: "#F8F8F2" }}>mkdir {dir} </span>
-          <span style={{ color: "#FF79C6" }}>&amp;&amp;</span>
-          <span style={{ color: "#F8F8F2" }}> </span>
-          <span style={{ color: "#8BE9FD" }}>cd</span>
-          <span style={{ color: "#F8F8F2" }}> {dir}</span>
+          <span style={{ color: command }}>mkdir {dir} </span>
+          <span style={{ color: operator }}>&amp;&amp;</span>
+          <span style={{ color: command }}> </span>
+          <span style={{ color: cd }}>cd</span>
+          <span style={{ color: command }}> {dir}</span>
         </span>
 
         <br />
 
         <span className="line">
-          <span style={{ color: "#F8F8F2" }}>nix flake init --template </span>
-          <span style={{ color: "#E9F284" }}>"</span>
-          <span style={{ color: "#F1FA8C" }}>
-            github:DeterminateSystems/zero-to-nix#{lang}
+          <span style={{ color: command }}>nix flake init --template </span>
+          <span style={{ color: quote }}>
+            "github:DeterminateSystems/zero-to-nix#{lang}"
           </span>
-          <span style={{ color: "#E9F284" }}>"</span>
         </span>
       </code>
     </pre>

@@ -12,13 +12,13 @@ order: 2
 Hi there! In the last section we covered a basic Nix installation with **Harmonic**.
 At this point in the guide you should be able to run this command to get a friendly message in your terminal:
 
-```
-$ echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
+```shell
+echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
 ```
 
 This guide expands on the idea of running programs with Nix,
 and introduces you to some concepts such as **packages** and **flakes**.
-Let’s go!
+Let's go!
 
 Every program in Nix is contained by a package (also sometimes called **Derivations**).
 A package can contain different **outputs** around the same program (for example `ffmpeg` and `ffprobe` are both provided in the `ffmpeg` package).

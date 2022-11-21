@@ -17,7 +17,7 @@ const Harmonic = ({ command }: Props) => {
 
   return (
     // TODO: render this programmatically using Shiki or Prism
-    <pre style={{ backgroundColor: "rgb(40, 42, 54)", color: "#F8F8F2" }}>
+    <pre style={{ backgroundColor: "#0d1117", color: "rgb(201, 209, 217)" }}>
       <code className="language-shell">{script}</code>
     </pre>
   );

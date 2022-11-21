@@ -58,6 +58,7 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Python" client:only>
 Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`. Try running it in the Nix shell:
@@ -71,6 +72,7 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Go" client:only>
 Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
@@ -84,6 +86,7 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/hvnp4a2wlqhfx6yfvfm4zw0vxh3jadzh-go-1.19.3/bin/go
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Rust" client:only>
 Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`. Try running it in the Nix shell:
@@ -97,6 +100,7 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
 ```
+
 </SpecificLanguage>
 
 Probably not what you expected! What happened here? A few things:
