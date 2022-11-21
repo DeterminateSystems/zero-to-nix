@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const paginationProps = defineProps<{
+const { order } = defineProps<{
   order: number;
 }>();
-
-const { order } = paginationProps;
 
 const pages = useDocuments("~/pages/start").value;
 const next = pages.find((p) => p.frontmatter.order === order + 1);

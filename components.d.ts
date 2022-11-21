@@ -29,6 +29,8 @@ declare module '@vue/runtime-core' {
     Page: typeof import('./src/components/Page.vue')['default']
     Pagination: typeof import('./src/components/Pagination.vue')['default']
     Panel: typeof import('./src/components/Panel.vue')['default']
+    ReadMore: typeof import('./src/components/ReadMore.vue')['default']
+    Related: typeof import('./src/components/Related.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Selector: typeof import('./src/components/Selector.vue')['default']

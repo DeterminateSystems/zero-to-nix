@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const summaryProps = defineProps<{
+const { items } = defineProps<{
   items?: string[];
 }>();
-
-const { items } = summaryProps;
 </script>
 
 <template>

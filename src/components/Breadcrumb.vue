@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const breadcrumbProps = defineProps<{
+defineProps<{
   breadcrumb?: {
     back: {
       title: string;
@@ -8,8 +8,6 @@ const breadcrumbProps = defineProps<{
     title: string;
   };
 }>();
-
-const { breadcrumb } = breadcrumbProps;
 </script>
 
 <template>

@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { system } from "~/logic/state";
 
-const props = defineProps<{
+defineProps<{
   command: string;
 }>();
-
-const { command } = props;
 </script>
 
 <template>

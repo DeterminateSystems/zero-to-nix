@@ -1,0 +1,14 @@
+---
+title: Flake inputs
+related: ["flake-outputs"]
+---
+
+Flake **inputs** are the Nix code that you want to rely on in your current flake.
+
+```nix
+{
+  inputs = {
+    nixpkgs = "github:NixOS/nixpkgs";
+  };
+}
+```

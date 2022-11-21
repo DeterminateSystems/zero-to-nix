@@ -10,6 +10,11 @@ export default defineConfig({
     if (filename.endsWith("mdx")) {
       frontmatter.layout = filename.split("/")[2];
     }
+
+    if (filename.split("/")[2] === "concepts") {
+      const id = filename.split("/").at(-1)?.split(".").at(0);
+      frontmatter["id"] = id;
+    }
   },
   markdown: {
     rehypePlugins: ["rehype-external-links"],
