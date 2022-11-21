@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import site from "~/site";
-const { systems } = site;
-
 import { system, systemState } from "~/logic/state";
+
+const { systems } = site;
 </script>
 
 <template>

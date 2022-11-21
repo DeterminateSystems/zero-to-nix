@@ -3,7 +3,11 @@ const { order } = defineProps<{
   order: number;
 }>();
 
-const pages = useDocuments("~/pages/start").value;
+type Ordered = {
+  order: number;
+};
+
+const pages = useDocuments<Ordered>("~/pages/start").value;
 const next = pages.find((p) => p.frontmatter.order === order + 1);
 const previous = pages.find((p) => p.frontmatter.order === order - 1);
 </script>

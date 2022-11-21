@@ -1,9 +1,9 @@
 <script setup lang="ts">
-type ConceptPage = {
+type HasTitle = {
   title: string;
 };
 
-const conceptPages = useDocuments<QuickStartPage>("~/pages/concepts");
+const conceptPages = useDocuments<HasTitle>("~/pages/concepts");
 
 const conceptsTitle = "Nix concepts";
 const conceptsDescription = "The whys and the hows of Nix";

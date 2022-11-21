@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import site from "~/site";
-const { languages } = site;
-
 import { language, languageState } from "~/logic/state";
+import site from "~/site";
+
+const { languages } = site;
 </script>
 
 <template>

@@ -3,7 +3,11 @@ const { related } = defineProps<{
   related: string[];
 }>();
 
-const allConceptPages = useDocuments("~/pages/concepts");
+type HasId = {
+  id: string;
+};
+
+const allConceptPages = useDocuments<HasId>("~/pages/concepts");
 
 const filteredPages = related.map(
   (id: string) => allConceptPages.value.find((page) => page.id === id)!
