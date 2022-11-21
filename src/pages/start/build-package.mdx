@@ -42,11 +42,11 @@ You can now run bat:
 ./result/bin/bat --help
 ```
 
-Congrats! You've built and run a package using Nix. One of the great things about Nix is that [derivations] are extremely flexible, which enables you to create packages for things written in just about any language. We'll explore that further in the next section.
+Congrats! You've built and run a package using Nix.
 
 ## Build a package written in `$LANGUAGE`
 
-Nix [derivations] are deeply flexible and enable you to create [packages] written in any language imaginable. In this section, we'll explore that by building and running packages for tools written in multiple languages. Select a language below to see Nix packages in action:
+One of the great things about Nix is that [derivations] are extremely flexible, which enables you to create packages for things written in just about any programming language. In this section, we'll explore that by building and running packages for tools written in a variety of languages. Select one below to see some examples:
 
 <Languages client:load />
 
@@ -57,12 +57,14 @@ Let's build and run [npm]:
 nix build "nixpkgs#nodePackages.npm"
 ./result/bin/npm --help
 ```
+
+If you run `ls result/bin` you'll notice that the package also includes [npx].
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Python">
 Let's build and run [pip]:
 
 ```shell
-nix build nixpkgs#pythonPackages.pip
+nix build "nixpkgs#pythonPackages.pip"
 ./result/bin/pip --help
 ```
 </SpecificLanguage>
@@ -70,27 +72,18 @@ nix build nixpkgs#pythonPackages.pip
 Let's build and run [kubectl]:
 
 ```shell
-nix build nixpkgs#kubectl
+nix build "nixpkgs#kubectl"
 ./result/bin/kubectl --help
 ```
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Rust">
-Let's build and run [bat]:
+Let's build and run [ripgrep]:
 
 ```shell
-nix build nixpkgs#bat
+nix build "nixpkgs#ripgrep"
+./result/bin/ripgrep --help
 ```
 </SpecificLanguage>
-
-## Build and run a package using local Nix logic
-
-<Shell client:load />
-
-To build the package defined in the [flake]:
-
-```shell
-nix build
-```
 
 [bat]: https://github.com/sharkdp/bat
 [cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
@@ -103,9 +96,11 @@ nix build
 [nixpkgs-bat]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/misc/bat/default.nix
 [nixpkgs-repo]: https://github.com/NixOS/nixpkgs
 [npm]: https://npmjs.org
+[npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [pip]: https://pypi.org/project/pip
+[ripgrep]: https://github.com/BurntSushi/ripgrep
 [rust]: https://rust-lang.org
 [start]: /start
 [store]: /concepts/nix-store
