@@ -1,27 +1,21 @@
 ---
-layout: ../../layouts/Step.astro
 title: Install Nix
+order: 1
 summary:
   [
     "Verify that Nix can be installed on your system",
     "Get Nix running on your Linux or macOS system",
     "Verify that your installed Nix is working as expected",
   ]
-order: 1
 ---
 
-import Harmonic from "../../components/Harmonic";
-import System from "../../components/System";
-import Systems from "../../components/Systems";
+**Welcome**! It's great to see that you're interested in [Nix]. In this guide gets Nix installed on your system, provides you with a small taste of Nix's feature set, and gets you accomplishing practical things. First, let us know which system you're working with:
 
-**Welcome!** It's great to see that you're interested in [Nix]!
-This guide explains how to install Nix on your system, followed by a short examples of running a program with Nix.
-Let's get right into it…
+<Systems client:load />
 
-<Systems client:only />
+## Download the installer
 
-First, download our Nix installer [Harmonic].
-This is not yet the official installer for Nix/ NixOS, however this will probably change in the future.
+Before installing Nix, download [Harmonic], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
 curl https://harmonic.dev | sh
@@ -51,7 +45,7 @@ nix --help
 
 This should print the help output of the `nix` command.
 
-Alternatively you can run this command to get a friendly message appear in your terminal 🙂:
+Alternatively, you can run this command to get a friendly message appear in your terminal 🙂:
 
 ```
 $ echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
@@ -67,7 +61,7 @@ ___________
 
 Read on to the next section to learn what this last command just did!
 
-[nix]: https://nixos.org
 [detsys]: https://determinate.systems
 [harmonic]: /concepts/harmonic
 [multi]: https://nixos.org/manual/nix/stable/installation/multi-user
+[nix]: https://nixos.org
