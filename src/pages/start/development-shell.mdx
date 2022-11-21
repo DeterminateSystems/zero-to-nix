@@ -10,11 +10,6 @@ summary:
 order: 3
 ---
 
-```shell
-mkdir nix-rust && cd nix-rust
-nix flake init --template "github:DeterminateSystems/zero-to-nix#rust"
-```
-
 [Nix] enables you to create [shell environments][shell] that are "sealed" from the
 rest of your system&mdash;they ignore directories like `/usr/bin` and
 only use packages available in the [Nix store][store]. To get started, tell us which language you
@@ -22,19 +17,19 @@ prefer:
 
 <Languages client:load />
 
-To get started in your <Language /> project,
-create an empty directory and initialize a [flake template][flake-templates] for your preferred language:
+To get started in your <Language client:only /> project,
+create an empty directory and initialize a [flake templates][templates] for your preferred language:
 
 <Shell client:load />
 
 Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
 
 - The `flake.nix` file defines the [flake][flakes] for your project.
-- The `flake.lock` [pinning] all of the [flake inputs][flake-inputs] &mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
+- The `flake.lock` [pins][pinning] all of the [flake inputs][inputs] &mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
 
 ## Exploring the Nix shell for <Language client:load />
 
-One of the [flake outputs][flake-outputs] of this Nix [flake][flakes] is a [shell environment][shell] for <Language client:load />.
+One of the [flake outputs][outputs] of this Nix [flakes] is a [shell environments][shell] for <Language client:only />.
 To enter that shell environment:
 
 ```shell
@@ -102,19 +97,17 @@ You should see a (rather strange) path like this:
 
 Probably not what you expected! What happened here? A few things:
 
-- Nix looked at the `devShells` [flake outputs][flake-outputs] in
-  `flake.nix` to figure out which [Nix packages][packages] to
-  include in the shell environment (Nix specifically looked at the `buildInputs` array).
+- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the shell environment (Nix specifically looked at the `buildInputs` array).
 - Nix built the packages specified under `buildInputs` and stored them in the
   [Nix store][store] under `/nix/store`.
 
-[flake-inputs]: /concepts/flake-inputs
-[flake-outputs]: /concepts/flake-outputs
-[flake-templates]: /concepts/flake-templates
 [flakes]: /concepts/flakes
+[inputs]: /concepts/flake-inputs
 [nix]: https://nixos.org
+[outputs]: /concepts/flake-outputs
 [packages]: /concepts/packages
 [pinning]: /concepts/pinning
 [rev]: https://git-scm.com/docs/revisions
-[shell]: /concepts/nix-shell
+[shell]: /concepts/shell-environments
 [store]: /concepts/nix-store
+[templates]: /concepts/flake-templates
