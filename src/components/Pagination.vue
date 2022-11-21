@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Doc } from "../types";
+
 const { order } = defineProps<{
   order: number;
 }>();

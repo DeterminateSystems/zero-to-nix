@@ -1,0 +1,70 @@
+---
+title: Build a Nix package
+summary: [
+  "Build and run a Nix package defined in Nixpkgs",
+  "Build and run a Nix package defined in a local flake"
+]
+order: 4
+---
+
+[Nix] enables you to...
+
+Let's start by building and running a package defined in [Nixpkgs].
+
+## Build a package written in `$LANGUAGE`
+
+Nix [derivations] are deeply flexible and enable you to create [packages] written in any language imaginable. In this section, we'll explore that by building and running packages for tools written in multiple languages. Select a language below to see Nix packages in action:
+
+<Languages client:load />
+
+<SpecificLanguage client:load lang="JavaScript">
+Let's build and run [npm]:
+
+```shell
+nix build "nixpkgs#nodePackages.npm"
+./result/bin/npm --help
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Python">
+Let's build and run [pip]:
+
+```shell
+nix build nixpkgs#pythonPackages.pip
+./result/bin/pip --help
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Go">
+Let's build and run [kubectl]:
+
+```shell
+nix build nixpkgs#kubectl
+./result/bin/kubectl --help
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Rust">
+Let's build and run [bat]:
+
+```shell
+nix build nixpkgs#bat
+```
+</SpecificLanguage>
+
+## Build and run a package using local Nix logic
+
+<Shell client:load />
+
+To build the package defined in the [flake]:
+
+```shell
+nix build
+```
+
+[bat]: https://github.com/sharkdp/bat
+[derivations]: /concepts/derivation
+[flake]: /concepts/flakes
+[kubectl]: https://github.com/kubernetes/kubectl
+[nix]: /concepts/nix
+[nixpkgs]: /concepts/nixpkgs
+[npm]: https://npmjs.org
+[packages]: /concepts/packages
+[pip]: https://pypi.org/project/pip
