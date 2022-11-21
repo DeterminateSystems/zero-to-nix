@@ -8,7 +8,7 @@ export default defineConfig({
   site: "https://zero-to-nix.vercel.app/",
   markdown: {
     shikiConfig: {
-      theme: "dracula",
+      theme: "github-dark",
     },
   },
   integrations: [
