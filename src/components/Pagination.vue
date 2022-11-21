@@ -1,15 +1,12 @@
 <script setup lang="ts">
+import { getPrevious, getNext, QuickStartPage } from "../content";
+
 const { order } = defineProps<{
   order: number;
 }>();
 
-type Ordered = {
-  order: number;
-};
-
-const pages = useDocuments<Ordered>("~/pages/start").value;
-const next = pages.find((p) => p.frontmatter.order === order + 1);
-const previous = pages.find((p) => p.frontmatter.order === order - 1);
+const previous: QuickStartPage | undefined = getPrevious(order);
+const next: QuickStartPage | undefined = getNext(order);
 </script>
 
 <template>
