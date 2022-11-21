@@ -3,6 +3,8 @@ import icons from "@islands/icons";
 import prism from "@islands/prism";
 import { RawPageMatter, defineConfig } from "iles";
 
+const env = process.env["ENV"];
+
 export default defineConfig({
   siteUrl: "https://zero-to-nix.vercel.app",
   extendFrontmatter(frontmatter: RawPageMatter, filename: string) {
@@ -20,6 +22,6 @@ export default defineConfig({
     rehypePlugins: ["rehype-external-links"],
   },
   modules: [headings(), icons(), prism()],
-  prettyUrls: true,
+  prettyUrls: env !== "preview",
   turbo: true,
 });

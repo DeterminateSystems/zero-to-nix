@@ -1,9 +1,5 @@
 <script setup lang="ts">
-type HasTitle = {
-  title: string;
-};
-
-const conceptPages = useDocuments<HasTitle>("~/pages/concepts");
+import { conceptPages } from "../../content";
 
 const conceptsTitle = "Nix concepts";
 const conceptsDescription = "The whys and the hows of Nix";
