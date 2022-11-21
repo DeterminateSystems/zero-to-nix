@@ -9,5 +9,9 @@ export default defineApp({
     htmlAttrs: {
       lang: languageCode,
     },
+    meta: [
+      { property: "HandheldFriendly", content: "True" },
+      { property: "MobileOptimized", content: "320" },
+    ],
   },
 });
