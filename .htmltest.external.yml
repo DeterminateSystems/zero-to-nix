@@ -1,3 +1,4 @@
 CheckInternal: false
 DirectoryPath: dist
-IgnoreURLs: []
+IgnoreURLs: ["https://www.linux.org"]
+CheckScripts: false
