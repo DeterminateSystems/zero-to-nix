@@ -7,7 +7,7 @@ export default defineConfig({
   siteUrl: "https://zero-to-nix.vercel.app",
   extendFrontmatter(frontmatter: RawPageMatter, filename: string) {
     // Set the layout for e.g. src/pages/section/foo.mdx to section
-    const section = filename.split("/").at(1)!;
+    const section = filename.split("/").at(2)!;
 
     if (["concepts", "start"].includes(section) && filename.endsWith("mdx")) {
       frontmatter.layout = filename.split("/")[2];

@@ -10,7 +10,7 @@ const {
 }>();
 </script>
 
-<template layout="base">
+<template>
   <Page>
     <Top>
       <Navbar />
