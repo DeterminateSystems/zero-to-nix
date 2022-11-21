@@ -22,7 +22,7 @@ const {
             back: { title: 'Quick start', href: '/start' },
             title,
           }"
-          :size="normal"
+          :size="'normal'"
         />
 
         <Panel>

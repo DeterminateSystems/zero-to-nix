@@ -1,13 +1,11 @@
 <script setup lang="ts">
-const {
-  text,
-  href,
-  size = "normal",
-} = defineProps<{
+const props = defineProps<{
   text: string;
   href: string;
   size?: "normal" | "sm";
 }>();
+
+const { text, href, size = "normal" } = props;
 
 const normalLink = size === "normal";
 const smallLink = size === "sm";
