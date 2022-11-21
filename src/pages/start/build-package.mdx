@@ -1,15 +1,48 @@
 ---
-title: Build a Nix package
+title: Build a package in Nixpkgs
 summary: [
   "Build a Nix package defined in Nixpkgs",
-  "Run the result of the local build"
+  "Run the package from the local directory"
 ]
 order: 4
 ---
 
-While [Nix] can do many things, [package management] is the thing that it's perhaps best known for. In this tutorial, we'll use our [installed Nix CLI][install]
+While [Nix] can do many things, [package management][pkg] is the thing that it's perhaps best known for. In this tutorial, we'll use our [installed Nix CLI][install] to build and run some Nix [packages] included in [Nixpkgs]. Later in the [quick start][start] we'll build and run a Nix package defined in a local [flake].
 
-Let's start by building and running a package defined in [Nixpkgs].
+## Our first package
+
+Let's start by building [bat], a syntax-highlighted version of [cat] written in [Rust], using Nix:
+
+```shell
+nix build "nixpkgs#bat"
+```
+
+Here, `nixpkgs` is a [flake reference][flake] to the [NixOS/nixpkgs][nixpkgs-repo] repository on GitHub, while `#jq` indicates that we're building the `jq` output from the Nixpkgs flake.
+
+When the build is done, run `ls .` and you should see something called `result` in the current directory. `result` is actually a [symlink] to the built package in the [Nix store][store], which you can verify:
+
+```shell
+readlink result
+```
+
+You should see a path like this (it's likely to be a bit different on your machine):
+
+<NixStorePath pkg="bat-0.22.1" />
+
+What's happened here is that the Nix CLI has:
+
+* Downloaded the Nix code in [Nixpkgs]
+* Found the [derivation][derivations] with the name `bat` (code [here][nixpkgs-bat])
+* Used the build instructions in the derivation to build the package
+* Stored the result in the [Nix store][store] using Nix's hash-based path system
+
+You can now run bat:
+
+```shell
+./result/bin/bat --help
+```
+
+Congrats! You've built and run a package using Nix. One of the great things about Nix is that [derivations] are extremely flexible, which enables you to create packages for things written in just about any language. We'll explore that further in the next section.
 
 ## Build a package written in `$LANGUAGE`
 
@@ -60,13 +93,20 @@ nix build
 ```
 
 [bat]: https://github.com/sharkdp/bat
+[cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
 [derivations]: /concepts/derivation
 [flake]: /concepts/flakes
 [install]: /start/install
 [kubectl]: https://github.com/kubernetes/kubectl
 [nix]: /concepts/nix
 [nixpkgs]: /concepts/nixpkgs
+[nixpkgs-bat]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/misc/bat/default.nix
+[nixpkgs-repo]: https://github.com/NixOS/nixpkgs
 [npm]: https://npmjs.org
 [packages]: /concepts/packages
-[package management]: /concepts/package-management
+[pkg]: /concepts/package-management
 [pip]: https://pypi.org/project/pip
+[rust]: https://rust-lang.org
+[start]: /start
+[store]: /concepts/nix-store
+[symlink]: https://en.wikipedia.org/wiki/Symbolic_link
