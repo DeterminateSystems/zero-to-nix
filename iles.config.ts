@@ -20,6 +20,6 @@ export default defineConfig({
     rehypePlugins: ["rehype-external-links"],
   },
   modules: [headings(), icons(), prism()],
-  prettyUrls: false,
+  prettyUrls: true,
   turbo: true,
 });
