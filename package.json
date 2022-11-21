@@ -28,6 +28,7 @@
     "nanostores": "^0.7.0",
     "postcss": "^8.4.19",
     "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
     "prism-themes": "^1.9.0",
     "rehype-external-links": "^2.0.1",
     "tailwindcss": "^3.2.4",

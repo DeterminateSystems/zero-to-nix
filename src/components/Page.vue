@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white h-screen">
+  <div class="h-screen bg-white">
     <div
-      class="flex flex-col min-h-full transition-theme duration-1000 dark:bg-black dark:text-white"
+      class="transition-theme flex min-h-full flex-col duration-1000 dark:bg-black dark:text-white"
     >
       <slot />
     </div>

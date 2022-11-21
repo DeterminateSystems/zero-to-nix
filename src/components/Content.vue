@@ -1,6 +1,6 @@
 <template>
   <div
-    class="prose prose-sm md:prose-normal lg:prose-lg xl:prose-xl dark:prose-invert max-w-none"
+    class="md:prose-normal prose prose-sm max-w-none dark:prose-invert lg:prose-lg xl:prose-xl"
   >
     <slot />
   </div>

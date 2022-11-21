@@ -6,25 +6,25 @@ const {
 
 <template>
   <nav
-    class="bg-white border-light-gray border-b-2 py-2 top-0 sticky md:py-2.5 lg:py-3 dark:bg-black dark:border-b-gray"
+    class="sticky top-0 border-b-2 border-light-gray bg-white py-2 dark:border-b-gray dark:bg-black md:py-2.5 lg:py-3"
   >
     <HorizontalContainer>
-      <div class="flex justify-between items-center">
-        <div class="flex space-x-2 items-center md:space-x-3 lg:space-x-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
           <a
             href="/"
-            class="font-semibold tracking-tighter text-2xl md:text-3xl lg:text-4xl hover:text-primary dark:hover:text-primary"
+            class="text-2xl font-semibold tracking-tighter hover:text-primary dark:hover:text-primary md:text-3xl lg:text-4xl"
             >{{ $site.title }}</a
           >
 
           <NixLogo />
         </div>
 
-        <ul class="flex space-x-4 items-center md:space-x-5 lg:space-x-6">
+        <ul class="flex items-center space-x-4 md:space-x-5 lg:space-x-6">
           <li v-for="link in $site.navbarLinks" :key="link.text">
             <a
               :href="link.href"
-              class="text-normal md:text-lg lg:text-xl hover:text-blue dark:hover:text-light-blue"
+              class="text-normal hover:text-blue dark:hover:text-light-blue md:text-lg lg:text-xl"
               :class="{
                 'font-semibold': path.startsWith(link.href),
                 'font-normal': !path.startsWith(link.href),

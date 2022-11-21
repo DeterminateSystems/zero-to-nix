@@ -10,7 +10,7 @@ const previous = pages.find((p) => p.frontmatter.order === order - 1);
 
 <template>
   <div
-    class="flex flex-col md:flex-row items-center justify-between text-normal md:text-lg lg:text-xl tracking-tight"
+    class="text-normal flex flex-col items-center justify-between tracking-tight md:flex-row md:text-lg lg:text-xl"
   >
     <div>
       <span v-if="previous" class="flex space-x-4">

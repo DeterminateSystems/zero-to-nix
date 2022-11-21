@@ -6,12 +6,12 @@ const { items } = defineProps<{
 
 <template>
   <div
-    class="rounded-lg bg-slate-50 border-2 border-slate-300 dark:bg-black dark:border-slate-500"
+    class="rounded-lg border-2 border-slate-300 bg-slate-50 dark:border-slate-500 dark:bg-black"
   >
     <div
-      class="flex flex-col md:flex-row items-start flex-nowrap space-y-2 md:space-y-0 md:space-x-6 py-2 md:py-3 lg:py-4 px-3 md:px-4.5 lg:px-6"
+      class="md:px-4.5 flex flex-col flex-nowrap items-start space-y-2 py-2 px-3 md:flex-row md:space-y-0 md:space-x-6 md:py-3 lg:py-4 lg:px-6"
     >
-      <span class="text-lg md:text-xl lg:text-2xl font-bold"
+      <span class="text-lg font-bold md:text-xl lg:text-2xl"
         >In this guide</span
       >
       <span>

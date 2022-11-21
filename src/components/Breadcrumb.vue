@@ -13,7 +13,7 @@ defineProps<{
 <template>
   <div
     v-if="breadcrumb"
-    class="flex items-center text-dark-gray dark:text-white space-x-2.5 text-normal md:text-lg lg:text-xl"
+    class="text-normal flex items-center space-x-2.5 text-dark-gray dark:text-white md:text-lg lg:text-xl"
   >
     <span>
       <a :href="breadcrumb.back.href" class="hover:text-primary">{{

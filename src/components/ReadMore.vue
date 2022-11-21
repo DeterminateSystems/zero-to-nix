@@ -11,7 +11,7 @@ const { links: readMoreLinks } = defineProps<{
 
 <template>
   <div class="space-y-4">
-    <p class="text-lg md:text-xl lg:text-2xl font-semibold">Read more</p>
+    <p class="text-lg font-semibold md:text-xl lg:text-2xl">Read more</p>
 
     <Grid3>
       <HoverableLink

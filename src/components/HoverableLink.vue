@@ -14,11 +14,11 @@ const smallLink = size === "sm";
 <template>
   <a
     :href="href"
-    class="border-2 border-light-gray dark:border-gray rounded-lg hover:border-primary hover:bg-pale dark:hover:bg-black dark:hover:border-primary"
+    class="rounded-lg border-2 border-light-gray hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-black"
     :class="{
-      'py-1.5 md:py-2 lg:py-2.5 px-3 md:px-4 lg:px-5 text-xl md:text-2xl lg:text-3xl tracking-tight':
+      'py-1.5 px-3 text-xl tracking-tight md:py-2 md:px-4 md:text-2xl lg:py-2.5 lg:px-5 lg:text-3xl':
         normalLink,
-      'py-1 md:py-1.5 lg:py-2.5 px-2 md:px-3 lg:px-4 text-normal md:text-lg lg:text-xl':
+      'text-normal py-1 px-2 md:py-1.5 md:px-3 md:text-lg lg:py-2.5 lg:px-4 lg:text-xl':
         smallLink,
     }"
   >
