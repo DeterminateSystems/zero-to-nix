@@ -85,10 +85,27 @@ nix build "nixpkgs#ripgrep"
 ```
 </SpecificLanguage>
 
+## Beyond Nixpkgs
+
+While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a Nix package from a different repo, this time [Home Manager][hm], a popular Nix tool for configuring home environments:
+
+```shell
+nix build github:nix-community/home-manager
+```
+
+Here, `github:nix-community/home-manager` is a flake reference to the [nix-community/home-manager][hm] repo on GitHub. To run Home Manager:
+
+```shell
+./result/bin/home-manager --help
+```
+
+Upstreaming your packages to Nixpkgs is always an option, but it's good to bear in mind that with Nix you can distribute packages via any public Git repository with a [`flake.nix`][flake].
+
 [bat]: https://github.com/sharkdp/bat
 [cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
 [derivations]: /concepts/derivation
 [flake]: /concepts/flakes
+[hm]: https://github.com/nix-community/home-manager
 [install]: /start/install
 [kubectl]: https://github.com/kubernetes/kubectl
 [nix]: /concepts/nix
@@ -97,6 +114,7 @@ nix build "nixpkgs#ripgrep"
 [nixpkgs-repo]: https://github.com/NixOS/nixpkgs
 [npm]: https://npmjs.org
 [npx]: https://docs.npmjs.com/cli/v8/commands/npx
+[outputs]: /concepts/flake-outputs
 [packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [pip]: https://pypi.org/project/pip
