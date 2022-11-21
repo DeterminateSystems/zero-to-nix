@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
-    "@fontsource/rubik": "^4.5.11",
+    "@fontsource/inter": "^4.5.14",
     "@headlessui/vue": "^1.7.4",
     "@iconify-json/fa": "^1.1.2",
     "@iconify-json/fa-solid": "^1.1.2",
@@ -28,6 +28,7 @@
     "nanostores": "^0.7.0",
     "postcss": "^8.4.19",
     "prettier": "^2.7.1",
+    "prism-themes": "^1.9.0",
     "rehype-external-links": "^2.0.1",
     "tailwindcss": "^3.2.4",
     "vite-plugin-tailwindcss": "0.0.0-0",

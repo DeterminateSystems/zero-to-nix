@@ -3,7 +3,8 @@
 </template>
 
 <style>
-@import "@fontsource/rubik";
-@import "@fontsource/fira-mono";
+@import "@fontsource/inter"; /* sans-serif */
+@import "@fontsource/fira-mono"; /* monospace */
 @import "~/assets/css/tailwind";
+@import "prism-themes/themes/prism-night-owl"; /* https://www.npmjs.com/package/prism-themes */
 </style>

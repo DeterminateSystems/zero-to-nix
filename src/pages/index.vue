@@ -1,6 +1,6 @@
 <template>
   <HorizontalContainer>
-    <Hero :title="$site.title" :description="$site.description" :size="size" />
+    <Hero :title="$site.title" :description="$site.description" :size="'lg'" />
 
     <section class="space-y-16">
       <Grid3>

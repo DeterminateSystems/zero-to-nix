@@ -21,5 +21,5 @@ export default defineConfig({
   },
   modules: [headings(), icons(), prism()],
   prettyUrls: true,
-  ssg: {},
+  turbo: true,
 });

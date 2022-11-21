@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@fontsource/fira-mono': ^4.5.10
-  '@fontsource/rubik': ^4.5.11
+  '@fontsource/inter': ^4.5.14
   '@headlessui/vue': ^1.7.4
   '@iconify-json/fa': ^1.1.2
   '@iconify-json/fa-solid': ^1.1.2
@@ -18,6 +18,7 @@ specifiers:
   nanostores: ^0.7.0
   postcss: ^8.4.19
   prettier: ^2.7.1
+  prism-themes: ^1.9.0
   rehype-external-links: ^2.0.1
   tailwindcss: ^3.2.4
   vite-plugin-tailwindcss: 0.0.0-0
@@ -25,7 +26,7 @@ specifiers:
 
 devDependencies:
   '@fontsource/fira-mono': 4.5.10
-  '@fontsource/rubik': 4.5.11
+  '@fontsource/inter': 4.5.14
   '@headlessui/vue': 1.7.4_vue@3.2.45
   '@iconify-json/fa': 1.1.2
   '@iconify-json/fa-solid': 1.1.2
@@ -41,6 +42,7 @@ devDependencies:
   nanostores: 0.7.0
   postcss: 8.4.19
   prettier: 2.7.1
+  prism-themes: 1.9.0
   rehype-external-links: 2.0.1
   tailwindcss: 3.2.4_postcss@8.4.19
   vite-plugin-tailwindcss: 0.0.0-0_vite@2.9.15
@@ -123,8 +125,8 @@ packages:
     resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
     dev: true
 
-  /@fontsource/rubik/4.5.11:
-    resolution: {integrity: sha512-m0/4GKOqJjF9cB4wuLgDhRdRVt35WzqI5n7SgddRjRD+yzsO0eEq/ak0ezgfbR3+f91ydDCek1+RuOVB8dNYwg==}
+  /@fontsource/inter/4.5.14:
+    resolution: {integrity: sha512-JDC9AocdPLuGsASkvWw9hS5gtHE7K9dOwL98XLrk5yjYqxy4uVnScG58NUvFMJDVJRl/7c8Wnap6PEs+7Zvj1Q==}
     dev: true
 
   /@headlessui/vue/1.7.4_vue@3.2.45:
@@ -2536,6 +2538,10 @@ packages:
     resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: true
+
+  /prism-themes/1.9.0:
+    resolution: {integrity: sha512-tX2AYsehKDw1EORwBps+WhBFKc2kxfoFpQAjxBndbZKr4fRmMkv47XN0BghC/K1qwodB1otbe4oF23vUTFDokw==}
     dev: true
 
   /prismjs/1.29.0:

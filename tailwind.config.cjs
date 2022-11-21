@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
         mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
-        sans: ["Rubik", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         // https://tailwindcss.com/docs/customizing-colors
