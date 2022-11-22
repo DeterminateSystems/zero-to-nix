@@ -12,3 +12,6 @@ result
 
 # htmltest artifacts
 /tmp/
+
+# îles artifacts
+/.iles-ssg-temp/

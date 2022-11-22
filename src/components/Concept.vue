@@ -30,13 +30,13 @@ const displayText = show ?? page.title;
     </button>
     <template #content>
       <div
-        class="not-prose max-w-fit space-y-4 rounded-lg bg-pale py-3 px-5 text-xl shadow dark:bg-slate-700"
+        class="not-prose max-w-fit space-y-3 rounded-lg bg-pale py-3 px-5 shadow-md dark:bg-slate-700 md:space-y-4"
       >
-        <p>{{ page.snippet }}</p>
+        <p class="text-base md:text-lg lg:text-xl">{{ page.snippet }}</p>
         <div class="flex justify-end">
           <a
             :href="page.href"
-            class="rounded-md bg-light-gray px-3 py-1.5 text-sm hover:bg-primary hover:text-white dark:bg-gray dark:hover:bg-primary"
+            class="rounded-md bg-light-gray px-3 py-1.5 text-xs hover:bg-primary hover:text-white dark:bg-gray dark:hover:bg-primary md:text-sm"
             >More</a
           >
         </div>

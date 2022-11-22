@@ -70,6 +70,7 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 
 | Component                                                   | What it does                                                                    |
 | :---------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| [`Concept`](./src/components/Concept.vue)                   | Add a hoverable tool tip for a concept                                          |
 | [`Language`](./src/components/Language.vue)                 | Displays which (programming) language the user has selected                     |
 | [`Languages`](./src/components/Languages.vue)               | Provides a (programming) language selector                                      |
 | [`Harmonic`](./src/components/Harmonic.vue)                 | Provides system-specific shell commands for [Harmonic]                          |
