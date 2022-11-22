@@ -1,3 +1,4 @@
+const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
@@ -11,20 +12,20 @@ module.exports = {
         mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        // https://tailwindcss.com/docs/customizing-colors
-        pale: "#F8FAFC", // slate-50
-        yellow: "#EAB308", // yellow-500
-        "dark-yellow": "#CA8A04", // yellow-600
-        "soft-gray": "#E2E8F0", // slate-200
-        "light-gray": "#CBD5E1", // slate-300
-        gray: "#64748B", // slate-500
-        "dark-gray": "#334155", // slate-700
-        "light-blue": "#93C5FD", // blue-300
-        blue: "#3B82F6", // blue-500
-        cerulean: "#0EA5E9", // sky-500
-        lilac: "#A855F7", // purple-500
-        rose: "#F43F5E", // rose-500
-        orange: "#F97316", // orange-500
+        // Drawn from: https://tailwindcss.com/docs/customizing-colors
+        pale: colors.slate["50"], // #F8FAFC
+        yellow: colors.yellow["500"], // #EAB308
+        "dark-yellow": colors.yellow["600"], // #CA8A04
+        "soft-gray": colors.slate["200"], // #E2E8F0
+        "light-gray": colors.slate["300"], // #CBD5E1
+        gray: colors.slate["500"], // #64748B
+        "dark-gray": colors.slate["700"], // #334155
+        "light-blue": colors.blue["300"], // #93C5FD
+        blue: colors.blue["500"], // #3B82F6
+        cerulean: colors.sky["500"], // #0EA5E9
+        lilac: colors.purple["500"], // #A855F7
+        rose: colors.rose["500"], // #F43F5E
+        orange: colors.orange["500"], // #F97316
         primary: "rgb(80, 116, 191)", // Determinate Systems light purple
       },
       typography: ({ theme }) => ({
