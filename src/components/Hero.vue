@@ -42,6 +42,6 @@ const largeHero = heroSize === "lg";
       {{ description }}
     </h2>
 
-    <Breadcrumb :breadcrumb="breadcrumb" />
+    <Breadcrumb v-if="breadcrumb" :breadcrumb="breadcrumb" />
   </section>
 </template>

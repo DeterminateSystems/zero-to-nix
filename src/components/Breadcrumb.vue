@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  breadcrumb?: {
+  breadcrumb: {
     back: {
       title: string;
       href: string;
@@ -12,15 +12,14 @@ defineProps<{
 
 <template>
   <div
-    v-if="breadcrumb"
-    class="text-normal flex items-center space-x-2.5 text-dark-gray dark:text-white md:text-lg lg:text-xl"
+    class="flex items-center space-x-2 text-xs md:space-x-2.5 md:text-sm lg:space-x-3 lg:text-base"
   >
     <span>
       <a :href="breadcrumb.back.href" class="hover:text-primary">{{
         breadcrumb.back.title
       }}</a>
     </span>
-    <span class="font-bold">/</span>
+    <span class="text-lg font-bold md:text-xl lg:text-2xl">/</span>
     <span class="underline decoration-dotted">{{ breadcrumb.title }}</span>
   </div>
 </template>

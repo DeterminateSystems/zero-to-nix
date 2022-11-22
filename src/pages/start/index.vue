@@ -1,24 +1,17 @@
 <script setup lang="ts">
-type QuickStartPage = {
-  title: string;
-  order: number;
-};
-
-const quickStartPages = useDocuments<QuickStartPage>(
-  "~/pages/start"
-).value.sort((p1, p2) => p1.frontmatter.order - p2.frontmatter.order);
-
-const title = "Quick start";
-const description = "Feel the power of Nix in no time";
+import { sortedQuickStartPages } from "../../logic/content";
 </script>
 
 <template>
   <HorizontalContainer>
-    <Hero :title="title" :description="description" />
+    <Hero
+      :title="'Quick start'"
+      :description="'Feel the power of Nix in no time'"
+    />
 
     <Grid2>
       <HoverableLink
-        v-for="page in quickStartPages"
+        v-for="page in sortedQuickStartPages"
         :key="page.id"
         :href="page.href"
         :text="`${page.frontmatter.order}. ${page.frontmatter.title}`"

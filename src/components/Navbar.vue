@@ -6,7 +6,7 @@ const {
 
 <template>
   <nav
-    class="sticky top-0 border-b-2 border-light-gray bg-white py-2 dark:border-b-gray dark:bg-black md:py-2.5 lg:py-3"
+    class="sticky top-0 border-b-2 border-light-gray bg-white/75 py-2 backdrop-blur dark:border-b-gray dark:bg-black/75 dark:bg-blend-darken md:py-2.5 lg:py-3"
   >
     <HorizontalContainer>
       <div class="flex items-center justify-between">

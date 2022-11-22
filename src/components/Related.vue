@@ -1,17 +1,12 @@
 <script setup lang="ts">
+import { Document } from "iles";
+import { relatedConceptPages, ConceptPage } from "../logic/content";
+
 const { related } = defineProps<{
   related: string[];
 }>();
 
-type HasId = {
-  id: string;
-};
-
-const allConceptPages = useDocuments<HasId>("~/pages/concepts");
-
-const filteredPages = related.map(
-  (id: string) => allConceptPages.value.find((page) => page.id === id)!
-);
+const relatedPages: Document<ConceptPage>[] = relatedConceptPages(related);
 </script>
 
 <template>
@@ -20,7 +15,7 @@ const filteredPages = related.map(
 
     <Grid3>
       <HoverableLink
-        v-for="page in filteredPages"
+        v-for="page in relatedPages"
         :key="page.id"
         :text="page.title"
         :href="page.href"

@@ -80,7 +80,7 @@
           '')
 
           (writeScriptBin "preview" ''
-            build
+            ENV=preview build
             python3 -m http.server -d dist 3000
           '')
 
@@ -102,6 +102,14 @@
 
           (writeScriptBin "checks" ''
             check-internal-links
+            lint-style
+            check-sensitivity
+          '')
+
+          # Run this to see if CI will pass
+          (writeScriptBin "ci" ''
+            build
+            # check-internal-links
             lint-style
             check-sensitivity
           '')

@@ -21,7 +21,7 @@ declare module '@vue/runtime-core' {
     IconAppNix: typeof import('~icons/app/nix')['default']
     IconFaSolidMoon: typeof import('~icons/fa-solid/moon')['default']
     IconFaSolidSun: typeof import('~icons/fa-solid/sun')['default']
-    Island: typeof import('./node_modules/.pnpm/iles@0.8.7/node_modules/iles/dist/client/app/components/Island.vue')['default']
+    Island: typeof import('./node_modules/.pnpm/iles@0.8.7_@types+node@18.11.9/node_modules/iles/dist/client/app/components/Island.vue')['default']
     Language: typeof import('./src/components/Language.vue')['default']
     Languages: typeof import('./src/components/Languages.vue')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']

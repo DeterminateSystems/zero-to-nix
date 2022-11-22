@@ -5,6 +5,7 @@ import { WritableAtom } from "nanostores";
 
 const { languages } = site;
 
+// Get the default system based on browser hint
 const defaultSystem: string =
   typeof window !== "undefined"
     ? window.navigator.userAgent.indexOf("Mac") != -1
@@ -12,15 +13,18 @@ const defaultSystem: string =
       : "Linux"
     : "Linux";
 
+// Current selected language (stored in localStorage)
 export const languageState: WritableAtom<string> = persistentAtom<string>(
   "zero-to-nix:language",
   languages[0]!
 );
 
+export const language = useStore(languageState);
+
+// Current selected system (stored in localStorage)
 export const systemState: WritableAtom<string> = persistentAtom<string>(
   "zero-to-nix:system",
   defaultSystem
 );
 
-export const language = useStore(languageState);
 export const system = useStore(systemState);
