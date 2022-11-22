@@ -95,6 +95,7 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 For [quick start pages](./src/pages/start/):
 
 - `title`
+- `summary` (an array of things that the user will accomplish in the guide)
 - `order` (ascending)
 
 For [concept pages](./src/pages/concepts/):
