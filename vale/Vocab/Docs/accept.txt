@@ -7,3 +7,4 @@ nixlang
 nixos
 nixpkgs
 readMore
+tooltip
