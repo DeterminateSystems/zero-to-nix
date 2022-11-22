@@ -25,6 +25,6 @@ export default defineConfig({
     rehypePlugins: ["rehype-external-links"],
   },
   modules: [headings(), icons(), prism()],
-  prettyUrls: false, // Disable in preview mode
+  prettyUrls: !isPreview, // Disable in preview mode
   turbo: true,
 });
