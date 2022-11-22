@@ -3,11 +3,15 @@ import icons from "@islands/icons";
 import prism from "@islands/prism";
 import { RawPageMatter, defineConfig } from "iles";
 
+import site from "./src/site";
+
 const env = process.env["ENV"];
 const isPreview = env === "preview";
 
+const { url: siteUrl } = site;
+
 export default defineConfig({
-  siteUrl: "https://zero-to-nix.vercel.app",
+  siteUrl,
   extendFrontmatter(frontmatter: RawPageMatter, filename: string) {
     // Set the layout for e.g. src/pages/foo/bar.mdx to foo
     // Filters out non-MDX pages

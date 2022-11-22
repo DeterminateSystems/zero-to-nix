@@ -12,6 +12,8 @@ export type Term = {
 export type Site = {
   title: string;
   description: string;
+  url: string;
+  canonical: string;
   languageCode: string;
   navbarLinks: NavLink[];
   year: number;
@@ -24,6 +26,8 @@ const site: Site = {
   title: "Zero to Nix",
   description:
     "An unofficial and opinionated guide to getting started with Nix",
+  url: "https://zero-to-nix.vercel.app",
+  canonical: "zero-to-nix.vercel.app",
   languageCode: "en",
   navbarLinks: [
     { text: "Quick start", href: "/start" },
