@@ -19,6 +19,8 @@ declare module '@vue/runtime-core' {
     HorizontalContainer: typeof import('./src/components/HorizontalContainer.vue')['default']
     HoverableLink: typeof import('./src/components/HoverableLink.vue')['default']
     IconAppNix: typeof import('~icons/app/nix')['default']
+    IconFaGithub: typeof import('~icons/fa/github')['default']
+    IconFaGitHub: typeof import('~icons/fa/git-hub')['default']
     IconFaSolidMoon: typeof import('~icons/fa-solid/moon')['default']
     IconFaSolidSun: typeof import('~icons/fa-solid/sun')['default']
     Island: typeof import('./node_modules/.pnpm/iles@0.8.7_@types+node@18.11.9/node_modules/iles/dist/client/app/components/Island.vue')['default']

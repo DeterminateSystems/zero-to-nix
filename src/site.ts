@@ -14,6 +14,7 @@ export type Site = {
   description: string;
   url: string;
   canonical: string;
+  githubUrl: string;
   languageCode: string;
   navbarLinks: NavLink[];
   year: number;
@@ -28,6 +29,7 @@ const site: Site = {
     "An unofficial and opinionated guide to getting started with Nix",
   url: "https://zero-to-nix.vercel.app",
   canonical: "zero-to-nix.vercel.app",
+  githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
   navbarLinks: [
     { text: "Quick start", href: "/start" },
