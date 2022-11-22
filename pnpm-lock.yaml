@@ -25,6 +25,7 @@ specifiers:
   tailwindcss: ^3.2.4
   vite-plugin-tailwindcss: 0.0.0-0
   vue-tsc: ^1.0.9
+  vue3-popper: ^1.5.0
 
 devDependencies:
   '@fontsource/fira-mono': 4.5.10
@@ -51,6 +52,7 @@ devDependencies:
   tailwindcss: 3.2.4_postcss@8.4.19
   vite-plugin-tailwindcss: 0.0.0-0_vite@2.9.15
   vue-tsc: 1.0.9_typescript@4.9.3
+  vue3-popper: 1.5.0_vue@3.2.45
 
 packages:
 
@@ -310,6 +312,10 @@ packages:
 
   /@nuxt/devalue/2.0.0:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
+    dev: true
+
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
     dev: true
 
   /@rollup/pluginutils/4.2.1:
@@ -780,6 +786,10 @@ packages:
 
   /de-indent/1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
+    dev: true
+
+  /debounce/1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
     dev: true
 
   /debug/4.3.4:
@@ -3172,6 +3182,17 @@ packages:
       '@vue/runtime-dom': 3.2.45
       '@vue/server-renderer': 3.2.45_vue@3.2.45
       '@vue/shared': 3.2.45
+    dev: true
+
+  /vue3-popper/1.5.0_vue@3.2.45:
+    resolution: {integrity: sha512-xaEnx90YBnlSg5G2yWqm2DHWHg+DB99UVRp4VsyTF0QLXyHrqSuE1Xo5+sG0AQq/lBcrGMlk5NU5xE2MDLKViw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: ^3.2.20
+    dependencies:
+      '@popperjs/core': 2.11.6
+      debounce: 1.2.1
+      vue: 3.2.45
     dev: true
 
   /webpack-sources/3.2.3:
