@@ -5,7 +5,7 @@ const {
 } = usePage<{
   title: string;
   description?: string;
-  summary: string[];
+  summary?: string[];
   order: number;
 }>();
 </script>
@@ -27,7 +27,7 @@ const {
 
         <Panel>
           <div class="space-y-6">
-            <Summary :items="summary" />
+            <Summary v-if="summary.length > 0" :items="summary" />
 
             <Content>
               <slot />
