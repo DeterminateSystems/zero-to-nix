@@ -31,6 +31,7 @@ const site: Site = {
   ],
   year: new Date().getFullYear(),
 
+  // User interactions
   systems: ["Linux", "macOS"],
   languages: ["JavaScript", "Python", "Go", "Rust"],
 

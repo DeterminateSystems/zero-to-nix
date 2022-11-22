@@ -4,15 +4,18 @@ import prism from "@islands/prism";
 import { RawPageMatter, defineConfig } from "iles";
 
 const env = process.env["ENV"];
+const isPreview = env === "preview";
 
 export default defineConfig({
   siteUrl: "https://zero-to-nix.vercel.app",
   extendFrontmatter(frontmatter: RawPageMatter, filename: string) {
-    // Set the layout for e.g. src/pages/section/foo.mdx to section
-    if (filename.endsWith("mdx")) {
+    // Set the layout for e.g. src/pages/foo/bar.mdx to foo
+    // Filters out non-MDX pages
+    if (filename.endsWith(".mdx")) {
       frontmatter.layout = filename.split("/")[2];
     }
 
+    // Add an `id` parameter to concept pages based on filename
     if (filename.split("/")[2] === "concepts") {
       const id = filename.split("/").at(-1)?.split(".").at(0);
       frontmatter["id"] = id;
@@ -22,6 +25,6 @@ export default defineConfig({
     rehypePlugins: ["rehype-external-links"],
   },
   modules: [headings(), icons(), prism()],
-  prettyUrls: env !== "preview",
+  prettyUrls: false, // Disable in preview mode
   turbo: true,
 });
