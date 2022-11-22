@@ -36,7 +36,7 @@ const displayText = show ?? page.title;
         <div class="flex justify-end">
           <a
             :href="page.href"
-            class="rounded-md bg-light-gray px-3 py-1.5 text-sm hover:bg-primary dark:bg-gray dark:hover:bg-primary"
+            class="rounded-md bg-light-gray px-3 py-1.5 text-sm hover:bg-primary hover:text-white dark:bg-gray dark:hover:bg-primary"
             >More</a
           >
         </div>
