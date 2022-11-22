@@ -100,10 +100,15 @@
             alex --quiet src/pages
           '')
 
+          (writeScriptBin "check-types" ''
+            npm run typecheck
+          '')
+
           (writeScriptBin "checks" ''
             check-internal-links
             lint-style
             check-sensitivity
+            check-types
           '')
 
           # Run this to see if CI will pass
@@ -112,6 +117,7 @@
             # check-internal-links
             lint-style
             check-sensitivity
+            check-types
           '')
         ];
 

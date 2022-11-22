@@ -68,16 +68,21 @@ Zero to Nix's "stack" 🥞:
 
 The site uses a number of custom [MDX] components to spice up the usual Markdown content.
 
-| Component                                                   | What it does                                                                    |
-| :---------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| [`Concept`](./src/components/Concept.vue)                   | Add a hoverable tool tip for a concept                                          |
-| [`Language`](./src/components/Language.vue)                 | Displays which (programming) language the user has selected                     |
-| [`Languages`](./src/components/Languages.vue)               | Provides a (programming) language selector                                      |
-| [`Harmonic`](./src/components/Harmonic.vue)                 | Provides system-specific shell commands for [Harmonic]                          |
-| [`NixStorePath`](./src/components/NixStorePath.vue)         | Provides a colorful visualization of Nix store path components                  |
-| [`Shell`](./src/components/Shell.vue)                       | Provides language- and system-specific shell commands                           |
-| [`SpecificLanguage`](./src/components/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language |
-| [`Systems`](./src/components/Systems.vue)                   | Provides a system selector (Linux vs. macOS)                                    |
+| Component                                                                | What it does                                                                    |
+| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                          |
+| [`Danger`](./src/components/mdx/admonitions/Danger.vue)                  | Danger admonition block                                                         |
+| [`Info`](./src/components/mdx/admonitions/Info.vue)                      | Info admonition block                                                           |
+| [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                     |
+| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                      |
+| [`Harmonic`](./src/components/mdx/code/Harmonic.vue)                     | Provides system-specific shell commands for [Harmonic]                          |
+| [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                  |
+| [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                           |
+| [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language |
+| [`System`](./src/components/mdx/stateful/System.vue)                     | Displays the currently selected system (Linux vs. macOS)                        |
+| [`Systems`](./src/components/stateful/Systems.vue)                       | Provides a system selector (Linux vs. macOS)                                    |
+| [`Success`](./src/components/mdx/admonitions/Success.vue)                | Success admonition block                                                        |
+| [`Warning`](./src/components/mdx/admonitions/Warning.vue)                | Warning admonition block                                                        |
 
 ## Directory structure
 

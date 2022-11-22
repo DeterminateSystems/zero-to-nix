@@ -17,7 +17,9 @@ const {
             >{{ $site.title }}</a
           >
 
-          <NixLogo />
+          <IconAppNix
+            class="h-5 w-5 fill-sky-600 dark:fill-sky-400 md:h-6 md:w-6 lg:h-7 lg:w-7"
+          />
         </div>
 
         <ul class="flex items-center space-x-4 md:space-x-5 lg:space-x-6">
