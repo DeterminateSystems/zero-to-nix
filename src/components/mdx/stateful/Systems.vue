@@ -7,7 +7,7 @@ const { systems } = site;
 
 <template>
   <div
-    className="not-prose text-normal inline-flex items-center space-x-6 rounded-lg border-2 border-light-gray bg-pale p-3 dark:border-gray dark:bg-black"
+    className="not-prose text-normal inline-flex items-center space-x-6 rounded-lg border-2 border-light-gray bg-pale p-3 dark:border-gray dark:bg-inherit"
   >
     <p
       className="text-normal font-semibold tracking-tight md:text-lg lg:text-xl"

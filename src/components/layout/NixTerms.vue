@@ -7,7 +7,7 @@
         v-for="term in $site.nixTerms"
         :key="term.title"
         :href="term.href"
-        class="rounded-lg border-2 border-light-gray p-3 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-black md:p-4 lg:p-5"
+        class="rounded-lg border-2 border-light-gray p-3 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-inherit md:p-4 lg:p-5"
       >
         <div class="space-y-2">
           <p class="text-xl md:text-2xl lg:text-3xl">{{ term.title }}</p>

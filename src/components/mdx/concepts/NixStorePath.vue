@@ -6,7 +6,7 @@ const { pkg } = defineProps<{
 
 <template>
   <div
-    class="not-prose rounded-lg border-2 border-light-gray bg-pale py-3 px-5 dark:border-gray dark:bg-black"
+    class="not-prose rounded-lg border-2 border-light-gray bg-pale py-3 px-5 dark:border-gray dark:bg-inherit"
   >
     <div class="space-y-2 md:space-y-3 lg:space-y-4">
       <pre

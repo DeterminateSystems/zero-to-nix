@@ -6,7 +6,7 @@ const { items } = defineProps<{
 
 <template>
   <div
-    class="rounded-lg border-2 border-slate-300 bg-slate-50 dark:border-slate-500 dark:bg-black"
+    class="rounded-lg border-2 border-slate-300 bg-slate-50 dark:border-slate-500 dark:bg-inherit"
   >
     <div
       class="md:px-4.5 flex flex-col flex-nowrap items-start space-y-2 py-2 px-3 md:flex-row md:space-y-0 md:space-x-6 md:py-3 lg:py-4 lg:px-6"

@@ -1,5 +1,5 @@
 <template>
-  <footer class="dark:bg-black">
+  <footer class="dark:bg-inherit">
     <HorizontalContainer>
       <div class="pt-12 pb-16">
         <p

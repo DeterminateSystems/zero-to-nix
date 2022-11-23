@@ -14,6 +14,7 @@ module.exports = {
       colors: {
         // Drawn from: https://tailwindcss.com/docs/customizing-colors
         pale: colors.slate["50"], // #F8FAFC
+        dark: "rgb(10, 10, 10)",
         yellow: colors.yellow["500"], // #EAB308
         "pale-yellow": colors.yellow["50"], // #FEFCE8
         "dark-yellow": colors.yellow["600"], // #CA8A04
