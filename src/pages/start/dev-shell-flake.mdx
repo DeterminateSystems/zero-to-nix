@@ -16,7 +16,7 @@ prefer:
 
 <Languages client:load />
 
-To get started in your <Language client:only /> project,
+To get started in your <Language client:load /> project,
 create an empty directory and initialize a [flake templates][templates] for your preferred language:
 
 <Shell client:load />
@@ -28,7 +28,7 @@ Once the template has been initialized, run `ls .` to see the contents of the di
 
 ## Exploring the Nix shell for <Language client:load />
 
-One of the [flake outputs][outputs] of this Nix [flakes] is a [shell environments][shell] for <Language client:only />.
+One of the [flake outputs][outputs] of this Nix [flakes] is a [shell environments][shell] for <Language client:load />.
 To enter that shell environment:
 
 ```shell
@@ -38,7 +38,8 @@ nix develop
 Now that we've entered the shell, we can do some exploring, starting with [Nix store paths][store].
 
 <SpecificLanguage client:load lang="JavaScript">
-Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`. Try running it in the Nix shell:
+Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`.
+Try running it in the Nix shell:
 
 ```shell
 which node
@@ -52,7 +53,8 @@ You should see a (rather strange) path like this:
 
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Python">
-Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`. Try running it in the Nix shell:
+Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`.
+Try running it in the Nix shell:
 
 ```shell
 which python
@@ -66,7 +68,8 @@ You should see a (rather strange) path like this:
 
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Go">
-Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
+Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`.
+Try running it in the Nix shell:
 
 ```shell
 which go
@@ -80,7 +83,8 @@ You should see a (rather strange) path like this:
 
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Rust">
-Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`. Try running it in the Nix shell:
+Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`.
+Try running it in the Nix shell:
 
 ```shell
 which cargo
@@ -91,7 +95,6 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
 ```
-
 </SpecificLanguage>
 
 Probably not what you expected! What happened here? A few things:

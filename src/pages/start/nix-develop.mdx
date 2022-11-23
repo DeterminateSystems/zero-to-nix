@@ -80,7 +80,7 @@ Now explore the shell for <Language client:load />:
 
 <NixDevelop client:load />
 
-<SpecificLanguage lang="JavaScript">
+<SpecificLanguage client:load lang="JavaScript">
 First, let's see the Nix store paths for [Node.js]:
 
 ```shell
@@ -93,7 +93,7 @@ Now use Node to run a simple program:
 node --eval "console.log('1 + 1 = ' + (1 + 1))"
 ```
 </SpecificLanguage>
-<SpecificLanguage lang="Python">
+<SpecificLanguage client:load lang="Python">
 First, let's see the Nix store path for Python:
 
 ```shell
@@ -106,7 +106,7 @@ Now use Python to run a simple program:
 python -c "print(1 + 1)"
 ```
 </SpecificLanguage>
-<SpecificLanguage lang="Go">
+<SpecificLanguage client:load lang="Go">
 First, let's see the Nix store path for the [Go] CLI:
 
 ```shell
@@ -121,7 +121,7 @@ go --version
 
 You should get 1.19.3, though the OS and arch will vary based on your platform.
 </SpecificLanguage>
-<SpecificLanguage lang="Rust">
+<SpecificLanguage client:load lang="Rust">
 First, let's see the Nix store path for [cargo]:
 
 ```shell
