@@ -48,15 +48,15 @@ But those symlinks are only valid in your current directory. If you run `cd ..` 
 A few other things:
 
 * The `Welcome to a Nix shell environment!` greeting is defined in the *shell hook*. This is arbitrary code that you can run when the environment starts up.
-* Nix shell environments support environment variables as well. Run `echo $SECRET_PASSWORD` to
+* Nix shell environments support environment variables as well. Run `echo $SECRET_PASSWORD` to access a value that's available only in the Nix shell.
 
-For now, let's leave the shell and return to our usual environment:
+Let's leave the Nix shell and return to our usual environment:
 
 ```shell
 exit
 ```
 
-Now check the path for [Git], which should be installed on your system using `which git`. It should be at a global system path like `/usr/bin/git` (or something similar).
+Now check the path for [Git] using `which git`. It should be at a global system path like `/usr/bin/git`.
 And if you run `echo $SECRET_PASSWORD` again you should get an empty string (unless you happen to have that set on your machine!).
 
 ## Run commands inside the shell
@@ -66,9 +66,11 @@ The `nix develop` command provides a `--command` (or `-c`) flag that you can use
 
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#example" --command git status
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command curl --headers https://example.com
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command 'echo "{}" | jq .'
+nix develop "github:DeterminateSystems/zero-to-nix#example" --command curl https://example.com
+nix develop "github:DeterminateSystems/zero-to-nix#example" --command echo "{}" | jq .
 ```
+
+In all three cases, you're running a symlinked package in the [Nix store][store] and nothing from your global environment. This makes Nix shell environments [*hermetic*][hermeticity].
 
 ## Language-specific shells
 
@@ -156,6 +158,7 @@ This shell environment has several tools available:
 [flakes]: /concepts/flakes
 [git]: https://git-scm.com
 [go]: https://go.dev
+[hermeticity]: /concepts/hermeticity
 [jq]: https://stedolan.github.io/jq
 [language]: /concepts/nix-language
 [last]: /start/nix-run
