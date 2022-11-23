@@ -1,7 +1,10 @@
 <script setup lang="ts">
-const { pkg } = defineProps<{
+const { pkg, bin } = defineProps<{
   pkg: string;
+  bin?: string;
 }>();
+
+const finalPath = `${pkg}${bin && `/bin/${bin}`}`;
 </script>
 
 <template>
@@ -30,7 +33,7 @@ const { pkg } = defineProps<{
         </div>
         <span>-</span>
         <div class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
-          <span class="font-mono text-orange dark:text-rose">{{ pkg }}</span>
+          <span class="font-mono text-orange dark:text-rose">{{ finalPath }}</span>
           <span class="md:text-normal font-sans text-sm tracking-tight lg:text-lg">
             <strong>3.</strong> Package name
           </span>

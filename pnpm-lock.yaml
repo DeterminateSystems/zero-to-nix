@@ -12,10 +12,12 @@ specifiers:
   '@nanostores/persistent': ^0.7.0
   '@nanostores/vue': ^0.6.1
   '@tailwindcss/typography': ^0.5.8
+  '@types/marked': ^4.0.7
   '@types/node': ^18.11.9
   '@vueuse/core': ^9.5.0
   autoprefixer: ^10.4.13
   iles: ^0.8.7
+  marked: ^4.2.3
   nanostores: ^0.7.0
   postcss: ^8.4.19
   prettier: ^2.7.1
@@ -39,10 +41,12 @@ devDependencies:
   '@nanostores/persistent': 0.7.0_nanostores@0.7.0
   '@nanostores/vue': 0.6.1_zzt5tcdxgl3jsilh3f4jgfjwue
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
+  '@types/marked': 4.0.7
   '@types/node': 18.11.9
   '@vueuse/core': 9.5.0_vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.19
   iles: 0.8.7_@types+node@18.11.9
+  marked: 4.2.3
   nanostores: 0.7.0
   postcss: 8.4.19
   prettier: 2.7.1
@@ -370,6 +374,10 @@ packages:
     resolution: {integrity: sha512-wLEm0QvaoawEDoTRwzTXp4b4jpwiJDvR5KMnFnVodm3scufTlBOWRD6N1OBf9TZMhjlNsSfcO5V+7AF4+Vy+9g==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/marked/4.0.7:
+    resolution: {integrity: sha512-eEAhnz21CwvKVW+YvRvcTuFKNU9CV1qH+opcgVK3pIMI6YZzDm6gc8o2vHjldFk6MGKt5pueSB7IOpvpx5Qekw==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -1900,6 +1908,12 @@ packages:
   /markdown-extensions/1.1.1:
     resolution: {integrity: sha512-WWC0ZuMzCyDHYCasEGs4IPvLyTGftYwh6wIEOULOF0HXcqZlhwRzrK0w2VUlxWA98xnvb/jszw4ZSkJ6ADpM6Q==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /marked/4.2.3:
+    resolution: {integrity: sha512-slWRdJkbTZ+PjkyJnE30Uid64eHwbwa1Q25INCAYfZlK4o6ylagBy/Le9eWntqJFoFT93ikUKMv47GZ4gTwHkw==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: true
 
   /mdast-util-definitions/5.1.1:

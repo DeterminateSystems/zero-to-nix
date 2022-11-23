@@ -47,6 +47,7 @@
             alex = super.nodePackages.alex;
           })
         ];
+
       in
       flake-utils.lib.eachDefaultSystem (system:
       let
@@ -127,12 +128,21 @@
           pnpm run build
           python3 -m http.server -d dist 3000
         '';
+
+        exampleShells = import ./nix/shell/example.nix { inherit pkgs; };
       in
       {
-        devShells.default = pkgs.mkShell
-          {
-            buildInputs = common ++ scripts;
-          };
+        devShells = {
+          # The shell for developing this site
+          default = pkgs.mkShell
+            {
+              buildInputs = common ++ scripts;
+            };
+
+          # Shells used in quick start guide
+          inherit (exampleShells)
+            example javascript python go rust multi;
+        };
 
         apps.default = flake-utils.lib.mkApp {
           drv = runLocal;

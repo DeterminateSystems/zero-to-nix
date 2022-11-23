@@ -33,7 +33,7 @@ module.exports = {
         lilac: colors.purple["500"], // #A855F7
         rose: colors.rose["500"], // #F43F5E
         orange: colors.orange["500"], // #F97316
-        primary: "rgb(80, 116, 191)", // Determinate Systems light purple
+        primary: "var(--primary)", // Determinate Systems light purple
       },
       typography: ({ theme }) => ({
         DEFAULT: {

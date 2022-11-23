@@ -1,4 +1,5 @@
 import { Document, useDocuments } from "iles";
+import { marked } from "marked";
 
 // Quick start pages
 export type QuickStartPageProps = {
@@ -44,3 +45,6 @@ export const relatedConceptPages = (ids: string[]): ConceptPage[] =>
   ids.map(
     (id: string) => conceptPages.find((page: ConceptPage) => page.id === id)!
   );
+
+// Render small Markdown snippets without the encapsulating <p>...</p>
+export const md = (input: string): string => marked.parseInline(input);
