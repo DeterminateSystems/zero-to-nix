@@ -2,6 +2,7 @@ declarativity
 detsys
 ds
 href
+jq
 kubectl
 linux
 nixlang
