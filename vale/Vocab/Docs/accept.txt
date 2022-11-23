@@ -1,6 +1,7 @@
 declarativity
 detsys
 ds
+hermeticity
 href
 jq
 kubectl
