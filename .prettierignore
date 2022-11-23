@@ -1,2 +1,2 @@
 /.direnv/
-src/env.d.ts
+*.d.ts

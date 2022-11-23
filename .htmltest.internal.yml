@@ -1,3 +1,4 @@
 DirectoryPath: dist
 CheckExternal: false
+CheckScripts: false
 IgnoreDirectoryMissingTrailingSlash: true

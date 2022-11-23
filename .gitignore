@@ -1,5 +1,5 @@
 # Dependencies
-/node_modules
+/node_modules/
 
 # Astro
 /dist/
@@ -12,3 +12,6 @@ result
 
 # htmltest artifacts
 /tmp/
+
+# îles artifacts
+/.iles-ssg-temp/

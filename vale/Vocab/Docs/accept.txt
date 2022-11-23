@@ -2,8 +2,16 @@ declarativity
 detsys
 ds
 href
+kubectl
 linux
 nixlang
 nixos
 nixpkgs
-readMore
+npm
+npx
+readlink
+readmore
+repo
+ripgrep
+tooltip
+upstreaming

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Step.astro
 title: Create a development environment using Nix
 summary:
   [
@@ -10,43 +9,35 @@ summary:
 order: 3
 ---
 
-import Language from "../../components/Language";
-import Languages from "../../components/Languages";
-import Shell from "../../components/Shell";
-import Snippet from "../../components/Snippet";
-import SpecificLanguage from "../../components/SpecificLanguage";
-
-[Nix] enables you to create <Snippet id="shell-environments"
-show="shell environments" client:only /> that are "sealed" from the
+[Nix] enables you to create [shell environments][shell] that are "sealed" from the
 rest of your system&mdash;they ignore directories like `/usr/bin` and
-only use packages available in the <Snippet id="nix-store" show="Nix
-store" client:only />. To get started, tell us which language you
+only use packages available in the [Nix store][store]. To get started, tell us which language you
 prefer:
 
-<Languages client:only />
+<Languages client:load />
 
 To get started in your <Language client:only /> project,
-create an empty directory and initialize a <Snippet id="flake-templates" show="flake template" client:only /> for your preferred language:
+create an empty directory and initialize a [flake templates][templates] for your preferred language:
 
-<Shell client:only />
+<Shell client:load />
 
 Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
 
-- The `flake.nix` file defines the <Snippet id="flakes" show="flake" client:only /> for your project.
-- The `flake.lock` <Snippet id="pinning" show="pins" client:only /> all of the <Snippet id="flake-inputs" show="flake inputs" client:only /> &mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
+- The `flake.nix` file defines the [flake][flakes] for your project.
+- The `flake.lock` [pins][pinning] all of the [flake inputs][inputs]&mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
 
-## Exploring the Nix shell for <Language client:only />
+## Exploring the Nix shell for <Language client:load />
 
-One of the <Snippet id="flake-outputs" show="outputs" client:only /> of this Nix <Snippet id="flakes" show="flake" client:only /> is a <Snippet id="shell-environments" show="shell environment" client:only /> for <Language client:only />.
+One of the [flake outputs][outputs] of this Nix [flakes] is a [shell environments][shell] for <Language client:only />.
 To enter that shell environment:
 
 ```shell
 nix develop
 ```
 
-Now that we've entered the shell, we can do some exploring, starting with <Snippet id="nix-store" show="Nix store paths" client:only />.
+Now that we've entered the shell, we can do some exploring, starting with [Nix store paths][store].
 
-<SpecificLanguage lang="JavaScript" client:only>
+<SpecificLanguage client:load lang="JavaScript">
 Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`. Try running it in the Nix shell:
 
 ```shell
@@ -58,8 +49,9 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
 ```
+
 </SpecificLanguage>
-<SpecificLanguage lang="Python" client:only>
+<SpecificLanguage client:load lang="Python">
 Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`. Try running it in the Nix shell:
 
 ```shell
@@ -71,8 +63,9 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
 ```
+
 </SpecificLanguage>
-<SpecificLanguage lang="Go" client:only>
+<SpecificLanguage client:load lang="Go">
 Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`. Try running it in the Nix shell:
 
 ```shell
@@ -84,8 +77,9 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/hvnp4a2wlqhfx6yfvfm4zw0vxh3jadzh-go-1.19.3/bin/go
 ```
+
 </SpecificLanguage>
-<SpecificLanguage lang="Rust" client:only>
+<SpecificLanguage client:load lang="Rust">
 Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`. Try running it in the Nix shell:
 
 ```shell
@@ -97,15 +91,22 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
 ```
+
 </SpecificLanguage>
 
 Probably not what you expected! What happened here? A few things:
 
-- Nix looked at the `devShells` <Snippet id="flake-outputs" show="output" client:only /> in
-  `flake.nix` to figure out which <Snippet id="packages" show="Nix packages" client:only /> to
-  include in the shell environment (Nix specifically looked at the `buildInputs` array).
+- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the shell environment (Nix specifically looked at the `buildInputs` array).
 - Nix built the packages specified under `buildInputs` and stored them in the
-  <Snippet id="nix-store" show="Nix store" client:only /> under `/nix/store`.
+  [Nix store][store] under `/nix/store`.
 
+[flakes]: /concepts/flakes
+[inputs]: /concepts/flake-inputs
 [nix]: https://nixos.org
+[outputs]: /concepts/flake-outputs
+[packages]: /concepts/packages
+[pinning]: /concepts/pinning
 [rev]: https://git-scm.com/docs/revisions
+[shell]: /concepts/shell-environments
+[store]: /concepts/nix-store
+[templates]: /concepts/flake-templates

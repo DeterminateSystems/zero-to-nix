@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import site from "~/site";
+
+const { url } = site;
+
+const {
+  frontmatter: { href },
+} = usePage();
+
+const canonical = new URL(url, href).toString();
+
+useHead({
+  link: [{ rel: "canonical", href: canonical }],
+});
+</script>
+
+<template>
+  <slot />
+</template>
+
+<style>
+@import "@fontsource/inter"; /* sans-serif */
+@import "@fontsource/fira-mono"; /* monospace */
+@import "~/assets/css/tailwind";
+@import "prism-themes/themes/prism-night-owl"; /* https://www.npmjs.com/package/prism-themes */
+</style>
