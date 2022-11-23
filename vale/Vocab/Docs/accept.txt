@@ -11,6 +11,7 @@ nixos
 nixpkgs
 npm
 npx
+openssl
 readlink
 readmore
 repo
