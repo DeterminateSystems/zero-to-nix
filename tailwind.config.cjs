@@ -11,6 +11,9 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
       },
+      maxWidth: {
+        "8xl": "90rem",
+      },
       colors: {
         // Drawn from: https://tailwindcss.com/docs/customizing-colors
         pale: colors.slate["50"], // #F8FAFC

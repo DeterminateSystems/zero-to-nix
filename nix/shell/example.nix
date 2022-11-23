@@ -44,6 +44,6 @@
   };
 
   multi = pkgs.mkShell {
-    buildInputs = with pkgs; [ terraform ];
+    buildInputs = with pkgs; [ python39 kubectl openssl terraform ];
   };
 }

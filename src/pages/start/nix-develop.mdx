@@ -3,7 +3,8 @@ title: Explore Nix shell environments
 summary: [
   "Use the `nix develop` command to enter a Nix shell defined in a remote [flake](/concepts/flakes)",
   "Run a command inside a shell environment without entering that environment",
-  "Explore Nix shell environments tailor made for specific programming languages"
+  "Explore Nix shell environments tailor made for specific programming languages",
+  "Explore a more mixed shell environment"
 ]
 order: 3
 ---
@@ -18,6 +19,13 @@ The [`nix develop`][nix-develop] command activates a Nix shell:
 nix develop "github:DeterminateSystems/zero-to-nix#example"
 ```
 
+<Warning title="Load times">
+The first time you activate a Nix shell using `nix develop` it may take a while.
+That's because Nix needs to build every [package][packages] included in the environment from scratch.
+This is in contrast to many [package managers][pkg] that are often faster because they install pre-built archives, such as tarballs.
+Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
+</Warning>
+
 You should be greeted with this:
 
 ```shell
@@ -25,25 +33,25 @@ Welcome to a Nix shell environment!
 bash-5.1$
 ```
 
-Congrats 🚀! You're now in a [Bash] environment that includes [jq], [curl], and [Git]. You may already have all three in your environment, but run these commands to see that something new is happening:
+Congrats 🚀! You're now in a [Bash] environment that includes [curl] and [Git].
+You may already have both in your environment, but run these commands to see that something new is happening:
 
 ```shell
-which jq
 which curl
 which git
 ```
 
-For jq, for example, you'll see a strange path like this (the input hash part will be different on your machine):
+For curl, for example, you should see a strange path like this (the input hash part should be different on your machine):
 
-<NixStorePath pkg="jq-1.6-bin" bin="jq" />
+<NixStorePath pkg="curl-7.86.0-bin" bin="curl" />
 
 What's happened here? The [Nix] CLI did a few things:
 
 * It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the shell configuration (again, more on this later).
-* It [symlinked] those package paths to `jq`, `curl`, and `git`, respectively.
+* It [symlinked] those package paths to `curl` and `git`, respectively.
 
-But those symlinks are only valid in your current directory. If you run `cd ..` and then `which git`, you'll no longer see a Nix store path.
+But those symlinks are only valid in your current directory. If you run `cd ..` and then `which git`, you should no longer see a Nix store path.
 
 A few other things:
 
@@ -62,19 +70,21 @@ And if you run `echo $SECRET_PASSWORD` again you should get an empty string (unl
 ## Run commands inside the shell
 
 While it's fun to explore the shell, you don't always want to be inside the shell to use the shell.
-The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that use the shell environment but from your current environment. Here are some examples for the shell we used earlier:
+The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that use the shell environment but from your current environment.
+Here are some examples for the shell we used earlier:
 
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#example" --command git status
 nix develop "github:DeterminateSystems/zero-to-nix#example" --command curl https://example.com
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command echo "{}" | jq .
 ```
 
-In all three cases, you're running a symlinked package in the [Nix store][store] and nothing from your global environment. This makes Nix shell environments [*hermetic*][hermeticity].
+In both cases, you're running a symlinked package in the [Nix store][store] and nothing from your global environment.
+As you can see, Nix shells are [*hermetic*][hermeticity] in that they're isolated from their surrounding environment.
 
 ## Language-specific shells
 
-As we did in the [last section][last], let's get a bit more specific and explore how Nix can benefit more specific programming environments. Select one of these programming languages:
+As we did in the [last section][last], let's get a bit more specific and explore how Nix can benefit more specific programming environments.
+Select one of these programming languages:
 
 <Languages client:load />
 
@@ -121,7 +131,7 @@ Now check the Go version:
 go --version
 ```
 
-You should get 1.19.3, though the OS and arch will vary based on your platform.
+You should get 1.19.3, though the OS and arch varies based on your platform.
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Rust">
 First, let's see the Nix store path for [cargo]:
@@ -140,9 +150,11 @@ cargo run
 You should see `Hello, world!`.
 </SpecificLanguage>
 
-## A multi-language shell
+## Beyond language-specific shells
 
-In the [previous section](#language-specific-shells), we explored Nix shells tailored to specific programming languages. But Nix shell environments are infinitely flexible, enabling you to combine whichever packages you like. Let's explore an example of this:
+In the [previous section](#language-specific-shells), we explored Nix shells tailored to specific programming languages.
+But Nix shell environments are infinitely flexible, enabling you to combine whichever packages you like.
+Let's explore an example of this:
 
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#multi"
@@ -150,7 +162,12 @@ nix develop "github:DeterminateSystems/zero-to-nix#multi"
 
 This shell environment has several tools available:
 
+* [Python]
+* [kubectl]
 * [Terraform]
+* [OpenSSL]
+
+This list could easily include 100 packages. It's up to you. We won't cover _how_ to create these environments just yet, but we hope that you come away from this guide with a basic sense of what Nix shell environments provide.
 
 [bash]: https://www.gnu.org/software/bash
 [cargo]: https://doc.rust-lang.org/stable/cargo
@@ -159,16 +176,20 @@ This shell environment has several tools available:
 [git]: https://git-scm.com
 [go]: https://go.dev
 [hermeticity]: /concepts/hermeticity
-[jq]: https://stedolan.github.io/jq
+[kubectl]: https://kubernetes.io/docs/reference/kubectl
 [language]: /concepts/nix-language
 [last]: /start/nix-run
 [nix]: /concepts/nix
 [nix-develop]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop
 [node.js]: https://nodejs.org
 [npm]: https://npmjs.org
+[openssl]: https://openssl.org
 [output]: /concepts/flake-output
 [packages]: /concepts/packages
+[pkg]: /concepts/package-management
+[python]: https://python.org
 [rust]: https://rust-lang.org
 [shell]: /concepts/nix-shell
+[store]: /concepts/nix-store
 [symlinked]: https://en.wikipedia.org/wiki/Symbolic_link
 [terraform]: https://terraform.io

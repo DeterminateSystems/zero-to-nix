@@ -5,3 +5,11 @@
 :root {
   --primary: rgb(80, 116, 191);
 }
+
+.content a {
+  text-decoration: underline !important;
+}
+
+.content a:hover {
+  color: var(--primary);
+}
