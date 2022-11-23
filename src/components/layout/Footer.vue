@@ -1,9 +1,9 @@
 <template>
   <footer class="dark:bg-inherit">
     <HorizontalContainer>
-      <div class="pt-12 pb-16">
+      <div class="flex justify-end pt-12 pb-16">
         <p
-          class="md:text-normal text-right text-sm font-light tracking-tight lg:text-lg"
+          class="md:text-normal tracking-tight text-gray dark:text-gray lg:text-lg"
         >
           Copyright &copy; {{ $site.year }}
           <a href="https://determinate.systems" class="hover:text-primary">
