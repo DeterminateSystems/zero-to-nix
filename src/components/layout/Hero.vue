@@ -20,7 +20,7 @@ const largeHero = heroSize === "lg";
   <section
     :class="{
       'space-y-2 py-10 md:space-y-3 md:py-12 lg:space-y-4 lg:py-14': normalHero,
-      'md:py-20) space-y-3 py-16 md:space-y-4 lg:space-y-5 lg:py-24': largeHero,
+      'space-y-3 py-16 md:space-y-4 md:py-20 lg:space-y-5 lg:py-24': largeHero,
     }"
   >
     <h1

@@ -30,7 +30,7 @@ const displayText = show ?? page.title;
     </button>
     <template #content>
       <div
-        class="not-prose max-w-fit space-y-3 rounded-lg bg-pale py-3 px-5 shadow-md dark:bg-slate-700 md:space-y-4"
+        class="not-prose max-w-sm space-y-3 rounded-lg bg-pale py-3 px-5 shadow-md dark:bg-slate-700 md:space-y-4"
       >
         <p class="text-base md:text-lg lg:text-xl">{{ page.snippet }}</p>
         <div class="flex justify-end">

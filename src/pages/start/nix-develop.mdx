@@ -9,7 +9,7 @@ summary: [
 order: 3
 ---
 
-One of [Nix]'s key features for developing software is Nix [shell environments][shell].
+One of Nix's key features for developing software is Nix [shell environments][shell].
 You can define shell environments of any complexity using the [Nix language][language].
 We'll cover that a bit later, but for now let's get a feel for what a Nix shell is and how it works.
 
@@ -22,7 +22,7 @@ nix develop "github:DeterminateSystems/zero-to-nix#example"
 <Warning title="Load times">
 The first time you activate a Nix shell using `nix develop` it may take a while.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
-This is in contrast to many [package managers][pkg] that are often faster because they install pre-built archives, such as tarballs.
+This is in contrast to many [package managers][pkg] that often install things more quickly because they download pre-built archives, such as tarballs.
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
 </Warning>
 
