@@ -23,6 +23,8 @@
 </template>
 
 <script setup lang="ts">
+import { md } from "~/logic/content";
+
 const { items } = defineProps<{
   items?: string[];
 }>();

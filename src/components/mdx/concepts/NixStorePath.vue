@@ -44,5 +44,6 @@
 <script setup lang="ts">
 const { pkg } = defineProps<{
   pkg: string;
+  bin?: string;
 }>();
 </script>
