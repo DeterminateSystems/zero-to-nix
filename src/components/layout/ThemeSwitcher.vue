@@ -3,7 +3,13 @@ import { isDark, toggleTheme } from "~/logic/theme";
 </script>
 
 <template>
-  <button @click="toggleTheme()" class="flex items-center">
+  <button
+    :aria-label="`Theme selector. Click to switch theme to ${
+      isDark ? 'light' : 'dark'
+    }.`"
+    @click="toggleTheme()"
+    class="flex items-center"
+  >
     <IconFaSolidSun
       v-bind="$attrs"
       v-if="isDark"

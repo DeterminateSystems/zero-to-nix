@@ -16,8 +16,9 @@ const { systems } = site;
     </p>
 
     <button
-      v-for="sys in systems"
-      :key="sys"
+      :aria-label="`Preferred platform selector. Click to activate ${sys}`"
+      v-for="(sys, idx) in systems"
+      :key="idx"
       @click="systemState.set(sys)"
       class="mg:text-normal rounded-lg py-0 px-2 text-sm font-semibold md:py-0.5 md:px-3 lg:py-1 lg:px-4 lg:text-lg"
       :class="{ 'bg-primary text-white': sys === system }"

@@ -24,6 +24,7 @@ const displayText = show ?? page.title;
 <template>
   <Popper v-bind="$attrs" placement="top">
     <button
+      :aria-label="`Tooltip popover explainer for the ${page.title} concept`"
       class="underline decoration-primary decoration-dotted underline-offset-4 hover:cursor-help hover:text-rose"
     >
       {{ displayText }}
@@ -37,8 +38,9 @@ const displayText = show ?? page.title;
           <a
             :href="page.href"
             class="rounded-md bg-light-gray px-3 py-1.5 text-xs hover:bg-primary hover:text-white dark:bg-gray dark:hover:bg-primary md:text-sm"
-            >More</a
           >
+            More
+          </a>
         </div>
       </div>
     </template>

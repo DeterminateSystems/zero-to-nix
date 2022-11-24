@@ -15,11 +15,11 @@ const { links: readMoreLinks } = defineProps<{
 
     <Grid3>
       <HoverableLink
-        v-for="link in readMoreLinks"
-        :key="link.title"
+        v-for="(link, idx) in readMoreLinks"
+        :key="idx"
         :text="link.title"
         :href="link.href"
-        :size="'sm'"
+        size="sm"
       />
     </Grid3>
   </div>

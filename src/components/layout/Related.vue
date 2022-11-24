@@ -15,11 +15,11 @@ const relatedPages: ConceptPage[] = relatedConceptPages(related);
 
     <Grid3>
       <HoverableLink
-        v-for="page in relatedPages"
-        :key="page.id"
+        v-for="(page, idx) in relatedPages"
+        :key="idx"
         :text="page.title"
         :href="page.href"
-        :size="'sm'"
+        size="sm"
       />
     </Grid3>
   </div>
