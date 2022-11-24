@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import site from "~/site";
-import { system, systemState } from "~/logic/state";
-
-const { systems } = site;
-</script>
-
 <template>
   <div
     className="not-prose text-normal inline-flex items-center space-x-6 rounded-lg border-2 border-light-gray bg-pale p-3 dark:border-gray dark:bg-inherit"
@@ -16,8 +9,9 @@ const { systems } = site;
     </p>
 
     <button
-      v-for="sys in systems"
-      :key="sys"
+      :aria-label="`Preferred platform selector. Click to activate ${sys}`"
+      v-for="(sys, idx) in systems"
+      :key="idx"
       @click="systemState.set(sys)"
       class="mg:text-normal rounded-lg py-0 px-2 text-sm font-semibold md:py-0.5 md:px-3 lg:py-1 lg:px-4 lg:text-lg"
       :class="{ 'bg-primary text-white': sys === system }"
@@ -26,3 +20,10 @@ const { systems } = site;
     </button>
   </div>
 </template>
+
+<script setup lang="ts">
+import site from "~/site";
+import { system, systemState } from "~/logic/state";
+
+const { systems } = site;
+</script>

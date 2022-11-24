@@ -4,8 +4,8 @@
 
     <Grid2>
       <a
-        v-for="term in $site.nixTerms"
-        :key="term.title"
+        v-for="(term, idx) in $site.nixTerms"
+        :key="idx"
         :href="term.href"
         class="rounded-lg border-2 border-light-gray p-3 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-inherit md:p-4 lg:p-5"
       >

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { language } from "~/logic/state";
-</script>
-
 <!-- TODO: make this programmatic -->
 <template>
   <div class="language-shell" data-lang="shell">
@@ -11,3 +7,7 @@ import { language } from "~/logic/state";
 nix flake init <span class="token parameter variable">--template</span> <span class="token string">"github:DeterminateSystems/zero-to-nix#{{ language.toLowerCase() }}"</span></code></pre>
   </div>
 </template>
+
+<script setup lang="ts">
+import { language } from "~/logic/state";
+</script>

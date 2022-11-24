@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const { title: successTitle } = defineProps<{
-  title?: string;
-}>();
-</script>
-
 <template>
   <div
     class="not-prose my-6 rounded-lg border-2 border-green bg-pale-green py-4 px-6 dark:bg-inherit"
@@ -19,3 +13,9 @@ const { title: successTitle } = defineProps<{
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { title: successTitle } = defineProps<{
+  title?: string;
+}>();
+</script>
