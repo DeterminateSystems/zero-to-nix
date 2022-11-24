@@ -19,10 +19,9 @@
 
 <script setup lang="ts">
 import { usePage } from "iles";
+import { PlainPageProps } from "~/logic/content";
 
 const {
   frontmatter: { title },
-} = usePage<{
-  title: string;
-}>();
+} = usePage<PlainPageProps>();
 </script>

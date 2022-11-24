@@ -35,12 +35,8 @@
 
 <script setup lang="ts">
 import { usePage } from "iles";
+import { QuickStartPageProps } from "~/logic/content";
 const {
   frontmatter: { title, description, summary, order },
-} = usePage<{
-  title: string;
-  description?: string;
-  summary?: string[];
-  order: number;
-}>();
+} = usePage<QuickStartPageProps>();
 </script>

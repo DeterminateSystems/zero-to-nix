@@ -47,7 +47,9 @@
 </template>
 
 <script setup lang="ts">
+import { PageProps } from "iles";
+
 const {
   route: { path },
-} = usePage();
+} = usePage<PageProps>();
 </script>

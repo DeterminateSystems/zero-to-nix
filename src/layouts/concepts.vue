@@ -32,6 +32,7 @@
 
 <script setup lang="ts">
 import { usePage } from "iles";
+import { ConceptPageProps } from "~/logic/content";
 
 type Link = {
   title: string;
@@ -40,10 +41,5 @@ type Link = {
 
 const {
   frontmatter: { title, description, readMore, related },
-} = usePage<{
-  title: string;
-  description?: string;
-  readMore?: Link[];
-  related?: string[];
-}>();
+} = usePage<ConceptPageProps>();
 </script>
