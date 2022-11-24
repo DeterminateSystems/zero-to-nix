@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { usePage } from "iles";
-
-const {
-  frontmatter: { title },
-} = usePage<{
-  title: string;
-}>();
-</script>
-
 <template layout="base">
   <Page>
     <Top>
@@ -26,3 +16,13 @@ const {
     <Footer />
   </Page>
 </template>
+
+<script setup lang="ts">
+import { usePage } from "iles";
+
+const {
+  frontmatter: { title },
+} = usePage<{
+  title: string;
+}>();
+</script>

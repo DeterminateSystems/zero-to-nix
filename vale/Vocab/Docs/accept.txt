@@ -1,7 +1,9 @@
 declarativity
 detsys
 ds
+hermeticity
 href
+jq
 kubectl
 linux
 nixlang
@@ -11,9 +13,10 @@ npm
 npx
 offboarding
 onboarding
+openssl
 readlink
-readmore
 readmore
 repo
 ripgrep
+tooltip
 upstreaming

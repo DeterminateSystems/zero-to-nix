@@ -2,6 +2,22 @@
   <slot />
 </template>
 
+<script setup lang="ts">
+import site from "~/site";
+
+const { url } = site;
+
+const {
+  frontmatter: { href },
+} = usePage();
+
+const canonical = new URL(url, href).toString();
+
+useHead({
+  link: [{ rel: "canonical", href: canonical }],
+});
+</script>
+
 <style>
 @import "@fontsource/inter"; /* sans-serif */
 @import "@fontsource/fira-mono"; /* monospace */

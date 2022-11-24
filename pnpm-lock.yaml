@@ -12,10 +12,12 @@ specifiers:
   '@nanostores/persistent': ^0.7.0
   '@nanostores/vue': ^0.6.1
   '@tailwindcss/typography': ^0.5.8
+  '@types/marked': ^4.0.7
   '@types/node': ^18.11.9
   '@vueuse/core': ^9.5.0
   autoprefixer: ^10.4.13
   iles: ^0.8.7
+  marked: ^4.2.3
   nanostores: ^0.7.0
   postcss: ^8.4.19
   prettier: ^2.7.1
@@ -25,6 +27,7 @@ specifiers:
   tailwindcss: ^3.2.4
   vite-plugin-tailwindcss: 0.0.0-0
   vue-tsc: ^1.0.9
+  vue3-popper: ^1.5.0
 
 devDependencies:
   '@fontsource/fira-mono': 4.5.10
@@ -38,10 +41,12 @@ devDependencies:
   '@nanostores/persistent': 0.7.0_nanostores@0.7.0
   '@nanostores/vue': 0.6.1_zzt5tcdxgl3jsilh3f4jgfjwue
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
+  '@types/marked': 4.0.7
   '@types/node': 18.11.9
   '@vueuse/core': 9.5.0_vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.19
   iles: 0.8.7_@types+node@18.11.9
+  marked: 4.2.3
   nanostores: 0.7.0
   postcss: 8.4.19
   prettier: 2.7.1
@@ -51,6 +56,7 @@ devDependencies:
   tailwindcss: 3.2.4_postcss@8.4.19
   vite-plugin-tailwindcss: 0.0.0-0_vite@2.9.15
   vue-tsc: 1.0.9_typescript@4.9.3
+  vue3-popper: 1.5.0_vue@3.2.45
 
 packages:
 
@@ -312,6 +318,10 @@ packages:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: true
+
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
     engines: {node: '>= 8.0.0'}
@@ -364,6 +374,10 @@ packages:
     resolution: {integrity: sha512-wLEm0QvaoawEDoTRwzTXp4b4jpwiJDvR5KMnFnVodm3scufTlBOWRD6N1OBf9TZMhjlNsSfcO5V+7AF4+Vy+9g==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/marked/4.0.7:
+    resolution: {integrity: sha512-eEAhnz21CwvKVW+YvRvcTuFKNU9CV1qH+opcgVK3pIMI6YZzDm6gc8o2vHjldFk6MGKt5pueSB7IOpvpx5Qekw==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -780,6 +794,10 @@ packages:
 
   /de-indent/1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
+    dev: true
+
+  /debounce/1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
     dev: true
 
   /debug/4.3.4:
@@ -1890,6 +1908,12 @@ packages:
   /markdown-extensions/1.1.1:
     resolution: {integrity: sha512-WWC0ZuMzCyDHYCasEGs4IPvLyTGftYwh6wIEOULOF0HXcqZlhwRzrK0w2VUlxWA98xnvb/jszw4ZSkJ6ADpM6Q==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /marked/4.2.3:
+    resolution: {integrity: sha512-slWRdJkbTZ+PjkyJnE30Uid64eHwbwa1Q25INCAYfZlK4o6ylagBy/Le9eWntqJFoFT93ikUKMv47GZ4gTwHkw==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: true
 
   /mdast-util-definitions/5.1.1:
@@ -3172,6 +3196,17 @@ packages:
       '@vue/runtime-dom': 3.2.45
       '@vue/server-renderer': 3.2.45_vue@3.2.45
       '@vue/shared': 3.2.45
+    dev: true
+
+  /vue3-popper/1.5.0_vue@3.2.45:
+    resolution: {integrity: sha512-xaEnx90YBnlSg5G2yWqm2DHWHg+DB99UVRp4VsyTF0QLXyHrqSuE1Xo5+sG0AQq/lBcrGMlk5NU5xE2MDLKViw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: ^3.2.20
+    dependencies:
+      '@popperjs/core': 2.11.6
+      debounce: 1.2.1
+      vue: 3.2.45
     dev: true
 
   /webpack-sources/3.2.3:

@@ -25,7 +25,7 @@ curl https://harmonic.dev | sh
 
 With Harmonic installed, check to make sure that you can install Nix on your machine:
 
-<Harmonic command="plan" client:only />
+<Harmonic command="plan" client:load />
 
 The `multi` in the plan command indicates that Harmonic will install Nix in [multi-user
 mode][multi] (as opposed to single-user mode). We recommend multi-user mode&mdash;and in fact
@@ -35,7 +35,7 @@ Harmonic doesn't even support single-user mode&mdash;because... REASONS.
 
 With Harmonic installed, you can now install Nix:
 
-<Harmonic command="install" client:only />
+<Harmonic command="install" client:load />
 
 Once Harmonic has finished you can verify the installation:
 

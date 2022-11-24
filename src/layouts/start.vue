@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { usePage } from "iles";
-const {
-  frontmatter: { title, description, summary, order },
-} = usePage<{
-  title: string;
-  description?: string;
-  summary?: string[];
-  order: number;
-}>();
-</script>
-
 <template layout="base">
   <Page>
     <Top>
@@ -22,7 +10,7 @@ const {
             back: { title: 'Quick start', href: '/start' },
             title,
           }"
-          :size="'normal'"
+          size="normal"
         />
 
         <Panel>
@@ -44,3 +32,15 @@ const {
     <Footer />
   </Page>
 </template>
+
+<script setup lang="ts">
+import { usePage } from "iles";
+const {
+  frontmatter: { title, description, summary, order },
+} = usePage<{
+  title: string;
+  description?: string;
+  summary?: string[];
+  order: number;
+}>();
+</script>
