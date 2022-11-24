@@ -7,7 +7,7 @@
     SECRET_PASSWORD = "open sesame";
 
     shellHook = ''
-      echo "Welcome to a Nix shell environment!"
+      echo "Welcome to a Nix development environment!"
     '';
   };
 
@@ -15,7 +15,7 @@
     buildInputs = with pkgs; [ nodejs-18_x ];
 
     shellHook = ''
-      echo "Welcome to a Nix shell for JavaScript development!"
+      echo "Welcome to a Nix development environment for JavaScript!"
     '';
   };
 
@@ -23,7 +23,7 @@
     buildInputs = with pkgs; [ python39 ];
 
     shellHook = ''
-      echo "Welcome to a Nix shell for Python development!"
+      echo "Welcome to a Nix development environment for Python!"
     '';
   };
 
@@ -31,7 +31,7 @@
     buildInputs = with pkgs; [ go_1_19 ];
 
     shellHook = ''
-      echo "Welcome to a Nix shell for Go development!"
+      echo "Welcome to a Nix development environment for Go!"
     '';
   };
 
@@ -39,11 +39,15 @@
     buildInputs = with pkgs; [ cargo ];
 
     shellHook = ''
-      echo "Welcome to a Nix shell for Rust development!"
+      echo "Welcome to a Nix development environment for Rust!"
     '';
   };
 
   multi = pkgs.mkShell {
     buildInputs = with pkgs; [ python39 kubectl openssl terraform ];
+
+    shellHook = ''
+      echo "Welcome to a very mixed Nix development environment!"
+    '';
   };
 }

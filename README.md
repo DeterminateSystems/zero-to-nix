@@ -7,7 +7,7 @@
 Make sure that you have Nix and [direnv] installed, then:
 
 ```shell
-# Activate Nix shell environment
+# Activate Nix development environment
 direnv allow
 
 # Recommended
