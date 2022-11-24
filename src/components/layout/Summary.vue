@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const { items } = defineProps<{
-  items?: string[];
-}>();
-</script>
-
 <template>
   <div
     class="rounded-lg border-2 border-slate-300 bg-slate-50 dark:border-slate-500 dark:bg-inherit"
@@ -27,3 +21,9 @@ const { items } = defineProps<{
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { items } = defineProps<{
+  items?: string[];
+}>();
+</script>

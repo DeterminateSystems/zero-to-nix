@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { isDark, toggleTheme } from "~/logic/theme";
-</script>
-
 <template>
   <button
     :aria-label="`Theme selector. Click to switch theme to ${
@@ -22,3 +18,7 @@ import { isDark, toggleTheme } from "~/logic/theme";
     />
   </button>
 </template>
+
+<script setup lang="ts">
+import { isDark, toggleTheme } from "~/logic/theme";
+</script>

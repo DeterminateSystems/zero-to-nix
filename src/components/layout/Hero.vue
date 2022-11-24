@@ -1,21 +1,3 @@
-<script setup lang="ts">
-const { size: heroSize = "normal" } = defineProps<{
-  title: string;
-  description?: string;
-  size?: "normal" | "lg";
-  breadcrumb?: {
-    back: {
-      title: string;
-      href: string;
-    };
-    title: string;
-  };
-}>();
-
-const normalHero = heroSize === "normal";
-const largeHero = heroSize === "lg";
-</script>
-
 <template>
   <section
     :class="[
@@ -47,3 +29,21 @@ const largeHero = heroSize === "lg";
     <Breadcrumb v-if="breadcrumb" :breadcrumb="breadcrumb" />
   </section>
 </template>
+
+<script setup lang="ts">
+const { size: heroSize = "normal" } = defineProps<{
+  title: string;
+  description?: string;
+  size?: "normal" | "lg";
+  breadcrumb?: {
+    back: {
+      title: string;
+      href: string;
+    };
+    title: string;
+  };
+}>();
+
+const normalHero = heroSize === "normal";
+const largeHero = heroSize === "lg";
+</script>

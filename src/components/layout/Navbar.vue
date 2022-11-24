@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const {
-  route: { path },
-} = usePage();
-</script>
-
 <template>
   <nav
     class="sticky top-0 border-b-2 border-light-gray bg-white/75 py-2 backdrop-blur dark:border-b-gray dark:bg-dark/75 dark:bg-blend-darken md:py-2.5 lg:py-3"
@@ -51,3 +45,9 @@ const {
     </HorizontalContainer>
   </nav>
 </template>
+
+<script setup lang="ts">
+const {
+  route: { path },
+} = usePage();
+</script>

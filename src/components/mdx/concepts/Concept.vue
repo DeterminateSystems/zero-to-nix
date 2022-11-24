@@ -1,26 +1,3 @@
-<script lang="ts">
-import { defineComponent } from "vue";
-import Popper from "vue3-popper";
-
-export default defineComponent({
-  components: {
-    Popper,
-  },
-});
-</script>
-
-<script setup lang="ts">
-import { ConceptPage, conceptPage } from "~/logic/content";
-
-const { id, show } = defineProps<{
-  id: string;
-  show?: string;
-}>();
-
-const page: ConceptPage = conceptPage(id);
-const displayText = show ?? page.title;
-</script>
-
 <template>
   <Popper v-bind="$attrs" placement="top">
     <button
@@ -46,3 +23,26 @@ const displayText = show ?? page.title;
     </template>
   </Popper>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import Popper from "vue3-popper";
+
+export default defineComponent({
+  components: {
+    Popper,
+  },
+});
+</script>
+
+<script setup lang="ts">
+import { ConceptPage, conceptPage } from "~/logic/content";
+
+const { id, show } = defineProps<{
+  id: string;
+  show?: string;
+}>();
+
+const page: ConceptPage = conceptPage(id);
+const displayText = show ?? page.title;
+</script>

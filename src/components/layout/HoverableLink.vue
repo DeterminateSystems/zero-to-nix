@@ -1,16 +1,3 @@
-<script setup lang="ts">
-const props = defineProps<{
-  text: string;
-  href: string;
-  size?: "normal" | "sm";
-}>();
-
-const { text, href, size = "normal" } = props;
-
-const normalLink = size === "normal";
-const smallLink = size === "sm";
-</script>
-
 <template>
   <a
     :href="href"
@@ -25,3 +12,16 @@ const smallLink = size === "sm";
     {{ text }}
   </a>
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  text: string;
+  href: string;
+  size?: "normal" | "sm";
+}>();
+
+const { text, href, size = "normal" } = props;
+
+const normalLink = size === "normal";
+const smallLink = size === "sm";
+</script>

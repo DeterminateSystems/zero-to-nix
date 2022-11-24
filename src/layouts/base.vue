@@ -1,3 +1,7 @@
+<template>
+  <slot />
+</template>
+
 <script setup lang="ts">
 import site from "~/site";
 
@@ -13,10 +17,6 @@ useHead({
   link: [{ rel: "canonical", href: canonical }],
 });
 </script>
-
-<template>
-  <slot />
-</template>
 
 <style>
 @import "@fontsource/inter"; /* sans-serif */

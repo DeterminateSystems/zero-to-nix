@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { language, languageState } from "~/logic/state";
-import site from "~/site";
-
-const { languages } = site;
-</script>
-
 <template>
   <div
     className="not-prose text-normal inline-flex items-center space-x-6 rounded-lg border-2 border-light-gray bg-pale p-3 dark:border-gray dark:bg-inherit"
@@ -27,3 +20,10 @@ const { languages } = site;
     </button>
   </div>
 </template>
+
+<script setup lang="ts">
+import { language, languageState } from "~/logic/state";
+import site from "~/site";
+
+const { languages } = site;
+</script>

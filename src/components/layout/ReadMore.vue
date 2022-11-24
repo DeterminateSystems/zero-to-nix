@@ -1,14 +1,3 @@
-<script setup lang="ts">
-type Link = {
-  title: string;
-  href: string;
-};
-
-const { links: readMoreLinks } = defineProps<{
-  links: Link[];
-}>();
-</script>
-
 <template>
   <div class="space-y-4">
     <p class="text-lg font-semibold md:text-xl lg:text-2xl">Read more</p>
@@ -24,3 +13,14 @@ const { links: readMoreLinks } = defineProps<{
     </Grid3>
   </div>
 </template>
+
+<script setup lang="ts">
+type Link = {
+  title: string;
+  href: string;
+};
+
+const { links: readMoreLinks } = defineProps<{
+  links: Link[];
+}>();
+</script>

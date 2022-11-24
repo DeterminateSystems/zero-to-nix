@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const { pkg } = defineProps<{
-  pkg: string;
-}>();
-</script>
-
 <template>
   <div
     class="not-prose rounded-lg border-2 border-light-gray bg-pale py-3 px-5 dark:border-gray dark:bg-inherit"
@@ -39,3 +33,9 @@ const { pkg } = defineProps<{
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { pkg } = defineProps<{
+  pkg: string;
+}>();
+</script>

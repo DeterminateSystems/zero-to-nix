@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { sortedQuickStartPages } from "../../logic/content";
-</script>
-
 <template>
   <HorizontalContainer>
     <Hero title="Quick start" description="Feel the power of Nix in no time" />
@@ -17,3 +13,7 @@ import { sortedQuickStartPages } from "../../logic/content";
     </Grid2>
   </HorizontalContainer>
 </template>
+
+<script setup lang="ts">
+import { sortedQuickStartPages } from "../../logic/content";
+</script>
