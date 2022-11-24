@@ -71,7 +71,7 @@ And if you run `echo $SECRET_PASSWORD` again you should get an empty string (unl
 
 While it's fun to explore the environment, you don't always want to be inside the to use it.
 The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that *use* the environment but *from* your current environment.
-Here are some examples for the envrionment we used earlier:
+Here are some examples for the environment we used earlier:
 
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#example" --command git status
