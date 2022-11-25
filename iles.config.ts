@@ -2,6 +2,8 @@ import headings from "@islands/headings";
 import icons from "@islands/icons";
 import prism from "@islands/prism";
 import { RawPageMatter, defineConfig } from "iles";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeSlugCustomId from "rehype-slug-custom-id";
 
 import site from "./src/site";
 
@@ -26,7 +28,10 @@ export default defineConfig({
     }
   },
   markdown: {
-    rehypePlugins: ["rehype-external-links"],
+    rehypePlugins: [
+      rehypeExternalLinks,
+      [rehypeSlugCustomId, { enableCustomId: true }],
+    ],
   },
   modules: [headings(), icons(), prism()],
   prettyUrls: !isPreview, // Disable in preview mode
