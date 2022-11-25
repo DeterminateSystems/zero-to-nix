@@ -106,6 +106,7 @@ For [quick start pages](./src/pages/start/):
 For [concept pages](./src/pages/concepts/):
 
 - `title`
+- `snippet` (a brief explanation of the concept that appears in pop-ups)
 - `related` (an array of IDs representing concept pages, like `flakes` or `nix-store`)
 - `readMore` (an array of links to external sources, such as official docs)
 
