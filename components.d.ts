@@ -33,7 +33,6 @@ declare module '@vue/runtime-core' {
     NixTerms: typeof import('./src/components/layout/NixTerms.vue')['default']
     Page: typeof import('./src/components/layout/Page.vue')['default']
     Pagination: typeof import('./src/components/layout/Pagination.vue')['default']
-    Panel: typeof import('./src/components/layout/Panel.vue')['default']
     ReadMore: typeof import('./src/components/layout/ReadMore.vue')['default']
     Related: typeof import('./src/components/layout/Related.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
