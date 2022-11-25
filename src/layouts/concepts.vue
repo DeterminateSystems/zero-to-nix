@@ -5,7 +5,7 @@
       <HorizontalContainer>
         <Hero
           :title="title"
-          :description="description"
+          :description="snippet"
           :breadcrumb="{
             back: { title: 'Concepts', href: '/concepts' },
             title,
@@ -39,10 +39,10 @@ type Link = {
 };
 
 const {
-  frontmatter: { title, description, readMore, related },
+  frontmatter: { title, snippet, readMore, related },
 } = usePage<{
   title: string;
-  description?: string;
+  snippet: string;
   readMore?: Link[];
   related?: string[];
 }>();

@@ -4,6 +4,7 @@ import prism from "@islands/prism";
 import { RawPageMatter, defineConfig } from "iles";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugCustomId from "rehype-slug-custom-id";
+import remarkFootnotes from "remark-footnotes";
 
 import site from "./src/site";
 
@@ -32,6 +33,7 @@ export default defineConfig({
       rehypeExternalLinks,
       [rehypeSlugCustomId, { enableCustomId: true }],
     ],
+    remarkPlugins: [remarkFootnotes],
   },
   modules: [headings(), icons(), prism()],
   prettyUrls: !isPreview, // Disable in preview mode
