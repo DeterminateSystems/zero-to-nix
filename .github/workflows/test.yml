@@ -26,17 +26,5 @@ jobs:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build site
-        run: nix develop --command ENV=ci build
-
-      - name: Check internal links using htmltest
-        run: nix develop --command check-internal-links
-
-      #- name: Check external links using htmltest
-      #  run: nix develop --command check-external-links
-
-      - name: Lint prose using Vale
-        run: nix develop --command lint-style
-
-      - name: Catch insensitive or inconsiderate writing with Alex
-        run: nix develop --command check-sensitivity
+      - name: Run Nix CI suite
+        run: nix develop --command ci
