@@ -43,24 +43,21 @@ export default defineConfig({
         pages
           .filter((page: RouteToRender) => page.outputFilename !== "index.html")
           .forEach((page: RouteToRender) => {
-            // TODO: make this a bit neater
-            let outputDir: string;
-
             const filename = page.outputFilename;
             const html = page.rendered;
+            const pathSegments = filename.split("/");
 
-            if (filename.split("/").length > 1) {
-              const root = filename.split("/").at(0);
-              const slug = getFileSlug(filename);
-              outputDir = `${root}/${slug}`;
-            } else {
-              outputDir = filename.split(".").at(0)!;
-            }
+            const relativeOutputDir =
+              pathSegments.length > 1
+                ? // Convert e.g. /start/install.html to /start/install/index.html
+                  `${pathSegments.at(0)}/${getFileSlug(filename)}`
+                : // Convert e.g. /start.html to /start/index.html
+                  getFileSlug(filename);
 
             const outputFilename = `${out}/${filename}`;
             rmSync(outputFilename);
 
-            const newOutputDir = `${out}/${outputDir}`;
+            const newOutputDir = `${out}/${relativeOutputDir}`;
             if (!existsSync(newOutputDir)) {
               mkdirSync(newOutputDir);
             }
