@@ -7,13 +7,15 @@
         v-for="({ title, href, source }, idx) in readMoreLinks"
         :key="idx"
         :href="href"
-        class="dark:hover:bg-in text-normal rounded-lg border-2 border-light-gray py-1 px-2 font-semibold hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-inherit md:py-1.5 md:px-3 md:text-lg lg:py-2.5 lg:px-4 lg:text-xl"
+        class="dark:hover:bg-in text-normal rounded-lg border-2 border-light-gray font-semibold hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-inherit md:text-lg lg:text-xl"
         @mouseover="hover = true"
         @mouseleave="hover = false"
       >
-        <div class="flex items-center justify-between">
-          <div>
-            <p>
+        <div
+          class="flex items-start justify-between gap-4 py-1 px-2 md:py-1.5 md:px-3 lg:py-2.5"
+        >
+          <div class="space-y-2">
+            <p class="leading-tight">
               {{ title }}
             </p>
 
@@ -27,7 +29,7 @@
 
           <div>
             <IconFaExternalLink
-              class="h-4 w-4"
+              class="h-3 w-3"
               :class="{ 'text-primary': hover, 'text-gray': !hover }"
             />
           </div>
