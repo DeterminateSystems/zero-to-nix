@@ -70,6 +70,11 @@
             pnpm run build
           '')
 
+          (writeScriptBin "build-dev" ''
+            setup
+            ENV=dev pnpm run build
+          '')
+
           (writeScriptBin "dev" ''
             setup
             pnpm run dev
@@ -81,7 +86,7 @@
           '')
 
           (writeScriptBin "preview" ''
-            build
+            ENV=preview build
             python3 -m http.server -d dist 3000
           '')
 
@@ -105,17 +110,10 @@
             npm run typecheck
           '')
 
-          (writeScriptBin "checks" ''
-            check-internal-links
-            lint-style
-            check-sensitivity
-            check-types
-          '')
-
           # Run this to see if CI will pass
           (writeScriptBin "ci" ''
-            build
-            # check-internal-links
+            ENV=ci build
+            check-internal-links
             lint-style
             check-sensitivity
             check-types

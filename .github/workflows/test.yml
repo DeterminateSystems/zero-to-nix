@@ -27,10 +27,10 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: Build site
-        run: nix develop --command build
+        run: nix develop --command ENV=ci build
 
-      #- name: Check internal links using htmltest
-      #  run: nix develop --command check-internal-links
+      - name: Check internal links using htmltest
+        run: nix develop --command check-internal-links
 
       #- name: Check external links using htmltest
       #  run: nix develop --command check-external-links
