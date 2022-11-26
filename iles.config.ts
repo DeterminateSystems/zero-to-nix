@@ -22,7 +22,7 @@ export default defineConfig({
 
     // Add an `id` parameter to concept pages based on filename
     if (filename.split("/")[2] === "concepts") {
-      const id = filename.split("/").at(-1)?.split(".").at(0);
+      const id = getFileSlug(filename);
       frontmatter["id"] = id;
     }
   },
@@ -44,25 +44,25 @@ export default defineConfig({
             // TODO: make this a bit neater
             let outputDir: string;
 
+            const filename = page.outputFilename;
             const html = page.rendered;
-            if (page.outputFilename.split("/").length > 1) {
-              const root = page.outputFilename.split("/").at(0);
-              const slug = page.outputFilename
-                .split("/")
-                .at(-1)
-                ?.split(".")
-                .at(0);
-              outputDir = `dist/${root}/${slug}`;
+
+            if (filename.split("/").length > 1) {
+              const root = filename.split("/").at(0);
+              const slug = getFileSlug(filename);
+              outputDir = `${root}/${slug}`;
             } else {
-              const slug = page.outputFilename.split(".").at(0);
-              outputDir = `dist/${slug}`;
+              const slug = filename.split(".").at(0);
+              outputDir = `${slug}`;
             }
 
-            rmSync(`dist/${page.outputFilename}`);
-            if (!existsSync(outputDir)) {
-              mkdirSync(outputDir);
+            rmSync(`dist/${filename}`);
+
+            const newOutputDir = `dist/${outputDir}`;
+            if (!existsSync(newOutputDir)) {
+              mkdirSync(newOutputDir);
             }
-            const filepath = `${outputDir}/index.html`;
+            const filepath = `${newOutputDir}/index.html`;
             writeFileSync(filepath, html);
           });
       }
@@ -70,3 +70,6 @@ export default defineConfig({
   },
   turbo: true,
 });
+
+// Utils
+const getFileSlug = (path: string) => path.split("/").at(-1)?.split(".").at(0);
