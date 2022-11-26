@@ -13,12 +13,12 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v3
 
-      - name: Set up htmltest cache
-        uses: actions/cache@v3
-        with:
-          key: zero-to-nix-${{ hashFiles('.htmltest.external.yml') }}
-          path: |
-            tmp/
+      #- name: Set up htmltest cache
+      #  uses: actions/cache@v3
+      #  with:
+      #    key: zero-to-nix-${{ hashFiles('.htmltest.external.yml') }}
+      #    path: |
+      #      tmp/
 
       - name: Install Nix
         uses: cachix/install-nix-action@v18
