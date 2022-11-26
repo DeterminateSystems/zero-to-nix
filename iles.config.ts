@@ -41,6 +41,9 @@ export default defineConfig({
         pages
           .filter((page: RouteToRender) => page.outputFilename !== "index.html")
           .forEach((page: RouteToRender) => {
+            // TODO: make this a bit neater
+            let outputDir: string;
+
             const html = page.rendered;
             if (page.outputFilename.split("/").length > 1) {
               const root = page.outputFilename.split("/").at(0);
@@ -49,24 +52,18 @@ export default defineConfig({
                 .at(-1)
                 ?.split(".")
                 .at(0);
-              const outputDir = `dist/${root}/${slug}`;
-              rmSync(`dist/${page.outputFilename}`);
-
-              if (!existsSync(outputDir)) {
-                mkdirSync(outputDir);
-              }
-              const filepath = `${outputDir}/index.html`;
-              writeFileSync(filepath, html);
-            } else if (page.outputFilename.split("/").length === 1) {
+              outputDir = `dist/${root}/${slug}`;
+            } else {
               const slug = page.outputFilename.split(".").at(0);
-              rmSync(`dist/${page.outputFilename}`);
-              const outputDir = `dist/${slug}`;
-              if (!existsSync(outputDir)) {
-                mkdirSync(outputDir);
-              }
-              const filepath = `${outputDir}/index.html`;
-              writeFileSync(filepath, html);
+              outputDir = `dist/${slug}`;
             }
+
+            rmSync(`dist/${page.outputFilename}`);
+            if (!existsSync(outputDir)) {
+              mkdirSync(outputDir);
+            }
+            const filepath = `${outputDir}/index.html`;
+            writeFileSync(filepath, html);
           });
       }
     },
