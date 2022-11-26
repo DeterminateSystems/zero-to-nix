@@ -35,9 +35,11 @@ export default defineConfig({
   modules: [headings(), icons(), prism()],
   prettyUrls: process.env["ENV"] !== "preview",
   ssg: {
-    onSiteRendered: ({ pages }: SSGContext) => {
+    onSiteRendered: ({ pages, config }: SSGContext) => {
       // Only necessary when checking internal links
       if (process.env["ENV"] === "ci") {
+        const out = config.outDir;
+
         pages
           .filter((page: RouteToRender) => page.outputFilename !== "index.html")
           .forEach((page: RouteToRender) => {
@@ -52,13 +54,13 @@ export default defineConfig({
               const slug = getFileSlug(filename);
               outputDir = `${root}/${slug}`;
             } else {
-              const slug = filename.split(".").at(0);
-              outputDir = `${slug}`;
+              outputDir = filename.split(".").at(0)!;
             }
 
-            rmSync(`dist/${filename}`);
+            const outputFilename = `${out}/${filename}`;
+            rmSync(outputFilename);
 
-            const newOutputDir = `dist/${outputDir}`;
+            const newOutputDir = `${out}/${outputDir}`;
             if (!existsSync(newOutputDir)) {
               mkdirSync(newOutputDir);
             }
