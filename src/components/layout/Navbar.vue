@@ -21,13 +21,17 @@
           <li>
             <Dropdown
               :dropdown="{ text: 'Quick start', pages: sortedQuickStartPages }"
+              client:load
             />
           </li>
           <li>
-            <Dropdown :dropdown="{ text: 'Concepts', pages: conceptPages }" />
+            <Dropdown
+              :dropdown="{ text: 'Concepts', pages: conceptPages }"
+              client:load
+            />
           </li>
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
-            <ThemeSwitcher client:load />
+            <ThemeSwitcher />
 
             <a :href="$site.githubUrl">
               <IconFaGithub
