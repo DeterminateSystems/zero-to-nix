@@ -9,7 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BaseLayout: typeof import('./src/layouts/base.vue')['default']
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
-    Brief: typeof import('./src/components/Brief.vue')['default']
+    Brief: typeof import('./src/components/layout/Brief.vue')['default']
     Concept: typeof import('./src/components/mdx/concepts/Concept.vue')['default']
     Content: typeof import('./src/components/layout/Content.vue')['default']
     Danger: typeof import('./src/components/mdx/admonitions/Danger.vue')['default']
