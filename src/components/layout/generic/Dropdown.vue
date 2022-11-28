@@ -3,7 +3,7 @@
     <MenuButton
       class="text-lg hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
     >
-      Quick start
+      {{ dropdown.text }}
     </MenuButton>
 
     <transition
@@ -20,7 +20,7 @@
         <MenuItem v-slot="{ active }">
           <ul class="flex flex-col space-y-1.5">
             <li
-              v-for="({ title, href }, idx) in sortedQuickStartPages"
+              v-for="({ title, href }, idx) in dropdown.pages"
               :key="idx"
               class="py-1.5 px-3 hover:bg-pale dark:hover:bg-dark-gray"
             >
@@ -40,6 +40,10 @@
 </template>
 
 <script setup lang="ts">
-import { sortedQuickStartPages } from "~/logic/content";
+import { DropdownProps } from "~/logic/content";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+
+const { dropdown } = defineProps<{
+  dropdown: DropdownProps;
+}>();
 </script>

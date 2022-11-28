@@ -1,4 +1,4 @@
-import { Document, useDocuments } from "iles";
+import { Document, PageFrontmatter, useDocuments } from "iles";
 import { marked } from "marked";
 
 // Quick start pages
@@ -57,3 +57,9 @@ export const relatedConceptPages = (ids: string[]): ConceptPage[] =>
 
 // Render small Markdown snippets without the encapsulating <p>...</p>
 export const md = (input: string): string => marked.parseInline(input);
+
+// Dropdowns
+export type DropdownProps = {
+  text: string;
+  pages: PageFrontmatter[];
+};

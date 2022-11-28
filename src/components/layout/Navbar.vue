@@ -19,10 +19,12 @@
 
         <ul class="flex items-center space-x-4 md:space-x-5 lg:space-x-6">
           <li>
-            <QuickStartDropdown client:load />
+            <Dropdown
+              :dropdown="{ text: 'Quick start', pages: sortedQuickStartPages }"
+            />
           </li>
           <li>
-            <ConceptsDropdown client:load />
+            <Dropdown :dropdown="{ text: 'Concepts', pages: conceptPages }" />
           </li>
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
             <ThemeSwitcher client:load />
