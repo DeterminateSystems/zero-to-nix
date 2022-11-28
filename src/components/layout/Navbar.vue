@@ -31,7 +31,7 @@
             />
           </li>
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
-            <ThemeSwitcher />
+            <ThemeSwitcher client:load />
 
             <a :href="$site.githubUrl">
               <IconFaGithub
