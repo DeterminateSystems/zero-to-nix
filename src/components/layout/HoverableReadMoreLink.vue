@@ -21,7 +21,7 @@
 
       <div>
         <IconFaExternalLink
-          class="h-3 w-3"
+          class="h-4 w-4"
           :class="{ 'text-primary': hover, 'text-gray': !hover }"
         />
       </div>
