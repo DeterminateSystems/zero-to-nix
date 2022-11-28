@@ -35,9 +35,9 @@
         :href="href"
         :class="{
           'bg-primary text-white': highlight,
-          'text-black': !highlight,
+          'bg-light-gray text-black': !highlight,
         }"
-        class="rounded-full bg-light-gray py-2 px-4 font-bold shadow-md transition-colors duration-300 hover:bg-dark-gray hover:text-white"
+        class="rounded-full py-2 px-4 font-bold shadow-md transition-colors duration-300 hover:bg-dark-gray hover:text-white"
       >
         {{ text }}
       </a>
