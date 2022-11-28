@@ -12,16 +12,19 @@ specifiers:
   '@nanostores/persistent': ^0.7.0
   '@nanostores/vue': ^0.6.1
   '@tailwindcss/typography': ^0.5.8
+  '@types/marked': ^4.0.7
   '@types/node': ^18.11.9
   '@vueuse/core': ^9.5.0
   autoprefixer: ^10.4.13
   iles: ^0.8.7
+  marked: ^4.2.3
   nanostores: ^0.7.0
   postcss: ^8.4.19
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
   prism-themes: ^1.9.0
   rehype-external-links: ^2.0.1
+  rehype-slug-custom-id: ^1.1.0
   tailwindcss: ^3.2.4
   vite-plugin-tailwindcss: 0.0.0-0
   vue-tsc: ^1.0.9
@@ -39,16 +42,19 @@ devDependencies:
   '@nanostores/persistent': 0.7.0_nanostores@0.7.0
   '@nanostores/vue': 0.6.1_zzt5tcdxgl3jsilh3f4jgfjwue
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
+  '@types/marked': 4.0.7
   '@types/node': 18.11.9
   '@vueuse/core': 9.5.0_vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.19
   iles: 0.8.7_@types+node@18.11.9
+  marked: 4.2.3
   nanostores: 0.7.0
   postcss: 8.4.19
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
   prism-themes: 1.9.0
   rehype-external-links: 2.0.1
+  rehype-slug-custom-id: 1.1.0
   tailwindcss: 3.2.4_postcss@8.4.19
   vite-plugin-tailwindcss: 0.0.0-0_vite@2.9.15
   vue-tsc: 1.0.9_typescript@4.9.3
@@ -370,6 +376,10 @@ packages:
     resolution: {integrity: sha512-wLEm0QvaoawEDoTRwzTXp4b4jpwiJDvR5KMnFnVodm3scufTlBOWRD6N1OBf9TZMhjlNsSfcO5V+7AF4+Vy+9g==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/marked/4.0.7:
+    resolution: {integrity: sha512-eEAhnz21CwvKVW+YvRvcTuFKNU9CV1qH+opcgVK3pIMI6YZzDm6gc8o2vHjldFk6MGKt5pueSB7IOpvpx5Qekw==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -1462,6 +1472,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /github-slugger/1.5.0:
+    resolution: {integrity: sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==}
+    dev: true
+
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -1523,6 +1537,10 @@ packages:
 
   /hash-sum/2.0.0:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
+    dev: true
+
+  /hast-util-has-property/2.0.0:
+    resolution: {integrity: sha512-4Qf++8o5v14us4Muv3HRj+Er6wTNGA/N9uCaZMty4JWvyFKLdhULrv4KE1b65AthsSO9TXSZnjuxS8ecIyhb0w==}
     dev: true
 
   /hast-util-heading-rank/2.1.0:
@@ -1880,6 +1898,10 @@ packages:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
 
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
+
   /longest-streak/3.0.1:
     resolution: {integrity: sha512-cHlYSUpL2s7Fb3394mYxwTYj8niTaNHUCLr0qdiCXQfSjfuA7CKofpX2uSwEfFDQ0EB7JcnMnm+GjbqqoinYYg==}
     dev: true
@@ -1900,6 +1922,12 @@ packages:
   /markdown-extensions/1.1.1:
     resolution: {integrity: sha512-WWC0ZuMzCyDHYCasEGs4IPvLyTGftYwh6wIEOULOF0HXcqZlhwRzrK0w2VUlxWA98xnvb/jszw4ZSkJ6ADpM6Q==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /marked/4.2.3:
+    resolution: {integrity: sha512-slWRdJkbTZ+PjkyJnE30Uid64eHwbwa1Q25INCAYfZlK4o6ylagBy/Le9eWntqJFoFT93ikUKMv47GZ4gTwHkw==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: true
 
   /mdast-util-definitions/5.1.1:
@@ -2618,6 +2646,19 @@ packages:
       extend: 3.0.2
       is-absolute-url: 4.0.1
       space-separated-tokens: 2.0.1
+      unified: 10.1.2
+      unist-util-visit: 4.1.1
+    dev: true
+
+  /rehype-slug-custom-id/1.1.0:
+    resolution: {integrity: sha512-lLdTHGd7u5bOXRDnD78/VHrVZsG63nN6lZUuQgcuupGt1+v+uDW7pCeQS0cvptRcZPYzg8B+0bf8sUiMBKsjZw==}
+    dependencies:
+      '@types/hast': 2.3.4
+      github-slugger: 1.5.0
+      hast-util-has-property: 2.0.0
+      hast-util-heading-rank: 2.1.0
+      hast-util-to-string: 2.0.0
+      lodash: 4.17.21
       unified: 10.1.2
       unist-util-visit: 4.1.1
     dev: true

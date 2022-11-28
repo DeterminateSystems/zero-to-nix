@@ -1,7 +1,10 @@
+benoit
 declarativity
 detsys
 ds
+hermeticity
 href
+jq
 kubectl
 linux
 nixlang
@@ -9,6 +12,7 @@ nixos
 nixpkgs
 npm
 npx
+openssl
 readlink
 readmore
 repo

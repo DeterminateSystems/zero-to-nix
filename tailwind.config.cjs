@@ -11,6 +11,9 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
       },
+      maxWidth: {
+        "8xl": "90rem",
+      },
       colors: {
         // Drawn from: https://tailwindcss.com/docs/customizing-colors
         pale: colors.slate["50"], // #F8FAFC
@@ -33,7 +36,7 @@ module.exports = {
         lilac: colors.purple["500"], // #A855F7
         rose: colors.rose["500"], // #F43F5E
         orange: colors.orange["500"], // #F97316
-        primary: "rgb(80, 116, 191)", // Determinate Systems light purple
+        primary: "var(--primary)", // Determinate Systems light purple
       },
       typography: ({ theme }) => ({
         DEFAULT: {

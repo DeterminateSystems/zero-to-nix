@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { Document } from "iles";
-import { getPrevious, getNext, QuickStartPage } from "../../logic/content";
-
-const { order } = defineProps<{
-  order: number;
-}>();
-
-const previous: QuickStartPage | undefined = getPrevious(order);
-const next: QuickStartPage | undefined = getNext(order);
-</script>
-
 <template>
   <div
     class="text-normal flex flex-col items-center justify-between tracking-tight md:flex-row md:text-lg lg:text-xl"
@@ -33,3 +21,15 @@ const next: QuickStartPage | undefined = getNext(order);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { Document } from "iles";
+import { getPrevious, getNext, QuickStartPage } from "../../logic/content";
+
+const { order } = defineProps<{
+  order: number;
+}>();
+
+const previous: QuickStartPage | undefined = getPrevious(order);
+const next: QuickStartPage | undefined = getNext(order);
+</script>

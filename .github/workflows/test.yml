@@ -8,35 +8,35 @@ on:
 
 jobs:
   build:
+    environment: test
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CACHIX_CACHE: ${{ secrets.CACHIX_CACHE }}
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
     steps:
       - name: git checkout
         uses: actions/checkout@v3
 
-      - name: Set up htmltest cache
-        uses: actions/cache@v3
-        with:
-          key: zero-to-nix-${{ hashFiles('.htmltest.external.yml') }}
-          path: |
-            tmp/
+      #- name: Set up htmltest cache
+      #  uses: actions/cache@v3
+      #  with:
+      #    key: zero-to-nix-${{ hashFiles('.htmltest.external.yml') }}
+      #    path: |
+      #      tmp/
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v18
+      - uses: cachix/install-nix-action@v18
         with:
           extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build site
-        run: nix develop --command build
-
-      #- name: Check internal links using htmltest
-      #  run: nix develop --command check-internal-links
-
-      #- name: Check external links using htmltest
-      #  run: nix develop --command check-external-links
-
-      - name: Lint prose using Vale
-        run: nix develop --command lint-style
-
-      - name: Catch insensitive or inconsiderate writing with Alex
-        run: nix develop --command check-sensitivity
+            access-tokens = github.com=${{ env.GITHUB_TOKEN }}
+            binary-caches = https://cache.nixos.org https://${{ env.CACHIX_CACHE }}.cachix.org
+      - uses: cachix/cachix-action@v12
+        with:
+          name: ${{ env.CACHIX_CACHE }}
+          authToken: ${{ env.CACHIX_AUTH_TOKEN }}
+      - name: Run Nix CI suite
+        run: nix develop --command ci
+      - name: Push dev shell to Cachix
+        run: |
+          nix develop --profile zero-to-nix
+          cachix push ${{ env.CACHIX_CACHE }} zero-to-nix

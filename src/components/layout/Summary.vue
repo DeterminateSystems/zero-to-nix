@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const { items } = defineProps<{
-  items?: string[];
-}>();
-</script>
-
 <template>
   <div
     class="rounded-lg border-2 border-slate-300 bg-slate-50 dark:border-slate-500 dark:bg-inherit"
@@ -15,15 +9,23 @@ const { items } = defineProps<{
         >In this guide</span
       >
       <span>
-        <p
+        <div
           v-for="item in items"
           :key="item"
           class="md:text-normal space-x-3 text-sm lg:text-lg"
         >
           <span class="font-semibold">&RightArrow;</span>
-          <span class="first-letter:text-bold">{{ item }}</span>
-        </p>
+          <span v-html="md(item)" class="content" />
+        </div>
       </span>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { md } from "~/logic/content";
+
+const { items } = defineProps<{
+  items?: string[];
+}>();
+</script>
