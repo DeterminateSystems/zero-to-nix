@@ -22,7 +22,6 @@
             <li v-for="({ title, href }, idx) in dropdown.pages" :key="idx">
               <a
                 class="block py-1.5 px-3 text-sm tracking-tight hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-base lg:text-lg"
-                :class="{ 'bg-blue-500': active }"
                 :href="href"
               >
                 {{ title }}

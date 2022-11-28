@@ -1,13 +1,17 @@
 benoit
+buildInputs
+buildPhase
 declarativity
 detsys
 dev
 ds
 hermeticity
 href
+installPhase
 jq
 kubectl
 linux
+mkdir
 nixlang
 nixos
 nixpkgs
@@ -20,5 +24,7 @@ readlink
 readmore
 repo
 ripgrep
+src
+stdenv
 tooltip
 upstreaming
