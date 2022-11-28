@@ -7,7 +7,7 @@
 Make sure that you have Nix and [direnv] installed, then:
 
 ```shell
-# Activate Nix shell environment
+# Activate Nix development environment
 direnv allow
 
 # Recommended
@@ -84,6 +84,10 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 | [`Success`](./src/components/mdx/admonitions/Success.vue)                | Success admonition block                                                        |
 | [`Warning`](./src/components/mdx/admonitions/Warning.vue)                | Warning admonition block                                                        |
 
+> **Note**: any time you use one of these components in an [MDX] file, you need to add a `client:load` directive to it.
+> This is one of [îles][iles]' so-called [hydration directives][hydration].
+> There are other directives available, but [`client:load`][client-load] is the one that we need to use, as it ensures that the component is loaded as soon as the user comes to the page.
+
 ## Directory structure
 
 | Directory                             | What it contains                                                               |
@@ -120,9 +124,11 @@ There are a few other important files you should be aware of when working on the
 - [`src/logic/state.ts`](./src/logic/state.ts) defines all stateful logic using the [nanostores] library
 - [`src/logic/theme.ts`](./src/logic/theme.ts) provides logic for the light/dark theme switcher
 
+[client-load]: https://iles.pages.dev/guide/hydration#clientload
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
 [harmonic]: https://github.com/DeterminateSystems/harmonic
+[hydration]: https://iles.pages.dev/guide/hydration#hydration-directives
 [iles]: https://github.com/elMassimo/iles
 [mdx]: https://mdxjs.com
 [nanostores]: https://github.com/nanostores/nanostores
