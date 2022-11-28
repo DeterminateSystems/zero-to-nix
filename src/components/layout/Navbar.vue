@@ -30,6 +30,13 @@
               client:load
             />
           </li>
+          <li v-for="({ text, href }, idx) in $site.navbarLinks" :key="idx">
+            <a
+              :href="href"
+              class="text-sm tracking-tight hover:text-primary md:text-base lg:text-lg"
+              >{{ text }}</a
+            >
+          </li>
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
             <ThemeSwitcher client:load />
 

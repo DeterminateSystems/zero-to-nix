@@ -18,19 +18,21 @@
     </h1>
     <h2
       v-if="description"
+      class="content"
       :class="[
         normalHero && 'text-lg md:text-xl lg:text-2xl',
         largeHero && 'text-xl md:text-2xl lg:text-3xl',
       ]"
-    >
-      {{ description }}
-    </h2>
+      v-html="md(description)"
+    />
 
     <Breadcrumb v-if="breadcrumb" :breadcrumb="breadcrumb" />
   </section>
 </template>
 
 <script setup lang="ts">
+import { md } from "~/logic/content";
+
 const { size: heroSize = "normal" } = defineProps<{
   title: string;
   description?: string;

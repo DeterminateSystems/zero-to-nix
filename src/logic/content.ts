@@ -70,6 +70,7 @@ export const getBrief = (id: string): BriefPage =>
 // Plain pages (like the About page)
 export type PlainPageProps = {
   title: string;
+  description?: string;
 };
 
 // Render small Markdown snippets without the encapsulating <p>...</p>
