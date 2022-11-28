@@ -4,7 +4,7 @@
       normalHero &&
         'space-y-2 py-10 md:space-y-3 md:py-12 lg:space-y-4 lg:py-14',
       largeHero &&
-        'md:py-20) space-y-3 py-16 md:space-y-4 lg:space-y-5 lg:py-24',
+        'space-y-3 py-16 md:space-y-4 md:py-20 lg:space-y-5 lg:py-24',
     ]"
   >
     <h1
@@ -18,7 +18,7 @@
     </h1>
     <h2
       v-if="description"
-      class="content"
+      class="content tracking-tighter text-dark-gray dark:text-light-gray"
       :class="[
         normalHero && 'text-lg md:text-xl lg:text-2xl',
         largeHero && 'text-xl md:text-2xl lg:text-3xl',
@@ -27,23 +27,33 @@
     />
 
     <Breadcrumb v-if="breadcrumb" :breadcrumb="breadcrumb" />
+
+    <div v-if="buttons" class="flex items-center space-x-4 pt-2">
+      <a
+        v-for="({ text, href, highlight }, idx) in buttons"
+        :key="idx"
+        :href="href"
+        :class="{
+          'bg-primary text-white': highlight,
+          'text-black': !highlight,
+        }"
+        class="rounded-full bg-light-gray py-2 px-4 font-bold shadow-md transition-colors duration-300 hover:bg-dark-gray hover:text-white"
+      >
+        {{ text }}
+      </a>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { md } from "~/logic/content";
+import { BreadcrumbProps, ButtonProps, md } from "~/logic/content";
 
 const { size: heroSize = "normal" } = defineProps<{
   title: string;
   description?: string;
   size?: "normal" | "lg";
-  breadcrumb?: {
-    back: {
-      title: string;
-      href: string;
-    };
-    title: string;
-  };
+  breadcrumb?: BreadcrumbProps;
+  buttons?: ButtonProps[];
 }>();
 
 const normalHero = heroSize === "normal";
