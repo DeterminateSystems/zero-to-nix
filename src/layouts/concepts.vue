@@ -13,11 +13,9 @@
         />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">
-          <Panel>
-            <Content>
-              <slot />
-            </Content>
-          </Panel>
+          <Content>
+            <slot />
+          </Content>
 
           <ReadMore v-if="readMore && readMore.length > 0" :links="readMore" />
 
@@ -32,6 +30,7 @@
 
 <script setup lang="ts">
 import { usePage } from "iles";
+import { ConceptPageProps } from "~/logic/content";
 
 type Link = {
   title: string;

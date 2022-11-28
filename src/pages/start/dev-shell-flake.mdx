@@ -3,21 +3,18 @@ title: Create a development environment using Nix
 summary:
   [
     "Initialize a starter project in the language of your choice",
-    "Explore a Nix shell environment for your preferred language",
-    "Run some commands inside the shell",
+    "Explore a Nix development environment for your preferred language",
+    "Run some commands inside the environment",
   ]
 order: 4
 ---
 
-[Nix] enables you to create [shell environments][shell] that are "sealed" from the
-rest of your system&mdash;they ignore directories like `/usr/bin` and
-only use packages available in the [Nix store][store]. To get started, tell us which language you
-prefer:
+[Nix] enables you to create [development environments][dev] that are "sealed" from the rest of your system&mdash;they ignore directories like `/usr/bin` and only use packages available in the [Nix store][store].
+To get started, tell us which language you prefer:
 
 <Languages client:load />
 
-To get started in your <Language client:load /> project,
-create an empty directory and initialize a [flake templates][templates] for your preferred language:
+To get started in your <Language client:load /> project, create an empty directory and initialize a [flake templates][templates] for your preferred language:
 
 <Shell client:load />
 
@@ -26,20 +23,20 @@ Once the template has been initialized, run `ls .` to see the contents of the di
 - The `flake.nix` file defines the [flake][flakes] for your project.
 - The `flake.lock` [pins][pinning] all of the [flake inputs][inputs]&mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
 
-## Exploring the Nix shell for <Language client:load />
+## Exploring a Nix development environment for <Language client:load />
 
-One of the [flake outputs][outputs] of this Nix [flakes] is a [shell environments][shell] for <Language client:load />.
-To enter that shell environment:
+One of the [flake outputs][outputs] of this Nix [flakes] is a [development environment][dev] for <Language client:load />.
+To enter that development environment:
 
 ```shell
 nix develop
 ```
 
-Now that we've entered the shell, we can do some exploring, starting with [Nix store paths][store].
+Now that we've entered the development environment, we can do some exploring, starting with [Nix store paths][store].
 
 <SpecificLanguage client:load lang="JavaScript">
 Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`.
-Try running it in the Nix shell:
+Try running it in the Nix development environment:
 
 ```shell
 which node
@@ -54,7 +51,7 @@ You should see a (rather strange) path like this:
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Python">
 Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`.
-Try running it in the Nix shell:
+Try running it in the Nix development environment:
 
 ```shell
 which python
@@ -69,7 +66,7 @@ You should see a (rather strange) path like this:
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Go">
 Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`.
-Try running it in the Nix shell:
+Try running it in the Nix development environment:
 
 ```shell
 which go
@@ -84,7 +81,7 @@ You should see a (rather strange) path like this:
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Rust">
 Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`.
-Try running it in the Nix shell:
+Try running it in the Nix development environment:
 
 ```shell
 which cargo
@@ -99,10 +96,11 @@ You should see a (rather strange) path like this:
 
 Probably not what you expected! What happened here? A few things:
 
-- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the shell environment (Nix specifically looked at the `buildInputs` array).
+- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the development environment (Nix specifically looked at the `buildInputs` array).
 - Nix built the packages specified under `buildInputs` and stored them in the
   [Nix store][store] under `/nix/store`.
 
+[dev]: /concepts/dev-env
 [flakes]: /concepts/flakes
 [inputs]: /concepts/flake-inputs
 [nix]: https://nixos.org
@@ -110,6 +108,5 @@ Probably not what you expected! What happened here? A few things:
 [packages]: /concepts/packages
 [pinning]: /concepts/pinning
 [rev]: https://git-scm.com/docs/revisions
-[shell]: /concepts/shell-environments
 [store]: /concepts/nix-store
 [templates]: /concepts/flake-templates

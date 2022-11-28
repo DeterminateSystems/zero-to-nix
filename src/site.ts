@@ -1,3 +1,5 @@
+import { ButtonProps } from "./logic/content";
+
 export type NavLink = {
   text: string;
   href: string;
@@ -17,6 +19,7 @@ export type Site = {
   githubUrl: string;
   languageCode: string;
   navbarLinks: NavLink[];
+  heroButtons: ButtonProps[];
   year: number;
   systems: string[];
   languages: string[];
@@ -31,10 +34,13 @@ const site: Site = {
   canonical: "zero-to-nix.vercel.app",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
-  navbarLinks: [
-    { text: "Quick start", href: "/start" },
+  navbarLinks: [{ text: "About", href: "/about" }],
+  heroButtons: [
+    { text: "Quick start", href: "/start", highlight: true },
     { text: "Concepts", href: "/concepts" },
+    { text: "About", href: "/about" },
   ],
+
   year: new Date().getFullYear(),
 
   // User interactions
