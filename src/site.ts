@@ -19,7 +19,7 @@ export type Site = {
   githubUrl: string;
   languageCode: string;
   navbarLinks: NavLink[];
-  heroButtons: Button[];
+  heroButtons: ButtonProps[];
   year: number;
   systems: string[];
   languages: string[];
