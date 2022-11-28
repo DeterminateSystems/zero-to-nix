@@ -5,8 +5,8 @@
     @mouseover="hover = true"
     @mouseleave="hover = false"
   >
-    <div class="flex items-start justify-between">
-      <div class="space-y-2">
+    <div class="flex items-start justify-between gap-4">
+      <div class="flex flex-col space-y-2">
         <p class="text-xl leading-tight tracking-tight">
           {{ title }}
         </p>
