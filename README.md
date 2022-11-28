@@ -35,6 +35,15 @@ nix run
 
 Then open your browser to http://localhost:3000.
 
+### Run checks locally
+
+The site has some [CI checks][ci] that run in [GitHub Actions][gha], like link checking.
+To run the whole CI suite locally:
+
+```shell
+ci
+```
+
 ### Build locally
 
 To ensure that the site can build properly in response to changes:
@@ -42,6 +51,8 @@ To ensure that the site can build properly in response to changes:
 ```shell
 build
 ```
+
+As an alternative, your can [run the whole CI suite](#run-checks-locally), which also builds the site.
 
 ### Format code
 
@@ -124,9 +135,11 @@ There are a few other important files you should be aware of when working on the
 - [`src/logic/state.ts`](./src/logic/state.ts) defines all stateful logic using the [nanostores] library
 - [`src/logic/theme.ts`](./src/logic/theme.ts) provides logic for the light/dark theme switcher
 
+[ci]: ./.github/workflows/test.yml
 [client-load]: https://iles.pages.dev/guide/hydration#clientload
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
+[gha]: https://github.com/features/actions
 [harmonic]: https://github.com/DeterminateSystems/harmonic
 [hydration]: https://iles.pages.dev/guide/hydration#hydration-directives
 [iles]: https://github.com/elMassimo/iles
