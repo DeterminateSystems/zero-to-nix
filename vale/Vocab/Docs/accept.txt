@@ -1,3 +1,4 @@
+bazel
 benoit
 declarativity
 detsys
@@ -5,9 +6,11 @@ dev
 ds
 hermeticity
 href
+iaso's
 jq
 kubectl
 linux
+monospaced
 nixlang
 nixos
 nixpkgs
@@ -21,5 +24,8 @@ readlink
 readmore
 repo
 ripgrep
+serokell
+shopify
 tooltip
+tweag
 upstreaming
