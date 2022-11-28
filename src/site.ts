@@ -34,6 +34,7 @@ const site: Site = {
   navbarLinks: [
     { text: "Quick start", href: "/start" },
     { text: "Concepts", href: "/concepts" },
+    { text: "About", href: "/about" },
   ],
   year: new Date().getFullYear(),
 

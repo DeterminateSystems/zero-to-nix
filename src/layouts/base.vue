@@ -3,13 +3,14 @@
 </template>
 
 <script setup lang="ts">
+import { PageProps } from "iles";
 import site from "~/site";
 
 const { url } = site;
 
 const {
   frontmatter: { href },
-} = usePage();
+} = usePage<PageProps>();
 
 const canonical = new URL(url, href).toString();
 

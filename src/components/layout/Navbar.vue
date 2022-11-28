@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="sticky top-0 border-b-2 border-light-gray bg-white/75 py-2 backdrop-blur dark:border-b-gray dark:bg-dark/75 dark:bg-blend-darken md:py-2.5 lg:py-3"
+    class="sticky top-0 border-b-2 border-light-gray bg-white/75 py-2 backdrop-blur dark:border-b-gray dark:bg-dark md:py-2.5 lg:py-3"
   >
     <HorizontalContainer>
       <div class="flex items-center justify-between">
@@ -21,17 +21,20 @@
           <li>
             <Dropdown
               :dropdown="{ text: 'Quick start', pages: sortedQuickStartPages }"
+              client:load
             />
           </li>
           <li>
-            <Dropdown :dropdown="{ text: 'Concepts', pages: conceptPages }" />
+            <Dropdown
+              :dropdown="{ text: 'Concepts', pages: conceptPages }"
+              client:load
+            />
           </li>
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
             <ThemeSwitcher client:load />
 
             <a :href="$site.githubUrl">
               <IconFaGithub
-                v-bind="$attrs"
                 class="h-4 w-4 hover:text-gray dark:hover:text-light-gray md:h-5 md:w-5 lg:h-6 lg:w-6"
               />
             </a>
@@ -44,9 +47,4 @@
 
 <script setup lang="ts">
 import { conceptPages, sortedQuickStartPages } from "~/logic/content";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-
-const {
-  route: { path },
-} = usePage();
 </script>

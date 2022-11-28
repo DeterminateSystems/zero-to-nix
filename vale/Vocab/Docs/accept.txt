@@ -12,6 +12,8 @@ nixos
 nixpkgs
 npm
 npx
+offboarding
+onboarding
 openssl
 readlink
 readmore

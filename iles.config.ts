@@ -14,9 +14,10 @@ const { url: siteUrl } = site;
 export default defineConfig({
   siteUrl,
   extendFrontmatter(frontmatter: RawPageMatter, filename: string) {
-    // Set the layout for e.g. src/pages/foo/bar.mdx to foo
-    // Filters out non-MDX pages
-    if (filename.endsWith(".mdx")) {
+    // Set the layout for e.g. src/pages/section/foo.mdx to section
+    const section = filename.split("/").at(2)!;
+
+    if (["concepts", "start"].includes(section) && filename.endsWith("mdx")) {
       frontmatter.layout = filename.split("/")[2];
     }
 

@@ -56,6 +56,23 @@ export const relatedConceptPages = (ids: string[]): ConceptPage[] =>
     (id: string) => conceptPages.find((page: ConceptPage) => page.id === id)!
   );
 
+// Briefs
+type BriefProps = {
+  id: string;
+};
+
+export type BriefPage = Document<BriefProps>;
+
+export const getBrief = (id: string): BriefPage =>
+  useDocuments<BriefProps>("~/briefs").value.find(
+    (page: BriefPage) => page.id === id
+  )!;
+
+// Plain pages (like the About page)
+export type PlainPageProps = {
+  title: string;
+};
+
 // Render small Markdown snippets without the encapsulating <p>...</p>
 export const md = (input: string): string => marked.parseInline(input);
 
