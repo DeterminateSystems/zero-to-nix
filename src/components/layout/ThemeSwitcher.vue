@@ -1,24 +1,21 @@
 <template>
-  <button
-    :aria-label="`Theme selector. Click to switch theme to ${
-      isDark ? 'light' : 'dark'
-    }.`"
-    @click="toggleTheme()"
+  <Switch
+    v-model="isDark"
     class="flex items-center"
+    aria-label="Toggle theme between light and dark"
   >
     <IconFaSolidSun
-      v-bind="$attrs"
       v-if="isDark"
       class="h-4 w-4 text-yellow hover:text-dark-yellow md:h-5 md:w-5 lg:h-6 lg:w-6"
     />
     <IconFaSolidMoon
-      v-bind="$attrs"
       v-else
       class="h-4 w-4 text-light-blue hover:text-blue md:h-5 md:w-5 lg:h-6 lg:w-6"
     />
-  </button>
+  </Switch>
 </template>
 
 <script setup lang="ts">
+import { Switch } from "@headlessui/vue";
 import { isDark, toggleTheme } from "~/logic/theme";
 </script>

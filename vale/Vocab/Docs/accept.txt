@@ -1,3 +1,4 @@
+benoit
 declarativity
 detsys
 dev
@@ -12,6 +13,8 @@ nixos
 nixpkgs
 npm
 npx
+offboarding
+onboarding
 openssl
 readlink
 readmore

@@ -17,6 +17,7 @@ export type Site = {
   githubUrl: string;
   languageCode: string;
   navbarLinks: NavLink[];
+  heroLinks: NavLink[];
   year: number;
   systems: string[];
   languages: string[];
@@ -31,10 +32,13 @@ const site: Site = {
   canonical: "zero-to-nix.vercel.app",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
-  navbarLinks: [
+  navbarLinks: [{ text: "About", href: "/about" }],
+  heroLinks: [
     { text: "Quick start", href: "/start" },
     { text: "Concepts", href: "/concepts" },
+    { text: "About", href: "/about" },
   ],
+
   year: new Date().getFullYear(),
 
   // User interactions

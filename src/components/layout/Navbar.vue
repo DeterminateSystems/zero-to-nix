@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="sticky top-0 border-b-2 border-light-gray bg-white/75 py-2 backdrop-blur dark:border-b-gray dark:bg-dark/75 dark:bg-blend-darken md:py-2.5 lg:py-3"
+    class="sticky top-0 border-b-2 border-light-gray bg-white/75 py-2 backdrop-blur dark:border-b-gray dark:bg-dark md:py-2.5 lg:py-3"
   >
     <HorizontalContainer>
       <div class="flex items-center justify-between">
@@ -18,24 +18,30 @@
         </div>
 
         <ul class="flex items-center space-x-4 md:space-x-5 lg:space-x-6">
-          <li v-for="(link, idx) in $site.navbarLinks" :key="idx">
+          <li>
+            <Dropdown
+              :dropdown="{ text: 'Quick start', pages: sortedQuickStartPages }"
+              client:load
+            />
+          </li>
+          <li>
+            <Dropdown
+              :dropdown="{ text: 'Concepts', pages: conceptPages }"
+              client:load
+            />
+          </li>
+          <li v-for="({ text, href }, idx) in $site.navbarLinks" :key="idx">
             <a
-              :href="link.href"
-              class="text-normal hover:text-blue dark:hover:text-light-blue md:text-lg lg:text-xl"
-              :class="{
-                'font-semibold': path.startsWith(link.href),
-                'font-normal': !path.startsWith(link.href),
-              }"
+              :href="href"
+              class="text-sm tracking-tight hover:text-primary md:text-base lg:text-lg"
+              >{{ text }}</a
             >
-              {{ link.text }}
-            </a>
           </li>
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
             <ThemeSwitcher client:load />
 
             <a :href="$site.githubUrl">
               <IconFaGithub
-                v-bind="$attrs"
                 class="h-4 w-4 hover:text-gray dark:hover:text-light-gray md:h-5 md:w-5 lg:h-6 lg:w-6"
               />
             </a>
@@ -47,7 +53,5 @@
 </template>
 
 <script setup lang="ts">
-const {
-  route: { path },
-} = usePage();
+import { conceptPages, sortedQuickStartPages } from "~/logic/content";
 </script>

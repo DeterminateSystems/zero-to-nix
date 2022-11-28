@@ -106,14 +106,26 @@ For [quick start pages](./src/pages/start/):
 For [concept pages](./src/pages/concepts/):
 
 - `title`
+- `snippet` (a brief explanation of the concept that appears in pop-ups)
 - `related` (an array of IDs representing concept pages, like `flakes` or `nix-store`)
 - `readMore` (an array of links to external sources, such as official docs)
+
+## Site logic
+
+There are a few other important files you should be aware of when working on the site:
+
+- [`src/app.ts`](./src/app.ts) defines global page metadata
+- [`src/site.ts`](./src/site.ts) defines site-level values, like the title, description, navbar links, and more.
+- [`src/logic/content.ts`](./src/logic/content.ts) provides the content management logic for the site (type-safe page frontmatter, functions to fetch and sort documents, and more)
+- [`src/logic/state.ts`](./src/logic/state.ts) defines all stateful logic using the [nanostores] library
+- [`src/logic/theme.ts`](./src/logic/theme.ts) provides logic for the light/dark theme switcher
 
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
 [harmonic]: https://github.com/DeterminateSystems/harmonic
 [iles]: https://github.com/elMassimo/iles
 [mdx]: https://mdxjs.com
+[nanostores]: https://github.com/nanostores/nanostores
 [nix]: https://nixos.org
 [site]: https://zero-to-nix.vercel.app
 [tailwind]: https://tailwindcss.com

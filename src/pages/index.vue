@@ -5,7 +5,7 @@
     <section class="space-y-16">
       <Grid3>
         <HoverableLink
-          v-for="(link, idx) in $site.navbarLinks"
+          v-for="(link, idx) in $site.heroLinks"
           :key="idx"
           :text="link.text"
           :href="link.href"
