@@ -11,6 +11,7 @@ linux
 nixlang
 nixos
 nixpkgs
+noobs
 npm
 npx
 offboarding
