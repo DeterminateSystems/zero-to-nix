@@ -15,17 +15,13 @@
       leave-to-class="transform scale-95 opacity-0"
     >
       <MenuItems
-        class="absolute right-0 mt-1.5 w-72 origin-top-right rounded bg-white py-2 shadow ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-black"
+        class="absolute right-0 mt-1.5 w-72 origin-top-right rounded bg-white py-2 shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-black"
       >
         <MenuItem v-slot="{ active }">
           <ul class="flex flex-col space-y-1.5">
-            <li
-              v-for="({ title, href }, idx) in dropdown.pages"
-              :key="idx"
-              class="py-1.5 px-3 hover:bg-pale dark:hover:bg-dark-gray"
-            >
+            <li v-for="({ title, href }, idx) in dropdown.pages" :key="idx">
               <a
-                class="text-sm tracking-tight hover:text-primary md:text-base lg:text-lg"
+                class="block py-1.5 px-3 text-sm tracking-tight hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-base lg:text-lg"
                 :class="{ 'bg-blue-500': active }"
                 :href="href"
               >
