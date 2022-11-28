@@ -3,7 +3,7 @@
     <Top>
       <Navbar />
       <HorizontalContainer>
-        <Hero :title="title" />
+        <Hero :title="title" :description="description" />
 
         <Content>
           <slot />
@@ -20,6 +20,6 @@ import { usePage } from "iles";
 import { PlainPageProps } from "~/logic/content";
 
 const {
-  frontmatter: { title },
+  frontmatter: { title, description },
 } = usePage<PlainPageProps>();
 </script>
