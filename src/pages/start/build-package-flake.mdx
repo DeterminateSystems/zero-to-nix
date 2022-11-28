@@ -5,10 +5,78 @@ summary: ["Do some stuff", "Do some other stuff"]
 ---
 
 In the [last guide][prev], we built a Nix package defined in [Nixpkgs] to get a sense of some of the mechanics of Nix packages.
-In this guide, we'll dig a bit deeper and build a Nix package from a local [Nix flake][flakes].
+In this guide, we'll dig a bit deeper and build a Nix package from a local [Nix flake][flake].
+
+To get started, select a preferred language:
 
 <Languages client:load />
 
-[flakes]: /concepts/flakes
+To get started in your <Language client:load /> project, create an empty directory and initialize a [flake template][templates]:
+
+<Shell client:load />
+
+## Building the package
+
+Whichever language you've selected, you can build the [Nix package][packages] defined in the local flake by running:
+
+```shell
+nix build
+```
+
+This command determines that the local flake has a [package output][outputs]
+
+<SpecificLanguage lang="JavaScript">
+Here's the package definition that enables us to build this JavaScript package:
+
+```nix
+{
+  packages.default = pkgs.stdenv.mkDerivation {
+    name = "zero-to-nix-javascript";
+
+    buildInputs = [
+      pkgs.nodePackages.pnpm
+      pkgs.nodejs-18_x
+    ];
+
+    src = ./.;
+
+    buildPhase = ''
+      pnpm install
+      pnpm run build
+    '';
+
+    installPhase = ''
+      mkdir $out
+      cp dist/index.html $out
+    '';
+  }
+}
+```
+
+For the full flake, see the [`flake.nix`][flake-js] for the template on GitHub or run `cat flake.nix`.
+
+What you see here is a [derivation] function that defines how to build the package, more specifically the derivation function provided by the [standard environment][stdenv].
+The `mkDerivation` function in the Nix standard environment
+</SpecificLanguage>
+
+We won't delve too much deeper into creating your own packages in this guide, but we hope that this provides a solid foundation.
+
+## When to build your own packages
+
+It's always good to bear in mind that [Nixpkgs] provides more than 80,000 [searchable][search] packages.
+Creating your own packages can be a bit tricky, so we recommend resorting to that only when you:
+
+1. Need to provide a package for your [development environment][devenv] that's missing from Nixpkgs or another publicly available flake.
+1. Something.
+
+[derivation]: /concepts/derivations
+[devenv]: /start/dev-shell-flake
+[flake]: /concepts/flakes
+[flake-js]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/javascript/flake.nix
 [nixpkgs]: /concepts/nixpkgs
+[outputs]: /concepts/flake-outputs
+[packages]: /concepts/packages
 [prev]: /start/build-package-nixpkgs
+[search]: https://search.nixos.org/packages
+[stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
+[templates]: /concepts/flake-templates

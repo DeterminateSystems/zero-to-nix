@@ -5,11 +5,9 @@
       <HorizontalContainer>
         <Hero :title="title" />
 
-        <Panel>
-          <Content>
-            <slot />
-          </Content>
-        </Panel>
+        <Content>
+          <slot />
+        </Content>
       </HorizontalContainer>
     </Top>
 

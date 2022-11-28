@@ -14,15 +14,27 @@
     flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system; };
-
-      nodejs = pkgs.nodejs-18_x;
-      nodePkgs = with nodejs.pkgs; [ pnpm ];
     in
     {
-      devShells.default = pkgs.mkShell {
+      packages.default = pkgs.stdenv.mkDerivation {
+        name = "zero-to-nix-javascript";
+
         buildInputs = [
-          nodejs
-        ] ++ nodePkgs;
+          pkgs.nodePackages.pnpm
+          pkgs.nodejs-18_x
+        ];
+
+        src = self;
+
+        buildPhase = ''
+          pnpm install
+          pnpm run build
+        '';
+
+        installPhase = ''
+          mkdir $out
+          cp dist/index.html $out
+        '';
       };
     });
 }
