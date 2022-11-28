@@ -18,24 +18,23 @@
         </div>
 
         <ul class="flex items-center space-x-4 md:space-x-5 lg:space-x-6">
-          <li v-for="(link, idx) in $site.navbarLinks" :key="idx">
-            <a
-              :href="link.href"
-              class="text-normal hover:text-blue dark:hover:text-light-blue md:text-lg lg:text-xl"
-              :class="{
-                'font-semibold': path.startsWith(link.href),
-                'font-normal': !path.startsWith(link.href),
-              }"
-            >
-              {{ link.text }}
-            </a>
+          <li>
+            <Dropdown
+              :dropdown="{ text: 'Quick start', pages: sortedQuickStartPages }"
+              client:load
+            />
+          </li>
+          <li>
+            <Dropdown
+              :dropdown="{ text: 'Concepts', pages: conceptPages }"
+              client:load
+            />
           </li>
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
             <ThemeSwitcher client:load />
 
             <a :href="$site.githubUrl">
               <IconFaGithub
-                v-bind="$attrs"
                 class="h-4 w-4 hover:text-gray dark:hover:text-light-gray md:h-5 md:w-5 lg:h-6 lg:w-6"
               />
             </a>
@@ -47,9 +46,5 @@
 </template>
 
 <script setup lang="ts">
-import { PageProps } from "iles";
-
-const {
-  route: { path },
-} = usePage<PageProps>();
+import { conceptPages, sortedQuickStartPages } from "~/logic/content";
 </script>

@@ -8,22 +8,36 @@
       Select your platform
     </p>
 
-    <button
-      :aria-label="`Preferred platform selector. Click to activate ${sys}`"
-      v-for="(sys, idx) in systems"
-      :key="idx"
-      @click="systemState.set(sys)"
-      class="mg:text-normal rounded-lg py-0 px-2 text-sm font-semibold md:py-0.5 md:px-3 lg:py-1 lg:px-4 lg:text-lg"
-      :class="{ 'bg-primary text-white': sys === system }"
-    >
-      {{ sys }}
-    </button>
+    <TabGroup @change="updateSystem" :defaultIndex="defaultIndex">
+      <TabList>
+        <Tab
+          v-for="(sys, idx) in systems"
+          :key="idx"
+          as="template"
+          v-slot="{ selected }"
+        >
+          <button
+            class="mg:text-normal rounded-lg py-0 px-2 text-sm font-semibold md:py-0.5 md:px-3 lg:py-1 lg:px-4 lg:text-lg"
+            :class="{ 'bg-primary text-white': selected }"
+          >
+            {{ sys }}
+          </button>
+        </Tab>
+      </TabList>
+    </TabGroup>
   </div>
 </template>
 
 <script setup lang="ts">
-import site from "~/site";
+import { Tab, TabGroup, TabList } from "@headlessui/vue";
 import { system, systemState } from "~/logic/state";
+import site from "~/site";
 
 const { systems } = site;
+
+const defaultIndex = systems.indexOf(system.value);
+
+const updateSystem = (idx: number) => {
+  systemState.set(systems[idx]);
+};
 </script>
