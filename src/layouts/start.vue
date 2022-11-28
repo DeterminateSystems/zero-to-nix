@@ -14,7 +14,7 @@
         />
 
         <div class="space-y-6">
-          <Summary v-if="summary.length > 0" :items="summary" />
+          <Summary v-if="summary && summary.length > 0" :items="summary" />
 
           <Content>
             <slot />
@@ -26,7 +26,6 @@
         </div>
       </HorizontalContainer>
     </Top>
-
     <Footer />
   </Page>
 </template>
