@@ -1,3 +1,9 @@
+export type Feature = {
+  title: string;
+  description: string;
+  links: NavLink[];
+};
+
 export type NavLink = {
   text: string;
   href: string;
@@ -16,6 +22,7 @@ export type Site = {
   canonical: string;
   githubUrl: string;
   languageCode: string;
+  features: Feature[];
   navbarLinks: NavLink[];
   heroLinks: NavLink[];
   year: number;
@@ -37,6 +44,42 @@ const site: Site = {
     { text: "Quick start", href: "/start" },
     { text: "Concepts", href: "/concepts" },
     { text: "About", href: "/about" },
+  ],
+
+  // TODO: make this automated rather than manual
+  features: [
+    {
+      title: "Declarative, reproducible development environments",
+      description: "No more works-on-my-machine evasions",
+      links: [
+        {
+          text: "Explore a Nix development environment",
+          href: "/start/nix-develop",
+        },
+        {
+          text: "Create a development environment",
+          href: "/start/dev-shell-flake",
+        },
+        {
+          text: "How Nix development environments work",
+          href: "/concepts/nix-shell",
+        },
+      ],
+    },
+    {
+      title: "Declarative, reproducible package builds",
+      description: "No more diamond dependencies",
+      links: [
+        {
+          text: "Build a package from Nixpkgs",
+          href: "/start/build-package-nixpkgs",
+        },
+        {
+          text: "How Nix packages work",
+          href: "/concepts/packages",
+        },
+      ],
+    },
   ],
 
   year: new Date().getFullYear(),
