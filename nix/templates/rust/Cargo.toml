@@ -1,3 +1,6 @@
 [package]
 name = "hello-nix-rust"
 version = "0.1.0"
+
+[dependencies]
+colored = "2.0.0"
