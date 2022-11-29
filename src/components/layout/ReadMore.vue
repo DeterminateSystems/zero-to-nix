@@ -10,6 +10,7 @@
         class="dark:hover:bg-in text-normal rounded-lg border-2 border-light-gray font-semibold hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-inherit md:text-lg lg:text-xl"
         @mouseover="hover = true"
         @mouseleave="hover = false"
+        target="_blank"
       >
         <div
           class="flex items-start justify-between gap-4 py-1 px-2 md:py-1.5 md:px-3 lg:py-2.5"
@@ -19,12 +20,14 @@
               {{ title }}
             </p>
 
-            <p
+            <a
               v-if="source"
               class="text-sm font-light tracking-tight hover:text-primary dark:hover:text-light-blue"
+              :href="source.href"
+              target="_blank"
             >
               {{ source.title }}
-            </p>
+            </a>
           </div>
 
           <div>
