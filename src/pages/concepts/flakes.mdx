@@ -10,4 +10,37 @@ Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/
 
 ## Flake references
 
-<Brief id="flake-references" />
+All Nix flakes are identified by a two-part "address" that signals where they're located:
+
+<FlakeReferences />
+
+### Types
+
+The table below shows which types are available:
+
+<FlakeReferenceTypes />
+
+<Warning title="Exceptions">
+There are two important exceptions to the path prefix rules in the table above:
+
+1. The path `nixpkgs` doesn't require a prefix and is equivalent to `github:NixOS/nixpkgs`.
+1. You can use absolute filepaths without a `path` prefix, for example `/Users/nix-user/nix-stuff`.
+</Warning>
+
+### The flake registry
+
+The [flake registry][registry] is...
+
+### Git references
+
+Flake references with different [prefixes](#prefixes) have different structures.
+Filepaths, either using `path` for relative paths or no prefix for absolute paths, work as you would expect in a Unix filesystem.
+[Git] references, however, are much more find grained, enabling you to refer to specific Git [revisions], [branches], and more.
+
+<FlakeGitAttributes />
+
+[branches]: https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+[git]: https://git-scm.com
+[nixpkgs]: https://github.com/NixOS/nixpkgs
+[registry]: https://github.com/NixOS/flake-registry
+[revisions]: https://git-scm.com/docs/revisions

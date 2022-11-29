@@ -1,6 +1,6 @@
 <template>
   <div
-    class="my-6 rounded-lg border-2 border-blue bg-pale-blue py-4 px-6 dark:bg-inherit"
+    class="my-6 rounded-lg border-2 border-blue bg-pale-blue py-6 px-8 dark:bg-inherit"
   >
     <div class="space-y-2">
       <span v-if="infoTitle" class="text-2xl font-semibold tracking-tight">
