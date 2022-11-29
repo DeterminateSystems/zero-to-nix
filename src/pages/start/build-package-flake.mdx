@@ -23,7 +23,8 @@ Whichever language you've selected, you can build the [Nix package][packages] de
 nix build
 ```
 
-This command determines that the local flake has a [package output][outputs]
+This command determines that the local flake has a [package output][outputs], which is a [derivation] function that defines how the package is built.
+In this particular flake there's a `default` package, which enables us to run `nix build` without specifying an output, but if the package were output as `packages.mypkg`, for example, we'd need to run `nix build .#mypkg` to build it.
 
 <SpecificLanguage lang="JavaScript">
 Here's the package definition that enables us to build this JavaScript package:
@@ -53,26 +54,48 @@ Here's the package definition that enables us to build this JavaScript package:
 }
 ```
 
-For the full flake, see the [`flake.nix`][flake-js] for the template on GitHub or run `cat flake.nix`.
+For the full flake, see [`flake.nix`][flake-js] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] function that defines how to build the package, more specifically the `mkDerivation` function provided by the [standard environment][stdenv].
+</SpecificLanguage>
+<SpecificLanguage lang="Python">
+Here's the package definition that enables us to build this Python package:
 
-What you see here is a [derivation] function that defines how to build the package, more specifically the derivation function provided by the [standard environment][stdenv].
-The `mkDerivation` function in the Nix standard environment
+```nix
+ packages.default = python.pkgs.buildPythonApplication {
+  name = "hello-nix-python";
+
+  buildInputs = with python.pkgs; [ pip ];
+
+  src = ./.;
+};
+```
+
+For the full flake, see [`flake.nix`][flake-py] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] function that defines how to build the package, more specifically the [`buildPythonApplication`][buildpythonapplication] function.
+</SpecificLanguage>
+<SpecificLanguage lang="Go">
+GO
+</SpecificLanguage>
+<SpecificLanguage lang="Rust">
+RUST
 </SpecificLanguage>
 
-We won't delve too much deeper into creating your own packages in this guide, but we hope that this provides a solid foundation.
+We won't delve too much deeper into [derivations][derivation] and creating your own packages in this guide, but we hope that this provides a solid foundation.
 
 ## When to build your own packages
 
 It's always good to bear in mind that [Nixpkgs] provides more than 80,000 [searchable][search] packages.
-Creating your own packages can be a bit tricky, so we recommend resorting to that only when you:
+Creating your own packages can be a bit tricky&mdash;though we hope this guide sets you in the right direction!&mdash;so we recommend resorting to that only when you:
 
 1. Need to provide a package for your [development environment][devenv] that's missing from Nixpkgs or another publicly available flake.
 1. Something.
 
+[buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#buildpythonapplication-function
 [derivation]: /concepts/derivations
 [devenv]: /start/dev-shell-flake
 [flake]: /concepts/flakes
 [flake-js]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/javascript/flake.nix
+[flake-py]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/python/flake.nix
 [nixpkgs]: /concepts/nixpkgs
 [outputs]: /concepts/flake-outputs
 [packages]: /concepts/packages

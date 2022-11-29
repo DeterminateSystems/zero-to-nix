@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def main():
     print("Hello from inside a Python program built with Nix!")
 
