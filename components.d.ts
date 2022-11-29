@@ -40,6 +40,7 @@ declare module '@vue/runtime-core' {
     Related: typeof import('./src/components/layout/Related.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Selector: typeof import('./src/components/mdx/stateful/Selector.vue')['default']
     Shell: typeof import('./src/components/mdx/code/Shell.vue')['default']
     SpecificLanguage: typeof import('./src/components/mdx/stateful/SpecificLanguage.vue')['default']
     Success: typeof import('./src/components/mdx/admonitions/Success.vue')['default']
