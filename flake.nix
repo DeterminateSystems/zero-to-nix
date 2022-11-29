@@ -56,12 +56,18 @@
         common = with pkgs; [ vale alex htmltest nodejs pnpm python38 ];
 
         scripts = with pkgs; [
+          (writeScriptBin "get-registry-json" ''
+            curl -O https://raw.githubusercontent.com/NixOS/flake-registry/master/flake-registry.json
+            mv flake-registry.json src/data
+          '')
+
           (writeScriptBin "clean" ''
             rm -rf dist
           '')
 
           (writeScriptBin "setup" ''
             clean
+            get-registry-json
             pnpm install
           '')
 

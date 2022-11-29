@@ -56,3 +56,21 @@ export const flakes: Flakes = {
     },
   ],
 };
+
+// Flake registry
+type Entry = {
+  from: {
+    id: string;
+    type: "indirect";
+  };
+  to: {
+    owner: string;
+    repo: string;
+    type: "github" | "gitlab";
+  };
+};
+
+type FlakeRegistry = {
+  flakes: Entry[];
+  version: number;
+};
