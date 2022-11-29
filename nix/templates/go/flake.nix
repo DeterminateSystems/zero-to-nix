@@ -1,5 +1,5 @@
 {
-  description = "Go starter flake for Zero to Nix";
+  description = "Go example flake for Zero to Nix";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";

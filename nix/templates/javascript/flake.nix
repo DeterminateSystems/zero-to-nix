@@ -1,5 +1,5 @@
 {
-  description = "JavaScript starter flake for Zero to Nix";
+  description = "JavaScript example flake for Zero to Nix";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
