@@ -56,6 +56,7 @@ Here's the package definition that enables us to build this JavaScript package:
 
 For the full flake, see [`flake.nix`][flake-js] on GitHub or run `cat flake.nix`.
 What you see here is a [derivation] function that defines how to build the package, more specifically the `mkDerivation` function provided by the [standard environment][stdenv].
+
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
 Here's the package definition that enables us to build this Python package:
@@ -72,25 +73,40 @@ Here's the package definition that enables us to build this Python package:
 
 For the full flake, see [`flake.nix`][flake-py] on GitHub or run `cat flake.nix`.
 What you see here is a [derivation] function that defines how to build the package, more specifically the [`buildPythonApplication`][buildpythonapplication] function.
+
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
-GO
+```nix
+packages.default = pkgs.buildGo119Module {
+  name = "hello-nix-go";
+  src = gitignore.lib.gitignoreSource ./.;
+  vendorSha256 = "sha256-fwJTg/HqDAI12mF1u/BlnG52yaAlaIMzsILDDZuETrI=";
+};
+````
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
-RUST
+```nix
+ packages.default = pkgs.rustPlatform.buildRustPackage {
+  name = "hello-nix-rust";
+  src = ./.;
+  cargoLock = {
+    lockFile = ./Cargo.lock;
+  };
+};
+```
+
 </SpecificLanguage>
 
 We won't delve too much deeper into [derivations][derivation] and creating your own packages in this guide, but we hope that this provides a solid foundation.
 
-## When to build your own packages
+## Package search
 
-It's always good to bear in mind that [Nixpkgs] provides more than 80,000 [searchable][search] packages.
-Creating your own packages can be a bit tricky&mdash;though we hope this guide sets you in the right direction!&mdash;so we recommend resorting to that only when you:
-
-1. Need to provide a package for your [development environment][devenv] that's missing from Nixpkgs or another publicly available flake.
-1. Something.
+It's always good to bear in mind that [Nixpkgs] provides more than 80,000 [searchable][search] packages and you can install packages from plenty of [other sources][flake] as well.
+Creating your own [packages] with Nix can be a bit tricky&mdash;though we hope this guide sets you in the right direction!&mdash;so we recommend searching there before you try it on your own.
+But if you do opt to create your own, check out the [contributing guidelines][contributing] for [Nixpkgs]
 
 [buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#buildpythonapplication-function
+[contributing]: https://github.com/NixOS/nixpkgs/blob/master/CONTRIBUTING.md
 [derivation]: /concepts/derivations
 [devenv]: /start/dev-shell-flake
 [flake]: /concepts/flakes
