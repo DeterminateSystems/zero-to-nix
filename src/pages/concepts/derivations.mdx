@@ -1,22 +1,22 @@
 ---
 title: Derivations
-snippet: Build instructions for packages.
+snippet: Build instructions for Nix packages
 related: ["nix-store", "packages", "realization"]
-readMore: [
-  {
-    title: "Derivations (from Ian Henry's How to Learn Nix)",
-    href: "https://ianthehenry.com/posts/how-to-learn-nix/derivations/"
-  }
-]
+readMore:
+  [
+    {
+      title: "Derivations (from Ian Henry's How to Learn Nix)",
+      href: "https://ianthehenry.com/posts/how-to-learn-nix/derivations/",
+    },
+  ]
 ---
 
-In Nix, a **derivation** is an instruction
+A Nix *derivation* is an instruction that Nix uses to [*realize*][realization] a [package].
+Derivations are created using the [Nix language](#nix-language)
 
 <Success title="Mental models">
-You may find it helpful to think of derivations as a plan or blueprint for a package written in the Nix language.
+You may find it helpful to think of a derivation as the plan or blueprint for a Nix package.
 </Success>
-
-For building a Nix [package](/concepts/packages) and...
 
 ## Derivations in the Nix language \{#nix-language}
 
@@ -37,16 +37,20 @@ Here's an example derivation:
 
 ```nix
 derivation {
+  # A name for the derivation (whatever you choose)
   name = "hello-text";
-  system = "x86_64-linux"; # The system on which...
+  # The system realizing the derivation
+  system = "x86_64-linux";
+  # The program realizing the derivation
   builder = "bash";
+  # Arguments passed to the builder program
   args = ["-c", "mkdir $out && echo Hello world > $out/hello.txt"]
 };
 ```
 
-Here is a thing:
-
-<NixStorePath pkg="hello" client:load />
+And that's it!
+The `derivation` function takes only these arguments.
+But derivations can, of course, be far from straightforward, because the scripting logic that you pass via `args` can be arbitrarily complex.
 
 ### String interpolation
 
@@ -62,32 +66,34 @@ The string output of a derivation is always a [Nix store path][store]
 
 ## Realization
 
-
-
 ### Special variables
 
 There are two special variables to be aware of when writing derivations:
 
-* `$out` represents the root of the directory structure for build output.
-* `$src` represents the build sources.
+- `$out` represents the root of the directory structure for build output.
+- `$src` represents the build sources.
 
 ## The standard environment \{#standard-env}
 
 [`stdenv.mkDerivation`][mk]
 
-While you *can* create derivations using the raw `derivation` function, it's far more common to use a wrapper function around it.
+While you _can_ create derivations using the raw `derivation` function, it's far more common to use a wrapper function around it.
 Perhaps the most commonly used wrapper function is [`stdenv.mkDerivation`][mk].
 Arguments:
 
-* The `name` of the package. If you specify `pname` and `version` instead, the `name` ends up `${pname}-${version}`.
+- The `name` of the package. If you specify `pname` and `version` instead, the `name` ends up `${pname}-${version}`.
 
+## Other derivation functions
 
 Outside of `stdenv.mkDerivation`, there are many custom derivation wrappers for specific languages, frameworks, and more (and many of those actually wrap `stdenv.mkDerivation`).
 Some examples:
 
-* [`buildGoModule`][go] for [Go]
-* [`buildRustPackage`][buildrustpackage] for [Rust]
-* [`buildPythonApplication`][buildpythonapplication] for [Python]
+- [`buildGoModule`][go] for [Go]
+- [`buildRustPackage`][buildrustpackage] for [Rust]
+- [`buildPythonApplication`][buildpythonapplication] for [Python]
+
+You're likely to encounter many more in the Nix ecosystem.
+And you're always free to create your own derivation functions and even wrap helper functions like `buildPythonApplication`.
 
 [^1]: Kudos to [Ian Henry][ian] for this idea.
 
@@ -101,6 +107,8 @@ Some examples:
 [lang]: /concepts/nix-language
 [mk]: https://nixos.org/manual/nixpkgs/stable/#sec-using-stdenv
 [nixpkgs]: /concepts/nixpkgs
+[package]: /concepts/packages
 [python]: https://python.org
+[realization]: /concepts/realization
 [rust]: https://rust-lang.org
 [store]: /concepts/nix-store
