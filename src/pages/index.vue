@@ -1,11 +1,16 @@
 <template>
   <HorizontalContainer>
-    <Hero :title="$site.title" :description="$site.description" size="lg" />
+    <Hero
+      :title="$site.title"
+      :description="$site.description"
+      size="lg"
+      :buttons="$site.heroButtons"
+    />
 
     <section class="space-y-16">
       <Grid3>
         <HoverableLink
-          v-for="(link, idx) in $site.heroLinks"
+          v-for="(link, idx) in $site.heroButtons"
           :key="idx"
           :text="link.text"
           :href="link.href"

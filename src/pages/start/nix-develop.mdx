@@ -1,26 +1,26 @@
 ---
-title: Explore Nix shell environments
+title: Explore Nix development environments
 summary: [
-  "Use the `nix develop` command to enter a Nix shell defined in a remote [flake](/concepts/flakes)",
-  "Run a command inside a shell environment without entering that environment",
-  "Explore Nix shell environments tailor made for specific programming languages",
-  "Explore a more mixed shell environment"
+  "Use the `nix develop` command to enter a Nix environment defined in a remote [flake](/concepts/flakes)",
+  "Run a command inside a development environment without actually entering that environment",
+  "Explore Nix development environments tailor made for specific programming languages",
+  "Explore a more mixed development environment"
 ]
 order: 3
 ---
 
-One of Nix's key features for developing software is Nix [shell environments][shell].
-You can define shell environments of any complexity using the [Nix language][language].
-We'll cover that a bit later, but for now let's get a feel for what a Nix shell is and how it works.
+One of Nix's key features for developing software is Nix [development environments][dev].
+You can define development environments of any complexity using the [Nix language][language].
+We'll cover that a bit later, but for now let's get a feel for what a Nix development environment is and how it works.
 
-The [`nix develop`][nix-develop] command activates a Nix shell:
+The [`nix develop`][nix-develop] command activates a Nix environment:
 
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#example"
 ```
 
 <Warning title="Load times">
-The first time you activate a Nix shell using `nix develop` it may take a while.
+The first time you activate a Nix development environment using `nix develop` it may take a while.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
 This is in contrast to many [package managers][pkg] that often install things more quickly because they download pre-built archives, such as tarballs.
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
@@ -29,7 +29,7 @@ Future `nix develop` invocations should be much faster, as Nix doesn't need to b
 You should be greeted with this:
 
 ```shell
-Welcome to a Nix shell environment!
+Welcome to a Nix development environment!
 bash-5.1$
 ```
 
@@ -48,17 +48,17 @@ For curl, for example, you should see a strange path like this (the input hash p
 What's happened here? The [Nix] CLI did a few things:
 
 * It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
-* It built the [packages] specified in the shell configuration (again, more on this later).
+* It built the [packages] specified in the environment configuration (again, more on this later).
 * It [symlinked] those package paths to `curl` and `git`, respectively.
 
 But those symlinks are only valid in your current directory. If you run `cd ..` and then `which git`, you should no longer see a Nix store path.
 
 A few other things:
 
-* The `Welcome to a Nix shell environment!` greeting is defined in the *shell hook*. This is arbitrary code that you can run when the environment starts up.
-* Nix shell environments support environment variables as well. Run `echo $SECRET_PASSWORD` to access a value that's available only in the Nix shell.
+* The `Welcome to a Nix development environment!` greeting is defined in the *shell hook*. This is arbitrary code that you can run when the environment starts up.
+* Nix development environments support environment variables as well. Run `echo $SECRET_PASSWORD` to access a value that's available only in the Nix environment.
 
-Let's leave the Nix shell and return to our usual environment:
+Let's leave the Nix development environment:
 
 ```shell
 exit
@@ -67,11 +67,11 @@ exit
 Now check the path for [Git] using `which git`. It should be at a global system path like `/usr/bin/git`.
 And if you run `echo $SECRET_PASSWORD` again you should get an empty string (unless you happen to have that set on your machine!).
 
-## Run commands inside the shell
+## Run commands inside the development environment
 
-While it's fun to explore the shell, you don't always want to be inside the shell to use the shell.
-The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that use the shell environment but from your current environment.
-Here are some examples for the shell we used earlier:
+While it's fun to explore the environment, you don't always want to be inside the to use it.
+The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that *use* the environment but *from* your current environment.
+Here are some examples for the environment we used earlier:
 
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#example" --command git status
@@ -79,16 +79,16 @@ nix develop "github:DeterminateSystems/zero-to-nix#example" --command curl https
 ```
 
 In both cases, you're running a symlinked package in the [Nix store][store] and nothing from your global environment.
-As you can see, Nix shells are [*hermetic*][hermeticity] in that they're isolated from their surrounding environment.
+As you can see, Nix development environments are [*hermetic*][hermeticity] in that they're isolated from the surrounding environment (such as your environment variables and paths like `/bin` and `/usr/bin`).
 
-## Language-specific shells
+## Language-specific environments
 
 As we did in the [last section][last], let's get a bit more specific and explore how Nix can benefit more specific programming environments.
 Select one of these programming languages:
 
 <Languages client:load />
 
-Now explore the shell for <Language client:load />:
+Now explore the Nix development environment for <Language client:load />:
 
 <NixDevelop client:load />
 
@@ -150,28 +150,32 @@ cargo run
 You should see `Hello, world!`.
 </SpecificLanguage>
 
-## Beyond language-specific shells
+## Beyond language-specific environments
 
-In the [previous section](#language-specific-shells), we explored Nix shells tailored to specific programming languages.
-But Nix shell environments are infinitely flexible, enabling you to combine whichever packages you like.
+In the [previous section](#language-specific-environments), we explored Nix environments tailored to specific programming languages.
+But Nix environments are infinitely flexible, enabling you to combine whichever packages you like.
 Let's explore an example of this:
 
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#multi"
 ```
 
-This shell environment has several tools available:
+This Nix environment has several tools available:
 
 * [Python]
 * [kubectl]
 * [Terraform]
 * [OpenSSL]
 
-This list could easily include 100 packages. It's up to you. We won't cover *how* to create these environments just yet, but we hope that you come away from this guide with a basic sense of what Nix shell environments provide.
+As in the previous examples, you can run commands like `which python` and `which kubectl` to see that these tools are all symlinked to the [Nix store][store] and thus that your Nix
+This list could easily include 100 packages.
+It's up to you.
+We won't cover *how* to create these environments just yet, but we hope that you come away from this guide with a basic sense of what Nix development environments provide.
 
 [bash]: https://www.gnu.org/software/bash
 [cargo]: https://doc.rust-lang.org/stable/cargo
 [curl]: https://curl.se
+[dev]: /concepts/dev-env
 [flakes]: /concepts/flakes
 [git]: https://git-scm.com
 [go]: https://go.dev
@@ -189,7 +193,6 @@ This list could easily include 100 packages. It's up to you. We won't cover *how
 [pkg]: /concepts/package-management
 [python]: https://python.org
 [rust]: https://rust-lang.org
-[shell]: /concepts/nix-shell
 [store]: /concepts/nix-store
 [symlinked]: https://en.wikipedia.org/wiki/Symbolic_link
 [terraform]: https://terraform.io
