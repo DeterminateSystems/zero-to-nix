@@ -6,10 +6,18 @@
   --primary: rgb(80, 116, 191);
 }
 
-.content a {
-  text-decoration: underline !important;
-}
+.content {
+  ul:last-of-type,
+  ol:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
-.content a:hover {
-  color: var(--primary);
+  a {
+    text-decoration: underline !important;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
 }

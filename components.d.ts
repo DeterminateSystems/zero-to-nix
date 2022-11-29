@@ -14,6 +14,8 @@ declare module '@vue/runtime-core' {
     Content: typeof import('./src/components/layout/Content.vue')['default']
     Danger: typeof import('./src/components/mdx/admonitions/Danger.vue')['default']
     Dropdown: typeof import('./src/components/layout/generic/Dropdown.vue')['default']
+    FlakeReferencePrefixes: typeof import('./src/components/mdx/concepts/FlakeReferencePrefixes.vue')['default']
+    FlakeReferences: typeof import('./src/components/mdx/concepts/FlakeReferences.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Grid2: typeof import('./src/components/layout/Grid2.vue')['default']
     Grid3: typeof import('./src/components/layout/Grid3.vue')['default']
