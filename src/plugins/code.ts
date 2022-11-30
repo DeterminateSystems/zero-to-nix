@@ -45,14 +45,14 @@ const highlightCode = (
   const blockMeta = parseMeta(meta);
   const innerHtml = [
     `<pre class="${cls}">`,
-    `<code>${code}</code>`,
-    `</pre>`,
-    `<div class="mt-2 ml-2"><span class="text-sm font-mono">${blockMeta.filename}</span></div>`,
+    blockMeta.filename !== undefined &&
+      `<span class="absolute top-2 right-3 text-sm">${blockMeta.filename}</span>`,
+    `<code>${code}</code></pre>`,
   ]
     .filter((x) => x)
-    .join(" ");
+    .join("");
 
-  return `<div class="${cls}" data-lang="${dataLang}">${innerHtml}</div>`;
+  return `<div class="relative ${cls}" data-lang="${dataLang}">${innerHtml}</div>`;
 };
 
 const getGrammar = (lang: string): Grammar | undefined => {
