@@ -1,0 +1,10 @@
+---
+title: Packages
+related: ["derivation", "nix-store"]
+layout: ../../layouts/Concept.astro
+---
+
+Nix *packages* are self-contained bundles that are build using [derivations](/concepts/derivation)
+and provide some kind of software or dependencies of software on your computer.
+A package can have dependencies on other packages, which are encoded in its *closure*.
+Each package lives at a unique pathi in the [nix store](/concepts/nix-store), indexed by its name and its input hash.
