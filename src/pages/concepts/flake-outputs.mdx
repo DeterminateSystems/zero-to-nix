@@ -5,16 +5,16 @@ related: ["flake-inputs"]
 ---
 
 *Flake outputs* are what a flake produces as part of its build.
-Each flake can have many different outputs simultaniously, including but not limited to,
-application [packages](/concepts/packages),
+Each flake can have many different outputs simultaneously, including but not limited to,
+application [packages](/concepts/package),
 system configuration,
 hydra build jobs (CI),
-and [shell environments](/concepts/shell-environments).
+and [shell environments](/concepts/dev-env).
 
 Flake outputs are defined by a function, which takes an attribute set as input,
 containing each of the inputs to that flake (named after the chosen identifier in the [inputs](/concepts/flake-inputs) section).
 
-The following flake output, for example, produces a single package output on `x86_64-linux` systems for the `cowsay` derivation.
+The flake output below, for example, produces a single package output on `x86_64-linux` systems for the `cowsay` derivation.
 
 ```nix
 {

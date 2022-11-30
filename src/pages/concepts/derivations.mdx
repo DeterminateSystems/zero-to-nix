@@ -1,16 +1,16 @@
 ---
 title: Derivation
 snippet: Fill me in later so that I show up in the tooltip
-related: ["nix-store", "packages"]
+related: ["nix-store", "package"]
 ---
 
 In Nix a *derivation* is a set of instructions for building a [package](/concepts/package).
 Each derivation can have dependencies onto other derivations, and produce one or more final outputs.
 The most common outputs are
-`out` (the most generic one), 
+`out` (the most generic one),
 `lib` (for library outputs),
-`dev` (development resources such as header files), 
+`dev` (development resources such as header files),
 and `man` (for manual pages).
 
-A derivation and all of the dependencies required to build it 
+A derivation and all of the dependencies required to build it
 (direct dependencies, and all dependencies of those dependencies, etc) is called a *package closure*.
