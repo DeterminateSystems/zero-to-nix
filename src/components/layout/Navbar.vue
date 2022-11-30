@@ -21,14 +21,10 @@
           <li>
             <Dropdown
               :dropdown="{ text: 'Quick start', pages: sortedQuickStartPages }"
-              client:load
             />
           </li>
           <li>
-            <Dropdown
-              :dropdown="{ text: 'Concepts', pages: conceptPages }"
-              client:load
-            />
+            <Dropdown :dropdown="{ text: 'Concepts', pages: conceptPages }" />
           </li>
           <li v-for="({ text, href }, idx) in $site.navbarLinks" :key="idx">
             <a
