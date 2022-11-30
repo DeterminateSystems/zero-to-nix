@@ -1,15 +1,12 @@
 import { IlesModule } from "iles";
-import { Root } from "mdast";
+import { Code, Root } from "mdast";
 import prism from "prismjs";
 import type { Grammar } from "prismjs";
 import loadLanguages from "prismjs/components/index.js";
 import { Plugin } from "unified";
 import { SKIP, visit } from "unist-util-visit";
 
-export interface CodeBlockConfig {
-  aliases?: Record<string, string>;
-}
-
+// The îles module (add to the `modules` list in the îles config)
 const CodeBlocks = (config: CodeBlockConfig): IlesModule => {
   return {
     name: "code-blocks",
@@ -19,16 +16,30 @@ const CodeBlocks = (config: CodeBlockConfig): IlesModule => {
   };
 };
 
+// Plugin config
+export interface CodeBlockConfig {
+  aliases?: Record<string, string>;
+}
+
+// Meta fields
 type Meta = {
-  filename?: string;
+  filename?: string; // filename=hello.txt
 };
 
+// Parse metadata from a string into a Meta object
 const parseMeta = (s: string): Meta => {
   let meta: Meta = {};
   const segments: string[] = s.split(" ");
   const maybeFilename = segments.find((seg) => seg.startsWith("filename"));
   if (maybeFilename !== undefined) {
-    meta.filename ||= maybeFilename.split("=").at(1);
+    const filename = maybeFilename.split("=").at(1);
+    if (filename === undefined) {
+      throw new Error(
+        "Malformed code block; you need to specify a filename like this: filename=foo.txt"
+      );
+    } else {
+      meta.filename ||= filename;
+    }
   }
   return meta;
 };
@@ -49,7 +60,7 @@ const highlightCode = (
       `<span class="absolute top-2 right-3 text-sm">${blockMeta.filename}</span>`,
     `<code>${code}</code></pre>`,
   ]
-    .filter((x) => x)
+    .filter(Boolean)
     .join("");
 
   return `<div class="relative ${cls}" data-lang="${dataLang}">${innerHtml}</div>`;
@@ -71,7 +82,7 @@ const getGrammar = (lang: string): Grammar | undefined => {
 const codeBlockPlugin: Plugin<[CodeBlockConfig], Root> =
   function RemarkPrismPlugin(config: CodeBlockConfig) {
     return (ast) => {
-      visit(ast, "code", (node, index, parent) => {
+      visit(ast, "code", (node: Code, index, parent) => {
         const aliases = config.aliases ?? {};
         const code = node.value ?? "";
         const lang = node.lang ?? "text";
