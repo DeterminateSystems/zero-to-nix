@@ -23,6 +23,16 @@ type Meta = {
   filename?: string;
 };
 
+const parseMeta = (s: string): Meta => {
+  let meta: Meta = {};
+  const segments: string[] = s.split(" ");
+  const maybeFilename = segments.find((seg) => seg.startsWith("filename"));
+  if (maybeFilename !== undefined) {
+    meta.filename ||= maybeFilename.split("=").at(1);
+  }
+  return meta;
+};
+
 const highlightCode = (
   code: string,
   grammar: Grammar,
@@ -32,12 +42,15 @@ const highlightCode = (
   code = prism.highlight(code, grammar, lang);
   const cls = `language-${lang}`;
   const dataLang = lang === "text" ? "" : lang;
-  const innerHtml = `<pre class="${cls}"><code>${code}</code></pre>`;
-
-  let blockMeta: Meta = {};
-  if (meta) {
-    console.log(meta);
-  }
+  const blockMeta = parseMeta(meta);
+  const innerHtml = [
+    `<pre class="${cls}">`,
+    `<code>${code}</code>`,
+    `</pre>`,
+    `<div class="mt-2 ml-2"><span class="text-sm font-mono">${blockMeta.filename}</span></div>`,
+  ]
+    .filter((x) => x)
+    .join(" ");
 
   return `<div class="${cls}" data-lang="${dataLang}">${innerHtml}</div>`;
 };
