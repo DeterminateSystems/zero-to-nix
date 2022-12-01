@@ -52,7 +52,7 @@ const site: Site = {
     {
       title: "Declarative, reproducible development environments",
       description:
-        'No more "works on my machine." Create environments that work seamlessly across platforms.',
+        'No more "works on my machine." Create environments that work seamlessly and are easily sharable across platforms.',
       links: [
         {
           text: "Explore a Nix development environment",
@@ -70,7 +70,8 @@ const site: Site = {
     },
     {
       title: "Declarative, reproducible package builds",
-      description: "No more diamond dependencies",
+      description:
+        "No more broken builds or mysterious installation processes. Nix builds packages from scratch every time.",
       links: [
         {
           text: "Build a package from Nixpkgs",
@@ -83,8 +84,9 @@ const site: Site = {
       ],
     },
     {
-      title: "Tens of thousands of packages",
-      description: "Nixpkgs is one of the...",
+      title: "The largest package repository in existence",
+      description:
+        "Nixpkgs offers over 80,000 packages and continues to grow every day.",
       links: [
         {
           text: "How Nixpkgs works",
@@ -93,8 +95,9 @@ const site: Site = {
       ],
     },
     {
-      title: "A new kind of operating system",
-      description: "NixOS is awesome...",
+      title: "Declarative Linux systems",
+      description:
+        "NixOS is a unique Linux distribution that you can declaratively configure using the Nix language and Nix packages.",
       links: [
         {
           text: "How NixOS works",

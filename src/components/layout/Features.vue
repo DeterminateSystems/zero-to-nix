@@ -7,11 +7,12 @@
     >
       <div class="space-y-4">
         <div class="space-y-2">
-          <p class="text-2xl font-light">{{ title }}</p>
+          <p class="content text-2xl font-light" v-html="md(title)" />
 
-          <p class="font-light text-dark-gray dark:text-light-gray">
-            {{ description }}
-          </p>
+          <p
+            class="content font-light text-dark-gray dark:text-light-gray"
+            v-html="md(description)"
+          />
         </div>
 
         <ul>
@@ -28,3 +29,7 @@
     </div>
   </Grid2>
 </template>
+
+<script setup lang="ts">
+import { md } from "~/logic/content";
+</script>
