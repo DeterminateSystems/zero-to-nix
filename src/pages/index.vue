@@ -19,7 +19,7 @@
       </Grid3>
 
       <div class="space-y-4">
-        <h2 class="text-3xl" id="features">What Nix offers</h2>
+        <h2 class="text-3xl" id="features">What the Nix ecosystem offers</h2>
 
         <Features />
       </div>

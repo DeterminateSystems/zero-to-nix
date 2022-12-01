@@ -51,7 +51,8 @@ const site: Site = {
   features: [
     {
       title: "Declarative, reproducible development environments",
-      description: "No more works-on-my-machine evasions",
+      description:
+        'No more "works on my machine." Create environments that work seamlessly across platforms.',
       links: [
         {
           text: "Explore a Nix development environment",
@@ -78,6 +79,26 @@ const site: Site = {
         {
           text: "How Nix packages work",
           href: "/concepts/packages",
+        },
+      ],
+    },
+    {
+      title: "Tens of thousands of packages",
+      description: "Nixpkgs is one of the...",
+      links: [
+        {
+          text: "How Nixpkgs works",
+          href: "/concepts/nixpkgs",
+        },
+      ],
+    },
+    {
+      title: "A new kind of operating system",
+      description: "NixOS is awesome...",
+      links: [
+        {
+          text: "How NixOS works",
+          href: "/concepts/nixos",
         },
       ],
     },
