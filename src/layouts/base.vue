@@ -23,5 +23,6 @@ useHead({
 @import "@fontsource/inter"; /* sans-serif */
 @import "@fontsource/fira-mono"; /* monospace */
 @import "~/assets/css/tailwind";
-@import "prism-themes/themes/prism-night-owl"; /* https://npmjs.com/package/prism-themes */
+/* Selected from https://www.npmjs.com/package/prism-themes */
+@import "prism-themes/themes/prism-night-owl";
 </style>

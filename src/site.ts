@@ -1,3 +1,5 @@
+import { ButtonProps } from "./logic/content";
+
 export type NavLink = {
   text: string;
   href: string;
@@ -17,7 +19,7 @@ export type Site = {
   githubUrl: string;
   languageCode: string;
   navbarLinks: NavLink[];
-  heroLinks: NavLink[];
+  heroButtons: ButtonProps[];
   year: number;
   systems: string[];
   languages: string[];
@@ -26,15 +28,14 @@ export type Site = {
 
 const site: Site = {
   title: "Zero to Nix",
-  description:
-    "An unofficial and opinionated guide to getting started with Nix",
+  description: "An unofficial, opinionated, and gentle introduction to Nix",
   url: "https://zero-to-nix.vercel.app",
   canonical: "zero-to-nix.vercel.app",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
   navbarLinks: [{ text: "About", href: "/about" }],
-  heroLinks: [
-    { text: "Quick start", href: "/start" },
+  heroButtons: [
+    { text: "Quick start", href: "/start", highlight: true },
     { text: "Concepts", href: "/concepts" },
     { text: "About", href: "/about" },
   ],
