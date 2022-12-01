@@ -19,16 +19,10 @@
 
         <ul class="flex items-center space-x-4 md:space-x-5 lg:space-x-6">
           <li>
-            <Dropdown
-              :dropdown="{ text: 'Quick start', pages: sortedQuickStartPages }"
-              client:load
-            />
+            <QuickStartDropdown client:load />
           </li>
           <li>
-            <Dropdown
-              :dropdown="{ text: 'Concepts', pages: conceptPages }"
-              client:load
-            />
+            <ConceptsDropdown client:load />
           </li>
           <li v-for="({ text, href }, idx) in $site.navbarLinks" :key="idx">
             <a
