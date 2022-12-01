@@ -1,5 +1,11 @@
 import { ButtonProps } from "./logic/content";
 
+export type Feature = {
+  title: string;
+  description: string;
+  links: NavLink[];
+};
+
 export type NavLink = {
   text: string;
   href: string;
@@ -18,6 +24,7 @@ export type Site = {
   canonical: string;
   githubUrl: string;
   languageCode: string;
+  features: Feature[];
   navbarLinks: NavLink[];
   heroButtons: ButtonProps[];
   year: number;
@@ -38,6 +45,66 @@ const site: Site = {
     { text: "Quick start", href: "/start", highlight: true },
     { text: "Concepts", href: "/concepts" },
     { text: "About", href: "/about" },
+  ],
+
+  // TODO: make this automated rather than manual
+  features: [
+    {
+      title: "Declarative, reproducible development environments",
+      description:
+        'No more "works on my machine." Create environments that work seamlessly and are easily sharable across platforms.',
+      links: [
+        {
+          text: "Explore a Nix development environment",
+          href: "/start/nix-develop",
+        },
+        {
+          text: "Create a development environment",
+          href: "/start/dev-shell-flake",
+        },
+        {
+          text: "How Nix development environments work",
+          href: "/concepts/dev-env",
+        },
+      ],
+    },
+    {
+      title: "Declarative, reproducible package builds",
+      description:
+        "No more broken builds or mysterious installation processes. Nix builds packages from scratch every time.",
+      links: [
+        {
+          text: "Build a package from Nixpkgs",
+          href: "/start/build-package-nixpkgs",
+        },
+        {
+          text: "How Nix packages work",
+          href: "/concepts/packages",
+        },
+      ],
+    },
+    {
+      title: "The largest package repository in existence",
+      description:
+        "Nixpkgs offers over 80,000 packages and continues to grow every day.",
+      links: [
+        {
+          text: "How Nixpkgs works",
+          href: "/concepts/nixpkgs",
+        },
+      ],
+    },
+    {
+      title: "Declarative Linux systems",
+      description:
+        "NixOS is a unique Linux distribution that you can declaratively configure using the Nix language and Nix packages.",
+      links: [
+        {
+          text: "How NixOS works",
+          href: "/concepts/nixos",
+        },
+      ],
+    },
   ],
 
   year: new Date().getFullYear(),
