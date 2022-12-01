@@ -11,7 +11,6 @@ declare module '@vue/runtime-core' {
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     Brief: typeof import('./src/components/layout/Brief.vue')['default']
     Callout: typeof import('./src/components/mdx/admonitions/Callout.vue')['default']
-    CodeBlock: typeof import('./src/components/mdx/code/CodeBlock.vue')['default']
     Concept: typeof import('./src/components/mdx/concepts/Concept.vue')['default']
     ConceptsDropdown: typeof import('./src/components/layout/ConceptsDropdown.vue')['default']
     Content: typeof import('./src/components/layout/Content.vue')['default']
