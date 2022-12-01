@@ -11,12 +11,13 @@
           {{ title }}
         </p>
 
-        <p
+        <a
           v-if="source"
+          :href="source.href"
+          target="_blank"
           class="text-sm font-light tracking-tight hover:text-primary dark:hover:text-light-blue"
+          >{{ source.title }}</a
         >
-          <a :href="source.href">{{ source.title }}</a>
-        </p>
       </div>
 
       <div>
