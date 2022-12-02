@@ -29,10 +29,9 @@ The result of this is that often a final system is described as it *should exist
 A management program (in this case Nix) can then construct a path towards the final output
 and do the necessary steps in the required order, without a user having to worry about what exactly is happening and when.
 
-Nix follows declarative principles in the way that package definitions
-(or [derivations](/concepts/derivations)) are constructed with some minor exceptions.
+Nix follows declarative principles in the way that package definitions (or [derivations](/concepts/derivations)) are constructed with some minor exceptions.
 
-Under the hood some parts of packages still have to be written imperatively, but by wrapping these parts in declarative layers,
+Under the hood, some parts of packages still have to be written imperatively, but by wrapping these parts in declarative layers,
 users of the upper layers don't have to be aware of what is happening below the surface.
 
 Essentially: one user can solve a problem *once*,
