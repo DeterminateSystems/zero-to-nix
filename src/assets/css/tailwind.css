@@ -6,10 +6,12 @@
   --primary: rgb(80, 116, 191);
 }
 
-.content a {
-  text-decoration: underline !important;
-}
+.content {
+  a {
+    @apply underline hover:text-primary;
+  }
 
-.content a:hover {
-  color: var(--primary);
+  p + p {
+    @apply mt-2 md:mt-2.5 lg:mt-3;
+  }
 }
