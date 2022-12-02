@@ -23,12 +23,16 @@ readMore:
   ]
 ---
 
-In software, **declarative** logic means saying what you want and then the software goes and does it without you having to worry about the steps.
+In *declarative programming* a user instructs the computer in *what* to do, not on *how* to do it.
 
-For the most part, Nix follows declarative principles...
+The result of this is that often a final system is described as it *should exist*.
+A management program (in this case Nix) can then construct a path towards the final output
+and do the necessary steps in the required order, without a user having to worry about what exactly is happening and when.
 
-[Derivations](/concepts/derivations) are an exception to declarativity in Nix because, well, you gotta build stuff sometimes.
+Nix follows declarative principles in the way that package definitions (or [derivations](/concepts/derivations)) are constructed with some minor exceptions.
 
-Declarative approaches are typically contrasted with [imperative] approaches that are, like, clearly worse.
+Under the hood, some parts of packages still have to be written imperatively, but by wrapping these parts in declarative layers,
+users of the upper layers don't have to be aware of what is happening below the surface.
 
-[imperative]: https://en.wikipedia.org/wiki/Imperative_programming
+Essentially: one user can solve a problem *once*,
+and many people can then benefit from that solution without needing to know how exactly it works (unless they want to).
