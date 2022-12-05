@@ -82,3 +82,18 @@ export type DropdownProps = {
   text: string;
   pages: PageFrontmatter[];
 };
+
+// Other stuff
+export type ButtonProps = {
+  text: string;
+  href: string;
+  highlight?: boolean;
+};
+
+export type BreadcrumbProps = {
+  back: {
+    title: string;
+    href: string;
+  };
+  title: string;
+};

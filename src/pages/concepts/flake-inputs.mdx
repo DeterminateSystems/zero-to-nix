@@ -4,12 +4,19 @@ snippet: Fill me in later so that I show up in the tooltip
 related: ["flake-outputs"]
 ---
 
-Flake **inputs** are the Nix code that you want to rely on in your current flake.
+*Flake inputs* are a set of dependencies that a flake needs to be built.
+Each input in the set can be pulled from various sources, such as github, generic git repositories, and even your filesystem.
 
-```nix
+Furthermore, inputs can modify each other's inputs to make sure that,
+for example, multiple dependencies all rely on the same version of nixpkgs.
+This is done via the `inputs.<input>.follows` attribute.
+
+```nix filename=flake.nix
 {
   inputs = {
     nixpkgs = "github:NixOS/nixpkgs";
   };
 }
 ```
+
+You can find a full breakdown of the flake input schema in the [nix manual](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html#flake-inputs)

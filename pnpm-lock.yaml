@@ -14,18 +14,23 @@ specifiers:
   '@tailwindcss/typography': ^0.5.8
   '@types/marked': ^4.0.7
   '@types/node': ^18.11.9
+  '@types/prismjs': ^1.26.0
   '@vueuse/core': ^9.5.0
   autoprefixer: ^10.4.13
   iles: ^0.8.7
   marked: ^4.2.3
+  mdast: ^3.0.0
   nanostores: ^0.7.0
   postcss: ^8.4.19
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
   prism-themes: ^1.9.0
+  prismjs: ^1.29.0
   rehype-external-links: ^2.0.1
   rehype-slug-custom-id: ^1.1.0
   tailwindcss: ^3.2.4
+  unified: ^10.1.2
+  unist-util-visit: ^4.1.1
   vite-plugin-tailwindcss: 0.0.0-0
   vue-tsc: ^1.0.9
   vue3-popper: ^1.5.0
@@ -44,18 +49,23 @@ devDependencies:
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@types/marked': 4.0.7
   '@types/node': 18.11.9
+  '@types/prismjs': 1.26.0
   '@vueuse/core': 9.5.0_vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.19
   iles: 0.8.7_@types+node@18.11.9
   marked: 4.2.3
+  mdast: 3.0.0
   nanostores: 0.7.0
   postcss: 8.4.19
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
   prism-themes: 1.9.0
+  prismjs: 1.29.0
   rehype-external-links: 2.0.1
   rehype-slug-custom-id: 1.1.0
   tailwindcss: 3.2.4_postcss@8.4.19
+  unified: 10.1.2
+  unist-util-visit: 4.1.1
   vite-plugin-tailwindcss: 0.0.0-0_vite@2.9.15
   vue-tsc: 1.0.9_typescript@4.9.3
   vue3-popper: 1.5.0_vue@3.2.45
@@ -398,6 +408,10 @@ packages:
 
   /@types/node/18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+    dev: true
+
+  /@types/prismjs/1.26.0:
+    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: true
 
   /@types/throttle-debounce/2.1.0:
@@ -2040,6 +2054,11 @@ packages:
 
   /mdast-util-to-string/3.1.0:
     resolution: {integrity: sha512-n4Vypz/DZgwo0iMHLQL49dJzlp7YtAJP+N07MZHpjPf/5XJuHUWstviF4Mn2jEiR/GNmtnRRqnwsXExk3igfFA==}
+    dev: true
+
+  /mdast/3.0.0:
+    resolution: {integrity: sha512-xySmf8g4fPKMeC07jXGz971EkLbWAJ83s4US2Tj9lEdnZ142UP5grN73H1Xd3HzrdbU5o9GYYP/y8F9ZSwLE9g==}
+    deprecated: '`mdast` was renamed to `remark`'
     dev: true
 
   /merge-stream/2.0.0:

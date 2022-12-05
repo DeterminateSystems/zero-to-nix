@@ -5,6 +5,7 @@ declarativity
 detsys
 dev
 ds
+github
 hermeticity
 href
 installPhase

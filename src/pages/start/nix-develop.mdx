@@ -19,12 +19,12 @@ The [`nix develop`][nix-develop] command activates a Nix environment:
 nix develop "github:DeterminateSystems/zero-to-nix#example"
 ```
 
-<Warning title="Load times">
+<Admonition type="warning" title="Load times" client:load>
 The first time you activate a Nix development environment using `nix develop` it may take a while.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
 This is in contrast to many [package managers][pkg] that often install things more quickly because they download pre-built archives, such as tarballs.
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
-</Warning>
+</Admonition>
 
 You should be greeted with this:
 
@@ -189,7 +189,7 @@ We won't cover *how* to create these environments just yet, but we hope that you
 [npm]: https://npmjs.org
 [openssl]: https://openssl.org
 [output]: /concepts/flake-outputs
-[packages]: /concepts/packages
+[packages]: /concepts/package
 [pkg]: /concepts/package-management
 [python]: https://python.org
 [rust]: https://rust-lang.org
