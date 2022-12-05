@@ -1,8 +1,11 @@
 benoit
+cowsay
 declarativity
 detsys
 dev
 ds
+ffmpeg
+ffprobe
 github
 hermeticity
 href
