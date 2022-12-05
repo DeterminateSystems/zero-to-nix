@@ -1,10 +1,8 @@
+@import "variables.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --primary: rgb(80, 116, 191);
-}
 
 .content {
   a {
