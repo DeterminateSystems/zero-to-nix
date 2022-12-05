@@ -29,7 +29,7 @@ In this particular flake there's a `default` package, which enables us to run `n
 <SpecificLanguage lang="JavaScript">
 Here's the package definition that enables us to build this JavaScript package:
 
-```nix
+```nix filename=flake.nix
 {
   packages.default = pkgs.stdenv.mkDerivation {
     name = "zero-to-nix-javascript";
@@ -61,7 +61,7 @@ What you see here is a [derivation] function that defines how to build the packa
 <SpecificLanguage lang="Python">
 Here's the package definition that enables us to build this Python package:
 
-```nix
+```nix filename=flake.nix
  packages.default = python.pkgs.buildPythonApplication {
   name = "hello-nix-python";
 
@@ -76,7 +76,7 @@ What you see here is a [derivation] function that defines how to build the packa
 
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
-```nix
+```nix filename=flake.nix
 packages.default = pkgs.buildGo119Module {
   name = "hello-nix-go";
   src = gitignore.lib.gitignoreSource ./.;
@@ -85,7 +85,7 @@ packages.default = pkgs.buildGo119Module {
 ````
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
-```nix
+```nix filename=flake.nix
  packages.default = pkgs.rustPlatform.buildRustPackage {
   name = "hello-nix-rust";
   src = ./.;

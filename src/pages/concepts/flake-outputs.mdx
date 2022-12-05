@@ -16,7 +16,7 @@ containing each of the inputs to that flake (named after the chosen identifier i
 
 The flake output below, for example, produces a single package output on `x86_64-linux` systems for the `cowsay` derivation.
 
-```nix
+```nix filename=flake.nix
 {
   outputs = { self, nixpkgs }:
   let system = x86_64-linux;
