@@ -36,7 +36,7 @@
         {{ title }}
       </p>
 
-      <div class="content mt-3.5 text-sm md:text-base lg:text-lg">
+      <div class="content text-sm md:text-base lg:text-lg">
         <slot />
       </div>
     </div>

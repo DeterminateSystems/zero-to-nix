@@ -29,12 +29,12 @@ ___________
                 ||     ||
 ```
 
-<Warning title="Loading time">
-The first time you run a program using `nix run` it may take a while.
+<Admonition type="warning" title="This could take a while" id="nix-run-loading" client:load>
+The first time you run a program using `nix run` it's likely to be a slow operation.
 That's because Nix needs to build the program's [package] from scratch and store it in the [Nix store][store].
 This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
 Future `nix run` invocations should be instantaneous, as Nix doesn't need to build the package again.
-</Warning>
+</Admonition>
 
 ## Explanation
 
