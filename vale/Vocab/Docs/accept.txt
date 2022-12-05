@@ -9,6 +9,7 @@ detsys
 dev
 ds
 func
+github
 haskell
 hermeticity
 href
@@ -30,5 +31,7 @@ readlink
 readmore
 repo
 ripgrep
+sandboxed
+sandboxing
 tooltip
 upstreaming

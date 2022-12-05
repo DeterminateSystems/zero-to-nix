@@ -12,7 +12,17 @@ readMore:
 ---
 
 A Nix *derivation* is an instruction that Nix uses to [*realize*][realization] a [package].
-Derivations are created using the [Nix language](#nix-language)
+Derivations are created using the [Nix language](#nix-language).
+Each derivation can depend on other derivations and produce one or more final outputs.
+
+The most common outputs:
+
+- `out`, the most generic one
+- `lib`, for library outputs
+- `dev`, general development resources such as header files
+- `man`, for manual pages
+
+A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a *package closure*.
 
 <Success title="Mental models">
 You may find it helpful to think of a derivation as the plan or blueprint for a Nix package.
@@ -50,11 +60,11 @@ derivation {
 
 And that's it!
 The `derivation` function takes only these arguments.
-But derivations can, of course, be far from straightforward, because the scripting logic that you pass via `args` can be arbitrarily complex.
+But derivations can be far less straightforward, because the scripting logic that you pass via `args` can be arbitrarily complex.
 
 ### String interpolation
 
-If Nix sees this string
+If Nix sees this string...
 
 ```nix
 buildPhase = ''

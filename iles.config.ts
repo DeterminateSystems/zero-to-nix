@@ -2,12 +2,12 @@ import { existsSync, mkdirSync, rmSync, writeFileSync } from "fs";
 
 import headings from "@islands/headings";
 import icons from "@islands/icons";
-import prism from "@islands/prism";
 import { RawPageMatter, RouteToRender, SSGContext, defineConfig } from "iles";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugCustomId from "rehype-slug-custom-id";
 import remarkFootnotes from "remark-footnotes";
 
+import codeBlockPlugin from "./src/plugins/code";
 import site from "./src/site";
 
 const { url: siteUrl } = site;
@@ -35,7 +35,15 @@ export default defineConfig({
     ],
     remarkPlugins: [remarkFootnotes],
   },
-  modules: [headings(), icons(), prism()],
+  modules: [
+    headings(),
+    icons(),
+    codeBlockPlugin({
+      aliases: {
+        shell: "bash",
+      },
+    }),
+  ],
   prettyUrls: process.env["ENV"] !== "preview",
   ssg: {
     onSiteRendered: ({ pages, config }: SSGContext) => {
