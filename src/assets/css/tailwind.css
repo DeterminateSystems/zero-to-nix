@@ -1,15 +1,6 @@
 @import "variables.css";
+@import "prose.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.content {
-  a {
-    @apply underline hover:text-primary;
-  }
-
-  p + p {
-    @apply mt-2 md:mt-2.5 lg:mt-3;
-  }
-}

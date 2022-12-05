@@ -1,12 +1,12 @@
 <template>
   <div
-    class="my-4 rounded-lg border-2 border-light-gray bg-pale py-4 px-6 dark:border-gray dark:bg-inherit"
+    class="admonition not-prose rounded-lg border-2 border-light-gray bg-pale py-4 px-5 dark:border-gray dark:bg-inherit"
   >
     <Disclosure as="div" :defaultOpen="open" v-slot="{ open }">
       <DisclosureButton as="div" class="flex items-center justify-between">
-        <span class="text-2xl font-light tracking-tight">{{ show }}</span>
+        <span class="text-xl font-semibold tracking-tight">{{ show }}</span>
         <IconFaChevronRight
-          class="h-3.5 w-3.5 text-primary"
+          class="h-4 w-4 text-primary"
           :class="{
             'rotate-90 transform duration-200': open,
           }"

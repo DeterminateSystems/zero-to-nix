@@ -1,34 +1,69 @@
 ---
-title: Run an executable using Nix
+title: Run a program with Nix
 summary:
   [
+    "Use the `nix run` command to [run](#run) a program from [Nixpkgs](/concepts/nixpkgs)",
     "Learn about Nix flakes and packages",
     "Download and run a program from Nixpkgs",
   ]
 order: 2
 ---
 
-Hi there! In the last section we covered a basic Nix installation with **Harmonic**.
-At this point in the guide you should be able to run this command to get a friendly message in your terminal:
+In the last section, we installed Nix using [Harmonic].
+Now we can dive in and use Nix to run an actual program:
 
 ```shell
-echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
+echo "Hello Nix" | nix run "nixpkgs#cowsay"
 ```
 
-This guide expands on the idea of running programs with Nix,
-and introduces you to some concepts such as **packages** and **flakes**.
-Let's go!
+You should see this:
 
-Every program in Nix is contained by a package (also sometimes called **Derivations**).
-A package can contain different **outputs** around the same program (for example `ffmpeg` and `ffprobe` are both provided in the `ffmpeg` package).
+```shell
+___________
+< Hello Nix >
+ -----------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
 
-A flake is a collection of Nix packages. You can think of a flake as an index of what packages are available to you.
-**Nixpkgs** is the main and official NixOS package collection with over 80,000 packages!
-But many other flakes exist, for example **foo** and **bar**.
+<Warning title="Loading time">
+The first time you run a program using `nix run` it may take a while.
+That's because Nix needs to build the program's [package] from scratch and store it in the [Nix store][store].
+This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
+Future `nix run` invocations should be instantaneous, as Nix doesn't need to build the package again.
+</Warning>
 
-To break down the command above:
+## Explanation
 
-- `echo "Hello Nix" |` — prints the string “Hello Nix” and pipes it to the next application in the chain
-- `nix run` — this command will run a single program from a provided flake
-- `github:nixos/nixpkgs` — this is the flakes URL for **nixpgs**, the official NixOS package repository.
-- `#cowsay` — select the **cowsay** output of the provided flake. The `#` syntax is used to separate the flake URL from the package output
+What happened here? The [Nix] CLI did a few things:
+
+* It used the `nixpkgs#cowsay` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
+* It built the [`cowsay` package][cowsay] and stored the result in the [Nix store][store].
+* It ran the ran the executable at `bin/cowsay` from the `cowsay` package.
+
+In Nix, every program is part of a [package].
+Packages are built using special functions in the [Nix language][lang] called [derivations].
+The `cowsay` package has a single program (also called `cowsay`), but packages can contain multiple programs as well as man pages, configuration files, and more.
+The [`ffmpeg`][ffmpeg-pkg] package, for example, provides both [ffmpeg] and [ffprobe].
+
+**Congrats**!
+You've just run a program using the Nix CLI and learned a little bit about some core Nix concepts.
+You're now ready to explore Nix development environments.
+
+[cowsay]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/misc/cowsay/default.nix
+[derivations]: /concepts/derivations
+[ffmpeg]: https://ffmpeg.org
+[ffmpeg-pkg]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/libraries/ffmpeg/generic.nix
+[ffprobe]: https://ffmpeg.org/ffprobe.html
+[flakes]: /concepts/flakes
+[harmonic]: /concepts/harmonic
+[lang]: /concepts/nix-language
+[nix]: /concepts/nix
+[output]: /concepts/flake-output
+[package]: /concepts/package
+[pkg]: /concepts/package-management
+[store]: /concepts/nix-store
+[symlinked]: https://en.wikipedia.org/wiki/Symbolic_link

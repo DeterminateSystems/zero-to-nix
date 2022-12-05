@@ -39,25 +39,6 @@ module.exports = {
         "light-orange": "var(--light-orange)",
         primary: "var(--primary)",
       },
-      typography: ({ theme }) => ({
-        DEFAULT: {
-          css: {
-            a: {
-              "&:hover": {
-                color: theme("colors.primary"),
-              },
-            },
-            code: {
-              "&::before": {
-                content: '"" !important',
-              },
-              "&::after": {
-                content: '"" !important',
-              },
-            },
-          },
-        },
-      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],
