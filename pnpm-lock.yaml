@@ -22,6 +22,7 @@ specifiers:
   mdast: ^3.0.0
   nanostores: ^0.7.0
   postcss: ^8.4.19
+  postcss-import: ^15.0.1
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
   prism-themes: ^1.9.0
@@ -57,6 +58,7 @@ devDependencies:
   mdast: 3.0.0
   nanostores: 0.7.0
   postcss: 8.4.19
+  postcss-import: 15.0.1_postcss@8.4.19
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
   prism-themes: 1.9.0
@@ -2524,6 +2526,18 @@ packages:
   /postcss-import/14.1.0_postcss@8.4.19:
     resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
     engines: {node: '>=10.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss: 8.4.19
+      postcss-value-parser: 4.2.0
+      read-cache: 1.0.0
+      resolve: 1.22.1
+    dev: true
+
+  /postcss-import/15.0.1_postcss@8.4.19:
+    resolution: {integrity: sha512-UGlvk8EgT7Gm/Ndf9xZHnzr8xm8P54N8CBWLtcY5alP+YxlEge/Rv78etQyevZs3qWTE9If13+Bo6zATBrPOpA==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
