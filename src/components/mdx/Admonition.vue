@@ -9,20 +9,24 @@
     ]"
   >
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
-      <DisclosureButton as="div" class="flex items-center justify-between">
-        <div>
-          <span v-if="title" class="text-xl font-semibold tracking-tight">{{
-            title
-          }}</span>
-        </div>
-        <IconFaChevronRight
-          class="h-4 w-4 text-primary"
-          :class="{
-            'rotate-90 transform duration-200': open,
-          }"
-          @click="toggle"
-        />
-      </DisclosureButton>
+      <div class="flex items-center justify-between">
+        <span class="text-xl font-semibold tracking-tight">{{ title }}</span>
+
+        <DisclosureButton as="button" class="flex items-center justify-between">
+          <IconFaChevronRight
+            class="h-4 w-4 text-primary"
+            :class="[
+              open && 'rotate-90 transform duration-200',
+              type === 'danger' && 'text-red',
+              type === 'info' && 'text-blue',
+              type === 'success' && 'text-green',
+              type === 'warning' && 'text-yellow',
+            ]"
+            @click="toggle"
+          />
+        </DisclosureButton>
+      </div>
+
       <DisclosurePanel
         as="div"
         class="content mt-3.5 text-sm md:text-base lg:text-lg"
