@@ -17,10 +17,11 @@ sudo harmonic uninstall
 The `harmonic uninstall` command needs to be run as root, as in the code block above.
 </Admonition>
 
-Once you've done that, you can verify that the `/nix` directory has been removed from your system:
+Once you've done that, you can verify that directories like `/nix` and `~/.nix-profile` have been removed from your system:
 
 ```shell
-ls /
+ls /nix # error
+ls ~/.nix-profile # error
 ```
 
 [ds]: https://determinate.systems
