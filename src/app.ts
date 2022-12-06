@@ -1,3 +1,5 @@
+import Heading2 from "~/components/layout/Heading2.vue";
+import Heading3 from "~/components/layout/Heading3.vue";
 import setDarkTheme from "~/logic/dark-mode-set?raw";
 import site from "~/site";
 import { defineApp } from "iles";
@@ -19,5 +21,9 @@ export default defineApp({
       // https://github.com/ElMassimo/iles/blob/cacd1947281008b299793f617757262871ace795/docs/src/logic/dark-color-scheme-check.ts
       { children: setDarkTheme, once: true },
     ],
+  },
+  mdxComponents: {
+    h2: Heading2,
+    h3: Heading3,
   },
 });

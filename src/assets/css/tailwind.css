@@ -5,9 +5,13 @@
 @tailwind utilities;
 
 .content a {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }
 
 .content a:hover {
   color: var(--primary);
+}
+
+.heading .link {
+  text-decoration: none;
 }
