@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "iles dev --open --port 3000",
+    "dev": "iles dev",
     "build": "iles build",
-    "preview": "iles preview --open --port 3000",
+    "preview": "iles preview",
     "format": "prettier --write **/*.{cjs,ts,vue}",
     "typecheck": "vue-tsc --noEmit"
   },
