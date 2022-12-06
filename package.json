@@ -32,6 +32,7 @@
     "mdast": "^3.0.0",
     "nanostores": "^0.7.0",
     "postcss": "^8.4.19",
+    "postcss-import": "^15.0.1",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "prism-themes": "^1.9.0",
