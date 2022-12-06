@@ -16,11 +16,8 @@
 
 <script setup lang="ts">
 import { ReadMore } from "~/logic/content";
-import { ref } from "vue";
 
 const { links: readMoreLinks } = defineProps<{
   links: ReadMore[];
 }>();
-
-const hover = ref<boolean>(false);
 </script>
