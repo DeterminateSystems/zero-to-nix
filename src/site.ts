@@ -79,7 +79,7 @@ const site: Site = {
         },
         {
           text: "How Nix packages work",
-          href: "/concepts/packages",
+          href: "/concepts/package",
         },
       ],
     },
