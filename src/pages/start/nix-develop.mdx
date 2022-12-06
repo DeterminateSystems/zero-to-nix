@@ -47,7 +47,7 @@ For curl, for example, you should see a strange path like this (the input hash p
 
 What happened here? The [Nix] CLI did a few things:
 
-* It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
+* It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and targeted a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the environment configuration (again, more on this later).
 * It [symlinked] those package paths to `curl` and `git`, respectively.
 
