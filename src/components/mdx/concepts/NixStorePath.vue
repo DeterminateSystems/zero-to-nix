@@ -29,8 +29,8 @@
             <strong>3.</strong> Package name
           </span>
         </div>
+        <span v-if="bin">/</span>
         <div v-if="bin" class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
-          <span>/</span>
           <span class="font-mono text-orange dark:text-rose">bin/{{ bin }}</span>
           <span class="font-sans text-xs tracking-tight md:text-sm lg:text-normal">
             <strong>4.</strong> Program path
