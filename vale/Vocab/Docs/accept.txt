@@ -1,3 +1,4 @@
+bazel
 benoit
 cowsay
 declarativity
@@ -9,13 +10,16 @@ ffprobe
 github
 hermeticity
 href
+iaso's
 jq
 json
 kubectl
 linux
+monospaced
 nixlang
 nixos
 nixpkgs
+noobs
 npm
 npx
 offboarding
@@ -25,6 +29,9 @@ readlink
 readmore
 repo
 ripgrep
+serokell
+shopify
 sudo
 tooltip
+tweag
 upstreaming
