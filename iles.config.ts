@@ -77,6 +77,12 @@ export default defineConfig({
     },
   },
   turbo: true,
+  vite: {
+    server: {
+      port: 3000,
+      open: true,
+    },
+  },
 });
 
 // Utils

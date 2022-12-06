@@ -30,7 +30,25 @@ readMore: [
 ]
 ---
 
-Nix flake **outputs** are what you want your flake to produce. Possible outputs include:
+*Flake outputs* are what a flake produces as part of its build.
+Each flake can have many different outputs simultaneously, including but not limited to,
+application [packages](/concepts/package),
+system configuration,
+hydra build jobs (CI),
+and [shell environments](/concepts/dev-env).
 
-- [Packages](/concepts/packages)
-- [Development environments](/concepts/dev-env)
+Flake outputs are defined by a function, which takes an attribute set as input,
+containing each of the inputs to that flake (named after the chosen identifier in the [inputs](/concepts/flake-inputs) section).
+
+The flake output below, for example, produces a single package output on `x86_64-linux` systems for the `cowsay` derivation.
+
+```nix
+{
+  outputs = { self, nixpkgs }:
+  let system = x86_64-linux;
+  in
+  {
+    packages."${system}".default = (import nixpkgs { inherit system; }).cowsay;
+  };
+}
+```

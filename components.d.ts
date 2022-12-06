@@ -7,14 +7,13 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Admonition: typeof import('./src/components/mdx/Admonition.vue')['default']
     BaseLayout: typeof import('./src/layouts/base.vue')['default']
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     Brief: typeof import('./src/components/layout/Brief.vue')['default']
-    Callout: typeof import('./src/components/mdx/admonitions/Callout.vue')['default']
     Concept: typeof import('./src/components/mdx/concepts/Concept.vue')['default']
     ConceptsDropdown: typeof import('./src/components/layout/ConceptsDropdown.vue')['default']
     Content: typeof import('./src/components/layout/Content.vue')['default']
-    Danger: typeof import('./src/components/mdx/admonitions/Danger.vue')['default']
     Dropdown: typeof import('./src/components/layout/generic/Dropdown.vue')['default']
     Features: typeof import('./src/components/layout/Features.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
@@ -26,11 +25,11 @@ declare module '@vue/runtime-core' {
     HoverableLink: typeof import('./src/components/layout/HoverableLink.vue')['default']
     HoverableReadMoreLink: typeof import('./src/components/layout/HoverableReadMoreLink.vue')['default']
     IconAppNix: typeof import('~icons/app/nix')['default']
+    IconFaChevronRight: typeof import('~icons/fa/chevron-right')['default']
     IconFaExternalLink: typeof import('~icons/fa/external-link')['default']
     IconFaGithub: typeof import('~icons/fa/github')['default']
     IconFaSolidMoon: typeof import('~icons/fa-solid/moon')['default']
     IconFaSolidSun: typeof import('~icons/fa-solid/sun')['default']
-    Info: typeof import('./src/components/mdx/admonitions/Info.vue')['default']
     Island: typeof import('./node_modules/.pnpm/iles@0.8.7_@types+node@18.11.9/node_modules/iles/dist/client/app/components/Island.vue')['default']
     Language: typeof import('./src/components/mdx/stateful/Language.vue')['default']
     Languages: typeof import('./src/components/mdx/stateful/Languages.vue')['default']
@@ -48,12 +47,10 @@ declare module '@vue/runtime-core' {
     Selector: typeof import('./src/components/mdx/stateful/Selector.vue')['default']
     Shell: typeof import('./src/components/mdx/code/Shell.vue')['default']
     SpecificLanguage: typeof import('./src/components/mdx/stateful/SpecificLanguage.vue')['default']
-    Success: typeof import('./src/components/mdx/admonitions/Success.vue')['default']
     Summary: typeof import('./src/components/layout/Summary.vue')['default']
     System: typeof import('./src/components/mdx/stateful/System.vue')['default']
     Systems: typeof import('./src/components/mdx/stateful/Systems.vue')['default']
     ThemeSwitcher: typeof import('./src/components/layout/ThemeSwitcher.vue')['default']
     Top: typeof import('./src/components/layout/Top.vue')['default']
-    Warning: typeof import('./src/components/mdx/admonitions/Warning.vue')['default']
   }
 }

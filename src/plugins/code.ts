@@ -55,7 +55,7 @@ const highlightCode = (
   const dataLang = lang === "text" ? "" : lang;
   const blockMeta = parseMeta(meta);
   const innerHtml = [
-    `<pre class="${cls}">`,
+    `<pre class="${cls} z-0">`,
     blockMeta.filename !== undefined &&
       `<span class="absolute top-2 right-3 text-sm">${blockMeta.filename}</span>`,
     `<code>${code}</code></pre>`,
