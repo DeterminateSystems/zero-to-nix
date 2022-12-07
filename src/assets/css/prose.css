@@ -1,0 +1,27 @@
+/* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
+.content {
+  a {
+    @apply underline hover:text-primary;
+  }
+
+  p + p {
+    @apply mt-2 md:mt-2.5 lg:mt-3;
+  }
+}
+
+.prose {
+  a {
+    @apply underline hover:text-primary;
+  }
+
+  code {
+    &::before,
+    &::after {
+      content: "";
+    }
+  }
+
+  .admonition {
+    @apply my-4;
+  }
+}

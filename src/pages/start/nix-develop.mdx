@@ -19,10 +19,10 @@ The [`nix develop`][nix-develop] command activates a Nix environment:
 nix develop "github:DeterminateSystems/templates#example"
 ```
 
-<Admonition type="warning" title="Load times" client:load>
-The first time you activate a Nix development environment using `nix develop` it may take a while.
+<Admonition type="warning" title="This could take a while" id="nix-develop-loading" client:load>
+The first time you activate a Nix development environment using `nix develop` it's likely to be a slow operation.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
-This is in contrast to many [package managers][pkg] that often install things more quickly because they download pre-built archives, such as tarballs.
+This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
 </Admonition>
 
@@ -45,7 +45,7 @@ For curl, for example, you should see a strange path like this (the input hash p
 
 <NixStorePath pkg="curl-7.86.0-bin" bin="curl" />
 
-What's happened here? The [Nix] CLI did a few things:
+What happened here? The [Nix] CLI did a few things:
 
 * It used the `github:DeterminateSystems/templates` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the environment configuration (again, more on this later).
