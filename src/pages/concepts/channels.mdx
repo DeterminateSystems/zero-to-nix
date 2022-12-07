@@ -65,3 +65,8 @@ And channels are still (somewhat) relevant, even when using Flakes, since differ
 The _legacy_ way to update nixpkgs and other sources is via the `nix-channel` command.
 The problem with this approach is that `nix-channel` does not provide any guarantees about what inputs are actually used in a particular build.
 As such source [pinning](/concepts/pinning) and [rollbacks](/concepts/rollback) are much harder with nix-channels.
+
+This means that while Nix is [reproducible](/concepts/reproducibility) in theory, in practise inputs to builds can frequently change, and a build may fail because of this.
+This can cause you to be unable to update your NixOS system, or build a package that previously could be built.
+
+**Because of this the use of nix channels is highly discouraged!**
