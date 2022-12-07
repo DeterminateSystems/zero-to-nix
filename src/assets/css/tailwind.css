@@ -6,17 +6,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* Markdown snippets not inside .prose */
-  .content {
-    a {
-      text-decoration: underline;
-    }
-
-    &:hover {
-      color: var(--primary);
-    }
-  }
-
   .prose {
     /* Hoverable heading links */
     a.heading-anchor {

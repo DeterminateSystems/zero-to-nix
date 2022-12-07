@@ -11,9 +11,7 @@
 
 .prose {
   a {
-    &:hover {
-      color: var(--primary);
-    }
+    @apply underline hover:text-primary;
   }
 
   code {
