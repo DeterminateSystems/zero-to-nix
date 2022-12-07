@@ -1,0 +1,36 @@
+---
+title: Search for packages
+summary: [
+  "Use the `nix search` command to find packages in [Nixpkgs](/concepts/nixpkgs)",
+]
+order: 6
+---
+
+One of the core virtues of the Nix ecosystem
+
+[Nixpkgs] has many packages
+
+## The `nix search` command \{#nix-search}
+
+Let's see if [npm] is available in [Nixpkgs]:
+
+```shell
+nix search nixpkgs npm
+```
+
+<Admonition type="warning" title="This could take a while" id="nix-search" client:load>
+The first time you run `nix search`, the Nix CLI needs to download the full contents of [Nixpkgs]&mdash;or whichever flake you're searching&mdash;and then cache it.
+Future `nix search` runs for a given flake should be much speedier.
+</Admonition>
+
+### System specificity
+
+One thing you may notice about the search output
+
+## search.nixos.org
+
+The web interface at [search.nixos.org][search]
+
+[nixpkgs]: /concepts/nixpkgs
+[npm]: https://npmjs.org
+[search]: https://search.nixos.org
