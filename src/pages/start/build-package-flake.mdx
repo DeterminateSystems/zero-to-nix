@@ -131,7 +131,7 @@ Here's the package definition that enables us to build this Rust package:
 ```
 
 For the full flake, see [`flake.nix`][flake-go] on GitHub or run `cat flake.nix`.
-What you see here is a [derivation] that defines how to build the package, more specifically the [`buildGoModule`][buildgomodule] function, which is a wrapper around Nix's built-in `derivation` function.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`buildRustPackage`][buildrustpackage] function, which is a wrapper around Nix's built-in `derivation` function.
 
 To run the resulting package, which is an executable that prints to the terminal:
 
@@ -150,6 +150,7 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 
 [buildgomodule]: https://nixos.org/manual/nixpkgs/stable/#ssec-language-go
 [buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#buildpythonapplication-function
+[buildrustpackage]: https://nixos.org/manual/nixpkgs/stable/#rust
 [derivation]: /concepts/derivations
 [devenv]: /start/dev-shell-flake
 [flake]: /concepts/flakes
