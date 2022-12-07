@@ -1,4 +1,4 @@
-<template>
+<template layout="default">
   <HorizontalContainer>
     <Hero
       :title="$site.title"
