@@ -1,13 +1,16 @@
 ---
 title: Build a package from a local flake
 order: 6
-summary: ["Do some stuff", "Do some other stuff"]
+summary: [
+  "Initialize a [flake template](/concepts/flake-templates) in your preferred programming language",
+  "Build a [Nix package](/concepts/package) from the `flake.nix` in the template"
+]
 ---
 
-In the [last guide][prev], we built a Nix package defined in [Nixpkgs] to get a sense of some of the mechanics of Nix packages.
-In this guide, we'll dig a bit deeper and build a Nix package from a local [Nix flake][flake].
+In the [last guide][prev], we built a Nix package defined in [Nixpkgs] to get a sense of some of the mechanics of that process.
+In this guide, we'll dig a bit deeper and build a Nix package defined in a local [Nix flake][flake].
 
-To get started, select a preferred language:
+First, select a preferred language:
 
 <Languages client:load />
 
@@ -23,29 +26,33 @@ Whichever language you've selected, you can build the [Nix package][packages] de
 nix build
 ```
 
-This command determines that the local flake has a [package output][outputs], which is a [derivation] function that defines how the package is built.
+This command determines that the local flake has a [package output][outputs], which is a [derivation] that defines how the package is built.
 In this particular flake there's a `default` package, which enables us to run `nix build` without specifying an output, but if the package were output as `packages.mypkg`, for example, we'd need to run `nix build .#mypkg` to build it.
 
 <SpecificLanguage lang="JavaScript">
-Here's the package definition that enables us to build this JavaScript package:
+Here's the package definition that builds our JavaScript package:
 
 ```nix filename=flake.nix
 {
   packages.default = pkgs.stdenv.mkDerivation {
     name = "zero-to-nix-javascript";
 
+    # The packages required by the build process
     buildInputs = [
       pkgs.nodePackages.pnpm
       pkgs.nodejs-18_x
     ];
 
+    # The code sources for the package
     src = ./.;
 
+    # The build process
     buildPhase = ''
       pnpm install
       pnpm run build
     '';
 
+    # How the output of the build phase
     installPhase = ''
       mkdir $out
       cp dist/index.html $out
@@ -55,15 +62,21 @@ Here's the package definition that enables us to build this JavaScript package:
 ```
 
 For the full flake, see [`flake.nix`][flake-js] on GitHub or run `cat flake.nix`.
-What you see here is a [derivation] function that defines how to build the package, more specifically the `mkDerivation` function provided by the [standard environment][stdenv].
+What you see here is a [derivation] that defines how to build the package, more specifically the `mkDerivation` function provided by Nix's [standard environment][stdenv].
 
+The package that results when you run `nix build` is a website built using the [Vite] framework.
+To view that website:
+
+```shell
+open ./result/index.html
+```
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
-Here's the package definition that enables us to build this Python package:
+Here's the package definition that enables us to build our Python package:
 
 ```nix filename=flake.nix
  packages.default = python.pkgs.buildPythonApplication {
-  name = "hello-nix-python";
+  name = "zero-to-nix-python";
 
   buildInputs = with python.pkgs; [ pip ];
 
@@ -72,22 +85,44 @@ Here's the package definition that enables us to build this Python package:
 ```
 
 For the full flake, see [`flake.nix`][flake-py] on GitHub or run `cat flake.nix`.
-What you see here is a [derivation] function that defines how to build the package, more specifically the [`buildPythonApplication`][buildpythonapplication] function.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`buildPythonApplication`][buildpythonapplication] function, which is a wrapper around Nix's built-in `derivation` function.
 
+The package that results when you run `nix build` is a website built using the [Vite] framework.
+To run the package:
+
+```shell
+./result/bin/zero-to-nix-python
+```
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
+Here's the package definition that enables us to build this Go package:
+
 ```nix filename=flake.nix
-packages.default = pkgs.buildGo119Module {
-  name = "hello-nix-go";
+packages.default = pkgs.buildGoModule {
+  name = "zero-to-nix-go";
   src = gitignore.lib.gitignoreSource ./.;
   vendorSha256 = "sha256-fwJTg/HqDAI12mF1u/BlnG52yaAlaIMzsILDDZuETrI=";
 };
-````
+```
+
+For the full flake, see [`flake.nix`][flake-go] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`buildGoModule`][buildgomodule] function, which is a wrapper around Nix's built-in `derivation` function.
+
+The package that results when you run `nix build` is a web server built using the [Gi] framework.
+To run the package:
+
+```shell
+./result/bin/zero-to-nix-go
+```
+
+In another window, run `curl http://localhost:8080` to receive a message from the server.
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
+Here's the package definition that enables us to build this Rust package:
+
 ```nix filename=flake.nix
  packages.default = pkgs.rustPlatform.buildRustPackage {
-  name = "hello-nix-rust";
+  name = "zero-to-nix-rust";
   src = ./.;
   cargoLock = {
     lockFile = ./Cargo.lock;
@@ -95,27 +130,38 @@ packages.default = pkgs.buildGo119Module {
 };
 ```
 
+For the full flake, see [`flake.nix`][flake-go] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`buildGoModule`][buildgomodule] function, which is a wrapper around Nix's built-in `derivation` function.
+
+To run the resulting package, which is an executable that prints to the terminal:
+
+```shell
+./result/bin/zero-to-nix-rust
+```
+
+You should see this terminal output:
+
+```text
+Hello from Nix + Rust!
+```
 </SpecificLanguage>
 
-We won't delve too much deeper into [derivations][derivation] and creating your own packages in this guide, but we hope that this provides a solid foundation.
+We won't delve too much deeper into [derivations][derivation] and creating your own packages here, but we hope that this guide shows you how Nix code gets turned into real build output.
 
-## Package search
-
-It's always good to bear in mind that [Nixpkgs] provides more than 80,000 [searchable][search] packages and you can install packages from plenty of [other sources][flake] as well.
-Creating your own [packages] with Nix can be a bit tricky&mdash;though we hope this guide sets you in the right direction!&mdash;so we recommend searching there before you try it on your own.
-But if you do opt to create your own, check out the [contributing guidelines][contributing] for [Nixpkgs]
-
+[buildgomodule]: https://nixos.org/manual/nixpkgs/stable/#ssec-language-go
 [buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#buildpythonapplication-function
-[contributing]: https://github.com/NixOS/nixpkgs/blob/master/CONTRIBUTING.md
 [derivation]: /concepts/derivations
 [devenv]: /start/dev-shell-flake
 [flake]: /concepts/flakes
-[flake-js]: https://github.com/DeterminateSystems/templates/tree/main/nix/templates/javascript/flake.nix
-[flake-py]: https://github.com/DeterminateSystems/templates/tree/main/nix/templates/python/flake.nix
+[flake-go]: https://github.com/DeterminateSystems/templates/tree/main/go/flake.nix
+[flake-js]: https://github.com/DeterminateSystems/templates/tree/main/javascript/flake.nix
+[flake-py]: https://github.com/DeterminateSystems/templates/tree/main/python/flake.nix
+[flake-rs]: https://github.com/DeterminateSystems/templates/tree/main/rust/flake.nix
+[gin]: https://github.com/gin-gonic/gin
 [nixpkgs]: /concepts/nixpkgs
 [outputs]: /concepts/flake-outputs
 [packages]: /concepts/package
 [prev]: /start/build-package-nixpkgs
-[search]: https://search.nixos.org/packages
 [stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
 [templates]: /concepts/flake-templates
+[vite]: https://vitejs.dev
