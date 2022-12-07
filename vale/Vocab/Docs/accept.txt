@@ -2,7 +2,9 @@ bazel
 benoit
 buildinputs
 buildphase
+buildgomodule
 buildpythonapplication
+buildrustpackage
 cargolock
 cowsay
 declarativity
@@ -44,3 +46,4 @@ sudo
 tooltip
 tweag
 upstreaming
+vite
