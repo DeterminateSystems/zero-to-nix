@@ -11,6 +11,7 @@ declarativity
 detsys
 dev
 ds
+env
 ffmpeg
 ffprobe
 github
