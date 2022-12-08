@@ -97,7 +97,7 @@
         runLocal = pkgs.writeScriptBin "run-local" ''
           rm -rf dist
           pnpm install
-          pnpm run build
+          ENV=preview pnpm run build
           python3 -m http.server -d dist 3000
         '';
       in
