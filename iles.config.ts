@@ -5,6 +5,7 @@ import icons from "@islands/icons";
 import { RawPageMatter, RouteToRender, SSGContext, defineConfig } from "iles";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugCustomId from "rehype-slug-custom-id";
+import remarkGfm from "remark-gfm";
 
 import codeBlockPlugin from "./src/plugins/code";
 import site from "./src/site";
@@ -32,6 +33,7 @@ export default defineConfig({
       rehypeExternalLinks,
       [rehypeSlugCustomId, { enableCustomId: true }],
     ],
+    remarkPlugins: [remarkGfm],
   },
   modules: [
     headings(),
