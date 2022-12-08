@@ -19,12 +19,16 @@
       >
         <MenuItem>
           <ul class="flex flex-col space-y-1.5">
-            <li v-for="({ title, href }, idx) in dropdown.pages" :key="idx">
+            <li
+              v-for="({ title, href, order }, idx) in dropdown.pages"
+              :key="idx"
+            >
               <a
                 class="block py-1.5 px-3 text-sm tracking-tight hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-base lg:text-lg"
                 :href="href"
               >
-                {{ title }}
+                <span v-if="order">{{ order }}. </span>
+                <span>{{ title }}</span>
               </a>
             </li>
           </ul>
