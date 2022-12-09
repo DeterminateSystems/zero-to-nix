@@ -75,7 +75,7 @@ const site: Site = {
       links: [
         {
           text: "Build a package from Nixpkgs",
-          href: "/start/build-package-nixpkgs",
+          href: "/start/nix-build-nixpkgs",
         },
         {
           text: "How Nix packages work",

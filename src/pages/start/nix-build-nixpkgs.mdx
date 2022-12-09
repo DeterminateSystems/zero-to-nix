@@ -87,10 +87,10 @@ nix build "nixpkgs#ripgrep"
 
 ## Beyond Nixpkgs
 
-While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a Nix package from a different repo, this time [Home Manager][hm], a popular Nix tool for configuring home environments:
+While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a package from a different repo, this time the package for [Home Manager][hm], a popular Nix tool for configuring home environments:
 
 ```shell
-nix build github:nix-community/home-manager
+nix build "github:nix-community/home-manager"
 ```
 
 Here, `github:nix-community/home-manager` is a flake reference to the [nix-community/home-manager][hm] repo on GitHub. To run Home Manager:

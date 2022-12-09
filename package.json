@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "iles dev --open --port 3000",
+    "dev": "iles dev",
     "build": "iles build",
-    "preview": "iles preview --open --port 3000",
+    "preview": "iles preview",
     "format": "prettier --write **/*.{cjs,ts,vue}",
     "typecheck": "vue-tsc --noEmit"
   },
@@ -32,6 +32,7 @@
     "mdast": "^3.0.0",
     "nanostores": "^0.7.0",
     "postcss": "^8.4.19",
+    "postcss-import": "^15.0.1",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "prism-themes": "^1.9.0",
@@ -39,6 +40,7 @@
     "rehype-external-links": "^2.0.1",
     "rehype-slug-custom-id": "^1.1.0",
     "remark-footnotes": "^4.0.1",
+    "remark-gfm": "^3.0.1",
     "tailwindcss": "^3.2.4",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.1",

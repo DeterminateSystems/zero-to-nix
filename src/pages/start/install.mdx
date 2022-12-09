@@ -3,41 +3,70 @@ title: Install Nix
 order: 1
 summary:
   [
-    "Verify that Nix can be installed on your system",
+    "Verify that [Nix](/concepts/nix) can be installed on your system",
     "Get Nix running on your Linux or macOS system",
-    "Verify that your installed Nix is working as expected",
+    "Verify that your installed Nix is working as expected"
   ]
 ---
 
-**Welcome**! It's great to see that you're interested in [Nix]. In this guide gets Nix installed on your system, provides you with a small taste of Nix's feature set, and gets you accomplishing practical things. First, let us know which system you're working with:
+**Welcome**!
+It's great to see that you're interested in [Nix].
+In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
+
+To begin, let us know which system you're working with:
 
 <Systems client:load />
 
-## Download the installer
+## Download the installer \{#download}
 
 Before installing Nix, download [Harmonic], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
-curl https://harmonic.dev | sh
+curl https://install.determinate.systems | sh
 ```
 
-## Plan
+<Admonition title="Why aren't we using the official Nix installer here?" type="info" id="why-harmonic" client:load>
+We believe that Harmonic provides a smoother experience for people who are new to Nix than the [official Nix installer][official].
+Unlike many tools, Nix needs to make several bold changes to your system in order to work properly, such as creating a new root volume in the `/nix` directory, configuring your shell profile, and creating several new system users and groups.
 
-With Harmonic installed, check to make sure that you can install Nix on your machine:
+Harmonic improves on the official Nix installer by enabling you to undo, with a single command, all of the system changes introduced by Harmonic's Nix installation process.
+It also installs Nix with [Nix flakes][flakes] enabled, while the official installer requires you to enable flakes manually.
+
+See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Harmonic] concept if you'd like more background.
+</Admonition>
+
+## Plan your installation \{#plan}
+
+With Harmonic installed, you can *plan* your Nix installation:
 
 <Harmonic command="plan" client:load />
 
-The `multi` in the plan command indicates that Harmonic will install Nix in [multi-user
-mode][multi] (as opposed to single-user mode). We recommend multi-user mode&mdash;and in fact
-Harmonic doesn't even support single-user mode&mdash;because... REASONS.
+This [JSON] object produced by the `plan` command is a *receipt* that details the changes that the installation process will introduce.
+
+<Admonition title="Multi-user mode" type="info" id="harmonic-multi" client:load>
+The `multi` in the `plan` command above indicates that Harmonic will install Nix in *multi-user mode* as opposed to single-user mode.
+Multi-user mode prevents non-`root` users from modifying the [Nix store][store] directly, instead forwarding Nix-store-modifying operations to a Nix daemon (this daemon is also installed and started by Harmonic).
+Harmonic currently only supports multi-user mode.
+
+For a more detailed treatment, see the [Nix manual][multi].
+</Admonition>
+
+Remember that you can [uninstall] Nix and undo all changes made by Harmonic at any time.
 
 ## Install Nix
 
-With Harmonic installed, you can now install Nix:
+Without further ado, you can now install Nix:
 
 <Harmonic command="install" client:load />
 
-Once Harmonic has finished you can verify the installation:
+Follow the prompts to approve the requested changes to your system one by one.
+Once Harmonic has finished, load the Nix executable into your `PATH`:
+
+```shell
+exec $SHELL
+```
+
+Now verify that installation has succeeded:
 
 ```bash
 nix --help
@@ -45,23 +74,19 @@ nix --help
 
 This should print the help output of the `nix` command.
 
-Alternatively, you can run this command to get a friendly message appear in your terminal 🙂:
+**Congrats**!
+You now have Nix installed and ready to go on your system.
+You're now ready to use Nix to run programs.
 
-```
-$ echo "Hello Nix" | nix run github:nixos/nixpkgs#cowsay
-___________
-< Hello Nix >
- -----------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-```
-
-Read on to the next section to learn what this last command just did!
-
+[build]: /start/nix-build-nixpkgs
 [detsys]: https://determinate.systems
+[dev]: /start/dev-shell-flake
+[flakes]: /concepts/flakes
 [harmonic]: /concepts/harmonic
+[json]: https://json.org
 [multi]: https://nixos.org/manual/nix/stable/installation/multi-user
 [nix]: https://nixos.org
+[official]: https://nixos.org/download
+[start]: /start
+[store]: /concepts/nix-store
+[uninstall]: /start/uninstall

@@ -4,6 +4,7 @@ import { marked } from "marked";
 // Quick start pages
 export type QuickStartPageProps = {
   title: string;
+  summary?: string[];
   order: number;
 };
 

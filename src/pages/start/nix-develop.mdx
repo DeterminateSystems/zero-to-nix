@@ -16,15 +16,15 @@ We'll cover that a bit later, but for now let's get a feel for what a Nix develo
 The [`nix develop`][nix-develop] command activates a Nix environment:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#example"
+nix develop "github:DeterminateSystems/templates#example"
 ```
 
-<Warning title="Load times">
-The first time you activate a Nix development environment using `nix develop` it may take a while.
+<Admonition type="warning" title="This could take a while" id="nix-develop-loading" client:load>
+The first time you activate a Nix development environment using `nix develop` it's likely to be a slow operation.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
-This is in contrast to many [package managers][pkg] that often install things more quickly because they download pre-built archives, such as tarballs.
+This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
-</Warning>
+</Admonition>
 
 You should be greeted with this:
 
@@ -45,9 +45,9 @@ For curl, for example, you should see a strange path like this (the input hash p
 
 <NixStorePath pkg="curl-7.86.0-bin" bin="curl" />
 
-What's happened here? The [Nix] CLI did a few things:
+What happened here? The [Nix] CLI did a few things:
 
-* It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
+* It used the `github:DeterminateSystems/templates` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the environment configuration (again, more on this later).
 * It [symlinked] those package paths to `curl` and `git`, respectively.
 
@@ -69,13 +69,13 @@ And if you run `echo $SECRET_PASSWORD` again you should get an empty string (unl
 
 ## Run commands inside the development environment
 
-While it's fun to explore the environment, you don't always want to be inside the to use it.
+While it's fun to explore the environment, you don't always want to be inside the environment to use it.
 The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that *use* the environment but *from* your current environment.
 Here are some examples for the environment we used earlier:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command git status
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command curl https://example.com
+nix develop "github:DeterminateSystems/templates#example" --command git status
+nix develop "github:DeterminateSystems/templates#example" --command curl https://example.com
 ```
 
 In both cases, you're running a symlinked package in the [Nix store][store] and nothing from your global environment.
@@ -157,7 +157,7 @@ But Nix environments are infinitely flexible, enabling you to combine whichever 
 Let's explore an example of this:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#multi"
+nix develop "github:DeterminateSystems/templates#multi"
 ```
 
 This Nix environment has several tools available:
@@ -172,7 +172,7 @@ This list could easily include 100 packages.
 It's up to you.
 We won't cover *how* to create these environments just yet, but we hope that you come away from this guide with a basic sense of what Nix development environments provide.
 
-[bash]: https://www.gnu.org/software/bash
+[bash]: https://gnu.org/software/bash
 [cargo]: https://doc.rust-lang.org/stable/cargo
 [curl]: https://curl.se
 [dev]: /concepts/dev-env

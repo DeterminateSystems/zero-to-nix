@@ -1,15 +1,41 @@
+@import "variables.css";
+@import "prose.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: rgb(80, 116, 191);
-}
+@layer base {
+  .prose {
+    /* Hoverable heading links */
+    a.heading-anchor {
+      @apply float-left text-2xl text-primary no-underline opacity-0;
 
-.content a {
-  text-decoration: underline !important;
-}
+      margin-top: 0.125em;
+      margin-left: -1em;
+      padding-right: 0.23em;
 
-.content a:hover {
-  color: var(--primary);
+      &::before {
+        content: "#";
+      }
+    }
+
+    .heading {
+      &::before {
+        display: block;
+        content: " ";
+        margin-top: -5rem;
+        height: 5rem;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      &:focus,
+      &:hover {
+        a.heading-anchor {
+          @apply text-primary opacity-100;
+        }
+      }
+    }
+  }
 }

@@ -7,6 +7,34 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      borderWidth: {
+        1.5: "1.5px",
+      },
+      colors: {
+        // Variables defined in src/assets/css/variables.css
+        pale: "var(--pale)",
+        dark: "var(--dark)",
+        yellow: "var(--yellow)",
+        "pale-yellow": "var(--pale-yellow)",
+        "dark-yellow": "var(--dark-yellow)",
+        "soft-gray": "var(--soft-gray)",
+        "light-gray": "var(--light-gray)",
+        gray: "var(--gray)",
+        "dark-gray": "var(--dark-gray)",
+        blue: "var(--blue)",
+        "light-blue": "var(--light-blue)",
+        "pale-blue": "var(--pale-blue)",
+        green: "var(--green)",
+        "pale-green": "var(--pale-green)",
+        red: "var(--red)",
+        "pale-red": "var(--pale-red)",
+        cerulean: "var(--cerulean)",
+        lilac: "var(--lilac)",
+        rose: "var(--rose)",
+        orange: "var(--orange)",
+        "light-orange": "var(--light-orange)",
+        primary: "var(--primary)",
+      },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
@@ -14,50 +42,6 @@ module.exports = {
       maxWidth: {
         "8xl": "90rem",
       },
-      colors: {
-        // Drawn from: https://tailwindcss.com/docs/customizing-colors
-        pale: colors.slate["50"], // #F8FAFC
-        dark: "rgb(10, 10, 10)",
-        yellow: colors.yellow["500"], // #EAB308
-        "pale-yellow": colors.yellow["50"], // #FEFCE8
-        "dark-yellow": colors.yellow["600"], // #CA8A04
-        "soft-gray": colors.slate["200"], // #E2E8F0
-        "light-gray": colors.slate["300"], // #CBD5E1
-        gray: colors.slate["500"], // #64748B
-        "dark-gray": colors.slate["700"], // #334155
-        blue: colors.blue["500"], // #3B82F6
-        "light-blue": colors.blue["300"], // #93C5FD
-        "pale-blue": colors.blue["50"], // #EFF6FF
-        green: colors.green["500"], // #22C55E
-        "pale-green": colors.green["50"], // #F0FDF4
-        red: colors.red["500"], // #EF4444
-        "pale-red": colors.red["50"], // #FEF2F2
-        cerulean: colors.sky["500"], // #0EA5E9
-        lilac: colors.purple["500"], // #A855F7
-        rose: colors.rose["500"], // #F43F5E
-        orange: colors.orange["500"], // #F97316
-        "light-orange": colors.orange["50"], // #FFF7ED
-        primary: "var(--primary)", // Determinate Systems light purple
-      },
-      typography: ({ theme }) => ({
-        DEFAULT: {
-          css: {
-            a: {
-              "&:hover": {
-                color: theme("colors.primary"),
-              },
-            },
-            code: {
-              "&::before": {
-                content: '"" !important',
-              },
-              "&::after": {
-                content: '"" !important',
-              },
-            },
-          },
-        },
-      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],
