@@ -10,11 +10,30 @@
  * This file modifies the original mostly by introducing CSS variables.
  */
 
+:root {
+  /* Syntax highlighting colors */
+  --sx-text: #d6deeb;
+  --sx-bg: rgba(29, 59, 83, 0.99);
+  --sx-white: white;
+  --sx-inner-bg: #011627;
+  --sx-comment: rgb(99, 119, 119);
+  --sx-namespace: rgb(178, 204, 214);
+  --sx-punctuation: rgb(199, 146, 234);
+  --sx-deleted: rgba(239, 83, 80, 0.56);
+  --sx-symbol: rgb(128, 203, 196);
+  --sx-operator: rgb(127, 219, 202);
+  --sx-boolean: rgb(255, 88, 116);
+  --sx-number: rgb(247, 140, 108);
+  --sx-function: rgb(130, 170, 255);
+  --sx-selector: rgb(199, 146, 234);
+  --sx-string: rgb(173, 219, 103);
+  --sx-class: rgb(255, 203, 139);
+  --sx-variable: rgb(214, 222, 235);
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: var(--sx-text);
-  font-family: "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -57,7 +76,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  color: white;
+  color: var(--sx-white);
   background: var(--sx-inner-bg);
 }
 
