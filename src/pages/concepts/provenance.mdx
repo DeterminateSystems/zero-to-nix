@@ -1,7 +1,7 @@
 ---
 title: Provenance
 snippet: The origin of a piece of software
-related: ["realisation", "reproducibility"]
+related: ["derivations", "package", "realisation", "reproducibility"]
 readMore: [
   {
     title: "Provenance",
@@ -14,6 +14,14 @@ readMore: [
 ]
 ---
 
+*Provenance* is a fancy term for where something comes from.
+In software, provenance usually refers to the build process that created an artifact (a program, a file, a smartphone app, and so on).
+Without establishing the provenance of a piece of software&mdash;like the code it was built from or the server it was downloaded from&mdash;it's hard to know how much you should trust that piece of software.
+Is it a useful piece of software created by people you trust?
+Or does it masquerade as a useful piece of software while
+Establishing the provenance of that software usually answers that question.
+
+
 Software needs to come from somewhere.
 *Provenance* is where it came from.
 [Nix] is really good at provenance due to [sandboxing], which ensures [reproducibility].
@@ -24,3 +32,4 @@ Nix differs from many [package managers][pkg]
 [pkg]: /concepts/package-management
 [reproducibility]: /concepts/reproducibility
 [sandboxing]: /concepts/sandboxing
+[wikipedia]: https://wikipedia.org/wiki/Provenance

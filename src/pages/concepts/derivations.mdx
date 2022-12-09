@@ -32,7 +32,7 @@ readMore: [
 
 A Nix *derivation* is an instruction that Nix uses to [*realise*][realisation] a [package].
 Derivations are created using the [Nix language](#nix-language).
-Each derivation can depend on other derivations and produce one or more final outputs.
+A derivation can depend on any number of other derivations and produce one or more final [outputs](#outputs).
 
 The most common outputs:
 
@@ -43,9 +43,9 @@ The most common outputs:
 
 A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a *package closure*.
 
-<Success title="Mental models">
-You may find it helpful to think of a derivation as the plan or blueprint for a Nix package.
-</Success>
+<Admonition type="success" title="Mental model" client:load>
+You may find it helpful to think of a derivation as the *plan* or *blueprint* for a Nix package.
+</Admonition>
 
 ## Derivations in the Nix language \{#nix-language}
 
@@ -93,6 +93,8 @@ buildPhase = ''
 
 The string output of a derivation is always a [Nix store path][store]
 
+## Derivation outputs
+
 ## Realisation
 
 ### Special variables
@@ -102,9 +104,9 @@ There are two special variables to be aware of when writing derivations:
 - `$out` represents the root of the directory structure for build output.
 - `$src` represents the build sources.
 
-## The standard environment \{#standard-env}
+## The standard environment \{#stdenv}
 
-[`stdenv.mkDerivation`][mk]
+Most derivations in the Nix ecosystem are based on the [`mkDerivation`][mk] function from the [standard environment][stdenv]
 
 While you *can* create derivations using the raw `derivation` function, it's far more common to use a wrapper function around it.
 Perhaps the most commonly used wrapper function is [`stdenv.mkDerivation`][mk].
@@ -140,4 +142,5 @@ And you're always free to create your own derivation functions and even wrap hel
 [python]: https://python.org
 [realisation]: /concepts/realisation
 [rust]: https://rust-lang.org
+[stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
 [store]: /concepts/nix-store

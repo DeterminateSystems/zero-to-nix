@@ -10,7 +10,9 @@
   >
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
       <div class="flex items-center justify-between">
-        <span class="text-xl font-semibold tracking-tight">{{ title }}</span>
+        <span class="text-xl font-semibold tracking-tight">
+          {{ title }}
+        </span>
 
         <DisclosureButton as="button" class="flex items-center justify-between">
           <IconFaChevronRight
@@ -36,7 +38,7 @@
     </Disclosure>
 
     <div v-else class="space-y-2">
-      <p v-if="title" class="text-xl font-semibold tracking-tight">
+      <p v-if="title" class="text-xl font-semibold tracking-tighter">
         {{ title }}
       </p>
 
