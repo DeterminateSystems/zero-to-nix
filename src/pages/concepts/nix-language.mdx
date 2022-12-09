@@ -47,12 +47,30 @@ readMore: [
 ]
 ---
 
-*Nix* is a pure, functional, and reproducible programming language that powers the Nix packaging system.
-To understand how Nix does what it does, it can be helpful to understand what these terms mean in detail.
+Nix is the *programming language* that powers the Nix *packaging system*.
+
+## Why a programming language?
+
+You might ask yourself why Nix even *needs* a programming language.
+Why can't packages be declared via some JSON, YAML, or TOML schema?
+The problem with that lies in the dynamic nature of how Nix configures packages and allows them to be combined.
+Nix as a *programming language* can be thought of as a kind of "JSON, but with functions".
+All statements are [declarative], meaning that there's no sequential flow of instructions that makes up a Nix package.
+Instead functions are called that assign values to fields in *attribute sets*, which in turn may get assigned to other values.
+
+[declarative](/concepts/declarative)
+
+## How does Nix work?
+
+Nix uses a few important characteristics in programming language design to work.
+Some of these terms can seem daunting, when you're not already familiar with what they mean and how they work with each other.
+So first, let's cover these principles:
+
+*Nix* is a pure, functional, lazy, declarative, and reproducible programming language.
 
 | Concept                                   | Description                                                                                                                                     |
 |-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Declarative](/concepts/declarative)      | Describing a system outcome, instead of instructing the computer _how_ to achieve the outcome                                                   |
+| Declarative                               | Describing a system outcome, instead of instructing the computer _how_ to achieve the outcome                                                   |
 | [Reproducible](/concepts/reproducibility) | An operation that is performed twice yields the same result.  The same inputs map to the same outputs                                           |
 | Functional                                | A programming-language design concept by which _functions_ can be passed as function arguments, and returned as results                         |
 | Pure                                      | A programming-language design concept by which functions can not cause _side effects_.  The only result is the one a function returns           |
@@ -61,7 +79,8 @@ To understand how Nix does what it does, it can be helpful to understand what th
 
 ## Syntax basics
 
-Nix code follows declarative principles, and as such every operation _must_ be performed as part of an assignment.
+As mentioned previously, Nix uses *assignments* to computer and process data for packages, modules, and other utilities.
+The following code, for example, calls a function called `my_function` with the parameters `2` and `3`, and assigns its output to the `my_value` field.
 
 ```nix
 {
