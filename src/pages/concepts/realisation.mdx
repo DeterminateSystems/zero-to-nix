@@ -1,5 +1,5 @@
 ---
-title: Realization
+title: Realisation
 snippet: |
   The process whereby Nix turns the build instruction in a [derivation](/concepts/derivations) into a build output in the [Nix store](/concepts/nix-store)
 related: ["derivations", "nix-store", "package"]
@@ -15,8 +15,8 @@ readMore: [
 ]
 ---
 
-*Realization* is the process whereby a Nix [derivation] is transformed into a [package].
-Where a derivation is essentially a plan for a package, realization is the build process turns that plan into an actual output directory full of content.
+*Realisation* is the process whereby a Nix [derivation] is transformed into a [package].
+Where a derivation is essentially a plan for a package, realisation is the build process turns that plan into an actual output directory full of content.
 
 ## `.drv` files
 
@@ -26,12 +26,12 @@ The CLI then uses the `.drv` file as the blueprint for the actual build process,
 
 ## The build process
 
-Once Nix has built a `.drv` file for the derivation, it uses the encoded instructions in the file to actually build the package in a [sandboxed] environment, which essentially means that realization doesn't rely on or affect any global state on your machine, such as configuration files in `/etc`.
+Once Nix has built a `.drv` file for the derivation, it uses the encoded instructions in the file to actually build the package in a [sandboxed] environment, which essentially means that realisation doesn't rely on or affect any global state on your machine, such as configuration files in `/etc`.
 Everything required for the build process is drawn from:
 
 1. The build instructions in the derivation, for example commands like `cat`, `touch`, `mkdir`, and `mv`.
 1. Artifacts from the [Nix store][store].
-  If you write a derivation with [Git] as a build input, for example, the realization process builds Git and stores the resulting package in the [Nix store][store] (if it isn't already built and stored there) and uses that package when the `git` command is invoked in the build logic, rather than a "global" Git at a path like `/usr/bin/git`.
+  If you write a derivation with [Git] as a build input, for example, the realisation process builds Git and stores the resulting package in the [Nix store][store] (if it isn't already built and stored there) and uses that package when the `git` command is invoked in the build logic, rather than a "global" Git at a path like `/usr/bin/git`.
 
 [derivation]: /concepts/derivations
 [drv]: https://nixos.org/guides/nix-pills/our-first-derivation.html#idm140737320411248
