@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 args
-benoit
-buildgomodule
-buildphase
-buildpythonapplication
-buildrustpackage
-=======
 bazel
 benoit
 buildinputs
@@ -15,40 +8,30 @@ buildpythonapplication
 buildrustpackage
 cargolock
 cowsay
->>>>>>> origin/main
 declarativity
 detsys
 dev
+drv
 ds
-<<<<<<< HEAD
-func
-=======
 env
 ffmpeg
 ffprobe
->>>>>>> origin/main
+func
 github
 haskell
 hermeticity
 href
-<<<<<<< HEAD
 ian
-=======
 iaso's
 installphase
->>>>>>> origin/main
 jq
 json
 kubectl
 linux
-<<<<<<< HEAD
-mkdir
-mv
-=======
 lockfile
 mkdir
 monospaced
->>>>>>> origin/main
+mv
 nixlang
 nixos
 nixpkgs
@@ -62,16 +45,13 @@ readlink
 readmore
 repo
 ripgrep
-<<<<<<< HEAD
 sandboxed
 sandboxing
-=======
 serokell
 shopify
 src
 stdenv
 sudo
->>>>>>> origin/main
 tooltip
 tweag
 upstreaming
