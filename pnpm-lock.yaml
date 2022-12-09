@@ -25,7 +25,6 @@ specifiers:
   postcss-import: ^15.0.1
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
-  prism-themes: ^1.9.0
   prismjs: ^1.29.0
   rehype-external-links: ^2.0.1
   rehype-slug-custom-id: ^1.1.0
@@ -62,7 +61,6 @@ devDependencies:
   postcss-import: 15.0.1_postcss@8.4.19
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
-  prism-themes: 1.9.0
   prismjs: 1.29.0
   rehype-external-links: 2.0.1
   rehype-slug-custom-id: 1.1.0
@@ -2774,10 +2772,6 @@ packages:
     resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
-
-  /prism-themes/1.9.0:
-    resolution: {integrity: sha512-tX2AYsehKDw1EORwBps+WhBFKc2kxfoFpQAjxBndbZKr4fRmMkv47XN0BghC/K1qwodB1otbe4oF23vUTFDokw==}
     dev: true
 
   /prismjs/1.29.0:

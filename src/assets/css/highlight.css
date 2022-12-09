@@ -1,0 +1,163 @@
+/**
+ * License from the original Night Owl theme:
+ *
+ * MIT License
+ * Copyright (c) 2018 Sarah Drasner
+ * Sarah Drasner's[@sdras] Night Owl
+ * Ported by Sara vieria [@SaraVieira]
+ * Added by Souvik Mandal [@SimpleIndian]
+ *
+ * This file modifies the original mostly by introducing CSS variables.
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: var(--sx-text);
+  font-family: "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 1em;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+  &::selection,
+  & ::selection,
+  &::-moz-selection,
+  & ::-moz-selection {
+    text-shadow: none;
+    background: var(--sx-bg);
+  }
+}
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  color: white;
+  background: var(--sx-inner-bg);
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token {
+  &.comment,
+  &.prolog,
+  &.cdata {
+    color: var(--sx-comment);
+    font-style: italic;
+  }
+
+  &.punctuation {
+    color: var(--sx-punctuation);
+  }
+
+  &.namespace {
+    color: var(--sx-namespace);
+  }
+
+  &.deleted {
+    color: var(--sx-deleted);
+    font-style: italic;
+  }
+
+  &.symbol,
+  &.property {
+    color: var(--sx-symbol);
+  }
+
+  &.tag,
+  &.operator,
+  &.keyword {
+    color: var(--sx-operator);
+  }
+
+  &.boolean {
+    color: var(--sx-boolean);
+  }
+
+  &.number {
+    color: var(--sx-number);
+  }
+
+  &.constant,
+  &.function,
+  &.builtin,
+  &.char {
+    color: var(--sx-function);
+  }
+
+  &.selector,
+  &.doctype {
+    color: var(--sx-selector);
+    font-style: italic;
+  }
+
+  &.attr-name,
+  &.inserted {
+    color: var(--sx-string);
+    font-style: italic;
+  }
+
+  &.string,
+  &.url,
+  &.entity {
+    color: var(--sx-string);
+  }
+
+  &.class-name,
+  &.atrule,
+  &.attr-value {
+    color: var(--sx-class);
+  }
+
+  &.regex,
+  &.important,
+  &.variable {
+    color: var(--sx-variable);
+  }
+
+  &.important,
+  &.bold {
+    font-weight: bold;
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+}
+
+.language-css .token.string {
+  color: var(--sx-string);
+}
+
+.style .token.string {
+  color: var(--sx-string);
+}
