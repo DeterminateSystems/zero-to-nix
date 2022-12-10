@@ -12,6 +12,7 @@ detsys
 dev
 ds
 env
+externalsources
 ffmpeg
 ffprobe
 github
@@ -36,7 +37,6 @@ offboarding
 onboarding
 openssl
 readlink
-readmore
 repo
 ripgrep
 serokell

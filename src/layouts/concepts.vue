@@ -17,9 +17,12 @@
             <slot />
           </Content>
 
-          <ReadMore v-if="readMore && readMore.length > 0" :links="readMore" />
-
           <Related v-if="related && related.length > 0" :related="related" />
+
+          <ExternalSources
+            v-if="externalSources && externalSources.length > 0"
+            :links="externalSources"
+          />
         </div>
       </HorizontalContainer>
     </Top>
@@ -38,6 +41,6 @@ type Link = {
 };
 
 const {
-  frontmatter: { title, description, readMore, related },
+  frontmatter: { title, description, externalSources, related },
 } = usePage<ConceptPageProps>();
 </script>
