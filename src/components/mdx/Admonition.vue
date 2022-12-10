@@ -14,7 +14,7 @@
 
         <DisclosureButton as="button" class="flex items-center justify-between">
           <IconFaChevronRight
-            class="h-4 w-4 text-primary"
+            class="h-4 w-4 hover:text-dark-gray dark:hover:text-light-gray"
             :class="[
               open && 'rotate-90 transform duration-200',
               type === 'danger' && 'text-red',

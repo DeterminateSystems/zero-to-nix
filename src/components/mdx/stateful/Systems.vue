@@ -1,6 +1,6 @@
 <template>
   <Selector
-    title="Select your language"
+    title="Select your operating system"
     :options="systems"
     :state="systemState"
   />

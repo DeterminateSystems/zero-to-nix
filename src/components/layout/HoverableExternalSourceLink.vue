@@ -4,7 +4,7 @@
   >
     <div class="flex flex-col space-y-1.5">
       <a
-        :href="readMoreHref"
+        :href="externalSourceHref"
         class="text-xl leading-tight tracking-tight hover:text-primary"
       >
         {{ title }}
@@ -24,7 +24,7 @@
 <script setup lang="ts">
 const {
   title,
-  href: readMoreHref,
+  href: externalSourceHref,
   source,
 } = defineProps<{
   title: string;
