@@ -51,8 +51,6 @@ What happened here? The [Nix] CLI did a few things:
 * It built the [packages] specified in the environment configuration (again, more on this later).
 * It [symlinked] those package paths to `curl` and `git`, respectively.
 
-But those symlinks are only valid in your current directory. If you run `cd ..` and then `which git`, you should no longer see a Nix store path.
-
 A few other things:
 
 * The `Welcome to a Nix development environment!` greeting is defined in the *shell hook*. This is arbitrary code that you can run when the environment starts up.
