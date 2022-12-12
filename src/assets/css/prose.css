@@ -1,7 +1,7 @@
 /* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
 .content {
   a {
-    @apply underline hover:text-primary;
+    @apply underline hover:text-primary dark:hover:text-light-blue;
   }
 
   p + p {
@@ -11,7 +11,7 @@
 
 .prose {
   a {
-    @apply underline hover:text-primary;
+    @apply underline hover:text-primary dark:hover:text-light-blue;
   }
 
   code {
