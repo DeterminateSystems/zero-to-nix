@@ -47,4 +47,69 @@ externalSources: [
 ]
 ---
 
-**Nix** is the language used to power Nix.
+Nix is the *programming language* that powers the Nix *packaging system*.
+
+## Why a programming language?
+
+You might ask yourself why Nix even *needs* a programming language.
+Why can't packages be declared via some JSON, YAML, or TOML schema?
+The problem with that lies in the dynamic nature of how Nix configures packages and allows them to be combined.
+Nix as a *programming language* can be thought of as a kind of "JSON, but with functions".
+All statements are [declarative], meaning that there's no sequential flow of instructions that makes up a Nix package.
+Instead functions are called that assign values to fields in *attribute sets*, which in turn may get assigned to other values.
+
+[declarative](/concepts/declarative)
+
+## How does Nix work?
+
+Nix uses a few important characteristics in programming language design to work.
+Some of these terms can seem daunting, when you're not already familiar with what they mean and how they work with each other.
+So first, let's cover these principles:
+
+*Nix* is a pure, functional, lazy, declarative, and reproducible programming language.
+
+| Concept                                   | Description                                                                                                                                     |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| Pure                                      | A programming-language design concept by which functions can not cause _side effects_.  The only result is the one a function returns           |
+| Functional                                | A programming-language design concept by which _functions_ can be passed as function arguments, and returned as results                         |
+| Lazy                                      | A programming-language design concept by which functions and data collections are not evaluated until they are needed to complete a computation |
+| Declarative                               | Describing a system outcome, instead of instructing the computer _how_ to achieve the outcome                                                   |
+| [Reproducible](/concepts/reproducibility) | An operation that is performed twice yields the same result.  The same inputs map to the same outputs                                           |
+
+
+## Syntax basics
+
+As mentioned previously, Nix uses *assignments* to computer and process data for packages, modules, and other utilities.
+The following code, for example, calls a function called `my_function` with the parameters `2` and `3`, and assigns its output to the `my_value` field.
+
+```nix
+{
+  my_value = (my_function 2 3);
+}
+```
+
+Functions are defined via the following syntax, where `x` and `y` are attributes passed into the function.
+The body of the function automatically returns the result of the function.
+As you can see in the example above, functions are called by putting `( )` braces around it and its parameters.
+No commas are needed to separated parameters.
+
+```nix
+{
+  my_function = x: y: x + y;
+}
+```
+
+The two most common datastructures are _attribute sets_ and _lists_.
+Attribute sets are key-value stores.
+Lists can contain different types of values and don't need to be comma separated.
+
+```nix
+rec {
+  number_key = 5;
+  list_key = [ number_key true "Hello" ];
+}
+```
+
+The `rec` keyword allows the attribute set to reference itself.
+
+For a more detailed breakdown of syntax, check out the [Nix language](https://nixos.org/manual/nix/stable/language/index.html) manual section.
