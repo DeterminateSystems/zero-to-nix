@@ -2,7 +2,7 @@
   <div class="language-shell" data-lang="shell">
     <pre
       class="language-shell"
-    ><code>harmonic {{ command }} {{ `${system === "Linux" ? "linux" : "darwin"}-multi` }}</code></pre>
+    ><code>harmonic {{ command }}</code></pre>
   </div>
 </template>
 

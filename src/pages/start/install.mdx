@@ -13,13 +13,9 @@ summary:
 It's great to see that you're interested in [Nix].
 In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
 
-To begin, let us know which system you're working with:
+## Install Nix \{#download}
 
-<Systems client:load />
-
-## Download the installer \{#download}
-
-Before installing Nix, download [Harmonic], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
+Install Nix using [Harmonic], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
 curl -L https://install.determinate.systems/nix | sudo sh -s -- install
@@ -35,31 +31,7 @@ It also installs Nix with [Nix flakes][flakes] enabled, while the official insta
 See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Harmonic] concept if you'd like more background.
 </Admonition>
 
-## Plan your installation \{#plan}
-
-With Harmonic installed, you can *plan* your Nix installation:
-
-<Harmonic command="plan" client:load />
-
-This [JSON] object produced by the `plan` command is a *receipt* that details the changes that the installation process will introduce.
-
-<Admonition title="Multi-user mode" type="info" id="harmonic-multi" client:load>
-The `multi` in the `plan` command above indicates that Harmonic will install Nix in *multi-user mode* as opposed to single-user mode.
-Multi-user mode prevents non-`root` users from modifying the [Nix store][store] directly, instead forwarding Nix-store-modifying operations to a Nix daemon (this daemon is also installed and started by Harmonic).
-Harmonic currently only supports multi-user mode.
-
-For a more detailed treatment, see the [Nix manual][multi].
-</Admonition>
-
-Remember that you can [uninstall] Nix and undo all changes made by Harmonic at any time.
-
-## Install Nix
-
-Without further ado, you can now install Nix:
-
-<Harmonic command="install" client:load />
-
-Follow the prompts to approve the requested changes to your system one by one.
+Validate the displayed plan, and approve it to begin the install.
 Once Harmonic has finished, load the Nix executable into your `PATH`:
 
 ```shell
