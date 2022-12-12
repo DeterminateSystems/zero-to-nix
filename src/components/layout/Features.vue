@@ -7,12 +7,9 @@
     >
       <div class="space-y-4">
         <div class="space-y-2">
-          <p class="content text-2xl font-light" v-html="md(title)" />
+          <p class="text-2xl font-light" v-html="md(title)" />
 
-          <p
-            class="content font-light text-dark-gray dark:text-light-gray"
-            v-html="md(description)"
-          />
+          <p class="font-light" v-html="md(description)" />
         </div>
 
         <ul>
@@ -22,7 +19,11 @@
             class="space-x-2"
           >
             <span>&rarr;</span>
-            <a :href="href" class="text-xl hover:text-primary">{{ text }}</a>
+            <a
+              :href="href"
+              class="text-xl hover:text-primary dark:hover:text-light-blue"
+              >{{ text }}</a
+            >
           </li>
         </ul>
       </div>

@@ -12,32 +12,6 @@
     , nixpkgs
     }:
 
-    {
-      templates = {
-        go = {
-          path = ./nix/templates/go;
-          description = "Go starter template for Zero to Nix";
-        };
-
-        javascript = {
-          path = ./nix/templates/javascript;
-          description = "JavaScript starter template for Zero to Nix";
-        };
-
-        python = {
-          path = ./nix/templates/python;
-          description = "Python starter template for Zero to Nix";
-        };
-
-        rust = {
-          path = ./nix/templates/rust;
-          description = "Rust starter template for Zero to Nix";
-        };
-      };
-    }
-
-    //
-
     (
       let
         overlays = [
@@ -126,8 +100,6 @@
           ENV=preview pnpm run build
           python3 -m http.server -d dist 3000
         '';
-
-        exampleShells = import ./nix/shell/example.nix { inherit pkgs; };
       in
       {
         devShells = {
@@ -136,10 +108,6 @@
             {
               buildInputs = common ++ scripts;
             };
-
-          # Shells used in quick start guide
-          inherit (exampleShells)
-            example javascript python go rust multi;
         };
 
         apps.default = flake-utils.lib.mkApp {

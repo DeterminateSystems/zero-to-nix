@@ -2,7 +2,7 @@
 title: Flake outputs
 snippet: Fill me in later so that I show up in the tooltip
 related: ["flake-inputs", "flakes"]
-readMore: [
+externalSources: [
   {
     title: "Flakes",
     href: "https://nixos.wiki/wiki/Flakes",
@@ -42,7 +42,7 @@ containing each of the inputs to that flake (named after the chosen identifier i
 
 The flake output below, for example, produces a single package output on `x86_64-linux` systems for the `cowsay` derivation.
 
-```nix
+```nix filename=flake.nix
 {
   outputs = { self, nixpkgs }:
   let system = x86_64-linux;

@@ -16,7 +16,7 @@ We'll cover that a bit later, but for now let's get a feel for what a Nix develo
 The [`nix develop`][nix-develop] command activates a Nix environment:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#example"
+nix develop "github:DeterminateSystems/templates#example"
 ```
 
 <Admonition type="warning" title="This could take a while" id="nix-develop-loading" client:load>
@@ -47,11 +47,9 @@ For curl, for example, you should see a strange path like this (the input hash p
 
 What happened here? The [Nix] CLI did a few things:
 
-* It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and targeted a specific [flake output][output] (more on this later).
+* It used the `github:DeterminateSystems/templates` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the environment configuration (again, more on this later).
 * It [symlinked] those package paths to `curl` and `git`, respectively.
-
-But those symlinks are only valid in your current directory. If you run `cd ..` and then `which git`, you should no longer see a Nix store path.
 
 A few other things:
 
@@ -69,13 +67,13 @@ And if you run `echo $SECRET_PASSWORD` again you should get an empty string (unl
 
 ## Run commands inside the development environment
 
-While it's fun to explore the environment, you don't always want to be inside the to use it.
+While it's fun to explore the environment, you don't always want to be inside the environment to use it.
 The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that *use* the environment but *from* your current environment.
 Here are some examples for the environment we used earlier:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command git status
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command curl https://example.com
+nix develop "github:DeterminateSystems/templates#example" --command git status
+nix develop "github:DeterminateSystems/templates#example" --command curl https://example.com
 ```
 
 In both cases, you're running a symlinked package in the [Nix store][store] and nothing from your global environment.
@@ -157,7 +155,7 @@ But Nix environments are infinitely flexible, enabling you to combine whichever 
 Let's explore an example of this:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#multi"
+nix develop "github:DeterminateSystems/templates#multi"
 ```
 
 This Nix environment has several tools available:
