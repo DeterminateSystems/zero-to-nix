@@ -31,6 +31,10 @@ externalSources: [
 ]
 ---
 
-Nix development environments are [hermetically] sealed places where some seriously cool stuff happens.
+A Nix *development environment* is a derivation which builds a shell system environment.
+This environment is [hermetically] sealed off from the host, which means that no other dev environment can make changes or override tooling in it.
+
+This enables you to contain all development tooling for a particular project in a dev shell, 
+which is separated from even the dev shells for projects of a similar nature (same programming language, same set of dependencies, etc).
 
 [hermetically]: /concepts/hermeticity

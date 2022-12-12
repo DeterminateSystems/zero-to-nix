@@ -14,6 +14,9 @@ externalSources: [
 ]
 ---
 
-**Hermeticity** is a property of [Nix development environments][dev] that is really quite nice.
+*Hermeticity* is a property of Nix builds which are isolated from the host system via various mechanisms.
+This results in a system where the same set of source inputs will always map to the same build outputs,
+because changes on the host can not affect a build.
 
-[dev]: /concepts/dev-env
+There are some special parts in Nix that are _not_ hermetic.
+These are referred to as "impure".
