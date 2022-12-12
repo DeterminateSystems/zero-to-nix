@@ -38,7 +38,9 @@ readMore: [
 ]
 ---
 
+
 A *Nix channel* is a release branch for some Nix code, which follows a particular policy.
+This can either be a branch, a release tag, or a single commit.
 Sounds confusing?
 Channels are best explained with some examples!
 
@@ -48,8 +50,8 @@ Channels are best explained with some examples!
 | `nixos-unstable`       | Frequently updated, whenever a set of important packages builds on `staging` | The rolling release channel of NixOS, which is updated whenever its feasible to do so.  Security updates, new packages, and breaking changes will appear on your computer very frequently                      |
 | `nixos-unstable-small` | Same as `nixos-unstable`, but more frequently                                | A rolling release channel similar to `nixos-unstable` but with a smaller set of packages that are tested.  This means this channel is updated more frequently, but may have some broken packages on it as well |
 
-Of course way more channels than that exist.
-And channels are still (somewhat) relevant, even when using Flakes, since different branches can be used as flake inputs.
+Of course, any git reference can be used as a channel.
+Channels are now mostly relevant as flake inputs.
 
 ```nix
 {
