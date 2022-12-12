@@ -13,9 +13,30 @@ If you need to uninstall Nix for any reason, you can do so with one command.
 sudo harmonic uninstall
 ```
 
-<Admonition type="warning">
+<Admonition type="warning" client:load>
 The `harmonic uninstall` command needs to be run as root, as in the code block above.
 </Admonition>
+
+Follow the prompts to approve the requested changes.
+Some of the changes that Harmonic requests on all systems:
+
+* Delete the directory tree under `/nix`
+* Delete the [Nix] CLI tool
+* Delete all Nix-specific users and groups
+* Delete the Nix configuration file at `/etc/nix/nix.conf`
+
+<SpecificSystem sys="Linux" client:load>
+TODO!
+</SpecificSystem>
+<SpecificSystem sys="macOS" client:load>
+Some changes specific to macOS:
+
+* Delete Nix's dedicated [Apple File System][APFS] (APFS) volume
+* Stop the Nix daemon's [launchctl] unit and delete the daemon
+
+[apfs]: https://en.wikipedia.org/wiki/Apple_File_System
+[launchctl]: https://www.launchd.info/
+</SpecificSystem>
 
 Once you've done that, you can verify that directories like `/nix` and `~/.nix-profile` have been removed from your system:
 

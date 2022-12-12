@@ -42,12 +42,6 @@ With Harmonic installed, you can *plan* your Nix installation:
 <Harmonic command="plan" client:load />
 
 The [JSON] object produced by the `plan` command is a *receipt* that details the changes that the installation process will introduce.
-Some of the changes that Harmonic needs to make:
-
-* Create a new disk volume and a new directory tree under `/nix`
-* Install the [Nix] CLI tool
-* Create several new users
-* Create a Nix configuration file at `/etc/nix/nix.conf`
 
 <Admonition title="Multi-user mode" type="info" id="harmonic-multi" client:load>
 The `multi` in the `plan` command above indicates that Harmonic will install Nix in *multi-user mode* as opposed to single-user mode.
@@ -65,14 +59,39 @@ Without further ado, you can now install Nix:
 
 <Harmonic command="install" client:load />
 
-Follow the prompts to approve the requested changes to your system one by one.
-Once Harmonic has finished, load the Nix executable into your `PATH`:
+<Admonition type="warning" client:load>
+The `harmonic install` command needs to be run as root, as in the code block above.
+</Admonition>
+
+Follow the prompts to approve the requested changes.
+Some of the changes that Harmonic requests on all systems:
+
+* Create a new directory tree under `/nix`
+* Install the [Nix] CLI tool
+* Create several new users and one new group
+* Create a Nix configuration file at `/etc/nix/nix.conf`
+
+<SpecificSystem sys="Linux" client:load>
+TODO!
+</SpecificSystem>
+<SpecificSystem sys="macOS" client:load>
+Some changes specific to macOS:
+
+* Create a new [Apple File System][APFS] (APFS) volume
+* Create a Nix daemon and start it as a [launchctl] unit
+
+[apfs]: https://en.wikipedia.org/wiki/Apple_File_System
+[launchctl]: https://www.launchd.info/
+</SpecificSystem>
+
+Once Harmonic has finished, you should see `Nix was installed successfully!` in your terminal.
+Restart your shell to make Nix available in your `PATH`:
 
 ```shell
 exec $SHELL
 ```
 
-Now verify that installation has succeeded:
+Finally, verify that installation has succeeded:
 
 ```bash
 nix --help
@@ -82,7 +101,6 @@ This should print the help output of the `nix` command.
 
 **Congrats**!
 You now have Nix installed and ready to go on your system.
-You're now ready to use Nix to run programs.
 
 [build]: /start/nix-build-nixpkgs
 [detsys]: https://determinate.systems

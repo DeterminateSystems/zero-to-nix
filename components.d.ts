@@ -46,6 +46,7 @@ declare module '@vue/runtime-core' {
     Selector: typeof import('./src/components/mdx/stateful/Selector.vue')['default']
     Shell: typeof import('./src/components/mdx/code/Shell.vue')['default']
     SpecificLanguage: typeof import('./src/components/mdx/stateful/SpecificLanguage.vue')['default']
+    SpecificSystem: typeof import('./src/components/mdx/stateful/SpecificSystem.vue')['default']
     Summary: typeof import('./src/components/layout/Summary.vue')['default']
     System: typeof import('./src/components/mdx/stateful/System.vue')['default']
     Systems: typeof import('./src/components/mdx/stateful/Systems.vue')['default']
