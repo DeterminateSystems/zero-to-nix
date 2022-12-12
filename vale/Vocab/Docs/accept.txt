@@ -6,6 +6,7 @@ buildgomodule
 buildpythonapplication
 buildrustpackage
 cargolock
+configurability
 cowsay
 declarativity
 detsys
@@ -35,6 +36,7 @@ npm
 npx
 offboarding
 onboarding
+openssh
 openssl
 readlink
 repo
