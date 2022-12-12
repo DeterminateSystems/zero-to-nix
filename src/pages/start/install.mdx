@@ -41,7 +41,13 @@ With Harmonic installed, you can *plan* your Nix installation:
 
 <Harmonic command="plan" client:load />
 
-This [JSON] object produced by the `plan` command is a *receipt* that details the changes that the installation process will introduce.
+The [JSON] object produced by the `plan` command is a *receipt* that details the changes that the installation process will introduce.
+Some of the changes that Harmonic needs to make:
+
+* Create a new disk volume and a new directory tree under `/nix`
+* Install the [Nix] CLI tool
+* Create several new users
+* Create a Nix configuration file at `/etc/nix/nix.conf`
 
 <Admonition title="Multi-user mode" type="info" id="harmonic-multi" client:load>
 The `multi` in the `plan` command above indicates that Harmonic will install Nix in *multi-user mode* as opposed to single-user mode.
