@@ -70,17 +70,17 @@ So first, let's cover these principles:
 
 | Concept                                   | Description                                                                                                                                     |
 |-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Pure                                      | A programming-language design concept by which functions can not cause _side effects_.  The only result is the one a function returns           |
-| Functional                                | A programming-language design concept by which _functions_ can be passed as function arguments, and returned as results                         |
+| Pure                                      | A programming-language design concept by which functions can not cause *side effects*. The only result is the one a function returns           |
+| Functional                                | A programming-language design concept by which *functions* can be passed as function arguments, and returned as results                         |
 | Lazy                                      | A programming-language design concept by which functions and data collections are not evaluated until they are needed to complete a computation |
-| Declarative                               | Describing a system outcome, instead of instructing the computer _how_ to achieve the outcome                                                   |
-| [Reproducible](/concepts/reproducibility) | An operation that is performed twice yields the same result.  The same inputs map to the same outputs                                           |
+| Declarative                               | Describing a system outcome, instead of instructing the computer *how* to achieve the outcome                                                   |
+| [Reproducible](/concepts/reproducibility) | An operation that is performed twice yields the same result. The same inputs map to the same outputs                                           |
 
 
 ## Syntax basics
 
 As mentioned previously, Nix uses *assignments* to computer and process data for packages, modules, and other utilities.
-The following code, for example, calls a function called `my_function` with the parameters `2` and `3`, and assigns its output to the `my_value` field.
+The code below, for example, calls a function called `my_function` with the parameters `2` and `3`, and assigns its output to the `my_value` field.
 
 ```nix
 {
@@ -88,10 +88,7 @@ The following code, for example, calls a function called `my_function` with the 
 }
 ```
 
-Functions are defined via the following syntax, where `x` and `y` are attributes passed into the function.
-The body of the function automatically returns the result of the function.
-As you can see in the example above, functions are called by putting `( )` braces around it and its parameters.
-No commas are needed to separated parameters.
+Functions are defined using this syntax, where `x` and `y` are attributes passed into the function:
 
 ```nix
 {
@@ -99,7 +96,11 @@ No commas are needed to separated parameters.
 }
 ```
 
-The two most common datastructures are _attribute sets_ and _lists_.
+The body of the function automatically returns the result of the function.
+As you can see in the example above, functions are called by putting `( )` braces around it and its parameters.
+No commas are needed to separated parameters.
+
+The two most common data structures are *attribute sets* and *lists*.
 Attribute sets are key-value stores.
 Lists can contain different types of values and don't need to be comma separated.
 
