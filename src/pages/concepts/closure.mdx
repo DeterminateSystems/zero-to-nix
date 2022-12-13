@@ -1,11 +1,11 @@
 ---
 title: Closure
-snippet: Fill me in later so that I show up in the tooltip
+snippet: A Nix package's dependency tree
 related: ["derivations", "package"]
 ---
 
 In Nix, a [package]'s *closure* encapsulates all of the packages required to build it (as well as the packages required to build those packages, and so on).
-A package can have zero packages in its closure, because no other packages are required to build it, or it can have thousands.
-Whenever you build a package, you always necessarily build its entire closure.
+A package can have zero packages in its closure, because no other packages are required to build it, or it can have many.
+Whenever you build a package, Nix always builds its entire closure (dependency tree).
 
 [package]: /concepts/package

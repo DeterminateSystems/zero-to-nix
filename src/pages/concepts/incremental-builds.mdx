@@ -1,0 +1,16 @@
+---
+title: Incremental builds
+snippet: I'm just here so I don't get fined
+---
+
+*Incremental builds* are build processes that don't need to rebuild the entire dependency tree of a software artifact every time
+
+## How Nix provides incremental builds
+
+Whenever Nix builds a [package], it builds the entire [closure], or dependency tree, of that package.
+
+<NixStorePath pkg="git-2.27.3" />
+
+[closure]: /concepts/closure
+[package]: /concepts/packages
+[store]: /concepts/nix-store

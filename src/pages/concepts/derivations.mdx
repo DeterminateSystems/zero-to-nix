@@ -30,9 +30,10 @@ externalSources: [
 ]
 ---
 
-A Nix *derivation* is an instruction that Nix uses to [*realise*][realisation] a [package].
-Derivations are created using the [Nix language](#nix-language).
-A derivation can depend on any number of other derivations and produce one or more final [outputs](#outputs).
+A *derivation* is an instruction that Nix uses to [*realise*][realisation] .
+They're created using a special `derivation` function in the [Nix language](#nix-language).
+They can depend on any number of other derivations and produce one or more final [outputs](#outputs).
+A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a [closure].
 
 ## Derivation outputs \{#outputs}
 
@@ -133,6 +134,7 @@ And you're always free to create your own derivation functions and even wrap hel
 [buildgomodule]: https://nixos.org/manual/nixpkgs/stable/#sec-language-go
 [buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#python
 [buildrustpackage]: https://nixos.org/manual/nixpkgs/stable/#rust
+[closure]: /concepts/closure
 [func]: /concepts/derivations
 [go]: https://go.dev
 [haskell]: https://www.haskell.org
@@ -140,7 +142,7 @@ And you're always free to create your own derivation functions and even wrap hel
 [lang]: /concepts/nix-language
 [mk]: https://nixos.org/manual/nixpkgs/stable/#sec-using-stdenv
 [nixpkgs]: /concepts/nixpkgs
-[package]: /concepts/package
+[packages]: /concepts/package
 [python]: https://python.org
 [realisation]: /concepts/realisation
 [rust]: https://rust-lang.org
