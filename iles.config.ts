@@ -44,7 +44,7 @@ export default defineConfig({
       },
     }),
   ],
-  prettyUrls: process.env["ENV"] !== "preview",
+  prettyUrls: true,
   ssg: {
     onSiteRendered: ({ pages, config }: SSGContext) => {
       // Only necessary when checking internal links
