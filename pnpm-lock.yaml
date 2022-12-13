@@ -8,7 +8,6 @@ specifiers:
   '@iconify-json/fa-solid': ^1.1.2
   '@islands/headings': ^0.8.1
   '@islands/icons': ^0.8.0
-  '@islands/prism': ^0.8.0
   '@nanostores/persistent': ^0.7.0
   '@nanostores/vue': ^0.6.1
   '@tailwindcss/typography': ^0.5.8
@@ -44,7 +43,6 @@ devDependencies:
   '@iconify-json/fa-solid': 1.1.2
   '@islands/headings': 0.8.1
   '@islands/icons': 0.8.0_vite@2.9.15
-  '@islands/prism': 0.8.0
   '@nanostores/persistent': 0.7.0_nanostores@0.7.0
   '@nanostores/vue': 0.6.1_zzt5tcdxgl3jsilh3f4jgfjwue
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
@@ -250,13 +248,6 @@ packages:
     resolution: {integrity: sha512-EcgO0E5WkN4QK7nUnFto6csr8OjeWYCq7vKMcQJCMxLcvQsVelDtkxxMvD4W5J/Kvmm8JaFz3bCxs7yMZL3Xew==}
     dependencies:
       '@islands/hydration': 0.8.2
-    dev: true
-
-  /@islands/prism/0.8.0:
-    resolution: {integrity: sha512-Ua3mzLadCDTjlrfRP3qlXHHlRnymBoC1DXOhAkp7fnil31fD3Gu36gEWoLtZOAONMS3uenLCgjfyXE3NtQ4ytA==}
-    dependencies:
-      prismjs: 1.29.0
-      unist-util-visit: 4.1.1
     dev: true
 
   /@mdx-js/mdx/2.1.0:

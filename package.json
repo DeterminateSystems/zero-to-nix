@@ -18,7 +18,6 @@
     "@iconify-json/fa-solid": "^1.1.2",
     "@islands/headings": "^0.8.1",
     "@islands/icons": "^0.8.0",
-    "@islands/prism": "^0.8.0",
     "@nanostores/persistent": "^0.7.0",
     "@nanostores/vue": "^0.6.1",
     "@tailwindcss/typography": "^0.5.8",
