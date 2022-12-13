@@ -7,6 +7,6 @@ import { language } from "~/logic/state";
   <div class="language-shell" data-lang="shell">
     <pre
       class="language-shell"
-    ><code>nix develop <span class="token string">"github:DeterminateSystems/zero-to-nix#{{ language.toLowerCase() }}"</span></code></pre>
+    ><code>nix develop <span class="token string">"github:DeterminateSystems/templates#{{ language.toLowerCase() }}"</span></code></pre>
   </div>
 </template>

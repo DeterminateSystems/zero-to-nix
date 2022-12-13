@@ -2,11 +2,12 @@ import { existsSync, mkdirSync, rmSync, writeFileSync } from "fs";
 
 import headings from "@islands/headings";
 import icons from "@islands/icons";
-import prism from "@islands/prism";
 import { RawPageMatter, RouteToRender, SSGContext, defineConfig } from "iles";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugCustomId from "rehype-slug-custom-id";
+import remarkGfm from "remark-gfm";
 
+import codeBlockPlugin from "./src/plugins/code";
 import site from "./src/site";
 
 const { url: siteUrl } = site;
@@ -32,8 +33,17 @@ export default defineConfig({
       rehypeExternalLinks,
       [rehypeSlugCustomId, { enableCustomId: true }],
     ],
+    remarkPlugins: [remarkGfm],
   },
-  modules: [headings(), icons(), prism()],
+  modules: [
+    headings(),
+    icons(),
+    codeBlockPlugin({
+      aliases: {
+        shell: "bash",
+      },
+    }),
+  ],
   prettyUrls: process.env["ENV"] !== "preview",
   ssg: {
     onSiteRendered: ({ pages, config }: SSGContext) => {
@@ -69,6 +79,12 @@ export default defineConfig({
     },
   },
   turbo: true,
+  vite: {
+    server: {
+      port: 3000,
+      open: true,
+    },
+  },
 });
 
 // Utils

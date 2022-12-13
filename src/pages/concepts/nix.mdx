@@ -2,7 +2,56 @@
 title: Nix
 snippet: Fill me in later so that I show up in the tooltip
 related: ["nix-language", "nixos", "nixpkgs"]
-readMore: [{ title: "The official Nix website", href: "https://nixos.org" }]
+externalSources: [
+  {
+    title: "The official Nix website",
+    href: "https://nixos.org"
+  },
+  {
+    title: "Nix package manager",
+    href: "https://nixos.wiki/wiki/Nix_package_manager",
+    source: {
+      title: "The NixOS wiki",
+      href: "https://nixos.wiki"
+    }
+  },
+  {
+    title: "The Nix repository",
+    href: "https://github.com/NixOS/nix",
+    source: {
+      title: "GitHub",
+      href: "https://github.com"
+    }
+  },
+  {
+    title: "What is Nix?",
+    href: "https://shopify.engineering/what-is-nix",
+    source: {
+      title: "The Shopify engineering blog",
+      href: "https://shopify.engineering"
+    }
+  },
+  {
+    title: "Nix (package manager)",
+    href: "https://en.wikipedia.org/wiki/Nix_(package_manager)",
+    source: {
+      title: "Wikipedia",
+      href: "https://wikipedia.org"
+    }
+  }
+]
 ---
 
-**Nix** is a build tool and package management system.
+*Nix* refers to a few different things:
+
+1. The pure and functional [programming language](/concepts/nix-language)
+2. The set of `nix` and `nix-*` commandline-tools
+3. The overall Nix package management system
+
+
+## The Nix commands
+
+There are two sets of nix commands:
+
+- those that follow the `nix-*` pattern (for example `nix-build` or `nix-shell`).  These commands are generally used to interact with *legacy Nix systems*.
+- the `nix <command>` CLI, which supports flakes and will eventually replace all legacy style commands.  Currently not *all* operations are supported by this tool (for example `nix-copy-closure`)

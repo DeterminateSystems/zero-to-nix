@@ -2,11 +2,73 @@
 title: Channels
 snippet: Fill me in later so that I show up in the tooltip
 related: ["flakes", "pinning"]
+externalSources: [
+  {
+    title: "Channels",
+    href: "https://nixos.org/manual/nix/stable/package-management/channels",
+    source: {
+      title: "The Nix manual",
+      href: "https://nixos.org/manual/nix/stable"
+    }
+  },
+  {
+    title: "Nix channels",
+    href: "https://nixos.wiki/wiki/Nix_channels",
+    source: {
+      title: "The NixOS wiki",
+      href: "https://nixos.wiki"
+    }
+  },
+  {
+    title: "How to learn Nix, part 8: channels",
+    href: "https://ianthehenry.com/posts/how-to-learn-nix/channels",
+    source: {
+      title: "Ian Henry's blog",
+      href: "https://ianthehenry.com/posts/how-to-learn-nix"
+    }
+  },
+  {
+    title: "Nix channels",
+    href: "https://jorel.dev/NixOS4Noobs/channels",
+    source: {
+      title: "NixOS 4 noobs",
+      href: "https://jorel.dev/NixOS4Noobs"
+    }
+  }
+]
 ---
 
-Nix **channels** are a way of obtaining Nix code that...
 
-Channels remain fully supported in Nix and this is unlikely to change any time soon.
-Yet channels have several drawbacks vis-à-vis flakes:
+A *Nix channel* is a release branch for some Nix code, which follows a particular policy.
+This can either be a branch, a release tag, or a single commit.
+Sounds confusing?
+Channels are best explained with some examples!
 
-- Channels have no built-in mechanism for [pinning](/concepts/pinning) Nix dependencies, such as [Nixpkgs](/concepts/nixpkgs), which
+| Channel name           | Release date                                                                 | Description                                                                                                                                                                                                    |
+|------------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `nixos-22.11`          | Initially release in November of 2022 and updated for 6 months afterwards    | A stable version of NixOS, released in November of 2022. Security patches and updates will be backported, but no new applications, or breaking changes will be applied                                        |
+| `nixos-unstable`       | Frequently updated, whenever a set of important packages builds on `staging` | The rolling release channel of NixOS, which is updated whenever its feasible to do so. Security updates, new packages, and breaking changes will frequently appear on your computer                    |
+| `nixos-unstable-small` | Same as `nixos-unstable`, but more frequently                                | A rolling release channel similar to `nixos-unstable` but with a smaller set of packages that are tested. This means this channel is updated more frequently, but may have some broken packages on it as well |
+
+Of course, any git reference can be used as a channel.
+Channels are now mostly relevant as flake inputs.
+
+```nix
+{
+  inputs = {
+    nixpkgs-stable = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs-unstable = "gihub:nixos/nixpkgs/nixos-unstable";
+  };
+}
+```
+
+## The problem with `nix-channel`
+
+The *legacy* way to update nixpkgs and other sources is via the `nix-channel` command.
+The problem with this approach is that `nix-channel` does not provide any guarantees about what inputs are actually used in a particular build.
+As such source [pinning](/concepts/pinning) and rollbacks are much harder with nix-channels.
+
+This means that while Nix is [reproducible](/concepts/reproducibility) in theory, in practise inputs to builds can frequently change, and a build may fail because of this.
+This can cause you to be unable to update your NixOS system, or build a package that previously could be built.
+
+**Because of this the use of nix channels is highly discouraged!**
