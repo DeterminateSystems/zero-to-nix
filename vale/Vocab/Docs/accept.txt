@@ -1,4 +1,5 @@
 args
+backported
 bazel
 benoit
 buildinputs
@@ -14,6 +15,7 @@ dev
 drv
 ds
 env
+externalsources
 ffmpeg
 ffprobe
 func
@@ -28,21 +30,24 @@ jq
 json
 kubectl
 linux
+list_key
 lockfile
 mkdir
 monospaced
 mv
+my_function
+my_value
 nixlang
 nixos
 nixpkgs
 noobs
 npm
 npx
+number_key
 offboarding
 onboarding
 openssl
 readlink
-readmore
 repo
 ripgrep
 sandboxed
@@ -56,3 +61,4 @@ tooltip
 tweag
 upstreaming
 vite
+wikipedia

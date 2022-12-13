@@ -6,6 +6,7 @@ import { RawPageMatter, RouteToRender, SSGContext, defineConfig } from "iles";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugCustomId from "rehype-slug-custom-id";
 import remarkFootnotes from "remark-footnotes";
+import remarkGfm from "remark-gfm";
 
 import codeBlockPlugin from "./src/plugins/code";
 import site from "./src/site";
@@ -33,7 +34,7 @@ export default defineConfig({
       rehypeExternalLinks,
       [rehypeSlugCustomId, { enableCustomId: true }],
     ],
-    remarkPlugins: [remarkFootnotes],
+    remarkPlugins: [remarkGfm, remarkFootnotes],
   },
   modules: [
     headings(),
