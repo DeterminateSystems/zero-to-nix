@@ -1,6 +1,8 @@
 <template>
-  <div class="space-y-4">
-    <p class="text-lg font-semibold md:text-xl lg:text-2xl">External sources</p>
+  <div class="space-y-4" :class="[!showTitle && 'not-prose']">
+    <p v-if="showTitle" class="text-lg font-semibold md:text-xl lg:text-2xl">
+      External sources
+    </p>
 
     <Grid3>
       <HoverableExternalSourceLink
@@ -17,7 +19,8 @@
 <script setup lang="ts">
 import { ExternalSource } from "~/logic/content";
 
-const { links: externalSources } = defineProps<{
+const { showTitle, links: externalSources } = defineProps<{
+  showTitle?: boolean;
   links: ExternalSource[];
 }>();
 </script>

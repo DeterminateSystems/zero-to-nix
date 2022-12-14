@@ -9,35 +9,62 @@ You [installed Nix][install] on your machine, you explored a [Nix development en
 We're thrilled that you've taken the time and made the effort.
 
 But we also hope, of course, that your journey with Nix continues onward.
+This guide suggests some areas where you can apply your newly won Nix knowledge.
 
 ## Build containers
 
-[Nix] can build many things, from standard tools like [curl] and [Git] to [Vim] plugins to [Visual Studio Code][code] extension.
-We've covered a few of these here in the [quick start][start].
-This also includes [OCI]-compliant container images.
-Nix can actually replace tools like [Docker] and [Podman].
+[Nix] can build [packages] for many things, from standard tools like [curl] and [Git] to [Vim] plugins to [Visual Studio Code][code] extensions to web services that you write in your preferred language and far beyond.
+We've covered a few of these package types here in the [quick start][start].
+Another powerful Nix feature is that you can use it to build [OCI]-compliant container images and thus replace tools like [Docker] and [Podman] (at least when it comes to building images).
+
+<ExternalSources links={[
+  {
+    title: "Nix Docker examples",
+    href: "https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/docker/examples.nix",
+    source: {
+      title: "Nixpkgs",
+      href: "https://github.com/NixOS/nixpkgs"
+    }
+  },
+  {
+    title: "Building and running Docker images",
+    href: "https://nix.dev/tutorials/building-and-running-docker-images",
+    source: {
+      title: "nix.dev",
+      href: "https://nix.dev"
+    }
+  }
+]} client:load />
+
 
 ## Use NixOS as your operating system
 
-[NixOS]
+[NixOS] is a [Linux] distribution...
 
 ## Configure your home environment
 
-[Home Manager][home]
+[Home Manager][home] is a plugin-based tool built on Nix that you can use to configure a wide range of tools in your home environment, including [Vim], [tmux], [Visual Studio Code][code], [Git], [gpg], shells like [Bash], [zsh], and [fish]
 
 ## Continuous integration
 
+[bash]: https://gnu.org/software/bash
 [code]: https://code.visualstudio.com
 [curl]: https://curl.se
 [docker]: https://docker.com
 [env]: /start/nix-develop
+[fish]: https://fishshell.com
 [git]: https://git-scm.com
+[gpg]: https://gnupg.org
 [home]: https://github.com/nix-community/home-manager
 [install]: /start/install
+[linux]: https://linux.org
 [nix]: /concepts/nix
 [nixos]: /concepts/nixos
 [oci]: https://opencontainers.org
+[packages]: /concepts/package
 [pkg]: /start/nix-build-nixpkgs
 [podman]: https://podman.io
 [start]: /start
+[tmux]: https://github.com/tmux/tmux
 [vim]: https://vim.org
+[zsh]: https://zsh.org
