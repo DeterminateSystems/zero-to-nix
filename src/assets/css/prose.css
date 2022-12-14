@@ -11,6 +11,12 @@
   }
 
   .prose {
+    .not-prose {
+      a {
+        @apply no-underline;
+      }
+    }
+
     a {
       @apply underline hover:text-primary dark:hover:text-light-blue;
 

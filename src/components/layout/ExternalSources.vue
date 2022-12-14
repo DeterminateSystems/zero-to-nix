@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-4" :class="[!showTitle && 'not-prose']">
+  <div :class="[!showTitle && 'not-prose']" class="space-y-4">
     <p v-if="showTitle" class="text-lg font-semibold md:text-xl lg:text-2xl">
       External sources
     </p>
