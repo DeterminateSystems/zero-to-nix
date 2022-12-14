@@ -17,7 +17,7 @@ Let's start by building [bat], a syntax-highlighted version of [cat] written in 
 nix build "nixpkgs#bat"
 ```
 
-Here, `nixpkgs` is a [flake reference][flake] to the [NixOS/nixpkgs][nixpkgs-repo] repository on GitHub, while `#jq` indicates that we're building the `jq` output from the Nixpkgs flake.
+Here, `nixpkgs` is a [flake reference][flake] to the [NixOS/nixpkgs][nixpkgs-repo] repository on GitHub, while `#bat` indicates that we're building the `bat` output from the Nixpkgs flake.
 
 When the build is done, run `ls .` and you should see something called `result` in the current directory. `result` is actually a [symlink] to the built package in the [Nix store][store], which you can verify:
 

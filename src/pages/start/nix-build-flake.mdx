@@ -29,7 +29,7 @@ nix build
 This command determines that the local flake has a [package output][outputs], which is a [derivation] that defines how the package is built.
 In this particular flake there's a `default` package, which enables us to run `nix build` without specifying an output, but if the package were output as `packages.mypkg`, for example, we'd need to run `nix build .#mypkg` to build it.
 
-<SpecificLanguage lang="JavaScript">
+<SpecificLanguage lang="JavaScript" client:load>
 Here's the package definition that builds our JavaScript package:
 
 ```nix filename=flake.nix
@@ -71,7 +71,7 @@ To view that website:
 open ./result/index.html
 ```
 </SpecificLanguage>
-<SpecificLanguage lang="Python">
+<SpecificLanguage lang="Python" client:load>
 Here's the package definition that enables us to build our Python package:
 
 ```nix filename=flake.nix
@@ -94,7 +94,7 @@ To run the package:
 ./result/bin/zero-to-nix-python
 ```
 </SpecificLanguage>
-<SpecificLanguage lang="Go">
+<SpecificLanguage lang="Go" client:load>
 Here's the package definition that enables us to build this Go package:
 
 ```nix filename=flake.nix
@@ -117,7 +117,7 @@ To run the package:
 
 In another window, run `curl http://localhost:8080` to receive a message from the server.
 </SpecificLanguage>
-<SpecificLanguage lang="Rust">
+<SpecificLanguage lang="Rust" client:load>
 Here's the package definition that enables us to build this Rust package:
 
 ```nix filename=flake.nix

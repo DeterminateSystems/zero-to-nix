@@ -120,7 +120,7 @@ For [concept pages](./src/pages/concepts/):
 - `title`
 - `snippet` (a brief explanation of the concept that appears in pop-ups)
 - `related` (an array of IDs representing concept pages, like `flakes` or `nix-store`)
-- `readMore` (an array of links to external sources, such as official docs)
+- `externalSources` (an array of links to external sources, such as official docs)
 
 ## Site logic
 
@@ -131,6 +131,41 @@ There are a few other important files you should be aware of when working on the
 - [`src/logic/content.ts`](./src/logic/content.ts) provides the content management logic for the site (type-safe page frontmatter, functions to fetch and sort documents, and more)
 - [`src/logic/state.ts`](./src/logic/state.ts) defines all stateful logic using the [nanostores] library
 - [`src/logic/theme.ts`](./src/logic/theme.ts) provides logic for the light/dark theme switcher
+
+## Suggested VS Code settings
+
+If you happen to use VS Code as your editor, we recommend adding these extensions:
+
+- [`unifiedjs.vscode-mdx`][vsc-mdx]
+- [`bradlc.vscode-tailwindcss`][vsc-tailwind]
+- [`esbenp.prettier-vscode`][vsc-prettier]
+- [`vscode.vscode-typescript-next`][vsc-tsc]
+
+We also recommend adding these settings to your local `.vscode/settings.json`:
+
+```jsonc
+{
+  "[mdx]": {
+    // By default, this extension overwrites our one-sentence-per-line policy
+    "editor.formatOnSave": false,
+    // This is a nice helper for longer sentences
+    "editor.wordWrapColumn": 100,
+    "editor.wordWrap": "wordWrapColumn"
+  },
+  // Format everything using the Prettier config
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Keep junk out of your search results
+  "search.exclude": {
+    "**/.direnv": true,
+    "**/.git": true,
+    "**/node_modules": true,
+    "dist": true,
+    "pnpm-lock.yaml": true,
+    "*.d.ts": true,
+    "tmp": true
+  }
+}
+```
 
 [ci]: ./.github/workflows/test.yml
 [client-load]: https://iles.pages.dev/guide/hydration#clientload
@@ -146,4 +181,8 @@ There are a few other important files you should be aware of when working on the
 [site]: https://zero-to-nix.vercel.app
 [tailwind]: https://tailwindcss.com
 [vercel]: https://vercel.com
+[vsc-mdx]: https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx
+[vsc-prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+[vsc-tailwind]: https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+[vsc-tsc]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next
 [vue]: https://vuejs.org

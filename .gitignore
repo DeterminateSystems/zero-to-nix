@@ -1,9 +1,6 @@
 # Dependencies
 /node_modules/
 
-# Astro
-/dist/
-
 # Nix artifacts
 result
 
@@ -15,3 +12,5 @@ result
 
 # îles artifacts
 /.iles-ssg-temp/
+/dist/
+__unconfig_iles.config.ts
