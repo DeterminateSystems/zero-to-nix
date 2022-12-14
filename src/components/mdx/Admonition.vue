@@ -1,6 +1,6 @@
 <template>
   <div
-    class="admonition not-prose rounded-lg border-2 py-4 px-5 dark:bg-inherit"
+    class="admonition not-prose rounded-lg border-2 py-4 px-5 hover:border-dark dark:bg-inherit dark:hover:border-light-gray"
     :class="[
       type === 'danger' && 'border-red bg-pale-red',
       type === 'info' && 'border-blue bg-pale-blue',
@@ -9,23 +9,29 @@
     ]"
   >
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
-      <div class="flex items-center justify-between">
-        <span class="text-xl font-semibold tracking-tight">{{ title }}</span>
+      <DisclosureButton
+        as="div"
+        @mouseover="buttonHover = true"
+        @mouseleave="buttonHover = false"
+        class="flex items-center justify-between hover:cursor-pointer"
+      >
+        <span class="text-xl font-semibold tracking-tight">
+          {{ title }}
+        </span>
 
-        <DisclosureButton as="button" class="flex items-center justify-between">
-          <IconFaChevronRight
-            class="h-4 w-4 hover:text-dark-gray dark:hover:text-light-gray"
-            :class="[
-              open && 'rotate-90 transform duration-200',
-              type === 'danger' && 'text-red',
-              type === 'info' && 'text-blue',
-              type === 'success' && 'text-green',
-              type === 'warning' && 'text-yellow',
-            ]"
-            @click="toggle"
-          />
-        </DisclosureButton>
-      </div>
+        <IconFaChevronRight
+          class="h-4 w-4 hover:text-dark-gray dark:hover:text-light-gray"
+          :class="[
+            open && 'rotate-90 transform duration-200',
+            buttonHover && 'text-dark dark:text-light-gray',
+            type === 'danger' && 'text-red',
+            type === 'info' && 'text-blue',
+            type === 'success' && 'text-green',
+            type === 'warning' && 'text-yellow',
+          ]"
+          @click="toggle"
+        />
+      </DisclosureButton>
 
       <DisclosurePanel
         as="div"
@@ -52,6 +58,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
+import { ref } from "vue";
 
 const { id, type, title } = defineProps<{
   id?: string;
@@ -72,4 +79,6 @@ const open = useStore(openState).value === "true";
 const toggle = () => {
   openState.set(open ? "false" : "true");
 };
+
+const buttonHover = ref<boolean>(false);
 </script>
