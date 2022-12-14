@@ -1,7 +1,8 @@
 <template>
   <div
-    class="admonition not-prose rounded-lg border-2 py-4 px-5 hover:border-dark dark:bg-inherit dark:hover:border-light-gray"
+    class="admonition not-prose rounded-lg border-2 dark:bg-inherit"
     :class="[
+      id !== undefined && 'hover:border-dark dark:hover:border-light-gray',
       type === 'danger' && 'border-red bg-pale-red',
       type === 'info' && 'border-blue bg-pale-blue',
       type === 'success' && 'border-green bg-pale-green',
@@ -11,31 +12,31 @@
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
       <DisclosureButton
         as="div"
+        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer"
         @mouseover="buttonHover = true"
         @mouseleave="buttonHover = false"
-        class="flex items-center justify-between hover:cursor-pointer"
+        @click="toggle"
       >
         <span class="text-xl font-semibold tracking-tight">
           {{ title }}
         </span>
 
         <IconFaChevronRight
-          class="h-4 w-4 hover:text-dark-gray dark:hover:text-light-gray"
+          class="h-4 w-4"
           :class="[
             open && 'rotate-90 transform duration-200',
-            buttonHover && 'text-dark dark:text-light-gray',
             type === 'danger' && 'text-red',
             type === 'info' && 'text-blue',
             type === 'success' && 'text-green',
             type === 'warning' && 'text-yellow',
+            buttonHover && '!text-dark dark:text-light-gray',
           ]"
-          @click="toggle"
         />
       </DisclosureButton>
 
       <DisclosurePanel
         as="div"
-        class="content mt-3.5 text-sm md:text-base lg:text-lg"
+        class="content mt-3.5 px-5 pb-4 text-sm md:text-base lg:text-lg"
       >
         <slot />
       </DisclosurePanel>
@@ -46,7 +47,7 @@
         {{ title }}
       </p>
 
-      <div class="content text-sm md:text-base lg:text-lg">
+      <div class="content py-4 px-5 text-sm md:text-base lg:text-lg">
         <slot />
       </div>
     </div>
