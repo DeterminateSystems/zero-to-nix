@@ -2,7 +2,6 @@
   <div
     class="admonition not-prose rounded-lg border-2 dark:bg-inherit"
     :class="[
-      id !== undefined && 'hover:border-dark dark:hover:border-light-gray',
       type === 'danger' && 'border-red bg-pale-red',
       type === 'info' && 'border-blue bg-pale-blue',
       type === 'success' && 'border-green bg-pale-green',
