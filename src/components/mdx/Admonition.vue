@@ -29,7 +29,7 @@
             type === 'info' && 'text-blue',
             type === 'success' && 'text-green',
             type === 'warning' && 'text-yellow',
-            buttonHover && '!text-dark dark:text-light-gray',
+            buttonHover && 'text-dark dark:text-light-gray',
           ]"
         />
       </DisclosureButton>
