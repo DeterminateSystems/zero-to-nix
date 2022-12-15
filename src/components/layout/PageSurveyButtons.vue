@@ -1,36 +1,33 @@
 <template>
-  <h3 class="text-lg font-semibold md:text-xl lg:text-2xl">Was this page helpful?</h3>
-  <div class="flex space-x-3 items-center">
+  <h3 class="text-lg font-semibold md:text-xl lg:text-2xl">
+    Was this page helpful?
+  </h3>
+  <div class="flex items-center space-x-3">
     <button
-      class="sm:rounded-md border-2 border-soft-gray text-base font-bold flex items-center flex-grow sm:flex-grow-0 sm:w-[220px] justify-between px-4 py-2 rounded-sm shadow-sm bg-white text-black/70 hover:text-black/95 dark:bg-white/30 dark:text-white/90 dark:hover:bg-white/40 dark:hover:text-white/100 relative active:top-[1px] active:scale-[.98] transition-none transition-colors"
-      @click="() => submitResponse('positive')">
+      class="relative flex flex-grow items-center justify-between rounded-sm border-2 border-soft-gray bg-white px-4 py-2 text-base font-bold text-black/70 shadow-sm transition-none transition-colors hover:text-black/95 active:top-[1px] active:scale-[.98] dark:bg-white/30 dark:text-white/90 dark:hover:bg-white/40 dark:hover:text-white/100 sm:w-[220px] sm:flex-grow-0 sm:rounded-md"
+      @click="() => submitResponse('positive')"
+    >
       <span>Yes</span>
       👍
     </button>
     <button
-      class="sm:rounded-md border-2 border-soft-gray text-base font-bold flex items-center flex-grow sm:flex-grow-0 sm:w-[220px] justify-between px-4 py-2 rounded-sm shadow-sm bg-white text-black/70 hover:text-black/95 dark:bg-white/30 dark:text-white/90 dark:hover:bg-white/40 dark:hover:text-white/100 relative active:top-[1px] active:scale-[.98] transition-none transition-colors"
-      @click="() => submitResponse('negative')">
+      class="relative flex flex-grow items-center justify-between rounded-sm border-2 border-soft-gray bg-white px-4 py-2 text-base font-bold text-black/70 shadow-sm transition-none transition-colors hover:text-black/95 active:top-[1px] active:scale-[.98] dark:bg-white/30 dark:text-white/90 dark:hover:bg-white/40 dark:hover:text-white/100 sm:w-[220px] sm:flex-grow-0 sm:rounded-md"
+      @click="() => submitResponse('negative')"
+    >
       <span>No</span>
       👎
     </button>
   </div>
 </template>
 
-<script lang="ts">
-import posthog from 'posthog-js'
+<script setup lang="ts">
+import posthog from "posthog-js";
+import { Reaction } from "./PageSurvey.vue";
 
-type Reaction = "positive" | "negative";
+const emit = defineEmits(["complete"]);
 
-export default {
-  emits: ['complete'],
-
-  methods: {
-    submitResponse(reaction: Reaction) {
-      posthog.capture("page_review", {
-        reaction: reaction
-      })
-      this.$emit("complete", reaction)
-    },
-  }
-}
+const submitResponse = (reaction: Reaction) => {
+  posthog.capture("page_review", { reaction });
+  emit("complete");
+};
 </script>
