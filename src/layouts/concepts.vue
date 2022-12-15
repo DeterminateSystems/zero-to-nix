@@ -19,6 +19,8 @@
 
           <Related v-if="related && related.length > 0" :related="related" />
 
+          <PageSurvey />
+
           <ExternalSources
             v-if="externalSources && externalSources.length > 0"
             :links="externalSources"
