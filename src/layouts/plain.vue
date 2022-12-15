@@ -3,7 +3,7 @@
     <Top>
       <Navbar />
       <HorizontalContainer>
-        <Hero :title="title" :description="description" />
+        <Hero :title="title" :description="description" client:load />
 
         <Content>
           <slot />

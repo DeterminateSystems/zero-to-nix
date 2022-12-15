@@ -5,6 +5,7 @@
       :description="$site.description"
       size="lg"
       :buttons="$site.heroButtons"
+      client:load
     />
 
     <section class="space-y-16">

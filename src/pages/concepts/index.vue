@@ -1,6 +1,10 @@
 <template>
   <HorizontalContainer>
-    <Hero title="Nix concepts" description="The whys and the hows of Nix" />
+    <Hero
+      title="Nix concepts"
+      description="The whys and the hows of Nix"
+      client:load
+    />
 
     <Grid3>
       <HoverableLink
