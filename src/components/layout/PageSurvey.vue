@@ -16,7 +16,7 @@ import { ref } from "vue";
 export type Reaction = "positive" | "negative";
 export type Step = "prompt" | "feedback" | "thankyou";
 
-const reaction = ref<Reaction>();
+const reaction = ref<Reaction | undefined>();
 const step = ref<Step>("prompt");
 
 const acceptResponse = (r: Reaction) => {
