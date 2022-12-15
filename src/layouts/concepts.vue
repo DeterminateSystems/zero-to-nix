@@ -25,7 +25,9 @@
             :links="externalSources"
           />
 
-          <PageSurvey client:visible />
+          <div class="mt-16">
+            <PageSurvey client:visible />
+          </div>
         </div>
       </HorizontalContainer>
     </Top>
