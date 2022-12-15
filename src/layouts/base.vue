@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import posthog from 'posthog-js'
+import posthog from "posthog-js";
 import { PageProps } from "iles";
 import site from "~/site";
 
@@ -19,8 +19,12 @@ useHead({
   link: [{ rel: "canonical", href: canonical }],
 });
 
-posthog.init('phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4', { api_host: 'https://app.posthog.com' })
-
+if (import.meta.env.MODE === "production") {
+  const apiKey = "phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4";
+  posthog.init(apiKey, {
+    api_host: "https://app.posthog.com",
+  });
+}
 </script>
 
 <style>
