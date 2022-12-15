@@ -19,6 +19,8 @@
           <Content>
             <slot />
           </Content>
+
+          <PageSurvey client:visible />
         </div>
 
         <div class="mt-16">
