@@ -11,6 +11,7 @@
             title,
           }"
           size="normal"
+          client:load
         />
 
         <div class="space-y-6">
