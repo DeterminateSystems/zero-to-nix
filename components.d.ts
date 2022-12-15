@@ -20,7 +20,6 @@ declare module '@vue/runtime-core' {
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Grid2: typeof import('./src/components/layout/Grid2.vue')['default']
     Grid3: typeof import('./src/components/layout/Grid3.vue')['default']
-    Harmonic: typeof import('./src/components/mdx/code/Harmonic.vue')['default']
     Hero: typeof import('./src/components/layout/Hero.vue')['default']
     HorizontalContainer: typeof import('./src/components/layout/HorizontalContainer.vue')['default']
     HoverableExternalSourceLink: typeof import('./src/components/layout/HoverableExternalSourceLink.vue')['default']

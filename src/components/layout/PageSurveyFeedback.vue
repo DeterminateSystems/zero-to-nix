@@ -40,12 +40,12 @@ const placeholder = ref<string>(
     : "Let us know how we can do better"
 );
 
-const feedback = ref<string>("");
+const feedback = ref<string | undefined>();
 
 const submitFeedback = () => {
   posthog.capture("page_feedback", {
     reaction,
-    feedback: feedback.value,
+    feedback: feedback!.value,
   });
   emit("complete");
 };
