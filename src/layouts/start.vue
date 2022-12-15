@@ -19,11 +19,10 @@
           <Content>
             <slot />
           </Content>
-
-          <PageSurvey client:visible />
         </div>
 
-        <div class="mt-16">
+        <div class="mt-16 space-y-12">
+          <PageSurvey client:visible />
           <Pagination :order="order" />
         </div>
       </HorizontalContainer>
