@@ -3,6 +3,7 @@
   --dark: rgb(10, 10, 10);
 
   /* Tailwind colors */
+  /* Drawn from: https://tailwindcss.com/docs/customizing-colors */
   --pale: #f8fafc; /* slate-50 */
   --yellow: #eab308; /* yellow-500 */
   --pale-yellow: #fefce8; /* yellow-50 */
@@ -19,6 +20,7 @@
   --red: #ef4444; /* red-500 */
   --pale-red: #fef2f2; /* red-50 */
   --cerulean: #0ea5e9; /* sky-500 */
+  --light-lilac: #faf5ff; /* purple-50 */
   --lilac: #a855f7; /* purple-500 */
   --rose: #f43f5e; /* rose-500 */
   --orange: #f97316; /* orange-500 */
