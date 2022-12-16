@@ -42,7 +42,7 @@ What happened here? The [Nix] CLI did a few things:
 
 * It used the `nixpkgs#cowsay` [flake reference][flakes] to pull in some Nix code and targeted a specific [flake output][output] (more on this later).
 * It built the [`cowsay` package][cowsay] and stored the result in the [Nix store][store].
-* It ran the ran the executable at `bin/cowsay` from the `cowsay` package.
+* It ran the executable at `bin/cowsay` from the `cowsay` package.
 
 In Nix, every program is part of a [package].
 Packages are built using special functions in the [Nix language][lang] called [derivations].

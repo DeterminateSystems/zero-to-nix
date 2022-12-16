@@ -124,18 +124,18 @@ const site: Site = {
     {
       title: "Nix language",
       description:
-        "A for instructing Nix how to build packages and create environments and systems.",
+        "A language for instructing Nix how to build packages, environments and systems.",
       href: "/concepts/nix-language",
     },
     {
       title: "NixOS",
       description:
-        "A Linux distribution built on Nix and with its core principles in mind.",
+        "A Linux distribution built on Nix with its core principles in mind.",
       href: "/concepts/nixos",
     },
     {
       title: "Nixpkgs",
-      description: "A vast collection of Nix packages, libraries, and helpers.",
+      description: "A vast collection of Nix packages, libraries, and helper functions.",
       href: "/concepts/nixpkgs",
     },
   ],
