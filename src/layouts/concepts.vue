@@ -5,7 +5,7 @@
       <HorizontalContainer>
         <Hero
           :title="title"
-          :description="description"
+          :description="snippet"
           :breadcrumb="{
             back: { title: 'Concepts', href: '/concepts' },
             title,
@@ -24,6 +24,10 @@
             v-if="externalSources && externalSources.length > 0"
             :links="externalSources"
           />
+
+          <div class="mt-16">
+            <PageSurvey client:visible />
+          </div>
         </div>
       </HorizontalContainer>
     </Top>
@@ -42,6 +46,6 @@ type Link = {
 };
 
 const {
-  frontmatter: { title, description, externalSources, related },
+  frontmatter: { title, snippet, externalSources, related },
 } = usePage<ConceptPageProps>();
 </script>
