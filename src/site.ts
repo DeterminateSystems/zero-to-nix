@@ -124,7 +124,7 @@ const site: Site = {
     {
       title: "Nix language",
       description:
-        "A for instructing Nix how to build packages and create environments and systems.",
+        "A language for instructing Nix how to build packages, environments and systems.",
       href: "/concepts/nix-language",
     },
     {
