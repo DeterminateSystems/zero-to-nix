@@ -6,9 +6,8 @@
 
   <button
     class="flex items-center justify-between space-x-3 rounded-lg border-2 border-light-gray py-2 px-3 text-sm font-semibold tracking-tight hover:border-primary hover:shadow-sm dark:border-gray dark:hover:border-primary md:text-base"
-    @click="enableCookie()"
-  >
-    <span>Ok</span>
+    @click="enableCookie()">
+    <span>Opt back in</span>
   </button>
 </template>
 

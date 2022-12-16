@@ -18,9 +18,6 @@
 import posthog from "posthog-js";
 import { ref } from "vue";
 
-export type Reaction = "positive" | "negative";
-export type Step = "prompt" | "feedback" | "thankyou";
-
 const show_banner = ref<boolean>(
   !posthog.has_opted_out_capturing()
   && !posthog.has_opted_in_capturing()
