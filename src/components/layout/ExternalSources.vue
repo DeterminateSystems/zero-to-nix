@@ -7,7 +7,7 @@
     <Grid3>
       <HoverableExternalSourceLink
         v-for="({ title, href, source }, idx) in externalSources"
-        :title="title"
+        :title="md(title)"
         :href="href"
         :source="source"
         :key="idx"
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { ExternalSource } from "~/logic/content";
+import { ExternalSource, md } from "~/logic/content";
 
 const { showTitle, links: externalSources } = defineProps<{
   showTitle?: boolean;

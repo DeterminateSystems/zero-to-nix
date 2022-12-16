@@ -8,9 +8,8 @@
         class="text-xl leading-tight tracking-tight hover:text-primary"
         target="_blank"
         rel="noopener noreferrer"
-      >
-        {{ title }}
-      </a>
+        v-html="title"
+      />
 
       <a
         v-if="source"
