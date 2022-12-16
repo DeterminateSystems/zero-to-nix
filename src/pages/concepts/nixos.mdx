@@ -23,6 +23,55 @@ externalSources: [
 ---
 
 *NixOS* is a [Linux] distribution built on [Nix] and its core principles.
+Everything[^1] in a NixOS system is purely configured via the Nix expression language and module system.
+Instead of installing packages directly, you declaratively describe what system you would like to have, and Nix then builds and deploys this system for you.
+To make this possible Nix uses its *module system* (explained below) and module abstractions.
+A module is a piece of Nix code, which can be configured by a user, and then internally produces some system output.
+
+## What is a module
+
+A module in NixOS is a function, which accepts an attribute set and returns an attribute set of its own.
+The basic anatomy of a module can be seen in the code snippet below.
+
+```nix
+{ lib, config, pkgs, ... }:
+{
+  imports = [];
+  config = {};
+  options = {};
+}
+```
+
+
+<Admonition title="Why does my configuration.nix look different?" type="info" id="why-harmonic" client:load>
+When you first have a look at NixOS you will undoubtebly see a `configuration.nix` file in `/etc/nixos/`.
+Furthermore, if you look at other people's NixOS configurations, you might not see this exact structure.
+
+For one, the input set can be shortened (in the most extreme case to just `{ ... }`).
+See the [Nix syntax](/concepts/nix#basic_syntax) section for details on what this does.
+
+Additionaly there is some syntactic sugar around NixOS modules, which allow you to omit the `config` key, if your module does not declare any `options`.
+As an example, the following two modules are equivalent to each other.
+
+```nix
+{ ... }:
+{
+  imports = [ ./my-fish-config.nix ];
+  programs.fish.enable = true;
+}
+```
+
+```nix
+{ ... }:
+{
+  imports = [ ./my-fish-config.nix ];
+  config = {
+    programs.fish.enable = true;
+  };
+}
+```
+</Admonition>
+
 
 [linux]: https://linux.org
 [nix]: /concepts/nix
