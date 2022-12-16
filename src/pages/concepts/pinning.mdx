@@ -14,6 +14,18 @@ externalSources: [
 ]
 ---
 
-When you pin Nix dependencies to specific revisions...
+*Pinning* a dependency refers to the act of specifying an exact revision for Nix to use.
+This is particularly interesting in relationship to Nix's [reproducibility](/concepts/reproducibility) guarantees.
 
-Pinning enables you to fake full advantage of Nix's [reproducibility](/concepts/reproducibility) guarantees.
+When you pin Nix dependencies to a specific revision you are guaranteed to get the same outputs of builds, based on the same inputs, which can not change.
+This is particularly useful when sharing environments between different developers, or between a development and production environment.
+
+Pinning dependencies can be done in the `inputs` section of the flakes file:
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "git+https://github:nixos/nixpkgs?rev=fdc8ef970de2b4634e1b3dca296e1ed918459a9e";
+  };
+}
+```
