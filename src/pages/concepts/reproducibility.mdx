@@ -36,5 +36,22 @@ This is an important property for Nix, because hashes are based on the inputs of
 and thus it must be guaranteed that the same inputs yield in the same build output.
 
 ```nix
-
+{ stdenv, fetchGit }:
+stdenv.mkDerivation {
+  name = "my-package";
+  src = fetchgit {
+    url = "https://github.com/DeterminateSystems/riff";
+    sha256 = "sha256-7mnx7J0AacL2P2mNuNNB+kKE7VR8nniVG+PSrwpZixE=";
+  };
+}
 ```
+
+The above code consists of _two_ derivations: `fetchgit` and `mkDerivation`.
+
+The reproducibility of `mkDerivation` is guaranteed because the output of `fetchgit` is pinned to a particular hash.
+And because `mkDerivation` itself isn't allowed to touch the network, and is [hermetically](/concepts/hermiticity) sealed from the host, no impurities in the build can exist.
+
+The output of `fetchgit` is guaranteed because its output is fixed to a particular hash.
+While it *can* touch the network, it will fail to build if the output from the fetch doesn't match the user-provided output hash.
+
+You can see how the reproducibility of Nix builds are layered, like a packaging onion.
