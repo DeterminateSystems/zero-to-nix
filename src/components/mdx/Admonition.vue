@@ -72,7 +72,7 @@ if (id !== undefined && title === undefined) {
 
 const openState: WritableAtom<string> = persistentAtom<string>(
   `zero-to-nix:callout-${id}`,
-  "false"
+  "false",
 );
 const open = useStore(openState).value === "true";
 
