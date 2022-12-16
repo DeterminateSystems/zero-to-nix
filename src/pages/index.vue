@@ -16,7 +16,7 @@
       </div>
 
       <div class="space-y-4">
-        <h2 class="text-3xl" id="key-terms">Core Nix terms</h2>
+        <h2 class="text-3xl" id="key-terms">Core Nix components</h2>
 
         <NixTerms />
       </div>

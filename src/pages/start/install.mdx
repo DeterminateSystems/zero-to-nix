@@ -23,7 +23,8 @@ curl -L https://install.determinate.systems/nix | sh -s -- install
 
 <Admonition title="Why aren't we using the official Nix installer here?" type="info" id="why-harmonic" client:load>
 We believe that Harmonic provides a smoother experience for people who are new to Nix than the [official Nix installer][official].
-Unlike many tools, Nix needs to make several bold changes to your system in order to work properly, such as creating a new root volume in the `/nix` directory, configuring your shell profile, and creating several new system users and groups.
+Unlike many tools, Nix needs to make several changes to your system in order to work properly, such as configuring your shell profile, and creating several new system users and groups.
+On macOS, Nix also requires a root [Apple File System][apfs] (APFS) volume in the `/nix` directory.
 
 Harmonic improves on the official Nix installer by enabling you to undo, with a single command, all of the system changes introduced by Harmonic's Nix installation process.
 It also installs Nix with [Nix flakes][flakes] enabled, while the official installer requires you to enable flakes manually.
@@ -31,7 +32,7 @@ It also installs Nix with [Nix flakes][flakes] enabled, while the official insta
 See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Harmonic] concept if you'd like more background.
 </Admonition>
 
-Validate the displayed plan, and approve it to begin the install.
+Read over the displayed plan and approve it to begin installing.
 Once Harmonic has finished, load the Nix executable into your `PATH`:
 
 ```shell
@@ -50,6 +51,7 @@ This should print the help output of the `nix` command.
 You now have Nix installed and ready to go on your system.
 You're now ready to use Nix to run programs.
 
+[apfs]: https://es.wikipedia.org/wiki/Apple_File_System
 [build]: /start/nix-build-nixpkgs
 [detsys]: https://determinate.systems
 [dev]: /start/dev-shell-flake
