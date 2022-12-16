@@ -136,6 +136,7 @@ There are a few other important files you should be aware of when working on the
 
 If you happen to use VS Code as your editor, we recommend adding these extensions:
 
+- [`Vue.volar`][vsc-vue]
 - [`unifiedjs.vscode-mdx`][vsc-mdx]
 - [`bradlc.vscode-tailwindcss`][vsc-tailwind]
 - [`esbenp.prettier-vscode`][vsc-prettier]
@@ -185,4 +186,5 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
 [vsc-prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 [vsc-tailwind]: https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 [vsc-tsc]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next
+[vsc-vue]: https://marketplace.visualstudio.com/items?itemName=Vue.volar
 [vue]: https://vuejs.org
