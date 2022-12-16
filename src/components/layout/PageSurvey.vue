@@ -29,7 +29,9 @@ const step = ref<Step>("prompt");
 const updates = ref<number>(1);
 
 const trackingDisabled = () => {
-  return posthog.has_opted_out_capturing;
+  return typeof window !== "undefined"
+    ? posthog.has_opted_out_capturing()
+    : false;
 };
 
 const updateTracking = () => {

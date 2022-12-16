@@ -36,7 +36,9 @@ import { posthog } from "posthog-js";
 import { ref } from "vue";
 
 const showBanner = ref<boolean>(
-  !posthog.has_opted_out_capturing() && !posthog.has_opted_in_capturing()
+  typeof window !== "undefined"
+    ? !posthog.has_opted_out_capturing() && !posthog.has_opted_in_capturing()
+    : false
 );
 
 const acceptCookies = () => {
