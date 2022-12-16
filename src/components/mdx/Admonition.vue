@@ -23,7 +23,7 @@
         <IconFaChevronRight
           class="h-4 w-4"
           :class="[
-            open && 'rotate-90 transform duration-200',
+            open && 'rotate-90 transform duration-150',
             type === 'danger' && 'text-red',
             type === 'info' && 'text-blue',
             type === 'success' && 'text-green',
