@@ -135,7 +135,8 @@ const site: Site = {
     },
     {
       title: "Nixpkgs",
-      description: "A vast collection of Nix packages, libraries, and helper functions.",
+      description:
+        "A vast collection of Nix packages, libraries, and helper functions.",
       href: "/concepts/nixpkgs",
     },
   ],

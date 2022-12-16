@@ -1,35 +1,51 @@
 <template>
-  <div v-if="show_banner" class="fixed z-50 left-0 bottom-0">
+  <div v-if="showBanner" class="fixed left-0 bottom-0 z-50">
     <div
-      class="bg-primary dark:bg-gray-accent-dark rounded-lg max-w-[202px] text-white/80 translate-x-[15px] translate-y-[-15px]">
-      <p class="text-[14px] m-0 p-3">We use a single, first-party analytics cookie to focus our limited time and energy
-        on the most important documentation. Check out our <a href="https://determinate.systems/privacy"
-          class="underline" target="_blank">privacy policy</a>.
+      class="dark:bg-gray-accent-dark max-w-[202px] translate-x-[15px] translate-y-[-15px] rounded-lg bg-primary text-white/80"
+    >
+      <p class="m-0 p-3 text-[14px]">
+        We use a single, first-party analytics cookie to focus our limited time
+        and energy on the most important documentation. Check out our
+        <a
+          href="https://determinate.systems/privacy"
+          class="underline"
+          target="_blank"
+          >privacy policy</a
+        >.
       </p>
-      <div class="grid grid-cols-2 border-t border-white/40 divide-x">
-        <button class="font-semibold text-white py-2 text-sm" @click="acceptCookies">Accept</button>
-        <button class="font-semibold text-white py-2 text-sm" @click="declineCookies">Decline</button>
+      <div class="grid grid-cols-2 divide-x border-t border-white/40">
+        <button
+          class="py-2 text-sm font-semibold text-white"
+          @click="acceptCookies"
+        >
+          Accept
+        </button>
+        <button
+          class="py-2 text-sm font-semibold text-white"
+          @click="declineCookies"
+        >
+          Decline
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import posthog from "posthog-js";
+import { posthog } from "posthog-js";
 import { ref } from "vue";
 
-const show_banner = ref<boolean>(
-  !posthog.has_opted_out_capturing()
-  && !posthog.has_opted_in_capturing()
+const showBanner = ref<boolean>(
+  !posthog.has_opted_out_capturing() && !posthog.has_opted_in_capturing()
 );
 
 const acceptCookies = () => {
   posthog.opt_in_capturing();
-  show_banner.value = false;
+  showBanner.value = false;
 };
 
 const declineCookies = () => {
   posthog.opt_out_capturing();
-  show_banner.value = false;
+  showBanner.value = false;
 };
 </script>
