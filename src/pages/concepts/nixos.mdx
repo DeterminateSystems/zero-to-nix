@@ -72,6 +72,29 @@ As an example, the following two modules are equivalent to each other.
 ```
 </Admonition>
 
+## How to use modules
+
+First up, you can find modules to use and how to use them via the NixOS [module search].
+Nix modules generally follow the [declarative] principle, meaning that there's no precise order that modules are executed in.
+Instead, you describe the desired outcome of a system, which Nix then produces for you.
+
+Following is an example of how to setup and configure the [nginx] web server.
+
+```nix
+{ ... }:
+{
+  services.nginx = {
+    enable = true;
+    virtualHosts."default" = {
+      forceSSL = true;            # Redirect HTTP clients to an HTTPs connection
+      default = true;             # Always use this host, no matter the host name
+      root = /var/www/my-website; # Set the web root to serve
+    };
+  };
+}
+```
 
 [linux]: https://linux.org
 [nix]: /concepts/nix
+[module search]: https://search.nixos.org/options
+[nginx]: https://nginx.org
