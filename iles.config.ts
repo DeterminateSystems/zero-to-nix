@@ -83,6 +83,7 @@ export default defineConfig({
   },
   turbo: true,
   vite: {
+    mode: process.env["ENV"] === "production" ? "production" : "development",
     server: {
       port: 3000,
       open: true,

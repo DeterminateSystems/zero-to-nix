@@ -5,11 +5,12 @@
       <HorizontalContainer>
         <Hero
           :title="title"
-          :description="description"
+          :description="snippet"
           :breadcrumb="{
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
+          client:load
         />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">
@@ -24,6 +25,10 @@
             :links="externalSources"
             :showTitle="true"
           />
+
+          <div class="mt-16">
+            <PageSurvey client:visible />
+          </div>
         </div>
       </HorizontalContainer>
     </Top>
@@ -42,6 +47,6 @@ type Link = {
 };
 
 const {
-  frontmatter: { title, description, externalSources, related },
+  frontmatter: { title, snippet, externalSources, related },
 } = usePage<ConceptPageProps>();
 </script>

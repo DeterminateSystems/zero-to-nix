@@ -23,7 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import { Document } from "iles";
 import { getPrevious, getNext, QuickStartPage } from "../../logic/content";
 
 const { order } = defineProps<{
