@@ -1,6 +1,6 @@
 ---
 title: Hermeticity
-snippet: Fill me in later so that I show up in the tooltip
+snippet: Isolating build environments from the host to guarantee [reproducible](/concepts/reproducibility) builds
 related: ["dev-env"]
 externalSources: [
   {
@@ -14,9 +14,10 @@ externalSources: [
 ]
 ---
 
-*Hermeticity* is a property of Nix builds which are isolated from the host system via various mechanisms.
+*Hermeticity* is a property of Nix builds, which isolates them from the host system via various mechanisms.
 This results in a system where the same set of source inputs will always map to the same build outputs,
 because changes on the host can not affect a build.
 
-There are some special parts in Nix that are _not_ hermetic.
-These are referred to as "impure".
+Any system which is not hermetic is called "impure", implying that changes outside of the input set can have an impact on the build result.
+This is the inverse of Nix's "purity" property.
+
