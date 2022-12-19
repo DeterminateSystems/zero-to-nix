@@ -1,16 +1,16 @@
 <template>
   <div
-    class="flex flex-col-reverse gap-2 tracking-tight md:flex-row md:items-center md:justify-between md:gap-0 md:space-y-0 md:text-lg lg:text-xl"
+    class="flex flex-col-reverse gap-3 tracking-tight md:flex-row md:items-center md:justify-between md:gap-0 md:space-y-0 md:text-lg lg:text-xl"
   >
     <!-- Previous -->
     <div>
       <a
         v-if="previous"
         :href="previous.href"
-        class="flex justify-between space-x-3 rounded-lg border-2 border-gray px-6 py-4 font-semibold hover:bg-pale dark:hover:bg-darker-gray"
+        class="flex space-x-3 rounded-lg font-semibold"
       >
         <span class="text-gray">&larr;</span>
-        <span class="tracking-tight">
+        <span class="tracking-tight hover:text-gray dark:hover:text-light-gray">
           {{ previous.frontmatter.title }}
         </span>
       </a>
@@ -21,7 +21,7 @@
       <a
         v-if="next"
         :href="next.href"
-        class="flex justify-between space-x-3 rounded-lg border-2 border-orange px-6 py-4 font-semibold hover:bg-pale dark:hover:bg-darker-gray"
+        class="flex justify-between space-x-3 rounded-lg border-2 border-orange py-2 px-3 font-semibold hover:bg-pale dark:hover:bg-darker-gray md:px-6 md:py-4"
       >
         <span class="tracking-tight">
           {{ next.frontmatter.title }}
