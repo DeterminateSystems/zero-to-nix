@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     HoverableLink: typeof import('./src/components/layout/HoverableLink.vue')['default']
     IconAppNix: typeof import('~icons/app/nix')['default']
     IconFaChevronRight: typeof import('~icons/fa/chevron-right')['default']
+    IconFaEdit: typeof import('~icons/fa/edit')['default']
     IconFaGithub: typeof import('~icons/fa/github')['default']
     IconFaSolidMoon: typeof import('~icons/fa-solid/moon')['default']
     IconFaSolidSun: typeof import('~icons/fa-solid/sun')['default']
