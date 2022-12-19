@@ -23,7 +23,7 @@ export default defineConfig({
     }
 
     // Add an `id` parameter to concept pages based on filename
-    if (filename.split("/")[2] === "concepts") {
+    if (["concepts", "start"].includes(filename.split("/")[2])) {
       const id = getFileSlug(filename);
       frontmatter["id"] = id;
     }
