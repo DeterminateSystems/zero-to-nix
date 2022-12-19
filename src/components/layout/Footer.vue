@@ -13,5 +13,5 @@
       </div>
     </HorizontalContainer>
   </footer>
-  <CookieConsent client:visible />
+  <CookieConsent />
 </template>

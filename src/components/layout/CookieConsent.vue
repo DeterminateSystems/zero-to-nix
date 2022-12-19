@@ -35,19 +35,26 @@
 import { posthog } from "posthog-js";
 import { ref } from "vue";
 
+const isProd = import.meta.env.MODE === "production";
+
 const showBanner = ref<boolean>(
-  typeof window !== "undefined"
-    ? !posthog.has_opted_out_capturing() && !posthog.has_opted_in_capturing()
-    : false
+  isProd &&
+    !posthog.has_opted_out_capturing() &&
+    !posthog.has_opted_in_capturing(),
 );
 
 const acceptCookies = () => {
-  posthog.opt_in_capturing();
+  if (isProd) {
+    posthog.opt_in_capturing();
+  }
+
   showBanner.value = false;
 };
 
 const declineCookies = () => {
-  posthog.opt_out_capturing();
+  if (isProd) {
+    posthog.opt_out_capturing();
+  }
   showBanner.value = false;
 };
 </script>
