@@ -3,7 +3,7 @@
     <PageSurvey />
 
     <div class="space-y-4">
-      <span class="flex items-center space-x- text-lg">
+      <span class="flex items-center space-x-3 text-lg">
         <span><IconFaEdit class="text-dark dark:text-light-gray" /></span>
         <a
           :href="editUrl"
