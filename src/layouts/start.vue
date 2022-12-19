@@ -23,7 +23,7 @@
         </div>
 
         <div class="mt-16 space-y-12">
-          <FeedbackBar client:load />
+          <FeedbackBar />
           <Pagination :order="order" />
         </div>
       </HorizontalContainer>
