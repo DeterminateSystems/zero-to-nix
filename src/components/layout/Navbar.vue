@@ -7,7 +7,7 @@
         <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
           <a
             href="/"
-            class="text-2xl font-semibold tracking-tighter hover:text-dark-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
+            class="text-2xl font-semibold tracking-tighter hover:text-primary dark:hover:text-light-gray md:text-3xl lg:text-4xl"
           >
             {{ $site.title }}
           </a>
