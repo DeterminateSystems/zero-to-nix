@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     Dropdown: typeof import('./src/components/layout/generic/Dropdown.vue')['default']
     ExternalSources: typeof import('./src/components/layout/ExternalSources.vue')['default']
     Features: typeof import('./src/components/layout/Features.vue')['default']
+    FeedbackBar: typeof import('./src/components/layout/FeedbackBar.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Grid2: typeof import('./src/components/layout/Grid2.vue')['default']
     Grid3: typeof import('./src/components/layout/Grid3.vue')['default']

@@ -27,7 +27,7 @@
           />
 
           <div class="mt-16">
-            <PageSurvey client:visible />
+            <FeedbackBar />
           </div>
         </div>
       </HorizontalContainer>
