@@ -11,7 +11,8 @@
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
       <DisclosureButton
         as="div"
-        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer"
+        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer hover:bg-light-gray hover:text-dark dark:hover:bg-darker-gray dark:hover:text-light-gray"
+        :class="[open && 'rounded-t-lg', !open && 'rounded-lg']"
         @mouseover="buttonHover = true"
         @mouseleave="buttonHover = false"
         @click="toggle"
@@ -21,14 +22,13 @@
         </span>
 
         <IconFaChevronRight
-          class="h-4 w-4"
+          class="h-4 w-4 transform duration-300"
           :class="[
-            open && 'rotate-90 transform duration-150',
+            open && 'rotate-90',
             type === 'danger' && 'text-red',
             type === 'info' && 'text-blue',
             type === 'success' && 'text-green',
             type === 'warning' && 'text-yellow',
-            buttonHover && 'text-dark dark:text-light-gray',
           ]"
         />
       </DisclosureButton>
