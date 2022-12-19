@@ -23,6 +23,7 @@
           <ExternalSources
             v-if="externalSources && externalSources.length > 0"
             :links="externalSources"
+            :showTitle="true"
           />
 
           <div class="mt-16">

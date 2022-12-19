@@ -9,12 +9,18 @@
         'text-normal py-1 px-2 md:py-1.5 md:px-3 md:text-lg lg:py-2.5 lg:px-4 lg:text-xl',
     ]"
   >
-    {{ text }}
+    <div v-if="order" class="flex items-start space-x-2">
+      <span>{{ order }}.</span>
+      <span>{{ text }}</span>
+    </div>
+
+    <span v-else>{{ text }}</span>
   </a>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
+  order?: number;
   text: string;
   href: string;
   size?: "normal" | "sm";

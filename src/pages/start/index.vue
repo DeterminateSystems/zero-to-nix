@@ -11,7 +11,8 @@
         v-for="({ href, frontmatter }, idx) in sortedQuickStartPages"
         :key="idx"
         :href="href"
-        :text="`${frontmatter.order}. ${frontmatter.title}`"
+        :order="frontmatter.order"
+        :text="frontmatter.title"
         size="normal"
       />
     </Grid2>

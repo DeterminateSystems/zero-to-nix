@@ -27,8 +27,11 @@
                 class="block py-1.5 px-3 text-sm tracking-tight hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-base lg:text-lg"
                 :href="href"
               >
-                <span v-if="order">{{ order }}. </span>
-                <span>{{ title }}</span>
+                <div v-if="order" class="flex space-x-1">
+                  <span>{{ order }}.</span>
+                  <span>{{ title }}</span>
+                </div>
+                <span v-else>{{ title }}</span>
               </a>
             </li>
           </ul>
