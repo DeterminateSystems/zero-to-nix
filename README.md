@@ -80,11 +80,11 @@ Zero to Nix's "stack" 🥞:
 The site uses a number of custom [MDX] components to spice up the usual Markdown content.
 
 | Component                                                                | What it does                                                                                                                            |
-| :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
 | [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /></br />Adding an `id` makes it a stateful callout dropdown. |
 | [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                  |
 | [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                             |
-| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                              |     |
+| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                              |
 | [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                                                                          |
 | [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                                                                                   |
 | [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language                                                         |
