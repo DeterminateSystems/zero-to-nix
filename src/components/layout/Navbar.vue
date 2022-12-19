@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="sticky top-0 z-10 bg-white/75 py-2 shadow-sm shadow-light-gray backdrop-blur dark:bg-inherit dark:shadow-dark-gray md:py-2.5 lg:py-3"
+    class="sticky top-0 z-10 bg-white py-2 shadow-sm shadow-light-gray dark:bg-inherit dark:shadow-dark-gray md:py-2.5 lg:py-3"
   >
     <HorizontalContainer>
       <div class="flex items-center justify-between">
