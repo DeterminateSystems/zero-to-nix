@@ -15,24 +15,24 @@ In this [quick start][start], we'll get Nix installed on your system and provide
 
 ## Install Nix \{#download}
 
-Install Nix using [nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
+Install Nix using [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
 curl -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
 <Admonition title="Why aren't we using the official Nix installation script here?" type="info" id="why-nix-installer" client:load>
-We believe that nix-installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
+We believe that Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
 Unlike many tools, Nix needs to make several bold changes to your system in order to work properly, such as creating a new root volume in the `/nix` directory, configuring your shell profile, and creating several new system users and groups.
 
-nix-installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by nix-installer's installation process.
+Nix Installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by Nix Installer's installation process.
 It also installs Nix with [Nix flakes][flakes] enabled, while the official installer requires you to enable flakes manually.
 
-See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [nix-installer] concept if you'd like more background.
+See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Nix Installer][nix-installer] concept doc if you'd like more background.
 </Admonition>
 
 Validate the displayed plan, and approve it to begin the install.
-Once nix-installer has finished, load the Nix executable into your `PATH`:
+Once Nix Installer has finished, load the Nix executable into your `PATH`:
 
 ```shell
 exec $SHELL
