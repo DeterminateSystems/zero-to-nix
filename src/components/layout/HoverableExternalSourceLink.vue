@@ -6,17 +6,20 @@
       <a
         :href="externalSourceHref"
         class="text-xl leading-tight tracking-tight hover:text-primary"
-      >
-        {{ title }}
-      </a>
+        target="_blank"
+        rel="noopener noreferrer"
+        v-html="title"
+      />
 
       <a
         v-if="source"
         :href="source.href"
-        target="_blank"
         class="text-sm font-light tracking-tight hover:text-primary dark:hover:text-light-blue"
-        >{{ source.title }}</a
+        target="_blank"
+        rel="noopener noreferrer"
       >
+        {{ source.title }}
+      </a>
     </div>
   </div>
 </template>

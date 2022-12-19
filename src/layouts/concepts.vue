@@ -23,10 +23,11 @@
           <ExternalSources
             v-if="externalSources && externalSources.length > 0"
             :links="externalSources"
+            :showTitle="true"
           />
 
           <div class="mt-16">
-            <PageSurvey client:visible />
+            <FeedbackBar />
           </div>
         </div>
       </HorizontalContainer>

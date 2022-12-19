@@ -3,6 +3,7 @@
   --dark: rgb(10, 10, 10);
 
   /* Tailwind colors */
+  /* Drawn from: https://tailwindcss.com/docs/customizing-colors */
   --pale: #f8fafc; /* slate-50 */
   --yellow: #eab308; /* yellow-500 */
   --pale-yellow: #fefce8; /* yellow-50 */
@@ -11,6 +12,7 @@
   --light-gray: #cbd5e1; /* slate-300 */
   --gray: #64748b; /* slate-500 */
   --dark-gray: #334155; /* slate-700 */
+  --darker-gray: #1e293b; /* slate-800 */
   --blue: #3b82f6; /* blue-500 */
   --light-blue: #93c5fd; /* blue-300 */
   --pale-blue: #eff6ff; /* blue-50 */
