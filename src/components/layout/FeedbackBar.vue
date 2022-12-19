@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between">
     <PageSurvey />
 
-    <div class="space-y-4">
+    <div class="space-y-3">
       <span class="flex items-center space-x-3 text-lg">
         <span><IconFaEdit class="text-dark dark:text-light-gray" /></span>
         <a
