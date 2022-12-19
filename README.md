@@ -85,7 +85,6 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 | [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                  |
 | [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                             |
 | [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                              |
-| [`Harmonic`](./src/components/mdx/code/Harmonic.vue)                     | Provides system-specific shell commands for [Harmonic]                                                                                  |
 | [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                                                                          |
 | [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                                                                                   |
 | [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language                                                         |
@@ -173,7 +172,6 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
 [gha]: https://github.com/features/actions
-[harmonic]: https://github.com/DeterminateSystems/harmonic
 [hydration]: https://iles.pages.dev/guide/hydration#hydration-directives
 [iles]: https://github.com/elMassimo/iles
 [mdx]: https://mdxjs.com
