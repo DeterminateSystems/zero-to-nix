@@ -1,0 +1,39 @@
+---
+title: Binary caches
+snippet: |
+
+externalSources: [
+  {
+    title: "Binary Cache",
+    href: "https://nixos.wiki/wiki/Binary_Cache",
+    source: {
+      title: "The NixOS Wiki",
+      href: "https://nixos.wiki"
+    }
+  },
+  {
+    title: "Setting up a private Nix cache for fun and profit",
+    href: "https://channable.com/tech/setting-up-a-private-nix-cache-for-fun-and-profit",
+    source: {
+      title: "The Channable blog",
+      href: "https://www.channable.com/tech"
+    }
+  },
+  {
+    title: "Serving a Nix store via HTTP",
+    href: "https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter",
+    source: {
+      title: "The Nix manual",
+      href: "https://nixos.org/manual/nix/stable"
+    }
+  }
+]
+---
+
+Nix store paths have this structure:
+
+<NixStorePath pkg="git-2.37.0" >
+
+Whenever Nix builds a [derivation], it calculates an **input hash** for each
+
+[derivation]: /concepts/derivations
