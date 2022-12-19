@@ -1,23 +1,33 @@
 <template>
   <div
-    class="text-normal flex flex-col items-center justify-between tracking-tight md:flex-row md:text-lg lg:text-xl"
+    class="flex flex-col-reverse gap-2 tracking-tight md:flex-row md:items-center md:justify-between md:gap-0 md:space-y-0 md:text-lg lg:text-xl"
   >
+    <!-- Previous -->
     <div>
-      <span v-if="previous" class="flex space-x-4">
-        <span>&larr;</span>
-        <a :href="previous.href" class="font-semibold hover:text-primary">
+      <a
+        v-if="previous"
+        :href="previous.href"
+        class="flex justify-between space-x-3 rounded-lg border-2 border-gray px-6 py-4 font-semibold hover:bg-pale dark:hover:bg-darker-gray"
+      >
+        <span class="text-gray">&larr;</span>
+        <span class="tracking-tight">
           {{ previous.frontmatter.title }}
-        </a>
-      </span>
+        </span>
+      </a>
     </div>
 
+    <!-- Next -->
     <div>
-      <span v-if="next" class="flex space-x-4">
-        <a :href="next.href" class="font-semibold hover:text-primary">
+      <a
+        v-if="next"
+        :href="next.href"
+        class="flex justify-between space-x-3 rounded-lg border-2 border-orange px-6 py-4 font-semibold hover:bg-pale dark:hover:bg-darker-gray"
+      >
+        <span class="tracking-tight">
           {{ next.frontmatter.title }}
-        </a>
-        <span>&rarr;</span>
-      </span>
+        </span>
+        <span class="text-orange">&rarr;</span>
+      </a>
     </div>
   </div>
 </template>
