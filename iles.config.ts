@@ -81,7 +81,7 @@ export default defineConfig({
       }
     },
   },
-  turbo: true,
+  turbo: false, // does this mess up posthog?
   vite: {
     mode: process.env["ENV"] === "production" ? "production" : "development",
     server: {
