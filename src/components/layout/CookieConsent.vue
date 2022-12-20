@@ -38,14 +38,14 @@ import { ref, computed } from "vue";
 const posthogRemembersPreference = computed (() => {
   console.log("in/out");
 
-  console.log($this.$posthog.has_opted_out_capturing());
+  console.log(this.posthog.has_opted_out_capturing());
 
     console.log("in/out");
-    console.log(posthog.has_opted_out_capturing());
-    console.log(posthog.has_opted_in_capturing());
+    console.log(this.$posthog.has_opted_out_capturing());
+    console.log(this.$posthog.has_opted_in_capturing());
     return (
-      posthog.has_opted_out_capturing() ||
-      posthog.has_opted_in_capturing()
+      this.$posthog.has_opted_out_capturing() ||
+      this.$posthog.has_opted_in_capturing()
     );
 });
 
@@ -57,13 +57,13 @@ const isEnabled = computed (() => {
 const optionSelected = ref<boolean>(false);
 
 const doDisplayConsent = computed (() => {
-  return !posthogRemembersPreference;
+  return posthogRemembersPreference;
 });
 
 
 const acceptCookies = () => {
   if (isEnabled) {
-    posthog.opt_in_capturing();
+    $this.posthog.opt_in_capturing();
   }
 
   optionSelected.value = true;
@@ -71,7 +71,7 @@ const acceptCookies = () => {
 
 const declineCookies = () => {
   if (isEnabled ) {
-    posthog.opt_out_capturing();
+    this.$posthog.opt_out_capturing();
   }
   optionSelected.value = true;
 };

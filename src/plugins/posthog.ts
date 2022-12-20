@@ -1,9 +1,15 @@
 import { App, Plugin } from 'vue';
 import posthog from "posthog-js";
 
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $posthog: typeof posthog
+  }
+}
+
 export interface PosthogPluginInterface
 {
-    posthog: any
+    posthog: typeof posthog
 }
 
 export interface PosthogPluginOptions {
@@ -22,7 +28,6 @@ const createPosthogPlugin = (options: PosthogPluginOptions): PosthogPluginInterf
 
 export const PosthogPlugin: Plugin = {
   install(app: App, options: PosthogPluginOptions) {
-      // makes ColoredText available in your Vue.js app as either "$this.coloredText" (in your Source) or "{{ $coloredText }}" in your templates
       app.config.globalProperties.$posthog = createPosthogPlugin(options)
   }
 }
