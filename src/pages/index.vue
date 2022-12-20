@@ -5,7 +5,7 @@
         <div>
           <div class="space-y-4 md:space-y-6 lg:space-y-8">
             <h1
-              class="text-5xl tracking-tighter text-pale md:text-6xl lg:text-7xl"
+              class="text-5xl tracking-tight text-pale md:text-6xl lg:text-7xl"
             >
               {{ $site.title }}
             </h1>

@@ -41,11 +41,6 @@
 import { usePage } from "iles";
 import { ConceptPageProps } from "~/logic/content";
 
-type Link = {
-  title: string;
-  href: string;
-};
-
 const {
   frontmatter: { title, snippet, externalSources, related },
 } = usePage<ConceptPageProps>();

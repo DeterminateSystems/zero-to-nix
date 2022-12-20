@@ -1,8 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fontsource/fira-mono': ^4.5.10
-  '@fontsource/inter': ^4.5.14
   '@headlessui/vue': ^1.7.4
   '@iconify-json/fa': ^1.1.2
   '@iconify-json/fa-solid': ^1.1.2
@@ -37,8 +35,6 @@ specifiers:
   vue3-popper: ^1.5.0
 
 devDependencies:
-  '@fontsource/fira-mono': 4.5.10
-  '@fontsource/inter': 4.5.14
   '@headlessui/vue': 1.7.4_vue@3.2.45
   '@iconify-json/fa': 1.1.2
   '@iconify-json/fa-solid': 1.1.2
@@ -144,14 +140,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@fontsource/fira-mono/4.5.10:
-    resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
-    dev: true
-
-  /@fontsource/inter/4.5.14:
-    resolution: {integrity: sha512-JDC9AocdPLuGsASkvWw9hS5gtHE7K9dOwL98XLrk5yjYqxy4uVnScG58NUvFMJDVJRl/7c8Wnap6PEs+7Zvj1Q==}
-    dev: true
 
   /@headlessui/vue/1.7.4_vue@3.2.45:
     resolution: {integrity: sha512-QHRlKCK/zRpjSjhth7c2CZvx5eMDFflXauqRdRJgp1CwScx6PwCpWiwDsjQcYM4z8Yik2ZvyX8W4PFT2Wsqqyw==}
