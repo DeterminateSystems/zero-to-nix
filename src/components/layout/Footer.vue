@@ -7,7 +7,7 @@
         >
           Copyright &copy; {{ $site.year }}
           <a href="https://determinate.systems" class="hover:text-primary">
-            Determinate Systems
+            Determinate Systems, Inc.
           </a>
         </p>
       </div>
