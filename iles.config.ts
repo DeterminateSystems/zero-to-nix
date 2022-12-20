@@ -64,9 +64,9 @@ export default defineConfig({
             const relativeOutputDir =
               pathSegments.length > 1
                 ? // Convert e.g. /start/install.html to /start/install/index.html
-                  `${pathSegments.at(0)}/${getFileSlug(filename)}`
+                `${pathSegments.at(0)}/${getFileSlug(filename)}`
                 : // Convert e.g. /start.html to /start/index.html
-                  getFileSlug(filename);
+                getFileSlug(filename);
 
             const outputFilename = `${out}/${filename}`;
             rmSync(outputFilename);
