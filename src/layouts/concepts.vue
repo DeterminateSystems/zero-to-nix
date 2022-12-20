@@ -10,7 +10,7 @@
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
-          client:load
+          client:none
         />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">

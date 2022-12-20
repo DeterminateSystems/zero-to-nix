@@ -3,7 +3,7 @@
     <Hero
       title="Quick start"
       description="Feel the power of Nix in no time"
-      client:load
+      client:none
     />
 
     <Grid2>

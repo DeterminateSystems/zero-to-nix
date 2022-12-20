@@ -2,23 +2,23 @@
   <div
     class="admonition not-prose rounded-lg border-2 dark:bg-inherit"
     :class="[
-      type === 'danger' && 'border-red',
-      type === 'info' && 'border-blue',
-      type === 'success' && 'border-green',
-      type === 'warning' && 'border-yellow',
+      type === 'danger' && 'border-red bg-pale-red',
+      type === 'info' && 'border-blue bg-pale-blue',
+      type === 'success' && 'border-green bg-pale-green',
+      type === 'warning' && 'border-yellow bg-pale-yellow',
     ]"
   >
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
       <DisclosureButton
         as="div"
-        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer hover:bg-light-gray hover:text-dark dark:hover:bg-darker-gray dark:hover:text-light-gray"
+        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer hover:text-dark dark:hover:bg-darker-gray dark:hover:text-light-gray"
         :class="[
           open && 'rounded-t-lg',
           !open && 'rounded-lg',
-          type === 'danger' && 'hover:bg-pale-red',
-          type === 'info' && 'hover:bg-pale-blue',
-          type === 'success' && 'hover:bg-pale-green',
-          type === 'warning' && 'hover:bg-pale-yellow',
+          type === 'danger' && 'hover:bg-middle-red',
+          type === 'info' && 'hover:bg-middle-blue',
+          type === 'success' && 'hover:bg-middle-green',
+          type === 'warning' && 'hover:bg-middle-yellow',
         ]"
         @mouseover="buttonHover = true"
         @mouseleave="buttonHover = false"
