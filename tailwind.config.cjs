@@ -5,11 +5,9 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{ts,vue}"],
   darkMode: "class",
+  plugins: [require("@tailwindcss/typography")],
   theme: {
     extend: {
-      maxWidth: {
-        "8xl": "90rem",
-      },
       colors: {
         // Variables defined in src/assets/css/variables.css
         pale: "var(--pale)",
@@ -40,7 +38,9 @@ module.exports = {
         "light-orange": "var(--light-orange)",
         primary: "var(--primary)",
       },
+      maxWidth: {
+        "8xl": "90rem",
+      },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
 };
