@@ -34,33 +34,18 @@
 <script setup lang="ts">
 import { ref, computed, inject, onMounted } from "vue";
 
-onMounted(() => {
-  console.log("in/out");
-
-  console.log(posthog.has_opted_out_capturing());
-
-    console.log("in/out");
-    console.log(posthog.has_opted_out_capturing());
-    console.log(posthog.has_opted_in_capturing());
-
-    posthogRemembersPreference.value =
-      posthog.has_opted_out_capturing() ||
-      posthog.has_opted_in_capturing()
-    ;
-});
-
 const posthog = inject('posthog');
 
 const posthogRemembersPreference = ref<boolean>(false);
 
-const isEnabled = computed (() => {
+const isEnabled = computed(() => {
   return true;
   //return (import.meta.env.MODE === "production");
 });
 
 const optionSelected = ref<boolean>(false);
 
-const doDisplayConsent = computed (() => {
+const doDisplayConsent = computed(() => {
   console.log("doDisplay");
   console.log(posthogRemembersPreference.value);
   console.log(optionSelected.value);
@@ -80,4 +65,20 @@ const declineCookies = () => {
 
   optionSelected.value = true;
 };
+
+onMounted(() => {
+  console.log("in/out");
+
+  console.log(posthog.has_opted_out_capturing());
+
+  console.log("in/out");
+  console.log(posthog.has_opted_out_capturing());
+  console.log(posthog.has_opted_in_capturing());
+
+  posthogRemembersPreference.value =
+    posthog.has_opted_out_capturing() ||
+    posthog.has_opted_in_capturing()
+    ;
+});
+
 </script>
