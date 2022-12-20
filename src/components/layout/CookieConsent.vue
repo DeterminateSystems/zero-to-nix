@@ -26,13 +26,13 @@ const posthogRemembersPreference = ref<boolean>(false);
 
 const optionSelected = ref<boolean>(false);
 
-const doDisplayConsent = computed(() => {
+const doDisplayConsent = () => {
   return !(
     posthogRemembersPreference.value
     ||
     optionSelected.value
   );
-});
+};
 
 const acceptCookies = () => {
   optionSelected.value = true;
