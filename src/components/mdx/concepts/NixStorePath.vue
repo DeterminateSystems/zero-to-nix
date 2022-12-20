@@ -10,7 +10,7 @@
           <span class="font-mono text-lilac dark:text-cerulean">
             /nix/store/
           </span>
-          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-normal">
+          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base">
             <strong>1.</strong> Root path
           </span>
         </div>
@@ -18,21 +18,21 @@
           <span class="font-mono font-light text-blue dark:text-lilac">
             sglc12hc6pc68w5ppn2k56n6jcpaci16
           </span>
-          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-normal">
+          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base">
             <strong>2.</strong> Input hash
           </span>
         </div>
         <span>-</span>
         <div class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
           <span class="font-mono text-orange dark:text-rose">{{ pkg }}</span>
-          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-normal">
+          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base">
             <strong>3.</strong> Package name
           </span>
         </div>
         <span v-if="bin">/</span>
         <div v-if="bin" class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
           <span class="font-mono text-orange dark:text-rose">bin/{{ bin }}</span>
-          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-normal">
+          <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base">
             <strong>4.</strong> Program path
           </span>
         </div>
