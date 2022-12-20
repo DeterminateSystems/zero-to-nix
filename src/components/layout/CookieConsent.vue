@@ -35,12 +35,6 @@
 import { ref, computed, inject, onMounted } from "vue";
 
 onMounted(() => {
-  console.log(`the component is now mounted.`)
-})
-
-const posthog = inject('posthog');
-
-const posthogRemembersPreference = computed (() => {
   console.log("in/out");
 
   console.log(posthog.has_opted_out_capturing());
@@ -48,11 +42,16 @@ const posthogRemembersPreference = computed (() => {
     console.log("in/out");
     console.log(posthog.has_opted_out_capturing());
     console.log(posthog.has_opted_in_capturing());
-    return (
+
+    posthogRemembersPreference.value =
       posthog.has_opted_out_capturing() ||
       posthog.has_opted_in_capturing()
-    );
+    ;
 });
+
+const posthog = inject('posthog');
+
+const posthogRemembersPreference = ref<boolean>(false);
 
 const isEnabled = computed (() => {
   return true;
@@ -62,7 +61,9 @@ const isEnabled = computed (() => {
 const optionSelected = ref<boolean>(false);
 
 const doDisplayConsent = computed (() => {
-  return !(posthogRemembersPreference || optionSelected);
+  console.log("doDisplay");
+
+  return !(posthogRemembersPreference.value || optionSelected.value);
 });
 
 
