@@ -8,7 +8,6 @@ import rehypeSlugCustomId from "rehype-slug-custom-id";
 import remarkGfm from "remark-gfm";
 
 import codeBlockPlugin from "./src/plugins/code";
-import { PosthogPlugin } from "./src/plugins/posthog";
 import site from "./src/site";
 
 const { url: siteUrl } = site;
@@ -89,9 +88,6 @@ export default defineConfig({
       port: 3000,
       open: true,
     },
-    plugins: [
-      PosthogPlugin,
-    ]
   },
 });
 

@@ -32,20 +32,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 
+const posthog = inject('posthog');
 
 const posthogRemembersPreference = computed (() => {
   console.log("in/out");
 
-  console.log(this.$posthog.has_opted_out_capturing());
+  console.log(posthog.has_opted_out_capturing());
 
     console.log("in/out");
-    console.log(this.$posthog.has_opted_out_capturing());
-    console.log(this.$posthog.has_opted_in_capturing());
+    console.log(posthog.has_opted_out_capturing());
+    console.log(posthog.has_opted_in_capturing());
     return (
-      this.$posthog.has_opted_out_capturing() ||
-      this.$posthog.has_opted_in_capturing()
+      posthog.has_opted_out_capturing() ||
+      posthog.has_opted_in_capturing()
     );
 });
 
@@ -57,18 +58,18 @@ const isEnabled = computed (() => {
 const optionSelected = ref<boolean>(false);
 
 const doDisplayConsent = computed (() => {
-  return posthogRemembersPreference;
+  return !(posthogRemembersPreference || optionSelected);
 });
 
 
 const acceptCookies = () => {
-  this.$posthog.opt_in_capturing();
+  posthog.opt_in_capturing();
 
   optionSelected.value = true;
 };
 
 const declineCookies = () => {
-  this.$posthog.opt_out_capturing();
+  posthog.opt_out_capturing();
 
   optionSelected.value = true;
 };
