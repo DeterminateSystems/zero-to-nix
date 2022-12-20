@@ -35,10 +35,12 @@ const doDisplayConsent = () => {
 };
 
 const acceptCookies = () => {
+  console.log("hello!")
   optionSelected.value = true;
 };
 
 const declineCookies = () => {
+  console.log("bye!")
   optionSelected.value = true;
 };
 
