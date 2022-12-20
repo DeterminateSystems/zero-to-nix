@@ -7,10 +7,6 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
-      },
       maxWidth: {
         "8xl": "90rem",
       },

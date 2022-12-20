@@ -35,7 +35,7 @@
     }
 
     .heading {
-      @apply tracking-tighter;
+      @apply tracking-tight;
 
       &::before {
         display: block;
