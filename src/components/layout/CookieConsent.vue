@@ -38,7 +38,7 @@ import { ref, computed } from "vue";
 const posthogRemembersPreference = computed (() => {
   console.log("in/out");
 
-  console.log(this.posthog.has_opted_out_capturing());
+  console.log(this.$posthog.has_opted_out_capturing());
 
     console.log("in/out");
     console.log(this.$posthog.has_opted_out_capturing());
@@ -62,17 +62,14 @@ const doDisplayConsent = computed (() => {
 
 
 const acceptCookies = () => {
-  if (isEnabled) {
-    $this.posthog.opt_in_capturing();
-  }
+  this.$posthog.opt_in_capturing();
 
   optionSelected.value = true;
 };
 
 const declineCookies = () => {
-  if (isEnabled ) {
-    this.$posthog.opt_out_capturing();
-  }
+  this.$posthog.opt_out_capturing();
+
   optionSelected.value = true;
 };
 </script>
