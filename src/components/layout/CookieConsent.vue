@@ -1,5 +1,5 @@
 <template>
-  <div v-if="doDisplayConsent" class="fixed left-0 bottom-0 z-50">
+  <div v-if="doDisplayConsent()" class="fixed left-0 bottom-0 z-50">
     <div
       class="dark:bg-gray-accent-dark max-w-[202px] translate-x-[15px] translate-y-[-15px] rounded-lg bg-primary text-white/80">
       <p class="m-0 p-3 text-[14px]">
