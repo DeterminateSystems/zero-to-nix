@@ -41,12 +41,12 @@
       </DisclosurePanel>
     </Disclosure>
 
-    <div v-else class="space-y-2">
-      <p v-if="title" class="text-xl font-semibold tracking-tighter">
+    <div v-else>
+      <p v-if="title" class="py-3 px-5 text-xl font-semibold tracking-tighter">
         {{ title }}
       </p>
 
-      <div class="content py-4 px-5 text-sm md:text-base lg:text-lg">
+      <div class="content py-3 px-5 text-sm md:text-base lg:text-lg">
         <slot />
       </div>
     </div>
