@@ -1,6 +1,6 @@
 <template>
   <div
-    class="admonition not-prose rounded-lg border-1.5 py-4 px-5 dark:bg-inherit"
+    class="admonition not-prose rounded-lg border-2 dark:bg-inherit"
     :class="[
       type === 'danger' && 'border-red bg-pale-red',
       type === 'info' && 'border-blue bg-pale-blue',
@@ -9,29 +9,33 @@
     ]"
   >
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
-      <div class="flex items-center justify-between">
+      <DisclosureButton
+        as="div"
+        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer hover:bg-light-gray hover:text-dark dark:hover:bg-darker-gray dark:hover:text-light-gray"
+        :class="[open && 'rounded-t-lg', !open && 'rounded-lg']"
+        @mouseover="buttonHover = true"
+        @mouseleave="buttonHover = false"
+        @click="toggle"
+      >
         <span class="text-xl font-semibold tracking-tight">
           {{ title }}
         </span>
 
-        <DisclosureButton as="button" class="flex items-center justify-between">
-          <IconFaChevronRight
-            class="h-4 w-4 hover:text-dark-gray dark:hover:text-light-gray"
-            :class="[
-              open && 'rotate-90 transform duration-200',
-              type === 'danger' && 'text-red',
-              type === 'info' && 'text-blue',
-              type === 'success' && 'text-green',
-              type === 'warning' && 'text-yellow',
-            ]"
-            @click="toggle"
-          />
-        </DisclosureButton>
-      </div>
+        <IconFaChevronRight
+          class="h-4 w-4 transform duration-300"
+          :class="[
+            open && 'rotate-90',
+            type === 'danger' && 'text-red',
+            type === 'info' && 'text-blue',
+            type === 'success' && 'text-green',
+            type === 'warning' && 'text-yellow',
+          ]"
+        />
+      </DisclosureButton>
 
       <DisclosurePanel
         as="div"
-        class="content mt-3.5 text-sm md:text-base lg:text-lg"
+        class="content mt-3.5 px-5 pb-4 text-sm md:text-base lg:text-lg"
       >
         <slot />
       </DisclosurePanel>
@@ -42,7 +46,7 @@
         {{ title }}
       </p>
 
-      <div class="content text-sm md:text-base lg:text-lg">
+      <div class="content py-4 px-5 text-sm md:text-base lg:text-lg">
         <slot />
       </div>
     </div>
@@ -54,6 +58,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
+import { ref } from "vue";
 
 const { id, type, title } = defineProps<{
   id?: string;
@@ -67,11 +72,13 @@ if (id !== undefined && title === undefined) {
 
 const openState: WritableAtom<string> = persistentAtom<string>(
   `zero-to-nix:callout-${id}`,
-  "false"
+  "false",
 );
 const open = useStore(openState).value === "true";
 
 const toggle = () => {
   openState.set(open ? "false" : "true");
 };
+
+const buttonHover = ref<boolean>(false);
 </script>

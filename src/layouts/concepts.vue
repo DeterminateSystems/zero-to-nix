@@ -10,6 +10,7 @@
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
+          client:load
         />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">
@@ -22,7 +23,12 @@
           <ExternalSources
             v-if="externalSources && externalSources.length > 0"
             :links="externalSources"
+            :showTitle="true"
           />
+
+          <div class="mt-16">
+            <FeedbackBar />
+          </div>
         </div>
       </HorizontalContainer>
     </Top>
@@ -41,6 +47,6 @@ type Link = {
 };
 
 const {
-  frontmatter: { title, description, snippet, externalSources, related },
+  frontmatter: { title, snippet, externalSources, related },
 } = usePage<ConceptPageProps>();
 </script>

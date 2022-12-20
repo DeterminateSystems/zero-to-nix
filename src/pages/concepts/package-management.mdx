@@ -1,7 +1,8 @@
 ---
 title: Package management
-snippet: Fill me in later so that I show up in the tooltip
-related: ["package", "provenance"]
+snippet: |
+  The art of building and distributing software [packages](/concepts/package)
+related: ["package"]
 externalSources: [
   {
     title: "Package manager",
@@ -14,12 +15,12 @@ externalSources: [
 ]
 ---
 
-**Package management** is the art of building and distributing software [packages].
+*Package management* is the art of building and distributing software [packages].
 
-[Nix] has several important differences with package managers like [apt], [dpkg], and [yum]:
+[Nix] is different from package managers like [apt], [dpkg], and [yum] in several important ways:
 
 * Nix always builds all [packages] from scratch, including the entire [closure], or dependency tree, of that package.
-  But if a dependency is already present in the [Nix store][store] or in a remote cache, Nix can use that instead of rebuilding it, which enables Nix to have [incremental builds][incremental].
+  But if a dependency is already present in the [Nix store][store] or in a remote cache, Nix can use that instead of rebuilding it, which means that Nix can provide [incremental builds][incremental].
 * Nix has a [language]&mdash;also called *Nix*&mdash;that you can use to define your own package builds
 * Nix works on several platforms, including Linux, macOS, and Windows WSL.
 

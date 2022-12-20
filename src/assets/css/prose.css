@@ -1,27 +1,68 @@
-/* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
-.content {
-  a {
-    @apply underline hover:text-primary dark:hover:text-light-blue;
-  }
+@layer base {
+  /* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
+  .content {
+    a {
+      @apply underline hover:text-primary dark:hover:text-light-blue;
+    }
 
-  p + p {
-    @apply mt-2 md:mt-2.5 lg:mt-3;
-  }
-}
-
-.prose {
-  a {
-    @apply underline hover:text-primary dark:hover:text-light-blue;
-  }
-
-  code {
-    &::before,
-    &::after {
-      content: "";
+    p + p {
+      @apply mt-2 md:mt-2.5 lg:mt-3;
     }
   }
 
-  .admonition {
-    @apply my-4;
+  .prose {
+    .not-prose {
+      a {
+        @apply no-underline;
+      }
+    }
+
+    a {
+      @apply underline hover:text-primary dark:hover:text-light-blue;
+
+      /* Hoverable heading links */
+      &.heading-anchor {
+        @apply float-left text-2xl text-primary no-underline opacity-0;
+
+        margin-top: 0.125em;
+        margin-left: -1em;
+        padding-right: 0.23em;
+
+        &::before {
+          content: "#";
+        }
+      }
+    }
+
+    .heading {
+      @apply tracking-tighter;
+
+      &::before {
+        display: block;
+        content: " ";
+        margin-top: -5rem;
+        height: 5rem;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      &:focus,
+      &:hover {
+        a.heading-anchor {
+          @apply text-primary opacity-100;
+        }
+      }
+    }
+
+    code {
+      &::before,
+      &::after {
+        content: "";
+      }
+    }
+
+    .admonition {
+      @apply my-4;
+    }
   }
 }

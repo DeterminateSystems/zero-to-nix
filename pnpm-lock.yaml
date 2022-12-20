@@ -8,7 +8,6 @@ specifiers:
   '@iconify-json/fa-solid': ^1.1.2
   '@islands/headings': ^0.8.1
   '@islands/icons': ^0.8.0
-  '@islands/prism': ^0.8.0
   '@nanostores/persistent': ^0.7.0
   '@nanostores/vue': ^0.6.1
   '@tailwindcss/typography': ^0.5.8
@@ -23,6 +22,7 @@ specifiers:
   nanostores: ^0.7.0
   postcss: ^8.4.19
   postcss-import: ^15.0.1
+  posthog-js: ^1.38.0
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
   prismjs: ^1.29.0
@@ -45,7 +45,6 @@ devDependencies:
   '@iconify-json/fa-solid': 1.1.2
   '@islands/headings': 0.8.1
   '@islands/icons': 0.8.0_vite@2.9.15
-  '@islands/prism': 0.8.0
   '@nanostores/persistent': 0.7.0_nanostores@0.7.0
   '@nanostores/vue': 0.6.1_zzt5tcdxgl3jsilh3f4jgfjwue
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
@@ -60,6 +59,7 @@ devDependencies:
   nanostores: 0.7.0
   postcss: 8.4.19
   postcss-import: 15.0.1_postcss@8.4.19
+  posthog-js: 1.38.0
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
   prismjs: 1.29.0
@@ -254,13 +254,6 @@ packages:
       '@islands/hydration': 0.8.2
     dev: true
 
-  /@islands/prism/0.8.0:
-    resolution: {integrity: sha512-Ua3mzLadCDTjlrfRP3qlXHHlRnymBoC1DXOhAkp7fnil31fD3Gu36gEWoLtZOAONMS3uenLCgjfyXE3NtQ4ytA==}
-    dependencies:
-      prismjs: 1.29.0
-      unist-util-visit: 4.1.1
-    dev: true
-
   /@mdx-js/mdx/2.1.0:
     resolution: {integrity: sha512-AuZGNLSGrytOd7a81E2SsWAOYg/eV5I51BlUPc11PPmPwhpovu7mwfyQ8PH1jxhdH0Is6aRtXHERuDxon0TluQ==}
     dependencies:
@@ -344,6 +337,11 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@sentry/types/7.22.0:
+    resolution: {integrity: sha512-LhCL+wb1Jch+OesB2CIt6xpfO1Ab6CRvoNYRRzVumWPLns1T3ZJkarYfhbLaOEIb38EIbPgREdxn2AJT560U4Q==}
+    engines: {node: '>=8'}
     dev: true
 
   /@tailwindcss/typography/0.5.8_tailwindcss@3.2.4:
@@ -1434,6 +1432,10 @@ packages:
     resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
     dependencies:
       format: 0.2.2
+    dev: true
+
+  /fflate/0.4.8:
+    resolution: {integrity: sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA==}
     dev: true
 
   /fill-range/7.0.1:
@@ -2782,6 +2784,14 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /posthog-js/1.38.0:
+    resolution: {integrity: sha512-d5IW992X8ccwTTVaaG28MNwJ2Ro/L8vDireK1UIzboyI19llzFkaN2mK9sZxlJ+E61cskjiGWDIN/NrSlbc94A==}
+    dependencies:
+      '@sentry/types': 7.22.0
+      fflate: 0.4.8
+      rrweb-snapshot: 1.1.14
+    dev: true
+
   /prettier-plugin-tailwindcss/0.1.13_prettier@2.7.1:
     resolution: {integrity: sha512-/EKQURUrxLu66CMUg4+1LwGdxnz8of7IDvrSLqEtDqhLH61SAlNNUSr90UTvZaemujgl3OH/VHg+fyGltrNixw==}
     engines: {node: '>=12.17.0'}
@@ -2946,6 +2956,10 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /rrweb-snapshot/1.1.14:
+    resolution: {integrity: sha512-eP5pirNjP5+GewQfcOQY4uBiDnpqxNRc65yKPW0eSoU1XamDfc4M8oqpXGMyUyvLyxFDB0q0+DChuxxiU2FXBQ==}
     dev: true
 
   /run-parallel/1.2.0:

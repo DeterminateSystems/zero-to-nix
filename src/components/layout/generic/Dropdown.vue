@@ -15,7 +15,7 @@
       leave-to-class="transform scale-95 opacity-0"
     >
       <MenuItems
-        class="absolute right-0 mt-1.5 w-72 origin-top-right rounded bg-white py-2 shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-black"
+        class="overflow-scroll max-h-[75vh] absolute right-0 mt-1.5 w-72 origin-top-right rounded bg-white py-2 shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-black"
       >
         <MenuItem>
           <ul class="flex flex-col space-y-1.5">
@@ -27,8 +27,11 @@
                 class="block py-1.5 px-3 text-sm tracking-tight hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-base lg:text-lg"
                 :href="href"
               >
-                <span v-if="order">{{ order }}. </span>
-                <span>{{ title }}</span>
+                <div v-if="order" class="flex space-x-1">
+                  <span>{{ order }}.</span>
+                  <span>{{ title }}</span>
+                </div>
+                <span v-else>{{ title }}</span>
               </a>
             </li>
           </ul>

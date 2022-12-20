@@ -31,7 +31,10 @@ export default defineConfig({
   },
   markdown: {
     rehypePlugins: [
-      rehypeExternalLinks,
+      [
+        rehypeExternalLinks,
+        { target: "_blank", rel: ["noopener", "noreferrer"] },
+      ],
       [rehypeSlugCustomId, { enableCustomId: true }],
     ],
     remarkPlugins: [remarkGfm, remarkFootnotes],
@@ -45,7 +48,7 @@ export default defineConfig({
       },
     }),
   ],
-  prettyUrls: process.env["ENV"] !== "preview",
+  prettyUrls: true,
   ssg: {
     onSiteRendered: ({ pages, config }: SSGContext) => {
       // Only necessary when checking internal links
@@ -81,6 +84,7 @@ export default defineConfig({
   },
   turbo: true,
   vite: {
+    mode: process.env["ENV"] === "production" ? "production" : "development",
     server: {
       port: 3000,
       open: true,
