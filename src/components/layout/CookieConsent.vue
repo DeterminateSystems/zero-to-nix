@@ -35,16 +35,17 @@
 import { posthog } from "posthog-js";
 import { ref } from "vue";
 
-const isProd = import.meta.env.MODE === "production";
+const isEnabled = (import.meta.env.MODE === "production") &&
+  (typeof window !== "undefined");
 
 const showBanner = ref<boolean>(
-  isProd &&
+  isEnabled &&
     !posthog.has_opted_out_capturing() &&
     !posthog.has_opted_in_capturing(),
 );
 
 const acceptCookies = () => {
-  if (isProd) {
+  if (isEnabled) {
     posthog.opt_in_capturing();
   }
 
@@ -52,7 +53,7 @@ const acceptCookies = () => {
 };
 
 const declineCookies = () => {
-  if (isProd) {
+  if (isEnabled) {
     posthog.opt_out_capturing();
   }
   showBanner.value = false;
