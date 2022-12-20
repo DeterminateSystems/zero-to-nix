@@ -62,6 +62,8 @@ const optionSelected = ref<boolean>(false);
 
 const doDisplayConsent = computed (() => {
   console.log("doDisplay");
+  console.log(posthogRemembersPreference.value);
+  console.log(optionSelected.value);
 
   return !(posthogRemembersPreference.value || optionSelected.value);
 });
