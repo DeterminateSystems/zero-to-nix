@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showBanner" class="fixed left-0 bottom-0 z-50">
+  <div v-if="doDisplayConsent" class="fixed left-0 bottom-0 z-50">
     <div
       class="dark:bg-gray-accent-dark max-w-[202px] translate-x-[15px] translate-y-[-15px] rounded-lg bg-primary text-white/80"
     >
@@ -32,30 +32,47 @@
 </template>
 
 <script setup lang="ts">
-import { posthog } from "posthog-js";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
-const isEnabled = (import.meta.env.MODE === "production") &&
-  (typeof window !== "undefined");
 
-const showBanner = ref<boolean>(
-  isEnabled &&
-    !posthog.has_opted_out_capturing() &&
-    !posthog.has_opted_in_capturing(),
-);
+const posthogRemembersPreference = computed (() => {
+  console.log("in/out");
+
+  console.log($this.$posthog.has_opted_out_capturing());
+
+    console.log("in/out");
+    console.log(posthog.has_opted_out_capturing());
+    console.log(posthog.has_opted_in_capturing());
+    return (
+      posthog.has_opted_out_capturing() ||
+      posthog.has_opted_in_capturing()
+    );
+});
+
+const isEnabled = computed (() => {
+  return true;
+  //return (import.meta.env.MODE === "production");
+});
+
+const optionSelected = ref<boolean>(false);
+
+const doDisplayConsent = computed (() => {
+  return !posthogRemembersPreference;
+});
+
 
 const acceptCookies = () => {
   if (isEnabled) {
     posthog.opt_in_capturing();
   }
 
-  showBanner.value = false;
+  optionSelected.value = true;
 };
 
 const declineCookies = () => {
-  if (isEnabled) {
+  if (isEnabled ) {
     posthog.opt_out_capturing();
   }
-  showBanner.value = false;
+  optionSelected.value = true;
 };
 </script>
