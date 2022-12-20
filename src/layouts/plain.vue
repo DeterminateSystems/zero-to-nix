@@ -8,6 +8,11 @@
         <Content>
           <slot />
         </Content>
+
+        <div class="mt-16 space-y-12">
+          <Separator />
+          <FeedbackBar />
+        </div>
       </HorizontalContainer>
     </Top>
 
