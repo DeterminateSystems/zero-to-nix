@@ -32,7 +32,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, inject } from "vue";
+import { ref, computed, inject, onMounted } from "vue";
+
+onMounted(() => {
+  console.log(`the component is now mounted.`)
+})
 
 const posthog = inject('posthog');
 
