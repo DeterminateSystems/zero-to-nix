@@ -1,5 +1,5 @@
 <template>
-  <div v-if="doDisplayConsent()" class="fixed left-0 bottom-0 z-50">
+  <div v-if="noOptionSelected" class="fixed left-0 bottom-0 z-50">
     <div
       class="dark:bg-gray-accent-dark max-w-[202px] translate-x-[15px] translate-y-[-15px] rounded-lg bg-primary text-white/80">
       <p class="m-0 p-3 text-[14px]">
@@ -20,32 +20,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref } from "vue";
 
-const posthogRemembersPreference = ref<boolean>(false);
-
-const optionSelected = ref<boolean>(false);
-
-const doDisplayConsent = () => {
-  return !(
-    posthogRemembersPreference.value
-    ||
-    optionSelected.value
-  );
-};
+const noOptionSelected = ref<boolean>(true);
 
 const acceptCookies = () => {
   console.log("hello!")
-  optionSelected.value = true;
+  noOptionSelected.value = false;
 };
 
 const declineCookies = () => {
   console.log("bye!")
-  optionSelected.value = true;
+  noOptionSelected.value = false;
 };
-
-onMounted(() => {
-  posthogRemembersPreference.value = false;
-});
 
 </script>
