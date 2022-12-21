@@ -31,7 +31,7 @@ ___________
 
 <Admonition type="warning" title="This could take a while" id="nix-run-loading" client:load>
 The first time you run a program using `nix run` it's likely to be a slow operation.
-That's because Nix needs to build the program's [package] from scratch and store it in the [Nix store][store].
+That's because Nix needs to build the program's [package] from scratch&mdash;or download it from a known cache&mdash;and store it in the [Nix store][store].
 This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
 Future `nix run` invocations should be instantaneous, as Nix doesn't need to build the package again.
 </Admonition>
@@ -63,7 +63,7 @@ You're now ready to explore Nix development environments.
 [nix]: /concepts/nix
 [nix-installer]: /concepts/nix-installer
 [output]: /concepts/flake-outputs
-[package]: /concepts/package
+[package]: /concepts/packages
 [pkg]: /concepts/package-management
 [store]: /concepts/nix-store
 [symlinked]: https://en.wikipedia.org/wiki/Symbolic_link

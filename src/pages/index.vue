@@ -5,15 +5,14 @@
         <div>
           <div class="space-y-4 md:space-y-6 lg:space-y-8">
             <h1
-              class="text-5xl tracking-tighter text-pale md:text-6xl lg:text-7xl"
+              class="text-5xl tracking-tight text-pale md:text-6xl lg:text-7xl"
             >
               {{ $site.title }}
             </h1>
             <h2
-              class="text-xl tracking-tight text-light-gray md:text-2xl lg:text-3xl"
-            >
-              {{ $site.description }}
-            </h2>
+              class="one-liner text-xl tracking-tight text-light-gray md:text-2xl lg:text-3xl"
+              v-html="md($site.description)"
+            />
           </div>
         </div>
 
@@ -48,7 +47,7 @@
           class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
           id="key-terms"
         >
-          <a href="#key-terms">Core Nix terms</a>
+          <a href="#key-terms">Core Nix components</a>
         </h2>
 
         <NixTerms />
@@ -70,4 +69,5 @@
 
 <script setup lang="ts">
 import { Tab, TabGroup, TabList } from "@headlessui/vue";
+import { md } from "~/logic/content";
 </script>

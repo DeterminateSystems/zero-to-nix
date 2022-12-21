@@ -1,10 +1,10 @@
 ---
 title: Build a package from a local flake
-order: 6
 summary: [
   "Initialize a [flake template](/concepts/flake-templates) in your preferred programming language",
-  "Build a [Nix package](/concepts/package) from the `flake.nix` in the template"
+  "Build a [Nix package](/concepts/packages) from the `flake.nix` in the template"
 ]
+order: 7
 ---
 
 In the [last guide][prev], we built a Nix package defined in [Nixpkgs] to get a sense of some of the mechanics of that process.
@@ -16,7 +16,7 @@ First, select a preferred language:
 
 To get started in your <Language client:load /> project, create an empty directory and initialize a [flake template][templates]:
 
-<Shell client:load />
+<Shell kind="pkg" client:load />
 
 ## Building the package
 
@@ -161,7 +161,7 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [gin]: https://github.com/gin-gonic/gin
 [nixpkgs]: /concepts/nixpkgs
 [outputs]: /concepts/flake-outputs
-[packages]: /concepts/package
+[packages]: /concepts/packages
 [prev]: /start/nix-build-nixpkgs
 [stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
 [templates]: /concepts/flake-templates

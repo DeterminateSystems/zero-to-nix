@@ -2,7 +2,7 @@
   <HorizontalContainer>
     <Hero
       title="Quick start"
-      description="Feel the power of Nix in no time"
+      description="Get a taste of Nix's power and learn key concepts along the way"
       client:load
     />
 

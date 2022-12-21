@@ -2,9 +2,11 @@
   <div class="flex items-center justify-between">
     <PageSurvey />
 
-    <div class="space-y-3">
-      <span class="flex items-center space-x-3 text-lg">
-        <span><IconFaEdit class="text-dark dark:text-light-gray" /></span>
+    <div class="space-y-3 text-sm md:text-base lg:text-lg">
+      <span class="flex items-center space-x-3">
+        <span>
+          <IconFaEdit class="text-dark dark:text-light-gray" />
+        </span>
         <a
           :href="editUrl"
           class="tracking-tight text-dark-gray hover:text-primary dark:text-light-gray dark:hover:text-primary"
@@ -15,8 +17,10 @@
         </a>
       </span>
 
-      <span class="flex items-center space-x-3 text-lg">
-        <span><IconFaGithub class="text-dark dark:text-light-gray" /></span>
+      <span class="flex items-center space-x-3">
+        <span>
+          <IconFaGithub class="text-dark dark:text-light-gray" />
+        </span>
         <a
           :href="editUrl"
           class="tracking-tight text-dark-gray hover:text-primary dark:text-light-gray dark:hover:text-primary"

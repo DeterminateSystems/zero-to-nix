@@ -1,3 +1,4 @@
+apfs
 args
 backported
 bazel
@@ -11,16 +12,20 @@ buildpythonapplication
 buildrustpackage
 cargolock
 ci
+config
 cowsay
+declaratively
 declarativity
 detsys
 dev
 distro
 dotfiles
+dpkg
 drv
 ds
 env
 externalsources
+fetchgit
 ffmpeg
 ffprobe
 func
@@ -44,6 +49,7 @@ monospaced
 mv
 my_function
 my_value
+nginx
 nixlang
 nixos
 nixpkgs
@@ -55,6 +61,7 @@ oci
 offboarding
 onboarding
 openssl
+pkgs
 podman
 readlink
 repo
@@ -65,11 +72,13 @@ serokell
 shopify
 src
 stdenv
+stdlib
 sudo
 tooltip
 tmux
 tweag
 upstreaming
+url
 vite
 wikipedia
 zsh

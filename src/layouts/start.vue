@@ -11,7 +11,7 @@
             title,
           }"
           size="normal"
-          client:load
+          client:none
         />
 
         <div class="space-y-6">
@@ -23,8 +23,11 @@
         </div>
 
         <div class="mt-16 space-y-12">
-          <FeedbackBar />
           <Pagination :order="order" />
+
+          <Separator />
+
+          <FeedbackBar />
         </div>
       </HorizontalContainer>
     </Top>

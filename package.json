@@ -11,8 +11,6 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "devDependencies": {
-    "@fontsource/fira-mono": "^4.5.10",
-    "@fontsource/inter": "^4.5.14",
     "@headlessui/vue": "^1.7.4",
     "@iconify-json/fa": "^1.1.2",
     "@iconify-json/fa-solid": "^1.1.2",

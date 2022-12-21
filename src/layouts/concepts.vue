@@ -10,7 +10,7 @@
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
-          client:load
+          client:none
         />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">
@@ -25,10 +25,11 @@
             :links="externalSources"
             :showTitle="true"
           />
+        </div>
 
-          <div class="mt-16">
-            <FeedbackBar />
-          </div>
+        <div class="mt-16 space-y-12">
+          <Separator />
+          <FeedbackBar />
         </div>
       </HorizontalContainer>
     </Top>
@@ -40,11 +41,6 @@
 <script setup lang="ts">
 import { usePage } from "iles";
 import { ConceptPageProps } from "~/logic/content";
-
-type Link = {
-  title: string;
-  href: string;
-};
 
 const {
   frontmatter: { title, snippet, externalSources, related },
