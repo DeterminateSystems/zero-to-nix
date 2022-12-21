@@ -5,34 +5,36 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{ts,vue}"],
   darkMode: "class",
+  plugins: [require("@tailwindcss/typography")],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
-      },
-      maxWidth: {
-        "8xl": "90rem",
+      borderWidth: {
+        2.5: "2.5px",
+        3: "3px",
       },
       colors: {
         // Variables defined in src/assets/css/variables.css
         pale: "var(--pale)",
         dark: "var(--dark)",
-        yellow: "var(--yellow)",
         "pale-yellow": "var(--pale-yellow)",
+        "middle-yellow": "var(--middle-yellow)",
+        yellow: "var(--yellow)",
         "dark-yellow": "var(--dark-yellow)",
         "soft-gray": "var(--soft-gray)",
         "light-gray": "var(--light-gray)",
         gray: "var(--gray)",
         "dark-gray": "var(--dark-gray)",
         "darker-gray": "var(--darker-gray)",
-        blue: "var(--blue)",
-        "light-blue": "var(--light-blue)",
         "pale-blue": "var(--pale-blue)",
-        green: "var(--green)",
+        "light-blue": "var(--light-blue)",
+        "middle-blue": "var(--middle-blue)",
+        blue: "var(--blue)",
         "pale-green": "var(--pale-green)",
-        red: "var(--red)",
+        "middle-green": "var(--middle-green)",
+        green: "var(--green)",
         "pale-red": "var(--pale-red)",
+        "middle-red": "var(--middle-red)",
+        red: "var(--red)",
         cerulean: "var(--cerulean)",
         lilac: "var(--lilac)",
         rose: "var(--rose)",
@@ -40,7 +42,9 @@ module.exports = {
         "light-orange": "var(--light-orange)",
         primary: "var(--primary)",
       },
+      maxWidth: {
+        "8xl": "90rem",
+      },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
 };

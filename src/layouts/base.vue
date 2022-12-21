@@ -31,7 +31,5 @@ if (import.meta.env.MODE === "production") {
 </script>
 
 <style>
-@import "@fontsource/inter"; /* sans-serif */
-@import "@fontsource/fira-mono"; /* monospace */
 @import "~/assets/css/main"; /* main.css */
 </style>
