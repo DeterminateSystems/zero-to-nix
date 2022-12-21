@@ -11,7 +11,7 @@
             /nix/store/
           </span>
           <span class="font-sans text-xs tracking-tight md:text-sm lg:text-normal">
-            <strong>1.</strong> Root path
+            <strong>1.</strong> Nix store prefix
           </span>
         </div>
         <div class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
