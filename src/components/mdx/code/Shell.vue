@@ -4,10 +4,17 @@
     <pre
       class="language-shell"
     ><code><span class="token function">mkdir</span> {{ `nix-${language.toLowerCase()}` }} <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> {{  `nix-${language.toLowerCase()}` }}
-nix flake init <span class="token parameter variable">--template</span> <span class="token string">"github:DeterminateSystems/templates#{{ language.toLowerCase() }}"</span></code></pre>
+nix flake init <span class="token parameter variable">--template</span> <span class="token string">"github:DeterminateSystems/templates#{{ template }}"</span></code></pre>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { language } from "~/logic/state";
+
+const { kind } = defineProps<{
+  kind: string;
+}>();
+
+const template = computed(() => `${language.value.toLowerCase()}-${kind}`);
 </script>
