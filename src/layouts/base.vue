@@ -1,4 +1,6 @@
 <template>
+  <Banner client:load />
+
   <slot />
 </template>
 
