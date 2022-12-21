@@ -10,7 +10,6 @@ module.exports = {
     extend: {
       borderWidth: {
         2.5: "2.5px",
-        3: "3px",
       },
       colors: {
         // Variables defined in src/assets/css/variables.css

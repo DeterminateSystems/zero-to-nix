@@ -36,6 +36,7 @@
     "prismjs": "^1.29.0",
     "rehype-external-links": "^2.0.1",
     "rehype-slug-custom-id": "^1.1.0",
+    "remark-footnotes": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "tailwindcss": "^3.2.4",
     "unified": "^10.1.2",
