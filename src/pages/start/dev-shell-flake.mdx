@@ -6,7 +6,7 @@ summary:
     "Explore a Nix development environment for your preferred language",
     "Run some commands inside the environment",
   ]
-order: 4
+order: 6
 ---
 
 [Nix] enables you to create [development environments][dev] that are "sealed" from the rest of your system&mdash;they ignore directories like `/usr/bin` and only use packages available in the [Nix store][store].
@@ -14,9 +14,9 @@ To get started, tell us which language you prefer:
 
 <Languages client:load />
 
-To get started in your <Language client:load /> project, create an empty directory and initialize a [flake templates][templates]:
+To get started in your <Language client:load /> project, create an empty directory and initialize a [flake template][templates]:
 
-<Shell client:load />
+<Shell kind="dev" client:load />
 
 Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
 
@@ -25,7 +25,7 @@ Once the template has been initialized, run `ls .` to see the contents of the di
 
 ## Exploring a Nix development environment for <Language client:load /> \{#language-env}
 
-One of the [flake outputs][outputs] of this Nix [flakes] is a [development environment][dev] for <Language client:load />.
+One of the [flake outputs][outputs] of this Nix [flake][flakes] is a [development environment][dev] for <Language client:load />.
 To enter that development environment:
 
 ```shell
@@ -47,7 +47,6 @@ You should see a (rather strange) path like this:
 ```shell
 /nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
 ```
-
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Python">
 Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`.

@@ -10,7 +10,43 @@
     }
   }
 
+  .dark {
+    .prose {
+      p,
+      .content,
+      h2,
+      h3 {
+        code {
+          border: none;
+          background-color: var(--dark-gray);
+        }
+      }
+    }
+  }
+
   .prose {
+    /* Needed by a few components */
+    .remove-underline {
+      a {
+        @apply no-underline;
+      }
+    }
+
+    p,
+    .content,
+    h2,
+    h3 {
+      code {
+        display: inline-block;
+        border: 1px solid var(--light-gray);
+        border-radius: 5px;
+        padding: 0 5px;
+        background-color: var(--pale);
+        text-rendering: optimizelegibility;
+        box-sizing: border-box;
+      }
+    }
+
     a {
       @apply underline hover:text-primary dark:hover:text-light-blue;
 
@@ -29,6 +65,8 @@
     }
 
     .heading {
+      @apply tracking-tight;
+
       &::before {
         display: block;
         content: " ";

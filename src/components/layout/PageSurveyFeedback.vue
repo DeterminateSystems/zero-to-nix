@@ -31,13 +31,15 @@ const { reaction } = defineProps<{
 }>();
 
 const title = ref<string>(
-  reaction === "positive" ? "What made this page great?" : "How can we improve?"
+  reaction === "positive"
+    ? "What made this page great?"
+    : "How can we improve?",
 );
 
 const placeholder = ref<string>(
   reaction === "positive"
     ? "Let usk now what you found helpful"
-    : "Let us know how we can do better"
+    : "Let us know how we can do better",
 );
 
 const feedback = ref<string | undefined>();

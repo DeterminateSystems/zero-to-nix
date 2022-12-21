@@ -15,24 +15,24 @@ In this [quick start][start], we'll get Nix installed on your system and provide
 
 ## Install Nix \{#download}
 
-Install Nix using [Harmonic], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
+Install Nix using [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
 curl -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-<Admonition title="Why aren't we using the official Nix installer here?" type="info" id="why-harmonic" client:load>
-We believe that Harmonic provides a smoother experience for people who are new to Nix than the [official Nix installer][official].
+<Admonition title="Why aren't we using the official Nix installation script here?" type="info" id="why-nix-installer" client:load>
+We believe that Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
 Unlike many tools, Nix needs to make several bold changes to your system in order to work properly, such as creating a new root volume in the `/nix` directory, configuring your shell profile, and creating several new system users and groups.
 
-Harmonic improves on the official Nix installer by enabling you to undo, with a single command, all of the system changes introduced by Harmonic's Nix installation process.
+Nix Installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by Nix Installer's installation process.
 It also installs Nix with [Nix flakes][flakes] enabled, while the official installer requires you to enable flakes manually.
 
-See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Harmonic] concept if you'd like more background.
+See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Nix Installer][nix-installer] concept doc if you'd like more background.
 </Admonition>
 
 Validate the displayed plan, and approve it to begin the install.
-Once Harmonic has finished, load the Nix executable into your `PATH`:
+Once Nix Installer has finished, load the Nix executable into your `PATH`:
 
 ```shell
 exec $SHELL
@@ -50,14 +50,15 @@ This should print the help output of the `nix` command.
 You now have Nix installed and ready to go on your system.
 You're now ready to use Nix to run programs.
 
+[apfs]: https://es.wikipedia.org/wiki/Apple_File_System
 [build]: /start/nix-build-nixpkgs
 [detsys]: https://determinate.systems
 [dev]: /start/dev-shell-flake
 [flakes]: /concepts/flakes
-[harmonic]: /concepts/harmonic
 [json]: https://json.org
 [multi]: https://nixos.org/manual/nix/stable/installation/multi-user
 [nix]: https://nixos.org
+[nix-installer]: /concepts/nix-installer
 [official]: https://nixos.org/download
 [start]: /start
 [store]: /concepts/nix-store

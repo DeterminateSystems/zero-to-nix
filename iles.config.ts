@@ -30,7 +30,10 @@ export default defineConfig({
   },
   markdown: {
     rehypePlugins: [
-      rehypeExternalLinks,
+      [
+        rehypeExternalLinks,
+        { target: "_blank", rel: ["noopener", "noreferrer"] },
+      ],
       [rehypeSlugCustomId, { enableCustomId: true }],
     ],
     remarkPlugins: [remarkGfm],

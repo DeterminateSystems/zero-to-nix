@@ -4,13 +4,15 @@
       v-for="(term, idx) in $site.nixTerms"
       :key="idx"
       :href="term.href"
-      class="rounded-lg border-2 border-light-gray p-3 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-inherit md:p-4 lg:p-5"
+      class="rounded-lg border-2 border-light-gray p-3 transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:p-4 lg:p-5"
     >
-      <div class="space-y-2">
-        <p class="text-xl md:text-2xl lg:text-3xl">{{ term.title }}</p>
-        <p class="text-dark-gray dark:text-light-gray">
+      <div class="space-y-3">
+        <h1 class="text-xl tracking-tight md:text-2xl lg:text-3xl">
+          {{ term.title }}
+        </h1>
+        <h2 class="text-xl text-dark dark:text-light-gray">
           {{ term.description }}
-        </p>
+        </h2>
       </div>
     </a>
   </Grid2>

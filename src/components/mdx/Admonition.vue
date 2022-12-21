@@ -1,34 +1,50 @@
 <template>
   <div
-    class="admonition not-prose rounded-lg border-2 dark:bg-inherit"
+    class="admonition not-prose rounded-lg border-2.5 dark:bg-inherit"
     :class="[
-      type === 'danger' && 'border-red bg-pale-red',
-      type === 'info' && 'border-blue bg-pale-blue',
-      type === 'success' && 'border-green bg-pale-green',
-      type === 'warning' && 'border-yellow bg-pale-yellow',
+      type === 'danger' && 'border-red',
+      type === 'info' && 'border-blue',
+      type === 'success' && 'border-green',
+      type === 'warning' && 'border-yellow',
     ]"
   >
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
       <DisclosureButton
         as="div"
-        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer"
+        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray"
+        :class="[
+          open && 'rounded-t-lg',
+          !open && 'rounded-lg',
+          type === 'danger' && 'bg-pale-red hover:bg-middle-red',
+          type === 'info' && 'border-blue bg-pale-blue hover:bg-middle-blue',
+          type === 'success' && 'bg-pale-green hover:bg-middle-green',
+          type === 'warning' && 'bg-pale-yellow hover:bg-middle-yellow',
+        ]"
         @mouseover="buttonHover = true"
         @mouseleave="buttonHover = false"
         @click="toggle"
       >
-        <span class="text-xl font-semibold tracking-tight">
-          {{ title }}
+        <span
+          class="flex items-center space-x-4 text-xl font-semibold tracking-tight"
+        >
+          <IconFaBolt v-if="type === 'danger'" class="h-4 w-4 text-red" />
+          <IconFaInfo v-if="type === 'info'" class="h-4 w-4 text-blue" />
+          <IconFaWarning
+            v-if="type === 'warning'"
+            class="h-4 w-4 text-yellow"
+          />
+          <IconFaCheck v-if="type === 'success'" class="h-4 w-4 text-green" />
+          <span>{{ title }}</span>
         </span>
 
         <IconFaChevronRight
-          class="h-4 w-4"
+          class="h-4 w-4 transform duration-300"
           :class="[
-            open && 'rotate-90 transform duration-200',
+            open && 'rotate-90',
             type === 'danger' && 'text-red',
             type === 'info' && 'text-blue',
             type === 'success' && 'text-green',
             type === 'warning' && 'text-yellow',
-            buttonHover && 'text-dark dark:text-light-gray',
           ]"
         />
       </DisclosureButton>
@@ -41,12 +57,19 @@
       </DisclosurePanel>
     </Disclosure>
 
-    <div v-else class="space-y-2">
-      <p v-if="title" class="text-xl font-semibold tracking-tight">
-        {{ title }}
-      </p>
+    <div v-else>
+      <span
+        v-if="title"
+        class="flex items-center space-x-4 py-4 px-5 text-xl font-semibold tracking-tight"
+      >
+        <IconFaBolt v-if="type === 'danger'" class="h-4 w-4 text-red" />
+        <IconFaInfo v-if="type === 'info'" class="h-4 w-4 text-blue" />
+        <IconFaWarning v-if="type === 'warning'" class="h-4 w-4 text-yellow" />
+        <IconFaCheck v-if="type === 'success'" class="h-4 w-4 text-green" />
+        <span>{{ title }}</span>
+      </span>
 
-      <div class="content py-4 px-5 text-sm md:text-base lg:text-lg">
+      <div class="content px-5 pb-4 text-sm md:text-base lg:text-lg">
         <slot />
       </div>
     </div>
@@ -72,7 +95,7 @@ if (id !== undefined && title === undefined) {
 
 const openState: WritableAtom<string> = persistentAtom<string>(
   `zero-to-nix:callout-${id}`,
-  "false"
+  "false",
 );
 const open = useStore(openState).value === "true";
 

@@ -47,7 +47,7 @@ stdenv.mkDerivation {
 }
 ```
 
-The above code consists of _two_ derivations: `fetchgit` and `mkDerivation`.
+The above code consists of *two* derivations: `fetchgit` and `mkDerivation`.
 
 The reproducibility of `mkDerivation` is guaranteed because the output of `fetchgit` is pinned to a particular hash.
 And because `mkDerivation` itself isn't allowed to touch the network, and is [hermetically](/concepts/hermeticity) sealed from the host, no impurities in the build can exist.

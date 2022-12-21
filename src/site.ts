@@ -35,14 +35,14 @@ export type Site = {
 
 const site: Site = {
   title: "Zero to Nix",
-  description: "An unofficial, opinionated, and gentle introduction to Nix",
+  description: "An unofficial, opinionated, gentle introduction to Nix",
   url: "https://zero-to-nix.vercel.app",
   canonical: "zero-to-nix.vercel.app",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
   navbarLinks: [{ text: "About", href: "/about" }],
   heroButtons: [
-    { text: "Quick start", href: "/start", highlight: true },
+    { text: "Quick start", href: "/start/install", highlight: true },
     { text: "Concepts", href: "/concepts" },
     { text: "About", href: "/about" },
   ],
@@ -124,18 +124,19 @@ const site: Site = {
     {
       title: "Nix language",
       description:
-        "A for instructing Nix how to build packages and create environments and systems.",
+        "A language for instructing Nix how to build packages, environments and systems.",
       href: "/concepts/nix-language",
     },
     {
       title: "NixOS",
       description:
-        "A Linux distribution built on Nix and with its core principles in mind.",
+        "A Linux distribution built on Nix with its core principles in mind.",
       href: "/concepts/nixos",
     },
     {
       title: "Nixpkgs",
-      description: "A vast collection of Nix packages, libraries, and helpers.",
+      description:
+        "A vast collection of Nix packages, libraries, and helper functions.",
       href: "/concepts/nixpkgs",
     },
   ],

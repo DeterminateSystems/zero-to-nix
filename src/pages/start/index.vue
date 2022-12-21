@@ -2,7 +2,7 @@
   <HorizontalContainer>
     <Hero
       title="Quick start"
-      description="Feel the power of Nix in no time"
+      description="Get a taste of Nix's power and learn key concepts along the way"
       client:load
     />
 
@@ -11,7 +11,8 @@
         v-for="({ href, frontmatter }, idx) in sortedQuickStartPages"
         :key="idx"
         :href="href"
-        :text="`${frontmatter.order}. ${frontmatter.title}`"
+        :order="frontmatter.order"
+        :text="frontmatter.title"
         size="normal"
       />
     </Grid2>
