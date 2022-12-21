@@ -26,14 +26,10 @@ This is in contrast to most [package managers][pkg], which install things more q
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
 </Admonition>
 
-You should be greeted with this:
+You should be greeted with the message "Welcome to a Nix development environment!" and a new shell prompt.
 
-```shell
-Welcome to a Nix development environment!
-bash-5.1$
-```
-
-Congrats 🚀! You're now in a [Bash] environment that includes [curl] and [Git].
+:rocket: Congrats!
+You're now in a [Bash] environment that includes [curl] and [Git].
 You may already have both in your environment, but run these commands to see that something new is happening:
 
 ```shell
@@ -62,7 +58,7 @@ Let's leave the Nix development environment:
 exit
 ```
 
-If you have [Git] installed, check your `PATH` for it using `which git`.
+If you have [Git] installed, check your `PATH` for it using `type git`.
 It should be at a global path like `/usr/bin/git`.
 And if you run `echo $FUNNY_JOKE` again you should get an empty string (unless you happen to have that variable set on your machine!).
 
