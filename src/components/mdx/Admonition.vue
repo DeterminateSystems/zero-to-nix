@@ -24,8 +24,17 @@
         @mouseleave="buttonHover = false"
         @click="toggle"
       >
-        <span class="text-xl font-semibold tracking-tight">
-          {{ title }}
+        <span
+          class="flex items-center space-x-4 text-xl font-semibold tracking-tight"
+        >
+          <IconFaBolt v-if="type === 'danger'" class="h-4 w-4 text-red" />
+          <IconFaInfo v-if="type === 'info'" class="h-4 w-4 text-blue" />
+          <IconFaWarning
+            v-if="type === 'warning'"
+            class="h-4 w-4 text-yellow"
+          />
+          <IconFaCheck v-if="type === 'success'" class="h-4 w-4 text-green" />
+          <span>{{ title }}</span>
         </span>
 
         <IconFaChevronRight
@@ -49,9 +58,16 @@
     </Disclosure>
 
     <div v-else>
-      <p v-if="title" class="py-4 px-5 text-xl font-semibold tracking-tight">
-        {{ title }}
-      </p>
+      <span
+        v-if="title"
+        class="flex items-center space-x-4 py-4 px-5 text-xl font-semibold tracking-tight"
+      >
+        <IconFaBolt v-if="type === 'danger'" class="h-4 w-4 text-red" />
+        <IconFaInfo v-if="type === 'info'" class="h-4 w-4 text-blue" />
+        <IconFaWarning v-if="type === 'warning'" class="h-4 w-4 text-yellow" />
+        <IconFaCheck v-if="type === 'success'" class="h-4 w-4 text-green" />
+        <span>{{ title }}</span>
+      </span>
 
       <div class="content px-5 pb-4 text-sm md:text-base lg:text-lg">
         <slot />
