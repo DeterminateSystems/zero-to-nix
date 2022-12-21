@@ -11,7 +11,9 @@ buildpythonapplication
 buildrustpackage
 cargolock
 ci
+config
 cowsay
+declaratively
 declarativity
 detsys
 dev
@@ -20,6 +22,7 @@ dotfiles
 ds
 env
 externalsources
+fetchgit
 ffmpeg
 ffprobe
 github
@@ -39,6 +42,7 @@ mkdir
 monospaced
 my_function
 my_value
+nginx
 nixlang
 nixos
 nixpkgs
@@ -50,6 +54,7 @@ oci
 offboarding
 onboarding
 openssl
+pkgs
 podman
 readlink
 repo
@@ -58,10 +63,12 @@ serokell
 shopify
 src
 stdenv
+stdlib
 sudo
 tooltip
 tmux
 tweag
 upstreaming
+url
 vite
 zsh
