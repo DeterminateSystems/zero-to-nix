@@ -10,10 +10,9 @@
               {{ $site.title }}
             </h1>
             <h2
-              class="text-xl tracking-tight text-light-gray md:text-2xl lg:text-3xl"
-            >
-              {{ $site.description }}
-            </h2>
+              class="one-liner text-xl tracking-tight text-light-gray md:text-2xl lg:text-3xl"
+              v-html="md($site.description)"
+            />
           </div>
         </div>
 
@@ -70,4 +69,5 @@
 
 <script setup lang="ts">
 import { Tab, TabGroup, TabList } from "@headlessui/vue";
+import { md } from "~/logic/content";
 </script>

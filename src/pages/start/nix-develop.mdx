@@ -41,7 +41,7 @@ which curl
 which git
 ```
 
-For curl, for example, you should see a strange path like this (the input hash part should be different on your machine):
+For curl, for example, you should see a strange path like this (the hash part should be different on your machine):
 
 <NixStorePath pkg="curl-7.86.0-bin" bin="curl" />
 
@@ -49,12 +49,12 @@ What happened here? The [Nix] CLI did a few things:
 
 * It used the `github:DeterminateSystems/templates` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the environment configuration (again, more on this later).
-* It [symlinked] those package paths to `curl` and `git`, respectively.
+* It set up an environment with a [`PATH`][path] that enables the `git` and `curl` packages to be discovered in the [Nix store][store].
 
 A few other things:
 
 * The `Welcome to a Nix development environment!` greeting is defined in the *shell hook*. This is arbitrary shell code that runs when the environment starts up.
-* Nix development environments support environment variables as well. Run `echo $SECRET_PASSWORD` to access a value that's available only in the Nix environment.
+* Nix development environments support environment variables as well. Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
 
 Let's leave the Nix development environment:
 
@@ -62,8 +62,9 @@ Let's leave the Nix development environment:
 exit
 ```
 
-Now check the path for [Git] using `which git`. It should be at a global system path like `/usr/bin/git`.
-And if you run `echo $SECRET_PASSWORD` again you should get an empty string (unless you happen to have that set on your machine!).
+If you have [Git] installed, check your `PATH` for it using `which git`.
+It should be at a global path like `/usr/bin/git`.
+And if you run `echo $FUNNY_JOKE` again you should get an empty string (unless you happen to have that variable set on your machine!).
 
 ## Run commands inside the development environment
 
@@ -76,7 +77,7 @@ nix develop "github:DeterminateSystems/templates#example" --command git status
 nix develop "github:DeterminateSystems/templates#example" --command curl https://example.com
 ```
 
-In both cases, you're running a symlinked package in the [Nix store][store] and nothing from your global environment.
+In both cases, you're running a package in the [Nix store][store] and nothing from your global environment.
 As you can see, Nix development environments are [*hermetic*][hermeticity] in that they're isolated from the surrounding environment (such as your environment variables and paths like `/bin` and `/usr/bin`).
 
 ## Language-specific environments
@@ -165,7 +166,7 @@ This Nix environment has several tools available:
 * [Terraform]
 * [OpenSSL]
 
-As in the previous examples, you can run commands like `which python` and `which kubectl` to see that these tools are all symlinked to the [Nix store][store] and thus that your Nix
+As in the previous examples, you can run commands like `which python` and `which kubectl` to see that these tools are all discoverable in the [Nix store][store] and not somewhere like `/usr/bin`.
 This list could easily include 100 packages.
 It's up to you.
 We won't cover *how* to create these environments just yet, but we hope that you come away from this guide with a basic sense of what Nix development environments provide.
@@ -188,9 +189,9 @@ We won't cover *how* to create these environments just yet, but we hope that you
 [openssl]: https://openssl.org
 [output]: /concepts/flake-outputs
 [packages]: /concepts/package
+[path]: https://en.wikipedia.org/wiki/PATH_(variable)
 [pkg]: /concepts/package-management
 [python]: https://python.org
 [rust]: https://rust-lang.org
 [store]: /concepts/nix-store
-[symlinked]: https://en.wikipedia.org/wiki/Symbolic_link
 [terraform]: https://terraform.io
