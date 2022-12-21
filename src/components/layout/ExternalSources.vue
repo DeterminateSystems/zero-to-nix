@@ -1,5 +1,10 @@
 <template>
-  <div :class="[!showTitle && 'not-prose']" class="space-y-4">
+  <div
+    :class="[
+      showTitle !== undefined && !showTitle && 'not-prose remove-underline',
+    ]"
+    class="space-y-4"
+  >
     <p v-if="showTitle" class="text-lg font-semibold md:text-xl lg:text-2xl">
       External sources
     </p>

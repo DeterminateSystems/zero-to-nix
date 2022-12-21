@@ -25,6 +25,13 @@
   }
 
   .prose {
+    /* Needed by a few components */
+    .remove-underline {
+      a {
+        @apply no-underline;
+      }
+    }
+
     p,
     .content,
     h2,
