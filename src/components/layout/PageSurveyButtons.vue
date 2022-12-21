@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { posthog } from "posthog-js";
+import posthog from "posthog-js";
 import { Reaction } from "./PageSurvey.vue";
 
 const emit = defineEmits(["complete"]);

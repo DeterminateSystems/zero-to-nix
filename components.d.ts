@@ -44,7 +44,6 @@ declare module '@vue/runtime-core' {
     Page: typeof import('./src/components/layout/Page.vue')['default']
     PageSurvey: typeof import('./src/components/layout/PageSurvey.vue')['default']
     PageSurveyButtons: typeof import('./src/components/layout/PageSurveyButtons.vue')['default']
-    PageSurveyDisabled: typeof import('./src/components/layout/PageSurveyDisabled.vue')['default']
     PageSurveyFeedback: typeof import('./src/components/layout/PageSurveyFeedback.vue')['default']
     PageSurveyThankYou: typeof import('./src/components/layout/PageSurveyThankYou.vue')['default']
     Pagination: typeof import('./src/components/layout/Pagination.vue')['default']
