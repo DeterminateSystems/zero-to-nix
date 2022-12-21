@@ -3,7 +3,7 @@
     <Hero
       title="Nix concepts"
       description="The whys and the hows of Nix"
-      client:load
+      client:none
     />
 
     <Grid3>

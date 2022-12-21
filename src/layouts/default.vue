@@ -4,7 +4,6 @@
       <Navbar />
       <slot />
     </Top>
-
     <Footer />
   </Page>
 </template>
