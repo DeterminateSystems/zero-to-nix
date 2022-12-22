@@ -13,9 +13,9 @@ summary:
 It's great to see that you're interested in [Nix].
 In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
 
-## Install Nix \{#download}
+## Installation \{#nix-installer}
 
-Install Nix using [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
+To get started, we'll install Nix using [Nix Installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
 curl -L https://install.determinate.systems/nix | sh -s -- install
@@ -25,13 +25,18 @@ curl -L https://install.determinate.systems/nix | sh -s -- install
 We believe that Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
 Unlike many tools, Nix needs to make several bold changes to your system in order to work properly, such as creating a new root volume in the `/nix` directory, configuring your shell profile, and creating several new system users and groups.
 
-Nix Installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by Nix Installer's installation process.
+Nix Installer improves on the official Nix installation script by enabling you to undo all of the system changes introduced by Nix Installer's installation process with a single command.
 It also installs Nix with [Nix flakes][flakes] enabled, while the official installer requires you to enable flakes manually.
 
 See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Nix Installer][nix-installer] concept doc if you'd like more background.
 </Admonition>
 
-Validate the displayed plan, and approve it to begin the install.
+<Admonition type="warning" title="Don't try this in a container!" id="nix-installer-container">
+Nix Installer makes some assumptions about your system that are unlikely to hold in a container environment.
+In order to install and start the Nix daemon, for example, Nix Installer needs to have a service manager like [systemd] available, but service managers are superfluous in most containers.
+</Admonition>
+
+Validate the displayed plan and approve it to begin the installation.
 Once Nix Installer has finished, load the Nix executable into your `PATH`:
 
 ```shell
@@ -62,4 +67,5 @@ You're now ready to use Nix to run programs.
 [official]: https://nixos.org/download
 [start]: /start
 [store]: /concepts/nix-store
+[systemd]: https://systemd.io
 [uninstall]: /start/uninstall
