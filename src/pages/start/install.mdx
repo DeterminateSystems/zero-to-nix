@@ -31,9 +31,10 @@ It also installs Nix with [Nix flakes][flakes] enabled, while the official insta
 See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Nix Installer][nix-installer] concept doc if you'd like more background.
 </Admonition>
 
-<Admonition type="warning" title="Don't try this in a container!" id="nix-installer-container">
+<Admonition type="warning" title="Nix Installer is unlikely to work in containers" id="nix-installer-container">
 Nix Installer makes some assumptions about your system that are unlikely to hold in a container environment.
-In order to install and start the Nix daemon, for example, Nix Installer needs to have a service manager like [systemd] available, but service managers are superfluous in most containers.
+In order to install and start the Nix daemon, for example, Nix Installer needs to have a service manager like [systemd] available, but service managers are usually superfluous in containers.
+Although Nix Installer *may* work in some containerized environments&mdash;and you're welcome to try it out&mdash;we suggest using it only in desktop and [CI environments][ci].
 </Admonition>
 
 Validate the displayed plan and approve it to begin the installation.
@@ -57,6 +58,7 @@ You're now ready to use Nix to run programs.
 
 [apfs]: https://es.wikipedia.org/wiki/Apple_File_System
 [build]: /start/nix-build-nixpkgs
+[ci]: https://github.com/DeterminateSystems/nix-installer#as-a-github-action
 [detsys]: https://determinate.systems
 [dev]: /start/dev-shell-flake
 [flakes]: /concepts/flakes
