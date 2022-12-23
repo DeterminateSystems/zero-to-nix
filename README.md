@@ -52,7 +52,7 @@ To ensure that the site can build properly in response to changes:
 build
 ```
 
-As an alternative, your can [run the whole CI suite](#run-checks-locally), which also builds the site.
+As an alternative, you can [run the whole CI suite](#run-checks-locally), which also builds the site.
 
 ### Format code
 
@@ -81,7 +81,7 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 
 | Component                                                                | What it does                                                                                                                            |
 | :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
-| [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /></br />Adding an `id` makes it a stateful callout dropdown. |
+| [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /><br />Adding an `id` makes it a stateful callout dropdown. |
 | [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                  |
 | [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                             |
 | [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                              |
