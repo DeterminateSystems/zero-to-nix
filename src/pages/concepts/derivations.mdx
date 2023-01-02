@@ -1,8 +1,8 @@
 ---
 title: Derivations
 snippet: |
-  Build instructions for Nix [packages](/concepts/package) expressed using the [Nix language](/concepts/nix-language)
-related: ["nix-store", "package"]
+  Build instructions for Nix [packages](/concepts/packages) expressed using the [Nix language](/concepts/nix-language)
+related: ["nix-store", "packages", "realisation"]
 externalSources: [
   {
     title: "Derivations",
@@ -31,10 +31,14 @@ externalSources: [
 ]
 ---
 
-In Nix, a *derivation* is a set of instructions for building a [package](/concepts/package).
-Each derivation can depend on other derivations and produce one or more final outputs.
+A *derivation* is an instruction that Nix uses to [*realise*][realisation] .
+They're created using a special `derivation` function in the [Nix language](#nix-language).
+They can depend on any number of other derivations and produce one or more final [outputs](#outputs).
+A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a [closure].
 
-The most common outputs are:
+## Derivation outputs \{#outputs}
+
+The most common outputs:
 
 - `out`, the most generic one
 - `lib`, for library outputs
@@ -42,3 +46,106 @@ The most common outputs are:
 - `man`, for manual pages
 
 A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a *package closure*.
+
+<Admonition type="success" title="Mental model" client:load>
+You may find it helpful to think of a derivation as the *plan* or *blueprint* for a Nix package.
+</Admonition>
+
+## Derivations in the Nix language \{#nix-language}
+
+In the [Nix language][lang], derivations are created using the [`derivation`][func] function.
+Here's the type signature for `derivation` expressed as a [Haskell]-ish signature:[^1]
+
+```haskell
+derivation ::
+    { system   : String
+    , name     : String
+    , builder  : Path | Derivation
+    , ?args    : [String]
+    , ?outputs : [String]
+    } -> Derivation
+```
+
+Here's an example derivation:
+
+```nix
+derivation {
+  # A name for the derivation (whatever you choose)
+  name = "hello-text";
+  # The system realizing the derivation
+  system = "x86_64-linux";
+  # The program realizing the derivation
+  builder = "bash";
+  # Arguments passed to the builder program
+  args = ["-c", "mkdir $out && echo Hello world > $out/hello.txt"]
+};
+```
+
+And that's it!
+The `derivation` function takes only these arguments.
+But derivations can be far less straightforward, because the scripting logic that you pass via `args` can be arbitrarily complex.
+
+### String interpolation
+
+If Nix sees this string...
+
+```nix
+buildPhase = ''
+  mv ${pkgs.website}/favicon.ico
+'';
+```
+
+The string output of a derivation is always a [Nix store path][store]
+
+## Derivation outputs
+
+## Realisation
+
+### Special variables
+
+There are two special variables to be aware of when writing derivations:
+
+- `$out` represents the root of the directory structure for build output.
+- `$src` represents the build sources.
+
+## The standard environment \{#stdenv}
+
+Most derivations in the Nix ecosystem are based on the [`mkDerivation`][mk] function from the [standard environment][stdenv]
+
+While you *can* create derivations using the raw `derivation` function, it's far more common to use a wrapper function around it.
+Perhaps the most commonly used wrapper function is [`stdenv.mkDerivation`][mk].
+Arguments:
+
+- The `name` of the package. If you specify `pname` and `version` instead, the `name` ends up `${pname}-${version}`.
+
+## Other derivation functions
+
+Outside of `stdenv.mkDerivation`, there are many custom derivation wrappers for specific languages, frameworks, and more (and many of those actually wrap `stdenv.mkDerivation`).
+Some examples:
+
+- [`buildGoModule`][go] for [Go]
+- [`buildRustPackage`][buildrustpackage] for [Rust]
+- [`buildPythonApplication`][buildpythonapplication] for [Python]
+
+You're likely to encounter many more in the Nix ecosystem.
+And you're always free to create your own derivation functions and even wrap helper functions like `buildPythonApplication`.
+
+[^1]: Kudos to [Ian Henry][ian] for this idea.
+
+[buildgomodule]: https://nixos.org/manual/nixpkgs/stable/#sec-language-go
+[buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#python
+[buildrustpackage]: https://nixos.org/manual/nixpkgs/stable/#rust
+[closure]: /concepts/closures
+[func]: /concepts/derivations
+[go]: https://go.dev
+[haskell]: https://www.haskell.org
+[ian]: https://ianthehenry.com/
+[lang]: /concepts/nix-language
+[mk]: https://nixos.org/manual/nixpkgs/stable/#sec-using-stdenv
+[nixpkgs]: /concepts/nixpkgs
+[packages]: /concepts/packages
+[python]: https://python.org
+[realisation]: /concepts/realisation
+[rust]: https://rust-lang.org
+[stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
+[store]: /concepts/nix-store

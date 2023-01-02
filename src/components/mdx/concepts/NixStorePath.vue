@@ -11,7 +11,7 @@
             /nix/store/
           </span>
           <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base">
-            <strong>1.</strong> Root path
+            <strong>1.</strong> Nix store prefix
           </span>
         </div>
         <div class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
@@ -19,7 +19,7 @@
             sglc12hc6pc68w5ppn2k56n6jcpaci16
           </span>
           <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base">
-            <strong>2.</strong> Input hash
+            <strong>2.</strong> Hash part
           </span>
         </div>
         <span>-</span>

@@ -4,7 +4,7 @@ summary: [
   "Build a Nix package defined in Nixpkgs",
   "Run the package from the local directory"
 ]
-order: 5
+order: 3
 ---
 
 While [Nix] can do many things, [package management][pkg] is the thing that it's perhaps best known for. In this tutorial, we'll use our [installed Nix CLI][install] to build and run some Nix [packages] included in [Nixpkgs]. Later in the [quick start][start] we'll build and run a Nix package defined in a local [flake].
@@ -33,8 +33,9 @@ What's happened here is that the Nix CLI has:
 
 * Downloaded the Nix code in [Nixpkgs]
 * Found the [derivation][derivations] with the name `bat` (code [here][nixpkgs-bat])
-* Used the build instructions in the derivation to build the package
+* Used the build instructions in the derivation to build the [package][packages]
 * Stored the result in the [Nix store][store] using Nix's hash-based path system
+{/* TODO: add substitution here and link to future caching doc */}
 
 You can now run bat:
 
@@ -115,7 +116,7 @@ Upstreaming your packages to Nixpkgs is always an option, but it's good to bear 
 [npm]: https://npmjs.org
 [npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [outputs]: /concepts/flake-outputs
-[packages]: /concepts/package
+[packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [pip]: https://pypi.org/project/pip
 [ripgrep]: https://github.com/BurntSushi/ripgrep

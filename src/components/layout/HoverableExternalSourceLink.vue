@@ -9,7 +9,9 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span>{{ title }}</span>
+        <span>
+          <span v-html="md(title)" />
+        </span>
         <IconFaExternalLink class="h-3 w-3 text-primary md:h-4 md:w-4" />
       </a>
 
@@ -27,6 +29,8 @@
 </template>
 
 <script setup lang="ts">
+import { md } from "~/logic/content";
+
 const {
   title,
   href: externalSourceHref,

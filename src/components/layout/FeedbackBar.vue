@@ -22,7 +22,7 @@
           <IconFaGithub class="text-dark dark:text-light-gray" />
         </span>
         <a
-          :href="editUrl"
+          :href="issueUrl"
           class="tracking-tight text-dark-gray hover:text-primary dark:text-light-gray dark:hover:text-primary"
           target="_blank"
           ref="noopener noreferrer"
@@ -45,11 +45,10 @@ const { githubUrl } = site;
 
 const sourceUrl = `${githubUrl}/tree/main/${filename}`;
 
-const editTitle = `Issue with page \`${filename}\``;
-const editBody = `...Replace me with your issue description...`;
-const editUrlParams = `title=${editTitle}&body=${editBody}`;
-const editUrl = `${githubUrl}/issues/new?${encodeURI(editUrlParams)}`;
-</script>
+const issueTitle = `Issue with page \`${filename}\``;
+const issueBody = `...Replace me with your issue description...`;
+const issueUrlParams = `title=${issueTitle}&body=${issueBody}`;
+const issueUrl = `${githubUrl}/issues/new?${encodeURI(issueUrlParams)}`;
 
-//
-https://github.com/PostHog/posthog.com/issues/new?title=Feedback%20on:%20JavaScript&body=**Issue%20with:%20/docs/integrate/client/js/index.mdx**
+const editUrl = `${githubUrl}/edit/main/${filename}`;
+</script>
