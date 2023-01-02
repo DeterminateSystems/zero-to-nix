@@ -1,8 +1,6 @@
 import posthog from "posthog-js";
 import { App, Plugin } from "vue";
 
-export interface PosthogPluginOptions {}
-
 export const PosthogPlugin: Plugin = {
   install(app: App) {
     if (typeof window !== "undefined") {

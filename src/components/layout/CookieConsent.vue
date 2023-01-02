@@ -40,6 +40,7 @@ import { PosthogPlugin } from "~/plugins/posthog";
 const app = getCurrentInstance()!.appContext.app;
 app.use(PosthogPlugin);
 const posthog = inject("posthog") as PostHog;
+console.log(posthog.feature_flags);
 
 // Whether Accept or Decline has been explicitly selected
 const optionSelected = ref<boolean>(false);
