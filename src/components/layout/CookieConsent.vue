@@ -67,6 +67,7 @@ const acceptCookies = () => {
   if (typeof window !== "undefined") {
     posthog.opt_in_capturing();
     optionSelected.value = true;
+    showCookieConsent.value = false;
   }
 };
 
@@ -75,6 +76,7 @@ const declineCookies = () => {
   if (typeof window !== "undefined") {
     posthog.opt_out_capturing;
     optionSelected.value = true;
+    showCookieConsent.value = false;
   }
 };
 </script>
