@@ -2,3 +2,8 @@
 @import "prose.css";
 @import "highlight.css";
 @import "tailwind.css";
+
+/* Vue logic */
+[v-cloak] {
+  display: none;
+}
