@@ -1,5 +1,7 @@
 <template>
   <slot />
+
+  <CookieConsent client:load />
 </template>
 
 <script setup lang="ts">
