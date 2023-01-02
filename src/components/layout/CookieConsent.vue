@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!hideCookieConsent" class="fixed left-0 bottom-0 z-50">
+  <div v-if="!hideCookieConsent" class="fixed left-0 bottom-0 z-50" v-cloak>
     <div
       class="max-w-[202px] translate-x-[15px] translate-y-[-15px] rounded-lg bg-primary text-white/80 dark:bg-dark-gray"
     >
