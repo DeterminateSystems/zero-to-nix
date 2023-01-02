@@ -91,8 +91,21 @@ Now explore the Nix development environment for <Language client:load />:
 
 <NixDevelop client:load />
 
+<SpecificLanguage client:load lang="C++">
+First, let's see the Nix store path [CMake]:
+
+```shell
+which cmake
+```
+
+Check the current CMake version:
+
+```shell
+cmake --version
+```
+</SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
-First, let's see the Nix store paths for [Node.js]:
+First, let's see the Nix store path for [Node.js]:
 
 ```shell
 which node
@@ -149,6 +162,8 @@ cargo run
 You should see `Hello, world!`.
 </SpecificLanguage>
 
+Like usual, run `exit` to leave the Nix environment and return to your usual environment.
+
 ## Beyond language-specific environments
 
 In the [previous section](#language-specific-environments), we explored Nix environments tailored to specific programming languages.
@@ -173,6 +188,7 @@ We won't cover *how* to create these environments just yet, but we hope that you
 
 [bash]: https://gnu.org/software/bash
 [cargo]: https://doc.rust-lang.org/stable/cargo
+[cmake]: https://cmake.org
 [curl]: https://curl.se
 [dev]: /concepts/dev-env
 [flakes]: /concepts/flakes

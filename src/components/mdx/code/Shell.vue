@@ -3,7 +3,7 @@
   <div class="language-shell" data-lang="shell">
     <pre
       class="language-shell"
-    ><code><span class="token function">mkdir</span> {{ `nix-${language.toLowerCase()}` }} <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> {{  `nix-${language.toLowerCase()}` }}
+    ><code><span class="token function">mkdir</span> {{ `nix-${lang}` }} <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> {{  `nix-${lang}` }}
 nix flake init <span class="token parameter variable">--template</span> <span class="token string">"github:DeterminateSystems/templates#{{ template }}"</span></code></pre>
   </div>
 </template>
@@ -16,5 +16,11 @@ const { kind } = defineProps<{
   kind: string;
 }>();
 
-const template = computed(() => `${language.value.toLowerCase()}-${kind}`);
+const lang = computed(() => {
+  return (language.value === "C++" ? "cpp" : language.value).toLowerCase();
+});
+
+const template = computed(() => {
+  return `${lang.value.toLowerCase()}-${kind}`;
+});
 </script>

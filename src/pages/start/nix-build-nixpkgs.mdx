@@ -51,6 +51,14 @@ One of the great things about Nix is that [derivations] are extremely flexible, 
 
 <Languages client:load />
 
+<SpecificLanguage client:load lang="C++">
+Let's build and run [CMake]:
+
+```shell
+nix build "nixpkgs#cmake"
+./result/bin/cmake --help
+```
+</SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
 Let's build and run [npm]:
 

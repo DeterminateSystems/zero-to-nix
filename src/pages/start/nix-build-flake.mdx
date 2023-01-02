@@ -26,9 +26,47 @@ Whichever language you've selected, you can build the [Nix package][packages] de
 nix build
 ```
 
-This command determines that the local flake has a [package output][outputs], which is a [derivation] that defines how the package is built.
+This command determines that the local flake has a [package output][outputs] that defines how the package is built.
 In this particular flake there's a `default` package, which enables us to run `nix build` without specifying an output, but if the package were output as `packages.mypkg`, for example, we'd need to run `nix build .#mypkg` to build it.
 
+<SpecificLanguage lang="C++" client:load>
+Here's the package definition that builds our C++ package:
+
+```nix filename=flake.nix
+{
+  packages = forAllSystems ({ pkgs }: {
+    default = pkgs.stdenv.mkDerivation {
+      name = "zero-to-nix-cpp";
+      src = self;
+      buildInputs = with pkgs; [ boost gcc poco ];
+      buildPhase = ''
+        c++ -std=c++17 -o zero-to-nix-cpp ${./main.cpp} -lPocoFoundation -lboost_system
+      '';
+      installPhase = ''
+        mkdir -p $out/bin
+        cp zero-to-nix-cpp $out/bin/
+      '';
+    };
+  });
+}
+```
+
+For the full flake, see [`flake.nix`][flake-cpp] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the `mkDerivation` function provided by Nix's [standard environment][stdenv].
+
+The package that results when you run `nix build` is a CLI tool that outputs a message.
+To run that tool:
+
+```shell
+./result/bin/zero-to-nix-cpp
+```
+
+You should see this output:
+
+```shell
+Hello from Nix + C++!
+```
+</SpecificLanguage>
 <SpecificLanguage lang="JavaScript" client:load>
 Here's the package definition that builds our JavaScript package:
 
@@ -154,6 +192,7 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [derivation]: /concepts/derivations
 [devenv]: /start/dev-shell-flake
 [flake]: /concepts/flakes
+[flake-cpp]: https://github.com/DeterminateSystems/templates/tree/main/cpp/flake.nix
 [flake-go]: https://github.com/DeterminateSystems/templates/tree/main/go/flake.nix
 [flake-js]: https://github.com/DeterminateSystems/templates/tree/main/javascript/flake.nix
 [flake-py]: https://github.com/DeterminateSystems/templates/tree/main/python/flake.nix
