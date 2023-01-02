@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!hideCookieConsent" class="fixed left-6 bottom-6 z-50">
+  <div v-show="!hideCookieConsent" class="fixed left-6 bottom-6 z-50">
     <div
       class="max-w-[202px] rounded-lg bg-primary text-white/80 dark:bg-dark-gray"
     >
@@ -32,7 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import { type } from "os";
 import { PostHog } from "posthog-js";
 import { computed, getCurrentInstance, inject, ref } from "vue";
 
