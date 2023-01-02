@@ -1,7 +1,7 @@
 <template>
-  <div v-if="!hideCookieConsent" class="fixed left-0 bottom-0 z-50" v-cloak>
+  <div v-if="!hideCookieConsent" class="fixed left-6 bottom-6 z-50">
     <div
-      class="max-w-[202px] translate-x-[15px] translate-y-[-15px] rounded-lg bg-primary text-white/80 dark:bg-dark-gray"
+      class="max-w-[202px] rounded-lg bg-primary text-white/80 dark:bg-dark-gray"
     >
       <p class="content m-0 p-3 text-[14px]">
         We use a single, first-party analytics cookie to focus our limited time
