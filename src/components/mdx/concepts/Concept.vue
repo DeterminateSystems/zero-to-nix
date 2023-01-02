@@ -8,7 +8,7 @@
     </button>
     <template #content>
       <div
-        class="not-prose max-w-fit space-y-3 rounded-lg bg-pale py-3 px-5 shadow-md dark:bg-slate-700 md:space-y-4"
+        class="not-prose w-96 space-y-3 rounded-lg bg-pale py-3 px-5 shadow-md dark:bg-slate-700 md:space-y-4"
       >
         <span
           v-html="md(snippet)"
@@ -47,6 +47,6 @@ const { id, show } = defineProps<{
   show?: string;
 }>();
 
-const { title, href, snippet }: ConceptPage = conceptPage(id);
+const { title, href, snippet }: ConceptPage = await conceptPage(id);
 const displayText = show ?? title;
 </script>

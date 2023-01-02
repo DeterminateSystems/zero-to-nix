@@ -14,7 +14,7 @@ const quickStartPages: QuickStartPage[] =
   useDocuments<QuickStartPageProps>("~/pages/start").value;
 
 export const sortedQuickStartPages: QuickStartPage[] = quickStartPages.sort(
-  (p1: QuickStartPage, p2: QuickStartPage) => p1.order - p2.order
+  (p1: QuickStartPage, p2: QuickStartPage) => p1.order - p2.order,
 );
 
 // Concept pages
@@ -40,8 +40,15 @@ export type ConceptPage = Document<ConceptPageProps>;
 export const conceptPages: ConceptPage[] =
   useDocuments<ConceptPageProps>("~/pages/concepts").value;
 
-export const conceptPage = (id: string): ConceptPage =>
-  conceptPages.find((page: ConceptPage) => page.id === id)!;
+export const conceptPage = async (id: string): Promise<ConceptPage> => {
+  const page = conceptPages.find((page: ConceptPage) => page.id === id);
+
+  if (page === undefined) {
+    throw new Error(`No concept page with ID ${id}`);
+  }
+
+  return page;
+};
 
 // Pagination
 export const getPrevious = (order: number): QuickStartPage | undefined =>
@@ -53,13 +60,13 @@ export const getNext = (order: number): QuickStartPage | undefined =>
 // Related concepts
 export const relatedConceptPages = (
   currentHref: string,
-  ids: string[]
+  ids: string[],
 ): ConceptPage[] =>
   ids.map((id: string) => {
     const maybePage = conceptPages.find((page: ConceptPage) => page.id === id);
     if (maybePage === undefined) {
       throw new Error(
-        `No concept page found for concept id ${id} in the front matter for page ${currentHref}`
+        `No concept page found for concept id ${id} in the front matter for page ${currentHref}`,
       );
     }
     return maybePage!;
@@ -74,7 +81,7 @@ export type BriefPage = Document<BriefProps>;
 
 export const getBrief = (id: string): BriefPage =>
   useDocuments<BriefProps>("~/briefs").value.find(
-    (page: BriefPage) => page.id === id
+    (page: BriefPage) => page.id === id,
   )!;
 
 // Plain pages (like the About page)
