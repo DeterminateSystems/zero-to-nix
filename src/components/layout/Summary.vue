@@ -12,7 +12,7 @@
         <div
           v-for="item in items"
           :key="item"
-          class="md:text-normal space-x-3 text-sm lg:text-lg"
+          class="space-x-3 text-sm md:text-base lg:text-lg"
         >
           <span class="font-semibold">&RightArrow;</span>
           <span v-html="md(item)" class="content" />

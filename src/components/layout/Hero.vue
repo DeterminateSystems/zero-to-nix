@@ -2,7 +2,7 @@
   <section
     :class="[
       normalHero &&
-        'space-y-2 py-10 md:space-y-3 md:py-12 lg:space-y-4 lg:py-14',
+        'space-y-3 py-10 md:space-y-4 md:py-12 lg:space-y-5 lg:py-14',
       largeHero &&
         'space-y-3 py-24 md:space-y-4 md:py-28 lg:space-y-5 lg:py-32',
     ]"
@@ -19,7 +19,7 @@
     </h1>
     <h2
       v-if="description"
-      class="content tracking-tighter text-dark-gray dark:text-light-gray"
+      class="content text-dark-gray dark:text-light-gray"
       :class="[
         normalHero && 'text-lg md:text-xl lg:text-2xl',
         largeHero && 'text-xl md:text-2xl lg:text-3xl',
@@ -38,7 +38,7 @@
           'bg-primary text-white': highlight,
           'bg-light-gray text-black': !highlight,
         }"
-        class="rounded-full py-2 px-4 font-bold shadow-md transition-colors duration-300 hover:bg-dark-gray hover:text-white"
+        class="rounded-full py-2 px-4 font-bold shadow-md transition-colors duration-150 hover:bg-dark-gray hover:text-white"
       >
         {{ text }}
       </a>

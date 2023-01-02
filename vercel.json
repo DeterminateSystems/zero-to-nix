@@ -1,4 +1,10 @@
 {
+  "buildCommand": "ENV=production pnpm run build",
   "cleanUrls": true,
+  "devCommand": "pnpm run dev",
+  "framework": null,
+  "installCommand": "pnpm install",
+  "outputDirectory": "dist",
+  "public": true,
   "trailingSlash": false
 }

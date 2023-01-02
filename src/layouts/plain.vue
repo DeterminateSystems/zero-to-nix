@@ -3,15 +3,20 @@
     <Top>
       <Navbar />
       <HorizontalContainer>
-        <Hero :title="title" :description="description" />
+        <Hero :title="title" :description="description" client:none />
 
         <Content>
           <slot />
         </Content>
+
+        <div class="mt-16 space-y-12">
+          <Separator />
+          <FeedbackBar />
+        </div>
       </HorizontalContainer>
     </Top>
 
-    <Footer />
+    <Footer client:load />
   </Page>
 </template>
 

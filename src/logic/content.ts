@@ -51,10 +51,19 @@ export const getNext = (order: number): QuickStartPage | undefined =>
   quickStartPages.find((p: QuickStartPage) => p.order === order + 1);
 
 // Related concepts
-export const relatedConceptPages = (ids: string[]): ConceptPage[] =>
-  ids.map(
-    (id: string) => conceptPages.find((page: ConceptPage) => page.id === id)!
-  );
+export const relatedConceptPages = (
+  currentHref: string,
+  ids: string[]
+): ConceptPage[] =>
+  ids.map((id: string) => {
+    const maybePage = conceptPages.find((page: ConceptPage) => page.id === id);
+    if (maybePage === undefined) {
+      throw new Error(
+        `No concept page found for concept id ${id} in the front matter for page ${currentHref}`
+      );
+    }
+    return maybePage!;
+  });
 
 // Briefs
 type BriefProps = {

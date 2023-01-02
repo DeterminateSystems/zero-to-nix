@@ -1,6 +1,7 @@
 ---
 title: Nixpkgs
-snippet: Fill me in later so that I show up in the tooltip
+snippet: |
+  A collection of tens of thousands of Nix [packages](/concepts/packages) and build utilities for the [Nix language](/concepts/nix-language)
 related: ["channels", "flakes", "nix", "nix-language", "nixos"]
 externalSources: [
   {
@@ -30,6 +31,11 @@ externalSources: [
 ]
 ---
 
-**Nixpkgs**, pronounced "Nix packages," is a big old ball of [Nix] that's hard to avoid. And why would you even try?
+*Nixpkgs* (pronounced "Nix packages") is a big collection of [Nix] expressions, packages (who'd have thought...), and build utilities for the Nix ecosystem.
+It is sometimes also called a "Nix standard library" (or Nix stdlib).
+
+Nixpkgs is a mono repo, containing over 80,000 package definitions and the utilities to maintain this set of packages.
+It also contains [NixOS](/concepts/nixos) modules and anything required to build and deploy a full Nix system.
+Many tools in the Nix ecosystem depend on this standard library to function.
 
 [nix]: https://nixos.org
