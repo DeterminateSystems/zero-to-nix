@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-between">
-    <PageSurvey />
+    <PageSurvey client:load />
 
     <div class="space-y-3 text-sm md:text-base lg:text-lg">
       <span class="flex items-center space-x-3">
