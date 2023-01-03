@@ -12,6 +12,7 @@ buildpythonapplication
 buildrustpackage
 cargolock
 ci
+cmake
 config
 cowsay
 declaratively
@@ -29,6 +30,7 @@ fetchgit
 ffmpeg
 ffprobe
 func
+gcc
 github
 gpg
 haskell
