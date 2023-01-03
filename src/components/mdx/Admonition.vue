@@ -51,7 +51,7 @@
 
       <DisclosurePanel
         as="div"
-        class="content mt-3.5 px-5 pb-4 text-sm md:text-base lg:text-lg"
+        class="content px-5 pb-4 text-sm md:text-base lg:text-lg"
       >
         <slot />
       </DisclosurePanel>
@@ -69,7 +69,10 @@
         <span>{{ title }}</span>
       </span>
 
-      <div class="content px-5 pb-4 text-sm md:text-base lg:text-lg">
+      <div
+        class="content px-5 pb-4 text-sm md:text-base lg:text-lg"
+        :class="[title && 'pb-4', !title && 'py-4']"
+      >
         <slot />
       </div>
     </div>

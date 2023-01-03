@@ -1,0 +1,60 @@
+---
+title: Caching
+snippet: |
+
+related: ["closures", "derivations", "nix-store"]
+externalSources: [
+  {
+    title: "Binary cache",
+    href: "https://nixos.wiki/wiki/Binary_Cache",
+    source: {
+      title: "The NixOS Wiki",
+      href: "https://nixos.wiki"
+    }
+  },
+  {
+    title: "Setting up a private Nix cache for fun and profit",
+    href: "https://channable.com/tech/setting-up-a-private-nix-cache-for-fun-and-profit",
+    source: {
+      title: "The Channable blog",
+      href: "https://www.channable.com/tech"
+    }
+  },
+  {
+    title: "Serving a Nix store via HTTP",
+    href: "https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter",
+    source: {
+      title: "The Nix manual",
+      href: "https://nixos.org/manual/nix/stable"
+    }
+  }
+]
+---
+
+By default, Nix uses *caching* to make [building packages][packages] more efficient.
+This in turn makes other Nix operations that involve building packages, like creating [development environments][dev] and standing up [NixOS] environments, more efficient as well.
+
+## Building vs. caching
+
+Whenever Nix builds a [package][packages] by [realising] the package's [derivation], it needs to realise the entire [closure] of the derivation.
+That means it needs to realise entire dependency tree of the derivation, that is, all of the derivations required to build the package's derivation, plus the derivations required to build those derivations, and so on.
+Some closures have tiny dependency trees while others have massive dependency trees involving dozens if not hundreds of derivations.
+
+<Admonition type="success" title="Nix without caching" client:load>
+Without caching, [realisation][realising] would involve always building everything from scratch, which would make Nix a much less efficient&mdash;and thereby much less compelling&mdash;package manager and build tool.
+</Admonition>
+
+## Hashes
+
+Nix store paths have this structure:
+
+<NixStorePath pkg="git-2.37.0" />
+
+Whenever Nix builds a [derivation], it calculates an **input hash** for each
+
+[closure]: /concepts/closures
+[derivation]: /concepts/derivations
+[dev]: /concepts/dev-env
+[nixos]: /concepts/nixos
+[packages]: /concepts/packages
+[realising]: /concepts/realisation
