@@ -10,10 +10,6 @@ jobs:
   build:
     environment: test
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      CACHIX_CACHE: ${{ secrets.CACHIX_CACHE }}
-      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
     steps:
       - name: git checkout
         uses: actions/checkout@v3
@@ -25,18 +21,21 @@ jobs:
       #    path: |
       #      tmp/
 
-      - uses: cachix/install-nix-action@v18
+      - uses: DeterminateSystems/nix-installer@main
         with:
-          extra_nix_config: |
-            access-tokens = github.com=${{ env.GITHUB_TOKEN }}
-            binary-caches = https://cache.nixos.org https://${{ env.CACHIX_CACHE }}.cachix.org
-      - uses: cachix/cachix-action@v12
-        with:
-          name: ${{ env.CACHIX_CACHE }}
-          authToken: ${{ env.CACHIX_AUTH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          extra-conf: |
+            binary-caches = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
+            trusted-substituters = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
+            trusted-users = root runner
+            trusted-public-keys = ${{ secrets.CACHIX_TRUSTED_PUBLIC_KEY }} ${{ secrets.NIXOS_PUBLIC_KEY }}
+      - name: Cachix setup
+        run: |
+          nix develop --command cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
+          nix develop --command cachix use ${{ secrets.CACHIX_CACHE }}
       - name: Run Nix CI suite
         run: nix develop --command ci
       - name: Push dev shell to Cachix
         run: |
           nix develop --profile zero-to-nix
-          cachix push ${{ env.CACHIX_CACHE }} zero-to-nix
+          nix develop --command cachix push ${{ secrets.CACHIX_CACHE }} zero-to-nix

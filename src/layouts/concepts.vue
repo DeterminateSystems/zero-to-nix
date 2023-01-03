@@ -34,7 +34,7 @@
       </HorizontalContainer>
     </Top>
 
-    <Footer />
+    <Footer client:load />
   </Page>
 </template>
 

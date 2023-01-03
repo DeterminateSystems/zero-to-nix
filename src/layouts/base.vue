@@ -1,5 +1,7 @@
 <template>
   <slot />
+
+  <CookieConsent v-show="activateCookieConsent" client:load />
 </template>
 
 <script setup lang="ts">
@@ -17,17 +19,8 @@ const canonical = new URL(url, href).toString();
 useHead({
   link: [{ rel: "canonical", href: canonical }],
 });
-</script>
 
-<script client:load lang="ts">
-import { posthog } from "posthog-js";
-
-if (import.meta.env.MODE === "production") {
-  const apiKey = "phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4";
-  posthog.init(apiKey, {
-    api_host: "https://app.posthog.com",
-  });
-}
+const activateCookieConsent = import.meta.env.MODE === "production";
 </script>
 
 <style>

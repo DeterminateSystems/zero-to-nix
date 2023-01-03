@@ -27,7 +27,6 @@ export type Site = {
   features: Feature[];
   navbarLinks: NavLink[];
   heroButtons: ButtonProps[];
-  year: number;
   systems: string[];
   languages: string[];
   nixTerms: Term[];
@@ -107,11 +106,9 @@ const site: Site = {
     },
   ],
 
-  year: new Date().getFullYear(),
-
   // User interactions
   systems: ["Linux", "macOS"],
-  languages: ["JavaScript", "Python", "Go", "Rust"],
+  languages: ["JavaScript", "Python", "Go", "Rust", "C++"],
 
   // Nix stuff
   nixTerms: [

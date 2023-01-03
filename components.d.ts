@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     Concept: typeof import('./src/components/mdx/concepts/Concept.vue')['default']
     ConceptsDropdown: typeof import('./src/components/layout/ConceptsDropdown.vue')['default']
     Content: typeof import('./src/components/layout/Content.vue')['default']
+    CookieConsent: typeof import('./src/components/layout/CookieConsent.vue')['default']
     Dropdown: typeof import('./src/components/layout/generic/Dropdown.vue')['default']
     ExternalSources: typeof import('./src/components/layout/ExternalSources.vue')['default']
     Features: typeof import('./src/components/layout/Features.vue')['default']

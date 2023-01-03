@@ -25,6 +25,19 @@
   }
 
   .prose {
+    /* Hide footnotes heading */
+    .footnotes {
+      @apply mt-12 p-0;
+
+      h2#footnote-label {
+        @apply text-lg md:text-xl lg:text-2xl;
+      }
+
+      .data-footnote-backref {
+        @apply no-underline;
+      }
+    }
+
     /* Needed by a few components */
     .remove-underline {
       a {
