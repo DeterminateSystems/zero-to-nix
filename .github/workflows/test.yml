@@ -24,7 +24,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          extra_nix_config: |
+          extra-conf: |
             binary-caches = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
             trusted-substituters = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
             trusted-users = root runner
