@@ -2,9 +2,16 @@
 title: Search for packages
 summary: [
   "Use the `nix search` command to find packages in [Nixpkgs](/concepts/nixpkgs)",
+  "Explore [search.nixos.org](https://search.nixos.org)",
 ]
 order: 6
 ---
+
+One of the virtues of the [Nix ecosystem][ecosystem].
+
+```shell
+nix flake show
+```
 
 One of the core virtues of the Nix ecosystem
 
@@ -20,17 +27,19 @@ nix search nixpkgs npm
 
 <Admonition type="warning" title="This could take a while" id="nix-search" client:load>
 The first time you run `nix search`, the Nix CLI needs to download the full contents of [Nixpkgs]&mdash;or whichever flake you're searching&mdash;and then cache it.
-Future `nix search` runs for a given flake should be much speedier.
+Future `nix search` runs for Nixpkgs should be much speedier.
+Furthermore, Nixpkgs is the largest flake in existence and running `nix search` on other flakes should be much faster in general.
 </Admonition>
 
 ### System specificity
 
-One thing you may notice about the search output
+One thing you may notice about the search output is that
 
 ## search.nixos.org
 
 The web interface at [search.nixos.org][search]
 
+[ecosystem]: /concepts/ecosystem
 [nixpkgs]: /concepts/nixpkgs
 [npm]: https://npmjs.org
 [search]: https://search.nixos.org
