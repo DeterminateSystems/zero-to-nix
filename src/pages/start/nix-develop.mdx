@@ -19,7 +19,7 @@ The [`nix develop`][nix-develop] command activates a Nix environment:
 nix develop "github:DeterminateSystems/templates#example"
 ```
 
-<Admonition type="warning" title="This could take a while" id="nix-develop-loading" client:load>
+<Admonition kind="warning" title="This could take a while" id="nix-develop-loading" client:load>
 The first time you activate a Nix development environment using `nix develop` it's likely to be a slow operation.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
 This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
