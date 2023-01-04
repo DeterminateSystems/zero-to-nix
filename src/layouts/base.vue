@@ -1,7 +1,9 @@
 <template>
-  <slot />
+  <div v-cloak>
+    <slot />
 
-  <CookieConsent v-show="activateCookieConsent" client:load />
+    <CookieConsent v-show="activateCookieConsent" client:load />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -25,4 +27,8 @@ const activateCookieConsent = import.meta.env.MODE === "production";
 
 <style>
 @import "~/assets/css/main"; /* main.css */
+
+[v-cloak] {
+  display: none;
+}
 </style>
