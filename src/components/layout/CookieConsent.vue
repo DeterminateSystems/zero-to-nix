@@ -1,5 +1,5 @@
 <template>
-  <div v-show="showCookieConsent" class="fixed left-6 bottom-6 z-50">
+  <div v-show="showCookieConsent" class="print:hidden fixed left-6 bottom-6 z-50">
     <div
       class="max-w-[202px] rounded-lg bg-primary text-white/80 dark:bg-dark-gray"
     >
