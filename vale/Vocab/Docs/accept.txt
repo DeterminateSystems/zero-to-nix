@@ -83,6 +83,7 @@ sudo
 tooltip
 tmux
 tweag
+uninstallation
 upstreaming
 url
 vite
