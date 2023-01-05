@@ -34,6 +34,21 @@ nix develop
 
 Now that we've entered the development environment, we can do some exploring, starting with [Nix store paths][store].
 
+
+<SpecificLanguage client:load lang="C++">
+Ordinarily when you run `which gcc` on a Unix system, you get a path like `/usr/bin/gcc`.
+Try running it in the Nix development environment:
+
+```shell
+which gcc
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/nbrvvx1gyq3as3ghmjz62wlgd8f3zfpf-gcc-wrapper-11.3.0/bin/gcc
+```
+</SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
 Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`.
 Try running it in the Nix development environment:
@@ -104,7 +119,7 @@ Probably not what you expected! What happened here? A few things:
 [inputs]: /concepts/flake-inputs
 [nix]: https://nixos.org
 [outputs]: /concepts/flake-outputs
-[packages]: /concepts/package
+[packages]: /concepts/packages
 [pinning]: /concepts/pinning
 [rev]: https://git-scm.com/docs/revisions
 [store]: /concepts/nix-store

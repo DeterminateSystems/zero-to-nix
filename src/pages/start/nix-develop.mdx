@@ -6,7 +6,7 @@ summary: [
   "Explore Nix development environments tailor made for specific programming languages",
   "Explore a more mixed development environment"
 ]
-order: 5
+order: 4
 ---
 
 One of Nix's key features for developing software is Nix [development environments][dev].
@@ -19,7 +19,7 @@ The [`nix develop`][nix-develop] command activates a Nix environment:
 nix develop "github:DeterminateSystems/templates#example"
 ```
 
-<Admonition type="warning" title="This could take a while" id="nix-develop-loading" client:load>
+<Admonition kind="warning" title="This could take a while" id="nix-develop-loading" client:load>
 The first time you activate a Nix development environment using `nix develop` it's likely to be a slow operation.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
 This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
@@ -87,8 +87,21 @@ Now explore the Nix development environment for <Language client:load />:
 
 <NixDevelop client:load />
 
+<SpecificLanguage client:load lang="C++">
+First, let's see the Nix store path [CMake]:
+
+```shell
+which cmake
+```
+
+Check the current CMake version:
+
+```shell
+cmake --version
+```
+</SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
-First, let's see the Nix store paths for [Node.js]:
+First, let's see the Nix store path for [Node.js]:
 
 ```shell
 which node
@@ -145,6 +158,8 @@ cargo run
 You should see `Hello, world!`.
 </SpecificLanguage>
 
+Like usual, run `exit` to leave the Nix environment and return to your usual environment.
+
 ## Beyond language-specific environments
 
 In the [previous section](#language-specific-environments), we explored Nix environments tailored to specific programming languages.
@@ -169,6 +184,7 @@ We won't cover *how* to create these environments just yet, but we hope that you
 
 [bash]: https://gnu.org/software/bash
 [cargo]: https://doc.rust-lang.org/stable/cargo
+[cmake]: https://cmake.org
 [curl]: https://curl.se
 [dev]: /concepts/dev-env
 [flakes]: /concepts/flakes
@@ -184,7 +200,7 @@ We won't cover *how* to create these environments just yet, but we hope that you
 [npm]: https://npmjs.org
 [openssl]: https://openssl.org
 [output]: /concepts/flake-outputs
-[packages]: /concepts/package
+[packages]: /concepts/packages
 [path]: https://en.wikipedia.org/wiki/PATH_(variable)
 [pkg]: /concepts/package-management
 [python]: https://python.org

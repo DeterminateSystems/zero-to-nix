@@ -10,7 +10,6 @@ module.exports = {
     extend: {
       borderWidth: {
         2.5: "2.5px",
-        3: "3px",
       },
       colors: {
         // Variables defined in src/assets/css/variables.css
@@ -42,9 +41,48 @@ module.exports = {
         "light-orange": "var(--light-orange)",
         primary: "var(--primary)",
       },
+      fontFamily: {
+        sans: [
+          "-apple-system",
+          "ui-sans-serif",
+          "system-ui",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+        serif: [
+          "ui-serif",
+          "Georgia",
+          "Cambria",
+          '"Times New Roman"',
+          "Times",
+          "serif",
+        ],
+        mono: [
+          "ui-monospace",
+          "Menlo",
+          "Consolas",
+          "SFMono-Regular",
+          "Monaco",
+          '"Liberation Mono"',
+          '"Courier New"',
+          "monospace",
+        ],
+      },
       maxWidth: {
         "8xl": "90rem",
       },
+      screens: {
+        'print': { 'raw': 'print' }
+      }
     },
   },
 };
