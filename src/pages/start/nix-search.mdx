@@ -1,0 +1,106 @@
+---
+title: Search for Nix packages
+summary: [
+  "Use the `nix search` command to find packages in [Nixpkgs](/concepts/nixpkgs)",
+  "Explore the [search.nixos.org](https://search.nixos.org) web interface",
+  "Use the `nix flake show` command to explore packages output by [flakes](/concepts/flakes)",
+]
+order: 6
+---
+
+One great thing about Nix is that there are *tons* of [packages] available in the [Nix ecosystem][ecosystem] that you can use in [Nix development environments][env], in your [NixOS][nixos] installations, and more.
+While [Nixpkgs] is by far the largest Nix package collection&mdash;over 80,000 packages and counting 😎&mdash;any [Nix flake][flakes] can provide package [outputs].
+
+Navigating all this plenty can be tricky, so in this guide we'll learn how to search for packages in Nixpkgs using the [`nix search`][nix-search] command and using the web application at [search.nixos.org][search].
+Then we'll learn how to explore for packages in [other flakes](#nix-flake-show).
+
+## The `nix search` command \{#nix-search-command}
+
+The [Nix CLI][nix] has a `search` command that you can use to search the packages in a flake based on a search term.
+Let's start by searching [Nixpkgs], which is where we're mostly likely to find packages we want.
+This command will tell us if [cargo] is available in [Nixpkgs]:
+
+```shell
+nix search nixpkgs cargo
+```
+
+In this command, the `nixpkgs` [flake reference][flake-ref] is shorthand for `github:NixOS/nixpkgs`.
+
+<Admonition kind="warning" title="This could take a while" id="nix-search" client:load>
+The first time you run `nix search`, the Nix CLI needs to download the full Nix code contents of [Nixpkgs]&mdash;or whichever flake you're searching&mdash;and then cache it.
+Future `nix search` runs for Nixpkgs should be much speedier.
+Furthermore, Nixpkgs is the largest flake in existence and running `nix search` on other flakes should be much faster in general.
+</Admonition>
+
+This brings up many results of the form `legacyPackages.<system>.<package>`, the first of which should look like this on an Apple Silicon (`aarch64-darwin`) system:
+
+```
+* legacyPackages.aarch64-darwin.cargo (1.65.0)
+  Downloads your Rust project's dependencies and builds your project
+````
+
+The system attribute [varies](#system-specificity) on other platforms (you may see `x86_64-linux` or something else).
+After that first result, you should many others, including packages like [`cargo-about`][cargo-about] and [`cargo-audit`][cargo-audit].
+
+You can also output search results as JSON using the `--json` flag:
+
+```shell
+nix search nixpkgs cargo --json
+```
+
+This can be useful if you want to parse the output using a tool like [jq].
+
+## search.nixos.org
+
+The web interface at [search.nixos.org][search]
+
+[search.nixos.org][search] has a few advantages over the [`nix search`](#nix-search-command) command:
+
+* It enables you to select a [release channel][release] for [Nixpkgs], such as [22.11] and [unstable]
+* It enables you to search across a range of [public flakes][public-flakes] beyond Nixpkgs (those flakes are listed [here][flakes-list])
+
+## The `nix flake show` command \{#nix-flake-show}
+
+The [Wayland] window system protocol.
+
+```shell
+nix flake show github:nix-community/nixpkgs-wayland
+```
+
+<Admonition kind="info" title="When to use which command" id="which-search-command" client:load>
+Should you use `nix flake show` or `nix search`?
+A good rule of thumb is to always use `nix search` with Nixpkgs and to initially use `nix flake show` with other flakes.
+If the package outputs for `nix flake show` are big enough to be tricky to navigate, use `nix search` for that flake instead.
+</Admonition>
+
+## System specificity
+
+One thing you'll notice about the search output for `nix search`, [search.nixos.org][search], and `nix flake show` is that all the packages listed in the query results are for your current system (`x86_64-linux` for an AMD/Intel Linux system, `aarch64-darwin` for an Apple Silicon system, and so on).
+That's because Nix works in a fundamentally [system-specific] way.
+The `cargo` package on a Linux machine is considered a *different package* from `cargo` on a non-Linux system.
+
+[22.11]: https://github.com/nixOS/nixpkgs/tree/22.11
+[cargo]: https://github.com/rust-lang/cargo
+[cargo-about]: https://github.com/EmbarkStudios/cargo-about
+[cargo-audit]: https://github.com/RustSec/rustsec/tree/main/cargo-audit
+[cargo-edit]: https://github.com/killercup/cargo-edit
+[ecosystem]: /concepts/ecosystem
+[env]: /concepts/dev-env
+[flake-ref]: /concepts/flakes#references
+[flakes]: /concepts/flakes
+[flakes-list]: https://github.com/NixOS/nixos-search/blob/main/flakes/manual.toml
+[jq]: https://stedolan.github.io/jq
+[nix]: /concepts/nix
+[nix-search]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-search
+[nixos]: /concepts/nixos
+[nixpkgs]: /concepts/nixpkgs
+[nixpkgs-wayland]: https://github.com/nix-community/nixpkgs-wayland
+[outputs]: /concepts/flakes#outputs
+[packages]: /concepts/packages
+[pkg]: /concepts/package-management
+[public-flakes]: https://search.nixos.org/flakes
+[release]: /concepts/nixpkgs#release-channels
+[search]: https://search.nixos.org
+[system-specific]: /concepts/system-specificity
+[unstable]: https://github.com/nixOS/nixpkgs/tree/nixpkgs-unstable
+[wayland]: https://wayland.freedesktop.org

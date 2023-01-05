@@ -22,5 +22,7 @@ const { related } = defineProps<{
   related: string[];
 }>();
 
-const relatedPages: ConceptPage[] = relatedConceptPages(related);
+const { route } = usePage();
+
+const relatedPages: ConceptPage[] = relatedConceptPages(route.path, related);
 </script>

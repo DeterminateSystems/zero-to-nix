@@ -1,7 +1,7 @@
 ---
 title: The Nix language
 snippet: |
-  The language you use to define Nix package builds, Nix development environments, NixOS configurations, and more.
+  The language you use to define Nix [package builds](/concepts/packages), [development environments](/concepts/dev-env), [NixOS configurations](/concepts/nixos), and more.
 related: ["declarative", "nix", "nixos", "nixpkgs"]
 externalSources: [
   {
@@ -58,8 +58,6 @@ Nix as a *programming language* can be thought of as a kind of "JSON, but with f
 All statements are [declarative], meaning that there's no sequential flow of instructions that makes up a Nix package.
 Instead functions are called that assign values to fields in *attribute sets*, which in turn may get assigned to other values.
 
-[declarative](/concepts/declarative)
-
 ## How does Nix work?
 
 Nix uses a few important characteristics in programming language design to work.
@@ -114,3 +112,5 @@ rec {
 The `rec` keyword allows the attribute set to reference itself.
 
 For a more detailed breakdown of syntax, check out the [Nix language](https://nixos.org/manual/nix/stable/language/index.html) manual section.
+
+[declarative]: /concepts/declarative

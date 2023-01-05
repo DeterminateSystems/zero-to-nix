@@ -27,7 +27,25 @@
       let
         pkgs = import nixpkgs { inherit overlays system; };
 
-        common = with pkgs; [ vale alex htmltest nodejs pnpm python38 ];
+        common = with pkgs; [
+          # CI
+          cachix
+          direnv
+          nix-direnv
+
+          # Language
+          vale
+          alex
+
+          # Link checking
+          htmltest
+
+          # JS
+          nodejs
+          pnpm
+        ];
+
+        run = pkg: "${pkgs.${pkg}}/bin/${pkg}";
 
         scripts = with pkgs; [
           (writeScriptBin "clean" ''
@@ -36,57 +54,52 @@
 
           (writeScriptBin "setup" ''
             clean
-            pnpm install
+            ${run "pnpm"} install
           '')
 
           (writeScriptBin "build" ''
             setup
-            pnpm run build
+            ${run "pnpm"} run build
           '')
 
-          (writeScriptBin "build-dev" ''
+          (writeScriptBin "build-ci" ''
             setup
-            ENV=dev pnpm run build
+            ENV=ci ${run "pnpm"} run build
           '')
 
           (writeScriptBin "dev" ''
             setup
-            pnpm run dev
+            ${run "pnpm"} run dev
           '')
 
           (writeScriptBin "format" ''
             setup
-            pnpm run format
-          '')
-
-          (writeScriptBin "preview" ''
-            ENV=preview build
-            python3 -m http.server -d dist 3000
+            ${run "pnpm"} run format
           '')
 
           (writeScriptBin "check-internal-links" ''
-            htmltest --conf ./.htmltest.internal.yml
+            ${run "htmltest"} --conf ./.htmltest.internal.yml
           '')
 
           (writeScriptBin "check-external-links" ''
-            htmltest --conf ./.htmltest.external.yml
+            ${run "htmltest"} --conf ./.htmltest.external.yml
           '')
 
           (writeScriptBin "lint-style" ''
-            vale src/pages
+            ${run "vale"} src/pages
           '')
 
           (writeScriptBin "check-sensitivity" ''
-            alex --quiet src/pages
+            ${run "alex"} --quiet src/pages
           '')
 
           (writeScriptBin "check-types" ''
-            npm run typecheck
+            ${run "pnpm"} run typecheck
           '')
 
           # Run this to see if CI will pass
           (writeScriptBin "ci" ''
-            ENV=ci build
+            build-ci
             check-internal-links
             lint-style
             check-sensitivity
@@ -96,9 +109,9 @@
 
         runLocal = pkgs.writeScriptBin "run-local" ''
           rm -rf dist
-          pnpm install
-          ENV=preview pnpm run build
-          python3 -m http.server -d dist 3000
+          ${run "pnpm"} install
+          ${run "pnpm"} run build
+          ${run "pnpm"} run preview
         '';
       in
       {

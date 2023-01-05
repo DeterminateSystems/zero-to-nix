@@ -52,7 +52,7 @@ To ensure that the site can build properly in response to changes:
 build
 ```
 
-As an alternative, your can [run the whole CI suite](#run-checks-locally), which also builds the site.
+As an alternative, you can [run the whole CI suite](#run-checks-locally), which also builds the site.
 
 ### Format code
 
@@ -81,11 +81,10 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 
 | Component                                                                | What it does                                                                                                                            |
 | :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
-| [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /></br />Adding an `id` makes it a stateful callout dropdown. |
+| [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /><br />Adding an `id` makes it a stateful callout dropdown. |
 | [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                  |
 | [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                             |
 | [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                              |
-| [`Harmonic`](./src/components/mdx/code/Harmonic.vue)                     | Provides system-specific shell commands for [Harmonic]                                                                                  |
 | [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                                                                          |
 | [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                                                                                   |
 | [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language                                                         |
@@ -132,12 +131,47 @@ There are a few other important files you should be aware of when working on the
 - [`src/logic/state.ts`](./src/logic/state.ts) defines all stateful logic using the [nanostores] library
 - [`src/logic/theme.ts`](./src/logic/theme.ts) provides logic for the light/dark theme switcher
 
+## Suggested VS Code settings
+
+If you happen to use VS Code as your editor, we recommend adding these extensions:
+
+- [`Vue.volar`][vsc-vue]
+- [`unifiedjs.vscode-mdx`][vsc-mdx]
+- [`bradlc.vscode-tailwindcss`][vsc-tailwind]
+- [`esbenp.prettier-vscode`][vsc-prettier]
+- [`vscode.vscode-typescript-next`][vsc-tsc]
+
+We also recommend adding these settings to your local `.vscode/settings.json`:
+
+```jsonc
+{
+  "[mdx]": {
+    // By default, this extension overwrites our one-sentence-per-line policy
+    "editor.formatOnSave": false,
+    // This is a nice helper for longer sentences
+    "editor.wordWrapColumn": 100,
+    "editor.wordWrap": "wordWrapColumn"
+  },
+  // Format everything using the Prettier config
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Keep junk out of your search results
+  "search.exclude": {
+    "**/.direnv": true,
+    "**/.git": true,
+    "**/node_modules": true,
+    "dist": true,
+    "pnpm-lock.yaml": true,
+    "*.d.ts": true,
+    "tmp": true
+  }
+}
+```
+
 [ci]: ./.github/workflows/test.yml
 [client-load]: https://iles.pages.dev/guide/hydration#clientload
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
 [gha]: https://github.com/features/actions
-[harmonic]: https://github.com/DeterminateSystems/harmonic
 [hydration]: https://iles.pages.dev/guide/hydration#hydration-directives
 [iles]: https://github.com/elMassimo/iles
 [mdx]: https://mdxjs.com
@@ -146,4 +180,9 @@ There are a few other important files you should be aware of when working on the
 [site]: https://zero-to-nix.vercel.app
 [tailwind]: https://tailwindcss.com
 [vercel]: https://vercel.com
+[vsc-mdx]: https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx
+[vsc-prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+[vsc-tailwind]: https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+[vsc-tsc]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next
+[vsc-vue]: https://marketplace.visualstudio.com/items?itemName=Vue.volar
 [vue]: https://vuejs.org

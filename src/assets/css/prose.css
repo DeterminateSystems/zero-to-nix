@@ -1,27 +1,100 @@
-/* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
-.content {
-  a {
-    @apply underline hover:text-primary dark:hover:text-light-blue;
+@layer base {
+  /* Helper classes */
+  .inline-code {
+    @apply inline-block rounded border-light-gray bg-pale px-1.5 dark:border-none dark:bg-dark-gray;
   }
 
-  p + p {
-    @apply mt-2 md:mt-2.5 lg:mt-3;
-  }
-}
+  /* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
+  .content {
+    a {
+      @apply underline hover:text-primary dark:hover:text-light-blue;
+    }
 
-.prose {
-  a {
-    @apply underline hover:text-primary dark:hover:text-light-blue;
-  }
+    p + p {
+      @apply mt-2 md:mt-2.5 lg:mt-3;
+    }
 
-  code {
-    &::before,
-    &::after {
-      content: "";
+    code {
+      @apply inline-code;
     }
   }
 
-  .admonition {
-    @apply my-4;
+  .prose {
+    /* Hide footnotes heading */
+    .footnotes {
+      @apply mt-12 p-0;
+
+      h2#footnote-label {
+        @apply text-lg md:text-xl lg:text-2xl;
+      }
+
+      .data-footnote-backref {
+        @apply no-underline;
+      }
+    }
+
+    /* Needed by a few components */
+    .remove-underline {
+      a {
+        @apply no-underline;
+      }
+    }
+
+    p,
+    .content,
+    h2,
+    h3 {
+      code {
+        @apply inline-code;
+      }
+    }
+
+    a {
+      @apply underline hover:text-primary dark:hover:text-light-blue;
+
+      /* Hoverable heading links */
+      &.heading-anchor {
+        @apply float-left text-2xl text-primary no-underline opacity-0;
+
+        margin-top: 0.125em;
+        margin-left: -1em;
+        padding-right: 0.25em;
+
+        &::before {
+          content: "#";
+        }
+      }
+    }
+
+    .heading {
+      @apply tracking-tight;
+
+      &::before {
+        display: block;
+        content: " ";
+        margin-top: -5rem;
+        height: 5rem;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      &:focus,
+      &:hover {
+        a.heading-anchor {
+          @apply text-primary opacity-100;
+        }
+      }
+    }
+
+    code {
+      &::before,
+      &::after {
+        content: "";
+      }
+    }
+
+    .admonition {
+      @apply my-4;
+    }
   }
 }
