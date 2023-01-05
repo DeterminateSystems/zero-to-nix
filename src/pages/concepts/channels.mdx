@@ -41,15 +41,15 @@ externalSources: [
 
 
 A *Nix channel* is a release branch for some Nix code, which follows a particular policy.
-This can either be a branch, a release tag, or a single commit.
+This can be a branch, a release tag, or a single commit.
 Sounds confusing?
 Channels are best explained with some examples!
 
-| Channel name           | Release date                                                                 | Description                                                                                                                                                                                                    |
-|------------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `nixos-22.11`          | Initially release in November of 2022 and updated for 6 months afterwards    | A stable version of NixOS, released in November of 2022. Security patches and updates will be backported, but no new applications, or breaking changes will be applied                                        |
-| `nixos-unstable`       | Frequently updated, whenever a set of important packages builds on `staging` | The rolling release channel of NixOS, which is updated whenever its feasible to do so. Security updates, new packages, and breaking changes will frequently appear on your computer                    |
-| `nixos-unstable-small` | Same as `nixos-unstable`, but more frequently                                | A rolling release channel similar to `nixos-unstable` but with a smaller set of packages that are tested. This means this channel is updated more frequently, but may have some broken packages on it as well |
+| Channel name           | Release date                                                               | Description                                                                                                                                                                                                                        |
+|------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `nixos-22.11`          | Initially released in November of 2022 and updated for 6 months afterwards | A stable version of NixOS, released in November of 2022. Security patches and updates will be backported, but no new applications, or breaking changes will be applied                                                             |
+| `nixos-unstable`       | Frequently updated                                                         | A rolling release channel of NixOS, which is updated whenever a set of important packages builds on Hydra. Security updates, new packages, and new modules will frequently appear on your computer, and breaking changes may occur |
+| `nixos-unstable-small` | Same as `nixos-unstable`, but even more frequently                         | A rolling release channel similar to `nixos-unstable` but with a smaller set of packages that are tested. This means this channel is updated more frequently, but may have some broken packages on it as well                      |
 
 Of course, any git reference can be used as a channel.
 Channels are now mostly relevant as flake inputs.
