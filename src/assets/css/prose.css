@@ -1,4 +1,9 @@
 @layer base {
+  /* Helper classes */
+  .inline-code {
+    @apply inline-block rounded border-light-gray bg-pale px-1.5 dark:border-none dark:bg-dark-gray;
+  }
+
   /* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
   .content {
     a {
@@ -8,19 +13,9 @@
     p + p {
       @apply mt-2 md:mt-2.5 lg:mt-3;
     }
-  }
 
-  .dark {
-    .prose {
-      p,
-      .content,
-      h2,
-      h3 {
-        code {
-          border: none;
-          background-color: var(--dark-gray);
-        }
-      }
+    code {
+      @apply inline-code;
     }
   }
 
@@ -50,13 +45,7 @@
     h2,
     h3 {
       code {
-        display: inline-block;
-        border: 1px solid var(--light-gray);
-        border-radius: 5px;
-        padding: 0 5px;
-        background-color: var(--pale);
-        text-rendering: optimizelegibility;
-        box-sizing: border-box;
+        @apply inline-code;
       }
     }
 
@@ -69,7 +58,7 @@
 
         margin-top: 0.125em;
         margin-left: -1em;
-        padding-right: 0.23em;
+        padding-right: 0.25em;
 
         &::before {
           content: "#";
