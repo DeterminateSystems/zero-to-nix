@@ -20,6 +20,7 @@ declarativity
 detsys
 dev
 distro
+domen
 dotfiles
 dpkg
 drv
@@ -33,6 +34,7 @@ func
 gcc
 github
 gpg
+guix
 haskell
 hermeticity
 href
@@ -54,6 +56,7 @@ my_value
 nginx
 nixlang
 nixos
+nixops
 nixpkgs
 noobs
 npm
@@ -82,5 +85,6 @@ tweag
 upstreaming
 url
 vite
+wayland
 wikipedia
 zsh
