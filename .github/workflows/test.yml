@@ -30,7 +30,10 @@ jobs:
             trusted-users = root runner
             trusted-public-keys = ${{ secrets.CACHIX_TRUSTED_PUBLIC_KEY }} ${{ secrets.NIXOS_PUBLIC_KEY }}
       - name: direnv activate
-        run: nix develop --command direnv allow
+        run: |
+          nix develop --command direnv allow
+          eval "$(direnv export bash)"
+          echo "$PATH" >> $GITHUB_PATH
       - name: Cachix setup
         run: |
           cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
