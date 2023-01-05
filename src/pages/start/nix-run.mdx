@@ -10,13 +10,14 @@ order: 2
 ---
 
 In the last section, we installed Nix using [Nix Installer][nix-installer].
-Now we can dive in and use Nix to run an actual program:
+Now we can dive in and use Nix to run an actual program.
+Let's try [cowsay]:
 
 ```shell
 echo "Hello Nix" | nix run "nixpkgs#cowsay"
 ```
 
-You should see this:
+You should see this charming bovine greeting:
 
 ```shell
 ___________
@@ -62,8 +63,9 @@ You're now ready to explore Nix development environments.
 [lang]: /concepts/nix-language
 [nix]: /concepts/nix
 [nix-installer]: /concepts/nix-installer
+[nixpkgs]: /concepts/nixpkgs
 [output]: /concepts/flake-outputs
-[package]: /concepts/packages
+[packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [store]: /concepts/nix-store
 [symlinked]: https://en.wikipedia.org/wiki/Symbolic_link

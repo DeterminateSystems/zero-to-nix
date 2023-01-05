@@ -36,11 +36,11 @@ Now that we've entered the development environment, we can do some exploring, st
 
 
 <SpecificLanguage client:load lang="C++">
-Ordinarily when you run `which gcc` on a Unix system, you get a path like `/usr/bin/gcc`.
+Ordinarily when you run `type gcc` on a Unix system, you get a path like `/usr/bin/gcc`.
 Try running it in the Nix development environment:
 
 ```shell
-which gcc
+type gcc
 ```
 
 You should see a (rather strange) path like this:
@@ -50,61 +50,61 @@ You should see a (rather strange) path like this:
 ```
 </SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
-Ordinarily when you run `which node` on a Unix system, you get a path like `/usr/bin/node`.
+Ordinarily when you run `type node` on a Unix system, you get a path like `/usr/bin/node`.
 Try running it in the Nix development environment:
 
 ```shell
-which node
+type node
 ```
 
 You should see a (rather strange) path like this:
 
 ```shell
-/nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
+node is /nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
 ```
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Python">
-Ordinarily when you run `which python` on a Unix system, you get a path like `/usr/bin/python`.
+Ordinarily when you run `type python` on a Unix system, you get a path like `/usr/bin/python`.
 Try running it in the Nix development environment:
 
 ```shell
-which python
+type python
 ```
 
 You should see a (rather strange) path like this:
 
 ```shell
-/nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
+python is /nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
 ```
 
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Go">
-Ordinarily when you run `which go` on a Unix system, you get a path like `/usr/bin/go`.
+Ordinarily when you run `type go` on a Unix system, you get a path like `/usr/bin/go`.
 Try running it in the Nix development environment:
 
 ```shell
-which go
+type go
 ```
 
 You should see a (rather strange) path like this:
 
 ```shell
-/nix/store/hvnp4a2wlqhfx6yfvfm4zw0vxh3jadzh-go-1.19.3/bin/go
+go is /nix/store/5bcx8rv6sy33xsf5dzkp9q8lfdqrsiwa-go-1.19.4/bin/go
 ```
 
 </SpecificLanguage>
 <SpecificLanguage client:load lang="Rust">
-Ordinarily when you run `which cargo` on a Unix system, you get a path like `/usr/bin/cargo`.
+Ordinarily when you run `type cargo` on a Unix system, you get a path like `/usr/bin/cargo`.
 Try running it in the Nix development environment:
 
 ```shell
-which cargo
+type cargo
 ```
 
 You should see a (rather strange) path like this:
 
 ```shell
-/nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
+cargo is /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
 ```
 </SpecificLanguage>
 
