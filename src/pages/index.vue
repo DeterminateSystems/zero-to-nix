@@ -18,18 +18,20 @@
 
         <div>
           <TabGroup>
-            <TabList class="inline-flex space-x-3">
+            <TabList class="inline-flex items-center space-x-3">
               <Tab
                 v-for="({ text, href, highlight }, idx) in $site.heroButtons"
                 :key="idx"
                 as="template"
-                class="rounded-full py-2 px-4 text-sm hover:bg-dark-gray md:text-base lg:text-lg"
+                class="rounded-full tracking-tight md:text-base lg:text-lg"
                 :class="[
-                  highlight && 'bg-primary text-pale',
-                  !highlight && 'bg-gray text-pale',
+                  highlight &&
+                    'bg-primary px-5 py-3 text-white hover:bg-orange',
+                  !highlight &&
+                    'bg-gray py-2 px-4 text-white hover:bg-light-gray hover:text-dark',
                 ]"
               >
-                <a :href="href">
+                <a :href="href" :class="[highlight && 'text-2xl font-bold']">
                   {{ text }}
                 </a>
               </Tab>

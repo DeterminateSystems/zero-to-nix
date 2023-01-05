@@ -27,7 +27,23 @@
       let
         pkgs = import nixpkgs { inherit overlays system; };
 
-        common = with pkgs; [ cachix vale alex htmltest nodejs pnpm ];
+        common = with pkgs; [
+          # CI
+          cachix
+          direnv
+          nix-direnv
+
+          # Language
+          vale
+          alex
+
+          # Link checking
+          htmltest
+
+          # JS
+          nodejs
+          pnpm
+        ];
 
         run = pkg: "${pkgs.${pkg}}/bin/${pkg}";
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between">
+  <div class="print:hidden flex items-center justify-between">
     <PageSurvey client:load />
 
     <div class="space-y-3 text-sm md:text-base lg:text-lg">

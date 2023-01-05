@@ -40,36 +40,43 @@ externalSources: [
 ---
 
 
-A *Nix channel* is a release branch for some Nix code, which follows a particular policy.
-This can either be a branch, a release tag, or a single commit.
-Sounds confusing?
-Channels are best explained with some examples!
+A *Nix channel* is a mechanism used by the legacy Nix CLI to keep Nix code [Nixpkgs](/concepts/nixpkgs) up to date. In the new Nix CLI, it has been replaced by [flakes](/concepts/flakes).
 
-| Channel name           | Release date                                                                 | Description                                                                                                                                                                                                    |
-|------------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `nixos-22.11`          | Initially release in November of 2022 and updated for 6 months afterwards    | A stable version of NixOS, released in November of 2022. Security patches and updates will be backported, but no new applications, or breaking changes will be applied                                        |
-| `nixos-unstable`       | Frequently updated, whenever a set of important packages builds on `staging` | The rolling release channel of NixOS, which is updated whenever its feasible to do so. Security updates, new packages, and breaking changes will frequently appear on your computer                    |
-| `nixos-unstable-small` | Same as `nixos-unstable`, but more frequently                                | A rolling release channel similar to `nixos-unstable` but with a smaller set of packages that are tested. This means this channel is updated more frequently, but may have some broken packages on it as well |
+## How do channels work?
 
-Of course, any git reference can be used as a channel.
-Channels are now mostly relevant as flake inputs.
+A channel is a URL that points to some Nix code, such as `https://nixos.org/channels/nixos-unstable`. As a convenience, you can also use the URL syntax `channel:`*name* which is expanded by Nix to `https://nixos.org/channels/`*name*.
 
-```nix
-{
-  inputs = {
-    nixpkgs-stable = "github:nixos/nixpkgs/nixos-22.11";
-    nixpkgs-unstable = "gihub:nixos/nixpkgs/nixos-unstable";
-  };
-}
+You can configure Nix to fetch a channel automatically:
+
+```shell
+nix-channel --add https://nixos.org/channels/nixos-unstable
 ```
+
+You can then run
+
+```shell
+nix-channel --update
+```
+
+to have Nix fetch all channels that you configured. The Nix code in the channels is unpacked into `~/.nix-defexpr/channels`, where it can be found by legacy CLI commands such as `nix-env`.
+
+More information about channels can be found in the [Nix manual](https://nixos.org/manual/nix/stable/command-ref/nix-channel.html).
+
+## Examples of channels
+
+| Channel URL                    | Release date                                                               | Description                                                                                                                                                                                                                        |
+|--------------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `channel:nixos-22.11`          | Initially released in November of 2022 and updated for 6 months afterwards | A stable version of NixOS, released in November of 2022. Security patches and updates will be backported, but no new applications, or breaking changes will be applied                                                             |
+| `channel:nixos-unstable`       | Frequently updated                                                         | A rolling release channel of NixOS, which is updated whenever a set of important packages builds on Hydra. Security updates, new packages, and new modules will frequently appear on your computer, and breaking changes may occur |
+| `channel:nixos-unstable-small` | Same as `nixos-unstable`, but even more frequently                         | A rolling release channel similar to `nixos-unstable` but with a smaller set of packages that are tested. This means this channel is updated more frequently, but may have some broken packages on it as well                      |
 
 ## The problem with `nix-channel`
 
-The *legacy* way to update nixpkgs and other sources is via the `nix-channel` command.
-The problem with this approach is that `nix-channel` does not provide any guarantees about what inputs are actually used in a particular build.
-As such source [pinning](/concepts/pinning) and rollbacks are much harder with nix-channels.
+The problem with channels is that they do not provide any guarantees about what inputs are actually used in a particular build.
+A channel URL such as `channel:nixos-22.11` can contain different Nix code at different points in time.
+As such source [pinning](/concepts/pinning) and rollbacks are much harder with channels.
 
 This means that while Nix is [reproducible](/concepts/reproducibility) in theory, in practise inputs to builds can frequently change, and a build may fail because of this.
 This can cause you to be unable to update your NixOS system, or build a package that previously could be built.
 
-**Because of this the use of nix channels is highly discouraged!**
+**Because of this the use of Nix channels is highly discouraged!**
