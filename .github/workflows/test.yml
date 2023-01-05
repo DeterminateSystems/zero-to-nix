@@ -32,7 +32,7 @@ jobs:
       - name: direnv activate
         run: |
           nix develop --command direnv allow
-          eval "$(direnv export bash)"
+          eval "$(nix develop --command direnv export bash)"
           echo "$PATH" >> $GITHUB_PATH
       - name: Cachix setup
         run: |
