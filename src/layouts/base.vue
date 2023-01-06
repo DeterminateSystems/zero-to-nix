@@ -1,7 +1,7 @@
 <template>
   <slot />
 
-  <CookieConsent v-show="activateCookieConsent" client:load />
+  <CookieConsent client:load />
 </template>
 
 <script setup lang="ts">
@@ -19,8 +19,6 @@ const canonical = new URL(url, href).toString();
 useHead({
   link: [{ rel: "canonical", href: canonical }],
 });
-
-const activateCookieConsent = import.meta.env.MODE === "production";
 </script>
 
 <style>
