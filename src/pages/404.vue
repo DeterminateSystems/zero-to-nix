@@ -1,6 +1,6 @@
 <template layout="default">
   <HorizontalContainer>
-    <Hero title="404 Not found 😬" size="lg" />
+    <Hero title="404 Not found 😬" size="lg" client:none />
 
     <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
       <p>

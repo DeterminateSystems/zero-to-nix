@@ -9,14 +9,15 @@ summary:
 order: 2
 ---
 
-In the last section, we installed Nix using [Harmonic].
-Now we can dive in and use Nix to run an actual program:
+In the last section, we installed Nix using [Nix Installer][nix-installer].
+Now we can dive in and use Nix to run an actual program.
+Let's try [cowsay]:
 
 ```shell
 echo "Hello Nix" | nix run "nixpkgs#cowsay"
 ```
 
-You should see this:
+You should see this charming bovine greeting:
 
 ```shell
 ___________
@@ -29,9 +30,9 @@ ___________
                 ||     ||
 ```
 
-<Admonition type="warning" title="This could take a while" id="nix-run-loading" client:load>
+<Admonition kind="warning" title="This could take a while" id="nix-run-loading" client:load>
 The first time you run a program using `nix run` it's likely to be a slow operation.
-That's because Nix needs to build the program's [package] from scratch and store it in the [Nix store][store].
+That's because Nix needs to build the program's [package] from scratch&mdash;or download it from a known cache&mdash;and store it in the [Nix store][store].
 This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
 Future `nix run` invocations should be instantaneous, as Nix doesn't need to build the package again.
 </Admonition>
@@ -42,7 +43,7 @@ What happened here? The [Nix] CLI did a few things:
 
 * It used the `nixpkgs#cowsay` [flake reference][flakes] to pull in some Nix code and targeted a specific [flake output][output] (more on this later).
 * It built the [`cowsay` package][cowsay] and stored the result in the [Nix store][store].
-* It ran the ran the executable at `bin/cowsay` from the `cowsay` package.
+* It ran the executable at `bin/cowsay` from the `cowsay` package.
 
 In Nix, every program is part of a [package].
 Packages are built using special functions in the [Nix language][lang] called [derivations].
@@ -59,11 +60,12 @@ You're now ready to explore Nix development environments.
 [ffmpeg-pkg]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/libraries/ffmpeg/generic.nix
 [ffprobe]: https://ffmpeg.org/ffprobe.html
 [flakes]: /concepts/flakes
-[harmonic]: /concepts/harmonic
 [lang]: /concepts/nix-language
 [nix]: /concepts/nix
+[nix-installer]: /concepts/nix-installer
+[nixpkgs]: /concepts/nixpkgs
 [output]: /concepts/flake-outputs
-[package]: /concepts/package
+[packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [store]: /concepts/nix-store
 [symlinked]: https://en.wikipedia.org/wiki/Symbolic_link

@@ -5,11 +5,12 @@
       <HorizontalContainer>
         <Hero
           :title="title"
-          :description="description"
+          :description="snippet"
           :breadcrumb="{
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
+          client:none
         />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">
@@ -22,12 +23,18 @@
           <ExternalSources
             v-if="externalSources && externalSources.length > 0"
             :links="externalSources"
+            :showTitle="true"
           />
+        </div>
+
+        <div class="mt-16 space-y-12">
+          <Separator />
+          <FeedbackBar />
         </div>
       </HorizontalContainer>
     </Top>
 
-    <Footer />
+    <Footer client:load />
   </Page>
 </template>
 
@@ -35,12 +42,7 @@
 import { usePage } from "iles";
 import { ConceptPageProps } from "~/logic/content";
 
-type Link = {
-  title: string;
-  href: string;
-};
-
 const {
-  frontmatter: { title, description, externalSources, related },
+  frontmatter: { title, snippet, externalSources, related },
 } = usePage<ConceptPageProps>();
 </script>

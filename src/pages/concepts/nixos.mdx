@@ -1,6 +1,7 @@
 ---
 title: NixOS
-snippet: Fill me in later so that I show up in the tooltip
+snippet: |
+  A [Linux](https://www.kernel.org/) distribution built on the [Nix](/concepts/nix) package manager and guided by Nix's core principles
 related: ["nix", "nix-language", "nixpkgs"]
 externalSources: [
   {
@@ -22,9 +23,82 @@ externalSources: [
 ]
 ---
 
-**NixOS** is a [Linux] distribution built on [Nix] and in accordance with Nix's core principles.
+
+*NixOS* is a [Linux] distribution built on [Nix] and in accordance with Nix's core principles.
 NixOS is unique amongst distributions because it enables you to use the [Nix language][lang] to configure your operating system [delaratively][declarative] in a `configuration.nix` file.
 And that configurability runs quite deep, including things like the [boot loader][boot], the [filesystem], [window managers][window], [kernel modules][kernel], services like [OpenSSH], and much more.
+
+
+Everything[^1] in a NixOS system is purely configured via the Nix expression language and module system.
+Instead of installing packages directly, you declaratively describe what system you would like to have, and Nix then builds and deploys this system for you.
+To make this possible Nix uses its *module system* (explained below) and module abstractions.
+A module is a piece of Nix code, which can be configured by a user, and then internally produces some system output.
+
+## What is a module
+
+A module in NixOS is a function, which accepts an attribute set and returns an attribute set of its own.
+The basic anatomy of a module can be seen in the code snippet below.
+
+```nix
+{ lib, config, pkgs, ... }:
+{
+  imports = [];
+  config = {};
+  options = {};
+}
+```
+
+<Admonition title="Why does my configuration.nix look different?" kind="info" id="why-configuration-nix" client:load>
+When you first have a look at NixOS you will undoubtedly see a `configuration.nix` file in `/etc/nixos/`.
+Furthermore, if you look at other people's NixOS configurations, you might not see this exact structure.
+
+For one, the input set can be shortened (in the most extreme case to just `{ ... }`).
+See the [Nix syntax](/concepts/nix#basic_syntax) section for details on what this does.
+
+Additionally, there is some syntactic sugar around NixOS modules, which allow you to omit the `config` key, if your module does not declare any `options`.
+As an example, these two modules are equivalent to each other.
+
+```nix
+# Module 1
+
+{ ... }:
+{
+  imports = [ ./my-fish-config.nix ];
+  programs.fish.enable = true;
+}
+
+# Module 2
+{ ... }:
+{
+  imports = [ ./my-fish-config.nix ];
+  config = {
+    programs.fish.enable = true;
+  };
+}
+```
+</Admonition>
+
+## How to use modules
+
+First up, you can find modules to use and how to use them via the NixOS [module search].
+Nix modules generally follow the [declarative] principle, meaning that there's no precise order that modules are executed in.
+Instead, you describe the desired outcome of a system, which Nix then produces for you.
+
+Following is an example of how to setup and configure the [nginx] web server.
+
+```nix
+{ ... }:
+{
+  services.nginx = {
+    enable = true;
+    virtualHosts."default" = {
+      forceSSL = true;            # Redirect HTTP clients to an HTTPs connection
+      default = true;             # Always use this host, no matter the host name
+      root = /var/www/my-website; # Set the web root to serve
+    };
+  };
+}
+```
 
 ## Features
 
@@ -67,9 +141,11 @@ Let's break store paths down into their constituent elements:
 [kernel]: https://nixos.wiki/wiki/Linux_kernel
 [lang]: /concepts/nix-language
 [linux]: https://linux.org
+[module search]: https://search.nixos.org/options
+[nginx]: https://nginx.org
 [nix]: /concepts/nix
 [openssh]: https://openssh.com
-[packages]: /concepts/package
+[packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [rebuild]: https://nixos.wiki/wiki/Nixos-rebuild
 [store]: /concepts/nix-store

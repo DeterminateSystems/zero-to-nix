@@ -5,6 +5,8 @@ import icons from "@islands/icons";
 import { RawPageMatter, RouteToRender, SSGContext, defineConfig } from "iles";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugCustomId from "rehype-slug-custom-id";
+import remarkEmoji from "remark-emoji";
+import remarkGfm from "remark-gfm";
 
 import codeBlockPlugin from "./src/plugins/code";
 import site from "./src/site";
@@ -29,9 +31,13 @@ export default defineConfig({
   },
   markdown: {
     rehypePlugins: [
-      rehypeExternalLinks,
+      [
+        rehypeExternalLinks,
+        { target: "_blank", rel: ["noopener", "noreferrer"] },
+      ],
       [rehypeSlugCustomId, { enableCustomId: true }],
     ],
+    remarkPlugins: [remarkGfm, remarkEmoji],
   },
   modules: [
     headings(),
@@ -42,7 +48,7 @@ export default defineConfig({
       },
     }),
   ],
-  prettyUrls: process.env["ENV"] !== "preview",
+  prettyUrls: true,
   ssg: {
     onSiteRendered: ({ pages, config }: SSGContext) => {
       // Only necessary when checking internal links
@@ -78,6 +84,7 @@ export default defineConfig({
   },
   turbo: true,
   vite: {
+    mode: process.env["ENV"] === "production" ? "production" : "development",
     server: {
       port: 3000,
       open: true,

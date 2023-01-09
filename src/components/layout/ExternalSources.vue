@@ -1,11 +1,22 @@
 <template>
-  <div class="space-y-4">
-    <p class="text-lg font-semibold md:text-xl lg:text-2xl">External sources</p>
+  <div
+    :class="[
+      showTitle !== undefined && !showTitle && 'not-prose remove-underline',
+    ]"
+    class="space-y-4"
+  >
+    <p
+      v-if="showTitle"
+      class="text-xl font-semibold hover:text-gray dark:hover:text-light-gray md:text-2xl lg:text-3xl"
+      id="external-sources"
+    >
+      <a href="#external-sources">External sources</a>
+    </p>
 
     <Grid3>
       <HoverableExternalSourceLink
         v-for="({ title, href, source }, idx) in externalSources"
-        :title="title"
+        :title="md(title)"
         :href="href"
         :source="source"
         :key="idx"
@@ -15,9 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import { ExternalSource } from "~/logic/content";
+import { ExternalSource, md } from "~/logic/content";
 
-const { links: externalSources } = defineProps<{
+const { showTitle, links: externalSources } = defineProps<{
+  showTitle?: boolean;
   links: ExternalSource[];
 }>();
 </script>

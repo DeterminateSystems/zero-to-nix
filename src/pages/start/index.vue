@@ -1,13 +1,18 @@
 <template>
   <HorizontalContainer>
-    <Hero title="Quick start" description="Feel the power of Nix in no time" />
+    <Hero
+      title="Quick start"
+      description="Get a taste of Nix's power and learn key concepts along the way"
+      client:load
+    />
 
     <Grid2>
       <HoverableLink
-        v-for="(page, idx) in sortedQuickStartPages"
+        v-for="({ href, frontmatter }, idx) in sortedQuickStartPages"
         :key="idx"
-        :href="page.href"
-        :text="`${page.frontmatter.order}. ${page.frontmatter.title}`"
+        :href="href"
+        :order="frontmatter.order"
+        :text="frontmatter.title"
         size="normal"
       />
     </Grid2>

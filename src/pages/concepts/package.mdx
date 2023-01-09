@@ -1,9 +1,0 @@
----
-title: Packages
-related: ["derivations", "nix-store"]
----
-
-Nix *packages* are self-contained bundles that are built using [derivations](/concepts/derivations)
-and provide some kind of software or dependencies of software on your computer.
-A package can have dependencies on other packages, which are encoded in its *closure*.
-Each package lives at a unique path in the [nix store](/concepts/nix-store), indexed by its name and its input hash.

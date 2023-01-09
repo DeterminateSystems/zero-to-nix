@@ -1,6 +1,7 @@
 ---
 title: Nix
-snippet: Fill me in later so that I show up in the tooltip
+snippet: |
+  A build tool, [package manager](/concepts/package-management), and [programming language](/concepts/nix-language)
 related: ["nix-language", "nixos", "nixpkgs"]
 externalSources: [
   {
@@ -42,4 +43,15 @@ externalSources: [
 ]
 ---
 
-**Nix** is a build tool and package management system.
+*Nix* refers to a few different things:
+
+1. The pure and functional [programming language](/concepts/nix-language)
+2. The set of `nix` and `nix-*` commandline-tools
+3. The overall Nix package management system
+
+## The Nix commands
+
+There are two sets of Nix commands:
+
+- The `nix <command>` CLI, which supports flakes and will eventually replace all legacy style commands.  Currently not *all* operations are supported by this tool (for example `nix-copy-closure`).
+- Those that follow the `nix-*` pattern (for example `nix-build` or `nix-shell`).  These commands are generally used to interact with *legacy Nix systems*.

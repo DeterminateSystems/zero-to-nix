@@ -3,6 +3,35 @@
     <div
       v-for="({ title, description, links }, idx) in $site.features"
       :key="idx"
+    >
+      <div class="space-y-4">
+        <p class="text-2xl font-bold" v-html="md(title)" />
+        <p class="text-xl font-light" v-html="md(description)" />
+
+        <ul>
+          <li
+            v-for="({ text, href }, idx) in links"
+            :key="idx"
+            class="flex items-center space-x-2 text-xl"
+          >
+            <span>&rarr;</span>
+            <a
+              :href="href"
+              class="text-dark underline hover:text-primary dark:text-light-gray dark:hover:text-light-blue"
+            >
+              {{ text }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Grid2>
+
+  <!--
+  <Grid2>
+    <div
+      v-for="({ title, description, links }, idx) in $site.features"
+      :key="idx"
       class="flex flex-col rounded-lg border-2 border-light-gray py-4 px-6 dark:border-gray"
     >
       <div class="space-y-4">
@@ -29,6 +58,8 @@
       </div>
     </div>
   </Grid2>
+
+  -->
 </template>
 
 <script setup lang="ts">

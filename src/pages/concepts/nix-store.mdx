@@ -1,7 +1,8 @@
 ---
 title: The Nix store
-snippet: Fill me in later so that I show up in the tooltip
-related: ["derivations", "nix-language", "package"]
+snippet: |
+  An on-disk storage system used by [Nix](/concepts/nix) to build, store, and cache [packages](/concepts/packages) and other artifacts
+related: ["caching", "derivations", "nix-language", "packages"]
 externalSources: [
   {
     title: "What is Nix?",
@@ -13,18 +14,21 @@ externalSources: [
   },
   {
     title: "Exploring the Nix store internals",
-    href: "https://www.youtube.com/watch?v=foN0PfdRlNI",
+    href: "https://youtube.com/watch?v=foN0PfdRlNI",
     source: {
       title: "Tweag's YouTube channel",
-      href: "https://www.youtube.com/@tweag"
+      href: "https://youtube.com/@tweag"
     }
   }
 ]
 ---
 
-The **Nix store** is a storage system in your filesystem with its root at `/nix/store` by default. Nix stores several things in the Nix store:
+The *Nix store* is a storage system in your filesystem with its root at `/nix/store` by default.
+The Nix daemon stores several things in the Nix store:
 
 - The products of [derivations]
+
+## Store paths
 
 Paths in the Nix store have this structure:
 

@@ -1,0 +1,57 @@
+---
+title: Incremental builds
+snippet: |
+  Package builds that cut out unnecessary steps (and thus unnecessary build resources and time)
+related: ["caching", "realisation", "nix-store"]
+externalSources: [
+  {
+    title: "Incremental build model",
+    href: "https://en.wikipedia.org/wiki/Incremental_build_model",
+    source: {
+      title: "Wikipedia",
+      href: "https://wikipedia.org"
+    }
+  }
+]
+---
+
+*Incremental builds* are build processes that don't need to build the entire dependency tree of a software artifact every time because they use mechanisms like intelligent [caching] to avoid rebuilding artifacts that are already available.
+Nix is one of several available build systems that offers incremental builds.
+
+## How Nix provides incremental builds \{#how}
+
+Nix is one of several build systems that offers incremental builds for [Nix packages][packages] by storing all build results in the [Nix store][store].
+
+Whenever Nix builds a [package][packages], it builds the entire [closure], or dependency tree, of that package.
+
+<NixStorePath pkg="git-2.27.3" />
+
+The hash portion enables Nix to "know" what doesn't need to be built.
+If the package `super-important-dependency` is necessary to build the package `final-production-artifact`, Nix can inspect the [derivation] for `super-important-dependency` and calculate a hash for that dependency and, thus, a Nix store path for it, something like this:
+
+<NixStorePath pkg="super-important-dependency" hash="m7hsk1m4jkwy6pnns5gpn1kss22raan4" valueOnly />
+
+With that information in hand, Nix can then check to see if one of these places already has the artifact:
+
+* The local [Nix store][store]
+* One of your configured [binary caches][binary] (if any)
+
+Nix builds a given derivation only if it fails to discover a realised artifact in one of these places.
+This can make a huge difference when building large [closures][closure].
+
+## Consequences of incremental builds in Nix \{#consequences}
+
+[Packages] are in many ways the central organizing artifact in Nix.
+[Nix development environments][env] make packages available in a hermetically sealed way, [NixOS] is built with Nix packages as its basis, and so on.
+What that means is that incremental builds in Nix make pretty much everything associated with Nix much faster and less resource intensive.
+
+[binary]: /concepts/caching#binary-caches
+[caching]: /concepts/caching
+[closure]: /concepts/closures
+[derivation]: /concepts/derivations
+[ds]: https://determinate.systems
+[env]: /concepts/dev-env
+[nixos]: /concepts/nixos
+[packages]: /concepts/packages
+[realisation]: /concepts/realisation
+[store]: /concepts/nix-store

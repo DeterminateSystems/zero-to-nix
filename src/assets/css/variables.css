@@ -3,21 +3,27 @@
   --dark: rgb(10, 10, 10);
 
   /* Tailwind colors */
+  /* Drawn from: https://tailwindcss.com/docs/customizing-colors */
   --pale: #f8fafc; /* slate-50 */
-  --yellow: #eab308; /* yellow-500 */
   --pale-yellow: #fefce8; /* yellow-50 */
+  --middle-yellow: #fef08a; /* yellow-200 */
+  --yellow: #eab308; /* yellow-500 */
   --dark-yellow: #ca8a04; /* yellow-600 */
   --soft-gray: #e2e8f0; /* slate-200 */
   --light-gray: #cbd5e1; /* slate-300 */
   --gray: #64748b; /* slate-500 */
   --dark-gray: #334155; /* slate-700 */
-  --blue: #3b82f6; /* blue-500 */
-  --light-blue: #93c5fd; /* blue-300 */
+  --darker-gray: #1e293b; /* slate-800 */
   --pale-blue: #eff6ff; /* blue-50 */
-  --green: #22c55e; /* green-500 */
+  --middle-blue: #bfdbfe; /* blue-200 */
+  --light-blue: #93c5fd; /* blue-300 */
+  --blue: #3b82f6; /* blue-500 */
   --pale-green: #f0fdf4; /* green-50 */
-  --red: #ef4444; /* red-500 */
+  --middle-green: #bbf7d0; /* green-200 */
+  --green: #22c55e; /* green-500 */
   --pale-red: #fef2f2; /* red-50 */
+  --middle-red: #fecaca; /* red-200 */
+  --red: #ef4444; /* red-500 */
   --cerulean: #0ea5e9; /* sky-500 */
   --lilac: #a855f7; /* purple-500 */
   --rose: #f43f5e; /* rose-500 */

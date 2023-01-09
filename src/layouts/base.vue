@@ -1,5 +1,9 @@
 <template>
+  <Banner client:load />
+
   <slot />
+
+  <CookieConsent client:load />
 </template>
 
 <script setup lang="ts">
@@ -20,7 +24,5 @@ useHead({
 </script>
 
 <style>
-@import "@fontsource/inter"; /* sans-serif */
-@import "@fontsource/fira-mono"; /* monospace */
 @import "~/assets/css/main"; /* main.css */
 </style>

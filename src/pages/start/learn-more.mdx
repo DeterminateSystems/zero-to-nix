@@ -1,15 +1,169 @@
 ---
 title: Learn more
-order: 8
+order: 9
 ---
 
 This completes your Zero to Nix journey!
-You just accomplished a great deal.
-You [installed Nix][install] on your machine, you explored a [Nix development environment][env], you built a [Nix package][pkg], and more.
+You just accomplished a great deal:
+
+* You [installed Nix][install] on your machine
+* You explored a [Nix development environment][env]
+* You built a [Nix package][pkg]
+
+And that's just to name a few.
 We're thrilled that you've taken the time and made the effort.
+But we hope that your Nix journey continues onward.
+This guide suggests some areas beyond the scope of the quick start where you can apply your newly won Nix knowledge.
 
-But we also hope, of course, that your journey with Nix continues onward.
+## Build container images \{#containers}
 
+[Nix] can build [packages] for many things, from standard tools like [curl] and [Git] to [Vim] plugins to [Visual Studio Code][code] extensions to web services that you write in your preferred language and far beyond.
+We've covered a few of these package types here in the [quick start][start].
+Another powerful Nix feature is that you can use it to build [OCI]-compliant container images and thereby replace tools like [Docker] and [Podman] (at least when it comes to building images).
+
+<ExternalSources showTitle={false} links={[
+  {
+    title: "Nix Docker examples",
+    href: "https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/docker/examples.nix",
+    source: {
+      title: "Nixpkgs",
+      href: "https://github.com/NixOS/nixpkgs"
+    }
+  },
+  {
+    title: "Building and running Docker images",
+    href: "https://nix.dev/tutorials/building-and-running-docker-images",
+    source: {
+      title: "nix.dev",
+      href: "https://nix.dev"
+    }
+  },
+  {
+    title: "The `dockerTools` build functions",
+    href: "https://nixos.org/manual/nixpkgs/stable/#sec-pkgs-dockerTools",
+    source: {
+      title: "The Nixpkgs manual",
+      href: "https://nixos.org/manual/nixpkgs/stable"
+    }
+  }
+]} client:load />
+
+
+## Use NixOS as your operating system \{#nixos}
+
+[NixOS] is a [Linux] distribution built on Nix and its core principles, such as [reproducibility] and [declarative configuration][declarative].
+
+<ExternalSources showTitle={false} links={[
+  {
+    title: "NixOS: How it works and how to install it",
+    href: "https://youtube.com/watch?v=oPymb2-IXbg",
+    source: {
+      title: "DorianDotSlash on YouTube",
+      href: "https://youtube.com/@Doriandotslash"
+    }
+  },
+  {
+    title: "NixOS is the power user distro",
+    href: "https://youtube.com/watch?v=ck4J2Faa7Fc",
+    source: {
+      title: "DistroTube on YouTube",
+      href: "https://youtube.com/@DistroTube"
+    }
+  },
+  {
+    title: "Deploying NixOS using Terraform",
+    href: "https://nix.dev/tutorials/deploying-nixos-using-terraform#deploying-nixos-using-terraform",
+    source: {
+      title: "nix.dev",
+      href: "https://nix.dev"
+    }
+  }
+]} client:load />
+
+## Configure your home environment \{#home-environment}
+
+[Home Manager][home] is a plugin-based tool built on Nix that you can use to configure a wide range of tools in your home environment, including [Vim], [tmux], [Visual Studio Code][code], [Git], [gpg], and shells like [Bash], [zsh], and [fish].
+
+<ExternalSources showTitle={false} links={[
+  {
+    title: "From nix-env to Home Manager",
+    href: "https://youtube.com/watch?v=PmD8Qe8z2sY",
+    source: {
+      title: "Burke Libbey's YouTube channel",
+      href: "https://youtube.com/@burkelibbey6583"
+    }
+  },
+  {
+    title: "Declarative management of dotfiles with Nix and Home Manager",
+    href: "https://bekk.christmas/post/2021/16/dotfiles-with-nix-and-home-managerg",
+    source: {
+      title: "Bekk Christmas' blog",
+      href: "https://bekk.christmas"
+    }
+  },
+  {
+    title: "Home Manager configuration options",
+    href: "https://rycee.gitlab.io/home-manager/options.html",
+    source: {
+      title: "The Home Manager manual",
+      href: "https://rycee.gitlab.io/home-manager"
+    }
+  }
+]} client:load />
+
+## Continuous integration \{#ci}
+
+You learned about [Nix development environments][env] earlier in the quick start.
+Because Nix development environments are both cross platform and fully [reproducible][reproducibility], they're quite useful in [continuous integration][ci] environments.
+
+<ExternalSources showTitle={false} links={[
+  {
+    title: "Continuous Integration with GitHub Actions",
+    href: "https://nix.dev/tutorials/continuous-integration-github-actions",
+    source: {
+      title: "nix.dev",
+      href: "https://nix.dev"
+    }
+  },
+  {
+    title: "Streamline your GitHub Actions dependencies using Nix",
+    href: "https://determinate.systems/posts/nix-github-actions",
+    source: {
+      title: "The Determinate Systems blog",
+      href: "https://determinate.systems/posts"
+    }
+  },
+  {
+    title: "Setting up Buildkite for Nix-based projects using Terraform and GCP",
+    href: "https://tweag.io/blog/2020-07-08-buildkite-for-nix-ci",
+    source: {
+      title: "The Tweag blog",
+      href: "https://tweag.io/blog"
+    }
+  }
+]} client:load />
+
+[bash]: https://gnu.org/software/bash
+[ci]: https://en.wikipedia.org/wiki/Continuous_integration
+[code]: https://code.visualstudio.com
+[curl]: https://curl.se
+[declarative]: /concepts/declarative
+[docker]: https://docker.com
 [env]: /start/nix-develop
+[fish]: https://fishshell.com
+[git]: https://git-scm.com
+[gpg]: https://gnupg.org
+[home]: https://github.com/nix-community/home-manager
 [install]: /start/install
+[linux]: https://www.kernel.org/
+[nix]: /concepts/nix
+[nixos]: /concepts/nixos
+[oci]: https://opencontainers.org
+[packages]: /concepts/packages
 [pkg]: /start/nix-build-nixpkgs
+[podman]: https://podman.io
+[reproducibility]: /concepts/reproducibility
+[start]: /start
+[tmux]: https://github.com/tmux/tmux
+[vim]: https://vim.org
+[zsh]: https://zsh.org
