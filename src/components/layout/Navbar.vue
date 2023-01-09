@@ -64,7 +64,7 @@
           <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
             <ThemeSwitcher client:load />
 
-            <a :href="$site.githubUrl">
+            <a :href="$site.githubUrl" target="_blank">
               <IconFaGithub
                 class="h-4 w-4 hover:text-gray dark:hover:text-light-gray md:h-5 md:w-5 lg:h-6 lg:w-6"
               />

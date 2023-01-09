@@ -30,6 +30,10 @@ export type Site = {
   systems: string[];
   languages: string[];
   nixTerms: Term[];
+  banner: {
+    text: string;
+    generation: number;
+  };
 };
 
 const site: Site = {
@@ -137,6 +141,11 @@ const site: Site = {
       href: "/concepts/nixpkgs",
     },
   ],
+
+  banner: {
+    text: "🎉 Welcome to **Zero to Nix**, a brand new learning resource for [Nix](/concepts/nix)!",
+    generation: 1,
+  },
 };
 
 export default site;

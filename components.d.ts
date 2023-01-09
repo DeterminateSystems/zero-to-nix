@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Admonition: typeof import('./src/components/mdx/Admonition.vue')['default']
+    Banner: typeof import('./src/components/layout/Banner.vue')['default']
     BaseLayout: typeof import('./src/layouts/base.vue')['default']
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     Brief: typeof import('./src/components/layout/Brief.vue')['default']
