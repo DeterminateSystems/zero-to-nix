@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="!hideCookieConsent"
+    v-show="showCookieConsent"
     class="fixed left-6 bottom-6 z-50 print:hidden"
   >
     <div
@@ -35,16 +35,11 @@
 </template>
 
 <script setup lang="ts">
-import { PostHog } from "posthog-js";
-import { computed, getCurrentInstance, inject, ref } from "vue";
-
-// Register and inject the Posthog plugin
-import { PosthogPlugin } from "~/plugins/posthog";
-const app = getCurrentInstance()!.appContext.app;
-app.use(PosthogPlugin);
-const posthog = inject("posthog") as PostHog;
+import { posthog } from "posthog-js";
+import { computed, onBeforeMount, onMounted, ref } from "vue";
 
 // Set to false initially to avoid flash of content
+const showCookieConsent = ref<boolean>(false);
 const optionSelected = ref<boolean>(false);
 
 // Whether the user has explicitly opted into or out of the cookie
@@ -67,6 +62,7 @@ const hideCookieConsent = computed(() => {
 const acceptCookies = () => {
   if (typeof window !== "undefined") {
     posthog.opt_in_capturing();
+    showCookieConsent.value = false;
     optionSelected.value = true;
   }
 };
@@ -75,7 +71,23 @@ const acceptCookies = () => {
 const declineCookies = () => {
   if (typeof window !== "undefined") {
     posthog.opt_out_capturing();
+    showCookieConsent.value = false;
     optionSelected.value = true;
   }
 };
+
+onBeforeMount(() => {
+  // Register and inject the Posthog plugin
+  if (typeof window !== "undefined") {
+    posthog.init("phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4", {
+      api_host: "https://app.posthog.com",
+    });
+  }
+});
+
+onMounted(() => {
+  if (!hideCookieConsent.value) {
+    showCookieConsent.value = true;
+  }
+});
 </script>
