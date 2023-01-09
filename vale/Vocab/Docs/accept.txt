@@ -10,6 +10,7 @@ buildphase
 buildgomodule
 buildpythonapplication
 buildrustpackage
+cachix
 cargolock
 channable
 ci
@@ -87,6 +88,7 @@ tweag
 uninstallation
 upstreaming
 url
+valueonly
 vite
 wayland
 wikipedia
