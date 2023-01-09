@@ -27,7 +27,6 @@
           </a>
 
           <button
-            ref="toggler"
             class="hover:text-dark-gray dark:hover:text-gray"
             @click="toggleDrawer"
             type="button"
@@ -84,6 +83,7 @@
       leave="transition-opacity duration-150"
       leave-from="opacity-100"
       leave-to="opacity-0"
+      client:load
     >
       <div
         id="nav-drawer"
@@ -167,16 +167,9 @@ const closeDrawer = () => {
 };
 
 const drawer = ref(null);
-const toggler = ref(null);
 
-onClickOutside(
-  drawer,
-  (event) => {
-    event.preventDefault();
-    closeDrawer();
-  },
-  {
-    ignore: [toggler],
-  },
-);
+onClickOutside(drawer, (event) => {
+  event.preventDefault();
+  closeDrawer();
+});
 </script>
