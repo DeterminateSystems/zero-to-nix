@@ -2,7 +2,7 @@
 title: Flakes
 snippet: |
   An experimental yet nonetheless recommended system for referencing and sharing [Nix code](/concepts/nix-language) and Nix artifacts like [packages](/concepts/packages)
-related: ["channels", "flake-inputs", "flake-outputs", "flake-templates"]
+related: ["channels"]
 externalSources: [
   {
     title: "Flakes",
@@ -41,8 +41,52 @@ Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/
 
 ## Flake inputs \{#inputs}
 
-TODO
+*Flake inputs* are a set of dependencies that a flake needs to be built.
+Each input in the set can be pulled from various sources, such as github, generic git repositories, and even your filesystem.
+
+Furthermore, inputs can modify each other's inputs to make sure that,
+for example, multiple dependencies all rely on the same version of nixpkgs.
+This is done via the `inputs.<input>.follows` attribute.
+
+```nix filename=flake.nix
+{
+  inputs = {
+    nixpkgs = "github:NixOS/nixpkgs";
+  };
+}
+```
+
+You can find a full breakdown of the flake input schema in the [Nix manual][manual].
+
 
 ## Flake outputs \{#outputs}
 
-TODO
+*Flake outputs* are what a flake produces as part of its build.
+Each flake can have many different outputs simultaneously, including but not limited to, application [packages], system configuration, [Hydra] build jobs (CI), and [development environments][env].
+
+Flake outputs are defined by a function, which takes an attribute set as input, containing each of the inputs to that flake (named after the chosen identifier in the [inputs](#inputs) section).
+
+The flake output below, for example, produces a single package output on `x86_64-linux` systems for the `cowsay` derivation.
+
+```nix filename=flake.nix
+{
+  outputs = { self, nixpkgs }:
+  let system = x86_64-linux;
+  in
+  {
+    packages."${system}".default = (import nixpkgs { inherit system; }).cowsay;
+  };
+}
+```
+
+## Flake templates
+
+Flake *templates* are a feature of Nix that enables you to either initialize a new project or add files to an existing project.
+
+You can initialize a flake template using the [`nix flake init`][init] command.
+
+[env]: /concepts/dev-env
+[hydra]: https://github.com/NixOS/hydra
+[init]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-init
+[manual]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-inputs
+[packages]: /concepts/packages
