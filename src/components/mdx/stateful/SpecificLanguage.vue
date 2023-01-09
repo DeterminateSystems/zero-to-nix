@@ -6,7 +6,7 @@
 import { useStore } from "@nanostores/vue";
 import { languageState } from "~/logic/state";
 
-defineProps<{
+const { lang } = defineProps<{
   lang: string;
 }>();
 

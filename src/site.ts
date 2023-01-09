@@ -27,10 +27,13 @@ export type Site = {
   features: Feature[];
   navbarLinks: NavLink[];
   heroButtons: ButtonProps[];
-  year: number;
   systems: string[];
   languages: string[];
   nixTerms: Term[];
+  banner: {
+    text: string;
+    generation: number;
+  };
 };
 
 const site: Site = {
@@ -79,7 +82,7 @@ const site: Site = {
         },
         {
           text: "How Nix packages work",
-          href: "/concepts/package",
+          href: "/concepts/packages",
         },
       ],
     },
@@ -107,11 +110,9 @@ const site: Site = {
     },
   ],
 
-  year: new Date().getFullYear(),
-
   // User interactions
   systems: ["Linux", "macOS"],
-  languages: ["JavaScript", "Python", "Go", "Rust"],
+  languages: ["JavaScript", "Python", "Go", "Rust", "C++"],
 
   // Nix stuff
   nixTerms: [
@@ -140,6 +141,11 @@ const site: Site = {
       href: "/concepts/nixpkgs",
     },
   ],
+
+  banner: {
+    text: "🎉 Welcome to **Zero to Nix**, a brand new learning resource for [Nix](/concepts/nix)!",
+    generation: 1,
+  },
 };
 
 export default site;

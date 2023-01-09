@@ -5,14 +5,6 @@ import { WritableAtom } from "nanostores";
 
 const { languages } = site;
 
-// Show/hide the top banner
-export const bannerState: WritableAtom<string> = persistentAtom<string>(
-  "zero-to-nix:banner",
-  "show",
-);
-
-export const banner = useStore(bannerState);
-
 // Get the default system based on browser hint
 const defaultSystem: string =
   typeof window !== "undefined"

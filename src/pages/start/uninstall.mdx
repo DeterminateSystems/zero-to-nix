@@ -1,19 +1,27 @@
 ---
-title: Uninstall Nix
+title: Uninstall Nix (if necessary)
 summary: [
-  "Use [nix-installer](/concepts/nix-installer) to cleanly remove Nix from your system"
+  "If you want to cleanly remove Nix from your system, use [Nix Installer](/concepts/nix-installer) to do so"
 ]
 order: 8
 ---
 
-At the beginning of the Zero to Nix quick start, we [installed] Nix using [Nix Installer][nix-installer], an unofficial Nix installer from [Determinate Systems][ds].
-If you need to uninstall Nix for any reason, you can do so with one command.
+At the beginning of the Zero to Nix quick start, we [installed] Nix using [Nix Installer][nix-installer], an unofficial tool from [Determinate Systems][ds].
+We hope that your journey with Nix continues well into the future, but if you need to uninstall Nix for any reason you can do so with this command:
 
 ```shell
 /nix/nix-installer uninstall
 ```
 
-Once you've done that, you can verify that directories like `/nix` and `~/.nix-profile` have been removed from your system:
+Follow the prompts to approve the requested changes.
+Some of the changes that Nix Installer requests:
+
+* Delete the directory tree under `/nix`
+* Delete the [Nix] CLI tool
+* Delete all Nix-specific users and groups
+* Delete the Nix configuration file at `/etc/nix/nix.conf`
+
+Once Nix Installer is done, you can verify that uninstallation has succeeded by confirming that directories like `/nix` and `~/.nix-profile` have been removed from your system:
 
 ```shell
 ls /nix # error
@@ -22,4 +30,5 @@ ls ~/.nix-profile # error
 
 [ds]: https://determinate.systems
 [installed]: /start/install
+[nix]: /concepts/nix
 [nix-installer]: /concepts/nix-installer

@@ -1,27 +1,25 @@
 ---
-title: Install Nix
+title: Get Nix running on your system
 order: 1
-summary:
-  [
-    "Verify that [Nix](/concepts/nix) can be installed on your system",
-    "Get Nix running on your Linux or macOS system",
-    "Verify that your installed Nix is working as expected"
-  ]
+summary: [
+  "Get [Nix](/concepts/nix) running on your Linux or macOS system using [nix-installer](/concepts/nix-installer)",
+  "Verify that your installed Nix is working as expected"
+]
 ---
 
 **Welcome**!
 It's great to see that you're interested in [Nix].
 In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
 
-## Install Nix \{#download}
+## Install Nix \{#up}
 
-Install Nix using [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
+The best way to install Nix is to use [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
 curl -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-<Admonition title="Why aren't we using the official Nix installation script here?" type="info" id="why-nix-installer" client:load>
+<Admonition title="Why aren't we using the official Nix installation script here?" kind="info" id="why-nix-installer" client:load>
 We believe that Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
 Unlike many tools, Nix needs to make several bold changes to your system in order to work properly, such as creating a new root volume in the `/nix` directory, configuring your shell profile, and creating several new system users and groups.
 
@@ -31,24 +29,24 @@ It also installs Nix with [Nix flakes][flakes] enabled, while the official insta
 See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Nix Installer][nix-installer] concept doc if you'd like more background.
 </Admonition>
 
-Validate the displayed plan, and approve it to begin the install.
-Once Nix Installer has finished, load the Nix executable into your `PATH`:
+Validate the displayed plan and approve it to begin the installation process.
+Once Nix Installer has finished, you should see `Nix was installed successfully!` in your terminal.
+Then you can load the Nix executable into your `PATH`:
 
 ```shell
 exec $SHELL
 ```
 
-Now verify that installation has succeeded:
+Finally, verify that installation has succeeded:
 
 ```bash
-nix --help
+nix --version
 ```
 
-This should print the help output of the `nix` command.
+This should print the version information for Nix.
 
-**Congrats**!
+:rocket: Congrats!
 You now have Nix installed and ready to go on your system.
-You're now ready to use Nix to run programs.
 
 [apfs]: https://es.wikipedia.org/wiki/Apple_File_System
 [build]: /start/nix-build-nixpkgs

@@ -43,7 +43,8 @@ You can now run bat:
 ./result/bin/bat --help
 ```
 
-Congrats! You've built and run a package using Nix.
+:rocket: Congrats!
+You've built and run a package using Nix.
 
 ## Build a package written in `$LANGUAGE` \{#language-specific}
 
@@ -51,6 +52,14 @@ One of the great things about Nix is that [derivations] are extremely flexible, 
 
 <Languages client:load />
 
+<SpecificLanguage client:load lang="C++">
+Let's build and run [CMake]:
+
+```shell
+nix build "nixpkgs#cmake"
+./result/bin/cmake --help
+```
+</SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
 Let's build and run [npm]:
 
@@ -104,6 +113,7 @@ Upstreaming your packages to Nixpkgs is always an option, but it's good to bear 
 
 [bat]: https://github.com/sharkdp/bat
 [cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
+[cmake]: https://cmake.org
 [derivations]: /concepts/derivations
 [flake]: /concepts/flakes
 [hm]: https://github.com/nix-community/home-manager
@@ -116,7 +126,7 @@ Upstreaming your packages to Nixpkgs is always an option, but it's good to bear 
 [npm]: https://npmjs.org
 [npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [outputs]: /concepts/flake-outputs
-[packages]: /concepts/package
+[packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [pip]: https://pypi.org/project/pip
 [ripgrep]: https://github.com/BurntSushi/ripgrep
