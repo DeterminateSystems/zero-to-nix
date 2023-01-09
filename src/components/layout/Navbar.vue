@@ -77,6 +77,7 @@
   <OnClickOutside
     @trigger="closeDrawer"
     :options="{ ignore: ['#drawer-toggle'] }"
+    client:load
   >
     <TransitionRoot
       :show="showDrawer"
