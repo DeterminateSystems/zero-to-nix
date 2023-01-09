@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { onMounted, ref } from "vue";
 import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
@@ -48,9 +48,16 @@ const bannerState: WritableAtom<string> = persistentAtom<string>(
 
 const bannerStore = useStore(bannerState);
 
-const showBanner = computed(() => bannerStore.value === "show");
+const showBanner = ref<boolean>(false);
 
 const disableBanner = () => {
   bannerState.set("hide");
+  showBanner.value = false;
 };
+
+onMounted(() => {
+  if (bannerStore.value === "show") {
+    showBanner.value = true;
+  }
+});
 </script>
