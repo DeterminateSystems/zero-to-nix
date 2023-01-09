@@ -35,14 +35,16 @@
 </template>
 
 <script setup lang="ts">
-import { PostHog } from "posthog-js";
+import { onMounted } from "vue";
+import { posthog } from "posthog-js";
 import { computed, getCurrentInstance, inject, ref } from "vue";
 
 // Register and inject the Posthog plugin
-import { PosthogPlugin } from "~/plugins/posthog";
-const app = getCurrentInstance()!.appContext.app;
-app.use(PosthogPlugin);
-const posthog = inject("posthog") as PostHog;
+if (typeof window !== "undefined") {
+  posthog.init("phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4", {
+    api_host: "https://app.posthog.com",
+  });
+}
 
 // Set to false initially to avoid flash of content
 const optionSelected = ref<boolean>(false);
