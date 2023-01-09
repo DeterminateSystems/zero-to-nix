@@ -17,7 +17,23 @@
           />
         </div>
 
-        <ul class="flex items-center space-x-4 md:space-x-5 lg:space-x-6">
+        <div class="flex items-center space-x-4 md:hidden">
+          <ThemeSwitcher client:load />
+
+          <a :href="$site.githubUrl">
+            <IconFaGithub
+              class="h-4 w-4 hover:text-gray dark:hover:text-light-gray md:h-5 md:w-5 lg:h-6 lg:w-6"
+            />
+          </a>
+
+          <button class="hover:text-primary">
+            <IconFaSolidBars class="h-4 w-4" />
+          </button>
+        </div>
+
+        <ul
+          class="hidden items-center space-x-4 md:flex md:space-x-5 lg:space-x-6"
+        >
           <li>
             <QuickStartDropdown client:load />
           </li>
