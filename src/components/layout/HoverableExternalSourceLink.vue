@@ -5,7 +5,7 @@
     <div class="flex flex-col space-y-1.5">
       <a
         :href="externalSourceHref"
-        class="flex items-start justify-between gap-2 text-lg leading-tight hover:text-primary dark:hover:text-light-blue md:text-xl lg:text-2xl"
+        class="inline-flex items-start justify-between gap-2 text-lg leading-snug hover:text-primary dark:hover:text-light-blue md:text-xl lg:text-2xl"
         target="_blank"
         rel="noopener noreferrer"
       >

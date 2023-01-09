@@ -53,7 +53,7 @@
 
       <DisclosurePanel
         as="div"
-        class="content mt-3.5 px-5 pb-4 text-sm md:text-base lg:text-lg"
+        class="content px-5 pb-4 text-sm md:text-base lg:text-lg"
       >
         <slot />
       </DisclosurePanel>

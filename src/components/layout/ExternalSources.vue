@@ -5,8 +5,12 @@
     ]"
     class="space-y-4"
   >
-    <p v-if="showTitle" class="text-lg font-semibold md:text-xl lg:text-2xl">
-      External sources
+    <p
+      v-if="showTitle"
+      class="text-xl font-semibold hover:text-gray dark:hover:text-light-gray md:text-2xl lg:text-3xl"
+      id="external-sources"
+    >
+      <a href="#external-sources">External sources</a>
     </p>
 
     <Grid3>

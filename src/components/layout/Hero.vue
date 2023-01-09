@@ -19,7 +19,7 @@
     </h1>
     <h2
       v-if="description"
-      class="content text-dark-gray dark:text-light-gray"
+      class="content"
       :class="[
         normalHero && 'text-lg md:text-xl lg:text-2xl',
         largeHero && 'text-xl md:text-2xl lg:text-3xl',

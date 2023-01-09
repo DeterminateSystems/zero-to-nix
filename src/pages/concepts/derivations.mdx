@@ -2,7 +2,7 @@
 title: Derivations
 snippet: |
   Build instructions for Nix [packages](/concepts/packages) expressed using the [Nix language](/concepts/nix-language)
-related: ["nix-store", "packages", "realisation"]
+related: ["caching", "nix-store", "packages", "realisation"]
 externalSources: [
   {
     title: "Derivations",
@@ -72,9 +72,9 @@ Here's an example derivation:
 derivation {
   # A name for the derivation (whatever you choose)
   name = "hello-text";
-  # The system realizing the derivation
+  # The system realising the derivation
   system = "x86_64-linux";
-  # The program realizing the derivation
+  # The program realising the derivation
   builder = "bash";
   # Arguments passed to the builder program
   args = ["-c", "mkdir $out && echo Hello world > $out/hello.txt"]

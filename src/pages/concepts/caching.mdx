@@ -1,0 +1,80 @@
+---
+title: Caching
+snippet: |
+
+related: ["closures", "derivations", "nix-store"]
+externalSources: [
+  {
+    title: "Binary cache",
+    href: "https://nixos.wiki/wiki/Binary_Cache",
+    source: {
+      title: "The NixOS Wiki",
+      href: "https://nixos.wiki"
+    }
+  },
+  {
+    title: "Setting up a private Nix cache for fun and profit",
+    href: "https://channable.com/tech/setting-up-a-private-nix-cache-for-fun-and-profit",
+    source: {
+      title: "The Channable blog",
+      href: "https://www.channable.com/tech"
+    }
+  },
+  {
+    title: "Serving a Nix store via HTTP",
+    href: "https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter",
+    source: {
+      title: "The Nix manual",
+      href: "https://nixos.org/manual/nix/stable"
+    }
+  }
+]
+---
+
+By default, Nix uses *caching* to make [building packages][packages] faster and more efficient.
+This in turn makes other Nix operations that involve building packages, like creating [development environments][dev] and standing up [NixOS] environments, faster and more efficient as well.
+
+## Building vs. caching
+
+Whenever Nix builds a [package][packages] by [realising] the package's [derivation], it needs to realise the entire [closure] of the derivation, which means that it needs to realise all of the derivations required to build the package's derivation, plus the derivations required to build those derivations, and so on.
+Some packages have tiny closures (dependency trees) while others have massive closures involving thousands of derivations, which makes build efficiency a primary concern in Nix.
+
+Here's what Nix does whenever it realises a derivation:
+
+1. It computes a hash for the derivation and, using that hash, a [Nix store path][store-paths] of this form (for a hypothetical Git package):
+
+    <NixStorePath pkg="git-2.37.0" hash="f8f72p3xxr20k111mpg4kk93i4cp74qb" />
+
+1. With a store path in hand, Nix determines whether the derivation has already been built.
+  First, Nix checks the configured [Nix store][store] to see if the path `/nix/store/f8f72p3xxr20k111mpg4kk93i4cp74qb/git-2.37.0` already exists.
+  If so, it uses that rather than building it.
+  If not...
+
+1. It checks a if the store path exists in a configured [binary cache](#binary-caches).
+
+1. If the store path exists neither in a configured [Nix store][store] nor in a configured [binary cache](#binary-caches), Nix builds the derivation from scratch, recursively following all of the steps in this list, using already-realised packages whenever possible and building only what is necessary.
+
+<Admonition kind="success" title="Nix without caching" client:load>
+Without caching, [realisation][realising] would involve always building everything from scratch every single time, which would make Nix a much less efficient&mdash;and thereby much less compelling!&mdash;package manager and build tool.
+</Admonition>
+
+## Binary caches
+
+In addition to the local [Nix store][store], you can also cache Nix artifacts using remote Nix stores called *binary caches* that serve pre-built binaries via HTTP.
+For the most part, binary caches work just like the Nix store, enabling Nix to quickly determine whether something has already been built on the basis of a derivation's Nix store path.
+
+By default, Nix uses [cache.nixos.org][cache] as a binary cache, which is open to all and populated by continuous integration systems.
+In addition to this community cache, you can also [run your own][run] or use a third-party binary cache service like [Cachix].
+
+[binary-cache]: https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter
+[cache]: http://cache.nixos.org
+[cachix]: https://www.cachix.org
+[closure]: /concepts/closures
+[derivation]: /concepts/derivations
+[dev]: /concepts/dev-env
+[nixos]: /concepts/nixos
+[packages]: /concepts/packages
+[realising]: /concepts/realisation
+[run]: https://nixos.wiki/wiki/Binary_Cache
+[store]: /concepts/nix-store
+[store-paths]: /concepts/nix-store#store-paths

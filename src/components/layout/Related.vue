@@ -1,6 +1,11 @@
 <template>
   <div class="space-y-4">
-    <p class="text-lg font-semibold md:text-xl lg:text-2xl">Related</p>
+    <p
+      class="text-xl font-semibold hover:text-gray dark:hover:text-light-gray md:text-2xl lg:text-3xl"
+      id="related"
+    >
+      <a href="#related">Related</a>
+    </p>
 
     <Grid3>
       <HoverableLink

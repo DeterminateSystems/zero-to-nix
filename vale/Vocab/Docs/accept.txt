@@ -11,6 +11,7 @@ buildgomodule
 buildpythonapplication
 buildrustpackage
 cargolock
+channable
 ci
 cmake
 config
