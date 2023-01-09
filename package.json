@@ -22,7 +22,6 @@
     "@types/marked": "^4.0.7",
     "@types/node": "^18.11.9",
     "@types/prismjs": "^1.26.0",
-    "@vueuse/components": "^9.10.0",
     "@vueuse/core": "^9.5.0",
     "autoprefixer": "^10.4.13",
     "iles": "0.8.7",

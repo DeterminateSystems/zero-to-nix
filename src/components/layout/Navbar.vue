@@ -27,6 +27,7 @@
           </a>
 
           <button
+            ref="toggler"
             class="hover:text-dark-gray dark:hover:text-gray"
             @click="toggleDrawer"
             type="button"
@@ -74,11 +75,7 @@
     </HorizontalContainer>
   </nav>
 
-  <OnClickOutside
-    @trigger="closeDrawer"
-    :options="{ ignore: ['#drawer-toggle'] }"
-    client:load
-  >
+  <div ref="drawer">
     <TransitionRoot
       :show="showDrawer"
       enter="transition-opacity duration-100"
@@ -152,14 +149,14 @@
         </div>
       </div>
     </TransitionRoot>
-  </OnClickOutside>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { OnClickOutside } from "@vueuse/components";
 import { conceptPages, sortedQuickStartPages } from "~/logic/content";
 import { TransitionRoot } from "@headlessui/vue";
+import { onClickOutside } from "@vueuse/core";
 
 const showDrawer = ref<boolean>(false);
 
@@ -170,4 +167,18 @@ const toggleDrawer = () => {
 const closeDrawer = () => {
   showDrawer.value = false;
 };
+
+const drawer = ref(null);
+const toggler = ref(null);
+
+onClickOutside(
+  drawer,
+  (event) => {
+    event.preventDefault();
+    closeDrawer();
+  },
+  {
+    ignore: [toggler],
+  },
+);
 </script>
