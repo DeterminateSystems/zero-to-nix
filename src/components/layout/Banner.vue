@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
