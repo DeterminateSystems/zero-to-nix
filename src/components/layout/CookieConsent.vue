@@ -35,9 +35,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { posthog } from "posthog-js";
-import { computed, getCurrentInstance, inject, ref } from "vue";
+import { computed, ref } from "vue";
 
 // Register and inject the Posthog plugin
 if (typeof window !== "undefined") {
