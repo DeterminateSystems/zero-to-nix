@@ -87,6 +87,7 @@
       leave="transition-opacity duration-150"
       leave-from="opacity-100"
       leave-to="opacity-0"
+      client:load
     >
       <div
         id="nav-drawer"
