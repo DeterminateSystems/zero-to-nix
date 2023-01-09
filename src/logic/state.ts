@@ -16,7 +16,7 @@ const defaultSystem: string =
 // Current selected language (stored in localStorage)
 export const languageState: WritableAtom<string> = persistentAtom<string>(
   "zero-to-nix:language",
-  languages[0]!
+  languages[0]!,
 );
 
 export const language = useStore(languageState);
@@ -24,7 +24,7 @@ export const language = useStore(languageState);
 // Current selected system (stored in localStorage)
 export const systemState: WritableAtom<string> = persistentAtom<string>(
   "zero-to-nix:system",
-  defaultSystem
+  defaultSystem,
 );
 
 export const system = useStore(systemState);

@@ -1,5 +1,8 @@
 <template>
-  <div v-show="showCookieConsent" class="print:hidden fixed left-6 bottom-6 z-50">
+  <div
+    v-show="!hideCookieConsent"
+    class="fixed left-6 bottom-6 z-50 print:hidden"
+  >
     <div
       class="max-w-[202px] rounded-lg bg-primary text-white/80 dark:bg-dark-gray"
     >
@@ -41,8 +44,6 @@ const app = getCurrentInstance()!.appContext.app;
 app.use(PosthogPlugin);
 const posthog = inject("posthog") as PostHog;
 
-// Whether Accept or Decline has been explicitly selected
-const showCookieConsent = ref<boolean>(false);
 // Set to false initially to avoid flash of content
 const optionSelected = ref<boolean>(false);
 
@@ -57,26 +58,24 @@ const posthogKnowsPreference = computed(() => {
 const hideCookieConsent = computed(() => {
   return typeof window === "undefined"
     ? false
-    : posthogKnowsPreference.value || optionSelected.value;
+    : posthogKnowsPreference.value
+    ? true
+    : optionSelected.value;
 });
-
-showCookieConsent.value = !hideCookieConsent.value;
 
 // Callback for the Accept button
 const acceptCookies = () => {
   if (typeof window !== "undefined") {
     posthog.opt_in_capturing();
     optionSelected.value = true;
-    showCookieConsent.value = false;
   }
 };
 
 // Callback for the Decline button
 const declineCookies = () => {
   if (typeof window !== "undefined") {
-    posthog.opt_out_capturing;
+    posthog.opt_out_capturing();
     optionSelected.value = true;
-    showCookieConsent.value = false;
   }
 };
 </script>
