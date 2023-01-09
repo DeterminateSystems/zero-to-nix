@@ -90,7 +90,6 @@
         tabindex="-1"
         class="fixed z-40 flex h-full w-5/6 flex-col overflow-y-auto border-t border-r border-light-gray bg-white p-4 dark:border-gray dark:bg-dark"
         aria-labelledby="nav-drawer"
-        vOnClickOutside="toggleDrawer"
       >
         <div class="flex justify-end">
           <button

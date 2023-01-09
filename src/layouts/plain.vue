@@ -1,7 +1,7 @@
 <template layout="base">
   <Page>
     <Top>
-      <Navbar client:load />
+      <Navbar />
       <HorizontalContainer>
         <Hero :title="title" :description="description" client:none />
 

@@ -1,7 +1,7 @@
 <template layout="base">
   <Page>
     <Top>
-      <Navbar client:load />
+      <Navbar />
       <slot />
     </Top>
     <Footer client:load />
