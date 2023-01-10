@@ -24,20 +24,20 @@ externalSources: [
 ---
 
 
-*NixOS* is a [Linux] distribution built on [Nix] and in accordance with Nix's core principles.
-NixOS is unique amongst distributions because it enables you to use the [Nix language][lang] to configure your operating system [delaratively][declarative] in a `configuration.nix` file.
+*NixOS* is a [Linux] distribution built on [Nix].
+It's unique amongst distributions because it enables you to use the [Nix language][lang] to configure your operating system [delaratively][declarative] in a `configuration.nix` file.
 And that configurability runs quite deep, including things like the [boot loader][boot], the [filesystem], [window managers][window], [kernel modules][kernel], services like [OpenSSH], and much more.
 
+## The role of Nix
 
-Everything[^1] in a NixOS system is purely configured via the Nix expression language and module system.
-Instead of installing packages directly, you declaratively describe what system you would like to have, and Nix then builds and deploys this system for you.
-To make this possible Nix uses its *module system* (explained below) and module abstractions.
-A module is a piece of Nix code, which can be configured by a user, and then internally produces some system output.
+Everything[^1] in a NixOS system is configured using the [Nix language][lang] and the NixOS [module system](#modules).
+Rather than installing [packages] in an ad hoc way, you can [declare][declarative] which specific system you'd like to have and Nix builds the system for you from the ground up.
 
-## What is a module
+## Modules
 
-A module in NixOS is a function, which accepts an attribute set and returns an attribute set of its own.
-The basic anatomy of a module can be seen in the code snippet below.
+A *module* is a piece of Nix code that can be configured by a user to produce some system output.
+In NixOS, a module is a function that takes an attribute set and returns another attribute set.
+The basic anatomy of a module can be seen in this code snippet:
 
 ```nix
 { lib, config, pkgs, ... }:
@@ -80,7 +80,7 @@ As an example, these two modules are equivalent to each other.
 
 ## How to use modules
 
-First up, you can find modules to use and how to use them via the NixOS [module search].
+First up, you can find modules to use and how to use them via the NixOS [module search][search].
 Nix modules generally follow the [declarative] principle, meaning that there's no precise order that modules are executed in.
 Instead, you describe the desired outcome of a system, which Nix then produces for you.
 
@@ -127,8 +127,8 @@ Below is a diagram of the first path above:
 Let's break store paths down into their constituent elements:
 
 1. The **root path** is `/nix/store` by default.
-2. The **input hash** is derived from the inputs to the [derivation][derivations] used to build the package
-3. The **package name** is provided by the package creator
+2. The **hash** is derived from the [derivation][derivations] used to build the package.
+3. The **package name** is an arbitrary slug provided by the package creator.
 
 [apt]: https://en.wikipedia.org/wiki/APT_(software)
 [boot]: https://nixos.wiki/wiki/Bootloader
@@ -141,12 +141,12 @@ Let's break store paths down into their constituent elements:
 [kernel]: https://nixos.wiki/wiki/Linux_kernel
 [lang]: /concepts/nix-language
 [linux]: https://linux.org
-[module search]: https://search.nixos.org/options
 [nginx]: https://nginx.org
 [nix]: /concepts/nix
 [openssh]: https://openssh.com
 [packages]: /concepts/packages
 [pkg]: /concepts/package-management
 [rebuild]: https://nixos.wiki/wiki/Nixos-rebuild
+[search search]: https://search.nixos.org/options
 [store]: /concepts/nix-store
 [window]: https://nixos.wiki/wiki/Category:Window_managers
