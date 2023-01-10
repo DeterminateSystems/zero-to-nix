@@ -81,8 +81,8 @@ module.exports = {
         "8xl": "90rem",
       },
       screens: {
-        'print': { 'raw': 'print' }
-      }
+        print: { raw: "print" },
+      },
     },
   },
 };
