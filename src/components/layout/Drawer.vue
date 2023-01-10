@@ -1,12 +1,12 @@
 <template>
   <TransitionRoot
     :show="drawerIsOpen"
-    enter="transition-opacity duration-100"
-    enter-from="opacity-0"
-    enter-to="opacity-100"
-    leave="transition-opacity duration-150"
-    leave-from="opacity-100"
-    leave-to="opacity-0"
+    enter="transition ease-in-out duration-300 transform"
+    enter-from="-translate-x-full"
+    enter-to="translate-x-0"
+    leave="transition ease-in-out duration-300 transform"
+    leave-from="translate-x-0"
+    leave-to="-translate-x-full"
   >
     <div
       id="nav-drawer"
@@ -20,18 +20,9 @@
           data-drawer-hide="nav-drawer"
           aria-controls="nav-drawer"
         >
-          <svg
-            aria-hidden="true"
+          <IconAppClose
             class="h-4 w-4 dark:fill-light-gray dark:hover:fill-primary"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
+          />
           <span class="sr-only">Close menu</span>
         </button>
       </div>
@@ -72,7 +63,5 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { TransitionRoot } from "@headlessui/vue";
-import { closeDrawer, drawerStore, toggleDrawer } from "~/logic/state";
-
-const drawerIsOpen = computed(() => drawerStore.value);
+import { closeDrawer, drawerIsOpen, toggleDrawer } from "~/logic/state";
 </script>
