@@ -62,6 +62,7 @@ declare module '@vue/runtime-core' {
     Selector: typeof import('./src/components/mdx/stateful/Selector.vue')['default']
     Separator: typeof import('./src/components/layout/Separator.vue')['default']
     Shell: typeof import('./src/components/mdx/code/Shell.vue')['default']
+    SlideEffect: typeof import('./src/components/layout/transitions/SlideEffect.vue')['default']
     SpecificLanguage: typeof import('./src/components/mdx/stateful/SpecificLanguage.vue')['default']
     SpecificSystem: typeof import('./src/components/mdx/stateful/SpecificSystem.vue')['default']
     Summary: typeof import('./src/components/layout/Summary.vue')['default']
