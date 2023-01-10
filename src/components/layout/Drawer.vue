@@ -70,6 +70,9 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { TransitionRoot } from "@headlessui/vue";
-import { closeDrawer, drawerIsOpen, toggleDrawer } from "~/logic/state";
+import { closeDrawer, drawerStore, toggleDrawer } from "~/logic/state";
+
+const drawerIsOpen = computed(() => drawerStore.value);
 </script>

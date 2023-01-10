@@ -79,13 +79,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { conceptPages, sortedQuickStartPages } from "~/logic/content";
 import { onClickOutside } from "@vueuse/core";
-import { closeDrawer, drawerIsOpen, toggleDrawer } from "~/logic/state";
+import { closeDrawer, drawerStore, toggleDrawer } from "~/logic/state";
 
 const drawer = ref(null);
 const toggler = ref(null);
+
+const drawerIsOpen = computed(() => drawerStore.value);
 
 onClickOutside(
   drawer,

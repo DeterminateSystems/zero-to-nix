@@ -32,9 +32,7 @@ export const system = useStore(systemState);
 
 // Nav drawer state
 const drawerAtom = atom<boolean>(false);
-const drawerStore = useStore(drawerAtom);
-
-export const drawerIsOpen = computed(() => drawerStore.value);
+export const drawerStore = useStore(drawerAtom);
 
 export const toggleDrawer = () => {
   drawerAtom.set(!drawerAtom.get());
