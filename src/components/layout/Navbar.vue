@@ -75,7 +75,36 @@
     </HorizontalContainer>
   </nav>
 
-  <Drawer ref="drawer" client:load />
+  <Drawer ref="drawer" client:load>
+    <ul class="space-y-1">
+      <li>
+        <a
+          href="/start"
+          class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
+        >
+          Quick start
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="/concepts"
+          class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
+        >
+          Concepts
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="/about"
+          class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
+        >
+          About
+        </a>
+      </li>
+    </ul>
+  </Drawer>
 </template>
 
 <script setup lang="ts">
