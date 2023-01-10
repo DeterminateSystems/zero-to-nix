@@ -1,14 +1,14 @@
 <template>
-  <TransitionRoot
-    :show="drawerIsOpen"
-    enter="transition ease-in-out duration-300 transform"
-    enter-from="-translate-x-full"
-    enter-to="translate-x-0"
-    leave="transition ease-in-out duration-300 transform"
-    leave-from="translate-x-0"
-    leave-to="-translate-x-full"
+  <Transition
+    enter-active-class="transition ease-in-out duration-200 transform"
+    enter-from-class="-translate-x-full"
+    enter-to-class="translate-x-0"
+    leave-active-class="transition ease-in-out duration-300 transform"
+    leave-from-class="translate-x-0"
+    leave-to-class="-translate-x-full"
   >
     <div
+      v-if="drawerIsOpen"
       id="nav-drawer"
       tabindex="-1"
       class="fixed z-40 flex h-full w-5/6 flex-col overflow-y-auto border-t border-r border-light-gray bg-white p-4 dark:border-gray dark:bg-dark"
@@ -57,11 +57,10 @@
         </ul>
       </div>
     </div>
-  </TransitionRoot>
+  </Transition>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { TransitionRoot } from "@headlessui/vue";
 import { closeDrawer, drawerIsOpen, toggleDrawer } from "~/logic/state";
 </script>
