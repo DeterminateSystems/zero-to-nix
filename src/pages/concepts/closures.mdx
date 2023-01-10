@@ -12,12 +12,14 @@ Whenever you build a package, Nix always [realises] its entire closure in a [san
 
 Nix closures come in two different types:
 
-- *Build-time* closures include everything necessary to build a [package].
-- *Runtime* closures include everything necessary to run a program.
+- *Build-time* closures include everything necessary to build the package.
+- *Runtime* closures include everything necessary to run the package.
 
 To give an example, let's say that you're using Nix to build [Firefox] because you want to install and run it on your machine.
 The build-time closure for Firefox would include [GCC] because you can't build Firefox without it.
 The runtime closure, however, would not include GCC&mdash;Firefox has already been built!&mdash;but it would include [GTK], which Firefox needs for its user interface.
+
+When you see mentions of Nix closures in Nix documentation and other places, runtime closures are usually what's meant.
 
 ## Closure bloat
 
