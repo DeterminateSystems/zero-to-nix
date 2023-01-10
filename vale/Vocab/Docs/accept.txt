@@ -10,6 +10,7 @@ buildphase
 buildgomodule
 buildpythonapplication
 buildrustpackage
+cachix
 cargolock
 cachix
 channable
