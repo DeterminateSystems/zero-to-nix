@@ -30,14 +30,29 @@ the fact that all Nix [derivations] have a `system` attribute that specifies whi
 In order to realize a Nix derivation into a [package], each derivation in the package's closure needs to be supported on the target system.
 So if you want to build the package `foo` on an `x86_64-linux` system, any dependency of the `foo` derivation needs to be supported on `x86_64-linux`.
 
+<Admonition type="info" title="Displaying your current system" client:load>
+To see the Nix alias for your current system, you can run this command in your terminal:
+
+```shell
+nix eval --impure --expr builtins.currentSystem
+```
+
+You should see a string like `"x86_64-linux"` or `"aarch64-darwin"`.
+</Admonition>
+
 System specificity is essential to Nix being a truly multi-platform system.
 Because all derivations&mdash;and thus all packages&mdash;are system specific, things like Nix [development environments][env] and [NixOS] configurations are also system specific.
 
 ## Cross compilation
+
+Every Nix [derivation][derivations] requires a `system` property to be set.
+If a package uses the [`stdenv.mkDerivation`][stdenv] function from the standard environment&mdash;this function is either used directly or wrapped by another function in most Nix packages and virtually all packages in [Nixpkgs]
 
 
 
 [derivations]: /concepts/derivations
 [env]: /concepts/dev-env
 [nixos]: /concepts/nixos
+[nixpkgs]: /concepts/nixpkgs
 [package]: /concepts/packages
+[stdenv]: /concepts/derivations#stdenv
