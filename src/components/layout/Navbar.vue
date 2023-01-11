@@ -26,22 +26,7 @@
             />
           </a>
 
-          <button
-            ref="toggler"
-            class="hover:text-dark-gray dark:hover:text-gray"
-            @click="toggleDrawer"
-            type="button"
-            id="drawer-toggle"
-            data-drawer-target="nav-drawer"
-            data-drawer-show="nav-drawer"
-            aria-controls="nav-drawer"
-            :class="[
-              drawerIsOpen && 'text-primary',
-              !drawerIsOpen && 'text-gray dark:text-light-gray',
-            ]"
-          >
-            <IconFaSolidBars class="h-4 w-4" />
-          </button>
+          <DrawerToggler client:load />
         </div>
 
         <ul
@@ -75,54 +60,9 @@
     </HorizontalContainer>
   </nav>
 
-  <Drawer ref="drawer" client:load>
-    <ul class="space-y-1">
-      <li>
-        <a
-          href="/start"
-          class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
-        >
-          Quick start
-        </a>
-      </li>
-
-      <li>
-        <a
-          href="/concepts"
-          class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
-        >
-          Concepts
-        </a>
-      </li>
-
-      <li>
-        <a
-          href="/about"
-          class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
-        >
-          About
-        </a>
-      </li>
-    </ul>
-  </Drawer>
+  <Drawer client:load />
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
 import { conceptPages, sortedQuickStartPages } from "~/logic/content";
-import { onClickOutside } from "@vueuse/core";
-import { closeDrawer, drawerIsOpen, toggleDrawer } from "~/logic/state";
-
-const drawer = ref(null);
-const toggler = ref(null);
-
-onClickOutside(
-  drawer,
-  () => {
-    closeDrawer();
-  },
-  {
-    ignore: [toggler],
-  },
-);
 </script>
