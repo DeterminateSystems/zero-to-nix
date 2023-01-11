@@ -24,14 +24,61 @@ externalSources: [
 ---
 
 
-*NixOS* is a [Linux] distribution built on [Nix].
+*NixOS* is a [Linux] distribution built on top of [Nix].
 It's unique amongst distributions because it enables you to use the [Nix language][lang] to configure your operating system [delaratively][declarative] in a `configuration.nix` file.
-And that configurability runs quite deep, including things like the [boot loader][boot], the [filesystem], [window managers][window], [kernel modules][kernel], services like [OpenSSH], and much more.
+And that configurability runs quite deep, including things like the system's [boot loader][boot], the [filesystem], [window managers][window], [kernel modules][kernel], services like [OpenSSH], and much more.
+
+In addition to being a fundamentally [configurable](#configuration) distribution, NixOS's use of Nix enables it to offer a wide variety of unique [features](#features), such as [atomic system updates](#atomicity) and [rollbacks](#rollbacks), and [multi-user support](#multi-user) without any of the drawbacks usually associated with multiple users on the same host.
 
 ## The role of Nix
 
-Everything[^1] in a NixOS system is configured using the [Nix language][lang] and the NixOS [module system](#modules).
-Rather than installing [packages] in an ad hoc way, you can [declare][declarative] which specific system you'd like to have and Nix builds the system for you from the ground up.
+Everything in a NixOS system is configured using the [Nix language][lang] and the NixOS [module system](#modules).
+Rather than installing [packages] and setting up your system in an ad-hoc way, you can [declare][declarative] which specific system you'd like to have&mdash;networking stack, filesystem, users, and more&dash;and Nix builds the system for you from the ground up, installing all the required [packages], providing necessary configuration files, and more.
+
+
+
+## Configuration
+
+With most Linux distributions, you assemble your desired system in a procedural way using scripts and ad-hoc commands like [`apt-get install`][apt].
+By contrast, NixOS enables you to define your desired system using the [Nix language][lang], by default in a `configuration.nix` file.
+Here's an example configuration:
+
+```nix filename=configuration.nix
+{
+  # Enable Nix flakes and the unified Nix CLI
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+  };
+
+  # Networking configuration
+  networking.hostName = "justme-dev-box";
+
+  # Enable OpenSSH
+  services.openssh.enable = true;
+
+  # Root filesystem
+  fileSystems."/" = {
+    device = "/dev/sda1";
+    fsType = "ext4";
+  };
+
+  # Set the host platform (64-bit AMD/Intel Linux system)
+  nixpkgs.hostPlatform = "x86_64-linux";
+
+  # Create a user
+  users.users.justme = {
+    isNormalUser = true;
+    initialPassword = "chanemeplz";
+  };
+
+  # The Nixpkgs release
+  system.stateVersion = "22.11";
+}
+```
+
+This command would apply the configuration:
+
+```
 
 ## Modules
 
@@ -105,13 +152,17 @@ Following is an example of how to setup and configure the [nginx] web server.
 NixOS uses [Nix] as its [package manager][pkg] rather than [APT], [dpkg], or any of the other options for Linux.
 Nix enables NixOS to provide a range of unique features.
 
-### Atomic system updates
+### Atomic system updates \{#atomicity}
 
 Any time you change your NixOS configuration, you can apply that configuration by running [`nixos-rebuild switch`][rebuild].
 When you do this, NixOS installs or upgrades any [packages] that need to be installed or upgraded according to your system configuration.
 And as is always the case with Nix, each package is built from scratch and stored in the [Nix store][store] rather than in directories like `/bin` or `/usr/bin`, as dictated by the [Filesystem Hierarchy Standard][fhs].
 
-### Multi-user support
+### Rollbacks
+
+TODO: generations
+
+### Multi-user support \{#multi-user}
 
 NixOS doesn't follow the [Filesystem Hierarchy Standard][fhs], instead using the [Nix store][store] for everything, including not just [packages] but also [derivations] and other required artifacts.
 This enables NixOS to support an indefinite number of user *profiles* in an elegant way.

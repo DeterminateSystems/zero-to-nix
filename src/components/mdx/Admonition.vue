@@ -36,7 +36,7 @@
             class="h-4 w-4 text-yellow"
           />
           <IconFaCheck v-if="kind === 'success'" class="h-4 w-4 text-green" />
-          <span>{{ title }}</span>
+          <span class="content" v-html="md(title)" />
         </span>
 
         <IconFaChevronRight
@@ -68,7 +68,7 @@
         <IconFaInfo v-if="kind === 'info'" class="h-4 w-4 text-blue" />
         <IconFaWarning v-if="kind === 'warning'" class="h-4 w-4 text-yellow" />
         <IconFaCheck v-if="kind === 'success'" class="h-4 w-4 text-green" />
-        <span>{{ title }}</span>
+        <span class="content" v-html="md(title)" />
       </span>
 
       <div
@@ -87,6 +87,7 @@ import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
 import { ref } from "vue";
+import { md } from "~/logic/content";
 
 const { id, kind, title } = defineProps<{
   id?: string;
