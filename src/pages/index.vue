@@ -26,12 +26,15 @@
                 class="rounded-full tracking-tight md:text-base lg:text-lg"
                 :class="[
                   highlight &&
-                    'bg-primary px-5 py-3 text-white hover:bg-orange',
+                    'lg:py-2.4 bg-primary py-1.5 px-3.5 text-white hover:bg-orange md:py-2 md:px-5 lg:px-6',
                   !highlight &&
-                    'bg-gray py-2 px-4 text-white hover:bg-light-gray hover:text-dark',
+                    'lg:px-4.5 bg-gray py-1 px-3 text-white hover:bg-light-gray hover:text-dark md:py-1.5 md:px-3.5 lg:py-2',
                 ]"
               >
-                <a :href="href" :class="[highlight && 'text-2xl font-bold']">
+                <a
+                  :href="href"
+                  :class="[highlight && 'font-bold md:text-lg lg:text-xl']"
+                >
                   {{ text }}
                 </a>
               </Tab>
