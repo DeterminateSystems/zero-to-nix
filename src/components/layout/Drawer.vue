@@ -44,7 +44,7 @@
 
           <li>
             <a
-              href="/concepts"
+              href="/about"
               class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
               @click="closeDrawer"
             >
