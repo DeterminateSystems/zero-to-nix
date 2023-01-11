@@ -1,9 +1,11 @@
 <template>
+  <!-- The navbar at the top of each page -->
   <nav
     class="sticky top-0 z-10 bg-white py-2 shadow-sm shadow-light-gray dark:bg-inherit dark:shadow-dark-gray md:py-2.5 lg:py-3"
   >
     <HorizontalContainer>
       <div class="flex items-center justify-between">
+        <!-- Navbar "brand" -->
         <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
           <a
             href="/"
@@ -17,6 +19,7 @@
           />
         </div>
 
+        <!-- Visible only on mobile -->
         <div class="flex items-center space-x-4 md:hidden">
           <ThemeSwitcher client:load />
 
@@ -26,9 +29,12 @@
             />
           </a>
 
+          <!-- The mobile-only navigation drawer toggle. This needs to be a separate component due
+          to îles' hydration rules -->
           <DrawerToggler client:load />
         </div>
 
+        <!-- Show only on md or above (invisible on mobile) -->
         <ul
           class="hidden items-center space-x-4 md:flex md:space-x-5 lg:space-x-6"
         >
@@ -60,6 +66,7 @@
     </HorizontalContainer>
   </nav>
 
+  <!-- The sliding navigation drawer (mobile only) -->
   <Drawer client:load />
 </template>
 
