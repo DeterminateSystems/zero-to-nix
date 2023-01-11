@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { onClickOutside } from "@vueuse/core";
 import { ref } from "vue";
-import { closeDrawer, drawerIsOpen } from "~/logic/state";
+import { closeDrawer, drawerIsOpen, toggleDrawer } from "~/logic/state";
 
 const drawer = ref(null);
 

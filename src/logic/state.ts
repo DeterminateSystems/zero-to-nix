@@ -2,8 +2,6 @@ import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/vue";
 import site from "~/site";
 import { WritableAtom, atom } from "nanostores";
-import { computed } from "vue";
-
 const { languages } = site;
 
 // Get the default system based on browser hint
