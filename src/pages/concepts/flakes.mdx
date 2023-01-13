@@ -44,14 +44,24 @@ Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/
 
 ## Flake references \{#references}
 
-A *flake reference* is a string representation of where the flake is.
+A *flake reference* is a string representation of where the flake is located.
+Flake references are used in two places:
+
+1. In flake [input declarations](#inputs)
+1. On the command line when running commands like `nix run github:DeterminateSystems/riff` (which runs the [Riff] program)
+
 Here are some example flake references:
 
 Reference | Description
 :---------|:-----------
-`github:DeterminateSystems/zero-to-nix` | The [DeterminateSystems/zero-to-nix][gh-z2n] GitHub repository
 `path:/home/nix-stuff/my-flake` | The `/home/nix-stuff/my-flake` directory on the current host
+`github:DeterminateSystems/zero-to-nix` | The [DeterminateSystems/zero-to-nix][gh-z2n] GitHub repository
+`github:DeterminateSystems/zero-to-nix/other` | The [`other`][other] branch of the [DeterminateSystems/zero-to-nix][gh-z2n] GitHub repository
+`github:DeterminateSystems/zero-to-nix/d51c83a5d206e882a6f15a282e32b7079f5b6d76` | Commit [`d51c83a5d206e882a6f15a282e32b7079f5b6d76`][hash] on the [DeterminateSystems/zero-to-nix][gh-z2n] GitHub repository
+`nixpkgs` | The most recent revision of the [`nixpkgs-unstable`][unstable] branch of [Nixpkgs] (an alias for `github:NixOS/nixpkgs`)
+`nixpkgs/release-22.11` | The [`release-22.11`][22-11] branch of Nixpkgs
 
+You can find a more systematic treatment of flake references in the [official documentation][refs-official].
 
 ## Flake inputs \{#inputs}
 
@@ -72,6 +82,43 @@ This is done via the `inputs.<input>.follows` attribute.
 
 You can find a full breakdown of the flake input schema in the [Nix manual][manual].
 
+### The `flake.lock` file \{#lockfile}
+
+All flake inputs are [pinned] to specific revisions in a `flake.lock` lockfile.
+This helps to ensure that Nix flakes are purely deterministic.
+
+### Flake registries \{#registries}
+
+[*Flake registries*][registry-official] are a convenience feature that enables you to refer to flakes using symbolic identifiers rather than full flake references.
+The most widely used symbolic identifier is `nixpkgs`, which is an alias for the `github:NixOS/nixpkgs/nixpkgs-unstable` flake [reference](#references)
+
+Some symbolic identifiers that you may encounter:
+
+Symbolic identifier | Full flake reference
+:------------------|:-------------------
+[`nixpkgs`][nixpkgs] | `github:NixOS/nixpkgs/nixpkgs-unstable`
+[`flake-utils`][flake-utils] | `github:numtide/flake-utils`
+[`home-manager`][hm] | `github:nix-community/home-manager`
+
+The full default global flake registry is kept as a [JSON file][registry-json].
+
+Here's an example flake that uses symbolic identifiers:
+
+```nix filename=flake.nix
+{
+  outputs = { self, nixpkgs, flake-utils }:
+    let
+      pkgs = import nixpkgs { inherit system; };
+    in flake-utils.lib.eachDefaultSystem (system: {
+      devShells.default = pkgs.mkShell {
+        packages = with pkgs; [ curl git jq wget ];
+      };
+    });
+}
+```
+
+Note that the [`inputs` block](#inputs) has been omitted in this flake.
+Using flake registries is always optional.
 
 ## Flake outputs \{#outputs}
 
@@ -98,13 +145,16 @@ The flake output below, for example, produces a single package output on `x86_64
 }
 ```
 
-## The `flake.lock` file \{#lockfile}
+### System specificity
 
-TODO
+Some flake outputs need to be [system specific][specificity], including:
+
+* [Packages]
+* [NixOS]
 
 ## Flake templates \{#templates}
 
-Flake *templates* are a feature of Nix that enables you to either initialize a new project or add files to an existing project.
+*Flake templates* enable you to either initialize a new Nix project or add files to an existing project.
 
 You can initialize a flake template using the [`nix flake init`][init] command.
 
@@ -118,12 +168,24 @@ But it's important to clarify *why* we think this:
 
 * Flakes have a built-in [pinning] mechanism in the form of [`flake.lock`](#lockfile)
 
+[22-11]: https://github.com/nixOS/nixpkgs/tree/release-22.11
 [channels]: /concepts/channels
 [env]: /concepts/dev-env
+[flake-utils]: https://github.com/numtide/flake-utils
 [gh]: https://github.com
 [gh-z2n]: https://github.com/DeterminateSystems/zero-to-nix
+[hash]: https://github.com/DeterminateSystems/zero-to-nix/tree/d51c83a5d206e882a6f15a282e32b7079f5b6d76
+[hm]: https://github.com/nix-community/home-manager
 [init]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-init
 [manual]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-inputs
 [nixos]: /concepts/nixos
+[nixpkgs]: /concepts/nixpkgs
+[other]: https://github.com/DeterminateSystems/zero-to-nix/tree/other
 [packages]: /concepts/packages
 [pinning]: /concepts/pinning
+[refs-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-references
+[registry-json]: https://github.com/NixOS/flake-registry/blob/master/flake-registry.json
+[registry-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry
+[riff]: https://riff.sh
+[specificity]: /concepts/system-specificity
+[unstable]: https://github.com/NixOS/nixpkgs/tree/nixpkgs-unstable
