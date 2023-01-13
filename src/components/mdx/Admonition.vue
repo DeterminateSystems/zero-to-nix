@@ -36,7 +36,7 @@
             class="h-4 w-4 text-yellow"
           />
           <IconFaCheck v-if="kind === 'success'" class="h-4 w-4 text-green" />
-          <span class="content" v-html="md(title)" />
+          <span v-if="title" class="content" v-html="md(title)" />
         </span>
 
         <IconFaChevronRight

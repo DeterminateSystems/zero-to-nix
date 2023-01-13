@@ -13,6 +13,7 @@ buildrustpackage
 cachix
 cargolock
 cachix
+changemeplz
 channable
 ci
 cmake
@@ -35,6 +36,7 @@ fetchgit
 ffmpeg
 ffprobe
 fhs
+fstype
 func
 gcc
 github
@@ -45,6 +47,7 @@ hermeticity
 href
 ian
 iaso's
+initialpassword
 installphase
 jq
 json
@@ -78,6 +81,7 @@ podman
 readlink
 repo
 ripgrep
+runtimes
 sandboxed
 sandboxing
 serokell
@@ -95,5 +99,6 @@ url
 valueonly
 vite
 wayland
+wget
 wikipedia
 zsh
