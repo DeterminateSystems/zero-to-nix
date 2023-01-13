@@ -112,7 +112,7 @@ const site: Site = {
 
   // User interactions
   systems: ["Linux", "macOS"],
-  languages: ["JavaScript", "Python", "Go", "Rust", "C++"],
+  languages: ["JavaScript", "Python", "Go", "Rust", "C++", "Haskell"],
 
   // Nix stuff
   nixTerms: [
