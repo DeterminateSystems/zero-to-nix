@@ -88,7 +88,7 @@ Now explore the Nix development environment for <Language client:load />:
 <NixDevelop client:load />
 
 <SpecificLanguage client:load lang="C++">
-First, let's see the Nix store path [CMake]:
+First, let's see the Nix store path for [CMake]:
 
 ```shell
 type cmake
@@ -98,6 +98,19 @@ Check the current CMake version:
 
 ```shell
 cmake --version
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Haskell">
+First, let's see the Nix store path for the [Glasgow Haskell Compiler][ghc] (GHC):
+
+```shell
+type ghc
+```
+
+Check the current GHC version:
+
+```shell
+ghc --version
 ```
 </SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
@@ -188,6 +201,7 @@ We won't cover *how* to create these environments just yet, but we hope that you
 [curl]: https://curl.se
 [dev]: /concepts/dev-env
 [flakes]: /concepts/flakes
+[ghc]: https://haskell.org/ghc
 [git]: https://git-scm.com
 [go]: https://go.dev
 [hermeticity]: /concepts/hermeticity
