@@ -32,15 +32,24 @@ externalSources: [
 ---
 
 <Admonition kind="warning" title="Flakes are experimental but nonetheless strongly recommended" id="flakes-warning" open client:load>
-Nix flakes are currently an **experimental feature** in Nix.
+Nix flakes are currently an **experimental feature** in Nix and there is currently no specific timeline for making flakes official.
+While the user interface around flakes is unlikely to change drastically while they remain experimental, there may be minor breaking changes along the way.
 
 [Channels] will continue be the "official" way of using Nix for the foreseeable future.
 We strongly recommend, however, that you learn to use flakes if you're already a Nix user or to begin your Nix journey with flakes rather than channels if you're just getting started with Nix.
 </Admonition>
 
-Nix *flakes* are a way of organizing and referring to Nix code that's pretty awesome. We think they're better than [channels](/concepts/channels).
+
+
+Nix *flakes* are a system of using Nix code.
+Flakes were introduced to replace [channels], which remain the official system of depending on Nix code
 
 Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/nixpkgs), and provide [flake outputs](/concepts/flake-outputs) that other flakes can consume.
+
+<Admonition kind="success" title="Mental model" client:load>
+It may be helpful to think of flakes as I/O (input/output) for Nix code.
+Flakes take Nix expressions as [input](#inputs) and [output](#outputs) things that Nix can use.
+</Admonition>
 
 ## Flake references \{#references}
 
@@ -87,6 +96,9 @@ You can find a full breakdown of the flake input schema in the [Nix manual][manu
 All flake inputs are [pinned] to specific revisions in a `flake.lock` lockfile.
 This helps to ensure that Nix flakes are purely deterministic.
 
+A `flake.nix` file without an accompanying `flake.lock` should be considered incomplete and a kind of proto-flake.
+Any Nix CLI command that is run against the flake&mdash;like `nix build`, `nix develop`, or even `nix flake show`&mdash;generates a `flake.lock` for you.
+
 ### Flake registries \{#registries}
 
 [*Flake registries*][registry-official] are a convenience feature that enables you to refer to flakes using symbolic identifiers rather than full flake references.
@@ -132,31 +144,74 @@ Each flake can have many different outputs simultaneously, including but not lim
 
 Flake outputs are defined by a function, which takes an attribute set as input, containing each of the inputs to that flake (named after the chosen identifier in the [inputs](#inputs) section).
 
-The flake output below, for example, produces a single package output on `x86_64-linux` systems for the `cowsay` derivation.
+### System specificity
+
+Some flake outputs need to be [system specific][specificity], including [packages], [development environments][env], and [NixOS] configurations.
+Here's an example flake that outputs a package that can be used by `x86_64-linux` systems (64-bit AMD/Intel Linux):
 
 ```nix filename=flake.nix
 {
-  outputs = { self, nixpkgs }:
-  let system = x86_64-linux;
-  in
-  {
-    packages."${system}".default = (import nixpkgs { inherit system; }).cowsay;
+  outputs = { self, nixpkgs }: let
+    # Declare the system
+    system = "x86_64-linux";
+    # Use a system-specific version of Nixpkgs
+    pkgs = import nixpkgs { inherit system; };
+  in {
+    # Output `cowsay` as the default package of the flake
+    packages.${system}.default = pkgs.cowsay;
   };
 }
 ```
 
-### System specificity
+In many cases, however, you'll need to output things like [packages] or [development environments][env] for multiple systems.
+Helper libraries like [`flake-utils`][flake-utils] provide convenient mechanisms for doing that.
+You can also use Nix functions like this:
 
-Some flake outputs need to be [system specific][specificity], including:
+```nix filename=flake.nix
+{
+  outputs = { self, nixpkgs }: let
+    # Helper functions
+    nameValuePair = name: value: { inherit name value; };
+    genAttrs = names: f: builtins.listToAttrs (map (n: nameValuePair n (f n)) names);
 
-* [Packages]
-* [NixOS]
+    # The set of systems to provide outputs for
+    allSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+
+    # A function that provides a system-specific Nixpkgs for the desired systems
+    forAllSystems = f: genAttrs allSystems (system: f {
+      pkgs = import nixpkgs { inherit system; };
+    });
+  in {
+    packages = forAllSystems ({ pkgs }: {
+      default = {
+        # Package definition
+      };
+    });
+  };
+}
+```
 
 ## Flake templates \{#templates}
 
-*Flake templates* enable you to either initialize a new Nix project or add files to an existing project.
-
+[*Flake templates*][init] enable you to either initialize a new Nix project with pre-supplied content or add a set of files to an existing project.
 You can initialize a flake template using the [`nix flake init`][init] command.
+Flakes can [output](#outputs) templates using the `templates` attribute.
+Here's an example:
+
+```nix filename=flake.nix
+{
+  outputs = { self }: {
+    templates = {
+      starter-template = {
+        path = ./my-starter-template;
+        description = "A getting started template for a new Nix project";
+      };
+    };
+  };
+}
+```
+
+If you ran `nix flake init --template <reference>` against this template definition, Nix would copy the contents of the `./my-starter-template` directory into the current directory (without overwriting existing files).
 
 ## Why you should use flakes \{#why}
 
@@ -166,7 +221,10 @@ if you're already a Nix user, you should begin switching any Nix logic you have&
 
 But it's important to clarify *why* we think this:
 
-* Flakes have a built-in [pinning] mechanism in the form of [`flake.lock`](#lockfile)
+* Flakes have a built-in [pinning] mechanism in the form of the [`flake.lock`](#lockfile) file.
+  This ensures that flake inputs are always unambiguous.
+* The problem with [channels] is that they're inherently stateful and thus ambiguous.
+  The Nix expression `import <nixpkgs>`, for example, can refer to any number of revisions of [Nixpkgs].
 
 [22-11]: https://github.com/nixOS/nixpkgs/tree/release-22.11
 [channels]: /concepts/channels

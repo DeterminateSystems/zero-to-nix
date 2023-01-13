@@ -27,7 +27,7 @@
         @click="toggle"
       >
         <span
-          class="flex items-center space-x-2 font-semibold tracking-tight md:space-x-3 md:text-lg lg:space-x-4 lg:text-xl"
+          class="flex items-center space-x-3 font-semibold leading-snug tracking-tight md:space-x-4 md:text-lg lg:space-x-5 lg:text-xl"
         >
           <IconFaBolt
             v-if="kind === 'danger'"
