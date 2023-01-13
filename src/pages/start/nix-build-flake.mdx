@@ -67,6 +67,34 @@ You should see this output:
 Hello from Nix + C++!
 ```
 </SpecificLanguage>
+<SpecificLanguage lang="Haskell" client:load>
+Here's the package definition that builds our Haskell package:
+
+```nix filename=flake.nix
+{
+  packages.default = pkgs.haskellPackages.developPackage {
+    name = "zero-to-nix-haskell";
+    root = ./.;
+  };
+}
+```
+
+For the full flake, see [`flake.nix`][flake-haskell] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`haskellPackages.developPackage`][haskell-pkg-func] function provided by [Nixpkgs].
+
+The package that results when you run `nix build` is a CLI tool that outputs a message.
+To run that tool:
+
+```shell
+./result/bin/zero-to-nix-haskell
+```
+
+You should see this output:
+
+```shell
+Hello from inside a Haskell program built with Nix!
+```
+</SpecificLanguage>
 <SpecificLanguage lang="JavaScript" client:load>
 Here's the package definition that builds our JavaScript package:
 
@@ -192,12 +220,14 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [derivation]: /concepts/derivations
 [devenv]: /start/dev-shell-flake
 [flake]: /concepts/flakes
-[flake-cpp]: https://github.com/DeterminateSystems/templates/tree/main/cpp/flake.nix
-[flake-go]: https://github.com/DeterminateSystems/templates/tree/main/go/flake.nix
-[flake-js]: https://github.com/DeterminateSystems/templates/tree/main/javascript/flake.nix
-[flake-py]: https://github.com/DeterminateSystems/templates/tree/main/python/flake.nix
-[flake-rs]: https://github.com/DeterminateSystems/templates/tree/main/rust/flake.nix
+[flake-cpp]: https://github.com/DeterminateSystems/templates/tree/main/templates/pkg/cpp/flake.nix
+[flake-go]: https://github.com/DeterminateSystems/templates/tree/main/templates/pkg/go/flake.nix
+[flake-haskell]: https://github.com/DeterminateSystems/templates/tree/main/templates/pkg/haskell/flake.nix
+[flake-js]: https://github.com/DeterminateSystems/templates/tree/main/templates/pkg/javascript/flake.nix
+[flake-py]: https://github.com/DeterminateSystems/templates/tree/main/templates/pkg/python/flake.nix
+[flake-rs]: https://github.com/DeterminateSystems/templates/tree/main/templates/pkg/rust/flake.nix
 [gin]: https://github.com/gin-gonic/gin
+[haskell-pkg-func]: https://haskell4nix.readthedocs.io
 [nixpkgs]: /concepts/nixpkgs
 [outputs]: /concepts/flake-outputs
 [packages]: /concepts/packages

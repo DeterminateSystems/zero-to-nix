@@ -49,6 +49,20 @@ You should see a (rather strange) path like this:
 /nix/store/nbrvvx1gyq3as3ghmjz62wlgd8f3zfpf-gcc-wrapper-11.3.0/bin/gcc
 ```
 </SpecificLanguage>
+<SpecificLanguage client:load lang="Haskell">
+Ordinarily when you run `type ghc` on a Unix system, you get a path like `/usr/bin/ghc`.
+Try running it in the Nix development environment:
+
+```shell
+type ghc
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+/nix/store/f3qnvw5gxgxxpr275kf97pfcy2n1gv79-ghc-9.2.4/bin/ghc
+```
+</SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
 Ordinarily when you run `type node` on a Unix system, you get a path like `/usr/bin/node`.
 Try running it in the Nix development environment:

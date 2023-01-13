@@ -43,7 +43,8 @@
     p,
     .content,
     h2,
-    h3 {
+    h3,
+    li {
       code {
         @apply inline-code;
       }

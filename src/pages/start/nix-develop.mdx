@@ -69,7 +69,7 @@ The `nix develop` command provides a `--command` (or `-c`) flag that you can use
 Here are some examples for the environment we used earlier:
 
 ```shell
-nix develop "github:DeterminateSystems/templates#example" --command git status
+nix develop "github:DeterminateSystems/templates#example" --command git help
 nix develop "github:DeterminateSystems/templates#example" --command curl https://example.com
 ```
 
@@ -88,7 +88,7 @@ Now explore the Nix development environment for <Language client:load />:
 <NixDevelop client:load />
 
 <SpecificLanguage client:load lang="C++">
-First, let's see the Nix store path [CMake]:
+First, let's see the Nix store path for [CMake]:
 
 ```shell
 type cmake
@@ -98,6 +98,19 @@ Check the current CMake version:
 
 ```shell
 cmake --version
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Haskell">
+First, let's see the Nix store path for the [Glasgow Haskell Compiler][ghc] (GHC):
+
+```shell
+type ghc
+```
+
+Check the current GHC version:
+
+```shell
+ghc --version
 ```
 </SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
@@ -136,7 +149,7 @@ type go
 Now check the Go version:
 
 ```shell
-go --version
+go version
 ```
 
 You should get 1.19.3.
@@ -151,7 +164,8 @@ type cargo
 Now create a [Rust] project in the current directory and run the example:
 
 ```shell
-cargo init .
+cargo init ./zero-to-nix-rs
+cd ./zero-to-nix-rs
 cargo run
 ```
 
@@ -188,6 +202,7 @@ We won't cover *how* to create these environments just yet, but we hope that you
 [curl]: https://curl.se
 [dev]: /concepts/dev-env
 [flakes]: /concepts/flakes
+[ghc]: https://haskell.org/ghc
 [git]: https://git-scm.com
 [go]: https://go.dev
 [hermeticity]: /concepts/hermeticity

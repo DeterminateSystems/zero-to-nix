@@ -28,6 +28,6 @@ const emit = defineEmits(["complete"]);
 
 const submitResponse = (reaction: Reaction) => {
   posthog.capture("page_review", { reaction });
-  emit("complete");
+  emit("complete", reaction);
 };
 </script>

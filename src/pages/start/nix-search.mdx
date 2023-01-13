@@ -40,7 +40,7 @@ This brings up many results of the form `legacyPackages.<system>.<package>`, the
 ````
 
 The system attribute [varies](#system-specificity) on other platforms (you may see `x86_64-linux` or something else).
-After that first result, you should many others, including packages like [`cargo-about`][cargo-about] and [`cargo-audit`][cargo-audit].
+After that first result, you should see many others, including packages like [`cargo-about`][cargo-about] and [`cargo-audit`][cargo-audit].
 
 You can also output search results as JSON using the `--json` flag:
 
@@ -59,15 +59,20 @@ The web interface at [search.nixos.org][search]
 * It enables you to select a [release channel][release] for [Nixpkgs], such as [22.11] and [unstable]
 * It enables you to search across a range of [public flakes][public-flakes] beyond Nixpkgs (those flakes are listed [here][flakes-list])
 
-## The `nix flake show` command \{#nix-flake-show}
+## Exploring a flake with the `nix flake show` command \{#nix-flake-show}
 
-The [Wayland] window system protocol.
+As an example, let's explore a popular flake for the [Wayland] window system protocol.
 
 ```shell
 nix flake show github:nix-community/nixpkgs-wayland
 ```
 
-<Admonition kind="info" title="When to use which command" id="which-search-command" client:load>
+<Admonition kind="warning" title="This could take a while" id="nix-search" client:load>
+The first time you run `nix flake show`, the Nix CLI needs to download the full contents of [`nixpkgs-wayland`][nixpkgs-wayland]&mdash;or whichever flake you're running `nix flake show` on&mdash;and then cache it.
+Future `nix flake show` runs for the same [flake reference][flake-ref] should be much speedier.
+</Admonition>
+
+<Admonition kind="info" title="When to use `nix search` vs. `nix flake show`" id="which-search-command" client:load>
 Should you use `nix flake show` or `nix search`?
 A good rule of thumb is to always use `nix search` with Nixpkgs and to initially use `nix flake show` with other flakes.
 If the package outputs for `nix flake show` are big enough to be tricky to navigate, use `nix search` for that flake instead.

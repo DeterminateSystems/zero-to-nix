@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-show="showCookieConsent"
-    class="fixed left-6 bottom-6 z-50 print:hidden"
-  >
+  <div v-show="show" class="fixed left-6 bottom-6 z-50 print:hidden">
     <div
       class="max-w-[202px] rounded-lg bg-primary text-white/80 dark:bg-dark-gray"
     >
@@ -38,18 +35,22 @@
 import { posthog } from "posthog-js";
 import { computed, onBeforeMount, onMounted, ref } from "vue";
 
-// Set to false initially to avoid flash of content
-const showCookieConsent = ref<boolean>(false);
+// Set to `false` initially to avoid flash of content
+const show = ref<boolean>(false);
+
+// Whether the user has selected Accept or Decline at some point. Initially
+// `false` but potentially switched to `true` as a computed value depending on
+// Posthog's response.
 const optionSelected = ref<boolean>(false);
 
-// Whether the user has explicitly opted into or out of the cookie
+// Whether the user has explicitly opted into or out of the cookie.
 const posthogKnowsPreference = computed(() => {
   return typeof window === "undefined"
     ? false
     : posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
 });
 
-// Whether the cookie consent widget should be shown to the user
+// Whether the cookie consent widget should be shown to the user.
 const hideCookieConsent = computed(() => {
   return typeof window === "undefined"
     ? false
@@ -62,7 +63,7 @@ const hideCookieConsent = computed(() => {
 const acceptCookies = () => {
   if (typeof window !== "undefined") {
     posthog.opt_in_capturing();
-    showCookieConsent.value = false;
+    show.value = false;
     optionSelected.value = true;
   }
 };
@@ -71,11 +72,13 @@ const acceptCookies = () => {
 const declineCookies = () => {
   if (typeof window !== "undefined") {
     posthog.opt_out_capturing();
-    showCookieConsent.value = false;
+    show.value = false;
     optionSelected.value = true;
   }
 };
 
+// Logic run before the component is mounted. This is where the Posthog client
+// connection is established.
 onBeforeMount(() => {
   // Register and inject the Posthog plugin
   if (typeof window !== "undefined") {
@@ -85,9 +88,10 @@ onBeforeMount(() => {
   }
 });
 
+// Once the component has been loaded, display it if
 onMounted(() => {
   if (!hideCookieConsent.value) {
-    showCookieConsent.value = true;
+    show.value = true;
   }
 });
 </script>

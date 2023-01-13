@@ -1,8 +1,7 @@
 import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/vue";
 import site from "~/site";
-import { WritableAtom } from "nanostores";
-
+import { WritableAtom, atom } from "nanostores";
 const { languages } = site;
 
 // Get the default system based on browser hint
@@ -28,3 +27,15 @@ export const systemState: WritableAtom<string> = persistentAtom<string>(
 );
 
 export const system = useStore(systemState);
+
+// Nav drawer state
+const drawerAtom = atom<boolean>(false);
+export const drawerIsOpen = useStore(drawerAtom);
+
+export const toggleDrawer = () => {
+  drawerAtom.set(!drawerAtom.get());
+};
+
+export const closeDrawer = () => {
+  drawerAtom.set(false);
+};
