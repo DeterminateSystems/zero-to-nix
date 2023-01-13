@@ -1,6 +1,6 @@
 <template>
   <div
-    class="admonition not-prose rounded-lg border-2 dark:bg-inherit"
+    class="admonition not-prose rounded border-2 dark:bg-inherit"
     :class="[
       kind === 'danger' && 'border-red',
       kind === 'info' && 'border-blue',
@@ -11,10 +11,10 @@
     <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
       <DisclosureButton
         as="div"
-        class="flex items-center justify-between py-4 px-5 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray"
+        class="flex items-center justify-between py-1.5 px-3 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:py-2 md:px-3.5 lg:py-3 lg:px-4"
         :class="[
-          open && 'rounded-t-lg border-b-2',
-          !open && 'rounded-lg',
+          open && 'rounded-t border-b-2',
+          !open && 'rounded',
           kind === 'danger' && 'border-b-red bg-pale-red hover:bg-middle-red',
           kind === 'info' && 'border-b-blue bg-pale-blue hover:bg-middle-blue',
           kind === 'success' &&
@@ -27,20 +27,29 @@
         @click="toggle"
       >
         <span
-          class="flex items-center space-x-4 text-xl font-semibold tracking-tight"
+          class="flex items-center space-x-2 font-semibold tracking-tight md:space-x-3 md:text-lg lg:space-x-4 lg:text-xl"
         >
-          <IconFaBolt v-if="kind === 'danger'" class="h-4 w-4 text-red" />
-          <IconFaInfo v-if="kind === 'info'" class="h-4 w-4 text-blue" />
+          <IconFaBolt
+            v-if="kind === 'danger'"
+            class="h-3 w-3 text-red md:h-4 md:w-4"
+          />
+          <IconFaInfo
+            v-if="kind === 'info'"
+            class="h-3 w-3 text-blue md:h-4 md:w-4"
+          />
           <IconFaWarning
             v-if="kind === 'warning'"
-            class="h-4 w-4 text-yellow"
+            class="h-3 w-3 text-yellow md:h-4 md:w-4"
           />
-          <IconFaCheck v-if="kind === 'success'" class="h-4 w-4 text-green" />
+          <IconFaCheck
+            v-if="kind === 'success'"
+            class="h-3 w-3 text-green md:h-4 md:w-4"
+          />
           <span>{{ title }}</span>
         </span>
 
         <IconFaChevronRight
-          class="h-4 w-4 transform duration-300"
+          class="h-3 w-3 transform duration-300 md:h-4 md:w-4"
           :class="[
             open && 'rotate-90',
             kind === 'danger' && 'text-red',
@@ -53,7 +62,7 @@
 
       <DisclosurePanel
         as="div"
-        class="content px-5 pb-4 text-sm md:text-base lg:text-lg"
+        class="content py-1.5 px-3 text-sm md:py-2 md:px-3.5 md:text-base lg:py-3 lg:px-4 lg:text-lg"
       >
         <slot />
       </DisclosurePanel>
@@ -62,7 +71,7 @@
     <div v-else>
       <span
         v-if="title"
-        class="flex items-center space-x-4 py-4 px-5 text-xl font-semibold tracking-tight"
+        class="flex items-center space-x-4 py-1.5 px-3 font-semibold tracking-tight md:py-2 md:px-3.5 lg:py-3 lg:px-4"
       >
         <IconFaBolt v-if="kind === 'danger'" class="h-4 w-4 text-red" />
         <IconFaInfo v-if="kind === 'info'" class="h-4 w-4 text-blue" />
@@ -72,8 +81,11 @@
       </span>
 
       <div
-        class="content px-5 text-sm md:text-base lg:text-lg"
-        :class="[title && 'pb-4', !title && 'py-4']"
+        class="content px-3 text-sm md:px-3.5 md:text-base lg:px-4 lg:text-lg"
+        :class="[
+          title && 'pb-1.5 md:pb-2 lg:pb-3',
+          !title && 'py-1.5 md:py-2 lg:py-3',
+        ]"
       >
         <slot />
       </div>
