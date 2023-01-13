@@ -88,11 +88,14 @@ import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
 import { ref } from "vue";
 
-const { id, kind, title } = defineProps<{
+const { id, kind, title, isOpen } = defineProps<{
   id?: string;
   kind: "danger" | "info" | "success" | "warning";
   title?: string;
+  isOpen?: boolean;
 }>();
+
+const openInitVal = isOpen ?? false ? "true" : "false";
 
 if (id !== undefined && title === undefined) {
   throw new Error("If you specify an id you need to also specify a title");
@@ -100,7 +103,7 @@ if (id !== undefined && title === undefined) {
 
 const openState: WritableAtom<string> = persistentAtom<string>(
   `zero-to-nix:callout-${id}`,
-  "false",
+  openInitVal,
 );
 const open = useStore(openState).value === "true";
 

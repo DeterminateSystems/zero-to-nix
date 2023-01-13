@@ -31,17 +31,29 @@ externalSources: [
 ]
 ---
 
+<Admonition kind="warning" title="Flakes are experimental" id="flakes-warning" isOpen client:load>
+Nix flakes are currently an **experimental feature** in Nix.
+
+[Channels] will continue be the "official" way of using Nix for the foreseeable future.
+We strongly recommend, however, that you learn to use flakes if you're already a Nix user or to begin your Nix journey with flakes rather than channels if you're just getting started with Nix.
+</Admonition>
+
 Nix *flakes* are a way of organizing and referring to Nix code that's pretty awesome. We think they're better than [channels](/concepts/channels).
 
 Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/nixpkgs), and provide [flake outputs](/concepts/flake-outputs) that other flakes can consume.
 
 ## Flake references \{#references}
 
-**INSERT A SNAPPY WAY OF EXPLAINING FLAKE REFERENCES HERE**
+A *flake reference* is a string representation of the location of a flake.
+Here are some example flake references:
+
+Reference | Description
+:---------|:-----------
+`github:DeterminateSystems/zero-to-nix` | Something
 
 ## Flake inputs \{#inputs}
 
-*Flake inputs* are a set of dependencies that a flake needs to be built.
+*Flake inputs* are Nix dependencies that a flake needs to be built.
 Each input in the set can be pulled from various sources, such as github, generic git repositories, and even your filesystem.
 
 Furthermore, inputs can modify each other's inputs to make sure that,
@@ -79,14 +91,32 @@ The flake output below, for example, produces a single package output on `x86_64
 }
 ```
 
+## The `flake.lock` file \{#lockfile}
+
+TODO
+
 ## Flake templates
 
 Flake *templates* are a feature of Nix that enables you to either initialize a new project or add files to an existing project.
 
 You can initialize a flake template using the [`nix flake init`][init] command.
 
+## Why you should use flakes \{#why}
+
+Throughout Zero to Nix, we recommend using flakes regardless of where you are in your Nix journey.
+If you're just getting started, we think you should learn flakes and mostly ignore channels;
+if you're already a Nix user, you should begin switching any Nix logic you have&mdash;[NixOS] configurations, [development environment][env] definitions, and so on&mdash;to flakes.
+
+But it's important to clarify *why* we think this:
+
+* Flakes have a built-in [pinning] mechanism in the form of [`flake.lock`](#lockfile)
+
+[channels]: /concepts/channels
 [env]: /concepts/dev-env
+[gh]: https://github.com
 [hydra]: https://github.com/NixOS/hydra
 [init]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-init
 [manual]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-inputs
+[nixos]: /concepts/nixos
 [packages]: /concepts/packages
+[pinning]: /concepts/pinning

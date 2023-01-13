@@ -49,6 +49,13 @@
       }
     }
 
+    h2,
+    h3 {
+      code {
+        @apply py-1;
+      }
+    }
+
     a {
       @apply underline hover:text-primary dark:hover:text-light-blue;
 
