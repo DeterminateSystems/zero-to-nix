@@ -12,14 +12,19 @@ import site from "~/site";
 
 const { url } = site;
 
+type WithTags = PageProps & {
+  tags?: string[];
+};
+
 const {
-  frontmatter: { href },
-} = usePage<PageProps>();
+  frontmatter: { href, tags },
+} = usePage<WithTags>();
 
 const canonical = new URL(url, href).toString();
 
 useHead({
   link: [{ rel: "canonical", href: canonical }],
+  meta: tags && [{ name: "keywords", content: tags!.join(",") }],
 });
 </script>
 
