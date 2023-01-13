@@ -39,16 +39,12 @@ While the user interface around flakes is unlikely to change drastically while t
 We strongly recommend, however, that you learn to use flakes if you're already a Nix user or to begin your Nix journey with flakes rather than channels if you're just getting started with Nix.
 </Admonition>
 
-A Nix *flake* is a directory with a `flake.nix` and [`flake.lock`](#lockfile) at the root that [outputs](#outputs) Nix expressions that others can use to do things like [build packages][packages], [run programs][run], [import libraries](#lib)
-
-
-Flakes were introduced to replace [channels], which remain the official system of depending on Nix code
-
-Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/nixpkgs), and provide [flake outputs](/concepts/flake-outputs) that other flakes can consume.
+A Nix *flake* is a directory with a `flake.nix` and [`flake.lock`](#lockfile) at the root that [outputs](#outputs) Nix expressions that others can use to do things like [build packages][packages], [run programs][run], [import libraries](#lib).
+If necessary, flakes can use other flakes as [inputs](#inputs).
 
 <Admonition kind="success" title="Mental model" client:load>
-It may be helpful to think of flakes as I/O (input/output) for Nix code.
-Flakes take Nix expressions as [input](#inputs) and [output](#outputs) things that Nix can use.
+It may be helpful to think of flakes as processors of [Nix code][lang].
+They take Nix expressions as [input](#inputs) and [output](#outputs) things that Nix can use.
 </Admonition>
 
 ## Flake references \{#references}
@@ -231,19 +227,6 @@ Here's an example:
 
 If you ran `nix flake init --template <reference>` against this template definition, Nix would copy the contents of the `./my-starter-template` directory into the current directory (without overwriting existing files).
 
-## Why you should use flakes \{#why}
-
-Throughout Zero to Nix, we recommend using flakes regardless of where you are in your Nix journey.
-If you're just getting started, we think you should learn flakes and mostly ignore channels;
-if you're already a Nix user, you should begin switching any Nix logic you have&mdash;[NixOS] configurations, [development environment][env] definitions, and so on&mdash;to flakes.
-
-But it's important to clarify *why* we think this:
-
-* Flakes have a built-in [pinning] mechanism in the form of the [`flake.lock`](#lockfile) file.
-  This ensures that flake inputs are always unambiguous.
-* The problem with [channels] is that they're inherently stateful and thus ambiguous.
-  The Nix expression `import <nixpkgs>`, for example, can refer to any number of revisions of [Nixpkgs].
-
 [22-11]: https://github.com/nixOS/nixpkgs/tree/release-22.11
 [channels]: /concepts/channels
 [env]: /concepts/dev-env
@@ -253,6 +236,7 @@ But it's important to clarify *why* we think this:
 [hash]: https://github.com/DeterminateSystems/zero-to-nix/tree/d51c83a5d206e882a6f15a282e32b7079f5b6d76
 [hm]: https://github.com/nix-community/home-manager
 [init]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-init
+[lang]: /concepts/nix-language
 [manual]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-inputs
 [nixos]: /concepts/nixos
 [nixpkgs]: /concepts/nixpkgs
