@@ -1,7 +1,7 @@
 ---
 title: NixOS
 snippet: |
-  A [Linux](https://www.kernel.org/) distribution built on the [Nix](/concepts/nix) package manager and guided by Nix's core principles
+  A [Linux](https://www.kernel.org/) distribution based on the [Nix](/concepts/nix) package manager and guided by Nix's core principles
 related: ["nix", "nix-language", "nixpkgs"]
 externalSources: [
   {
@@ -24,13 +24,13 @@ externalSources: [
 ---
 
 
-*NixOS* is a [Linux] distribution built on top of [Nix].
-It's unique amongst distributions because it enables you to use the [Nix language][lang] to configure your operating system [delaratively][declarative] in a `configuration.nix` file.
+*NixOS* is a [Linux] distribution based on [Nix].
+It's amongst distributions because it enables you to use the [Nix language][lang] to [delaratively configure][declarative] your operating system in a [`configuration.nix` file](#configuration).
 And that configurability runs quite deep, including things like the system's [boot loader][boot], the [filesystem], [window managers][window], [kernel modules][kernel], services like [OpenSSH], and much more.
 
-In addition to being a fundamentally [configurable](#configuration) distribution, Nix provides NixOS with a variety of unique [features](#features), such as [atomic system updates](#atomicity) and [rollbacks](#rollbacks), and [multi-user support](#multi-user) without any of the drawbacks usually associated with multiple users on the same host.
+In addition to being a fundamentally [configurable](#configuration) distribution, Nix provides NixOS with a variety of unique [features](#features), such as [atomic system updates](#atomicity) and [system rollbacks](#rollbacks) and robust [multi-user support](#multi-user).
 
-## The role of Nix
+## The role of Nix \{#nix}
 
 Everything in a NixOS system is configured using the [Nix language][lang] and the NixOS [module system](#modules).
 Rather than installing [packages] and setting up your system in an ad-hoc way, you can [declare][declarative] which specific system you'd like to have&mdash;networking stack, filesystem, users, and more&dash;and Nix builds the system for you from the ground up, installing all the required [packages], providing necessary configuration files, and more.
@@ -87,18 +87,13 @@ Here's an example configuration:
 }
 ```
 
-This command would apply the configuration above and build the desired system:
+This command would apply the configuration above:
 
 ```shell
 nixos-rebuild switch
 ```
 
-No scripts or build commands, just an instruction to build the entire system
-
-<Admonition kind="success" id="foo" title="Something" client:load>
-  Foo.
-</Admonition>
-
+No scripts, no sequence of install or build commands, just a single instruction to build the entire system according to your specifications.
 
 ### Modules
 
@@ -145,7 +140,7 @@ As an example, these two modules are equivalent to each other.
 ```
 </Admonition>
 
-## How to use modules
+### How to use modules
 
 First up, you can find modules to use and how to use them via the NixOS [module search][search].
 Nix modules generally follow the [declarative] principle, meaning that there's no precise order that modules are executed in.
@@ -172,15 +167,21 @@ Following is an example of how to setup and configure the [nginx] web server.
 NixOS uses [Nix] as its [package manager][pkg] rather than [APT], [dpkg], or any of the other options for Linux.
 Nix enables NixOS to provide a range of unique features.
 
+### Generations
+
+Unlike other Linux distributions, updates to NixOS system state are discrete *generations* with a number.
+Each time you run `nixos-rebuild switch` to apply your desired [system configuration](#configuration),
+One of the core advantages of generations is that you can switch between versions of your system state at will.
+
 ### Atomic system updates \{#atomicity}
 
 Any time you change your NixOS [configuration](#configuration), you can apply that configuration by running [`nixos-rebuild switch`][rebuild].
-When you do that, NixOS installs or upgrades any [packages] that need to be installed or upgraded according to your system configuration (though keep in mind that packages are installed fresh and never upgraded in place).
-And as is always the case with Nix, each package is built from scratch and stored in the [Nix store][store] rather than in directories like `/bin` or `/usr/bin`, as dictated by the [Filesystem Hierarchy Standard][fhs].
+When you do that, NixOS installs or upgrades any [packages] that need to be installed or upgraded according to your system configuration.
+And as is always the case with Nix, each package is [realised] from scratch and stored in the [Nix store][store] rather than in directories like `/bin` or `/usr/bin`, as on systems that use the [Filesystem Hierarchy Standard][fhs].
 
 ### Rollbacks
 
-TODO: generations
+As with [system updates](#atomicity), NixOS enables you to roll your system back to a previous generation at will using `nixos-rebuild switch --rollback`.
 
 ### Multi-user support \{#multi-user}
 
@@ -217,7 +218,8 @@ Let's break store paths down into their constituent elements:
 [openssh]: https://openssh.com
 [packages]: /concepts/packages
 [pkg]: /concepts/package-management
+[realised]: /concepts/realisation
 [rebuild]: https://nixos.wiki/wiki/Nixos-rebuild
-[search search]: https://search.nixos.org/options
+[search]: https://search.nixos.org/options
 [store]: /concepts/nix-store
 [window]: https://nixos.wiki/wiki/Category:Window_managers
