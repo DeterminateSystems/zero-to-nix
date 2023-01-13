@@ -39,9 +39,9 @@ While the user interface around flakes is unlikely to change drastically while t
 We strongly recommend, however, that you learn to use flakes if you're already a Nix user or to begin your Nix journey with flakes rather than channels if you're just getting started with Nix.
 </Admonition>
 
+A Nix *flake* is a directory with a `flake.nix` and [`flake.lock`](#lockfile) at the root that [outputs](#outputs) Nix expressions that others can use to do things like [build packages][packages], [run programs][run], [import libraries](#lib)
 
 
-Nix *flakes* are a system of using Nix code.
 Flakes were introduced to replace [channels], which remain the official system of depending on Nix code
 
 Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/nixpkgs), and provide [flake outputs](/concepts/flake-outputs) that other flakes can consume.
@@ -144,6 +144,24 @@ Each flake can have many different outputs simultaneously, including but not lim
 
 Flake outputs are defined by a function, which takes an attribute set as input, containing each of the inputs to that flake (named after the chosen identifier in the [inputs](#inputs) section).
 
+### The `lib` output \{#lib}
+
+In addition to things like packages and NixOS configurations, flakes can also output Nix functions and other values via the `lib` output.
+Here's an example flake that outputs a `sayHello` function that takes a name as an input and outputs a string saying hello to that person:
+
+```nix filename=flake.nix
+{
+  outputs = { self }: {
+    lib = {
+      sayHello = name: "Hello there, ${name}!";
+    };
+  };
+}
+```
+
+Another Nix flake could then specify this flake as an [input](#inputs) and use `sayHello` for whatever purpose.
+[Nixpkgs], for example, outputs a vast multitude of helper functions and values.
+
 ### System specificity
 
 Some flake outputs need to be [system specific][specificity], including [packages], [development environments][env], and [NixOS] configurations.
@@ -245,5 +263,6 @@ But it's important to clarify *why* we think this:
 [registry-json]: https://github.com/NixOS/flake-registry/blob/master/flake-registry.json
 [registry-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry
 [riff]: https://riff.sh
+[run]: /start/nix-run
 [specificity]: /concepts/system-specificity
 [unstable]: https://github.com/NixOS/nixpkgs/tree/nixpkgs-unstable
