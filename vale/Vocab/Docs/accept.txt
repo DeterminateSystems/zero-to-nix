@@ -1,3 +1,4 @@
+allsystems
 apfs
 args
 backported
@@ -34,6 +35,9 @@ ffmpeg
 ffprobe
 func
 gcc
+genattrs
+gh
+ghc
 github
 gpg
 guix
@@ -46,6 +50,7 @@ installphase
 jq
 json
 kubectl
+lastmodified
 launchctl
 libbey's
 linux
@@ -56,6 +61,7 @@ monospaced
 mv
 my_function
 my_value
+narhash
 nginx
 nixlang
 nixos
@@ -69,6 +75,7 @@ oci
 offboarding
 onboarding
 openssl
+pandoc
 pkgs
 podman
 readlink
@@ -76,6 +83,7 @@ repo
 ripgrep
 sandboxed
 sandboxing
+sayhello
 serokell
 shopify
 src
@@ -91,5 +99,6 @@ url
 valueonly
 vite
 wayland
+wget
 wikipedia
 zsh
