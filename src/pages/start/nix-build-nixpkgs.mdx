@@ -14,6 +14,7 @@ While [Nix] can do many things, [package management][pkg] is the thing that it's
 Let's start by building [bat], a syntax-highlighted version of [cat] written in [Rust], using Nix:
 
 ```shell
+mkdir build-nix-package && cd build-nix-package
 nix build "nixpkgs#bat"
 ```
 
