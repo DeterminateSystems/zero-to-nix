@@ -1,7 +1,7 @@
 ---
-title: Flakes
+title: Nix flakes
 snippet: |
-  An experimental yet nonetheless recommended system for referencing and sharing [Nix code](/concepts/nix-language) and Nix artifacts like [packages](/concepts/packages)
+  A system for referencing and sharing [Nix code](/concepts/nix-language)
 related: ["channels"]
 externalSources: [
   {
@@ -31,7 +31,7 @@ externalSources: [
 ]
 ---
 
-<Admonition kind="warning" title="Flakes are experimental" id="flakes-warning" isOpen client:load>
+<Admonition kind="warning" title="Flakes are experimental but nonetheless strongly recommended" id="flakes-warning" open client:load>
 Nix flakes are currently an **experimental feature** in Nix.
 
 [Channels] will continue be the "official" way of using Nix for the foreseeable future.
@@ -44,12 +44,14 @@ Flakes take [flake inputs](/concepts/flake-inputs), such as [Nixpkgs](/concepts/
 
 ## Flake references \{#references}
 
-A *flake reference* is a string representation of the location of a flake.
+A *flake reference* is a string representation of where the flake is.
 Here are some example flake references:
 
 Reference | Description
 :---------|:-----------
-`github:DeterminateSystems/zero-to-nix` | Something
+`github:DeterminateSystems/zero-to-nix` | The [DeterminateSystems/zero-to-nix][gh-z2n] GitHub repository
+`path:/home/nix-stuff/my-flake` | The `/home/nix-stuff/my-flake` directory on the current host
+
 
 ## Flake inputs \{#inputs}
 
@@ -74,7 +76,12 @@ You can find a full breakdown of the flake input schema in the [Nix manual][manu
 ## Flake outputs \{#outputs}
 
 *Flake outputs* are what a flake produces as part of its build.
-Each flake can have many different outputs simultaneously, including but not limited to, application [packages], system configuration, [Hydra] build jobs (CI), and [development environments][env].
+Each flake can have many different outputs simultaneously, including but not limited to:
+
+* [Nix packages][packages]
+* [Nix development environments][env]
+* [NixOS] configurations
+* [Nix templates](#templates)
 
 Flake outputs are defined by a function, which takes an attribute set as input, containing each of the inputs to that flake (named after the chosen identifier in the [inputs](#inputs) section).
 
@@ -95,7 +102,7 @@ The flake output below, for example, produces a single package output on `x86_64
 
 TODO
 
-## Flake templates
+## Flake templates \{#templates}
 
 Flake *templates* are a feature of Nix that enables you to either initialize a new project or add files to an existing project.
 
@@ -114,7 +121,7 @@ But it's important to clarify *why* we think this:
 [channels]: /concepts/channels
 [env]: /concepts/dev-env
 [gh]: https://github.com
-[hydra]: https://github.com/NixOS/hydra
+[gh-z2n]: https://github.com/DeterminateSystems/zero-to-nix
 [init]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-init
 [manual]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-inputs
 [nixos]: /concepts/nixos

@@ -8,7 +8,7 @@
       kind === 'warning' && 'border-yellow',
     ]"
   >
-    <Disclosure v-if="id" as="div" :defaultOpen="open" v-slot="{ open }">
+    <Disclosure v-if="id" as="div" :defaultOpen="isOpen" v-slot="{ open }">
       <DisclosureButton
         as="div"
         class="flex items-center justify-between py-1.5 px-3 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:py-2 md:px-3.5 lg:py-3 lg:px-4"
@@ -100,14 +100,14 @@ import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
 import { ref } from "vue";
 
-const { id, kind, title, isOpen } = defineProps<{
+const { id, kind, title, open } = defineProps<{
   id?: string;
   kind: "danger" | "info" | "success" | "warning";
   title?: string;
-  isOpen?: boolean;
+  open?: boolean;
 }>();
 
-const openInitVal = isOpen ?? false ? "true" : "false";
+const openInitVal = open ?? false ? "true" : "false";
 
 if (id !== undefined && title === undefined) {
   throw new Error("If you specify an id you need to also specify a title");
@@ -117,10 +117,10 @@ const openState: WritableAtom<string> = persistentAtom<string>(
   `zero-to-nix:callout-${id}`,
   openInitVal,
 );
-const open = useStore(openState).value === "true";
+const isOpen = useStore(openState).value === "true";
 
 const toggle = () => {
-  openState.set(open ? "false" : "true");
+  openState.set(isOpen ? "false" : "true");
 };
 
 const buttonHover = ref<boolean>(false);
