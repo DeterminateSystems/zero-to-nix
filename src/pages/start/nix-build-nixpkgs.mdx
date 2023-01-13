@@ -60,6 +60,14 @@ nix build "nixpkgs#cmake"
 ./result/bin/cmake --help
 ```
 </SpecificLanguage>
+<SpecificLanguage client:load lang="Haskell">
+Let's build and run [Pandoc]:
+
+```shell
+nix build "nixpkgs#pandoc"
+./result/bin/pandoc --version
+```
+</SpecificLanguage>
 <SpecificLanguage client:load lang="JavaScript">
 Let's build and run [npm]:
 
@@ -127,6 +135,7 @@ Upstreaming your packages to Nixpkgs is always an option, but it's good to bear 
 [npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [outputs]: /concepts/flake-outputs
 [packages]: /concepts/packages
+[pandoc]: https://pandoc.org
 [pkg]: /concepts/package-management
 [pip]: https://pypi.org/project/pip
 [ripgrep]: https://github.com/BurntSushi/ripgrep
