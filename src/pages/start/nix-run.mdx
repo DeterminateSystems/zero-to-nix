@@ -45,7 +45,7 @@ What happened here? The [Nix] CLI did a few things:
 * It built the [`cowsay` package][cowsay] and stored the result in the [Nix store][store].
 * It ran the executable at `bin/cowsay` from the `cowsay` package.
 
-In Nix, every program is part of a [package].
+In Nix, every program is part of a [package][packages].
 Packages are built using special functions in the [Nix language][lang] called [derivations].
 The `cowsay` package has a single program (also called `cowsay`), but packages can contain multiple programs as well as man pages, configuration files, and more.
 The [`ffmpeg`][ffmpeg-pkg] package, for example, provides both [ffmpeg] and [ffprobe].
