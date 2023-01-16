@@ -13,7 +13,7 @@
         as="div"
         class="flex items-center justify-between py-1.5 px-3 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:py-2 md:px-3.5 lg:py-3 lg:px-4"
         :class="[
-          open && 'rounded-t border-b-2',
+          open && 'rounded-t border-b-1.5',
           !open && 'rounded',
           danger && 'border-b-red bg-pale-red hover:bg-middle-red',
           info && 'border-b-blue bg-pale-blue hover:bg-middle-blue',
@@ -27,20 +27,14 @@
         <span
           class="flex items-center space-x-3 font-semibold leading-snug tracking-tight md:space-x-4 md:text-lg lg:space-x-5 lg:text-xl"
         >
-          <IconFaBolt
-            v-if="kind === 'danger'"
-            class="h-3 w-3 text-red md:h-4 md:w-4"
-          />
-          <IconFaInfo
-            v-if="kind === 'info'"
-            class="h-3 w-3 text-blue md:h-4 md:w-4"
-          />
+          <IconFaBolt v-if="danger" class="h-3 w-3 text-red md:h-4 md:w-4" />
+          <IconFaInfo v-if="info" class="h-3 w-3 text-blue md:h-4 md:w-4" />
           <IconFaWarning
-            v-if="kind === 'warning'"
+            v-if="warning"
             class="h-3 w-3 text-yellow md:h-4 md:w-4"
           />
           <IconFaCheck
-            v-if="kind === 'success'"
+            v-if="success"
             class="h-3 w-3 text-green md:h-4 md:w-4"
           />
           <span>{{ title }}</span>
