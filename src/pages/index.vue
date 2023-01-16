@@ -23,7 +23,7 @@
                 v-for="({ text, href, highlight }, idx) in $site.heroButtons"
                 :key="idx"
                 as="template"
-                class="rounded-full tracking-tight md:text-base lg:text-lg"
+                class="rounded-full tracking-tight transition-colors duration-150 md:text-base lg:text-lg"
                 :class="[
                   highlight &&
                     'lg:py-2.4 bg-primary py-1.5 px-3.5 text-white hover:bg-orange md:py-2 md:px-5 lg:px-6',
