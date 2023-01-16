@@ -10,7 +10,7 @@
     ]"
   >
     <div v-if="order" class="flex items-center justify-between">
-      <span class="flex items-center space-x-2">
+      <span class="flex space-x-2 md:space-x-3 lg:space-x-4">
         <span>{{ order }}.</span>
         <span>{{ text }}</span>
       </span>
