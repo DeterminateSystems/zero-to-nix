@@ -21,7 +21,7 @@
       <a
         v-if="next"
         :href="next.href"
-        class="flex justify-between space-x-3 rounded-full border-2 border-primary py-2 px-4 font-semibold hover:bg-pale dark:hover:bg-darker-gray md:py-3 md:px-5"
+        class="flex justify-between space-x-3 rounded-full border-1.5 border-primary py-2 px-4 font-semibold hover:bg-pale dark:hover:bg-darker-gray md:py-3 md:px-5"
       >
         <span class="tracking-tight">
           {{ next.frontmatter.title }}

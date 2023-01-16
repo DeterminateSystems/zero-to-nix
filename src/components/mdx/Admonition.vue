@@ -1,6 +1,6 @@
 <template>
   <div
-    class="admonition not-prose rounded border-2 dark:bg-inherit"
+    class="admonition not-prose rounded border-1.5 dark:bg-inherit"
     :class="[
       kind === 'danger' && 'border-red',
       kind === 'info' && 'border-blue',

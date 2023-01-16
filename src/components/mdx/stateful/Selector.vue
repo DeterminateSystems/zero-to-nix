@@ -1,6 +1,6 @@
 <template>
   <div
-    className="not-prose text-base inline-flex items-center space-x-6 rounded-lg border-2 border-light-gray bg-pale py-2.5 pl-6 pr-4 dark:border-gray dark:bg-inherit"
+    className="not-prose text-base inline-flex items-center space-x-6 rounded-lg border-1.5 border-light-gray bg-pale py-2.5 pl-6 pr-4 dark:border-gray dark:bg-inherit"
   >
     <p className="text-base font-semibold tracking-tight md:text-lg lg:text-xl">
       {{ title }}

@@ -1,7 +1,7 @@
 <template>
   <a
     :href="href"
-    class="rounded-lg border-2 border-light-gray transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray"
+    class="rounded-lg border-1.5 border-light-gray transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray"
     :class="[
       normalLink &&
         'py-1.5 px-3 text-xl tracking-tight md:py-2 md:px-4 md:text-2xl lg:py-2.5 lg:px-5 lg:text-3xl',
