@@ -26,7 +26,7 @@ nix search nixpkgs cargo
 
 In this command, the `nixpkgs` [flake reference][flake-ref] is shorthand for `github:NixOS/nixpkgs`.
 
-<Admonition kind="warning" title="This could take a while" id="nix-search" client:load>
+<Admonition warning title="This could take a while" id="nix-search" client:load>
 The first time you run `nix search`, the Nix CLI needs to download the full Nix code contents of [Nixpkgs]&mdash;or whichever flake you're searching&mdash;and then cache it.
 Future `nix search` runs for Nixpkgs should be much speedier.
 Furthermore, Nixpkgs is the largest flake in existence and running `nix search` on other flakes should be much faster in general.
@@ -65,12 +65,12 @@ As an example, let's explore a popular flake for the [Wayland] window system pro
 nix flake show github:nix-community/nixpkgs-wayland
 ```
 
-<Admonition kind="warning" title="This could take a while" id="nix-search" client:load>
+<Admonition warning title="This could take a while" id="nix-search" client:load>
 The first time you run `nix flake show`, the Nix CLI needs to download the full contents of [`nixpkgs-wayland`][nixpkgs-wayland]&mdash;or whichever flake you're running `nix flake show` on&mdash;and then cache it.
 Future `nix flake show` runs for the same [flake reference][flake-ref] should be much speedier.
 </Admonition>
 
-<Admonition kind="info" title="When to use `nix search` vs. `nix flake show`" id="which-search-command" client:load>
+<Admonition info title="When to use `nix search` vs. `nix flake show`" id="which-search-command" client:load>
 Should you use `nix flake show` or `nix search`?
 A good rule of thumb is to always use `nix search` with Nixpkgs and to initially use `nix flake show` with other flakes.
 If the package outputs for `nix flake show` are big enough to be tricky to navigate, use `nix search` for that flake instead.

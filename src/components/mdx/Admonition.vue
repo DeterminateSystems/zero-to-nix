@@ -2,10 +2,10 @@
   <div
     class="admonition not-prose rounded border-1.5 dark:bg-inherit"
     :class="[
-      kind === 'danger' && 'border-red',
-      kind === 'info' && 'border-blue',
-      kind === 'success' && 'border-green',
-      kind === 'warning' && 'border-yellow',
+      danger && 'border-red',
+      info && 'border-blue',
+      success && 'border-green',
+      warning && 'border-yellow',
     ]"
   >
     <Disclosure v-if="id" as="div" :defaultOpen="isOpen" v-slot="{ open }">
@@ -15,12 +15,10 @@
         :class="[
           open && 'rounded-t border-b-2',
           !open && 'rounded',
-          kind === 'danger' && 'border-b-red bg-pale-red hover:bg-middle-red',
-          kind === 'info' && 'border-b-blue bg-pale-blue hover:bg-middle-blue',
-          kind === 'success' &&
-            'border-b-green bg-pale-green hover:bg-middle-green',
-          kind === 'warning' &&
-            'border-b-yellow bg-pale-yellow hover:bg-middle-yellow',
+          danger && 'border-b-red bg-pale-red hover:bg-middle-red',
+          info && 'border-b-blue bg-pale-blue hover:bg-middle-blue',
+          success && 'border-b-green bg-pale-green hover:bg-middle-green',
+          warning && 'border-b-yellow bg-pale-yellow hover:bg-middle-yellow',
         ]"
         @mouseover="buttonHover = true"
         @mouseleave="buttonHover = false"
@@ -52,10 +50,10 @@
           class="h-3 w-3 transform duration-300 md:h-4 md:w-4"
           :class="[
             open && 'rotate-90',
-            kind === 'danger' && 'text-red',
-            kind === 'info' && 'text-blue',
-            kind === 'success' && 'text-green',
-            kind === 'warning' && 'text-yellow',
+            danger && 'text-red',
+            info && 'text-blue',
+            success && 'text-green',
+            warning && 'text-yellow',
           ]"
         />
       </DisclosureButton>
@@ -73,10 +71,10 @@
         v-if="title"
         class="flex items-center space-x-4 py-1.5 px-3 font-semibold tracking-tight md:py-2 md:px-3.5 lg:py-3 lg:px-4"
       >
-        <IconFaBolt v-if="kind === 'danger'" class="h-4 w-4 text-red" />
-        <IconFaInfo v-if="kind === 'info'" class="h-4 w-4 text-blue" />
-        <IconFaWarning v-if="kind === 'warning'" class="h-4 w-4 text-yellow" />
-        <IconFaCheck v-if="kind === 'success'" class="h-4 w-4 text-green" />
+        <IconFaBolt v-if="danger" class="h-4 w-4 text-red" />
+        <IconFaInfo v-if="info" class="h-4 w-4 text-blue" />
+        <IconFaCheck v-if="success" class="h-4 w-4 text-green" />
+        <IconFaWarning v-if="warning" class="h-4 w-4 text-yellow" />
         <span>{{ title }}</span>
       </span>
 
@@ -100,11 +98,15 @@ import { useStore } from "@nanostores/vue";
 import { WritableAtom } from "nanostores";
 import { ref } from "vue";
 
-const { id, kind, title, open } = defineProps<{
+const { id, title, open, danger, info, success, warning } = defineProps<{
   id?: string;
-  kind: "danger" | "info" | "success" | "warning";
   title?: string;
   open?: boolean;
+  // Kinds
+  danger: boolean;
+  info: boolean;
+  success: boolean;
+  warning: boolean;
 }>();
 
 const openInitVal = open ?? false ? "true" : "false";
