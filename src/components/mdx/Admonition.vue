@@ -37,7 +37,7 @@
             v-if="success"
             class="h-3 w-3 text-green md:h-4 md:w-4"
           />
-          <span v-html="md(title)" />
+          <span class="content" v-html="md(title)" />
         </span>
 
         <IconFaChevronRight
@@ -69,7 +69,7 @@
         <IconFaInfo v-if="info" class="h-4 w-4 text-blue" />
         <IconFaCheck v-if="success" class="h-4 w-4 text-green" />
         <IconFaWarning v-if="warning" class="h-4 w-4 text-yellow" />
-        <span v-html="md(title)" />
+        <span class="content" v-html="md(title)" />
       </span>
 
       <div
