@@ -15,7 +15,7 @@
           v-slot="{ selected }"
         >
           <button
-            class="mg:text-base rounded-lg py-1 px-1.5 font-mono text-sm font-semibold tracking-tight md:py-0.5 md:px-2 lg:py-1.5 lg:px-3 lg:text-lg"
+            class="mg:text-base rounded-lg py-1 px-1.5 text-sm font-semibold tracking-tight md:py-0.5 md:px-2 lg:py-1.5 lg:px-3 lg:text-lg"
             :class="{
               'bg-primary text-white': selected,
               'hover:text-primary': !selected,
