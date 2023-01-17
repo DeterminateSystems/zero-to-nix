@@ -35,7 +35,7 @@ What happened here? The [Nix] CLI did a few things:
 * It ran the executable at `bin/ponysay` from the `ponysay` package.
 
 In Nix, every program is part of a [package][packages].
-Packages are built using special functions in the [Nix language][lang] called [derivations].
+Packages are built using the [Nix language][derivations].
 The `ponysay` package has a single program (also called `ponysay`) but packages can contain multiple programs as well as man pages, configuration files, and more.
 The [`ffmpeg`][ffmpeg-pkg] package, for example, provides both [ffmpeg] and [ffprobe].
 
@@ -52,11 +52,10 @@ You're now ready to explore Nix development environments.
 
 [blog]: https://determinate.systems/posts
 [cache]: /concepts/caching
-[derivations]: /concepts/derivations
+[derivations]: /concepts/nix-language#derivations
 [ffmpeg]: https://ffmpeg.org
 [ffmpeg-pkg]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/libraries/ffmpeg/generic.nix
 [ffprobe]: https://ffmpeg.org/ffprobe.html
-[lang]: /concepts/nix-language
 [nix]: /concepts/nix
 [nix-installer]: /concepts/nix-installer
 [nix-run]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-run
