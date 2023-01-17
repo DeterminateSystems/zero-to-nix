@@ -19,6 +19,12 @@ export default defineConfig({
     // Set the layout for e.g. src/pages/section/foo.mdx to section
     const section = filename.split("/").at(2)!;
 
+    // Infer the order from the filename
+    if (section === "start") {
+      const order = getFileSlug(filename)!;
+      frontmatter["order"] = parseInt(order);
+    }
+
     if (["concepts", "start"].includes(section) && filename.endsWith("mdx")) {
       frontmatter.layout = filename.split("/")[2];
     }
