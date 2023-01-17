@@ -37,7 +37,6 @@ declare module '@vue/runtime-core' {
     IconFaEdit: typeof import('~icons/fa/edit')['default']
     IconFaExternalLink: typeof import('~icons/fa/external-link')['default']
     IconFaGithub: typeof import('~icons/fa/github')['default']
-    IconFaHammer: typeof import('~icons/fa/hammer')['default']
     IconFaInfo: typeof import('~icons/fa/info')['default']
     IconFaLink: typeof import('~icons/fa/link')['default']
     IconFaSolidBars: typeof import('~icons/fa-solid/bars')['default']

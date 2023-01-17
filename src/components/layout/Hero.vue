@@ -69,7 +69,7 @@ const { size: heroSize = "normal" } = defineProps<{
   size?: "normal" | "lg";
   breadcrumb?: BreadcrumbProps;
   buttons?: ButtonProps[];
-  wip: boolean;
+  wip?: boolean;
 }>();
 
 const normalHero = heroSize === "normal";

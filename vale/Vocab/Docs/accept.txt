@@ -101,4 +101,5 @@ vite
 wayland
 wget
 wikipedia
+wip
 zsh
