@@ -21,7 +21,7 @@ jobs:
       #    path: |
       #      tmp/
 
-      - uses: DeterminateSystems/nix-installer@main
+      - uses: DeterminateSystems/nix-installer-action
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           extra-conf: |
