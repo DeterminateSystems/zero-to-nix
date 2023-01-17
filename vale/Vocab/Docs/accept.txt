@@ -17,7 +17,6 @@ channable
 ci
 cmake
 config
-cowsay
 declaratively
 declarativity
 detsys
@@ -78,6 +77,7 @@ openssl
 pandoc
 pkgs
 podman
+ponysay
 readlink
 repo
 ripgrep
