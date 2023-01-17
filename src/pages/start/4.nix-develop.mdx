@@ -27,7 +27,11 @@ This is in contrast to most [package managers][pkg], which install things more q
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
 </Admonition>
 
-You should be greeted with the message "Welcome to a Nix development environment!" and a new shell prompt.
+You should be greeted by a new shell prompt:
+
+```shell
+bash-5.1$
+```
 
 :rocket: Congrats!
 You're now in a [Bash] environment that includes [curl] and [Git].
@@ -50,7 +54,7 @@ What happened here? The [Nix] CLI did a few things:
 
 A few other things:
 
-* The `Welcome to a Nix development environment!` greeting is defined in the *shell hook*. This is arbitrary shell code that runs when the environment starts up.
+* Although this example doesn't include one, you can define *shell hooks* in your Nix development environments. This is arbitrary shell code that runs whenever the environment starts up.
   Some example use cases for shell hooks:
   * `echo` information about the environment to the console whenever the environment is activated
   * Run things like checks and linters
