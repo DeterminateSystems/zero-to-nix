@@ -34,13 +34,20 @@ Furthermore, Nixpkgs is the largest flake in existence and running `nix search` 
 
 This brings up many results of the form `legacyPackages.<system>.<package>`, the first of which should look like this on an Apple Silicon (`aarch64-darwin`) system:
 
-```
+```shell
 * legacyPackages.aarch64-darwin.cargo (1.65.0)
   Downloads your Rust project's dependencies and builds your project
-````
+```
 
 The system attribute [varies](#system-specificity) on other platforms (you may see `x86_64-linux` or something else).
 After that first result, you should see many others, including packages like [`cargo-about`][cargo-about] and [`cargo-audit`][cargo-audit].
+
+<Admonition warning title="`legacyPackages` isn't legacy software" id="legacy-packages" client:load>
+The `legacyPackages` attribute that you see in the search output is a bit misleading.
+The [packages] prefaced with that aren't *legacy packages*
+
+[docs][legacy-comment]
+</Admonition>
 
 You can also output search results as JSON using the `--json` flag:
 
@@ -93,6 +100,7 @@ The `cargo` package on a Linux machine is considered a *different package* from 
 [flakes]: /concepts/flakes
 [flakes-list]: https://github.com/NixOS/nixos-search/blob/main/flakes/manual.toml
 [jq]: https://stedolan.github.io/jq
+[legacy-comment]: https://github.com/NixOS/nixpkgs/blob/fcc8ff7cc271c9652623dae2a9fcd1ba49232b57/flake.nix#L47-L55
 [nix]: /concepts/nix
 [nix-search]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-search
 [nixos]: /concepts/nixos
