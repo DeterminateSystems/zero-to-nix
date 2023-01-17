@@ -10,6 +10,7 @@
   >
     <Disclosure v-if="id" as="div" :defaultOpen="isOpen" v-slot="{ open }">
       <DisclosureButton
+        v-if="title"
         as="div"
         class="flex items-center justify-between py-1.5 px-3 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:py-2 md:px-3.5 lg:py-3 lg:px-4"
         :class="[
