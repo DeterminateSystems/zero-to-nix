@@ -1,3 +1,4 @@
+allsystems
 apfs
 args
 backported
@@ -39,6 +40,9 @@ fhs
 fstype
 func
 gcc
+genattrs
+gh
+ghc
 github
 gpg
 guix
@@ -52,6 +56,7 @@ installphase
 jq
 json
 kubectl
+lastmodified
 launchctl
 libbey's
 linux
@@ -62,6 +67,7 @@ monospaced
 mv
 my_function
 my_value
+narhash
 nginx
 nixlang
 nixos
@@ -76,6 +82,7 @@ offboarding
 onboarding
 openssh
 openssl
+pandoc
 pkgs
 podman
 readlink
@@ -84,6 +91,7 @@ ripgrep
 runtimes
 sandboxed
 sandboxing
+sayhello
 serokell
 shopify
 src

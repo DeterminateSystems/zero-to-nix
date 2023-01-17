@@ -19,7 +19,7 @@ The [`nix develop`][nix-develop] command activates a Nix environment:
 nix develop "github:DeterminateSystems/templates#example"
 ```
 
-<Admonition kind="warning" title="This could take a while" id="nix-develop-loading" client:load>
+<Admonition warning title="This could take a while" id="nix-develop-loading" client:load>
 The first time you activate a Nix development environment using `nix develop` it's likely to be a slow operation.
 That's because Nix needs to build every [package][packages] included in the environment from scratch.
 This is in contrast to most [package managers][pkg], which install things more quickly because they download pre-built archives like tarballs.
@@ -50,7 +50,14 @@ What happened here? The [Nix] CLI did a few things:
 A few other things:
 
 * The `Welcome to a Nix development environment!` greeting is defined in the *shell hook*. This is arbitrary shell code that runs when the environment starts up.
+  Some example use cases for shell hooks:
+  * `echo` information about the environment to the console whenever the environment is activated
+  * Run things like checks and linters
+  * Ensure that other desired hooks, like [Git hooks][hooks], are properly set up
 * Nix development environments support environment variables as well. Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
+  Some example use cases for environment variables:
+  * Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
+  * Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
 
 Let's leave the Nix development environment:
 
@@ -196,25 +203,35 @@ This list could easily include 100 packages.
 It's up to you.
 We won't cover *how* to create these environments just yet, but we hope that you come away from this guide with a basic sense of what Nix development environments provide.
 
+<Admonition success open title="Nix development environments and direnv" id="nix-develop-direnv" client:load>
+[direnv] is a popular tool that automatically loads specific environment variables whenever you `cd` into a directory (and then unloads those variables when you `cd` out of the directory).
+The combination of direnv and Nix can be quite powerful, enabling you to automatically load Nix development environments whenever you navigate to a directory.
+For more info, see [Effortless dev environments with Nix and direnv][nix-direnv] on the [Determinate Systems blog][blog].
+</Admonition>
+
 [bash]: https://gnu.org/software/bash
+[blog]: https://determinate.systems/posts
 [cargo]: https://doc.rust-lang.org/stable/cargo
 [cmake]: https://cmake.org
 [curl]: https://curl.se
 [dev]: /concepts/dev-env
+[direnv]: https://direnv.net
 [flakes]: /concepts/flakes
 [ghc]: https://haskell.org/ghc
 [git]: https://git-scm.com
 [go]: https://go.dev
 [hermeticity]: /concepts/hermeticity
+[hooks]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
 [kubectl]: https://kubernetes.io/docs/reference/kubectl
 [language]: /concepts/nix-language
 [last]: /start/nix-run
 [nix]: /concepts/nix
 [nix-develop]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop
+[nix-direnv]: https://determinate.systems/posts/nix-direnv
 [node.js]: https://nodejs.org
 [npm]: https://npmjs.org
 [openssl]: https://openssl.org
-[output]: /concepts/flake-outputs
+[output]: /concepts/flakes#outputs
 [packages]: /concepts/packages
 [path]: https://en.wikipedia.org/wiki/PATH_(variable)
 [pkg]: /concepts/package-management
