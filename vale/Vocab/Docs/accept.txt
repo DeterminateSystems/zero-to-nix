@@ -15,6 +15,7 @@ cachix
 cargolock
 channable
 ci
+clis
 cmake
 config
 declaratively
