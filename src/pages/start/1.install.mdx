@@ -16,7 +16,7 @@ In this [quick start][start], we'll get Nix installed on your system and provide
 The best way to install Nix is to use [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
 
 ```shell
-curl -L https://install.determinate.systems/nix | sh -s -- install
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
 <Admonition info title="Why aren't we using the official Nix installation script here?" id="why-nix-installer" client:load>
