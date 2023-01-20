@@ -3,8 +3,6 @@
     <Top>
       <Navbar />
       <HorizontalContainer>
-        <QuickStart client:load />
-
         <Hero
           :title="title"
           :description="snippet"
@@ -13,6 +11,7 @@
             title,
           }"
           :wip="wip"
+          :banner="true"
           client:none
         />
 
