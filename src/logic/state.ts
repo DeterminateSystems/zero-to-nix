@@ -39,3 +39,14 @@ export const toggleDrawer = () => {
 export const closeDrawer = () => {
   drawerAtom.set(false);
 };
+
+// Quick start banner
+export const quickStartBannerAtom: WritableAtom<string> =
+  persistentAtom<string>("zero-to-nix:quick-start-banner", "open");
+
+export const quickStartBannerOpen: boolean =
+  useStore(quickStartBannerAtom).value === "open";
+
+export const closeQuickStartBanner = () => {
+  quickStartBannerAtom.set("closed");
+};
