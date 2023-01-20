@@ -25,7 +25,7 @@ externalSources: [
 
 
 *NixOS* is a [Linux] distribution based on [Nix].
-It's amongst distributions because it enables you to use the [Nix language][lang] to [delaratively configure][declarative] your operating system in a [`configuration.nix` file](#configuration).
+It's amongst distributions because it enables you to use the [Nix language][lang] to [declaratively configure][declarative] your operating system in a [`configuration.nix` file](#configuration).
 And that configurability runs quite deep, including things like the system's [boot loader][boot], the [filesystem], [window managers][window], [kernel modules][kernel], services like [OpenSSH], and much more.
 
 In addition to being a fundamentally [configurable](#configuration) distribution, Nix provides NixOS with a variety of unique [features](#features), such as [atomic system updates](#atomicity) and [system rollbacks](#rollbacks) and robust [multi-user support](#multi-user).
@@ -143,7 +143,7 @@ As an example, these two modules are equivalent to each other.
 ### How to use modules
 
 First up, you can find modules to use and how to use them via the NixOS [module search][search].
-Nix modules generally follow the [declarative] principle, meaning that there's no precise order that modules are executed in.
+Nix modules generally follow the [declarative] principle, meaning that there's no precise order in which modules are executed.
 Instead, you describe the desired outcome of a system, which Nix then produces for you.
 
 Following is an example of how to setup and configure the [nginx] web server.
@@ -169,9 +169,9 @@ Nix enables NixOS to provide a range of unique features.
 
 ### Generations
 
-Unlike other Linux distributions, updates to NixOS system state are discrete *generations* with a number.
-Each time you run `nixos-rebuild switch` to apply your desired [system configuration](#configuration),
-One of the core advantages of generations is that you can switch between versions of your system state at will.
+Unlike other Linux distributions, updates to NixOS system state constitute atomic *generations* with a number.
+Each time you run `nixos-rebuild switch` to apply your desired [system configuration](#configuration), Nix increments the generation.
+One of the core advantages of generations is that you can switch between [atomic versions](#atomicity) of your system state at will.
 
 ### Atomic system updates \{#atomicity}
 
@@ -181,13 +181,14 @@ And as is always the case with Nix, each package is [realised] from scratch and 
 
 ### Rollbacks
 
-As with [system updates](#atomicity), NixOS enables you to roll your system back to a previous generation at will using `nixos-rebuild switch --rollback`.
+As with [system updates](#atomicity), NixOS enables you to roll your system back to a previous generation using `nixos-rebuild switch --rollback`.
+Rollbacks are fully [atomic](#atomicity) and include [packages], system configuration, and anything else specified in the NixOS configuration.
 
 ### Multi-user support \{#multi-user}
 
-NixOS doesn't follow the [Filesystem Hierarchy Standard][fhs], instead using the [Nix store][store] for everything, including not just [packages] but also [derivations] and other required artifacts.
+NixOS doesn't follow the [Filesystem Hierarchy Standard][fhs], instead using the [Nix store][store] for everything, including not just [packages] but also [derivations] and other artifacts.
 This enables NixOS to support an indefinite number of user *profiles* in an elegant way.
-Two different users on the same NixOS host can use different versions of [Git], for example, because instead of users needing to share a global `git` in a location like `/usr/bin/git`, instead two different users could use `git` executables at locations like this instead:
+Two different users on the same NixOS host can use different versions of [Git], for example, because instead of sharing a global `git` in a location like `/usr/bin/git`, two different users can use `git` executables from Nix store paths instead:
 
 * `/nix/store/sglc12hc6pc68w5ppn2k56n6jcpaci16-git-2.38.1/bin/git`
 * `/nix/store/8nwsswymka208dpmsy09aydgffvg4bbi-git-2.38.0/bin/git`
