@@ -13,11 +13,15 @@ buildpythonapplication
 buildrustpackage
 cachix
 cargolock
+cachix
+changemeplz
 channable
 ci
 clis
 cmake
 config
+configurability
+cowsay
 declaratively
 declarativity
 detsys
@@ -33,6 +37,8 @@ externalsources
 fetchgit
 ffmpeg
 ffprobe
+fhs
+fstype
 func
 gcc
 genattrs
@@ -46,6 +52,7 @@ hermeticity
 href
 ian
 iaso's
+initialpassword
 installphase
 jq
 json
@@ -74,6 +81,7 @@ number_key
 oci
 offboarding
 onboarding
+openssh
 openssl
 pandoc
 pkgs
@@ -82,6 +90,7 @@ ponysay
 readlink
 repo
 ripgrep
+runtimes
 sandboxed
 sandboxing
 sayhello

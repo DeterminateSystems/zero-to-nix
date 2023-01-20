@@ -2,7 +2,7 @@
 title: NixOS
 wip: true
 snippet: |
-  A [Linux](https://www.kernel.org/) distribution built on the [Nix](/concepts/nix) package manager and guided by Nix's core principles
+  A [Linux](https://www.kernel.org/) distribution based on the [Nix](/concepts/nix) package manager and guided by Nix's core principles
 related: ["nix", "nix-language", "nixpkgs"]
 externalSources: [
   {
@@ -24,18 +24,123 @@ externalSources: [
 ]
 ---
 
-*NixOS* is a [Linux] distribution built on [Nix] and its core principles.
-Everything[^1] in a NixOS system is purely configured via the Nix expression language and module system.
-Instead of installing packages directly, you declaratively describe what system you would like to have, and Nix then builds and deploys this system for you.
-To make this possible Nix uses its *module system* (explained below) and module abstractions.
-A module is a piece of Nix code, which can be configured by a user, and then internally produces some system output.
 
-## What is a module
+*NixOS* is a [Linux] distribution based on [Nix].
+It's unique amongst distributions because it enables you to use the [Nix language][lang] to [declaratively configure][declarative] your operating system in a [`configuration.nix` file](#configuration).
+And that configurability runs quite deep, including things like the system's [boot loader][boot], the [filesystem], [window managers][window], [kernel modules][kernel], services like [OpenSSH], and much more.
 
-A module in NixOS is a function, which accepts an attribute set and returns an attribute set of its own.
-The basic anatomy of a module can be seen in the code snippet below.
+In addition to being a fundamentally [configurable](#configuration) distribution, Nix provides NixOS with a variety of unique [features](#features), such as [atomic system updates](#atomicity) and [system rollbacks](#rollbacks) and robust [multi-user support](#multi-user).
 
-```nix
+## The role of Nix \{#nix}
+
+Everything in a NixOS system is configured using the [Nix language][lang] and the NixOS [module system](#modules).
+Rather than installing [packages] and setting up your system in an ad-hoc way, you can [declare][declarative] which specific system you'd like to have&mdash;networking stack, filesystem, users, and more&mdash;and Nix builds the system for you from the ground up, installing all the required [packages], providing necessary configuration files, and making other declared changes.
+
+## Features
+
+NixOS uses [Nix] as its [package manager][pkg] rather than [APT], [dpkg], or any of the other options for Linux.
+Nix enables NixOS to provide a range of unique features.
+
+### Generations
+
+Unlike other Linux distributions, updates to NixOS system state constitute atomic *generations* with a number.
+Each time you run `nixos-rebuild switch` to apply your desired [system configuration](#configuration), Nix increments the generation.
+One of the core advantages of generations is that you can switch between [atomic versions](#atomicity) of your system state at will.
+
+### Atomic system updates \{#atomicity}
+
+Any time you change your NixOS [configuration](#configuration), you can apply that configuration by running [`nixos-rebuild switch`][rebuild].
+When you do that, NixOS installs or upgrades any [packages] that need to be installed or upgraded according to your system configuration.
+And as is always the case with Nix, each package is [realised] from scratch and stored in the [Nix store][store] rather than in directories like `/bin` or `/usr/bin`, as on systems that use the [Filesystem Hierarchy Standard][fhs].
+
+### Rollbacks
+
+As with [system updates](#atomicity), NixOS enables you to roll your system back to a previous generation using `nixos-rebuild switch --rollback`.
+Rollbacks are fully [atomic](#atomicity) and include [packages], system configuration, and anything else specified in the NixOS configuration.
+
+### Multi-user support \{#multi-user}
+
+NixOS doesn't follow the [Filesystem Hierarchy Standard][fhs], instead using the [Nix store][store] for everything, including not just [packages] but also [derivations] and other artifacts.
+This enables NixOS to support an indefinite number of user *profiles* in an elegant way.
+Two different users on the same NixOS host can use different versions of [Git], for example, because instead of sharing a global `git` in a location like `/usr/bin/git`, two different users can use `git` executables from Nix store paths instead:
+
+* `/nix/store/sglc12hc6pc68w5ppn2k56n6jcpaci16-git-2.38.1/bin/git`
+* `/nix/store/8nwsswymka208dpmsy09aydgffvg4bbi-git-2.38.0/bin/git`
+
+Below is a diagram of the first path above:
+
+<NixStorePath pkg="git-2.38.1" bin="git" />
+
+Let's break store paths down into their constituent elements:
+
+1. The **root path** is `/nix/store` by default.
+2. The **hash** is derived from the [derivation][derivations] used to build the package.
+3. The **package name** is an arbitrary slug provided by the package creator.
+
+## Configuration
+
+With most Linux distributions, you assemble your desired system in a procedural way using shell scripts and ad-hoc commands like [`apt-get install`][apt].
+By contrast, NixOS enables you to define your desired system using the [Nix language][lang]. By default, this is in a `configuration.nix` file stored in `/etc/nixos`.
+Here's an example configuration:
+
+```nix filename=/etc/nixos/configuration.nix
+{ pkgs, ... }: # A pinned version of Nixpkgs passed to the configuration by Nix
+
+{
+  # Enable Nix flakes and the unified Nix CLI
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+  };
+
+  # Networking configuration
+  networking.hostName = "justme-dev-box";
+
+  # Enable OpenSSH
+  services.openssh.enable = true;
+
+  # Root filesystem
+  fileSystems."/" = {
+    device = "/dev/sda1";
+    fsType = "ext4";
+  };
+
+  # Create a user
+  users.users.justme = {
+    isNormalUser = true;
+    initialPassword = "changemeplz";
+  };
+
+  # CLI tools, language runtimes, shells, and other desired packages
+  environment.systemPackages = with pkgs; [
+    curl
+    jq
+    wget
+    git
+    python
+    openssl
+    zsh
+  ];
+
+  # The Nixpkgs release
+  system.stateVersion = "22.11";
+}
+```
+
+This command applies the configuration above:
+
+```shell
+nixos-rebuild switch
+```
+
+No complex shell scripts, no sequence of install or build commands, just a single instruction to build the entire system according to your specifications.
+
+### Modules
+
+A *module* is a piece of Nix code that you can configure to produce configuration.
+In NixOS, a module is a function that takes an attribute set and returns another attribute set.
+The basic anatomy of a module can be seen in this code snippet:
+
+```nix filename=/etc/nixos/configuration.nix
 { lib, config, pkgs, ... }:
 {
   imports = [];
@@ -74,10 +179,10 @@ As an example, these two modules are equivalent to each other.
 ```
 </Admonition>
 
-## How to use modules
+### How to use modules
 
-First up, you can find modules to use and how to use them via the NixOS [module search].
-Nix modules generally follow the [declarative] principle, meaning that there's no precise order that modules are executed in.
+First up, you can find modules to use and how to use them via the NixOS [module search][search].
+Nix modules generally follow the [declarative] principle, meaning that there's no precise order in which modules are executed.
 Instead, you describe the desired outcome of a system, which Nix then produces for you.
 
 Following is an example of how to setup and configure the [nginx] web server.
@@ -96,7 +201,33 @@ Following is an example of how to setup and configure the [nginx] web server.
 }
 ```
 
-[linux]: https://linux.org
-[nix]: /concepts/nix
-[module search]: https://search.nixos.org/options
+## Releases
+
+There are two major NixOS [releases] per year.
+Release slugs have the form `{year}.{month}`, so `22.05` corresponds to May 2022, `20.09` corresponds to August 2020, and so on.
+You can update a NixOS installation to a new release in [`configuration.nix`](#configuration) using the `system.stateVersion` parameter.
+Because you configure NixOS using Nix, you can always [pin] specific packages and dependencies to whichever revisions you like.
+
+[apt]: https://en.wikipedia.org/wiki/APT_(software)
+[boot]: https://nixos.wiki/wiki/Bootloader
+[declarative]: /concepts/declarative
+[derivations]: /concepts/derivations
+[dpkg]: https://debian.org/doc/manuals/debian-faq/pkgtools
+[fhs]: https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+[filesystem]: https://nixos.org/manual/nixos/stable/#ch-file-systems
+[git]: https://git-scm.com
+[kernel]: https://nixos.wiki/wiki/Linux_kernel
+[lang]: /concepts/nix-language
+[linux]: https://kernel.org
 [nginx]: https://nginx.org
+[nix]: /concepts/nix
+[openssh]: https://openssh.com
+[packages]: /concepts/packages
+[pin]: /concepts/pinning
+[pkg]: /concepts/package-management
+[realised]: /concepts/realisation
+[rebuild]: https://nixos.wiki/wiki/Nixos-rebuild
+[releases]: https://nixos.org/blog/announcements
+[search]: https://search.nixos.org/options
+[store]: /concepts/nix-store
+[window]: https://nixos.wiki/wiki/Category:Window_managers
