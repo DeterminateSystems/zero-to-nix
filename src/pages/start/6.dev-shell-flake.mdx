@@ -1,12 +1,12 @@
 ---
 title: Create a development environment using Nix
+path: /start/dev-shell-flake
 summary:
   [
     "Initialize a starter project in the language of your choice",
     "Explore a Nix development environment for your preferred language",
     "Run some commands inside the environment",
   ]
-order: 6
 ---
 
 [Nix] enables you to create [development environments][dev] that are "sealed" from the rest of your system&mdash;they ignore directories like `/usr/bin` and only use packages available in the [Nix store][store].
@@ -124,8 +124,8 @@ cargo is /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/car
 
 Probably not what you expected! What happened here? A few things:
 
-- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the development environment (Nix specifically looked at the `buildInputs` array).
-- Nix built the packages specified under `buildInputs` and stored them in the
+- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the development environment (Nix specifically looked at the `packages` array).
+- Nix built the packages specified under `packages` and stored them in the
   [Nix store][store] under `/nix/store`.
 
 [dev]: /concepts/dev-env

@@ -1,10 +1,10 @@
 ---
 title: Build a package from Nixpkgs
+path: /start/nix-build-nixpkgs
 summary: [
   "Build a Nix package defined in Nixpkgs",
   "Run the package from the local directory"
 ]
-order: 3
 ---
 
 While [Nix] can do many things, [package management][pkg] is the thing that it's perhaps best known for. In this tutorial, we'll use our [installed Nix CLI][install] to build and run some Nix [packages] included in [Nixpkgs]. Later in the [quick start][start] we'll build and run a Nix package defined in a local [flake].
@@ -33,8 +33,8 @@ You should see a path like this (it's likely to be a bit different on your machi
 What's happened here is that the Nix CLI has:
 
 * Downloaded the Nix code in [Nixpkgs]
-* Found the [derivation][derivations] with the name `bat` (code [here][nixpkgs-bat])
-* Used the build instructions in the derivation to build the [package][packages]
+* Found a package definition with the name `bat` (code [here][nixpkgs-bat])
+* Used the build instructions for `bat` to build the [package][packages]
 * Stored the result in the [Nix store][store] using Nix's hash-based path system
 {/* TODO: add substitution here and link to future caching doc */}
 
@@ -44,12 +44,12 @@ You can now run bat:
 ./result/bin/bat --help
 ```
 
-:rocket: Congrats!
+:rocket: **Success**!
 You've built and run a package using Nix.
 
 ## Build a package written in `$LANGUAGE` \{#language-specific}
 
-One of the great things about Nix is that [derivations] are extremely flexible, which enables you to create packages for things written in just about any programming language. In this section, we'll explore that by building and running packages for tools written in a variety of languages. Select one below to see some examples:
+One of the great things about Nix is that package builds are extremely flexible, which enables you to create packages for things written in just about any programming language. In this section, we'll explore that by building and running packages for tools written in a variety of languages. Select one below to see some examples:
 
 <Languages client:load />
 
@@ -123,7 +123,6 @@ Upstreaming your packages to Nixpkgs is always an option, but it's good to bear 
 [bat]: https://github.com/sharkdp/bat
 [cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
 [cmake]: https://cmake.org
-[derivations]: /concepts/derivations
 [flake]: /concepts/flakes
 [hm]: https://github.com/nix-community/home-manager
 [install]: /start/install

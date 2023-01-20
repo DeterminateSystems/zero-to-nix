@@ -17,6 +17,7 @@ cachix
 changemeplz
 channable
 ci
+clis
 cmake
 config
 configurability
@@ -85,6 +86,7 @@ openssl
 pandoc
 pkgs
 podman
+ponysay
 readlink
 repo
 ripgrep
@@ -109,4 +111,5 @@ vite
 wayland
 wget
 wikipedia
+wip
 zsh

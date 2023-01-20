@@ -10,6 +10,7 @@
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
+          :wip="wip"
           client:none
         />
 
@@ -43,6 +44,6 @@ import { usePage } from "iles";
 import { ConceptPageProps } from "~/logic/content";
 
 const {
-  frontmatter: { title, snippet, externalSources, related },
+  frontmatter: { title, snippet, externalSources, related, wip },
 } = usePage<ConceptPageProps>();
 </script>

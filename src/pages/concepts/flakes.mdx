@@ -1,5 +1,6 @@
 ---
 title: Nix flakes
+wip: true
 snippet: |
   A system for referencing and sharing [Nix code](/concepts/nix-language)
 related: ["channels"]
@@ -224,8 +225,8 @@ Here's an example flake that outputs a package that can be used by `x86_64-linux
     # Use a system-specific version of Nixpkgs
     pkgs = import nixpkgs { inherit system; };
   in {
-    # Output `cowsay` as the default package of the flake
-    packages.${system}.default = pkgs.cowsay;
+    # Output `ponysay` as the default package of the flake
+    packages.${system}.default = pkgs.ponysay;
   };
 }
 ```

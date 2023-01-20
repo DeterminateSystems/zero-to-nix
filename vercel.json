@@ -6,5 +6,11 @@
   "installCommand": "pnpm install",
   "outputDirectory": "dist",
   "public": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/quick-start", "destination": "/start.html" },
+    { "source": "/quickstart", "destination": "/start.html" },
+    { "source": "/get-started", "destination": "/start.html" },
+    { "source": "/getting-started", "destination": "/start.html" }
+  ]
 }

@@ -40,6 +40,7 @@ declare module '@vue/runtime-core' {
     IconFaInfo: typeof import('~icons/fa/info')['default']
     IconFaLink: typeof import('~icons/fa/link')['default']
     IconFaSolidBars: typeof import('~icons/fa-solid/bars')['default']
+    IconFaSolidHammer: typeof import('~icons/fa-solid/hammer')['default']
     IconFaSolidMoon: typeof import('~icons/fa-solid/moon')['default']
     IconFaSolidSun: typeof import('~icons/fa-solid/sun')['default']
     IconFaWarning: typeof import('~icons/fa/warning')['default']

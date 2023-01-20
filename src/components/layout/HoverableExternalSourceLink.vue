@@ -10,7 +10,7 @@
         rel="noopener noreferrer"
       >
         <span>
-          <span v-html="md(title)" />
+          <span class="content" v-html="md(title)" />
         </span>
         <IconFaExternalLink class="h-3 w-3 text-primary md:h-4 md:w-4" />
       </a>
@@ -18,7 +18,7 @@
       <a
         v-if="source"
         :href="source.href"
-        class="block text-base font-light tracking-tight hover:text-primary dark:hover:text-light-blue md:text-lg"
+        class="content block text-base font-light tracking-tight hover:text-primary dark:hover:text-light-blue md:text-lg"
         target="_blank"
         rel="noopener noreferrer"
       >

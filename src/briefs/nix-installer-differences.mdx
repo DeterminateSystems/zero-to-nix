@@ -4,7 +4,7 @@ id: nix-installer-differences
 
 Nix Installer from [Determinate Systems][ds] differs from the [official Nix installation script][official] in several important ways:
 
-1. It installs Nix with [flake support][flakes] and the `nix-command` feature already enabled rather than requiring users to enable those features.
+1. It installs Nix with [flake support][flakes] and the [unified CLI][cli] feature already enabled rather than requiring users to enable those features.
 1. It stores a *receipt* for the install process at `/nix/receipt.json`. This receipt enables Nix Installer to seamlessly uninstall Nix, whereas the official Nix installation script provides no offboarding path of this kind.
 1. Much like [Terraform], Nix Installer enables you to [plan] your installation using the `nix-installer plan` command to see how Nix Installer will change your system. We see this as an improvement over the official Nix installation script, which prompts you to approve changes but doesn't present *all* changes.
 1. Nix Installer is written in [Rust] rather than a shell scripting language (the official installer is written in [Bash]). This has two key benefits:
@@ -13,6 +13,7 @@ Nix Installer from [Determinate Systems][ds] differs from the [official Nix inst
 1. If the installation fails along the way for some reason, Nix Installer can use its receipt to revert the changes that it has made, minimizing the likelihood that the Nix installation process leaves your system in an undesirable state.
 
 [bash]: https://gnu.org/software/bash
+[cli]: /concepts/nix#unified-cli
 [ds]: https://determinate.systems
 [flakes]: /concepts/flakes
 [official]: https://nixos.org/download
