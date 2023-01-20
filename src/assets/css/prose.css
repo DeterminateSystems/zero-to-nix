@@ -1,7 +1,7 @@
 @layer base {
   /* Helper classes */
   .inline-code {
-    @apply rounded border-light-gray bg-pale px-1.5 dark:border-none dark:bg-dark-gray;
+    @apply rounded border-light-gray bg-soft-gray px-1.5 dark:border-none dark:bg-dark-gray;
   }
 
   /* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */

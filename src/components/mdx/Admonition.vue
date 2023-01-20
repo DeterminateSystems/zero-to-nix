@@ -26,7 +26,7 @@
         @click="toggle"
       >
         <span
-          class="flex items-center space-x-3 font-semibold leading-snug tracking-tight md:space-x-4 md:text-lg lg:space-x-5 lg:text-xl"
+          class="flex items-center space-x-2 font-semibold leading-snug tracking-tight md:space-x-3 md:text-lg lg:space-x-4 lg:text-xl"
         >
           <IconFaBolt v-if="danger" class="h-3 w-3 text-red md:h-4 md:w-4" />
           <IconFaInfo v-if="info" class="h-3 w-3 text-blue md:h-4 md:w-4" />
