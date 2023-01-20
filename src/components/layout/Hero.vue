@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <QuickStart v-if="banner" />
+    <QuickStart v-if="banner" client:load />
 
     <div v-if="buttons" class="flex items-center space-x-4 pt-2">
       <a
