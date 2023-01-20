@@ -206,6 +206,9 @@ Let's break store paths down into their constituent elements:
 
 There are two major NixOS [releases] per year, one in May and one in November.
 Release slugs have the form `{year}.{month}`, so `22.05` corresponds to May 2022, `20.11` corresponds to November 2020, and so on.
+You can update a NixOS installation to a new release in [`configuration.nix`](#configuration) using the `system.stateVersion` parameter.
+
+But because you configure NixOS using Nix, you can always [pin] specific packages and dependencies to whichever revisions you like.
 
 [apt]: https://en.wikipedia.org/wiki/APT_(software)
 [boot]: https://nixos.wiki/wiki/Bootloader
@@ -222,6 +225,7 @@ Release slugs have the form `{year}.{month}`, so `22.05` corresponds to May 2022
 [nix]: /concepts/nix
 [openssh]: https://openssh.com
 [packages]: /concepts/packages
+[pin]: /concepts/pinning
 [pkg]: /concepts/package-management
 [realised]: /concepts/realisation
 [rebuild]: https://nixos.wiki/wiki/Nixos-rebuild
