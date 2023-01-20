@@ -27,7 +27,12 @@
       v-html="md(description)"
     />
 
-    <Breadcrumb v-if="breadcrumb" :breadcrumb="breadcrumb" />
+    <Breadcrumb
+      v-if="breadcrumb"
+      :breadcrumb="breadcrumb"
+      :total="total"
+      :order="order"
+    />
 
     <div
       v-if="wip"
@@ -70,6 +75,8 @@ const { size: heroSize = "normal" } = defineProps<{
   breadcrumb?: BreadcrumbProps;
   buttons?: ButtonProps[];
   wip?: boolean;
+  total?: number;
+  order?: number;
 }>();
 
 const normalHero = heroSize === "normal";
