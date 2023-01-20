@@ -88,7 +88,7 @@ export default defineConfig({
       }
     },
   },
-  turbo: true,
+  turbo: false, // turbo messes up posthog's pageview tracking
   vite: {
     mode: process.env["ENV"] === "production" ? "production" : "development",
     server: {
