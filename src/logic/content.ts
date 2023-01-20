@@ -13,6 +13,8 @@ export type QuickStartPage = Document<QuickStartPageProps>;
 const quickStartPages: QuickStartPage[] =
   useDocuments<QuickStartPageProps>("~/pages/start").value;
 
+export const numQuickStartPages: number = quickStartPages.length;
+
 export const sortedQuickStartPages: QuickStartPage[] = quickStartPages.sort(
   (p1: QuickStartPage, p2: QuickStartPage) => p1.order - p2.order,
 );
