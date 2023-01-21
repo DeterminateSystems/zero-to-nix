@@ -28,6 +28,22 @@ externalSources: [
       title: "The NixOS wiki",
       href: "https://nixos.wiki"
     }
+  },
+  {
+    title: "Overlays",
+    href: "https://nixos.wiki/wiki/Overlays",
+    source: {
+      title: "The NixOS wiki",
+      href: "https://nixos.wiki"
+    }
+  },
+  {
+    title: "Defining overlays",
+    href: "https://nixos.org/manual/nixpkgs/stable/#sec-overlays-definition",
+    source: {
+      title: "The Nixpkgs manual",
+      href: "https://nixos.org/manual/nixpkgs/stable"
+    }
   }
 ]
 ---
@@ -39,8 +55,37 @@ Nixpkgs is a mono repo, containing over 80,000 package definitions and the utili
 It also contains [NixOS](/concepts/nixos) modules and anything required to build and deploy a full Nix system.
 Many tools in the Nix ecosystem depend on this standard library to function.
 
-## Release channels
+## Overlays
 
-TODO
+```nix
+let renameOverlay = self: super: {
+  booper = self.python3;
+  bopper = self.curl;
+};
+```
+
+```nix
+{
+  outputs = { self, nixpkgs, flake-utils }:
+    let
+      overlays = [
+        (self: super: {
+          # Modify Nixpkgs as `self` here
+        })
+      ];
+    in flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs { inherit overlays system; };
+    in {
+      devShells.default = pkgs.mkShell {
+        packages = with pkgs; [ curl git jq wget ];
+      };
+    });
+}
+```
+
+<Admonition success open title="Mental model" client:load>
+It may be helpful to think of an overlay as a function that transforms an attribute set that's almost what you want into an attribute set that's exactly what you want.
+</Admonition>
 
 [nix]: https://nixos.org
+[packages]: /concepts/packages
