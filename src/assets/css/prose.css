@@ -44,7 +44,9 @@
     .content,
     h2,
     h3,
-    li {
+    h4,
+    li,
+    td {
       code {
         @apply inline-code;
       }
@@ -61,9 +63,8 @@
 
       /* Hoverable heading links */
       &.heading-anchor {
-        @apply float-left text-2xl text-primary no-underline opacity-0;
+        @apply float-left text-primary no-underline opacity-0;
 
-        margin-top: 0.125em;
         margin-left: -1em;
         padding-right: 0.25em;
 

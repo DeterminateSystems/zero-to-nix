@@ -66,6 +66,7 @@ Here are some example flake references:
 
 Reference | Description
 :---------|:-----------
+`.` | The current directory
 `path:/home/nix-stuff/my-flake` | The `/home/nix-stuff/my-flake` directory on the current host
 `github:DeterminateSystems/zero-to-nix` | The [DeterminateSystems/zero-to-nix][gh-z2n] GitHub repository
 `github:DeterminateSystems/zero-to-nix/other` | The [`other`][other] branch of the [DeterminateSystems/zero-to-nix][gh-z2n] GitHub repository
@@ -194,25 +195,28 @@ Each flake can have many different outputs simultaneously, including but not lim
 
 Flake outputs are defined by a function, which takes an attribute set as input, containing each of the inputs to that flake (named after the chosen identifier in the [inputs](#inputs) section).
 
-### The `lib` output \{#lib}
+### Output paths
 
-In addition to things like packages and NixOS configurations, flakes can also output Nix functions and other values via the `lib` output.
-Here's an example flake that outputs a `sayHello` function that takes a name as an input and outputs a string saying hello to that person:
+[schema][output-schema]
 
-```nix filename=flake.nix
-{
-  outputs = { self }: {
-    lib = {
-      sayHello = name: "Hello there, ${name}!";
-    };
-  };
-}
+<FlakeOutputSchema reference="github:DeterminateSystems/riff" outputPath="packages.aarch64-darwin.riff" client:load />
+
+<FlakeOutputSchema reference="nixpkgs" outputPath="curl" client:load />
+
+```shell
+nix run nixpkgs#curl
 ```
 
-Another Nix flake could then specify this flake as an [input](#inputs) and use `sayHello` for whatever purpose.
-[Nixpkgs], for example, outputs a vast multitude of helper functions and values.
+<FlakeOutputSchema reference="nixpkgs" outputPath="packages.aarch64-darwin.curl" client:load />
 
-### System specificity
+```shell
+nix run nixpkgs#packages.aarch64-darwin.curl
+```
+
+In many cases, you don't need to specify the output type, like `packages` or `devShells`, because Nix can infer them from the command you run.
+You can run the `nix develop` command, for example, only against `devShells` outputs.
+
+#### System specificity
 
 Some flake outputs need to be [system specific][specificity], including [packages], [development environments][env], and [NixOS] configurations.
 Here's an example flake that outputs a package that can be used by `x86_64-linux` systems (64-bit AMD/Intel Linux):
@@ -259,6 +263,30 @@ You can also use Nix functions like this:
 }
 ```
 
+Some output types that don't need to be system specific:
+
+* [Flake templates](#templates)
+* Nixpkgs overlays
+* [NixOS] configurations
+
+### The `lib` output \{#lib}
+
+In addition to things like packages and NixOS configurations, flakes can also output Nix functions and other values via the `lib` output.
+Here's an example flake that outputs a `sayHello` function that takes a name as an input and outputs a string saying hello to that person:
+
+```nix filename=flake.nix
+{
+  outputs = { self }: {
+    lib = {
+      sayHello = name: "Hello there, ${name}!";
+    };
+  };
+}
+```
+
+Another Nix flake could then specify this flake as an [input](#inputs) and use `sayHello` for whatever purpose.
+[Nixpkgs], for example, outputs a vast multitude of helper functions and values.
+
 ## Flake templates \{#templates}
 
 [*Flake templates*][init] enable you to either initialize a new Nix project with pre-supplied content or add a set of files to an existing project.
@@ -296,6 +324,7 @@ If you ran `nix flake init --template <reference>` against this template definit
 [nixos]: /concepts/nixos
 [nixpkgs]: /concepts/nixpkgs
 [other]: https://github.com/DeterminateSystems/zero-to-nix/tree/other
+[output-schema]: https://nixos.wiki/wiki/Flakes#Output_schema
 [packages]: /concepts/packages
 [pinning]: /concepts/pinning
 [refs-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-references
