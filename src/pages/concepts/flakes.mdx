@@ -169,9 +169,9 @@ Here's an example flake that uses symbolic identifiers:
 ```nix filename=flake.nix
 {
   outputs = { self, nixpkgs, flake-utils }:
-    let
+    flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs { inherit system; };
-    in flake-utils.lib.eachDefaultSystem (system: {
+    in {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [ curl git jq wget ];
       };
