@@ -1,0 +1,6 @@
+# JavaScript artifacts
+/node_modules/
+/dist/
+
+# Nix artifacts
+result

@@ -1,0 +1,9 @@
+name: zero-to-nix-haskell
+version: 0.1.0
+dependencies:
+  - classy-prelude
+  - base
+executables:
+  zero-to-nix-haskell:
+    main: Main.hs
+    source-dirs: .

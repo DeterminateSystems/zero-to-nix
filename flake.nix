@@ -120,16 +120,86 @@
         '';
       in
       {
-        devShells = {
-          # The shell for developing this site
-          default = pkgs.mkShell
-            {
-              buildInputs = common ++ scripts;
-            };
-        };
+        devShells =
+          let
+            exampleShells = import ./nix/shell/example.nix { inherit pkgs; };
+          in
+          {
+            inherit (exampleShells) example cpp haskell javascript python go rust multi;
+          }
+          //
+          {
+            # The shell for developing this site
+            default = pkgs.mkShell
+              {
+                buildInputs = common ++ scripts;
+              };
+          };
 
         apps.default = flake-utils.lib.mkApp {
           drv = runLocal;
+        };
+
+        templates = {
+          cpp-dev = {
+            path = ./nix/templates/dev/cpp;
+            description = "C++ dev environment template for Zero to Nix";
+          };
+
+          go-dev = {
+            path = ./nix/templates/dev/go;
+            description = "Go dev environment template for Zero to Nix";
+          };
+
+          haskell-dev = {
+            path = ./nix/templates/dev/haskell;
+            description = "Haskell dev environment template for Zero to Nix";
+          };
+
+          javascript-dev = {
+            path = ./nix/templates/dev/javascript;
+            description = "JavaScript dev environment template for Zero to Nix";
+          };
+
+          python-dev = {
+            path = ./nix/templates/dev/python;
+            description = "Python dev environment template for Zero to Nix";
+          };
+
+          rust-dev = {
+            path = ./nix/templates/dev/rust;
+            description = "Rust dev environment template for Zero to Nix";
+          };
+
+          cpp-pkg = {
+            path = ./nix/templates/pkg/cpp;
+            description = "C++ package starter template for Zero to Nix";
+          };
+
+          go-pkg = {
+            path = ./nix/templates/pkg/go;
+            description = "Go package starter template for Zero to Nix";
+          };
+
+          haskell-pkg = {
+            path = ./nix/templates/pkg/haskell;
+            description = "Haskell package starter template for Zero to Nix";
+          };
+
+          javascript-pkg = {
+            path = ./nix/templates/pkg/javascript;
+            description = "JavaScript package starter template for Zero to Nix";
+          };
+
+          python-pkg = {
+            path = ./nix/templates/pkg/python;
+            description = "Python package starter template for Zero to Nix";
+          };
+
+          rust-pkg = {
+            path = ./nix/templates/pkg/rust;
+            description = "Rust package starter template for Zero to Nix";
+          };
         };
       })
     );
