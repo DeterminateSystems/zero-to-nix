@@ -31,7 +31,7 @@ the fact that all Nix [derivations] have a `system` attribute that specifies whi
 In order to realize a Nix derivation into a [package], each derivation in the package's closure needs to be supported on the target system.
 So if you want to build the package `foo` on an `x86_64-linux` system, any dependency of the `foo` derivation needs to be supported on `x86_64-linux`.
 
-<Admonition type="info" title="Displaying your current system" client:load>
+<Admonition info title="Displaying your current system" client:load>
 To see the Nix alias for your current system, you can run this command in your terminal:
 
 ```shell
