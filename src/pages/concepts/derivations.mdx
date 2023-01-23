@@ -1,5 +1,6 @@
 ---
 title: Derivations
+wip: true
 snippet: |
   Build instructions for Nix [packages](/concepts/packages) expressed using the [Nix language](/concepts/nix-language)
 related: ["caching", "nix-store", "packages", "realisation"]
@@ -47,7 +48,7 @@ The most common outputs:
 
 A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a *package closure*.
 
-<Admonition kind="success" title="Mental model" client:load>
+<Admonition success title="Mental model" client:load>
 You may find it helpful to think of a derivation as the *plan* or *blueprint* for a Nix package.
 </Admonition>
 

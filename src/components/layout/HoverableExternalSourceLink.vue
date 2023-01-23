@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-lg border-2 border-light-gray py-1.5 px-3 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:py-2 md:px-4 lg:py-2.5 lg:px-5"
+    class="rounded-lg border-1.5 border-light-gray py-1.5 px-3 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:py-2 md:px-4 lg:py-2.5 lg:px-5"
   >
     <div class="flex flex-col space-y-1.5">
       <a
@@ -10,7 +10,7 @@
         rel="noopener noreferrer"
       >
         <span>
-          <span v-html="md(title)" />
+          <span class="content" v-html="md(title)" />
         </span>
         <IconFaExternalLink class="h-3 w-3 text-primary md:h-4 md:w-4" />
       </a>
@@ -18,7 +18,7 @@
       <a
         v-if="source"
         :href="source.href"
-        class="block text-base font-light tracking-tight hover:text-primary dark:hover:text-light-blue md:text-lg"
+        class="content block text-base font-light tracking-tight hover:text-primary dark:hover:text-light-blue md:text-lg"
         target="_blank"
         rel="noopener noreferrer"
       >

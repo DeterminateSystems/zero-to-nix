@@ -2,7 +2,7 @@
   <div class="space-y-4">
     <h3 class="text-lg font-semibold md:text-xl lg:text-2xl">{{ title }}</h3>
     <textarea
-      class="w-full resize-none rounded-lg border-2 border-soft-gray p-1.5 text-sm shadow-sm dark:border-gray dark:bg-dark md:p-3 md:text-base lg:p-2.5"
+      class="w-full resize-none rounded-lg border-1.5 border-soft-gray p-1.5 text-sm shadow-sm dark:border-gray dark:bg-dark md:p-3 md:text-base lg:p-2.5"
       rows="5"
       v-model="feedback"
       :placeholder="placeholder"

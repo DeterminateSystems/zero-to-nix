@@ -5,7 +5,7 @@
         v-if="drawerIsOpen"
         id="nav-drawer"
         tabindex="-1"
-        class="fixed z-40 flex h-full w-5/6 flex-col overflow-y-auto border-t border-r border-light-gray bg-white p-4 shadow-xl dark:border-dark-gray dark:bg-dark"
+        class="fixed z-40 flex h-full flex-col overflow-y-auto border-t border-r border-light-gray bg-white p-4 shadow-xl dark:border-dark-gray dark:bg-dark"
         aria-labelledby="nav-drawer"
       >
         <div class="flex justify-end">
@@ -21,7 +21,7 @@
           </button>
         </div>
 
-        <ul class="space-y-1">
+        <ul class="space-y-1 pr-20">
           <li>
             <a
               href="/start"
@@ -44,7 +44,7 @@
 
           <li>
             <a
-              href="/concepts"
+              href="/about"
               class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
               @click="closeDrawer"
             >

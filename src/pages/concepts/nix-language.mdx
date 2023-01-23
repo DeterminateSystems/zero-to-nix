@@ -1,5 +1,6 @@
 ---
 title: The Nix language
+wip: true
 snippet: |
   The language you use to define Nix [package builds](/concepts/packages), [development environments](/concepts/dev-env), [NixOS configurations](/concepts/nixos), and more.
 related: ["declarative", "nix", "nixos", "nixpkgs"]
@@ -111,6 +112,13 @@ rec {
 
 The `rec` keyword allows the attribute set to reference itself.
 
-For a more detailed breakdown of syntax, check out the [Nix language](https://nixos.org/manual/nix/stable/language/index.html) manual section.
+For a more detailed breakdown of syntax, check out the [Nix language](https://nixos.org/manual/nix/stable/language) manual section.
+
+## Derivations
+
+One thing that sets Nix apart from other programming languages&mdash;and makes it much more than just a configuration language&mdash;is the `derivation` function.
+This is a built-in function that you use to define the build process for packages.
+See the [derivations] concept doc for more info.
 
 [declarative]: /concepts/declarative
+[derivations]: /concepts/derivations

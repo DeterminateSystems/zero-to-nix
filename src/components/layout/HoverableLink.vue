@@ -1,16 +1,16 @@
 <template>
   <a
     :href="href"
-    class="rounded-lg border-2 border-light-gray transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray"
+    class="rounded-lg border-1.5 border-light-gray transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray"
     :class="[
       normalLink &&
-        'py-1.5 px-3 text-xl tracking-tight md:py-2 md:px-4 md:text-2xl lg:py-2.5 lg:px-5 lg:text-3xl',
+        'py-1.5 px-3 text-lg tracking-tight md:py-2 md:px-4 md:text-xl lg:py-2.5 lg:px-5 lg:text-2xl',
       smallLink &&
-        'py-1.5 px-3 text-lg md:py-2 md:px-4 md:text-xl lg:py-2.5 lg:px-5 lg:text-2xl',
+        'py-1.5 px-3 text-base md:py-2 md:px-4 md:text-lg lg:py-2.5 lg:px-5 lg:text-xl',
     ]"
   >
     <div v-if="order" class="flex items-center justify-between">
-      <span class="flex items-center space-x-2">
+      <span class="flex space-x-2 md:space-x-3 lg:space-x-4">
         <span>{{ order }}.</span>
         <span>{{ text }}</span>
       </span>

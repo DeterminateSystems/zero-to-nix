@@ -39,8 +39,8 @@ export type Site = {
 const site: Site = {
   title: "Zero to Nix",
   description: "An unofficial, opinionated, gentle introduction to Nix",
-  url: "https://zero-to-nix.vercel.app",
-  canonical: "zero-to-nix.vercel.app",
+  url: "https://zero-to-nix.com",
+  canonical: "zero-to-nix.com",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
   navbarLinks: [{ text: "About", href: "/about" }],
@@ -112,7 +112,7 @@ const site: Site = {
 
   // User interactions
   systems: ["Linux", "macOS"],
-  languages: ["JavaScript", "Python", "Go", "Rust", "C++"],
+  languages: ["JavaScript", "Python", "Go", "Rust", "C++", "Haskell"],
 
   // Nix stuff
   nixTerms: [
@@ -125,7 +125,7 @@ const site: Site = {
     {
       title: "Nix language",
       description:
-        "A language for instructing Nix how to build packages, environments and systems.",
+        "A language for instructing Nix how to build packages, environments, and systems.",
       href: "/concepts/nix-language",
     },
     {
