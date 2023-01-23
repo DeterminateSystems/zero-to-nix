@@ -50,12 +50,6 @@
       }
     }
 
-    p {
-      code {
-        @apply inline-block;
-      }
-    }
-
     a {
       @apply underline hover:text-primary dark:hover:text-light-blue;
 

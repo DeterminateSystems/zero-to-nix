@@ -32,7 +32,7 @@ Future `nix search` runs for Nixpkgs should be much speedier.
 Furthermore, Nixpkgs is the largest flake in existence and running `nix search` on other flakes should be much faster in general.
 </Admonition>
 
-This brings up many results of the form `legacyPackages.<system>.<package>`, the first of which should look like this on an Apple Silicon (`aarch64-darwin`) system:
+This brings up many results of the form `legacyPackages.{system}.{package}`, the first of which should look like this on an Apple Silicon (`aarch64-darwin`) system:
 
 ```shell
 * legacyPackages.aarch64-darwin.cargo (1.65.0)
@@ -44,9 +44,7 @@ After that first result, you should see many others, including packages like [`c
 
 <Admonition warning title="`legacyPackages` isn't legacy software" id="legacy-packages" client:load>
 The `legacyPackages` attribute that you see in the search output is a bit misleading.
-The [packages] prefaced with that aren't *legacy packages*
-
-[docs][legacy-comment]
+The [packages] prefaced with that aren't "legacy" packages; instead, [Nixpkgs] uses a special `legacyPackages` attribute to output packages instead of the usual `packages` output for reasons laid out [here][legacy-comment].
 </Admonition>
 
 You can also output search results as JSON using the `--json` flag:
