@@ -4,7 +4,7 @@
     <pre
       class="language-shell"
     ><code><span class="token function">mkdir</span> {{ `nix-${template}` }} <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> {{  `nix-${template}` }}
-nix flake init <span class="token parameter variable">--template</span> <span class="token string">"github:DeterminateSystems/templates#{{ template }}"</span></code></pre>
+nix flake init <span class="token parameter variable">--template</span> <span class="token string">"github:DeterminateSystems/zero-to-nix#{{ template }}"</span></code></pre>
   </div>
 </template>
 
