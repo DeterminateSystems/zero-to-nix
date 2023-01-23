@@ -12,6 +12,6 @@ const lang = computed(() => {
   <div class="language-shell" data-lang="shell">
     <pre
       class="language-shell"
-    ><code>nix develop <span class="token string">"github:DeterminateSystems/templates#{{ lang }}"</span></code></pre>
+    ><code>nix develop <span class="token string">"github:DeterminateSystems/zero-to-nix#{{ lang }}"</span></code></pre>
   </div>
 </template>
