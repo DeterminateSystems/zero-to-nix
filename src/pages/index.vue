@@ -50,23 +50,22 @@
       <div class="space-y-6">
         <h2
           class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
-          id="key-terms"
-        >
-          <a href="#key-terms">Core Nix components</a>
-        </h2>
-
-        <NixTerms />
-      </div>
-
-      <div class="space-y-6">
-        <h2
-          class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
           id="features"
         >
           <a href="#features">What the Nix ecosystem offers</a>
         </h2>
 
         <Features />
+      </div>
+      <div class="space-y-6">
+        <h2
+          class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
+          id="key-terms"
+        >
+          <a href="#key-terms">Core Nix components</a>
+        </h2>
+
+        <NixTerms />
       </div>
     </section>
   </HorizontalContainer>
