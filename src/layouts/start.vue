@@ -11,6 +11,8 @@
             title,
           }"
           size="normal"
+          :total="numQuickStartPages"
+          :order="order"
           client:none
         />
 
@@ -38,7 +40,7 @@
 
 <script setup lang="ts">
 import { usePage } from "iles";
-import { QuickStartPageProps } from "~/logic/content";
+import { numQuickStartPages, QuickStartPageProps } from "~/logic/content";
 const {
   frontmatter: { title, description, summary, order },
 } = usePage<QuickStartPageProps>();

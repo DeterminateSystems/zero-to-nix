@@ -97,6 +97,11 @@
             ${run "pnpm"} run typecheck
           '')
 
+          (writeScriptBin "preview" ''
+            build
+            ${run "pnpm"} run preview
+          '')
+
           # Run this to see if CI will pass
           (writeScriptBin "ci" ''
             build-ci

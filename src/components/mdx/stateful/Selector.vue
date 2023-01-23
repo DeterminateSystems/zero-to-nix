@@ -1,6 +1,6 @@
 <template>
   <div
-    className="not-prose text-base inline-flex items-center space-x-6 rounded-lg border-1.5 border-light-gray bg-pale py-2.5 pl-6 pr-4 dark:border-gray dark:bg-inherit"
+    className="not-prose text-base inline-flex items-center space-x-6 rounded-lg border-1.5 border-light-gray py-2.5 pl-6 pr-4 dark:border-gray dark:bg-inherit"
   >
     <p className="text-base font-semibold tracking-tight md:text-lg lg:text-xl">
       {{ title }}
@@ -15,10 +15,10 @@
           v-slot="{ selected }"
         >
           <button
-            class="mg:text-base rounded-lg py-1 px-1.5 text-sm font-semibold tracking-tight md:py-0.5 md:px-2 lg:py-1.5 lg:px-3 lg:text-lg"
+            class="rounded-lg border-1.5 py-1 px-1.5 text-sm font-semibold tracking-tight focus:outline-none md:py-0.5 md:px-2 md:text-base lg:py-1.5 lg:px-3 lg:text-lg"
             :class="{
-              'bg-primary text-white': selected,
-              'hover:text-primary': !selected,
+              'border-primary bg-pale dark:bg-darker-gray': selected,
+              'border-pale hover:text-primary dark:border-dark': !selected,
             }"
           >
             {{ option }}

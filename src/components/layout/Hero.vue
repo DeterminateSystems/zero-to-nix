@@ -27,7 +27,26 @@
       v-html="md(description)"
     />
 
-    <Breadcrumb v-if="breadcrumb" :breadcrumb="breadcrumb" />
+    <Breadcrumb
+      v-if="breadcrumb"
+      :breadcrumb="breadcrumb"
+      :total="total"
+      :order="order"
+    />
+
+    <div
+      v-if="wip"
+      class="bg:light-orange rounded border-1.5 border-orange py-1.5 px-3 text-xs md:py-2 md:px-3.5 md:text-sm lg:py-3 lg:px-4 lg:text-base"
+    >
+      <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
+        <IconFaSolidHammer class="h-3 w-3 text-orange md:h-4 md:w-4" />
+        <p>
+          This document is a work in progress. It's intended to provide a brief
+          definition or overview and nothing more. We'll be iterating on this
+          content heavily in the coming weeks and months.
+        </p>
+      </div>
+    </div>
 
     <div v-if="buttons" class="flex items-center space-x-4 pt-2">
       <a
@@ -55,6 +74,9 @@ const { size: heroSize = "normal" } = defineProps<{
   size?: "normal" | "lg";
   breadcrumb?: BreadcrumbProps;
   buttons?: ButtonProps[];
+  wip?: boolean;
+  total?: number;
+  order?: number;
 }>();
 
 const normalHero = heroSize === "normal";

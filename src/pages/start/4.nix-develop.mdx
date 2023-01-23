@@ -1,12 +1,12 @@
 ---
 title: Explore Nix development environments
+path: /start/nix-develop
 summary: [
   "Use the `nix develop` command to enter a Nix environment defined in a [flake](/concepts/flakes)",
   "Run a command inside a development environment without actually entering that environment",
   "Explore Nix development environments tailor made for specific programming languages",
   "Explore a more mixed development environment"
 ]
-order: 4
 ---
 
 One of Nix's key features for developing software is Nix [development environments][dev].
@@ -26,9 +26,13 @@ This is in contrast to most [package managers][pkg], which install things more q
 Future `nix develop` invocations should be much faster, as Nix doesn't need to build the packages again.
 </Admonition>
 
-You should be greeted with the message "Welcome to a Nix development environment!" and a new shell prompt.
+You should be greeted by a new shell prompt, something like this:
 
-:rocket: Congrats!
+```shell
+(nix:example) bash-5.1$
+```
+
+:rocket: **Success**!
 You're now in a [Bash] environment that includes [curl] and [Git].
 You may already have both in your environment, but run these commands to see that something new is happening:
 
@@ -49,7 +53,7 @@ What happened here? The [Nix] CLI did a few things:
 
 A few other things:
 
-* The `Welcome to a Nix development environment!` greeting is defined in the *shell hook*. This is arbitrary shell code that runs when the environment starts up.
+* Although this example doesn't include one, you can define *shell hooks* in your Nix development environments. This is arbitrary shell code that runs whenever the environment starts up.
   Some example use cases for shell hooks:
   * `echo` information about the environment to the console whenever the environment is activated
   * Run things like checks and linters
@@ -222,6 +226,7 @@ For more info, see [Effortless dev environments with Nix and direnv][nix-direnv]
 [go]: https://go.dev
 [hermeticity]: /concepts/hermeticity
 [hooks]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
+[installer]: /concepts/nix-installer
 [kubectl]: https://kubernetes.io/docs/reference/kubectl
 [language]: /concepts/nix-language
 [last]: /start/nix-run
