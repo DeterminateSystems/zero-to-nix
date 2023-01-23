@@ -17,6 +17,16 @@
           <IconAppNix
             class="h-5 w-5 fill-primary md:h-6 md:w-6 lg:h-7 lg:w-7"
           />
+
+          <span class="text-sm font-light md:text-base lg:text-lg">
+            from
+            <a
+              href="https://determinate.systems"
+              class="font-semibold hover:text-primary dark:hover:text-light-blue"
+              target="_blank"
+              >Determinate Systems</a
+            >
+          </span>
         </div>
 
         <!-- Visible only on mobile -->
