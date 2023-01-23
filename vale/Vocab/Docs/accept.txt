@@ -38,6 +38,7 @@ fetchgit
 ffmpeg
 ffprobe
 fhs
+firefox
 fstype
 func
 gcc
@@ -46,6 +47,7 @@ gh
 ghc
 github
 gpg
+gtk
 guix
 haskell
 hermeticity
