@@ -10,9 +10,10 @@
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
-          :wip="wip"
           client:none
         />
+
+        <QuickStart client:load />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">
           <Content>

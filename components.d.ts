@@ -57,6 +57,7 @@ declare module '@vue/runtime-core' {
     PageSurveyFeedback: typeof import('./src/components/layout/PageSurveyFeedback.vue')['default']
     PageSurveyThankYou: typeof import('./src/components/layout/PageSurveyThankYou.vue')['default']
     Pagination: typeof import('./src/components/layout/Pagination.vue')['default']
+    QuickStart: typeof import('./src/components/layout/QuickStart.vue')['default']
     QuickStartDropdown: typeof import('./src/components/layout/QuickStartDropdown.vue')['default']
     Related: typeof import('./src/components/layout/Related.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
