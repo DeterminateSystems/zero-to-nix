@@ -104,6 +104,8 @@
 
           # Run this to see if CI will pass
           (writeScriptBin "ci" ''
+            set -e
+
             build-ci
             check-internal-links
             lint-style
