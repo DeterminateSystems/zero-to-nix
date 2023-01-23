@@ -83,7 +83,7 @@ The code below, for example, calls a function called `my_function` with the para
 
 ```nix
 {
-  my_value = (my_function 2 3);
+  my_value = my_function 2 3;
 }
 ```
 
@@ -96,7 +96,7 @@ Functions are defined using this syntax, where `x` and `y` are attributes passed
 ```
 
 The body of the function automatically returns the result of the function.
-As you can see in the example above, functions are called by putting `( )` braces around it and its parameters.
+As you can see in the example above, functions are called by spaces between it and its parameters.
 No commas are needed to separated parameters.
 
 The two most common data structures are *attribute sets* and *lists*.
