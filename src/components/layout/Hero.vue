@@ -43,8 +43,6 @@
       </div>
     </div>
 
-    <QuickStart v-if="banner" client:load />
-
     <div v-if="buttons" class="flex items-center space-x-4 pt-2">
       <a
         v-for="({ text, href, highlight }, idx) in buttons"
@@ -72,7 +70,6 @@ const { size: heroSize = "normal" } = defineProps<{
   breadcrumb?: BreadcrumbProps;
   buttons?: ButtonProps[];
   wip?: boolean;
-  banner?: boolean;
 }>();
 
 const normalHero = heroSize === "normal";
