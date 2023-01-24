@@ -35,12 +35,14 @@ jobs:
           eval "$(nix develop --command direnv export bash)"
           echo "$PATH" >> $GITHUB_PATH
       - name: Cachix setup
+        if: github.event.pull_request.head.repo.full_name == 'DeterminateSystems/zero-to-nix'
         run: |
           cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
           cachix use ${{ secrets.CACHIX_CACHE }}
       - name: Run Nix CI suite
         run: ci
       - name: Push dev shell to Cachix
+        if: github.event.pull_request.head.repo.full_name == 'DeterminateSystems/zero-to-nix'
         run: |
           nix develop --profile zero-to-nix
           cachix push ${{ secrets.CACHIX_CACHE }} zero-to-nix
