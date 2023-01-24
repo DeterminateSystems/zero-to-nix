@@ -28,7 +28,7 @@ jobs:
             binary-caches = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
             trusted-substituters = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
             trusted-users = root runner
-            trusted-public-keys = ${{ secrets.CACHIX_TRUSTED_PUBLIC_KEY }} ${{ secrets.NIXOS_PUBLIC_KEY }}
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= ${{ secrets.CACHIX_TRUSTED_PUBLIC_KEY }}
       - name: direnv activate
         run: |
           nix develop --command direnv allow
