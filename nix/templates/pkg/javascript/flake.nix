@@ -16,23 +16,20 @@
     in
     {
       packages = forAllSystems ({ pkgs }: {
-        default = pkgs.stdenv.mkDerivation {
+        default = pkgs.buildNpmPackage {
           name = "zero-to-nix-javascript";
 
           buildInputs = [
-            pkgs.nodePackages.pnpm
             pkgs.nodejs-18_x
           ];
 
           src = ./.;
 
-          buildPhase = ''
-            pnpm install
-            pnpm run build
-          '';
+          npmDepsHash = "sha256-Ghh9jxxJH7lgn99X1L6WAhrsQhnJlub2cyUUBmSBwfQ=";
 
           installPhase = ''
             mkdir $out
+            npm run build
             cp dist/index.html $out
           '';
         };
