@@ -44,6 +44,11 @@
           description = "Rust dev environment template for Zero to Nix";
         };
 
+        scala-dev = {
+          path = ./nix/templates/dev/scala;
+          description = "Scala dev environment template for Zero to Nix";
+        };
+
         cpp-pkg = {
           path = ./nix/templates/pkg/cpp;
           description = "C++ package starter template for Zero to Nix";
