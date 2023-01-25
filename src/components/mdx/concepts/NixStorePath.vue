@@ -22,14 +22,14 @@
             <strong>2.</strong> Hash part
           </span>
         </div>
-        <span>-</span>
+        <span class="text-dark-gray dark:text-light-gray">-</span>
         <div class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
           <span class="font-mono text-orange dark:text-rose">{{ pkg }}</span>
           <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base" v-if="showExplainer">
             <strong>3.</strong> Package name
           </span>
         </div>
-        <span v-if="bin">/</span>
+        <span v-if="bin" class="text-dark-gray dark:text-light-gray">/</span>
         <div v-if="bin" class="flex flex-col md:space-y-1.5 lg:space-y-1.5">
           <span class="font-mono text-orange dark:text-rose">bin/{{ bin }}</span>
           <span class="font-sans text-xs tracking-tight md:text-sm lg:text-base" v-if="showExplainer">
