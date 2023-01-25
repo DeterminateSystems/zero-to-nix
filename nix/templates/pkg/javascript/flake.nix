@@ -25,7 +25,7 @@
 
           src = ./.;
 
-          npmDepsHash = "sha256-Ghh9jxxJH7lgn99X1L6WAhrsQhnJlub2cyUUBmSBwfQ=";
+          npmDepsHash = "sha256-URiXuRG7FsQ9tL4DSOxDjG+V+FSWxHnfzi0wvZL+pJA=";
 
           installPhase = ''
             mkdir $out
