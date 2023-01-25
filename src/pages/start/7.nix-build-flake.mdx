@@ -100,27 +100,22 @@ Here's the package definition that builds our JavaScript package:
 
 ```nix filename=flake.nix
 {
-  packages.default = pkgs.stdenv.mkDerivation {
+  packages.default = pkgs.buildNpmPackage {
     name = "zero-to-nix-javascript";
 
     # The packages required by the build process
     buildInputs = [
-      pkgs.nodePackages.pnpm
       pkgs.nodejs-18_x
     ];
 
     # The code sources for the package
     src = ./.;
-
-    # The build process
-    buildPhase = ''
-      pnpm install
-      pnpm run build
-    '';
+    npmDepsHash = "sha256-Ghh9jxxJH7lgn99X1L6WAhrsQhnJlub2cyUUBmSBwfQ=";
 
     # How the output of the build phase
     installPhase = ''
       mkdir $out
+      npm run build
       cp dist/index.html $out
     '';
   }
@@ -128,7 +123,7 @@ Here's the package definition that builds our JavaScript package:
 ```
 
 For the full flake, see [`flake.nix`][flake-js] on GitHub or run `cat flake.nix`.
-What you see here is a [derivation] that defines how to build the package, more specifically the `mkDerivation` function provided by Nix's [standard environment][stdenv].
+What you see here is a [derivation] that defines how to build the package, more specifically the `buildNpmPackage` function, which is a wrapper around Nix's built-in derivation function.
 
 The package that results when you run `nix build` is a website built using the [Vite] framework.
 To view that website:
