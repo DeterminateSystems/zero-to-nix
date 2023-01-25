@@ -1,0 +1,82 @@
+---
+title: Add packages to your user profile
+path: /start/nix-profile
+summary:
+  [
+    "Find out which Nix [packages](/concepts/packages) are available to your user profile",
+    "Add packages to your profile",
+    "TODO"
+  ]
+---
+
+The Nix CLI has a [`nix profile`][nix-profile] command that you can use.
+
+Nix has a concept of [user profiles][profiles]
+
+```shell
+nix profile list
+```
+
+In a [previous guide][build] we built and ran [ripgrep].
+What we did *not* do in that guide is add it to a user profile.
+Let's do that now:
+
+```shell
+nix profile install "nixpkgs#ripgrep"
+```
+
+When you run packages using `nix run` or build packages using `nix build`, all build results are added to the [Nix store][store], but they aren't added to any user profile.
+When you run `nix profile install <package>`, however, you build the package and add it to the Nix store (if it isn't there already) and add the package to your profile.
+You can think of a profile as a set of
+
+
+You can undo changes to your profile:
+
+```shell
+nix profile list
+```
+
+You should see something like this:
+
+```
+0 flake:nixpkgs#legacyPackages.aarch64-darwin.ripgrep github:NixOS/nixpkgs/3954218cf613eba8e0dcefa9abe337d26bc48fd0#legacyPackages.aarch64-darwin.ripgrep /nix/store/jvgq5fyklfmnszi4fwcgirvv775xzmdd-ripgrep-13.0.0
+```
+
+This means that your profile now has a generation called `0`&mdash;fitting for Zero to Nix!&mdash;that you can remove with this command:
+
+```shell
+nix profile remove 0
+```
+
+You can verify that ripgrep is no longer available to your profile:
+
+```shell
+type ripgrep
+```
+
+It's important to note here that with Nix profile changes are [atomic].
+Instead of adding and removing specific packages as you would with many other package managers, you
+
+## How profiles work \{#how}
+
+The core mechanism behind user profiles, as with many things in Nix, is [Nix store paths][paths].
+
+<NixStorePath pkg="ripgrep" />
+
+By default in `$HOME/.nix-profile/bin`
+That the `.nix-profile` directory is under `$HOME` is important because it means
+
+<Admonition success open title="Home Manager" id="home-manager" client:load>
+One shortcoming of using the `nix profile` command to manage your user profile is that it's very ad hoc.
+Add a package here, remove a package there, and then you end up with *some* set of packages available to your profile.
+While this may be good enough, many people prefer a much more
+</Admonition>
+
+[atomic]: TODO
+[build]: /start/nix-build-nixpkgs
+[hm]: https://github.com/nix-community/home-manager
+[nix-profile]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-profile
+[paths]: /concepts/nix-store
+[profiles]: https://nixos.org/manual/nix/stable/package-management/profiles
+[ripgrep]: https://github.com/BurntSushi/ripgrep
+[store]: /concepts/nix-store#store-paths
