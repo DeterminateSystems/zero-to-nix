@@ -10,20 +10,19 @@
             back: { title: 'Concepts', href: '/concepts' },
             title,
           }"
-          client:none
         />
 
-        <QuickStart client:load />
+        <QuickStart />
 
         <div class="space-y-8 md:space-y-10 lg:space-y-12">
           <Content>
             <slot />
           </Content>
 
-          <Related v-if="related && related.length > 0" :related="related" />
+          <Related v-if="hasRelated" :related="related" />
 
           <ExternalSources
-            v-if="externalSources && externalSources.length > 0"
+            v-if="hasExternalSources"
             :links="externalSources"
             :showTitle="true"
           />
@@ -36,7 +35,7 @@
       </HorizontalContainer>
     </Top>
 
-    <Footer client:load />
+    <Footer />
   </Page>
 </template>
 
@@ -47,4 +46,7 @@ import { ConceptPageProps } from "~/logic/content";
 const {
   frontmatter: { title, snippet, externalSources, related, wip },
 } = usePage<ConceptPageProps>();
+
+const hasRelated = related && related.length > 0;
+const hasExternalSources = externalSources && externalSources.length > 0;
 </script>

@@ -3,7 +3,7 @@
     <Top>
       <Navbar />
       <HorizontalContainer>
-        <Hero :title="title" :description="description" client:none />
+        <Hero :title="title" :description="description" />
 
         <Content>
           <slot />
@@ -16,7 +16,7 @@
       </HorizontalContainer>
     </Top>
 
-    <Footer client:load />
+    <Footer />
   </Page>
 </template>
 

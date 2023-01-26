@@ -4,6 +4,6 @@
       <Navbar />
       <slot />
     </Top>
-    <Footer client:load />
+    <Footer />
   </Page>
 </template>

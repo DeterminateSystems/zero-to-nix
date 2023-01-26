@@ -26,15 +26,13 @@
 
         <div class="mt-16 space-y-12">
           <Pagination :order="order" />
-
           <Separator />
-
           <FeedbackBar />
         </div>
       </HorizontalContainer>
     </Top>
 
-    <Footer client:load />
+    <Footer />
   </Page>
 </template>
 
