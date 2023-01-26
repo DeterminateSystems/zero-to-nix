@@ -10,12 +10,9 @@ export default defineApp({
     htmlAttrs: {
       lang: languageCode,
     },
-    /*
     meta: [
-      { property: "HandheldFriendly", content: "True" },
-      { property: "MobileOptimized", content: "320" },
+      { name: "google-site-verification", content: "Sv3w9s25Ovp0Qj2VlyNNL6etToADAPQys8kbJ_e_Df8" },
     ],
-    */
     script: [
       // This approach taken from the îles site:
       // https://github.com/ElMassimo/iles/blob/cacd1947281008b299793f617757262871ace795/docs/src/logic/dark-color-scheme-check.ts
