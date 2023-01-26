@@ -27,14 +27,21 @@
     {
       # Development environment output
       devShells = forAllSystems ({ pkgs }: {
-        default = pkgs.mkShell {
-          # The Nix packages provided in the environment
-          packages = with pkgs; [
-            python311 # Python 3.11
-            virtualenv # Virtualenv
-            python311Packages.pip # The pip installer
-          ];
-        };
+        default =
+          let
+            # Use Python 3.11
+            python = pkgs.python311;
+          in
+          pkgs.mkShell {
+            # The Nix packages provided in the environment
+            packages = [
+              # Python plus helper tools
+              (python.withPackages (ps: with ps; [
+                virtualenv # Virtualenv
+                pip # The pip installer
+              ]))
+            ];
+          };
       });
     };
 }
