@@ -12,19 +12,26 @@ import site from "~/site";
 
 const { url } = site;
 
-type WithTags = PageProps & {
+type Page = PageProps & {
+  title: string;
   tags?: string[];
+  order?: number;
 };
 
 const {
-  frontmatter: { href, tags },
-} = usePage<WithTags>();
+  frontmatter: { title: rawTitle, href, tags, order },
+  route,
+} = usePage<Page>();
+
+const section = route.fullPath.split("/").at(1)!;
+const title = section === "start" ? `${order!}. ${rawTitle}` : rawTitle;
 
 const canonical = new URL(url, href).toString();
 
 useHead({
   link: [{ rel: "canonical", href: canonical }],
   meta: tags && [{ name: "keywords", content: tags!.join(",") }],
+  title,
 });
 </script>
 
