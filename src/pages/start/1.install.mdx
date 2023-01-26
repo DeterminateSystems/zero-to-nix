@@ -19,6 +19,8 @@ The best way to install Nix is to use [Nix installer][nix-installer], a tool fro
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
+Nix Installer supports macOS, Linux, and Windows WSL.
+
 <Admonition info title="Why aren't we using the official Nix installation script here?" id="why-nix-installer" client:load>
 We believe that Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
 Unlike many tools, Nix needs to make several changes to your system in order to work properly, such as creating a new `/nix` directory, configuring your shell profile, and creating several new system users and groups.
