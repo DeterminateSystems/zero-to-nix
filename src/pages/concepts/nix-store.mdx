@@ -27,7 +27,9 @@ externalSources: [
 The *Nix store* is a storage system in your filesystem with its root at `/nix/store` by default.
 The Nix daemon stores several things in the Nix store:
 
-- The products of [derivations]
+- [derivations]: stand-alone files suffixed with `.drv` such as `/nix/store/<hash>-my-package.drv`
+- The products of [derivations]: a folder containing build outputs such as `/nix/store/<hash>-my-package/`
+- [patches](https://nixos.org/manual/nixpkgs/stable/#sec-patches): stand-alone files suffixed with `.patch` such as `/nix/store/<hash>-my-package.patch`
 
 ## Store paths
 
