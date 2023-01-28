@@ -1,5 +1,5 @@
 {
-  description = "Python example flake for Zero to Nix";
+  description = "C++ example flake for Zero to Nix";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
