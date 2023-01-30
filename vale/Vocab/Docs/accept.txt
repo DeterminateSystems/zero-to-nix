@@ -16,6 +16,7 @@ cargolock
 cachix
 changemeplz
 channable
+chmod
 ci
 clis
 cmake
