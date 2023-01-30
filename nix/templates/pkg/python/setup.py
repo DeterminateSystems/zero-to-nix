@@ -7,6 +7,6 @@ setup(
     version='0.1.0',
     py_modules=['hello'],
     entry_points={
-        'console_scripts': ['hello = hello:main']
+        'console_scripts': ['zero-to-nix-python = hello:main']
     },
 )
