@@ -31,7 +31,7 @@ Future `nix run` invocations should be instantaneous, as Nix doesn't need to bui
 
 What happened here? The [Nix] CLI did a few things:
 
-* It used the `nixpkgs#ponysay` [flake reference][ref] to pull in some Nix code and targeted a specific [flake output][output] (more on this later).
+* It used the `nixpkgs` [flake reference][ref] to pull in some Nix code and targeted the `ponysay` [flake output][output] (more on this later).
 * It built the [`ponysay` package][ponysay] and stored the result in the [Nix store][store].
 * It ran the executable at `bin/ponysay` from the `ponysay` package.
 

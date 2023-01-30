@@ -99,10 +99,10 @@ const { id, title, open, danger, info, success, warning } = defineProps<{
   title?: string;
   open?: boolean;
   // Kinds
-  danger: boolean;
-  info: boolean;
-  success: boolean;
-  warning: boolean;
+  danger?: boolean;
+  info?: boolean;
+  success?: boolean;
+  warning?: boolean;
 }>();
 
 const openInitVal = open ?? false ? "true" : "false";

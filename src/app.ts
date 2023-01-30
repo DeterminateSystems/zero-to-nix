@@ -11,7 +11,10 @@ export default defineApp({
       lang: languageCode,
     },
     meta: [
-      { name: "google-site-verification", content: "Sv3w9s25Ovp0Qj2VlyNNL6etToADAPQys8kbJ_e_Df8" },
+      {
+        name: "google-site-verification",
+        content: "Sv3w9s25Ovp0Qj2VlyNNL6etToADAPQys8kbJ_e_Df8",
+      },
     ],
     script: [
       // This approach taken from the îles site:
