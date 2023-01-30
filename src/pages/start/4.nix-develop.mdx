@@ -51,14 +51,21 @@ What happened here? The [Nix] CLI did a few things:
 * It built the [packages] specified in the environment configuration (again, more on this later).
 * It set up an environment with a [`PATH`][path] that enables the `git` and `curl` packages to be discovered in the [Nix store][store].
 
-A few other things:
+Two other things that you can provide in Nix development environments:
 
-* Although this example doesn't include one, you can define *shell hooks* in your Nix development environments. This is arbitrary shell code that runs whenever the environment starts up.
+1. Although this example doesn't include one, you can define *shell hooks*, which are arbitrary shell code that runs whenever the environment starts up.
   Some example use cases for shell hooks:
   * `echo` information about the environment to the console whenever the environment is activated
   * Run things like checks and linters
   * Ensure that other desired hooks, like [Git hooks][hooks], are properly set up
-* Nix development environments support environment variables as well. Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
+
+  Run this to see an example shell hook:
+
+  ```shell
+  nix develop "github:DeterminateSystems/zero-to-nix#hook"
+  ```
+
+1. Nix development environments support environment variables as well. Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
   Some example use cases for environment variables:
   * Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
   * Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
