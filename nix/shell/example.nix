@@ -7,6 +7,14 @@
     FUNNY_JOKE = "What kind of phone does a turtle use? A shell phone!";
   };
 
+  hook = pkgs.mkShell {
+    shellHook = ''
+      echo "Congrats! You just triggered a shell hook for a Nix development environment."
+      echo "Run \"exit\" to exit this environment."
+      echo "Then run \"nix develop github:DeterminateSystems/zero-to-nix#hook\" again to re-trigger this hook."
+    '';
+  };
+
   cpp = pkgs.mkShell {
     packages = with pkgs; [ gcc cmake ];
 
