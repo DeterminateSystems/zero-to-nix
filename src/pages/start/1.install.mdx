@@ -19,13 +19,16 @@ The best way to install Nix is to use [Nix installer][nix-installer], a tool fro
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-If you have concerns about the "curl to Bash" approach you can examine the installation script [here][script] and use these steps instead:
+If you have concerns about the "curl to Bash" approach you have two options:
 
-```shell
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix > nix-installer.sh
-chmod +x nix-installer.sh
-./nix-installer.sh install
-```
+1. You can download a binary for the most recent version of Nix Installer directly from the [releases] page and run it.
+1. You can examine the installation script [here][script] then download and run it:
+
+  ```shell
+  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix > nix-installer.sh
+  chmod +x nix-installer.sh
+  ./nix-installer.sh install
+  ```
 
 <Admonition info title="Why aren't we using the official Nix installation script here?" id="why-nix-installer" client:load>
 We believe that Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
@@ -80,6 +83,7 @@ There are four main ways to do that:
 [nix-installer]: /concepts/nix-installer
 [official]: https://nixos.org/download
 [pr]: https://github.com/DeterminateSystems/zero-to-nix/pulls
+[releases]: https://github.com/DeterminateSystems/nix-installer/releases
 [repo]: https://github.com/DeterminateSystems/zero-to-nix
 [script]: https://raw.githubusercontent.com/DeterminateSystems/nix-installer/main/nix-installer.sh
 [start]: /start
