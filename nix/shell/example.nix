@@ -56,7 +56,7 @@
   };
 
   rust = pkgs.mkShell {
-    packages = with pkgs; [ cargo ];
+    packages = with pkgs; [ cargo rustc ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for Rust!"
