@@ -13,13 +13,18 @@ In this [quick start][start], we'll get Nix installed on your system and provide
 
 ## Install Nix \{#up}
 
-The best way to install Nix is to use [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system:
+The best way to install Nix is to use [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system.
+Nix Installer supports these platforms:
+
+* Multi-user Linux with [systemd] init on 64-bit ARM and 64-bit AMD/Intel (no [SELinux])
+* Multi-user macOS on 64-bit ARM and 64-bit AMD/Intel
+* [Valve Steam Deck][steamdeck]
+
+To run Nix Installer:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
-
-Nix Installer supports macOS, Linux, and Windows WSL.
 
 If you have concerns about the "curl to Bash" approach you have two options:
 
@@ -88,6 +93,9 @@ There are four main ways to do that:
 [releases]: https://github.com/DeterminateSystems/nix-installer/releases
 [repo]: https://github.com/DeterminateSystems/zero-to-nix
 [script]: https://raw.githubusercontent.com/DeterminateSystems/nix-installer/main/nix-installer.sh
+[selinux]: https://www.redhat.com/en/topics/linux/what-is-selinux
 [start]: /start
+[steamdeck]: https://steamdeck.com
 [store]: /concepts/nix-store
+[systemd]: https://systemd.io
 [uninstall]: /start/uninstall
