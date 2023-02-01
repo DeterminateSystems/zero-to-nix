@@ -13,6 +13,7 @@
     let
       pname = "zero-to-nix-scala";
       version = "0.1.0";
+      scalaVersion = "2.12";
 
       nameValuePair = name: value: { inherit name value; };
       genAttrs = names: f: builtins.listToAttrs (map (n: nameValuePair n (f n)) names);
@@ -23,26 +24,20 @@
       });
     in
     {
-      devShells = forAllSystems ({ pkgs, system }: {
-        default = pkgs.mkShell {
-          packages = [ pkgs.sbt ];
-        };
-      });
-
       packages = forAllSystems ({ pkgs, system }: {
         default = sbt.mkSbtDerivation.${system} {
           inherit pname version;
           depsSha256 = "sha256-ebtaZPbLylPt17/r++1QFWezOBfSUB9J8djkOHOpWbE=";
-          nativeBuildInputs = [ pkgs.makeWrapper ];
+          nativeBuildInputs = with pkgs; [ makeWrapper ];
           src = ./.;
           buildPhase = ''
             sbt package
           '';
           installPhase = ''
             mkdir -p $out/bin
-            cp target/scala-2.12/${pname}_2.12-${version}.jar $out/bin/${pname}.jar
-            makeWrapper ${pkgs.jre}/bin/java $out/bin/${pname} \
-              --add-flags "-jar $out/bin/${pname}.jar"
+            cp target/scala-${scalaVersion}/${pname}_${scalaVersion}-${version}.jar $out/bin/${pname}.jar
+            #makeWrapper ${pkgs.jre}/bin/java $out/bin/${pname} \
+            #  --add-flags "-jar $out/bin/${pname}.jar"
           '';
         };
       });
