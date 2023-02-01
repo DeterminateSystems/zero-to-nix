@@ -49,13 +49,9 @@ See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the 
 
 Validate the displayed plan and approve it to begin the installation process.
 Once Nix Installer has finished, you should see `Nix was installed successfully!` in your terminal.
-Then you can load the Nix executable into your `PATH`:
 
-```shell
-exec $SHELL
-```
-
-Finally, verify that installation has succeeded:
+Open a new terminal session and the `nix` executable should be in your `$PATH`.
+To verify that:
 
 ```bash
 nix --version
