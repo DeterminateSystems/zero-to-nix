@@ -31,7 +31,7 @@ const canonical = new URL(url, href).toString();
 useHead({
   link: [
     { rel: "canonical", href: canonical },
-    { rel: "shortcut icon", type: "image/png", href: "favicon.png" },
+    { rel: "shortcut icon", type: "image/png", href: "/favicon.png" },
   ],
   meta: tags && [{ name: "keywords", content: tags!.join(",") }],
   title,
