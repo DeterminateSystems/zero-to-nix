@@ -30,7 +30,6 @@ declare module '@vue/runtime-core' {
     HoverableExternalSourceLink: typeof import('./src/components/layout/HoverableExternalSourceLink.vue')['default']
     HoverableLink: typeof import('./src/components/layout/HoverableLink.vue')['default']
     IconAppClose: typeof import('~icons/app/close')['default']
-    IconAppNix: typeof import('~icons/app/nix')['default']
     IconFaBolt: typeof import('~icons/fa/bolt')['default']
     IconFaCheck: typeof import('~icons/fa/check')['default']
     IconFaChevronRight: typeof import('~icons/fa/chevron-right')['default']
