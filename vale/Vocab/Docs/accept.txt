@@ -16,6 +16,7 @@ cargolock
 cachix
 changemeplz
 channable
+chmod
 ci
 clis
 cmake
@@ -101,7 +102,9 @@ shopify
 src
 stdenv
 stdlib
+steamdeck
 sudo
+systemd
 tooltip
 tmux
 tweag

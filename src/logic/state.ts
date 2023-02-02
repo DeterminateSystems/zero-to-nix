@@ -39,3 +39,15 @@ export const toggleDrawer = () => {
 export const closeDrawer = () => {
   drawerAtom.set(false);
 };
+
+// Mailing list modal
+const modalAtom = atom<boolean>(false);
+export const modalIsOpen = useStore(modalAtom);
+
+export const openModal = () => {
+  modalAtom.set(true);
+};
+
+export const closeModal = () => {
+  modalAtom.set(false);
+};

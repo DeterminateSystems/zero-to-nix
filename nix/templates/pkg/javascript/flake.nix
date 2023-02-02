@@ -19,17 +19,18 @@
         default = pkgs.buildNpmPackage {
           name = "zero-to-nix-javascript";
 
-          buildInputs = [
-            pkgs.nodejs-18_x
+          buildInputs = with pkgs; [
+            nodejs-18_x
           ];
 
           src = ./.;
 
-          npmDepsHash = "sha256-URiXuRG7FsQ9tL4DSOxDjG+V+FSWxHnfzi0wvZL+pJA=";
+          npmDepsHash = "sha256-A85l8kFgIU2grgDQNBM7ilLVPehMl6ilkpt4YoiZyeo=";
+
+          npmBuild = "npm run build";
 
           installPhase = ''
             mkdir $out
-            npm run build
             cp dist/index.html $out
           '';
         };
