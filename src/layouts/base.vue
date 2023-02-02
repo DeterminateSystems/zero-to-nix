@@ -1,9 +1,11 @@
 <template>
   <Banner client:load />
 
-  <slot />
-
   <CookieConsent client:load />
+
+  <Modal client:load />
+
+  <slot />
 </template>
 
 <script setup lang="ts">
