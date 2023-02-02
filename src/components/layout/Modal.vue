@@ -115,9 +115,9 @@ import {
 } from "@headlessui/vue";
 
 import site from "~/site";
-const { mailingListTags } = site;
-
 import { closeModal, modalIsOpen } from "~/logic/state";
+
+const { mailingListTags } = site;
 
 const tags = mailingListTags.join(",");
 </script>
