@@ -66,7 +66,7 @@
                 <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
               </div>
               <div hidden="true">
-                <input type="hidden" name="tags" value="294155,290793,294258" />
+                <input type="hidden" name="tags" :value="tags" />
               </div>
               <div id="mce-responses" class="clear">
                 <div
@@ -114,9 +114,10 @@ import {
   DialogDescription,
 } from "@headlessui/vue";
 
+import site from "~/site";
+const { mailingListTags } = site;
+
 import { closeModal, modalIsOpen } from "~/logic/state";
 
-const subscribe = () => {
-  alert("Subscribed!");
-};
+const tags = mailingListTags.join(",");
 </script>

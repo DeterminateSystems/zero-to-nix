@@ -34,6 +34,7 @@ export type Site = {
     text: string;
     generation: number;
   };
+  mailingListTags: string[];
 };
 
 const site: Site = {
@@ -146,6 +147,10 @@ const site: Site = {
     text: "🎉 Welcome to **Zero to Nix**, a brand new learning resource for [Nix](/concepts/nix)!",
     generation: 1,
   },
+
+  mailingListTags: [
+    "294258", // zero-to-nix
+  ],
 };
 
 export default site;
