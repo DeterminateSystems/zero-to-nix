@@ -67,6 +67,10 @@
 
         <NixTerms />
       </div>
+
+      <div class="mt-12">
+        <Signup client:load />
+      </div>
     </section>
   </HorizontalContainer>
 </template>

@@ -10,6 +10,13 @@ export default defineApp({
     htmlAttrs: {
       lang: languageCode,
     },
+    link: [
+      {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "//cdn-images.mailchimp.com/embedcode/classic-071822.css",
+      },
+    ],
     meta: [
       {
         name: "google-site-verification",

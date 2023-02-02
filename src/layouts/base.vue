@@ -1,9 +1,11 @@
 <template>
   <Banner client:load />
 
-  <slot />
-
   <CookieConsent client:load />
+
+  <Modal client:load />
+
+  <slot />
 </template>
 
 <script setup lang="ts">
@@ -40,4 +42,10 @@ useHead({
 
 <style>
 @import "~/assets/css/main"; /* main.css */
+
+/* Mailchimp embed styling */
+#mc_embed_signup {
+  background: inherit;
+  clear: left;
+}
 </style>
