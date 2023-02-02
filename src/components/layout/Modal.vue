@@ -1,6 +1,6 @@
 <template>
   <Dialog
-    :open="true"
+    :open="modalIsOpen"
     @close="closeModal"
     class="relative z-50 text-dark dark:text-dark"
   >

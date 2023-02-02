@@ -44,8 +44,8 @@ export const closeDrawer = () => {
 const modalAtom = atom<boolean>(false);
 export const modalIsOpen = useStore(modalAtom);
 
-export const toggleModal = () => {
-  modalAtom.set(!modalAtom.get());
+export const openModal = () => {
+  modalAtom.set(true);
 };
 
 export const closeModal = () => {
