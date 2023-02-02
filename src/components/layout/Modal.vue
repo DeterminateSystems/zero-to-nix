@@ -114,7 +114,7 @@ import {
   DialogDescription,
 } from "@headlessui/vue";
 
-import { closeModal, modalIsOpen, toggleModal } from "~/logic/state";
+import { closeModal, modalIsOpen } from "~/logic/state";
 
 const subscribe = () => {
   alert("Subscribed!");
