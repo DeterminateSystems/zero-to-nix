@@ -42,4 +42,10 @@ useHead({
 
 <style>
 @import "~/assets/css/main"; /* main.css */
+
+/* Mailchimp embed styling */
+#mc_embed_signup {
+  background: inherit;
+  clear: left;
+}
 </style>
