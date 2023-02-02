@@ -47,6 +47,7 @@ declare module '@vue/runtime-core' {
     Language: typeof import('./src/components/mdx/stateful/Language.vue')['default']
     Languages: typeof import('./src/components/mdx/stateful/Languages.vue')['default']
     Modal: typeof import('./src/components/layout/Modal.vue')['default']
+    ModalButton: typeof import('./src/components/layout/ModalButton.vue')['default']
     Navbar: typeof import('./src/components/layout/Navbar.vue')['default']
     NixDevelop: typeof import('./src/components/mdx/code/NixDevelop.vue')['default']
     NixStorePath: typeof import('./src/components/mdx/concepts/NixStorePath.vue')['default']
