@@ -66,7 +66,7 @@
                 <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
               </div>
               <div hidden="true">
-                <input type="hidden" name="tags" value="294155,290793" />
+                <input type="hidden" name="tags" value="294155,290793,294258" />
               </div>
               <div id="mce-responses" class="clear">
                 <div
