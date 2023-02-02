@@ -4,26 +4,48 @@ path: /start/nix-profile
 summary:
   [
     "Find out which Nix [packages](/concepts/packages) are available to your user profile",
-    "Add packages to your profile",
-    "TODO"
+    "Add Nix [packages](/concepts/packages) to your profile",
   ]
 ---
 
-The Nix CLI has a [`nix profile`][nix-profile] command that you can use.
+Thus far in the Zero to Nix quick start we've used Nix to [run] programs and [build packages][build].
+In this guide we'll make some packages globally available in our environment the way that tools like [Homebrew] and [apt] do.
+
+## Nix user profiles
 
 Nix has a concept of [user profiles][profiles]
+
+The Nix CLI has a [`nix profile`][nix-profile] command that you can use.
+
+
 
 ```shell
 nix profile list
 ```
 
-In a [previous guide][build] we built and ran [ripgrep].
+In a [previous guide][build] we used Nix to build and run [ripgrep], a tool for searching directories for specific text patterns.
 What we did *not* do in that guide is add it to a user profile.
 Let's do that now:
 
 ```shell
 nix profile install "nixpkgs#ripgrep"
 ```
+
+Now run `rg --version` to verify that it's installed (`rg` is the name of the ripgrep executable).
+
+If you already have ripgrep installed via other means, the Nix-installed package will take precedence, which you can verify by running `type rg`
+
+Now that ripgrep is installed globally, `cd` into a project and see if there are any TODO messages in your code:
+
+```shell
+rg 'TODO: [A-Za-z0-9 ]+'
+```
+
+This ripgrep command would discover things like `TODO: make this prettier` or `TODO: refactor into modules`.
+
+<Admonition warning open title="Be wary of ad-hoc profile management" id="nix-profile-ad-hoc" client:load>
+See the [Making profiles declarative](#declarative) section below
+</Admonition>
 
 When you run packages using `nix run` or build packages using `nix build`, all build results are added to the [Nix store][store], but they aren't added to any user profile.
 When you run `nix profile install <package>`, however, you build the package and add it to the Nix store (if it isn't there already) and add the package to your profile.
@@ -54,17 +76,22 @@ You can verify that ripgrep is no longer available to your profile:
 type ripgrep
 ```
 
-It's important to note here that with Nix profile changes are [atomic].
+It's important to note here that with Nix profile changes are *atomic*.
 Instead of adding and removing specific packages as you would with many other package managers, you
 
 ## How profiles work \{#how}
 
 The core mechanism behind user profiles, as with many things in Nix, is [Nix store paths][paths].
+Here's an example Nix store path for a ripgrep package:
 
 <NixStorePath pkg="ripgrep" />
 
-By default in `$HOME/.nix-profile/bin`
-That the `.nix-profile` directory is under `$HOME` is important because it means
+The **hash part** is important here because it means that you can have any number of packages named `ripgrep` in your [Nix store][store] with a hash that differs whenever the package inputs differ.
+This means that Nix can support an indefinite number of user profiles on a single host.
+Two users can have different versions of ripgrep in their profile because they don't need to share a global path like `/usr/bin/rg`.
+
+When you add a package to a user profile, Nix adds a symlink to the executable in the Nix store under `$HOME/.nix-profile/bin`.
+That the `.nix-profile` directory is under `$HOME` is important because it means that each user on the host can have its own set of symlinks.
 
 <Admonition success open title="Home Manager" id="home-manager" client:load>
 One shortcoming of using the `nix profile` command to manage your user profile is that it's very ad hoc.
@@ -72,11 +99,17 @@ Add a package here, remove a package there, and then you end up with *some* set 
 While this may be good enough, many people prefer a much more
 </Admonition>
 
-[atomic]: TODO
+## Making profiles declarative \{#declarative}
+
+While using `nix profile install`
+
+[apt]: https://en.wikipedia.org/wiki/APT_(software)
 [build]: /start/nix-build-nixpkgs
 [hm]: https://github.com/nix-community/home-manager
+[homebrew]: https://brew.sh
 [nix-profile]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-profile
 [paths]: /concepts/nix-store
 [profiles]: https://nixos.org/manual/nix/stable/package-management/profiles
 [ripgrep]: https://github.com/BurntSushi/ripgrep
+[run]: /start/nix-run
 [store]: /concepts/nix-store#store-paths
