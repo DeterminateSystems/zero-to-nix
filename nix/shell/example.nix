@@ -1,19 +1,20 @@
 { pkgs }:
 
+let
+  joke = { FUNNY_JOKE = "What kind of phone does a turtle use? A shell phone!"; };
+in
 {
-  example = pkgs.mkShell {
+  example = pkgs.mkShell (joke // {
     packages = with pkgs; [ curl jq git ];
+  });
 
-    FUNNY_JOKE = "What kind of phone does a turtle use? A shell phone!";
-  };
-
-  hook = pkgs.mkShell {
+  hook = pkgs.mkShell (joke // {
     shellHook = ''
       echo "Congrats! You just triggered a shell hook for a Nix development environment."
       echo "Run \"exit\" to exit this environment."
       echo "Then run \"nix develop github:DeterminateSystems/zero-to-nix#hook\" again to re-trigger this hook."
     '';
-  };
+  });
 
   cpp = pkgs.mkShell {
     packages = with pkgs; [ gcc cmake ];
