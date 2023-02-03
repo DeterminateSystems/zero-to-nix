@@ -144,12 +144,18 @@ Here's the package definition that enables us to build our Python package:
 For the full flake, see [`flake.nix`][flake-py] on GitHub or run `cat flake.nix`.
 What you see here is a [derivation] that defines how to build the package, more specifically the [`buildPythonApplication`][buildpythonapplication] function, which is a wrapper around Nix's built-in `derivation` function.
 
-The package that results when you run `nix build` is a website built using the [Vite] framework.
+The resulting package is an execuatble that prints to the terminal.
 To run the package:
 
 ```shell
 ./result/bin/zero-to-nix-python
 ```
+  
+You should see this terminal output:
+  
+```text
+Hello from inside a Python program built with Nix!
+``` 
 </SpecificLanguage>
 <SpecificLanguage lang="Go" client:load>
 Here's the package definition that enables us to build this Go package:
