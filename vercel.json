@@ -19,6 +19,10 @@
     {
       "source": "/start/nix-build-flake",
       "destination": "/start/nix-build#flake"
+    },
+    {
+      "source": "/start/dev-shell-flake",
+      "destination": "/start/nix-develop#flake"
     }
   ]
 }
