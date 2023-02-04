@@ -64,7 +64,7 @@ const site: Site = {
         },
         {
           text: "Create a development environment",
-          href: "/start/dev-shell-flake",
+          href: "/start/nix-develop",
         },
         {
           text: "How Nix development environments work",
@@ -78,8 +78,8 @@ const site: Site = {
         "No more broken builds or mysterious installation processes. Nix builds packages from scratch every time.",
       links: [
         {
-          text: "Build a package from Nixpkgs",
-          href: "/start/nix-build-nixpkgs",
+          text: "Build a Nix package",
+          href: "/start/nix-build",
         },
         {
           text: "How Nix packages work",
