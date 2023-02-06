@@ -52,6 +52,8 @@ gtk
 guix
 haskell
 hermeticity
+hoc
+homebrew
 href
 ian
 iaso's
@@ -92,6 +94,7 @@ podman
 ponysay
 readlink
 repo
+rg
 ripgrep
 runtimes
 sandboxed
