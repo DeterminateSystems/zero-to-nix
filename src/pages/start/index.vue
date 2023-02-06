@@ -21,4 +21,8 @@
 
 <script setup lang="ts">
 import { sortedQuickStartPages } from "../../logic/content";
+
+useHead({
+  title: "Quick start",
+});
 </script>

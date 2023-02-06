@@ -22,4 +22,8 @@
 
 <script setup lang="ts">
 import { conceptPages } from "../../logic/content";
+
+useHead({
+  title: "Concepts",
+});
 </script>
