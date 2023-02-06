@@ -2,10 +2,11 @@
 title: Explore Nix development environments
 path: /start/nix-develop
 summary: [
-  "Use the `nix develop` command to enter a Nix environment defined in a [flake](/concepts/flakes)",
+  "Use the `nix develop` command to activate a Nix development environment defined in [Nixpkgs](/concepts/nixpkgs)",
   "Run a command inside a development environment without actually entering that environment",
-  "Explore Nix development environments tailor made for specific programming languages",
-  "Explore a more mixed development environment"
+  "Explore Nix development environments tailored to specific programming languages",
+  "Explore a more mixed development environment",
+  "Use `nix develop` to activate an environment defined in a local [flake](/concepts/flakes)"
 ]
 ---
 
@@ -47,7 +48,7 @@ For curl, for example, you should see a strange path like this (the hash part sh
 
 What happened here? The [Nix] CLI did a few things:
 
-* It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and drilled into a specific [flake output][output] (more on this later).
+* It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and built a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the environment configuration (again, more on this later).
 * It set up an environment with a [`PATH`][path] that enables the `git` and `curl` packages to be discovered in the [Nix store][store].
 
@@ -55,22 +56,21 @@ Two other things that you can provide in Nix development environments:
 
 1. Although this example doesn't include one, you can define *shell hooks*, which are arbitrary shell code that runs whenever the environment starts up.
   Some example use cases for shell hooks:
-  * `echo` information about the environment to the console whenever the environment is activated
-  * Run things like checks and linters
-  * Ensure that other desired hooks, like [Git hooks][hooks], are properly set up
+    * `echo` information about the environment to the console whenever the environment is activated
+    * Run things like checks and linters
+    * Ensure that other desired hooks, like [Git hooks][hooks], are properly set up.
+      Run this to see an example shell hook:
 
-  Run this to see an example shell hook:
-
-  ```shell
-  nix develop "github:DeterminateSystems/zero-to-nix#hook"
-  ```
-
-1. Nix development environments support environment variables as well. Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
+      ```shell
+      nix develop "github:DeterminateSystems/zero-to-nix#hook"
+      ```
+1. Nix development environments support environment variables as well.
+  Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
   Some example use cases for environment variables:
-  * Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
-  * Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
+    * Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
+    * Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
 
-Let's leave the Nix development environment:
+Let's leave the Nix development environment to prepare for the next section:
 
 ```shell
 exit
@@ -220,6 +220,126 @@ The combination of direnv and Nix can be quite powerful, enabling you to automat
 For more info, see [Effortless dev environments with Nix and direnv][nix-direnv] on the [Determinate Systems blog][blog].
 </Admonition>
 
+## From a local flake \{#flake}
+
+Earlier in this guide, we activated a Nix development environment defined in a [flake][flakes] on GitHub.
+While using an environment in this way is helpful, it's more common to use a development environment defined in a local flake in the current directory.
+
+First, tell us which language you prefer:
+
+<Languages client:load />
+
+To get started in your <Language client:load /> project, create an empty directory and initialize a [flake template][templates]:
+
+<Shell kind="dev" client:load />
+
+Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
+
+- The `flake.nix` file defines the [flake][flakes] for your project.
+- The `flake.lock` [pins][pinning] all of the [flake inputs][inputs]&mdash;essentially the Nix dependencies&mdash;in your `flake.nix` file to specific [Git revisions][rev].
+
+One of the [flake outputs][output] of this Nix [flake][flakes] is a [development environment][dev] for <Language client:load />.
+To enter that development environment:
+
+```shell
+nix develop
+```
+
+Now that we've entered the development environment, we can do some exploring, starting with [Nix store paths][paths].
+
+<SpecificLanguage client:load lang="C++">
+Ordinarily when you run `type gcc` on a Unix system, you get a path like `/usr/bin/gcc`.
+Try running it in the Nix development environment:
+
+```shell
+type gcc
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+gcc is /nix/store/nbrvvx1gyq3as3ghmjz62wlgd8f3zfpf-gcc-wrapper-11.3.0/bin/gcc
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Haskell">
+Ordinarily when you run `type ghc` on a Unix system, you get a path like `/usr/bin/ghc`.
+Try running it in the Nix development environment:
+
+```shell
+type ghc
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+ghc is /nix/store/f3qnvw5gxgxxpr275kf97pfcy2n1gv79-ghc-9.2.4/bin/ghc
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="JavaScript">
+Ordinarily when you run `type node` on a Unix system, you get a path like `/usr/bin/node`.
+Try running it in the Nix development environment:
+
+```shell
+type node
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+node is /nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
+```
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Python">
+Ordinarily when you run `type python` on a Unix system, you get a path like `/usr/bin/python`.
+Try running it in the Nix development environment:
+
+```shell
+type python
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+python is /nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
+```
+
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Go">
+Ordinarily when you run `type go` on a Unix system, you get a path like `/usr/bin/go`.
+Try running it in the Nix development environment:
+
+```shell
+type go
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+go is /nix/store/5bcx8rv6sy33xsf5dzkp9q8lfdqrsiwa-go-1.19.4/bin/go
+```
+
+</SpecificLanguage>
+<SpecificLanguage client:load lang="Rust">
+Ordinarily when you run `type cargo` on a Unix system, you get a path like `/usr/bin/cargo`.
+Try running it in the Nix development environment:
+
+```shell
+type cargo
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+cargo is /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
+```
+</SpecificLanguage>
+
+Probably not what you expected! What happened here? A few things:
+
+- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the development environment (Nix specifically looked at the `packages` array).
+- Nix built the packages specified under `packages` and stored them in the
+  [Nix store][store] under `/nix/store`.
+
 [bash]: https://gnu.org/software/bash
 [blog]: https://determinate.systems/posts
 [cargo]: https://doc.rust-lang.org/stable/cargo
@@ -233,6 +353,7 @@ For more info, see [Effortless dev environments with Nix and direnv][nix-direnv]
 [go]: https://go.dev
 [hermeticity]: /concepts/hermeticity
 [hooks]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
+[inputs]: /concepts/flakes#inputs
 [installer]: /concepts/nix-installer
 [kubectl]: https://kubernetes.io/docs/reference/kubectl
 [language]: /concepts/nix-language
@@ -246,8 +367,12 @@ For more info, see [Effortless dev environments with Nix and direnv][nix-direnv]
 [output]: /concepts/flakes#outputs
 [packages]: /concepts/packages
 [path]: https://en.wikipedia.org/wiki/PATH_(variable)
+[paths]: /concepts/nix-store#store-paths
+[pinning]: /concepts/pinning
 [pkg]: /concepts/package-management
 [python]: https://python.org
+[rev]: https://git-scm.com/docs/revisions
 [rust]: https://rust-lang.org
 [store]: /concepts/nix-store
+[templates]: /concepts/flakes#templates
 [terraform]: https://terraform.io

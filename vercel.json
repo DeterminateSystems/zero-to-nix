@@ -11,6 +11,18 @@
     { "source": "/quick-start", "destination": "/start.html" },
     { "source": "/quickstart", "destination": "/start.html" },
     { "source": "/get-started", "destination": "/start.html" },
-    { "source": "/getting-started", "destination": "/start.html" }
+    { "source": "/getting-started", "destination": "/start.html" },
+    {
+      "source": "/start/nix-build-nixpkgs",
+      "destination": "/start/nix-build#nixpkgs"
+    },
+    {
+      "source": "/start/nix-build-flake",
+      "destination": "/start/nix-build#flake"
+    },
+    {
+      "source": "/start/dev-shell-flake",
+      "destination": "/start/nix-develop#flake"
+    }
   ]
 }
