@@ -46,7 +46,8 @@ const site: Site = {
   languageCode: "en",
   navbarLinks: [{ text: "About", href: "/about" }],
   heroButtons: [
-    { text: "Quick start", href: "/start/install", highlight: true },
+    { text: "Breeze", href: "/breeze", highlight: true },
+    { text: "Quick start", href: "/start/install" },
     { text: "Concepts", href: "/concepts" },
     { text: "About", href: "/about" },
   ],

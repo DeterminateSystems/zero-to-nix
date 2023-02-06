@@ -1,0 +1,45 @@
+---
+title: The Nix breeze
+description: Learn Nix in one page
+layout: plain
+---
+
+## Get Nix running \{#up}
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+## Run
+
+```shell
+echo "Hello Nix" | nix run "nixpkgs#ponysay"
+```
+
+## Develop
+
+```shell
+nix develop "github:DeterminateSystems/zero-to-nix#example"
+```
+
+## Build
+
+```shell
+nix build "nixpkgs#bat"
+```
+
+```shell
+echo "# Hello" > hello.md
+nix run nixpkgs#bat -- hello.md
+rm hello.md
+```
+
+## Install
+
+```shell
+nix profile install "nixpkgs#ponysay"
+```
+
+```shell
+echo "Hello Nix" | ponysay
+```
