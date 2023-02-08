@@ -23,7 +23,6 @@ jobs:
 
       - uses: DeterminateSystems/nix-installer-action@main
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           extra-conf: |
             binary-caches = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
             trusted-substituters = https://cache.nixos.org https://${{ secrets.CACHIX_CACHE }}.cachix.org
