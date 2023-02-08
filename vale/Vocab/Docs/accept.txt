@@ -1,3 +1,4 @@
+alacritty
 allsystems
 apfs
 args
@@ -18,6 +19,7 @@ changemeplz
 channable
 chmod
 ci
+cli
 clis
 cmake
 config
@@ -74,6 +76,7 @@ mv
 my_function
 my_value
 narhash
+neovim
 nginx
 nixlang
 nixos
@@ -106,6 +109,7 @@ src
 stdenv
 stdlib
 steamdeck
+subcommand
 sudo
 systemd
 tooltip
