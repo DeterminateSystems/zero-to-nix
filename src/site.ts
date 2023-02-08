@@ -44,7 +44,10 @@ const site: Site = {
   canonical: "zero-to-nix.com",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
-  navbarLinks: [{ text: "About", href: "/about" }],
+  navbarLinks: [
+    { text: "Breeze", href: "/breeze" },
+    { text: "About", href: "/about" },
+  ],
   heroButtons: [
     { text: "Breeze", href: "/breeze", highlight: true },
     { text: "Quick start", href: "/start/install" },

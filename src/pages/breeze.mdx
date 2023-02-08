@@ -1,14 +1,28 @@
 ---
 title: The Nix breeze
-description: Learn Nix in one page
 layout: plain
 ---
 
+<Admonition success open title="The target audience for the Nix breeze" id="quick-start-audience" client:load>
+We wrote this [Zero to Nix][z2n] breeze with one specific audience in mind: people who have heard about [Nix] but don't yet know much about it and aren't quite sure where to start with the learning process.
+In this one-page guide, we'll install Nix and use it
+
+If you'd like to go further, check out the [Nix quick start][start]
+</Admonition>
+
 ## Get Nix running \{#up}
+
+First, install [Nix] using [Nix Installer][installer], an unofficial and experimental Nix installer from [Determinate Systems][ds]:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
+
+Nix Installer supports these platforms:
+
+* Multi-user Linux with [systemd] init on 64-bit ARM and 64-bit AMD/Intel (no [SELinux])
+* Multi-user macOS on 64-bit ARM and 64-bit AMD/Intel
+* [Valve Steam Deck][steamdeck]
 
 ## Run
 
@@ -43,3 +57,20 @@ nix profile install "nixpkgs#ponysay"
 ```shell
 echo "Hello Nix" | ponysay
 ```
+
+## Uninstall Nix \{#uninstall}
+
+In case you need to uninstall Nix:
+
+```shell
+/nix/nix-installer uninstall
+```
+
+[ds]: https://determinate.systems
+[installer]: /concepts/nix-installer
+[nix]: /concepts/nix
+[selinux]: https://www.redhat.com/en/topics/linux/what-is-selinux
+[start]: /start
+[steamdeck]: https://steamdeck.com
+[systemd]: https://systemd.io
+[z2n]: /
