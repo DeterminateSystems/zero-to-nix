@@ -9,6 +9,14 @@ summary:
   ]
 ---
 
+<Admonition warning title="This command relies upon experimental features" id="nix-experimental" client:load>
+This command requires two features to be enabled, [Flakes](https://nixos.wiki/wiki/Flakes) (introduced in Nix 2.4) and [Nix command](https://nixos.wiki/wiki/Nix_command) (introduced in Nix 2.0) to be enabled. 
+Depending on the version of Nix you are running, these features could still be experimental, resulting in an error message:
+`error: experimental Nix feature '<nix-feature>' is disabled; use '--extra-experimental-features nix-command' to override`
+If you recieve an error like this, you can use the `--extra-experimental-features nix-command --extra-experimental-features flakes` command to enable them for the single command.
+Alternatively, you can enable them permanently by [editing the `nix.conf`](https://nixos.wiki/wiki/Flakes#Enable_flakes#Permanent).
+</Admonition>
+
 In the last section, we installed Nix using [Nix Installer][nix-installer].
 Now we can dive in and use Nix to run an actual program.
 Let's try running the delightful [ponysay]:
