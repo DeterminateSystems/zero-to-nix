@@ -23,8 +23,10 @@ In this [quick start][start], we'll get Nix installed on your system and provide
 We recommend installing Nix using [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system.
 Nix Installer supports these platforms:
 
-* Multi-user Linux with [systemd] init on 64-bit ARM and 64-bit AMD/Intel (no [SELinux])
+* Multi-user Linux with [systemd] init on 64-bit ARM, 64-bit AMD/Intel, and i686 (no [SELinux])
 * Multi-user macOS on 64-bit ARM and 64-bit AMD/Intel
+* [Podman] Linux containers
+* [Windows Subsystem for Linux][wsl] (WSL) on 64-bit ARM and 64-bit AMD/Intel
 * [Valve Steam Deck][steamdeck]
 
 To run Nix Installer:
@@ -85,6 +87,7 @@ If you're interested in contributing to Zero to Nix, see the [manual][contributi
 [nix-installer]: /concepts/nix-installer
 [nix.dev]: https://nix.dev
 [official]: https://nixos.org/download
+[podman]: https://podman.io
 [releases]: https://github.com/DeterminateSystems/nix-installer/releases
 [repo]: https://github.com/DeterminateSystems/zero-to-nix
 [script]: https://raw.githubusercontent.com/DeterminateSystems/nix-installer/main/nix-installer.sh
@@ -94,4 +97,5 @@ If you're interested in contributing to Zero to Nix, see the [manual][contributi
 [store]: /concepts/nix-store
 [systemd]: https://systemd.io
 [uninstall]: /start/uninstall
+[wsl]: https://learn.microsoft.com/windows/wsl
 [z2n]: /
