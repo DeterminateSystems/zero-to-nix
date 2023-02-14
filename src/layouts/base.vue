@@ -28,9 +28,7 @@ const {
 const section = route.fullPath.split("/").at(1)!;
 const title = section === "start" ? `${order!}. ${rawTitle}` : rawTitle;
 
-const path = route.fullPath;
-const url = `${rootUrl}${route.fullPath}`;
-const canonical = new URL(url).toString();
+const canonical = new URL(`${rootUrl}${route.fullPath}`).toString();
 
 useHead({
   link: [
