@@ -11,10 +11,10 @@ import remarkGfm from "remark-gfm";
 import codeBlockPlugin from "./src/plugins/code";
 import site from "./src/site";
 
-const { url: siteUrl } = site;
+const { rootUrl } = site;
 
 export default defineConfig({
-  siteUrl,
+  siteUrl: rootUrl,
   extendFrontmatter(frontmatter: RawPageMatter, filename: string) {
     // Set the layout for e.g. src/pages/section/foo.mdx to section
     const section = filename.split("/").at(2)!;

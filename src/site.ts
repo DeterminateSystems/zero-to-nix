@@ -20,7 +20,7 @@ export type Term = {
 export type Site = {
   title: string;
   description: string;
-  url: string;
+  rootUrl: string;
   canonical: string;
   githubUrl: string;
   languageCode: string;
@@ -40,7 +40,7 @@ export type Site = {
 const site: Site = {
   title: "Zero to Nix",
   description: "An unofficial, opinionated, gentle introduction to Nix",
-  url: "https://zero-to-nix.com",
+  rootUrl: "https://zero-to-nix.com",
   canonical: "zero-to-nix.com",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
