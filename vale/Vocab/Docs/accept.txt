@@ -117,4 +117,5 @@ wayland
 wget
 wikipedia
 wip
+wsl
 zsh
