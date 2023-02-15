@@ -1,9 +1,9 @@
 <template>
   <div v-show="show" class="fixed left-6 bottom-6 z-50 print:hidden">
     <div
-      class="max-w-[202px] bg-soft-gray shadow-lg dark:bg-light-gray dark:text-dark"
+      class="max-w-[225px] bg-soft-gray shadow-lg dark:text-dark"
     >
-      <p class="content m-0 py-3 px-5 text-[14px]">
+      <p class="content m-0 py-4 px-6 text-[16px]">
         We use a single, first-party analytics cookie to focus our limited time
         and energy on the most important documentation. Check out our
         <a
@@ -13,15 +13,15 @@
           >privacy policy</a
         >.
       </p>
-      <div class="grid grid-cols-2 divide-x border-t">
+      <div class="grid grid-cols-2 border-t-1.5 divide-x-1.5 border-light-gray divide-light-gray">
         <button
-          class="py-2 text-sm font-bold hover:bg-dark hover:text-green"
+          class="py-2.5 font-bold hover:bg-green hover:text-dark"
           @click="acceptCookies"
         >
           Accept
         </button>
         <button
-          class="py-2 text-sm font-bold hover:bg-dark hover:text-red"
+          class="py-2.5 font-bold hover:bg-red hover:text-white"
           @click="declineCookies"
         >
           Decline
