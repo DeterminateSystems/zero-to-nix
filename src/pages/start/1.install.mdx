@@ -18,16 +18,17 @@ If you're already fairly familiar with Nix and are looking for specific guidance
 It's great to see that you're interested in [Nix].
 In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
 
-## Install Nix \{#up}
-
 We recommend installing Nix using [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system.
 Nix Installer supports these platforms:
 
-* Multi-user Linux with [systemd] init on 64-bit ARM and 64-bit AMD/Intel (no [SELinux])
-* Multi-user macOS on 64-bit ARM and 64-bit AMD/Intel
-* [Podman] Linux containers
-* [Windows Subsystem for Linux][wsl] (WSL) on 64-bit ARM and 64-bit AMD/Intel
-* [Valve Steam Deck][steamdeck]
+Platform | Multi user? | `root` only
+:--------|:------------|:-----------
+Linux on 64-bit ARM and 64-bit AMD/Intel (no [SELinux]) | ✅ (via [systemd]) | ✅
+macOS on 64-bit ARM and 64-bit AMD/Intel | ✅ |
+[Valve Steam Deck][steamdeck] (SteamOS) | ✅ |
+[Windows Subsystem for Linux][wsl] (WSL) on 64-bit ARM and 64-bit AMD/Intel | ✅ (via [systemd]) | ✅
+[Podman] Linux containers | ✅ (via [systemd]) | ✅
+[Docker] containers | | ✅
 
 To run Nix Installer:
 
@@ -80,6 +81,7 @@ If you're interested in contributing to Zero to Nix, see the [manual][contributi
 [contributing]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/CONTRIBUTING.md
 [detsys]: https://determinate.systems
 [dev]: /start/nix-develop
+[docker]: https://docker.com
 [flakes]: /concepts/flakes
 [json]: https://json.org
 [multi]: https://nixos.org/manual/nix/stable/installation/multi-user
