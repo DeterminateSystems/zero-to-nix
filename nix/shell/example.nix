@@ -2,6 +2,8 @@
 
 {
   example = pkgs.mkShell {
+    name = "zero-to-nix";
+
     packages = with pkgs; [ curl jq git ];
 
     FUNNY_JOKE = "What kind of phone does a turtle use? A shell phone!";
