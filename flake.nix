@@ -28,9 +28,7 @@
         "aarch64-darwin" # 64-bit ARM macOS
       ];
 
-      nameValuePair = name: value: { inherit name value; };
-      genAttrs = names: f: builtins.listToAttrs (map (n: nameValuePair n (f n)) names);
-      forAllSystems = f: genAttrs allSystems (system: f {
+      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
         pkgs = import nixpkgs { inherit overlays system; };
       });
 
