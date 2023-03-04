@@ -1,0 +1,177 @@
+---
+title: Add packages to your user profile
+path: /start/nix-profile
+summary: [
+  "Find out which Nix [packages](/concepts/packages) are available to your user profile",
+  "Add a Nix [package](/concepts/packages) to your profile",
+  "Roll back a user profile change"
+]
+---
+
+Thus far in the Zero to Nix [quick start][start] we've used Nix to [run] programs, explore [Nix development environments][dev], and [build Nix packages][build].
+In this guide we'll make some Nix packages globally available in our environment the way that package managers like [Homebrew] and [apt] do.
+
+## Managing Nix user profiles \{#managing}
+
+In Nix, [user profiles][profiles] enable different user configurations, including `PATH`s, to coexist on a single host.
+Unlike in standard Unix systems, however, Nix user profiles support things like atomic upgrades and rollbacks to previous generations, as we'll see below.
+The [Nix CLI][cli] has a [`nix profile`][nix-profile] command that you can use to manage user profiles.
+
+### Getting profile information \{#list}
+
+You can use the [`list`][list] subcommand to see which packages are part of the current user profile:
+
+```shell
+nix profile list
+```
+
+This command lists the packages in chronological order of installation (with more recent installations last).
+If you installed Nix as part of the quick start, `nix profile list` should be empty.
+Let's change that by [adding](#install) a package.
+
+### Installing packages \{#install}
+
+In a [previous guide][build] we used Nix to build and run [ripgrep], a tool for searching directories for specific text patterns.
+If we wanted to install ripgrep globally so that we can use it anywhere we want in our shell, we'd need to add it to our user profile.
+Let's do that now and verify that it's installed (`rg` is the name of the ripgrep executable):
+
+```shell
+nix profile install "nixpkgs#ripgrep"
+rg --version
+```
+
+Now that ripgrep is installed and linked globally, `cd` into a project and see if there are any TODO messages in your code:
+
+```shell
+rg 'TODO: [A-Za-z0-9 ]+'
+```
+
+This ripgrep command would discover messages like `TODO: make this prettier` or `TODO: refactor into modules`.
+
+<Admonition warning open title="Be wary of ad-hoc profile management" id="nix-profile-ad-hoc" client:load>
+In this guide, we'll work with our user profile in an ad hoc way.
+See the [Making profiles declarative](#declarative) section below to see how you can use Nix in a way that's more in line with the declarative spirit of Nix.
+</Admonition>
+
+When you run packages using `nix run` or build packages using `nix build`, all build results are added to the [Nix store][store], but they aren't added to any user profile.
+When you run `nix profile install <package>`, however, you build the package and add it to the Nix store if it isn't there already, and then add the package to your `PATH`.
+
+### Removing packages \{#remove}
+
+You can remove specific packages using the [`remove`][remove] subcommand.
+First, view your profile's installed packages:
+
+```shell
+nix profile list
+```
+
+If you installed Nix [earlier in the quick start][install] you should see something along these lines:
+
+```
+0 flake:nixpkgs#legacyPackages.aarch64-darwin.ripgrep github:NixOS/nixpkgs/3954218cf613eba8e0dcefa9abe337d26bc48fd0#legacyPackages.aarch64-darwin.ripgrep /nix/store/jvgq5fyklfmnszi4fwcgirvv775xzmdd-ripgrep-13.0.0
+```
+
+This means that your profile now has an installed package labeled `0`&mdash;fitting for Zero to Nix!&mdash;that you can remove with this command:
+
+```shell
+nix profile remove 0
+```
+
+<Admonition info title="Package labels" client:load>
+Why an integer label and not a package name?
+Why doesn't something like `nix profile remove ripgrep` work?
+The advantage of using integers is that they remove any ambiguity surrounding the package name, which comes especially in handy if you've installed multiple packages with the same name (which Nix enables).
+</Admonition>
+
+You can verify that ripgrep is no longer available to your profile:
+
+```shell
+type rg
+```
+
+You should get `rg not found`.
+
+### Profile history \{#history}
+
+Whenever you make a change to your user profile using commands like `nix profile install`, you create a new profile *generation*.
+To see all the generations of your profile:
+
+```shell
+nix profile history
+```
+
+The benefit of profile generations is that you can *roll back* your profile to a previous generation at any time.
+Let's make a change to our profile by adding a package for the [Vale] prose linter:
+
+```shell
+nix profile install "nixpkgs#vale"
+```
+
+If you run `nix profile history` again, you should see a `Version` entry for the operation that added the `vale` package to your profile.
+You can now roll back to the generation before that:
+
+```shell
+nix profile rollback --to 0
+```
+
+If you currently have more than one generation in your profile, make sure to substitute `0` with the proper pre-Vale generation.
+If you run `type vale` now, you should get `vale not found`, which means that your successfully rolled your profile back.
+
+## How profiles work \{#how}
+
+The core mechanism behind user profiles, as with many things in Nix, is [Nix store paths][paths].
+Here's an example Nix store path for a ripgrep package:
+
+<NixStorePath pkg="ripgrep" />
+
+The **hash part** is important here because it means that you can have any number of packages named `ripgrep` in your [Nix store][store] with a hash that differs whenever the package inputs differ.
+This means that Nix can support an indefinite number of user profiles on a single host.
+Two users can have different versions of ripgrep in their profile because they don't need to share a global path like `/usr/bin/rg`.
+
+When you add a package to a user profile, Nix adds the package's Nix store path to the user profile's `PATH`.
+That the `.nix-profile` directory is under `$HOME` is important because it means that each user on the host can have its own set of symlinks.
+
+## Making profiles declarative \{#declarative}
+
+One shortcoming of using the `nix profile` command to manage your user profile is that it's fundamentally ad hoc.
+Add a package here, remove a package there, and down the line you end up with *some* set of packages available to your profile.
+While this may be good enough in some cases, it's hardly [reproducible]; in order to create a desired user profile, you'd need to run the right `nix profile` commands in the right order.
+
+If you prefer a more [declarative] and [reproducible] approach, we recommend using [Home Manager][hm].
+Home Manager is a semi-official tool under the [Nix community][community] umbrella that enables you to configure your entire home environment using the [Nix language][lang].
+It supports both Linux and macOS has a module-based configuration system that supports configuring tools like [Visual Studio Code][code], [Vim] and [Neovim], shells like [zsh], [bash], and [Fish], [Git], [Alacritty], and [many others][hm-config].
+
+For a list of resources about Home Manager, see [Configure your home environment][home] later in the quick start.
+
+[alacritty]: https://alacritty.org
+[apt]: https://en.wikipedia.org/wiki/APT_(software)
+[bash]: https://gnu.org/software/bash
+[build]: /start/nix-build
+[cli]: /concepts/nix#unified-cli
+[code]: https://code.visualstudio.com
+[community]: https://github.com/nix-community
+[declarative]: /concepts/declarative
+[dev]: /start/nix-develop
+[fish]: https://fishshell.com
+[git]: https://git-scm.com
+[hm]: https://github.com/nix-community/home-manager
+[hm-config]: https://rycee.gitlab.io/home-manager
+[home]: /start/learn-more#home-environment
+[homebrew]: https://brew.sh
+[install]: /start/install
+[lang]: /concepts/nix-language
+[list]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-profile-list
+[neovim]: https://neovim.io
+[nix-profile]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-profile
+[paths]: /concepts/nix-store
+[profiles]: https://nixos.org/manual/nix/stable/package-management/profiles
+[remove]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-profile-remove
+[reproducible]: /concepts/reproducibility
+[ripgrep]: https://github.com/BurntSushi/ripgrep
+[run]: /start/nix-run
+[start]: /start
+[store]: /concepts/nix-store#store-paths
+[tmux]: https://github.com/tmux/tmux/wiki
+[vale]: https://vale.sh
+[vim]: https://www.vim.org
+[zsh]: https://zsh.org
