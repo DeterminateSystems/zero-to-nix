@@ -336,7 +336,7 @@ cargo is /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/car
 
 Probably not what you expected! What happened here? A few things:
 
-- Nix looked at the `devShells` [flake outputs][outputs] in `flake.nix` to figure out which [Nix packages][packages] to include in the development environment (Nix specifically looked at the `packages` array).
+- Nix looked at the `devShells` [flake outputs][output] in `flake.nix` to figure out which [Nix packages][packages] to include in the development environment (Nix specifically looked at the `packages` array).
 - Nix built the packages specified under `packages` and stored them in the
   [Nix store][store] under `/nix/store`.
 
