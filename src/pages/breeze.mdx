@@ -5,9 +5,9 @@ layout: plain
 
 <Admonition success open title="The target audience for the Nix breeze" id="quick-start-audience" client:load>
 We wrote this [Zero to Nix][z2n] breeze with one specific audience in mind: people who have heard about [Nix] but don't yet know much about it and aren't quite sure where to start with the learning process.
-In this one-page guide, we'll install Nix and use it
+In this one-page guide, we'll [install Nix](#up) and use it to do some things that people often do with Nix, such as [running a program](#run) without needing to install it, using a [Nix development environment](#develop), [building](#build) a Nix [package]
 
-If you'd like to go further, check out the [Nix quick start][start]
+If you're intrigued and would like to go further, check out the [quick start][start].
 </Admonition>
 
 ## Get Nix running \{#up}
@@ -30,6 +30,12 @@ Nix Installer supports these platforms:
 echo "Hello Nix" | nix run "nixpkgs#ponysay"
 ```
 
+```shell
+echo "# Hello" > hello.md
+nix run "nixpkgs#bat" -- hello.md
+rm hello.md
+```
+
 ## Develop
 
 ```shell
@@ -40,12 +46,6 @@ nix develop "github:DeterminateSystems/zero-to-nix#example"
 
 ```shell
 nix build "nixpkgs#bat"
-```
-
-```shell
-echo "# Hello" > hello.md
-nix run nixpkgs#bat -- hello.md
-rm hello.md
 ```
 
 ## Install
@@ -60,15 +60,23 @@ echo "Hello Nix" | ponysay
 
 ## Uninstall Nix \{#uninstall}
 
-In case you need to uninstall Nix:
+While we'd love for you to keep using Nix, you can uninstall it at any time if you need to:
 
 ```shell
 /nix/nix-installer uninstall
 ```
 
+<Admonition success client:load>
+The ability to seamlessly uninstall Nix from your system is one of the differentiating features of the [Determinate Nix Installer][dni].
+If you install Nix using the [official installer][official], by contrast, you'd need to uninstall Nix manually.
+</Admonition>
+
+[dni]: /concepts/nix-installer
 [ds]: https://determinate.systems
 [installer]: /concepts/nix-installer
 [nix]: /concepts/nix
+[official]: https://nixos.org/download
+[package]: /concepts/packages
 [selinux]: https://www.redhat.com/en/topics/linux/what-is-selinux
 [start]: /start
 [steamdeck]: https://steamdeck.com
