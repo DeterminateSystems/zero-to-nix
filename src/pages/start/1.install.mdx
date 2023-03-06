@@ -18,8 +18,8 @@ If you're already fairly familiar with Nix and are looking for specific guidance
 It's great to see that you're interested in [Nix].
 In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
 
-We recommend installing Nix using [Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system.
-Nix Installer supports these platforms:
+We recommend installing Nix using the [Determinate Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system.
+The installer supports these platforms:
 
 Platform | Multi user? | `root` only
 :--------|:------------|:-----------
@@ -30,7 +30,7 @@ macOS on 64-bit ARM and 64-bit AMD/Intel | ✅ |
 [Podman] Linux containers | ✅ (via [systemd]) | ✅
 [Docker] containers | | ✅
 
-To run Nix Installer:
+To run the installer:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -38,7 +38,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 If you have concerns about the "curl to Bash" approach you have two options:
 
-1. You can download a binary for the most recent version of Nix Installer directly from the [releases] page and run it.
+1. You can download a binary for the most recent version of the Determinate Nix Installer directly from the [releases] page and run it.
 1. You can examine the installation script [here][script] then download and run it:
 
     ```shell
@@ -48,17 +48,17 @@ If you have concerns about the "curl to Bash" approach you have two options:
     ```
 
 <Admonition info title="Why aren't we using the official Nix installation script here?" id="why-nix-installer" client:load>
-We believe that Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
+We believe that the Determinate Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
 Unlike many tools, Nix needs to make several changes to your system in order to work properly, such as creating a new `/nix` directory, configuring your shell profile, and creating several new system users and groups.
 
-Nix Installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by Nix Installer's installation process.
-It also installs Nix with [Nix flakes][flakes] enabled, while the official installer requires you to enable flakes manually.
+The Determinate Nix Installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by the installation process.
+It also installs Nix with [Nix flakes][flakes] enabled while the official installer requires you to enable flakes manually.
 
-See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Nix Installer][nix-installer] concept doc if you'd like more background.
+See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Determinate Nix Installer][nix-installer] concept doc if you'd like more background.
 </Admonition>
 
 Validate the displayed plan and approve it to begin the installation process.
-Once Nix Installer has finished, you should see `Nix was installed successfully!` in your terminal.
+Once the installer has finished, you should see `Nix was installed successfully!` in your terminal.
 
 Open a new terminal session and the `nix` executable should be in your `$PATH`.
 To verify that:
