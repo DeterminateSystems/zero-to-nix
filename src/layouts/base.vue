@@ -12,7 +12,7 @@
 import { PageProps } from "iles";
 import site from "~/site";
 
-const { url } = site;
+const { rootUrl } = site;
 
 type Page = PageProps & {
   title: string;
@@ -21,14 +21,14 @@ type Page = PageProps & {
 };
 
 const {
-  frontmatter: { title: rawTitle, href, tags, order },
+  frontmatter: { title: rawTitle, tags, order },
   route,
 } = usePage<Page>();
 
 const section = route.fullPath.split("/").at(1)!;
 const title = section === "start" ? `${order!}. ${rawTitle}` : rawTitle;
 
-const canonical = new URL(url, href).toString();
+const canonical = new URL(`${rootUrl}${route.fullPath}`).toString();
 
 useHead({
   link: [
