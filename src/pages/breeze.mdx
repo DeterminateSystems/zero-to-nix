@@ -3,7 +3,7 @@ title: The Nix breeze
 layout: plain
 ---
 
-<Admonition success open title="The target audience for the Nix breeze" id="quick-start-audience" client:load>
+<Admonition info open title="The target audience for the Nix breeze" id="quick-start-audience" client:load>
 We wrote this [Zero to Nix][z2n] breeze with one specific audience in mind: people who have heard about [Nix] but don't yet know much about it and aren't quite sure where to start with the learning process.
 In this one-page guide, we'll [install Nix](#up) and use it to do some things that people often do with Nix, such as [running a program](#run) without needing to install it, using a [Nix development environment](#develop), [building](#build) a Nix [package]
 
@@ -12,35 +12,58 @@ If you're intrigued and would like to go further, check out the [quick start][st
 
 ## Get Nix running \{#up}
 
-First, install [Nix] using [Nix Installer][installer], an unofficial and experimental Nix installer from [Determinate Systems][ds]:
+First, install [Nix] using the [Determinate Nix Installer][installer], an unofficial and experimental tool from [Determinate Systems][ds]:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-Nix Installer supports these platforms:
-
-* Multi-user Linux with [systemd] init on 64-bit ARM and 64-bit AMD/Intel (no [SELinux])
-* Multi-user macOS on 64-bit ARM and 64-bit AMD/Intel
-* [Valve Steam Deck][steamdeck]
+Our installer supports [several platforms][platforms].
 
 ## Run
+
+Nix enables you to [run] programs without a separate installation step.
+This runs [ponysay], one of the many packages available in [Nixpkgs]:
 
 ```shell
 echo "Hello Nix" | nix run "nixpkgs#ponysay"
 ```
 
+<Admonition warning title="This could take a while" id="nix-run-loading" client:load>
+The first time you run a program using `nix run` it's likely to be a slow operation.
+Subsequent runs should be instantaneous.
+</Admonition>
+
+Let's try a slightly more realistic example and use [bat] to render some Markdown in our terminal:
+
 ```shell
-echo "# Hello" > hello.md
+echo '# Hello, Nix!\n\nSo happy to be here.' > hello.md
 nix run "nixpkgs#bat" -- hello.md
-rm hello.md
+rm hello.md # let's clean up after ourselves
 ```
 
 ## Develop
 
+Running programs in a one-off way is good for experimentation, but more often you'll want to create [development environments][dev-env] for specific projects.
+Run this to activate one:
+
 ```shell
 nix develop "github:DeterminateSystems/zero-to-nix#example"
 ```
+
+<Admonition warning title="This could take a while" id="nix-develop-loading" client:load>
+The first time you activate a development environment using `nix develop` it's likely to be a slow operation.
+Subsequent activations should be much speedier.
+</Admonition>
+
+This development environment provides specific versions of [curl], [jq], and [Git].
+You should enter a shell with this prompt:
+
+```shell
+(nix:zero-to-nix-env) bash-5.1$
+```
+
+Run `type git` to see where Git
 
 ## Build
 
@@ -71,12 +94,21 @@ The ability to seamlessly uninstall Nix from your system is one of the different
 If you install Nix using the [official installer][official], by contrast, you'd need to uninstall Nix manually.
 </Admonition>
 
+[bat]: https://github.com/sharkdp/bat
+[curl]: https://curl.se
+[dev-env]: /concepts/dev-env
 [dni]: /concepts/nix-installer
 [ds]: https://determinate.systems
+[git]: https://git-scm.com
 [installer]: /concepts/nix-installer
+[jq]: https://stedolan.github.io/jq
 [nix]: /concepts/nix
+[nixpkgs]: /concepts/nixpkgs
 [official]: https://nixos.org/download
 [package]: /concepts/packages
+[platforms]: /start/install
+[ponysay]: https://github.com/erkin/ponysay
+[run]: /start/nix-run
 [selinux]: https://www.redhat.com/en/topics/linux/what-is-selinux
 [start]: /start
 [steamdeck]: https://steamdeck.com
