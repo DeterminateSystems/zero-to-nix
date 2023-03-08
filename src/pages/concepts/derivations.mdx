@@ -32,7 +32,7 @@ externalSources: [
 ]
 ---
 
-A *derivation* is an instruction that Nix uses to [*realise*][realisation] .
+A *derivation* is an instruction that Nix uses to [*realise*][realisation] a Nix package.
 They're created using a special `derivation` function in the [Nix language](#nix-language).
 They can depend on any number of other derivations and produce one or more final [outputs](#outputs).
 A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a [closure].
@@ -78,7 +78,7 @@ derivation {
   # The program realising the derivation
   builder = "bash";
   # Arguments passed to the builder program
-  args = ["-c", "mkdir $out && echo Hello world > $out/hello.txt"]
+  args = ["-c" "mkdir $out && echo Hello world > $out/hello.txt"]
 };
 ```
 

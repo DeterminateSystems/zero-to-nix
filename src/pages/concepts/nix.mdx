@@ -61,7 +61,7 @@ There are two different Nix CLIs currently active:
 ### The unified CLI \{#unified-cli}
 
 The *unified CLI* is a still-experimental way of using Nix that involves just one executable called `nix`.
-*All* Nix functionality is wrapped into this tool, including commands like `nix build` for building [packages], `nix develop` for activating Nix [development environments][env], `nix store` for managing the [Nix store][store], and more.
+*All* Nix functionality is wrapped into this tool, including commands like `nix build` for building [packages] instead of the old `nix-build` tool, `nix develop` for activating Nix [development environments][env] instead of the old `nix-shell` tool, `nix store` for managing the [Nix store][store] instead of the old `nix-store` tool, and more.
 Because the unified CLI isn't yet official, it needs to be explicitly enabled in your Nix configuration by adding `nix-command` to your `experimental-features` list.
 
 We won't cover setting up the unified CLI here because [Nix Installer][install] installs both installs it and enables it in your Nix configuration.
