@@ -105,6 +105,14 @@ nix build "nixpkgs#ripgrep"
 ./result/bin/rg --help
 ```
 </SpecificLanguage>
+<SpecificLanguage client:load lang="Scala">
+Let's build and run [sbt]:
+
+```shell
+nix build "nixpkgs#sbt"
+./result/bin/sbt --version
+```
+</SpecificLanguage>
 
 ### Beyond Nixpkgs
 
@@ -377,6 +385,7 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [ref]: /concepts/flakes#references
 [ripgrep]: https://github.com/BurntSushi/ripgrep
 [rust]: https://rust-lang.org
+[sbt]: https://scala-sbt.org
 [sbt-derivation]: https://github.com/zaninime/sbt-derivation
 [scala]: https://scala-lang.org
 [start]: /start
