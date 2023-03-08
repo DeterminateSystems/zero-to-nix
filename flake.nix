@@ -219,6 +219,11 @@
           path = ./nix/templates/pkg/rust;
           description = "Rust package starter template for Zero to Nix";
         };
+
+        scala-pkg = {
+          path = ./nix/templates/pkg/scala;
+          description = "Scala package starter template for Zero to Nix";
+        };
       };
     };
 }
