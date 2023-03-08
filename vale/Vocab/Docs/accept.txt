@@ -99,7 +99,6 @@ sandboxing
 sayhello
 sbt
 scala
-scalafmt
 serokell
 shopify
 src
