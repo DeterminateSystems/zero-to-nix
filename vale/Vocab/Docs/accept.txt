@@ -97,6 +97,7 @@ runtimes
 sandboxed
 sandboxing
 sayhello
+scalafmt
 serokell
 shopify
 src
