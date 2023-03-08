@@ -7,7 +7,7 @@
   /* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
   .content {
     a {
-      @apply font-medium underline hover:text-primary dark:hover:text-light-blue;
+      @apply font-medium underline hover:text-primary dark:hover:text-primary;
     }
 
     p + p {
@@ -43,8 +43,7 @@
     p,
     .content,
     h2,
-    h3,
-    li {
+    h3 {
       code {
         @apply inline-code;
       }

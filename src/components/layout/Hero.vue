@@ -15,7 +15,8 @@
           'text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl',
       ]"
     >
-      {{ title }}
+      <span v-if="order">{{ order }}. </span>
+      <span>{{ title }}</span>
     </h1>
     <h2
       v-if="description"

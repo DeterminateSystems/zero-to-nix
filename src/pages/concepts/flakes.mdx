@@ -238,15 +238,11 @@ You can also use Nix functions like this:
 ```nix filename=flake.nix
 {
   outputs = { self, nixpkgs }: let
-    # Helper functions
-    nameValuePair = name: value: { inherit name value; };
-    genAttrs = names: f: builtins.listToAttrs (map (n: nameValuePair n (f n)) names);
-
     # The set of systems to provide outputs for
     allSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
     # A function that provides a system-specific Nixpkgs for the desired systems
-    forAllSystems = f: genAttrs allSystems (system: f {
+    forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
       pkgs = import nixpkgs { inherit system; };
     });
   in {

@@ -20,7 +20,7 @@ export type Term = {
 export type Site = {
   title: string;
   description: string;
-  url: string;
+  rootUrl: string;
   canonical: string;
   githubUrl: string;
   languageCode: string;
@@ -34,12 +34,13 @@ export type Site = {
     text: string;
     generation: number;
   };
+  mailingListTags: string[];
 };
 
 const site: Site = {
   title: "Zero to Nix",
   description: "An unofficial, opinionated, gentle introduction to Nix",
-  url: "https://zero-to-nix.com",
+  rootUrl: "https://zero-to-nix.com",
   canonical: "zero-to-nix.com",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languageCode: "en",
@@ -63,7 +64,7 @@ const site: Site = {
         },
         {
           text: "Create a development environment",
-          href: "/start/dev-shell-flake",
+          href: "/start/nix-develop",
         },
         {
           text: "How Nix development environments work",
@@ -77,8 +78,8 @@ const site: Site = {
         "No more broken builds or mysterious installation processes. Nix builds packages from scratch every time.",
       links: [
         {
-          text: "Build a package from Nixpkgs",
-          href: "/start/nix-build-nixpkgs",
+          text: "Build a Nix package",
+          href: "/start/nix-build",
         },
         {
           text: "How Nix packages work",
@@ -146,6 +147,10 @@ const site: Site = {
     text: "🎉 Welcome to **Zero to Nix**, a brand new learning resource for [Nix](/concepts/nix)!",
     generation: 1,
   },
+
+  mailingListTags: [
+    "294258", // zero-to-nix
+  ],
 };
 
 export default site;

@@ -13,6 +13,7 @@
   "devDependencies": {
     "@headlessui/vue": "^1.7.4",
     "@iconify-json/fa": "^1.1.2",
+    "@iconify-json/fa-regular": "^1.1.3",
     "@iconify-json/fa-solid": "^1.1.2",
     "@islands/headings": "^0.8.1",
     "@islands/icons": "^0.8.0",

@@ -6,6 +6,8 @@
       client:none
     />
 
+    <QuickStart client:load />
+
     <Grid3>
       <HoverableLink
         v-for="(page, idx) in conceptPages"
@@ -20,4 +22,8 @@
 
 <script setup lang="ts">
 import { conceptPages } from "../../logic/content";
+
+useHead({
+  title: "Concepts",
+});
 </script>

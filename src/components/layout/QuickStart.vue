@@ -6,10 +6,10 @@
     <div class="flex items-center justify-between gap-4 md:gap-6 lg:gap-8">
       <p class="content text-dark dark:text-white md:text-lg lg:text-xl">
         We recommend starting with the
-        <a href="/start">Nix quick start</a> and consulting concept docs like
-        this for primarily for clarification. Feel free to click
-        <strong>x</strong> to the right to disable this notification on
-        <em>all</em> concept docs.
+        <a href="/start">Nix quick start</a> and consulting concept docs
+        primarily for clarification. Feel free to click
+        <strong class="text-orange">x</strong> to the right to disable this
+        notification on <em>all</em> concept docs.
       </p>
 
       <button @click="disableBanner">
