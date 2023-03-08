@@ -1,3 +1,4 @@
+# Indebted to https://github.com/zaninime/sbt-derivation/blob/92d6d6d825e3f6ae5642d1cce8ff571c3368aaf7/templates/cli-app/flake.nix
 {
   description = "Scala example flake for Zero to Nix";
 
@@ -11,11 +12,11 @@
   };
 
   # Flake outputs
-  outputs = { self, nixpkgs, sbt }:
+  outputs = { self, nixpkgs, sbt, ... }:
     let
-      pname = "zero-to-nix-scala";
+      name = "zero-to-nix-scala";
       version = "0.1.0";
-      scalaVersion = "2.12";
+      scalaVersion = "3.2.1";
 
       # Systems supported
       allSystems = [
@@ -34,21 +35,35 @@
     {
       # Package outputs
       packages = forAllSystems ({ pkgs, system }: {
-        default = sbt.mkSbtDerivation.${system} {
-          inherit pname version;
-          depsSha256 = "sha256-rFh3dTcK65/sFOy2mQI6HxK+VQdzn3XvBNaVksSvP0U=";
-          nativeBuildInputs = with pkgs; [ makeWrapper ];
-          src = ./.;
-          buildPhase = ''
-            sbt package
-          '';
-          installPhase = ''
-            mkdir -p $out/bin
-            cp target/scala-${scalaVersion}/${pname}_${scalaVersion}-${version}.jar $out/bin/${pname}.jar
-            #makeWrapper ${pkgs.jre}/bin/java $out/bin/${pname} \
-            #  --add-flags "-jar $out/bin/${pname}.jar"
-          '';
-        };
+        default =
+          let
+            mainClass = "hello";
+          in
+          sbt.mkSbtDerivation.${system} {
+            pname = name;
+            inherit version;
+            depsSha256 = "sha256-rFh3dTcK65/sFOy2mQI6HxK+VQdzn3XvBNaVksSvP0U=";
+            src = ./.;
+            depsWarmupCommand = ''
+              sbt 'managedClasspath; compilers'
+            '';
+            startScript = ''
+              #!${pkgs.runtimeShell}
+              exec ${pkgs.openjdk_headless}/bin/java ''${JAVA_OPTS:-} -cp "${
+                placeholder "out"
+              }/share/${name}/lib/*" ${nixpkgs.lib.escapeShellArg mainClass} "$@"
+            '';
+            buildPhase = ''
+              sbt stage
+            '';
+            installPhase = ''
+              libs_dir="$out/share/${name}/lib"
+              mkdir -p "$libs_dir"
+              cp -ar target/universal/stage/lib/. "$libs_dir"
+              install -T -D -m755 $startScriptPath $out/bin/${name}
+            '';
+            passAsFile = [ "startScript" ];
+          };
       });
     };
 }
