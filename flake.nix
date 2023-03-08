@@ -128,7 +128,7 @@
             exampleShells = import ./nix/shell/example.nix { inherit pkgs; };
           in
           {
-            inherit (exampleShells) example cpp haskell hook javascript python go rust multi;
+            inherit (exampleShells) example cpp haskell hook javascript python go rust scala multi;
           } // {
             default = pkgs.mkShell
               {

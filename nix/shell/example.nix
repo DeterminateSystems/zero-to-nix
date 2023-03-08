@@ -65,6 +65,14 @@
     '';
   };
 
+  scala = pkgs.mkShell {
+    packages = with pkgs; [ sbt ];
+
+    shellHook = ''
+      echo "Welcome to a Nix development environment for Scala!"
+    '';
+  };
+
   multi = pkgs.mkShell {
     packages = with pkgs; [ python39 kubectl openssl terraform ];
 
