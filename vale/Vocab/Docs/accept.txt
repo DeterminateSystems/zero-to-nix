@@ -97,6 +97,8 @@ runtimes
 sandboxed
 sandboxing
 sayhello
+sbt
+scala
 scalafmt
 serokell
 shopify
