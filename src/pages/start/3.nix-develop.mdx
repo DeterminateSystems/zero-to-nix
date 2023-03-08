@@ -189,6 +189,19 @@ cargo run
 
 You should see `Hello, world!`.
 </SpecificLanguage>
+<SpecificLanguage client:load lang="Scala">
+First, let's see the Nix store path for [sbt]:
+
+```shell
+type sbt
+```
+
+Check the sbt version inside the environment:
+
+```shell
+sbt --version
+```
+</SpecificLanguage>
 
 Like usual, run `exit` to leave the Nix environment and return to your usual environment.
 
@@ -333,6 +346,20 @@ You should see a (rather strange) path like this:
 cargo is /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
 ```
 </SpecificLanguage>
+<SpecificLanguage client:load lang="Scala">
+Ordinarily when you run `type sbt` on a Unix system, you get a path like `/usr/bin/sbt`.
+Try running it in the Nix development environment:
+
+```shell
+type sbt
+```
+
+You should see a (rather strange) path like this:
+
+```shell
+sbt is /nix/store/p0hca7x8g45p5hnh0xjzy5s2bcpy1i9l-sbt-1.7.3/bin/sbt
+```
+</SpecificLanguage>
 
 Probably not what you expected! What happened here? A few things:
 
@@ -373,6 +400,7 @@ Probably not what you expected! What happened here? A few things:
 [python]: https://python.org
 [rev]: https://git-scm.com/docs/revisions
 [rust]: https://rust-lang.org
+[sbt]: https://scala-sbt.org
 [store]: /concepts/nix-store
 [templates]: /concepts/flakes#templates
 [terraform]: https://terraform.io
