@@ -57,6 +57,12 @@ It also installs Nix with [Nix flakes][flakes] enabled while the official instal
 See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Determinate Nix Installer][nix-installer] concept doc if you'd like more background.
 </Admonition>
 
+<Admonition warning title="Need to remove a Nix installation from the official installer?" id="official-uninstall" client:load>
+If you have previously installed Nix from the official Bash-based installation script, the Determinate Systems installer will error out because the Nix volume is already mounted.
+
+To remove this installation, follow the instructions from the [official Nix page][official-uninstaller] for your platform. Once those instructions are complete, you can proceed with the Determinate Systems installer.
+</Admonition>
+
 Validate the displayed plan and approve it to begin the installation process.
 Once the installer has finished, you should see `Nix was installed successfully!` in your terminal.
 
@@ -101,3 +107,4 @@ If you're interested in contributing to Zero to Nix, see the [manual][contributi
 [uninstall]: /start/uninstall
 [wsl]: https://learn.microsoft.com/windows/wsl
 [z2n]: /
+[official-uninstaller]: https://nixos.org/manual/nix/stable/installation/installing-binary.html#uninstalling
