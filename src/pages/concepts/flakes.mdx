@@ -194,10 +194,18 @@ Each flake can have many different outputs simultaneously, including but not lim
 
 Flake outputs are defined by a function, which takes an attribute set as input, containing each of the inputs to that flake (named after the chosen identifier in the [inputs](#inputs) section).
 
-### The `lib` output \{#lib}
+### Exporting functions
 
-In addition to things like packages and NixOS configurations, flakes can also output Nix functions and other values via the `lib` output.
-Here's an example flake that outputs a `sayHello` function that takes a name as an input and outputs a string saying hello to that person:
+In addition to things like packages and NixOS configurations, flakes can also output Nix [functions] for use elsewhere.
+
+[Nixpkgs], for example, outputs many helper functions are output via the `lib` attribute.
+
+<Admonition info title="The `lib` convention" client:load>
+The convention of using `lib` to output functions is observed not just by Nixpkgs but by many other Nix projects.
+You're free, however, to output functions via whichever attribute you prefer.
+</Admonition>
+
+Here's an example flake that outputs a `sayHello` function, via the `lib` attribute, that takes a name as an input and outputs a string saying hello to a person with that name:
 
 ```nix filename=flake.nix
 {
@@ -210,7 +218,6 @@ Here's an example flake that outputs a `sayHello` function that takes a name as 
 ```
 
 Another Nix flake could then specify this flake as an [input](#inputs) and use `sayHello` for whatever purpose.
-[Nixpkgs], for example, outputs a vast multitude of helper functions and values.
 
 ### System specificity
 
@@ -281,6 +288,7 @@ If you ran `nix flake init --template <reference>` against this template definit
 [channels]: /concepts/channels
 [env]: /concepts/dev-env
 [flake-utils]: https://github.com/numtide/flake-utils
+[functions]: /concepts/nix-language
 [gh]: https://github.com
 [gh-z2n]: https://github.com/DeterminateSystems/zero-to-nix
 [hash]: https://github.com/DeterminateSystems/zero-to-nix/tree/d51c83a5d206e882a6f15a282e32b7079f5b6d76
