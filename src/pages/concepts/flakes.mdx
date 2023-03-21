@@ -194,10 +194,9 @@ Each flake can have many different outputs simultaneously, including but not lim
 
 Flake outputs are defined by a function, which takes an attribute set as input, containing each of the inputs to that flake (named after the chosen identifier in the [inputs](#inputs) section).
 
-### Exporting functions
+### Exporting functions \{#functions}
 
 In addition to things like packages and NixOS configurations, flakes can also output Nix [functions] for use elsewhere.
-
 [Nixpkgs], for example, outputs many helper functions are output via the `lib` attribute.
 
 <Admonition info title="The `lib` convention" client:load>
