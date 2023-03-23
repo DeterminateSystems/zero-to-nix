@@ -43,7 +43,7 @@ declare module '@vue/runtime-core' {
     IconFaSolidMoon: typeof import('~icons/fa-solid/moon')['default']
     IconFaSolidSun: typeof import('~icons/fa-solid/sun')['default']
     IconFaWarning: typeof import('~icons/fa/warning')['default']
-    Island: typeof import('./node_modules/.pnpm/iles@0.8.7_@types+node@18.15.5/node_modules/iles/dist/client/app/components/Island.vue')['default']
+    Island: typeof import('./node_modules/.pnpm/iles@0.9.2_@types+node@18.15.5/node_modules/iles/dist/client/app/components/Island.vue')['default']
     Language: typeof import('./src/components/mdx/stateful/Language.vue')['default']
     Languages: typeof import('./src/components/mdx/stateful/Languages.vue')['default']
     Modal: typeof import('./src/components/layout/Modal.vue')['default']
