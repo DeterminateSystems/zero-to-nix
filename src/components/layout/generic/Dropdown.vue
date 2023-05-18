@@ -24,8 +24,7 @@
               :key="idx"
             >
               <a
-                @touchstart="nameCurrentEvent('touchstart')"
-                @touchend="nameCurrentEvent('touchend')"
+                @touchstart.prevent="navigate($event)"
                 class="block py-2 px-4 text-sm tracking-tight hover:bg-primary hover:text-dark hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-base lg:text-lg"
                 :href="href"
               >
@@ -52,4 +51,6 @@ const { dropdown } = defineProps<{
 }>();
 
 const { text, pages } = dropdown;
+
+const navigate = (event) => { window.location.href = event.target.href; };
 </script>
