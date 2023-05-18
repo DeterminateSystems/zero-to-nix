@@ -24,7 +24,7 @@
               :key="idx"
             >
               <a
-                class="block py-2 px-4 text-sm tracking-tight mobile-hover:bg-primary mobile-hover:text-dark mobile-hover:text-white dark:mobile-hover:bg-white dark:mobile-hover:text-dark md:text-base lg:text-lg"
+                class="block py-2 px-4 text-sm tracking-tight mobile-hover:bg-primary mobile-hover:text-dark mobile-hover:hover:text-white dark:mobile-hover:hover:bg-white dark:mobile-hover:text-dark md:text-base lg:text-lg"
                 :href="href"
               >
                 <div v-if="order" class="flex space-x-1">

@@ -6,6 +6,9 @@ module.exports = {
   content: ["./src/**/*.{ts,vue}"],
   darkMode: "class",
   plugins: [require("@tailwindcss/typography")],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       borderWidth: {
@@ -83,7 +86,6 @@ module.exports = {
       },
       screens: {
         print: { raw: "print" },
-        "mobile-hover": { raw: "(hover: hover)" },
       },
     },
   },
