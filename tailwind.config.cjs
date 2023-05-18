@@ -83,6 +83,7 @@ module.exports = {
       },
       screens: {
         print: { raw: "print" },
+        "mobile-hover": { raw: "(hover: hover)" },
       },
     },
   },
