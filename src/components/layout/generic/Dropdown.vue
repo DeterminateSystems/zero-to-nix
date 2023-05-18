@@ -52,5 +52,7 @@ const { dropdown } = defineProps<{
 
 const { text, pages } = dropdown;
 
-const navigate = (event) => { window.location.href = event.target.href; };
+const navigate = (event: TouchEvent) => {
+  window.location.href = (event.target as HTMLAnchorElement).href;
+};
 </script>
