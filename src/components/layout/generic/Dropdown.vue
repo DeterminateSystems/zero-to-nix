@@ -24,6 +24,7 @@
               :key="idx"
             >
               <a
+                @touchstart="nameCurrentEvent('touchstart')"
                 class="block py-2 px-4 text-sm tracking-tight hover:bg-primary hover:text-dark hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-base lg:text-lg"
                 :href="href"
               >
