@@ -23,10 +23,10 @@ jobs:
         run: nix develop --command ci
       - name: Check flake templates
         run:
-          for env in $(ls ./nix/templates/dev); do
-            nix flake check ./nix/templates/dev/$env
+          for env in ./nix/templates/dev/*; do
+            nix flake check "${env}"
           done
 
-          for pkg in $(ls ./nix/templates/pkg); do
-            nix build ./nix/templates/pkg/$pkg
+          for pkg in ./nix/templates/pkg/*; do
+            nix build "${pkg}"
           done
