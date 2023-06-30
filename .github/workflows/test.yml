@@ -38,5 +38,14 @@ jobs:
           nix develop --command direnv allow
           eval "$(nix develop --command direnv export bash)"
           echo "$PATH" >> $GITHUB_PATH
+      - name: Check flake templates
+        run:
+          for env in $(ls ./nix/templates/dev); do
+            nix flake check ./nix/templates/dev/$env
+          done
+
+          for pkg in $(ls ./nix/templates/pkg); do
+            nix build ./nix/templates/pkg/$pkg
+          done
       - name: Run Nix CI suite
         run: ci
