@@ -39,7 +39,7 @@
         default = sbt.mkSbtDerivation.${system} {
           pname = name;
           inherit version;
-          depsSha256 = "sha256-rFh3dTcK65/sFOy2mQI6HxK+VQdzn3XvBNaVksSvP0U=";
+          depsSha256 = "sha256-eOSvpVOMjIO+oUErei4NGj9xMKknhkFe6+NrUui+hm8=";
           src = ./.;
           depsWarmupCommand = ''
             sbt 'managedClasspath; compilers'

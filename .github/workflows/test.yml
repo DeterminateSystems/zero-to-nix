@@ -7,7 +7,8 @@ on:
       - main
 
 jobs:
-  check:
+  test:
+    environment: test
     runs-on: ubuntu-22.04
     steps:
       - name: git checkout
@@ -16,27 +17,9 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v4
         with:
           fail-mode: true
-
-  build:
-    environment: test
-    runs-on: ubuntu-22.04
-    steps:
-      - name: git checkout
-        uses: actions/checkout@v3
-
-      #- name: Set up htmltest cache
-      #  uses: actions/cache@v3
-      #  with:
-      #    key: zero-to-nix-${{ hashFiles('.htmltest.external.yml') }}
-      #    path: |
-      #      tmp/
-
       - uses: DeterminateSystems/nix-installer-action@v4
       - uses: DeterminateSystems/magic-nix-cache-action@v1
-      - name: direnv activate
-        run: |
-          nix develop --command direnv allow
-          eval "$(nix develop --command direnv export bash)"
-          echo "$PATH" >> $GITHUB_PATH
       - name: Run Nix CI suite
-        run: ci
+        run: nix develop --command ci
+      - name: Check flake templates
+        run: ./scripts/check-flake-templates.sh
