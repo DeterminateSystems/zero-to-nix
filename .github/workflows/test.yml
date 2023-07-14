@@ -14,11 +14,11 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v3
       - name: Check Nixpkgs input
-        uses: DeterminateSystems/flake-checker-action@v4
+        uses: DeterminateSystems/flake-checker-action@main
         with:
           fail-mode: true
-      - uses: DeterminateSystems/nix-installer-action@v4
-      - uses: DeterminateSystems/magic-nix-cache-action@v1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Run Nix CI suite
         run: nix develop --command ci
       - name: Check flake templates
