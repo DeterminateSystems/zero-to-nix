@@ -1,9 +1,7 @@
 {
-  description = "A Nix-flake-based Node.js development environment";
+  description = "Zero to Nix: An unofficial, opinionated, gentle introduction to Nix";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   outputs =
     { self
