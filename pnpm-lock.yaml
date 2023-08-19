@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -63,8 +63,8 @@ devDependencies:
     specifier: ^15.1.0
     version: 15.1.0(postcss@8.4.21)
   posthog-js:
-    specifier: ^1.51.5
-    version: 1.51.5
+    specifier: ^1.77.0
+    version: 1.77.0
   prettier:
     specifier: ^2.8.6
     version: 2.8.6
@@ -2954,11 +2954,10 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /posthog-js@1.51.5:
-    resolution: {integrity: sha512-hhOreF51vvg97iKFZ4GFF4lwQVq1WWJXOJ59NbQVsXj+bVxDcX4vog0Yx40rfp4uWNnE/xRWQQEOwlKM2WkcjQ==}
+  /posthog-js@1.77.0:
+    resolution: {integrity: sha512-k4wuMT6Jl8qh5uF3dzNyvBP8vXATL3zoWrYhroQNx0FKWhhR57mpQnvqMWtPU4yeE+fkU0r0NfDCUrfbdHjSlg==}
     dependencies:
       fflate: 0.4.8
-      rrweb-snapshot: 1.1.14
     dev: true
 
   /prettier-plugin-tailwindcss@0.2.5(prettier@2.8.6):
@@ -3190,10 +3189,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
-
-  /rrweb-snapshot@1.1.14:
-    resolution: {integrity: sha512-eP5pirNjP5+GewQfcOQY4uBiDnpqxNRc65yKPW0eSoU1XamDfc4M8oqpXGMyUyvLyxFDB0q0+DChuxxiU2FXBQ==}
     dev: true
 
   /run-parallel@1.2.0:
