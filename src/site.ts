@@ -144,8 +144,8 @@ const site: Site = {
   ],
 
   banner: {
-    text: "🎉 Welcome to **Zero to Nix**, a brand new learning resource for [Nix](/concepts/nix)!",
-    generation: 1,
+    text: "Check out <strong><a target='_blank' href='https://FlakeHub.com'>FlakeHub</a></strong> - the best place to discover and publish Nix flakes, from Determinate Systems.",
+    generation: 2,
   },
 
   mailingListTags: [
