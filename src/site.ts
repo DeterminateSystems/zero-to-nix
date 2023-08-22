@@ -39,7 +39,7 @@ export type Site = {
 
 const site: Site = {
   title: "Zero to Nix",
-  description: "An unofficial, opinionated, gentle introduction to Nix",
+  description: "Your guide to learn Nix and Flakes",
   rootUrl: "https://zero-to-nix.com",
   canonical: "zero-to-nix.com",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",

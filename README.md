@@ -1,6 +1,6 @@
 # Zero to Nix
 
-[Zero to Nix][site] is an unofficial and opinionated guide to getting started with [Nix] from [Determinate Systems][detsys].
+[Zero to Nix][site] is your guide to learn [Nix] and [Flakes], from [Determinate Systems][detsys].
 
 ## Setup
 
@@ -171,6 +171,7 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
 [client-load]: https://iles.pages.dev/guide/hydration#clientload
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
+[flakes]: https://zero-to-nix.com/concepts/flakes
 [gha]: https://github.com/features/actions
 [hydration]: https://iles.pages.dev/guide/hydration#hydration-directives
 [iles]: https://github.com/elMassimo/iles

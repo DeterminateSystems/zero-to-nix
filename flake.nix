@@ -1,5 +1,5 @@
 {
-  description = "Zero to Nix: An unofficial, opinionated, gentle introduction to Nix";
+  description = "Zero to Nix: Your guide to learn Nix and Flakes";
 
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.*.tar.gz";
 
