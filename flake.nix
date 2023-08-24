@@ -1,7 +1,7 @@
 {
   description = "Zero to Nix: An unofficial, opinionated, gentle introduction to Nix";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.*.tar.gz";
 
   outputs =
     { self
