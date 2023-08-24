@@ -1,6 +1,6 @@
 # Zero to Nix
 
-[Zero to Nix][site] is your guide to learning [Nix] and [Flakes], from [Determinate Systems][detsys].
+Zero to Nix][site] is your guide to learning [Nix] and [flakes]. Created by [Determinate Systems][detsys].
 
 ## Setup
 
