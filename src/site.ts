@@ -39,7 +39,7 @@ export type Site = {
 
 const site: Site = {
   title: "Zero to Nix",
-  description: "An unofficial, opinionated, gentle introduction to Nix",
+  description: "Your guide to learning Nix and flakes",
   rootUrl: "https://zero-to-nix.com",
   canonical: "zero-to-nix.com",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
@@ -144,8 +144,8 @@ const site: Site = {
   ],
 
   banner: {
-    text: "🎉 Welcome to **Zero to Nix**, a brand new learning resource for [Nix](/concepts/nix)!",
-    generation: 1,
+    text: "Check out <strong><a target='_blank' href='https://FlakeHub.com'>FlakeHub</a></strong> - the best place to discover and publish Nix flakes, from Determinate Systems.",
+    generation: 2,
   },
 
   mailingListTags: [
