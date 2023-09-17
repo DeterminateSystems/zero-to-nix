@@ -12,7 +12,7 @@
       # Conveniences for Nixpkgs
       overlays = [
         (self: super: {
-          nodejs = super.nodejs-18_x;
+          nodejs = super.nodejs_18;
           pnpm = super.nodePackages.pnpm;
           alex = super.nodePackages.alex;
         })
