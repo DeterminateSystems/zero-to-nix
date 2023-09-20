@@ -2,7 +2,7 @@
   description = "JavaScript example flake for Zero to Nix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
   };
 
   outputs = { self, nixpkgs }:
@@ -26,7 +26,7 @@
           name = "zero-to-nix-javascript";
 
           buildInputs = with pkgs; [
-            nodejs-18_x
+            nodejs_18
           ];
 
           src = ./.;

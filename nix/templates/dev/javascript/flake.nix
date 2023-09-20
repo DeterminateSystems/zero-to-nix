@@ -3,7 +3,7 @@
 
   # Flake inputs
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs"; # also valid: "nixpkgs"
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
   };
 
   # Flake outputs
@@ -28,7 +28,7 @@
         default = pkgs.mkShell {
           # The Nix packages provided in the environment
           packages = with pkgs; [
-            nodejs-18_x # Node.js 18, plus npm, npx, and corepack
+            nodejs_18 # Node.js 18, plus npm, npx, and corepack
           ];
         };
       });

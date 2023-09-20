@@ -34,7 +34,7 @@
   };
 
   javascript = pkgs.mkShell {
-    packages = with pkgs; [ nodejs-18_x ];
+    packages = with pkgs; [ nodejs_18 ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for JavaScript!"
