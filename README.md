@@ -1,5 +1,7 @@
 # Zero to Nix
 
+[![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/DeterminateSystems/zero-to-nix/badge)](https://flakehub.com/flake/DeterminateSystems/zero-to-nix)
+
 [Zero to Nix][site] is your guide to learning [Nix] and [flakes]. Created by [Determinate Systems][detsys].
 
 ## Setup
