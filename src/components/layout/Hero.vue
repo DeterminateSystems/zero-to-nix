@@ -37,7 +37,7 @@
 
     <div
       v-if="wip"
-      class="bg:light-orange rounded border-1.5 border-orange py-1.5 px-3 text-xs md:py-2 md:px-3.5 md:text-sm lg:py-3 lg:px-4 lg:text-base"
+      class="bg:light-orange rounded border-1.5 border-orange px-3 py-1.5 text-xs md:px-3.5 md:py-2 md:text-sm lg:px-4 lg:py-3 lg:text-base"
     >
       <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
         <IconFaSolidHammer class="h-3 w-3 text-orange md:h-4 md:w-4" />
@@ -58,7 +58,7 @@
           'bg-primary text-white': highlight,
           'bg-light-gray text-black': !highlight,
         }"
-        class="rounded-full py-2 px-4 font-bold shadow-md transition-colors duration-150 hover:bg-dark-gray hover:text-white"
+        class="rounded-full px-4 py-2 font-bold shadow-md transition-colors duration-150 hover:bg-dark-gray hover:text-white"
       >
         {{ text }}
       </a>

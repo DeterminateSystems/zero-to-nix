@@ -10,7 +10,7 @@
     />
     <button
       v-if="feedback"
-      class="rounded-lg bg-light-gray py-2 px-3 font-semibold text-dark hover:cursor-pointer hover:bg-gray hover:text-pale active:bg-rose dark:bg-gray dark:text-pale dark:hover:bg-dark-gray"
+      class="rounded-lg bg-light-gray px-3 py-2 font-semibold text-dark hover:cursor-pointer hover:bg-gray hover:text-pale active:bg-rose dark:bg-gray dark:text-pale dark:hover:bg-dark-gray"
       :disabled="feedback.trim() === ''"
       @click="submitFeedback"
     >

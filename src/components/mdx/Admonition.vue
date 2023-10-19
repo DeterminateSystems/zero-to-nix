@@ -12,7 +12,7 @@
       <DisclosureButton
         v-if="title"
         as="div"
-        class="flex items-center justify-between py-1.5 px-3 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:py-2 md:px-3.5 lg:py-3 lg:px-4"
+        class="flex items-center justify-between px-3 py-1.5 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:px-3.5 md:py-2 lg:px-4 lg:py-3"
         :class="[
           open && 'rounded-t border-b-1.5',
           !open && 'rounded',
@@ -55,7 +55,7 @@
 
       <DisclosurePanel
         as="div"
-        class="content py-1.5 px-3 text-sm md:py-2 md:px-3.5 md:text-base lg:py-3 lg:px-4 lg:text-lg"
+        class="content px-3 py-1.5 text-sm md:px-3.5 md:py-2 md:text-base lg:px-4 lg:py-3 lg:text-lg"
       >
         <slot />
       </DisclosurePanel>
@@ -64,7 +64,7 @@
     <div v-else>
       <span
         v-if="title"
-        class="flex items-center space-x-4 py-1.5 px-3 font-semibold tracking-tight md:py-2 md:px-3.5 lg:py-3 lg:px-4"
+        class="flex items-center space-x-4 px-3 py-1.5 font-semibold tracking-tight md:px-3.5 md:py-2 lg:px-4 lg:py-3"
       >
         <IconFaBolt v-if="danger" class="h-4 w-4 text-red" />
         <IconFaInfo v-if="info" class="h-4 w-4 text-blue" />

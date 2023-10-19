@@ -3,14 +3,16 @@
     <HorizontalContainer>
       <VerticalContainer>
         <div>
-          <div class="space-y-4 md:space-y-6 lg:space-y-8 text-left md:text-center">
+          <div
+            class="space-y-4 text-left md:space-y-6 md:text-center lg:space-y-8"
+          >
             <h1
-              class="text-7xl tracking-tight text-pale md:text-8xl lg:text-9xl font-thin"
+              class="text-7xl font-thin tracking-tight text-pale md:text-8xl lg:text-9xl"
             >
               Zero to <span class="text-nix-blue">N</span>ix
             </h1>
             <h2
-              class="text-2xl tracking-tight text-light-gray md:text-3xl lg:text-4xl font-light"
+              class="text-2xl font-light tracking-tight text-light-gray md:text-3xl lg:text-4xl"
               v-html="md($site.description)"
             />
           </div>
@@ -26,9 +28,9 @@
                 class="rounded-full tracking-tight transition-colors duration-150 md:text-base lg:text-lg"
                 :class="[
                   highlight &&
-                    'lg:py-2.4 bg-primary py-1.5 px-3.5 text-white hover:bg-orange md:py-2 md:px-5 lg:px-6',
+                    'lg:py-2.4 bg-primary px-3.5 py-1.5 text-white hover:bg-orange md:px-5 md:py-2 lg:px-6',
                   !highlight &&
-                    'lg:px-4.5 bg-gray py-1 px-3 text-white hover:bg-light-gray hover:text-dark md:py-1.5 md:px-3.5 lg:py-2',
+                    'lg:px-4.5 bg-gray px-3 py-1 text-white hover:bg-light-gray hover:text-dark md:px-3.5 md:py-1.5 lg:py-2',
                 ]"
               >
                 <a

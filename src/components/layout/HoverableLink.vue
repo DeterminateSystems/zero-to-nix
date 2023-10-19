@@ -4,9 +4,9 @@
     class="rounded-lg border-1.5 border-light-gray transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray"
     :class="[
       normalLink &&
-        'py-1.5 px-3 text-lg tracking-tight md:py-2 md:px-4 md:text-xl lg:py-2.5 lg:px-5 lg:text-2xl',
+        'px-3 py-1.5 text-lg tracking-tight md:px-4 md:py-2 md:text-xl lg:px-5 lg:py-2.5 lg:text-2xl',
       smallLink &&
-        'py-1.5 px-3 text-base md:py-2 md:px-4 md:text-lg lg:py-2.5 lg:px-5 lg:text-xl',
+        'px-3 py-1.5 text-base md:px-4 md:py-2 md:text-lg lg:px-5 lg:py-2.5 lg:text-xl',
     ]"
   >
     <div v-if="order" class="flex items-center justify-between">
