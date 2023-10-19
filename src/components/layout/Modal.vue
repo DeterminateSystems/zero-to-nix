@@ -110,8 +110,6 @@
 import {
   Dialog,
   DialogPanel,
-  DialogTitle,
-  DialogDescription,
 } from "@headlessui/vue";
 
 import site from "~/site";

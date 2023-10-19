@@ -49,5 +49,5 @@ const { dropdown } = defineProps<{
   dropdown: DropdownProps;
 }>();
 
-const { text, pages } = dropdown;
+const { text } = dropdown;
 </script>

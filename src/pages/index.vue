@@ -1,7 +1,7 @@
 <template layout="default">
   <section class="bg-darker-gray py-16 md:py-20 lg:py-24">
     <HorizontalContainer>
-      <div class="space-y-6 md:space-y-8 lg:space-y-10">
+      <VerticalContainer>
         <div>
           <div class="space-y-4 md:space-y-6 lg:space-y-8">
             <h1
@@ -41,7 +41,7 @@
             </TabList>
           </TabGroup>
         </div>
-      </div>
+      </VerticalContainer>
     </HorizontalContainer>
   </section>
 

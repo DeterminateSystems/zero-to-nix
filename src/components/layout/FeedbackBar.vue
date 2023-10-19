@@ -43,8 +43,6 @@ const {
 
 const { githubUrl } = site;
 
-const sourceUrl = `${githubUrl}/tree/main/${filename}`;
-
 const issueTitle = `Issue with page \`${filename}\``;
 const issueBody = `...Replace me with your issue description...`;
 const issueUrlParams = `title=${issueTitle}&body=${issueBody}`;

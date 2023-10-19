@@ -74,5 +74,6 @@ declare module '@vue/runtime-core' {
     Systems: typeof import('./src/components/mdx/stateful/Systems.vue')['default']
     ThemeSwitcher: typeof import('./src/components/layout/ThemeSwitcher.vue')['default']
     Top: typeof import('./src/components/layout/Top.vue')['default']
+    VerticalContainer: typeof import('./src/components/layout/VerticalContainer.vue')['default']
   }
 }

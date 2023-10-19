@@ -17,5 +17,5 @@
 
 <script setup lang="ts">
 import { Switch } from "@headlessui/vue";
-import { isDark, toggleTheme } from "~/logic/theme";
+import { isDark } from "~/logic/theme";
 </script>
