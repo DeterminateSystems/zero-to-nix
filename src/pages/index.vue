@@ -3,20 +3,20 @@
     <HorizontalContainer>
       <VerticalContainer>
         <div>
-          <div class="space-y-4 md:space-y-6 lg:space-y-8">
+          <div class="space-y-4 md:space-y-6 lg:space-y-8 text-left md:text-center">
             <h1
-              class="text-5xl tracking-tight text-pale md:text-6xl lg:text-7xl"
+              class="text-7xl tracking-tight text-pale md:text-8xl lg:text-9xl font-thin"
             >
-              {{ $site.title }}
+              Zero to <span class="text-nix-blue">N</span>ix
             </h1>
             <h2
-              class="one-liner text-xl tracking-tight text-light-gray md:text-2xl lg:text-3xl"
+              class="text-2xl tracking-tight text-light-gray md:text-3xl lg:text-4xl font-light"
               v-html="md($site.description)"
             />
           </div>
         </div>
 
-        <div>
+        <div class="text-left md:text-center">
           <TabGroup>
             <TabList class="inline-flex items-center space-x-3">
               <Tab

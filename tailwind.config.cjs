@@ -41,6 +41,7 @@ module.exports = {
         orange: "var(--orange)",
         "light-orange": "var(--light-orange)",
         primary: "var(--primary)",
+        "nix-blue": "var(--nix-blue)",
       },
       fontFamily: {
         sans: [
