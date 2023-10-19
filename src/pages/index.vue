@@ -9,7 +9,7 @@
             <h1
               class="text-7xl font-thin tracking-tight text-pale md:text-8xl lg:text-9xl"
             >
-              Zero to <span class="text-nix-blue">N</span>ix
+              Zero to <span class="text-nix-light-blue">Nix</span>
             </h1>
             <h2
               class="text-2xl font-light tracking-tight text-light-gray md:text-3xl lg:text-4xl"
