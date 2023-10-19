@@ -11,8 +11,24 @@ summary: [
 nix run "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz"
 ```
 
+The [`fh init`][fh-init] command
+
+Supports a wide variety of [languages and tools][handlers]
+
 The [`fh`][fh] CLI
 
+Some examples:
+
+* If your project has a [`Cargo.toml`][cargo-toml] file in the root, `fh init` infers that it's a [Rust] project and asks if you want to add Rust dependencies to your Nix [development environment][dev-env].
+
+<Admonition warning open client:load>
+`fh init` has some limitations that are worth keeping in mind:
+</Admonition>
+
+[cargo-toml]: https://doc.rust-lang.org/cargo/reference/manifest.html
+[dev-env]: /concepts/dev-env
 [fh]: https://github.com/DeterminateSystems/fh
 [fh-init]: https://github.com/determinateSystems/fh#initialize-a-new-flakenix-from-scratch
 [flakehub]: /concepts/flakehub
+[handlers]: https://github.com/DeterminateSystems/fh/tree/main/src/cli/cmd/init/handlers
+[rust]: https://rust-lang.org

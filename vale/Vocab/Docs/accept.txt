@@ -38,8 +38,10 @@ externalsources
 fetchgit
 ffmpeg
 ffprobe
+fh
 fhs
 firefox
+flakehub
 fstype
 func
 gcc
@@ -88,6 +90,7 @@ openssh
 openssl
 pandoc
 pkgs
+plaintext
 podman
 ponysay
 readlink
