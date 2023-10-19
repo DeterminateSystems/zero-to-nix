@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { Document } from "iles";
 import { relatedConceptPages, ConceptPage } from "../../logic/content";
 
 const { related } = defineProps<{

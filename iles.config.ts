@@ -13,6 +13,8 @@ import site from "./src/site";
 
 const { rootUrl } = site;
 
+const mode = process.env["ENV"] === "production" ? "production" : "development";
+
 export default defineConfig({
   siteUrl: rootUrl,
   extendFrontmatter(frontmatter: RawPageMatter, filename: string) {

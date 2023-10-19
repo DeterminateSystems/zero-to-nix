@@ -1,6 +1,6 @@
 <template>
   <section
-    class="mb-6 rounded border-1.5 border-orange py-2 px-3.5 md:mb-8 md:py-3 md:px-5 lg:mb-10 lg:py-4 lg:px-6"
+    class="mb-6 rounded border-1.5 border-orange px-3.5 py-2 md:mb-8 md:px-5 md:py-3 lg:mb-10 lg:px-6 lg:py-4"
     v-if="showBanner"
   >
     <div class="flex items-center justify-between gap-4 md:gap-6 lg:gap-8">

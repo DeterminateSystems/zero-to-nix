@@ -10,7 +10,7 @@
 
       <button
         @click="openModal"
-        class="rounded bg-primary py-1.5 px-3 text-xs font-bold text-white transition-colors duration-150 hover:bg-light-gray hover:text-dark md:py-2 md:px-4 md:text-sm lg:text-base"
+        class="rounded bg-primary px-3 py-1.5 text-xs font-bold text-white transition-colors duration-150 hover:bg-light-gray hover:text-dark md:px-4 md:py-2 md:text-sm lg:text-base"
       >
         Subscribe
       </button>

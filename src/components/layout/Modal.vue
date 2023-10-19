@@ -8,7 +8,7 @@
 
     <div class="fixed inset-0 flex items-center justify-center">
       <DialogPanel
-        class="flex w-full max-w-sm flex-col space-y-6 rounded-lg bg-pale py-4 px-6"
+        class="flex w-full max-w-sm flex-col space-y-6 rounded-lg bg-pale px-6 py-4"
       >
         <div id="mc_embed_signup">
           <form
@@ -107,12 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-  DialogDescription,
-} from "@headlessui/vue";
+import { Dialog, DialogPanel } from "@headlessui/vue";
 
 import site from "~/site";
 import { closeModal, modalIsOpen } from "~/logic/state";

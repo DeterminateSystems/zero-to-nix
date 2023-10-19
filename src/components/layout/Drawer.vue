@@ -5,7 +5,7 @@
         v-if="drawerIsOpen"
         id="nav-drawer"
         tabindex="-1"
-        class="fixed z-40 flex h-full flex-col overflow-y-auto border-t border-r border-light-gray bg-white p-4 shadow-xl dark:border-dark-gray dark:bg-dark"
+        class="fixed z-40 flex h-full flex-col overflow-y-auto border-r border-t border-light-gray bg-white p-4 shadow-xl dark:border-dark-gray dark:bg-dark"
         aria-labelledby="nav-drawer"
       >
         <div class="flex justify-end">
@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { onClickOutside } from "@vueuse/core";
 import { ref } from "vue";
-import { closeDrawer, drawerIsOpen, toggleDrawer } from "~/logic/state";
+import { closeDrawer, drawerIsOpen } from "~/logic/state";
 
 const drawer = ref(null);
 

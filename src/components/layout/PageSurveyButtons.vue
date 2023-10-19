@@ -4,14 +4,14 @@
   </h3>
   <div class="flex items-center space-x-2">
     <button
-      class="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray py-2 px-3 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
+      class="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray px-3 py-2 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
       @click="submitResponse('positive')"
     >
       <span>Yes</span>
       <span>👍</span>
     </button>
     <button
-      class="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray py-2 px-3 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
+      class="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray px-3 py-2 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
       @click="submitResponse('negative')"
     >
       <span>No</span>

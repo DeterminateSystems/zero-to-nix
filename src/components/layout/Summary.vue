@@ -3,7 +3,7 @@
     class="rounded-lg border-1.5 border-light-gray dark:border-dark-gray dark:bg-dark"
   >
     <div
-      class="flex flex-col flex-nowrap items-start space-y-2 py-2 px-3 md:flex-row md:space-y-0 md:space-x-6 md:px-4 md:py-3 lg:py-4 lg:px-6"
+      class="flex flex-col flex-nowrap items-start space-y-2 px-3 py-2 md:flex-row md:space-x-6 md:space-y-0 md:px-4 md:py-3 lg:px-6 lg:py-4"
     >
       <span class="font-bold md:text-lg lg:text-xl">In this guide</span>
       <span class="space-y-1.5">
