@@ -94,7 +94,7 @@ This is done via the `inputs.<input>.follows` attribute.
 ```nix filename=flake.nix
 {
   inputs = {
-    nixpkgs = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs";
   };
 }
 ```
