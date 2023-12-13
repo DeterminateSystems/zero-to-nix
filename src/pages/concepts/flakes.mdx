@@ -68,7 +68,7 @@ A *flake reference* is a string representation of where the flake is located.
 Flake references are used in two places:
 
 1. In flake [input declarations](#inputs) to depend on outputs from the flake.
-1. In shell environments when running commands like `nix run github:DeterminateSystems/riff` (which runs the [Riff] program).
+1. In shell environments when running commands like `nix run github:DeterminateSystems/flake-checker` (which runs the [flake-checker] program).
 
 Here are some example flake references:
 
@@ -317,7 +317,7 @@ If you ran `nix flake init --template <reference>` against this template definit
 [refs-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-references
 [registry-json]: https://github.com/NixOS/flake-registry/blob/master/flake-registry.json
 [registry-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry
-[riff]: https://riff.sh
+[flake-checker]: https://github.com/DeterminateSystems/flake-checker
 [run]: /start/nix-run
 [specificity]: /concepts/system-specificity
 [unstable]: https://github.com/NixOS/nixpkgs/tree/nixpkgs-unstable
