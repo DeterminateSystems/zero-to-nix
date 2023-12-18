@@ -31,10 +31,11 @@ jobs:
         run: nix develop --command ci
       - name: Check external links
         run: |
-          lychee \
-            --cache \
-            --verbose \
-            --github-token "${GITHUB_TOKEN}" \
-            ./dist
+          nix develop --command \
+            lychee \
+              --cache \
+              --verbose \
+              --github-token "${GITHUB_TOKEN}" \
+              ./dist
       - name: Check flake templates
         run: ./scripts/check-flake-templates.sh
