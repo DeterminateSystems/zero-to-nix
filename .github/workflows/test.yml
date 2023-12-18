@@ -30,12 +30,15 @@ jobs:
       - name: Run Nix CI suite
         run: nix develop --command ci
       - name: Check external links
-        run: |
-          nix develop --command \
-            lychee \
-              --cache \
-              --verbose \
-              --github-token ${{ env.GITHUB_TOKEN }} \
-              ./dist
+        uses: lycheeverse/lychee-action@v1.8.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: >-
+            --cache
+            --verbose
+            --no-progress
+            ./dist
+          fail: true
       - name: Check flake templates
         run: ./scripts/check-flake-templates.sh
