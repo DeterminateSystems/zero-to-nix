@@ -23,7 +23,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .lycheecache
-          key: cache-lychee-${{ github.sha }}
+          key: lychee-link-check
           restore-keys: cache-lychee-
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
