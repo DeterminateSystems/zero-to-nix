@@ -35,7 +35,7 @@ jobs:
             lychee \
               --cache \
               --verbose \
-              --github-token "${GITHUB_TOKEN}" \
+              --github-token ${{ env. GITHUB_TOKEN }} \
               ./dist
       - name: Check flake templates
         run: ./scripts/check-flake-templates.sh
