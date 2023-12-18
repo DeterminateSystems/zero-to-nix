@@ -10,8 +10,6 @@ jobs:
   test:
     environment: test
     runs-on: ubuntu-22.04
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: git checkout
         uses: actions/checkout@v3
@@ -30,6 +28,8 @@ jobs:
       - name: Run Nix CI suite
         run: nix develop --command ci
       - name: Check external links
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           nix develop --command \
             lychee \
