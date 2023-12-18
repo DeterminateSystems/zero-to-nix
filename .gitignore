@@ -10,6 +10,9 @@ result
 # htmltest artifacts
 /tmp/
 
+# Lychee cache
+.lycheecache
+
 # îles artifacts
 /.iles-ssg-temp/
 /dist/

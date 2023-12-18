@@ -49,6 +49,7 @@
 
               # Link checking
               htmltest
+              lychee
 
               # JS
               nodejs
