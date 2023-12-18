@@ -1,0 +1,3 @@
+exclude = [
+  '.*\.github.com\.*',
+] # TODO: remove this when we figure out a way around GitHub's rate limits
