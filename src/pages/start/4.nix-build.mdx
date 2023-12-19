@@ -286,7 +286,7 @@ Here's the package definition that enables us to build this Go package:
 ```nix filename=flake.nix
 packages.default = pkgs.buildGoModule {
   name = "zero-to-nix-go";
-  src = gitignore.lib.gitignoreSource ./.;
+  src = ./.;
   vendorSha256 = "sha256-fwJTg/HqDAI12mF1u/BlnG52yaAlaIMzsILDDZuETrI=";
 };
 ```
