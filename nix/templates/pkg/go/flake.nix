@@ -3,13 +3,9 @@
 
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.491812.tar.gz";
-    gitignore = {
-      url = "github:hercules-ci/gitignore.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, gitignore }:
+  outputs = { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -28,8 +24,8 @@
       packages = forAllSystems ({ pkgs }: {
         default = pkgs.buildGoModule {
           name = "zero-to-nix-go";
-          src = gitignore.lib.gitignoreSource ./.;
-          vendorSha256 = "sha256-fwJTg/HqDAI12mF1u/BlnG52yaAlaIMzsILDDZuETrI=";
+          src = ./.;
+          vendorSha256 = "sha256-pYnN8rxXNNLRegvJySwAyMUPBmnhSiDSHfMQpjB9Qjs=";
         };
       });
     };
