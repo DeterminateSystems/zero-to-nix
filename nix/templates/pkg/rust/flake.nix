@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.491812.tar.gz";
+    # Provides helpers for Rust toolchains
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
@@ -18,18 +19,38 @@
 
       # Helper to provide system-specific attributes
       forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            # Provides Nixpkgs with a rust-bin attribute for building Rust toolchains
+            rust-overlay.overlays.default
+            # Uses the rust-bin attribute to select a Rust toolchain
+            self.overlays.default
+          ];
+        };
       });
     in
     {
+      overlays.default = final: prev: {
+        # The Rust toolchain used for the package build
+        rustToolchain = final.rust-bin.stable.latest.default;
+      };
+
       packages = forAllSystems ({ pkgs }: {
-        default = pkgs.rustPlatform.buildRustPackage {
-          name = "zero-to-nix-rust";
-          src = ./.;
-          cargoLock = {
-            lockFile = ./Cargo.lock;
+        default =
+          let
+            rustPlatform = pkgs.makeRustPlatform {
+              cargo = pkgs.rustToolchain;
+              rustc = pkgs.rustToolchain;
+            };
+          in
+          rustPlatform.buildRustPackage {
+            name = "zero-to-nix-rust";
+            src = ./.;
+            cargoLock = {
+              lockFile = ./Cargo.lock;
+            };
           };
-        };
       });
     };
 }
