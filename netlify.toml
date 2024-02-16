@@ -2,12 +2,6 @@
 command = "pnpm run build"
 publish = "dist"
 
-[context.branch-deploy]
-environment = { ENV = "staging" }
-
-[context.deploy-preview]
-environment = { ENV = "staging" }
-
 [context.production]
 environment = { ENV = "production" }
 
