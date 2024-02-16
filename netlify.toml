@@ -88,22 +88,8 @@ to = "https://zero-to-nix.com/:splat"
 status = 301
 
 [[redirects]]
-from = "https://www.z2n.dev/*"
+from = "https://z2n.dev/*"
 to = "https://zero-to-nix.com/:splat"
 force = true
 status = 301
 
-[[redirects]]
-from = "https://z2n.dev/*"
-to = "https://zero-to-nix.com/:splat"
-status = 301
-
-[[redirects]]
-from = "https://www.z2n.dev"
-to = "https://zero-to-nix.com/"
-status = 301
-
-[[redirects]]
-from = "https://z2n.dev"
-to = "https://zero-to-nix.com/"
-status = 301
