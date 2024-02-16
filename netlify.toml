@@ -1,0 +1,93 @@
+[build]
+command = "pnpm run build"
+publish = "dist"
+
+[context.production]
+environment = { ENV = "production" }
+
+[[redirects]]
+from = "/quick-start"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/quickstart"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/get-started"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/getting-started"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/start/nix-build-nixpkgs"
+to = "/start/nix-build#nixpkgs"
+status = 301
+
+[[redirects]]
+from = "/start/nix-build-flake"
+to = "/start/nix-build#flake"
+status = 301
+
+[[redirects]]
+from = "/start/dev-shell-flake"
+to = "/start/nix-develop#flake"
+status = 301
+
+# Domain redirects
+[[redirects]]
+from = "https://www.nix-lang.org/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+
+[[redirects]]
+from = "https://www.nixlang.org/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.zero-to-nixos.com/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.02nix.com/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.zero2nix.com/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.zerotonix.com/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.0tonix.com/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.zerotoonix.com/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.zerotwonix.com/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
+
+[[redirects]]
+from = "https://www.z2n.dev/*"
+to = "https://zero-to-nix.com/:splat"
+status = 301
