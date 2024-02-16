@@ -1,0 +1,47 @@
+[build]
+command = "pnpm run build"
+publish = "dist"
+
+[context.branch-deploy]
+environment = { ENV = "staging" }
+
+[context.deploy-preview]
+environment = { ENV = "staging" }
+
+[context.production]
+environment = { ENV = "production" }
+
+[[redirects]]
+from = "/quick-start"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/quickstart"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/get-started"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/getting-started"
+to = "/start.html"
+status = 301
+
+[[redirects]]
+from = "/start/nix-build-nixpkgs"
+to = "/start/nix-build#nixpkgs"
+status = 301
+
+[[redirects]]
+from = "/start/nix-build-flake"
+to = "/start/nix-build#flake"
+status = 301
+
+[[redirects]]
+from = "/start/dev-shell-flake"
+to = "/start/nix-develop#flake"
+status = 301
