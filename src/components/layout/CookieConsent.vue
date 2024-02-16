@@ -5,7 +5,7 @@
         We use a single, first-party analytics cookie to focus our limited time
         and energy on the most important documentation. Check out our
         <a
-          href="https://determinate.systems/privacy"
+          href="https://determinate.systems/policies/privacy"
           class="underline"
           target="_blank"
           >privacy policy</a
