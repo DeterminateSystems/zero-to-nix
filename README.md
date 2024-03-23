@@ -180,7 +180,7 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
 [mdx]: https://mdxjs.com
 [nanostores]: https://github.com/nanostores/nanostores
 [nix]: https://nixos.org
-[site]: https://zero-to-nix.vercel.app
+[site]: https://zero-to-nix.com/
 [tailwind]: https://tailwindcss.com
 [vercel]: https://vercel.com
 [vsc-mdx]: https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx
