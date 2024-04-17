@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      id-token: "write"
+      contents: "read"
     steps:
       - name: git checkout
         uses: actions/checkout@v3
