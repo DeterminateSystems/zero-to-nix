@@ -38,7 +38,7 @@ const title = ref<string>(
 
 const placeholder = ref<string>(
   reaction === "positive"
-    ? "Let usk now what you found helpful"
+    ? "Let us know what you found helpful"
     : "Let us know how we can do better",
 );
 
