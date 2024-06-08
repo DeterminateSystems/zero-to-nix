@@ -1,3 +1,6 @@
+/.astro/
 /.direnv/
+/.vscode/
+/dist/
+pnpm-lock.yaml
 *.d.ts
-/nix/

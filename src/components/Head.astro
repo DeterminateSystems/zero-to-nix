@@ -1,0 +1,40 @@
+---
+import { SEO } from "astro-seo";
+import { site } from "../site";
+
+type Props = {
+  title?: string;
+  description?: string;
+  tags?: string[];
+  author?: string;
+};
+
+const root = Astro.site!.toString();
+const canonical = new URL(Astro.url.pathname, root);
+
+const { title: siteTitle, description: siteDescription } = site;
+
+const { title, description, tags } = Astro.props;
+---
+
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,shrink-to-fit=no"
+/>
+<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+<meta name="generator" content={Astro.generator} />
+{tags && tags.length > 0 && <meta name="keywords" content={tags.join(",")} />}
+
+<SEO
+  charset="utf-8"
+  title={title ?? siteTitle}
+  description={description ?? siteDescription}
+  {canonical}
+/>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>

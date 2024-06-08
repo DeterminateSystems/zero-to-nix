@@ -1,0 +1,37 @@
+---
+title: Closures
+wip: true
+snippet: A Nix package's dependency tree
+related: ["derivations", "packages"]
+---
+
+In Nix, a [package]'s _closure_ encapsulates all of the packages required to [build or run](#build-vs-run) it (as well as the packages required to build those packages, and so on).
+A package can have zero packages in its closure, because no other packages are required to build it, or it can have many.
+Whenever you build a package, Nix always [realises] its entire closure in a [sandboxed] environment.
+
+## Build-time and runtime closures \{#build-vs-run}
+
+Nix closures come in two different types:
+
+- _Build-time_ closures include everything necessary to build the package.
+- _Runtime_ closures include everything necessary to run the package.
+
+To give an example, let's say that you're using Nix to build [Firefox] because you want to install and run it on your machine.
+The build-time closure for Firefox would include [GCC] because you can't build Firefox without it.
+The runtime closure, however, would not include GCC&mdash;Firefox has already been built!&mdash;but it would include [GTK], which Firefox needs for its user interface.
+
+When you see mentions of Nix closures in Nix documentation and other places, runtime closures are usually what's meant.
+
+## Closure bloat
+
+If you include things that a package doesn't need in its closure, you end up with a waste of resources&mdash;time, disk space, and network bandwidth&mdash;known as _closure bloat_.
+Nix always [realises] whatever you tell it to and doesn't have any built-in mechanisms to prevent closure bloat.
+The solution to closure bloat is vigilance&mdash;you should always vet the [derivations] you create to ensure that every package you include in a derivation is truly required to build or run the desired package.
+
+[derivations]: /concepts/derivations
+[firefox]: https://mozilla.org/firefox
+[gcc]: https://gcc.gnu.org
+[gtk]: https://gtk.org
+[package]: /concepts/packages
+[realises]: /concepts/realisation
+[sandboxed]: /concepts/sandboxing

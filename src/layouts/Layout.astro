@@ -1,0 +1,46 @@
+---
+import Banner from "../components/Banner.astro";
+import CookieConsent from "../components/CookieConsent.astro";
+import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro";
+import Modal from "../components/Modal.astro";
+import Navbar from "../components/Navbar.astro";
+import "../assets/css/main.css";
+import { site } from "../site";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { defaultLanguage } = site;
+
+const { title, description } = Astro.props;
+---
+
+<html
+  class="h-screen"
+  x-data={`{ banner: $persist(true), dark: $persist(false), language: $persist("${defaultLanguage}") }`}
+  @toggle-dark="dark = !dark"
+  :class="{ 'dark': dark, 'light': !dark }"
+  x-cloak
+>
+  <head>
+    <Head {title} {description} />
+  </head>
+  <body
+    class="flex min-h-full flex-col bg-white font-sans text-dark antialiased dark:bg-dark dark:text-white"
+  >
+    <Banner />
+    <CookieConsent />
+    <Modal />
+
+    <main class="flex-1">
+      <Navbar />
+
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

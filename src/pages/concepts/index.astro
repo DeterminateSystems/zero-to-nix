@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { conceptPagePath } from "../../lib/utils";
+
+const title = "Concepts";
+const description = "TODO";
+
+const conceptPages = await getCollection("concepts");
+---
+
+<Layout {title} {description}>
+  <h1>{title}</h1>
+
+  <ul>
+    {
+      conceptPages.map(({ slug, data: { title } }) => (
+        <li>
+          <a href={conceptPagePath(slug)}>{title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

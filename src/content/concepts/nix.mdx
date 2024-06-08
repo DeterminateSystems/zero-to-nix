@@ -1,0 +1,74 @@
+---
+title: Nix
+wip: true
+snippet: |
+  A build tool, [package manager](/concepts/package-management), and [programming language](/concepts/nix-language)
+related: ["nix-language", "nixos", "nixpkgs"]
+externalSources:
+  [
+    { title: "The official Nix website", href: "https://nixos.org" },
+    {
+      title: "Nix package manager",
+      href: "https://wiki.nixos.org/wiki/Nix_package_manager",
+      source: { title: "The NixOS wiki", href: "https://wiki.nixos.org" },
+    },
+    {
+      title: "The Nix repository",
+      href: "https://github.com/NixOS/nix",
+      source: { title: "GitHub", href: "https://github.com" },
+    },
+    {
+      title: "What is Nix?",
+      href: "https://shopify.engineering/what-is-nix",
+      source:
+        {
+          title: "The Shopify engineering blog",
+          href: "https://shopify.engineering",
+        },
+    },
+    {
+      title: "Nix (package manager)",
+      href: "https://en.wikipedia.org/wiki/Nix_(package_manager)",
+      source: { title: "Wikipedia", href: "https://wikipedia.org" },
+    },
+  ]
+---
+
+_Nix_ refers to a few different things:
+
+1. The pure and functional [programming language][lang]
+2. The [Nix CLI](#cli)
+3. The overall Nix package management system
+
+## The Nix CLI \{#cli}
+
+There are two different Nix CLIs currently active:
+
+- The [unified Nix CLI](#unified-cli) is currently experimental but, from the standpoint of [Determinate Systems][ds], recommended for using Nix.
+  It wraps all Nix functionality into a single `nix` executable and supports [flakes]
+- The [original Nix CLI](#original-cli), which is currently standard but, from the standpoint of [Determinate Systems][ds], _not_ recommended for using Nix.
+
+### The unified CLI \{#unified-cli}
+
+The _unified CLI_ is a still-experimental way of using Nix that involves just one executable called `nix`.
+_All_ Nix functionality is wrapped into this tool, including commands like `nix build` for building [packages] instead of the old `nix-build` tool, `nix develop` for activating Nix [development environments][env] instead of the old `nix-shell` tool, `nix store` for managing the [Nix store][store] instead of the old `nix-store` tool, and more.
+Because the unified CLI isn't yet official, it needs to be explicitly enabled in your Nix configuration by adding `nix-command` to your `experimental-features` list.
+
+We won't cover setting up the unified CLI here because the [Determinate Nix Installer][install] both installs it and enables it in your Nix configuration.
+
+### The original CLI \{#original-cli}
+
+The _original CLI_ for Nix is still the official CLI but, as we mention above, not recommended for new Nix users for two reasons:
+
+1. It's incompatible with [Nix flakes][flakes] as it was created before the inception of flakes.
+1. It presents significant cognitive overhead in comparison with the [unified CLI](#unified-cli) because it requires you to learn a wide variety of CLI tools, including `nix-build` for building [packages], `nix-shell` for Nix [development environments][env], `nix-store` for managing the [Nix store][store], and several more.
+
+The [Determinate Nix Installer][install] enables the [unified CLI](#unified-cli) by default, but leaves the tools from the original CLI accessible.
+
+[ds]: https://determinate.systems
+[env]: /concepts/dev-env
+[flakes]: /concepts/flakes
+[install]: /concepts/nix-installer
+[lang]: /concepts/nix-language
+[packages]: /concepts/packages
+[store]: /concepts/nix-store

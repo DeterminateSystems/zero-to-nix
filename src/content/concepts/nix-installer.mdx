@@ -1,0 +1,35 @@
+---
+title: The Determinate Nix Installer
+wip: true
+snippet: |
+  A fast, stable [Nix](/concepts/nix) installer created by [Determinate Systems](https://determinate.systems)
+related: ["flakes"]
+externalSources:
+  [
+    {
+      title: "The Determinate Nix Installer repo",
+      href: "https://github.com/DeterminateSystems/nix-installer",
+      source: { title: "GitHub", href: "https://github.com" },
+    },
+    { title: "Rust", href: "https://rust-lang.org" },
+  ]
+---
+
+The [Determinate Nix Installer][install] is a fast and stable Nix installer created by [Determinate Systems][ds].
+It currently supports both Linux and macOS.
+
+<Brief id="nix-installer-differences" />
+
+## Using the Determinate Nix Installer \{#using}
+
+You can run the installer on your system using this command:
+
+```shell title="One command to install Nix"
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+For a more complete guide, see [Get Nix running on your system][start] here in Zero to Nix.
+
+[ds]: https://determinate.systems
+[install]: https://github.com/DeterminateSystems/nix-installer
+[start]: /start/install

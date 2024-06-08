@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Admonition from "../../components/mdx/Admonition.astro";
+import ExternalSources from "../../components/mdx/ExternalSources.astro";
+import Language from "../../components/mdx/Language.astro";
+import Languages from "../../components/mdx/Languages.astro";
+import Layout from "../../layouts/Layout.astro";
+import NixDevelop from "../../components/mdx/NixDevelop.astro";
+import NixStorePath from "../../components/mdx/NixStorePath.astro";
+import Shell from "../../components/mdx/Shell.astro";
+import SpecificLanguage from "../../components/mdx/SpecificLanguage.astro";
+import HorizontalContainer from "../../components/HorizontalContainer.astro";
+
+export const getStaticPaths = (async () => {
+  const startPages = await getCollection("start");
+
+  return startPages.map((page) => ({
+    params: { slug: page.slug.substring(1) },
+    props: page,
+  }));
+}) satisfies GetStaticPaths;
+
+const page = Astro.props;
+const { data } = page;
+const { title } = data;
+const { Content } = await page.render();
+---
+
+<Layout {title}>
+  <HorizontalContainer>
+    <h1>{title}</h1>
+
+    <div class="prose max-w-none dark:prose-invert">
+      <Content
+        components={{
+          Admonition,
+          ExternalSources,
+          Language,
+          Languages,
+          NixDevelop,
+          NixStorePath,
+          Shell,
+          SpecificLanguage,
+        }}
+      />
+    </div>
+  </HorizontalContainer>
+</Layout>

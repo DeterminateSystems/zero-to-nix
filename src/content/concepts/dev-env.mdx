@@ -1,0 +1,39 @@
+---
+title: Development environments
+wip: true
+snippet: |
+  Hermetically sealed environments that you can define using the [Nix language](/concepts/nix-language)
+related: ["flakes"]
+externalSources:
+  [
+    {
+      title: "Declarative and reproducible developer environments",
+      href: "https://nix.dev/tutorials/declarative-and-reproducible-developer-environments",
+      source: { title: "nix.dev", href: "https://nix.dev" },
+    },
+    {
+      title: "Set up a development environment",
+      href: "https://nix.dev/tutorials/dev-environment",
+      source: { title: "nix.dev", href: "https://nix.dev" },
+    },
+    {
+      title: "Throwaway development environments with Nix",
+      href: "https://monospacedmonologues.com/2022/06/throwaway-development-environments-with-nix",
+      source:
+        {
+          title: "Monospaced Monologues",
+          href: "https://monospacedmonologues.com",
+        },
+    },
+  ]
+---
+
+A Nix _development environment_ is a derivation which builds a shell system environment.
+This environment is [hermetically] sealed off from the host,
+which means that no other dev environment can make changes or override tooling in it.
+
+This enables you to contain all development tooling (the environment [closure]) for a particular project in a dev shell,
+which is separated from even the dev shells for projects of a similar nature (same programming language, same set of dependencies, etc).
+
+[hermetically]: /concepts/hermeticity
+[closure]: /concepts/closures

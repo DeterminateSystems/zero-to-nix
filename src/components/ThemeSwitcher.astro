@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button @click="$dispatch('toggle-dark')">
+  <Icon
+    x-show="dark"
+    name="heroicons:sun"
+    class="duration-hover size-4 text-yellow hover:text-dark-yellow md:size-5 lg:size-6"
+  />
+
+  <Icon
+    x-show="!dark"
+    name="heroicons:moon"
+    class="duration-hover size-4 text-light-blue hover:text-blue md:size-5 lg:size-6"
+  />
+</button>

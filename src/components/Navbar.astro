@@ -1,0 +1,103 @@
+---
+import { site } from "../site";
+import { Icon } from "astro-icon/components";
+import DrawerToggler from "./DrawerToggler.astro";
+import HorizontalContainer from "./HorizontalContainer.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+import Dropdown from "./Dropdown.astro";
+import { getCollection } from "astro:content";
+import { conceptPagePath, startPagePath } from "../lib/utils";
+
+const { title, githubUrl, navbarLinks } = site;
+
+const startPages = (await getCollection("start")).map(
+  ({ slug, data: { title } }) => {
+    return { title, href: startPagePath(slug) };
+  },
+);
+
+const conceptPages = (await getCollection("concepts")).map(
+  ({ slug, data: { title } }) => {
+    return { title, href: conceptPagePath(slug) };
+  },
+);
+---
+
+<nav
+  class="sticky top-0 z-10 bg-white py-2 shadow-sm shadow-light-gray md:py-2.5 lg:py-3 dark:bg-dark dark:shadow-dark-gray"
+>
+  <HorizontalContainer>
+    <div class="flex items-center justify-between">
+      <!-- Navbar "brand" -->
+      <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
+        <a
+          href="/"
+          class="duration-hover text-2xl font-semibold tracking-tight hover:text-primary md:text-3xl lg:text-4xl dark:hover:text-light-gray"
+        >
+          {title}
+        </a>
+
+        <span
+          class="flex items-center space-x-1.5 text-sm font-light md:text-base lg:text-lg"
+        >
+          <span>from</span>
+          <a
+            href="https://determinate.systems"
+            class="duration-hover font-semibold hover:text-primary dark:hover:text-light-blue"
+            target="_blank"
+          >
+            Determinate Systems
+          </a>
+        </span>
+      </div>
+
+      <!-- Visible only on mobile -->
+      <div class="flex items-center space-x-4 md:hidden">
+        <ThemeSwitcher />
+
+        <a href={githubUrl} target="_blank">
+          <Icon
+            name="radix-icons:github-logo"
+            class="duration-hover size-4 transition hover:text-gray md:size-5 lg:size-6 dark:hover:text-light-gray"
+          />
+        </a>
+
+        <DrawerToggler />
+      </div>
+
+      <!-- Show only on md or above (invisible on mobile) -->
+      <ul class="hidden items-center gap-4 md:flex md:gap-5 lg:gap-6">
+        <li>
+          <Dropdown text="Quick start" pages={startPages} />
+        </li>
+        <li>
+          <Dropdown text="Concepts" pages={conceptPages} />
+        </li>
+
+        {
+          navbarLinks.map(({ text, href }) => (
+            <li>
+              <a
+                {href}
+                class="duration-hover text-sm tracking-tight hover:text-primary md:text-base lg:text-lg"
+              >
+                {text}
+              </a>
+            </li>
+          ))
+        }
+
+        <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
+          <ThemeSwitcher />
+
+          <a href={githubUrl} target="_blank">
+            <Icon
+              name="radix-icons:github-logo"
+              class="duration-hover size-4 hover:text-gray md:size-5 lg:size-6 dark:hover:text-light-gray"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </HorizontalContainer>
+</nav>

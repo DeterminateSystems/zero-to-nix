@@ -1,0 +1,12 @@
+---
+import { site } from "../site";
+
+const {
+  banner: { text },
+} = site;
+---
+
+<section x-show="banner">
+  <p>{text}</p>
+  <button @click="banner = false">Toggle</button>
+</section>

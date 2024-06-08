@@ -1,0 +1,22 @@
+---
+type Props = {
+  title?: string;
+  open?: boolean;
+  id?: string;
+  success?: boolean;
+};
+
+const { title, open = false, id, success = false } = Astro.props;
+---
+
+<>
+  {id && <p>ID: {id}</p>}
+
+  {open && <p>Open: {open}</p>}
+
+  {title && <p>Title: {title}</p>}
+
+  {success && <p>Success</p>}
+
+  <slot />
+</>
