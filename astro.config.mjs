@@ -7,7 +7,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
-import rehypeSlugCustomId from "rehype-slug-custom-id";
+import remarkHeadingId from "remark-heading-id";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,14 +26,7 @@ export default defineConfig({
     icon(),
     mdx({
       gfm: true,
-      rehypePlugins: [
-        [
-          rehypeSlugCustomId,
-          {
-            enableCustomId: true,
-          },
-        ],
-      ],
+      remarkPlugins: [remarkHeadingId],
     }),
     sitemap(),
     tailwind(),
