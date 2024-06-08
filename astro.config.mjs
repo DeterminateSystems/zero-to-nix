@@ -7,6 +7,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import rehypeSlugCustomId from "rehype-slug-custom-id";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,7 +24,17 @@ export default defineConfig({
       plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
     }),
     icon(),
-    mdx(),
+    mdx({
+      gfm: true,
+      rehypePlugins: [
+        [
+          rehypeSlugCustomId,
+          {
+            enableCustomId: true,
+          },
+        ],
+      ],
+    }),
     sitemap(),
     tailwind(),
   ],

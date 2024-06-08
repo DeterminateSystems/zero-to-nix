@@ -29,6 +29,7 @@
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.4",
     "marked": "^12.0.2",
+    "rehype-slug-custom-id": "^1.1.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {

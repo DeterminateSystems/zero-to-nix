@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@alpinejs/persist':
     specifier: ^3.14.0
@@ -62,6 +58,9 @@ dependencies:
   marked:
     specifier: ^12.0.2
     version: 12.0.2
+  rehype-slug-custom-id:
+    specifier: ^1.1.0
+    version: 1.1.0
   typescript:
     specifier: ^5.4.5
     version: 5.4.5
@@ -1649,6 +1648,12 @@ packages:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: false
 
+  /@types/hast@2.3.10:
+    resolution: {integrity: sha512-McWspRw8xx8J9HurkVBfYj0xKoE25tOFlHGdx4MJ5xORQrMGZNqJhVQWaIbm6Oyla5kYOXtDiopzKRJzEOkwJw==}
+    dependencies:
+      '@types/unist': 2.0.10
+    dev: false
+
   /@types/hast@3.0.4:
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
     dependencies:
@@ -2790,6 +2795,10 @@ packages:
     engines: {node: '>=16'}
     dev: false
 
+  /github-slugger@1.5.0:
+    resolution: {integrity: sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==}
+    dev: false
+
   /github-slugger@2.0.0:
     resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
     dev: false
@@ -2869,10 +2878,20 @@ packages:
       web-namespaces: 2.0.1
     dev: false
 
+  /hast-util-has-property@2.0.1:
+    resolution: {integrity: sha512-X2+RwZIMTMKpXUzlotatPzWj8bspCymtXH3cfG3iQKV+wPF53Vgaqxi/eLqGck0wKq1kS9nvoB1wchbCPEL8sg==}
+    dev: false
+
   /hast-util-has-property@3.0.0:
     resolution: {integrity: sha512-MNilsvEKLFpV604hwfhVStK0usFY/QmM5zX16bo7EjnAEGofr5YyI37kzopBlZJkHD4t887i+q/C8/tr5Q94cA==}
     dependencies:
       '@types/hast': 3.0.4
+    dev: false
+
+  /hast-util-heading-rank@2.1.1:
+    resolution: {integrity: sha512-iAuRp+ESgJoRFJbSyaqsfvJDY6zzmFoEnL1gtz1+U8gKtGGj1p0CVlysuUAUjq95qlZESHINLThwJzNGmgGZxA==}
+    dependencies:
+      '@types/hast': 2.3.10
     dev: false
 
   /hast-util-is-element@3.0.0:
@@ -2998,6 +3017,12 @@ packages:
       space-separated-tokens: 2.0.2
       web-namespaces: 2.0.1
       zwitch: 2.0.4
+    dev: false
+
+  /hast-util-to-string@2.0.0:
+    resolution: {integrity: sha512-02AQ3vLhuH3FisaMM+i/9sm4OXGSq1UhOOCpTLLQtHdL3tZt7qil69r8M8iDkZYyC0HCFylcYoP+8IO7ddta1A==}
+    dependencies:
+      '@types/hast': 2.3.10
     dev: false
 
   /hast-util-to-string@3.0.0:
@@ -3338,7 +3363,6 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols@6.0.0:
     resolution: {integrity: sha512-i24m8rpwhmPIS4zscNzK6MSEhk0DUWa/8iYQWxhffV8jkI4Phvs3F+quL5xvS0gdQR0FyTCMMH33Y78dDTzzIw==}
@@ -4511,6 +4535,19 @@ packages:
       vfile: 6.0.1
     dev: false
 
+  /rehype-slug-custom-id@1.1.0:
+    resolution: {integrity: sha512-lLdTHGd7u5bOXRDnD78/VHrVZsG63nN6lZUuQgcuupGt1+v+uDW7pCeQS0cvptRcZPYzg8B+0bf8sUiMBKsjZw==}
+    dependencies:
+      '@types/hast': 2.3.10
+      github-slugger: 1.5.0
+      hast-util-has-property: 2.0.1
+      hast-util-heading-rank: 2.1.1
+      hast-util-to-string: 2.0.0
+      lodash: 4.17.21
+      unified: 10.1.2
+      unist-util-visit: 4.1.2
+    dev: false
+
   /rehype-stringify@10.0.0:
     resolution: {integrity: sha512-1TX1i048LooI9QoecrXy7nGFFbFSufxVRAfc6Y9YMRAi56l+oB0zP51mLSV312uRuvVLPV1opSlJmslozR1XHQ==}
     dependencies:
@@ -5606,3 +5643,7 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
