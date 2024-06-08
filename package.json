@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev --port 3000",
     "start": "astro dev",
+    "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview --port 3000",
     "format": "prettier --write ."
