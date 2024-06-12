@@ -20,7 +20,7 @@ const { title, description } = Astro.props;
 
 <html
   class="h-screen"
-  x-data={`{ banner: $persist(true), dark: $persist(false), language: $persist("${defaultLanguage}"), modal: false }`}
+  x-data={`{ banner: $persist(true), modal: false, dark: $persist(false), language: $persist("${defaultLanguage}") }`}
   @toggle-dark="dark = !dark"
   :class="{ 'dark': dark, 'light': !dark }"
   x-cloak
