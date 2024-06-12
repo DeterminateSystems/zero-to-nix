@@ -5,6 +5,7 @@ import VerticalContainer from "../components/VerticalContainer.astro";
 import Layout from "../layouts/Layout.astro";
 import { md } from "../lib/utils";
 import { site } from "../site";
+import NixTerms from "../components/NixTerms.astro";
 
 const { description, heroButtons } = site;
 
@@ -65,7 +66,7 @@ const descriptionHtml = await md(description);
     <section class="my-12 space-y-16">
       <div class="space-y-6">
         <h2
-          class="text-2xl tracking-tight hover:text-gray md:text-3xl lg:text-4xl dark:hover:text-light-gray"
+          class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
           id="features"
         >
           <a href="#features">What the Nix ecosystem offers</a>
@@ -75,13 +76,13 @@ const descriptionHtml = await md(description);
       </div>
       <div class="space-y-6">
         <h2
-          class="text-2xl tracking-tight hover:text-gray md:text-3xl lg:text-4xl dark:hover:text-light-gray"
+          class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
           id="key-terms"
         >
           <a href="#key-terms">Core Nix components</a>
         </h2>
 
-        {/* <NixTerms /> */}
+        <NixTerms />
       </div>
 
       <div class="mt-12">

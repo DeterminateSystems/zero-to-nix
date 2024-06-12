@@ -15,6 +15,12 @@ export type Feature = {
   links: NavLink[];
 };
 
+export type Term = {
+  title: string;
+  description: string;
+  href: string;
+};
+
 type Language =
   | "C++"
   | "Go"
@@ -37,6 +43,7 @@ type Site = {
   navbarLinks: NavLink[];
   heroButtons: ButtonProps[];
   features: Feature[];
+  nixTerms: Term[];
 };
 
 export const site: Site = {
@@ -111,6 +118,32 @@ export const site: Site = {
           href: "/concepts/nixos",
         },
       ],
+    },
+  ],
+  nixTerms: [
+    {
+      title: "Nix",
+      description:
+        "A build tool and package manager used to create declarative, reproducible software systems.",
+      href: "/concepts/nix",
+    },
+    {
+      title: "Nix language",
+      description:
+        "A language for instructing Nix how to build packages, environments, and systems.",
+      href: "/concepts/nix-language",
+    },
+    {
+      title: "NixOS",
+      description:
+        "A Linux distribution built on Nix with its core principles in mind.",
+      href: "/concepts/nixos",
+    },
+    {
+      title: "Nixpkgs",
+      description:
+        "A vast collection of Nix packages, libraries, and helper functions.",
+      href: "/concepts/nixpkgs",
     },
   ],
 };

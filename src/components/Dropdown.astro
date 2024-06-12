@@ -10,7 +10,7 @@ const { text, pages } = Astro.props;
 <div class="relative inline-flex" x-data="{ open: false }">
   <button
     @click="open = !open"
-    class="duration-hover text-sm tracking-tight hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 md:text-base lg:text-lg"
+    class="text-sm tracking-tight duration-hover hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 md:text-base lg:text-lg"
     >{text}</button
   >
 
@@ -18,7 +18,7 @@ const { text, pages } = Astro.props;
     x-show="open"
     @click.away="open = false"
     x-transition:enter.duration.200ms
-    class="absolute right-0 top-10 max-h-[75vh] w-72 origin-top-right overflow-scroll bg-white p-4 shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-gray dark:bg-dark"
+    class="absolute right-0 top-10 max-h-[75vh] w-72 origin-top-right overflow-scroll bg-white shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-gray dark:bg-dark"
   >
     <ul class="flex flex-col space-y-1.5">
       {
@@ -26,7 +26,7 @@ const { text, pages } = Astro.props;
           <li>
             <a
               {href}
-              class="duration-hover block px-4 py-2 text-xs tracking-tight hover:bg-primary hover:text-dark hover:text-white md:text-sm lg:text-base dark:hover:bg-white dark:hover:text-dark"
+              class="block px-4 py-2 text-xs tracking-tight duration-hover hover:bg-primary hover:text-dark hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-sm lg:text-base"
             >
               {title}
             </a>
