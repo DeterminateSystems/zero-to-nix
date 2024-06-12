@@ -44,6 +44,7 @@ type Site = {
   heroButtons: ButtonProps[];
   features: Feature[];
   nixTerms: Term[];
+  mailingListTags: string[];
 };
 
 export const site: Site = {
@@ -145,5 +146,8 @@ export const site: Site = {
         "A vast collection of Nix packages, libraries, and helper functions.",
       href: "/concepts/nixpkgs",
     },
+  ],
+  mailingListTags: [
+    "294258", // zero-to-nix
   ],
 };

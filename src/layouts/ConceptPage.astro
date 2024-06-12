@@ -6,15 +6,20 @@ import HorizontalContainer from "../components/HorizontalContainer.astro";
 import QuickStart from "../components/QuickStart.astro";
 import Layout from "./Layout.astro";
 import Related from "../components/Related.astro";
+import Separator from "../components/Separator.astro";
 import { conceptPagePath } from "../lib/utils";
+import ExternalSources from "../components/ExternalSources.astro";
+import type { ExternalSource } from "../lib/content";
+import FeedbackBar from "../components/FeedbackBar.astro";
 
 type Props = {
   title: string;
   description: string;
   slug: string;
+  externalSources?: ExternalSource[];
 };
 
-const { title, description, slug } = Astro.props;
+const { title, description, slug, externalSources } = Astro.props;
 
 const relatedConceptPages: { title: string; href: string }[] = (
   await getCollection("concepts")
@@ -47,14 +52,15 @@ const relatedConceptPages: { title: string; href: string }[] = (
       }
 
       {
-        /*
-      <ExternalSources
-        v-if="externalSources && externalSources.length > 0"
-        :links="externalSources"
-        :showTitle="true"
-      />
-      */
+        externalSources && externalSources.length > 0 && (
+          <ExternalSources links={externalSources} showTitle />
+        )
       }
+
+      <div class="mt-16 space-y-12">
+        <Separator />
+        <FeedbackBar />
+      </div>
     </div>
   </HorizontalContainer>
 </Layout>

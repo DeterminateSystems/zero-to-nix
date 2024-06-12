@@ -18,10 +18,10 @@ export const getStaticPaths = (async () => {
 const page = Astro.props;
 const { slug } = Astro.params;
 const { data } = page;
-const { title, snippet } = data;
+const { title, snippet, externalSources } = data;
 const { Content } = await page.render();
 ---
 
-<ConceptPage {title} {slug} description={snippet}>
+<ConceptPage {title} {slug} {externalSources} description={snippet}>
   <Content components={{ Admonition, Brief, NixStorePath }} />
 </ConceptPage>

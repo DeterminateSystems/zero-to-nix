@@ -56,14 +56,13 @@ const largeHero = heroSize === "lg";
         "text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl",
     ]}
   >
-    <span x-show="order">{order}. </span>
+    {order && <span>{order}. </span>}
     <span>{title}</span>
   </h1>
 
   {
     description && (
       <h2
-        x-show="description"
         class:list={[
           "content",
           normalHero && "text-lg md:text-xl lg:text-2xl",
