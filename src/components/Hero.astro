@@ -1,0 +1,121 @@
+---
+import { md } from "../lib/utils";
+import Breadcrumb from "./Breadcrumb.astro";
+
+type BreadcrumbProps = {
+  back: {
+    title: string;
+    href: string;
+  };
+  title: string;
+};
+
+type ButtonProps = {
+  text: string;
+  href: string;
+  highlight?: boolean;
+};
+
+type Props = {
+  title: string;
+  description?: string;
+  size?: "normal" | "lg";
+  breadcrumb?: BreadcrumbProps;
+  buttons?: ButtonProps[];
+  wip?: boolean;
+  total?: number;
+  order?: number;
+};
+
+const {
+  size: heroSize = "normal",
+  title,
+  description,
+  breadcrumb,
+  buttons,
+  wip,
+  total,
+  order,
+} = Astro.props;
+
+const normalHero = heroSize === "normal";
+const largeHero = heroSize === "lg";
+---
+
+<section
+  class:list={[
+    normalHero && "space-y-3 py-10 md:space-y-4 md:py-12 lg:space-y-5 lg:py-14",
+    largeHero && "space-y-3 py-24 md:space-y-4 md:py-28 lg:space-y-5 lg:py-32",
+  ]}
+>
+  <h1
+    class:list={[
+      "tracking-tight",
+      normalHero && "text-4xl md:text-5xl lg:text-6xl",
+      largeHero &&
+        "text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl",
+    ]}
+  >
+    <span x-show="order">{order}. </span>
+    <span>{title}</span>
+  </h1>
+
+  {
+    description && (
+      <h2
+        x-show="description"
+        class:list={[
+          "content",
+          normalHero && "text-lg md:text-xl lg:text-2xl",
+          largeHero && "text-xl md:text-2xl lg:text-3xl",
+        ]}
+        set:html={md(description)}
+      />
+    )
+  }
+
+  {
+    breadcrumb && (
+      <Breadcrumb x-show="breadcrumb" {breadcrumb} {total} {order} />
+    )
+  }
+
+  {
+    wip && (
+      <div class="bg:light-orange rounded border-1.5 border-orange px-3 py-1.5 text-xs md:px-3.5 md:py-2 md:text-sm lg:px-4 lg:py-3 lg:text-base">
+        <div
+          v-if="wip"
+          class="bg:light-orange rounded border-1.5 border-orange px-3 py-1.5 text-xs md:px-3.5 md:py-2 md:text-sm lg:px-4 lg:py-3 lg:text-base"
+        >
+          <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
+            {/* }<IconFaSolidHammer class="h-3 w-3 text-orange md:h-4 md:w-4" /> */}
+            <p>
+              This document is a work in progress. It's intended to provide a
+              brief definition or overview and nothing more. We'll be iterating
+              on this content heavily in the coming weeks and months.
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    buttons && (
+      <div class="flex items-center space-x-4 pt-2">
+        {buttons.map(({ text, href, highlight }) => (
+          <a
+            {href}
+            class:list={[
+              "rounded-full px-4 py-2 font-bold shadow-md transition-colors duration-150 hover:bg-dark-gray hover:text-white",
+              highlight && "bg-primary text-white",
+              !highlight && "bg-light-gray text-black",
+            ]}
+          >
+            {text}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</section>

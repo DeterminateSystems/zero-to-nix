@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import Content from "../components/Content.astro";
+import Hero from "../components/Hero.astro";
+import HorizontalContainer from "../components/HorizontalContainer.astro";
+import QuickStart from "../components/QuickStart.astro";
+import Layout from "./Layout.astro";
+import Related from "../components/Related.astro";
+import { conceptPagePath } from "../lib/utils";
+
+type Props = {
+  title: string;
+  description: string;
+  slug: string;
+};
+
+const { title, description, slug } = Astro.props;
+
+const relatedConceptPages: { title: string; href: string }[] = (
+  await getCollection("concepts")
+)
+  .filter(({ data: { related } }) => related.includes(slug))
+  .map(({ slug, data: { title } }) => {
+    return { title, href: conceptPagePath(slug) };
+  });
+---
+
+<Layout {title} {description}>
+  <HorizontalContainer>
+    <Hero
+      {title}
+      {description}
+      breadcrumb={{ back: { title: "Concepts", href: "/concepts" }, title }}
+    />
+
+    <QuickStart />
+
+    <div class="space-y-8 md:space-y-10 lg:space-y-12">
+      <Content>
+        <slot />
+      </Content>
+
+      {
+        relatedConceptPages.length > 0 && (
+          <Related related={relatedConceptPages} />
+        )
+      }
+
+      {
+        /*
+      <ExternalSources
+        v-if="externalSources && externalSources.length > 0"
+        :links="externalSources"
+        :showTitle="true"
+      />
+      */
+      }
+    </div>
+  </HorizontalContainer>
+</Layout>

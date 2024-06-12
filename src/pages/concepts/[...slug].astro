@@ -3,9 +3,8 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Admonition from "../../components/mdx/Admonition.astro";
 import Brief from "../../components/mdx/Brief.astro";
-import Layout from "../../layouts/Layout.astro";
 import NixStorePath from "../../components/mdx/NixStorePath.astro";
-import HorizontalContainer from "../../components/HorizontalContainer.astro";
+import ConceptPage from "../../layouts/ConceptPage.astro";
 
 export const getStaticPaths = (async () => {
   const conceptPages = await getCollection("concepts");
@@ -17,16 +16,12 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const page = Astro.props;
+const { slug } = Astro.params;
 const { data } = page;
 const { title, snippet } = data;
 const { Content } = await page.render();
 ---
 
-<Layout {title} description={snippet}>
-  <HorizontalContainer>
-    <h1>{title}</h1>
-    <div class="prose max-w-none dark:prose-invert">
-      <Content components={{ Admonition, Brief, NixStorePath }} />
-    </div>
-  </HorizontalContainer>
-</Layout>
+<ConceptPage {title} {slug} description={snippet}>
+  <Content components={{ Admonition, Brief, NixStorePath }} />
+</ConceptPage>

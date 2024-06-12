@@ -53,8 +53,8 @@ export const site: Site = {
   languages: ["C++", "Go", "Haskell", "JavaScript", "Python", "Rust", "Scala"],
   defaultLanguage: "JavaScript",
   banner: {
-    text: "Welcome to Zero to Nix!",
-    generation: 1,
+    text: "Check out <strong><a target='_blank' href='https://FlakeHub.com'>FlakeHub</a></strong> &mdash; the best place to discover and publish Nix flakes, from Determinate Systems.",
+    generation: 2,
   },
   navbarLinks: [{ text: "About", href: "/about" }],
   heroButtons: [
