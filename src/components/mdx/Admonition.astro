@@ -1,22 +1,148 @@
 ---
+import { Icon } from "astro-icon/components";
+import { md } from "../../lib/utils";
+
 type Props = {
+  id?: string;
   title?: string;
   open?: boolean;
-  id?: string;
+  // Kinds
+  danger?: boolean;
+  info?: boolean;
   success?: boolean;
+  warning?: boolean;
 };
 
-const { title, open = false, id, success = false } = Astro.props;
+const {
+  id,
+  title,
+  open = false,
+  danger = false,
+  info = false,
+  success = false,
+  warning = false,
+} = Astro.props;
 ---
 
-<>
-  {id && <p>ID: {id}</p>}
+<div
+  class:list={[
+    "admonition not-prose rounded border-1.5 dark:bg-inherit",
+    danger && "border-red",
+    info && "border-blue",
+    success && "border-green",
+    warning && "border-yellow",
+  ]}
+>
+  {
+    id && (
+      <div
+        x-data={`{ open: $persist(${open}).as('zero-to-nix:callout-${id}'), buttonHover: false, toggle() { this.open = !this.open; } }`}
+      >
+        {title && (
+          <div
+            class:list={[
+              "flex items-center justify-between px-3 py-1.5 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:px-3.5 md:py-2 lg:px-4 lg:py-3",
+              open && "rounded-t border-b-1.5",
+              !open && "rounded",
+              danger && "border-b-red bg-pale-red hover:bg-middle-red",
+              info && "border-b-blue bg-pale-blue hover:bg-middle-blue",
+              success && "border-b-green bg-pale-green hover:bg-middle-green",
+              warning &&
+                "border-b-yellow bg-pale-yellow hover:bg-middle-yellow",
+            ]}
+            @mouseover="buttonHover = true"
+            @mouseleave="buttonHover = false"
+            @click="toggle()"
+          >
+            <span class="flex items-center space-x-2 font-semibold leading-snug tracking-tight md:space-x-3 md:text-lg lg:space-x-4 lg:text-xl">
+              {danger && (
+                <Icon
+                  name="heroicons:bolt"
+                  class="size-4 transition duration-hover hover:text-gray dark:hover:text-light-gray md:size-5 lg:size-6"
+                />
+              )}
+              {info && (
+                <Icon
+                  name="heroicons:information-circle"
+                  class="h-3 w-3 text-blue md:h-4 md:w-4"
+                />
+              )}
+              {warning && (
+                <Icon
+                  name="heroicons:exclamation-triangle"
+                  class="h-3 w-3 text-yellow md:h-4 md:w-4"
+                />
+              )}
+              {success && (
+                <Icon
+                  name="heroicons:check"
+                  class="h-3 w-3 text-green md:h-4 md:w-4"
+                />
+              )}
+              <span class="content" set:html={md(title)} />
+            </span>
 
-  {open && <p>Open: {open}</p>}
 
-  {title && <p>Title: {title}</p>}
+            <Icon
+              name="heroicons:chevron-right"
+              :class="{ 'rotate-90': open }"
+              class:list={[
+                "h-3 w-3 transform duration-300 md:h-4 md:w-4",
+                danger && "text-red",
+                info && "text-blue",
+                success && "text-green",
+                warning && "text-yellow",
+              ]}
+            />
+          </div>
+        )}
 
-  {success && <p>Success</p>}
+        <div
+          x-show="open"
+          x-transition.duration.250ms
+          class="content px-3 py-1.5 text-sm md:px-3.5 md:py-2 md:text-base lg:px-4 lg:py-3 lg:text-lg"
+        >
+          <slot />
+        </div>
+      </div>
+    )
+  }
 
-  <slot />
-</>
+  {
+    !id && (
+      <div>
+        {title && (
+          <span class="flex items-center space-x-4 px-3 py-1.5 font-semibold tracking-tight md:px-3.5 md:py-2 lg:px-4 lg:py-3">
+            {danger && <Icon name="heroicons:bolt" class="size-4 text-red" />}
+            {info && (
+              <Icon
+                name="heroicons:information-circle"
+                class="size-4 text-blue"
+              />
+            )}
+            {success && (
+              <Icon name="heroicons:check" class="size-4 text-green" />
+            )}
+            {warning && (
+              <Icon
+                name="heroicons:exclamation-triangle"
+                class="size-4 text-yellow"
+              />
+            )}
+            <span set:html={md(title)} />
+          </span>
+        )}
+
+        <div
+          class:list={[
+            "content px-3 text-sm md:px-3.5 md:text-base lg:px-4 lg:text-lg",
+            title && "pb-1.5 md:pb-2 lg:pb-3",
+            !title && "py-1.5 md:py-2 lg:py-3",
+          ]}
+        >
+          <slot />
+        </div>
+      </div>
+    )
+  }
+</div>
