@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
 import { md } from "../lib/utils";
 import { site } from "../site";
 import NixTerms from "../components/NixTerms.astro";
+import Signup from "../components/Signup.astro";
 
 const { description, heroButtons } = site;
 
@@ -86,7 +87,7 @@ const descriptionHtml = await md(description);
       </div>
 
       <div class="mt-12">
-        {/* <Signup client:load />  */}
+        <Signup />
       </div>
     </section>
   </HorizontalContainer>
