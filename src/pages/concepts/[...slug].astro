@@ -2,9 +2,16 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Admonition from "../../components/mdx/Admonition.astro";
-import Brief from "../../components/mdx/Brief.astro";
 import NixStorePath from "../../components/mdx/NixStorePath.astro";
-import ConceptPage from "../../layouts/ConceptPage.astro";
+import Layout from "../../layouts/Layout.astro";
+import HorizontalContainer from "../../components/HorizontalContainer.astro";
+import Hero from "../../components/Hero.astro";
+import QuickStart from "../../components/QuickStart.astro";
+import { conceptPagePath } from "../../lib/utils";
+import Related from "../../components/Related.astro";
+import ExternalSources from "../../components/ExternalSources.astro";
+import Separator from "../../components/Separator.astro";
+import FeedbackBar from "../../components/FeedbackBar.astro";
 
 export const getStaticPaths = (async () => {
   const conceptPages = await getCollection("concepts");
@@ -20,8 +27,47 @@ const { slug } = Astro.params;
 const { data } = page;
 const { title, snippet, externalSources } = data;
 const { Content } = await page.render();
+
+const relatedConceptPages: { title: string; href: string }[] = (
+  await getCollection("concepts")
+)
+  .filter(({ data: { related } }) => related.includes(slug))
+  .map(({ slug, data: { title } }) => {
+    return { title, href: conceptPagePath(slug) };
+  });
 ---
 
-<ConceptPage {title} {slug} {externalSources} description={snippet}>
-  <Content components={{ Admonition, Brief, NixStorePath }} />
-</ConceptPage>
+<Layout {title} description={snippet}>
+  <HorizontalContainer>
+    <Hero
+      {title}
+      description={snippet}
+      breadcrumb={{ back: { title: "Concepts", href: "/concepts" }, title }}
+    />
+
+    <QuickStart />
+
+    <div class="space-y-8 md:space-y-10 lg:space-y-12">
+      <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
+        <Content components={{ Admonition, NixStorePath }} />
+      </div>
+
+      {
+        relatedConceptPages.length > 0 && (
+          <Related related={relatedConceptPages} />
+        )
+      }
+
+      {
+        externalSources && externalSources.length > 0 && (
+          <ExternalSources links={externalSources} showTitle />
+        )
+      }
+
+      <div class="mt-16 space-y-12">
+        <Separator />
+        <FeedbackBar />
+      </div>
+    </div>
+  </HorizontalContainer>
+</Layout>

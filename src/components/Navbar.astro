@@ -24,7 +24,7 @@ const conceptPages = (await getCollection("concepts")).map(
 ---
 
 <nav
-  class="sticky top-0 z-10 bg-white py-2 shadow-sm shadow-light-gray md:py-2.5 lg:py-3 dark:bg-dark dark:shadow-dark-gray"
+  class="sticky top-0 z-10 bg-white py-2 shadow-sm shadow-light-gray dark:bg-dark dark:shadow-dark-gray md:py-2.5 lg:py-3"
 >
   <HorizontalContainer>
     <div class="flex items-center justify-between">
@@ -32,7 +32,7 @@ const conceptPages = (await getCollection("concepts")).map(
       <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
         <a
           href="/"
-          class="duration-hover text-2xl font-semibold tracking-tight hover:text-primary md:text-3xl lg:text-4xl dark:hover:text-light-gray"
+          class="text-2xl font-semibold tracking-tight duration-hover hover:text-primary dark:hover:text-light-gray md:text-3xl lg:text-4xl"
         >
           {title}
         </a>
@@ -43,7 +43,7 @@ const conceptPages = (await getCollection("concepts")).map(
           <span>from</span>
           <a
             href="https://determinate.systems"
-            class="duration-hover font-semibold hover:text-primary dark:hover:text-light-blue"
+            class="font-semibold duration-hover hover:text-primary dark:hover:text-light-blue"
             target="_blank"
           >
             Determinate Systems
@@ -58,7 +58,7 @@ const conceptPages = (await getCollection("concepts")).map(
         <a href={githubUrl} target="_blank">
           <Icon
             name="radix-icons:github-logo"
-            class="duration-hover size-4 transition hover:text-gray md:size-5 lg:size-6 dark:hover:text-light-gray"
+            class="size-4 transition duration-hover hover:text-gray dark:hover:text-light-gray md:size-5 lg:size-6"
           />
         </a>
 
@@ -79,7 +79,7 @@ const conceptPages = (await getCollection("concepts")).map(
             <li>
               <a
                 {href}
-                class="duration-hover text-sm tracking-tight hover:text-primary md:text-base lg:text-lg"
+                class="text-sm tracking-tight duration-hover hover:text-primary md:text-base lg:text-lg"
               >
                 {text}
               </a>
@@ -93,7 +93,7 @@ const conceptPages = (await getCollection("concepts")).map(
           <a href={githubUrl} target="_blank">
             <Icon
               name="radix-icons:github-logo"
-              class="duration-hover size-4 hover:text-gray md:size-5 lg:size-6 dark:hover:text-light-gray"
+              class="size-4 duration-hover hover:text-gray dark:hover:text-light-gray md:size-5 lg:size-6"
             />
           </a>
         </li>

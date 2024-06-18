@@ -39,7 +39,6 @@
           let
             common = with pkgs; [
               # CI
-              cachix
               direnv
               nix-direnv
 
@@ -54,6 +53,9 @@
               # JS
               nodejs
               pnpm
+
+              # Serve locally
+              static-web-server
             ];
 
             run = pkg: runPkg pkgs pkg;

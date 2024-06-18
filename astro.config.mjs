@@ -9,7 +9,6 @@ import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import remarkHeadingId from "remark-heading-id";
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://zero-to-nix.com",
   integrations: [
@@ -25,7 +24,7 @@ export default defineConfig({
     }),
     icon(),
     mdx({
-      gfm: true,
+      //gfm: true,
       remarkPlugins: [remarkHeadingId],
     }),
     sitemap(),

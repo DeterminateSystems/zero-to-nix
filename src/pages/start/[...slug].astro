@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Admonition from "../../components/mdx/Admonition.astro";
-import ExternalSources from "../../components/mdx/ExternalSources.astro";
+import ExternalSources from "../../components/ExternalSources.astro";
 import Language from "../../components/mdx/Language.astro";
 import Languages from "../../components/mdx/Languages.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -11,6 +11,8 @@ import NixStorePath from "../../components/mdx/NixStorePath.astro";
 import Shell from "../../components/mdx/Shell.astro";
 import SpecificLanguage from "../../components/mdx/SpecificLanguage.astro";
 import HorizontalContainer from "../../components/HorizontalContainer.astro";
+import Hero from "../../components/Hero.astro";
+import Summary from "../../components/Summary.astro";
 
 export const getStaticPaths = (async () => {
   const startPages = await getCollection("start");
@@ -23,15 +25,26 @@ export const getStaticPaths = (async () => {
 
 const page = Astro.props;
 const { data } = page;
-const { title } = data;
+const { title, summary } = data;
 const { Content } = await page.render();
+
+const numQuickStartPages = (await getCollection("start")).length;
+const order = 1; // TODO: fix this
 ---
 
 <Layout {title}>
   <HorizontalContainer>
-    <h1>{title}</h1>
+    <Hero
+      {title}
+      breadcrumb={{ back: { title: "Quick start", href: "/start" }, title }}
+      size="normal"
+      total={numQuickStartPages}
+      {order}
+    />
 
-    <div class="prose max-w-none dark:prose-invert">
+    <div class="space-y-6">
+      {summary && summary.length > 0 && <Summary items={summary} />}
+
       <Content
         components={{
           Admonition,
