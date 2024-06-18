@@ -1,1 +1,15 @@
-<></>
+---
+import { getEntry } from "astro:content";
+
+type Props = {
+  id: string;
+};
+
+const { id } = Astro.props;
+
+const page = await getEntry("briefs", id);
+
+const { Content } = await page.render();
+---
+
+<Content />

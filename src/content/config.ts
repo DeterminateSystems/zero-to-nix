@@ -1,5 +1,12 @@
 import { defineCollection, z } from "astro:content";
 
+const briefs = defineCollection({
+  type: "content",
+  schema: z.object({
+    id: z.string(),
+  })
+});
+
 const concepts = defineCollection({
   type: "content",
   schema: z.object({
@@ -42,4 +49,4 @@ const start = defineCollection({
   }),
 });
 
-export const collections = { concepts, plain, start };
+export const collections = { briefs, concepts, plain, start };

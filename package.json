@@ -8,7 +8,8 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview --port 3000",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sync": "astro sync"
   },
   "dependencies": {
     "@alpinejs/persist": "^3.14.0",
