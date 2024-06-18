@@ -1,6 +1,6 @@
 # TODOs
 
-- [ ] `Brief` component
+- [x] `Brief` component
 - [ ] Feedback bar
 - [ ] Table formatting in Markdown
 - [ ] Pagination

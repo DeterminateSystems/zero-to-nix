@@ -9,6 +9,10 @@ const { id } = Astro.props;
 
 const page = await getEntry("briefs", id);
 
+if (page === undefined) {
+  throw new Error(`No brief with id ${id} was found`);
+}
+
 const { Content } = await page.render();
 ---
 
