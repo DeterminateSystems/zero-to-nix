@@ -25,6 +25,15 @@ const concepts = defineCollection({
   }),
 });
 
+// Top-level pages like /about
+const plain = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
 const start = defineCollection({
   type: "content",
   schema: z.object({
@@ -33,4 +42,4 @@ const start = defineCollection({
   }),
 });
 
-export const collections = { concepts, start };
+export const collections = { concepts, plain, start };
