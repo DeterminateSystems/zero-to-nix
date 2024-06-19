@@ -12,12 +12,12 @@
     "sync": "astro sync"
   },
   "dependencies": {
-    "@alpinejs/persist": "^3.14.0",
+    "@alpinejs/persist": "^3.14.1",
     "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.7.0",
-    "@astrojs/mdx": "^3.1.0",
+    "@astrojs/mdx": "^3.1.1",
     "@astrojs/rss": "^4.0.6",
-    "@astrojs/sitemap": "^3.1.5",
+    "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@expressive-code/plugin-collapsible-sections": "^0.35.3",
     "@expressive-code/plugin-line-numbers": "^0.35.3",
@@ -25,8 +25,8 @@
     "@iconify-json/radix-icons": "^1.1.14",
     "@tailwindcss/typography": "^0.5.13",
     "@types/alpinejs": "^3.13.10",
-    "alpinejs": "^3.14.0",
-    "astro": "^4.10.1",
+    "alpinejs": "^3.14.1",
+    "astro": "^4.10.3",
     "astro-expressive-code": "^0.35.3",
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.4",
@@ -37,9 +37,9 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/alpinejs__persist": "^3.13.4",
-    "prettier": "^3.3.1",
+    "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-tailwindcss": "^0.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "tailwindcss": "^3.4.4"
   }
 }
