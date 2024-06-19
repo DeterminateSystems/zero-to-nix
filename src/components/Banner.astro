@@ -1,0 +1,36 @@
+---
+import { md } from "../lib/utils";
+import { site } from "../site";
+import HorizontalContainer from "./HorizontalContainer.astro";
+
+const {
+  banner: { text },
+} = site;
+---
+
+<section class="bg-primary py-1.5 md:py-2 lg:py-2.5" x-show="banner">
+  <HorizontalContainer>
+    <div class="flex items-center justify-between">
+      <p
+        class="text-sm font-light text-white md:text-base lg:text-lg"
+        set:html={md(text)}
+      />
+
+      <button @click="banner = false">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-4 w-4 stroke-2 text-white hover:text-black md:h-5 md:w-5 lg:h-6 lg:w-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </HorizontalContainer>
+</section>

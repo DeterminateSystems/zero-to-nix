@@ -1,0 +1,411 @@
+---
+title: Build a package using Nix
+summary:
+  [
+    "Build a Nix [package](/concepts/packages) defined in [Nixpkgs](/concepts/nixpkgs)",
+    "Run the package from the local directory",
+    "Initialize a [flake template](/concepts/flakes#templates) in your preferred programming language",
+    "Build a [Nix package](/concepts/packages) from the `flake.nix` in the template",
+  ]
+---
+
+While [Nix] can do many things, [package management][pkg] is the thing that it's perhaps best known for. In this tutorial, we'll use our [installed Nix CLI][install] to build and run some Nix [packages] included in [Nixpkgs]. Later in the guide we'll build and run a Nix package defined in a local [flake].
+
+## Build a package from Nixpkgs \{#nixpkgs}
+
+Let's start by building [bat], a syntax-highlighted version of [cat] written in [Rust] that has a Nix package defined in [Nixpkgs], in an empty directory (make sure to run this in a directory where you have write access):
+
+```shell
+mkdir build-nix-package && cd build-nix-package
+nix build "nixpkgs#bat"
+```
+
+Here, `nixpkgs` is a [flake reference][ref] to the [NixOS/nixpkgs][nixpkgs-repo] repository on GitHub, while `#bat` indicates that we're building the `bat` output from the Nixpkgs flake.
+
+When the build is done, run `ls .` and you should see something called `result` in the current directory. `result` is actually a [symlink] to the built package in the [Nix store][store], which you can verify:
+
+```shell
+readlink result
+```
+
+You should see a path like this (it's likely to be a bit different on your machine):
+
+<NixStorePath pkg="bat-0.22.1" />
+
+What's happened here is that the Nix CLI has:
+
+- Downloaded the Nix code in [Nixpkgs]
+- Found a package definition with the name `bat` (code [here][nixpkgs-bat])
+- Used the build instructions for `bat` to build the [package][packages]
+- Stored the result in the [Nix store][store] using Nix's hash-based path system
+  {/* TODO: add substitution here and link to future caching doc */}
+
+You can now run bat:
+
+```shell
+./result/bin/bat --help
+```
+
+:rocket: **Success**!
+You've built and run a package using Nix.
+
+### Build a package for tools written in `$LANGUAGE` \{#language-specific}
+
+One of the great things about Nix is that package builds are extremely flexible, which enables you to create packages for things written in just about any programming language. In this section, we'll explore that by building and running packages for tools written in a variety of languages. Select one below to see some examples:
+
+<Languages />
+
+<SpecificLanguage lang="C++">
+Let's build and run [CMake]:
+
+```shell title="Build and then run CMake"
+nix build "nixpkgs#cmake"
+./result/bin/cmake --help
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Haskell">
+Let's build and run [Pandoc]:
+
+```shell title="Build and then run Pandoc"
+nix build "nixpkgs#pandoc"
+./result/bin/pandoc --version
+```
+</SpecificLanguage>
+<SpecificLanguage lang="JavaScript">
+Let's build and run [npm]:
+
+```shell title="Build and then run npm"
+nix build "nixpkgs#nodePackages.npm"
+./result/bin/npm --help
+```
+
+If you run `ls result/bin` you'll notice that the package also includes [npx].
+</SpecificLanguage>
+<SpecificLanguage lang="Python">
+Let's build and run [pip]:
+
+```shell title="Build and then run pip"
+nix build "nixpkgs#python3Packages.pip"
+./result/bin/pip --help
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Go">
+Let's build and run [kubectl]:
+
+```shell title="Build and then run kubectl"
+nix build "nixpkgs#kubectl"
+./result/bin/kubectl --help
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Rust">
+Let's build and run [ripgrep]:
+
+```shell title="Build and then run ripgrep"
+nix build "nixpkgs#ripgrep"
+./result/bin/rg --help
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Scala">
+Let's build and run [scalafmt]:
+
+```shell title="Build and then run scalafmt"
+nix build "nixpkgs#scalafmt"
+./result/bin/scalafmt --version
+```
+</SpecificLanguage>
+
+### Beyond Nixpkgs
+
+While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a package from a different repo, this time the package for [Home Manager][hm], a popular Nix tool for configuring home environments:
+
+```shell
+nix build "github:nix-community/home-manager"
+```
+
+Here, `github:nix-community/home-manager` is a flake reference to the [nix-community/home-manager][hm] repo on GitHub. To run Home Manager:
+
+```shell
+./result/bin/home-manager --help
+```
+
+Upstreaming your packages to Nixpkgs is always an option, but it's good to bear in mind that with Nix you can distribute packages via any public Git repository with a [`flake.nix`][flake].
+
+## Build a package in a local flake \{#flake}
+
+[Earlier](#nixpkgs) in this guide, we built a Nix package defined in [Nixpkgs] to get a sense of some of the mechanics of that process.
+In this guide, we'll dig a bit deeper and build a Nix package defined in a local [Nix flake][flake].
+
+As above, select a preferred language:
+
+<Languages />
+
+To get started in your <Language /> project, create an empty directory and initialize a [flake template][templates]:
+
+<Shell kind="pkg" />
+
+Whichever language you've selected, you can build the [Nix package][packages] defined in the local flake by running:
+
+```shell
+nix build
+```
+
+This command determines that the local flake has a [package output][outputs] that defines how the package is built.
+In this particular flake there's a `default` package, which enables us to run `nix build` without specifying an output, but if the package were output as `packages.mypkg`, for example, we'd need to run `nix build .#mypkg` to build it.
+
+<SpecificLanguage lang="C++">
+Here's the package definition that builds our C++ package:
+
+```nix title="flake.nix"
+{
+  packages = forAllSystems ({ pkgs }: {
+    default = pkgs.stdenv.mkDerivation {
+      name = "zero-to-nix-cpp";
+      src = self;
+      buildInputs = with pkgs; [ boost gcc poco ];
+      buildPhase = ''
+        c++ -std=c++17 -o zero-to-nix-cpp ${./main.cpp} -lPocoFoundation -lboost_system
+      '';
+      installPhase = ''
+        mkdir -p $out/bin
+        cp zero-to-nix-cpp $out/bin/
+      '';
+    };
+  });
+}
+```
+
+For the full flake, see [`flake.nix`][flake-cpp] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the `mkDerivation` function provided by Nix's [standard environment][stdenv].
+
+The package that results when you run `nix build` is a CLI tool that outputs a message.
+To run that tool:
+
+```shell title="Run the compiled binary"
+./result/bin/zero-to-nix-cpp
+```
+
+You should see this output:
+
+```shell title="Expected output"
+Hello from Nix + C++!
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Haskell">
+Here's the package definition that builds our Haskell package:
+
+```nix title="flake.nix"
+{
+  packages.default = pkgs.haskellPackages.developPackage {
+    name = "zero-to-nix-haskell";
+    root = ./.;
+  };
+}
+```
+
+For the full flake, see [`flake.nix`][flake-haskell] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`haskellPackages.developPackage`][haskell-pkg-func] function provided by [Nixpkgs].
+
+The package that results when you run `nix build` is a CLI tool that outputs a message.
+To run that tool:
+
+```shell title="Run the compiled binary"
+./result/bin/zero-to-nix-haskell
+```
+
+You should see this output:
+
+```shell title="Expected output"
+Hello from inside a Haskell program built with Nix!
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="JavaScript">
+Here's the package definition that builds our JavaScript package:
+
+```nix title="flake.nix"
+{
+  packages.default = pkgs.buildNpmPackage {
+    name = "zero-to-nix-javascript";
+
+    # The packages required by the build process
+    buildInputs = [
+      pkgs.nodejs_18
+    ];
+
+    # The code sources for the package
+    src = ./.;
+    npmDepsHash = "sha256-8Bj7nPZBAU+SnVTeKeArcjYnfZV4z/4I7fX+l0V+v04=";
+
+    # How the output of the build phase
+    installPhase = ''
+      mkdir $out
+      npm run build
+      cp dist/index.html $out
+    '';
+  }
+}
+```
+
+For the full flake, see [`flake.nix`][flake-js] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the `buildNpmPackage` function, which is a wrapper around Nix's built-in derivation function.
+
+The package that results when you run `nix build` is a website built using the [Vite] framework.
+To view that website, open the HTML file at `result/index.html`.
+
+</SpecificLanguage>
+<SpecificLanguage lang="Python">
+Here's the package definition that enables us to build our Python package:
+
+```nix title="flake.nix"
+{
+  packages.default = python.pkgs.buildPythonApplication {
+    name = "zero-to-nix-python";
+
+    buildInputs = with python.pkgs; [ pip ];
+
+    src = ./.;
+  };
+}
+```
+
+For the full flake, see [`flake.nix`][flake-py] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`buildPythonApplication`][buildpythonapplication] function, which is a wrapper around Nix's built-in `derivation` function.
+
+The resulting package is an executable that prints to the terminal.
+To run the package:
+
+```shell
+./result/bin/zero-to-nix-python
+```
+
+You should see this terminal output:
+
+```text
+Hello from inside a Python program built with Nix!
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Go">
+Here's the package definition that enables us to build this Go package:
+
+```nix title="flake.nix"
+{
+  packages.default = pkgs.buildGoModule {
+    name = "zero-to-nix-go";
+    src = ./.;
+    vendorSha256 = "sha256-fwJTg/HqDAI12mF1u/BlnG52yaAlaIMzsILDDZuETrI=";
+  };
+}
+```
+
+For the full flake, see [`flake.nix`][flake-go] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`buildGoModule`][buildgomodule] function, which is a wrapper around Nix's built-in `derivation` function.
+
+The package that results when you run `nix build` is a web server built using the [Gin] framework.
+To run the package:
+
+```shell title="Run the compiled binary"
+./result/bin/zero-to-nix-go
+```
+
+In another window, run `curl http://localhost:8080` to receive a message from the server.
+
+</SpecificLanguage>
+<SpecificLanguage lang="Rust">
+Here's the package definition that enables us to build this Rust package:
+
+```nix title="flake.nix"
+{
+  packages.default = pkgs.rustPlatform.buildRustPackage {
+    name = "zero-to-nix-rust";
+    src = ./.;
+    cargoLock = {
+      lockFile = ./Cargo.lock;
+    };
+  };
+}
+```
+
+For the full flake, see [`flake.nix`][flake-rs] on GitHub or run `cat flake.nix`.
+What you see here is a [derivation] that defines how to build the package, more specifically the [`buildRustPackage`][buildrustpackage] function, which is a wrapper around Nix's built-in `derivation` function.
+
+To run the resulting package, which is an executable that prints to the terminal:
+
+```shell
+./result/bin/zero-to-nix-rust
+```
+
+You should see this terminal output:
+
+```text
+Hello from Nix + Rust!
+```
+
+</SpecificLanguage>
+<SpecificLanguage lang="Scala">
+We're not gonna lie to you: packaging [Scala] is pretty tricky.
+Fortunately, there's a third-party project called [`sbt-derivation`][sbt-derivation] that provides some nice helpers, including a handy function called `mkSbtDerivation`, which is a wrapper around Nix's built-in `derivation` function.
+
+For the full flake behind this package, see [`flake.nix`][flake-scala] on GitHub or run `cat flake.nix`.
+To run the resulting package, which is an executable that prints to the terminal:
+
+```shell
+./result/bin/zero-to-nix-scala
+```
+
+You should see this terminal output:
+
+```text
+Hello from Nix + Scala!
+```
+
+</SpecificLanguage>
+
+We won't delve too much deeper into [derivations][derivation] and creating your own packages here, but we hope that this guide shows you how Nix code gets turned into real build output.
+
+[bat]: https://github.com/sharkdp/bat
+[buildgomodule]: https://nixos.org/manual/nixpkgs/stable/#ssec-language-go
+[buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#buildpythonapplication-function
+[buildrustpackage]: https://nixos.org/manual/nixpkgs/stable/#rust
+[cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
+[cmake]: https://cmake.org
+[derivation]: /concepts/derivations
+[flake]: /concepts/flakes
+[flake-cpp]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/cpp/flake.nix
+[flake-go]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/go/flake.nix
+[flake-haskell]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/haskell/flake.nix
+[flake-js]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/javascript/flake.nix
+[flake-py]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/python/flake.nix
+[flake-rs]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/rust/flake.nix
+[flake-scala]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/scala/flake.nix
+[gin]: https://github.com/gin-gonic/gin
+[haskell-pkg-func]: https://haskell4nix.readthedocs.io
+[hm]: https://github.com/nix-community/home-manager
+[install]: /start/install
+[kubectl]: https://github.com/kubernetes/kubectl
+[nix]: /concepts/nix
+[nixpkgs]: /concepts/nixpkgs
+[nixpkgs-bat]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/ba/bat/package.nix
+[nixpkgs-repo]: https://github.com/NixOS/nixpkgs
+[npm]: https://npmjs.org
+[npx]: https://docs.npmjs.com/cli/v8/commands/npx
+[outputs]: /concepts/flakes#outputs
+[packages]: /concepts/packages
+[pandoc]: https://pandoc.org
+[pkg]: /concepts/package-management
+[pip]: https://pypi.org/project/pip
+[ref]: /concepts/flakes#references
+[ripgrep]: https://github.com/BurntSushi/ripgrep
+[rust]: https://rust-lang.org
+[sbt-derivation]: https://github.com/zaninime/sbt-derivation
+[scala]: https://scala-lang.org
+[scalafmt]: https://scalameta.org/scalafmt
+[start]: /start
+[stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
+[store]: /concepts/nix-store
+[symlink]: https://en.wikipedia.org/wiki/Symbolic_link
+[templates]: /concepts/flakes#templates

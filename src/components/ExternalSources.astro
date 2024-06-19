@@ -1,0 +1,36 @@
+---
+import type { ExternalSource } from "../lib/content";
+import Grid3 from "./Grid3.astro";
+import HoverableExternalSourceLink from "../components/HoverableExternalSourceLink.astro";
+import { md } from "../lib/utils";
+
+type Props = {
+  showTitle?: boolean;
+  links: ExternalSource[];
+};
+
+const { showTitle, links } = Astro.props;
+---
+
+<div
+  class:list={[
+    "space-y-4",
+    showTitle !== undefined && !showTitle && "not-prose remove-underline",
+  ]}
+>
+  <p
+    v-if="showTitle"
+    class="text-xl font-semibold hover:text-gray dark:hover:text-light-gray md:text-2xl lg:text-3xl"
+    id="external-sources"
+  >
+    <a href="#external-sources">External sources</a>
+  </p>
+
+  <Grid3>
+    {
+      links.map(({ title, href, source }) => (
+        <HoverableExternalSourceLink title={md(title)} {href} {source} />
+      ))
+    }
+  </Grid3>
+</div>
