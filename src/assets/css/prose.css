@@ -20,6 +20,22 @@
   }
 
   .prose {
+    /* Headings */
+    h2, h3, h4 {
+      &::before {
+        display: block;
+        content: " ";
+        margin-top: -5rem;
+        height: 5rem;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      &.heading a {
+        @apply no-underline font-semibold;
+      }
+    }
+
     /* Hide footnotes heading */
     .footnotes {
       @apply mt-12 p-0;
@@ -51,39 +67,6 @@
 
     a {
       @apply underline hover:text-primary dark:hover:text-light-blue;
-
-      /* Hoverable heading links */
-      &.heading-anchor {
-        @apply float-left text-2xl text-primary no-underline opacity-0;
-
-        margin-top: 0.125em;
-        margin-left: -1em;
-        padding-right: 0.25em;
-
-        &::before {
-          content: "#";
-        }
-      }
-    }
-
-    .heading {
-      @apply tracking-tight;
-
-      &::before {
-        display: block;
-        content: " ";
-        margin-top: -5rem;
-        height: 5rem;
-        visibility: hidden;
-        pointer-events: none;
-      }
-
-      &:focus,
-      &:hover {
-        a.heading-anchor {
-          @apply text-primary opacity-100;
-        }
-      }
     }
 
     code {
