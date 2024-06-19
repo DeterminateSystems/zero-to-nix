@@ -17,6 +17,7 @@ export default defineConfig({
     }),
     expressiveCode({
       themes: ["github-dark"],
+      emitExternalStylesheet: true,
       defaultProps: {
         showLineNumbers: false,
       },

@@ -13,6 +13,9 @@ import SpecificLanguage from "../../components/mdx/SpecificLanguage.astro";
 import HorizontalContainer from "../../components/HorizontalContainer.astro";
 import Hero from "../../components/Hero.astro";
 import Summary from "../../components/Summary.astro";
+import H2 from "../../components/mdx/H2.astro";
+import H3 from "../../components/mdx/H3.astro";
+import H4 from "../../components/mdx/H4.astro";
 
 export const getStaticPaths = (async () => {
   const startPages = await getCollection("start");
@@ -45,18 +48,24 @@ const order = 1; // TODO: fix this
     <div class="space-y-6">
       {summary && summary.length > 0 && <Summary items={summary} />}
 
-      <Content
-        components={{
-          Admonition,
-          ExternalSources,
-          Language,
-          Languages,
-          NixDevelop,
-          NixStorePath,
-          Shell,
-          SpecificLanguage,
-        }}
-      />
+      <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
+        <Content
+          components={{
+            h2: H2,
+            h3: H3,
+            h4: H4,
+
+            Admonition,
+            ExternalSources,
+            Language,
+            Languages,
+            NixDevelop,
+            NixStorePath,
+            Shell,
+            SpecificLanguage,
+          }}
+        />
+      </div>
     </div>
   </HorizontalContainer>
 </Layout>

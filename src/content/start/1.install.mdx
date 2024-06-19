@@ -24,13 +24,13 @@ The installer supports these platforms:
 | Platform                                                                    | Multi user?        | `root` only |
 | :-------------------------------------------------------------------------- | :----------------- | :---------- |
 | Linux on 64-bit ARM and 64-bit AMD/Intel                                    | ✅ (via [systemd]) | ✅          |
-| macOS on 64-bit ARM and 64-bit AMD/Intel                                    | ✅                 |
-| [Valve Steam Deck][steamdeck] (SteamOS)                                     | ✅                 |
+| macOS on 64-bit ARM and 64-bit AMD/Intel                                    | ✅                 |             |
+| [Valve Steam Deck][steamdeck] (SteamOS)                                     | ✅                 |             |
 | [Windows Subsystem for Linux][wsl] (WSL) on 64-bit ARM and 64-bit AMD/Intel | ✅ (via [systemd]) | ✅          |
 | [Podman] Linux containers                                                   | ✅ (via [systemd]) | ✅          |
 | [Docker] containers                                                         |                    | ✅          |
 
-To run the installer:
+## Run the installer \{#run}
 
 ```shell title="One command to install Nix"
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
