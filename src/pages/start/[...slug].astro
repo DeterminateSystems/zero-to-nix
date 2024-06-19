@@ -1,5 +1,5 @@
 ---
-import type { GetStaticPaths } from "astro";
+import type { GetStaticPaths, Page } from "astro";
 import { getCollection } from "astro:content";
 import Admonition from "../../components/mdx/Admonition.astro";
 import ExternalSources from "../../components/ExternalSources.astro";
@@ -16,23 +16,25 @@ import Summary from "../../components/Summary.astro";
 import H2 from "../../components/mdx/H2.astro";
 import H3 from "../../components/mdx/H3.astro";
 import H4 from "../../components/mdx/H4.astro";
+import Pagination from "../../components/Pagination.astro";
 
 export const getStaticPaths = (async () => {
   const startPages = await getCollection("start");
 
   return startPages.map((page) => ({
     params: { slug: page.slug.substring(1) },
-    props: page,
+    props: {
+      page,
+    },
   }));
 }) satisfies GetStaticPaths;
 
-const page = Astro.props;
+const { page } = Astro.props;
 const { data } = page;
-const { title, summary } = data;
+const { title, summary, order } = data;
 const { Content } = await page.render();
 
 const numQuickStartPages = (await getCollection("start")).length;
-const order = 1; // TODO: fix this
 ---
 
 <Layout {title}>
@@ -65,6 +67,10 @@ const order = 1; // TODO: fix this
             SpecificLanguage,
           }}
         />
+      </div>
+
+      <div class="mt-16 space-y-12">
+        <Pagination {order} />
       </div>
     </div>
   </HorizontalContainer>
