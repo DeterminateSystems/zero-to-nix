@@ -4,7 +4,7 @@ const briefs = defineCollection({
   type: "content",
   schema: z.object({
     id: z.string(),
-  })
+  }),
 });
 
 const concepts = defineCollection({

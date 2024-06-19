@@ -21,7 +21,9 @@
 
   .prose {
     /* Headings */
-    h2, h3, h4 {
+    h2,
+    h3,
+    h4 {
       &::before {
         display: block;
         content: " ";
@@ -32,7 +34,7 @@
       }
 
       &.heading a {
-        @apply no-underline font-semibold;
+        @apply font-semibold no-underline;
       }
     }
 
