@@ -21,14 +21,12 @@ Let's start by searching [Nixpkgs], which is where we're mostly likely to find p
 This command will tell us if [cargo] is available in [Nixpkgs]:
 
 ```shell
-nix search nixpkgs cargo
+nix search "https://flakehub.com/f/NixOS/nixpkgs/*" cargo
 ```
-
-In this command, the `nixpkgs` [flake reference][flake-ref] is shorthand for `github:NixOS/nixpkgs`.
 
 <Admonition warning title="This could take a while" id="nix-search" client:load>
 The first time you run `nix search`, the Nix CLI needs to download the full Nix code contents of [Nixpkgs]&mdash;or whichever flake you're searching&mdash;and then cache it.
-Future `nix search` runs for Nixpkgs should be much speedier.
+Future `nix search` runs should be much speedier.
 Furthermore, Nixpkgs is the largest flake in existence and running `nix search` on other flakes should be much faster in general.
 </Admonition>
 
@@ -67,7 +65,7 @@ The web interface at [search.nixos.org][search] has a few advantages over the [`
 As an example, let's explore a popular flake for the [Wayland] window system protocol.
 
 ```shell
-nix flake show github:nix-community/nixpkgs-wayland
+nix flake show "github:nix-community/nixpkgs-wayland"
 ```
 
 <Admonition warning title="This could take a while" id="nix-search" client:load>
