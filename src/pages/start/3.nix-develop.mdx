@@ -2,7 +2,7 @@
 title: Explore Nix development environments
 path: /start/nix-develop
 summary: [
-  "Use the `nix develop` command to activate a Nix development environment defined in [Nixpkgs](/concepts/nixpkgs)",
+  "Use the `nix develop` command to activate a Nix development environment",
   "Run a command inside a development environment without actually entering that environment",
   "Explore Nix development environments tailored to specific programming languages",
   "Explore a more mixed development environment",
@@ -17,7 +17,7 @@ We'll cover that a bit later, but for now let's get a feel for what a Nix develo
 The [`nix develop`][nix-develop] command activates a Nix environment:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#example"
+nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example"
 ```
 
 <Admonition warning title="This could take a while" id="nix-develop-loading" client:load>
@@ -30,7 +30,7 @@ Future `nix develop` invocations should be much faster, as Nix doesn't need to b
 You should be greeted by a new shell prompt, something like this:
 
 ```shell
-(nix:zero-to-nix-env) bash-5.1$
+(nix:zero-to-nix-env) bash-5.2$
 ```
 
 :rocket: **Success**!
@@ -44,11 +44,11 @@ type git
 
 For curl, for example, you should see a strange path like this (the hash part should be different on your machine):
 
-<NixStorePath pkg="curl-7.86.0-bin" bin="curl" />
+<NixStorePath pkg="curl-8.1.1-bin" bin="curl" />
 
 What happened here? The [Nix] CLI did a few things:
 
-* It used the `github:DeterminateSystems/zero-to-nix` [flake reference][flakes] to pull in some Nix code and built a specific [flake output][output] (more on this later).
+* It used the `https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example` [flake reference][flakes] to pull in some Nix code and built a specific [flake output][output] (more on this later).
 * It built the [packages] specified in the environment configuration (again, more on this later).
 * It set up an environment with a [`PATH`][path] that enables the `git` and `curl` packages to be discovered in the [Nix store][store].
 
@@ -62,10 +62,10 @@ Two other things that you can provide in Nix development environments:
       Run this to see an example shell hook:
 
       ```shell
-      nix develop "github:DeterminateSystems/zero-to-nix#hook"
+      nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#hook"
       ```
 1. Nix development environments support environment variables as well.
-  Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
+  Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment (then run `exit` to leave the environment).
   Some example use cases for environment variables:
     * Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
     * Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
@@ -87,8 +87,8 @@ The `nix develop` command provides a `--command` (or `-c`) flag that you can use
 Here are some examples for the environment we used earlier:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command git help
-nix develop "github:DeterminateSystems/zero-to-nix#example" --command curl https://example.com
+nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example" --command git help
+nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example" --command curl https://example.com
 ```
 
 In both cases, you're running a package in the [Nix store][store] and nothing from your global environment.
@@ -212,7 +212,7 @@ But Nix environments are infinitely flexible, enabling you to combine whichever 
 Let's explore an example of this:
 
 ```shell
-nix develop "github:DeterminateSystems/zero-to-nix#multi"
+nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#multi"
 ```
 
 This Nix environment has several tools available:
@@ -235,7 +235,7 @@ For more info, see [Effortless dev environments with Nix and direnv][nix-direnv]
 
 ## From a local flake \{#flake}
 
-Earlier in this guide, we activated a Nix development environment defined in a [flake][flakes] on GitHub.
+Earlier in this guide, we activated a Nix development environment defined in a [flake][flakes] on [FlakeHub].
 While using an environment in this way is helpful, it's more common to use a development environment defined in a local flake in the current directory.
 
 First, tell us which language you prefer:
@@ -374,6 +374,7 @@ Probably not what you expected! What happened here? A few things:
 [curl]: https://curl.se
 [dev]: /concepts/dev-env
 [direnv]: https://direnv.net
+[flakehub]: https://flakehub.com
 [flakes]: /concepts/flakes
 [ghc]: https://haskell.org/ghc
 [git]: https://git-scm.com

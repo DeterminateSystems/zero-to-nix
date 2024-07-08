@@ -17,7 +17,7 @@ Let's start by building [bat], a syntax-highlighted version of [cat] written in 
 
 ```shell
 mkdir build-nix-package && cd build-nix-package
-nix build "nixpkgs#bat"
+nix build "https://flakehub.com/f/NixOS/nixpkgs/*#bat"
 ```
 
 Here, `nixpkgs` is a [flake reference][ref] to the [NixOS/nixpkgs][nixpkgs-repo] repository on GitHub, while `#bat` indicates that we're building the `bat` output from the Nixpkgs flake.
@@ -119,10 +119,11 @@ nix build "nixpkgs#scalafmt"
 While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a package from a different repo, this time the package for [Home Manager][hm], a popular Nix tool for configuring home environments:
 
 ```shell
-nix build "github:nix-community/home-manager"
+nix build "https://flakehub.com/f/nix-community/home-manager/*"
 ```
 
-Here, `github:nix-community/home-manager` is a flake reference to the [nix-community/home-manager][hm] repo on GitHub. To run Home Manager:
+Here, `https://flakehub.com/f/nix-community/home-manager/*` is a flake reference to the [nix-community/home-manager][hm] repo on FlakeHub.
+To run Home Manager:
 
 ```shell
 ./result/bin/home-manager --help
