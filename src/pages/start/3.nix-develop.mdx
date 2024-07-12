@@ -42,6 +42,12 @@ type curl
 type git
 ```
 
+If your shell prompt didn't change, you should still be able to tell something happened by checking the `FUNNY_JOKE` variable added by the 
+development environment we just activated:
+```shell
+echo $FUNNY_JOKE
+```
+
 For curl, for example, you should see a strange path like this (the hash part should be different on your machine):
 
 <NixStorePath pkg="curl-8.1.1-bin" bin="curl" />

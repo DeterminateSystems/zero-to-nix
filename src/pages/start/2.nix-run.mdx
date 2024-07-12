@@ -27,6 +27,13 @@ This is in contrast to most [package managers][pkg], which install things more q
 Future `nix run` invocations should be instantaneous, as Nix doesn't need to build the package again.
 </Admonition>
 
+<Admonition warning title="If you installed nix on your own" id="nix-run-loading" client:load>
+If you installed Nix by means other than the [Determinate Nix Installer][nix-installer], you'll probably need to manually enable the nix command and flakes 
+(if you're seeing an error about experimental features, this it you). you can find out how to activate those features on their respective Nix wiki 
+pages: see [nix command](https://nixos.wiki/wiki/Nix_command) and [flakes](https://nixos.wiki/wiki/Flakes).
+</Admonition>
+
+
 ## Explanation
 
 What happened here? The [Nix] CLI did a few things:
