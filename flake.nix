@@ -194,7 +194,7 @@
         };
 
         go-pkg = {
-          path = ./nix/templates/pkg/go;
+          path = ./nix/templates/pkg/golang;
           description = "Go package starter template for Zero to Nix";
         };
 
