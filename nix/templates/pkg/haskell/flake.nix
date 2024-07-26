@@ -2,7 +2,7 @@
   description = "Haskell example flake for Zero to Nix";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.491812.tar.gz";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
   };
 
   outputs = { self, nixpkgs }:
@@ -22,9 +22,11 @@
     in
     {
       packages = forAllSystems ({ pkgs }: {
-        default = pkgs.haskellPackages.developPackage {
-          name = "zero-to-nix-haskell";
-          root = ./.;
+        default = pkgs.haskellPackages.mkDerivation {
+          pname = "zero-to-nix-haskell";
+          version = "0.1.0";
+          src = self;
+          license = "cc-by-sa-40";
         };
       });
     };

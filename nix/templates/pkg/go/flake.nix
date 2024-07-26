@@ -2,7 +2,7 @@
   description = "Go example flake for Zero to Nix";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.491812.tar.gz";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
   };
 
   outputs = { self, nixpkgs }:
@@ -22,10 +22,11 @@
     in
     {
       packages = forAllSystems ({ pkgs }: {
-        default = pkgs.buildGoModule {
+        default = pkgs.buildGo122Module {
           name = "zero-to-nix-go";
-          src = ./.;
-          vendorSha256 = "sha256-pYnN8rxXNNLRegvJySwAyMUPBmnhSiDSHfMQpjB9Qjs=";
+          src = self;
+          vendorHash = pkgs.lib.fakeHash;
+          subPackages = [ "cmd/zero-to-nix-go" ];
         };
       });
     };

@@ -5,7 +5,7 @@
 
   # Flake inputs
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.491812.tar.gz";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
     sbt = {
       url = "github:zaninime/sbt-derivation";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,7 +40,7 @@
           pname = name;
           inherit version;
           depsSha256 = "sha256-eOSvpVOMjIO+oUErei4NGj9xMKknhkFe6+NrUui+hm8=";
-          src = ./.;
+          src = self;
           depsWarmupCommand = ''
             sbt 'managedClasspath; compilers'
           '';

@@ -1,7 +1,7 @@
 {
   description = "Zero to Nix: Your guide to learning Nix and flakes";
 
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.*.tar.gz";
+  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
 
   outputs =
     { self
