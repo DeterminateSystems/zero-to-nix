@@ -27,8 +27,6 @@
           version = "0.1.0";
           src = self;
           license = pkgs.lib.licenses.cc-by-sa-40;
-          isLibrary = false;
-          isExecutable = true;
           executableHaskellDepends = with pkgs.haskellPackages; [
             base
           ];

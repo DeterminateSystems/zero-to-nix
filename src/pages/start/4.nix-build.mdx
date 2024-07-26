@@ -200,7 +200,10 @@ Here's the package definition that builds our Haskell package:
     pname = "zero-to-nix-haskell";
     version = "0.1.0";
     src = self;
-    license = "cc-by-nc-sa-40";
+    license = pkgs.lib.licenses.cc-by-sa-40;
+    executableHaskellDepends = with pkgs.haskellPackages; [
+      base
+    ];
   };
 }
 ```

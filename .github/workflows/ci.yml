@@ -42,6 +42,9 @@ jobs:
             --no-progress
             ./dist
           fail: false
+      - name: Check templates
+        run: |
+          ./scripts/check-templates.sh
 
   build-pkg-templates:
     runs-on: ${{ matrix.systems.runner }}
@@ -62,8 +65,6 @@ jobs:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
     - uses: DeterminateSystems/magic-nix-cache-action@main
-    - name: Check templates
-      run: |
-        ./scripts/check-templates.sh
+
     - name: Build packages in pkg templates
       run: ./scripts/build-pkg-templates.sh
