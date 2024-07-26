@@ -22,9 +22,11 @@
     in
     {
       packages = forAllSystems ({ pkgs }: {
-        default = pkgs.haskellPackages.developPackage {
-          name = "zero-to-nix-haskell";
-          root = ./.;
+        default = pkgs.haskellPackages.mkDerivation {
+          pname = "zero-to-nix-haskell";
+          version = "0.1.0";
+          src = self;
+          license = "cc-by-nc-sa-40";
         };
       });
     };
