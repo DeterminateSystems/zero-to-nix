@@ -58,10 +58,10 @@ jobs:
         systems:
           - nix-system: "aarch64-darwin"
             runner: "macos-latest-xlarge"
-          #- nix-system: "x86_64-darwin"
-          #  runner: "macos-12"
-          #- nix-system: "x86_64-linux"
-          #  runner: "ubuntu-22.04"
+          - nix-system: "x86_64-darwin"
+            runner: "macos-12"
+          - nix-system: "x86_64-linux"
+            runner: "ubuntu-22.04"
     steps:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
