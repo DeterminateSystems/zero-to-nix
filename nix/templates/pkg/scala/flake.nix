@@ -5,7 +5,7 @@
 
   # Flake inputs
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.491812.tar.gz";
     sbt = {
       url = "github:zaninime/sbt-derivation";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,9 +46,13 @@
           '';
           startScript = ''
             #!${pkgs.runtimeShell}
-            exec ${pkgs.openjdk_headless}/bin/java ''${JAVA_OPTS:-} -cp "${
-              placeholder "out"
-            }/share/${name}/lib/*" ${nixpkgs.lib.escapeShellArg mainClass} "$@"
+
+            exec ${pkgs.openjdk_headless}/bin/java \
+              ''${JAVA_OPTS:-} \
+              -cp \
+              "${placeholder "out"}/share/${name}/lib/*" \
+              ${nixpkgs.lib.escapeShellArg mainClass} \
+              "$@"
           '';
           buildPhase = ''
             sbt stage
