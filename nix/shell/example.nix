@@ -50,7 +50,7 @@
   };
 
   go = pkgs.mkShell {
-    packages = with pkgs; [ go ];
+    packages = with pkgs; [ go_1_19 ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for Go!"

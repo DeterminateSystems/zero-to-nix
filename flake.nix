@@ -39,7 +39,6 @@
           let
             common = with pkgs; [
               # CI
-              cachix
               direnv
               nix-direnv
 
