@@ -7,11 +7,9 @@ for env in ./nix/templates/dev/*; do
   nix flake check --all-systems $env
 done
 
-echo "Checking package build templates"
+echo "Checking pkg templates"
 
 for pkg in ./nix/templates/pkg/*; do
   echo "\_ checking ${pkg}"
   nix flake check --all-systems $pkg
-  echo "\_ building ${pkg}"
-  nix build $pkg
 done

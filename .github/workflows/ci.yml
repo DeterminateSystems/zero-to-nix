@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  test:
+  site-test:
     environment: test
     runs-on: ubuntu-22.04
     env:
@@ -17,7 +17,7 @@ jobs:
       contents: "read"
     steps:
       - name: git checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Check Nixpkgs input
         uses: DeterminateSystems/flake-checker-action@main
         with:
@@ -43,5 +43,27 @@ jobs:
             --no-progress
             ./dist
           fail: false
-      - name: Check flake templates
-        run: ./scripts/check-flake-templates.sh
+      - name: Check templates
+        run: |
+          ./scripts/check-templates.sh
+
+  check-pkg-templates:
+    runs-on: ${{ matrix.systems.runner }}
+    permissions:
+      id-token: "write"
+      contents: "read"
+    strategy:
+      matrix:
+        systems:
+          - nix-system: "aarch64-darwin"
+            runner: "macos-latest-xlarge"
+          - nix-system: "x86_64-darwin"
+            runner: "macos-12"
+          - nix-system: "x86_64-linux"
+            runner: "ubuntu-22.04"
+    steps:
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - name: Build packages in pkg templates
+      run: ./scripts/build-pkg-templates.sh
