@@ -21,11 +21,21 @@
       });
     in
     {
+      devShells = forAllSystems ({ pkgs }: {
+        default = pkgs.mkShell {
+          # The Nix packages provided in the environment
+          packages = with pkgs; [
+            go # Go 1.22
+            gotools # Go tools like goimports, godoc, and others
+          ];
+        };
+      });
+
       packages = forAllSystems ({ pkgs }: {
-        default = pkgs.buildGo122Module {
+        default = pkgs.buildGoModule {
           name = "zero-to-nix-go";
           src = self;
-          vendorHash = pkgs.lib.fakeHash;
+          vendorHash = "sha256-Cy1/QqbO2MyYgqJZKxrt1FZzLSgXbhSK3ceFPUlFujw=";
           subPackages = [ "cmd/zero-to-nix-go" ];
         };
       });
