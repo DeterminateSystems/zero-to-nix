@@ -24,8 +24,8 @@
       packages = forAllSystems ({ pkgs }: {
         default = pkgs.buildGoModule {
           name = "zero-to-nix-go";
-          src = ./.;
-          vendorSha256 = "sha256-pYnN8rxXNNLRegvJySwAyMUPBmnhSiDSHfMQpjB9Qjs=";
+          src = self;
+          vendorSha256 = "sha256-Cy1/QqbO2MyYgqJZKxrt1FZzLSgXbhSK3ceFPUlFujw=";
         };
       });
     };
