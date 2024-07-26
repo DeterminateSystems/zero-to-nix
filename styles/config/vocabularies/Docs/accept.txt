@@ -91,6 +91,7 @@ openssl
 pandoc
 pkgs
 plaintext
+pname
 podman
 ponysay
 readlink
