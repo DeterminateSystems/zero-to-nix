@@ -196,9 +196,11 @@ Here's the package definition that builds our Haskell package:
 
 ```nix filename=flake.nix
 {
-  packages.default = pkgs.haskellPackages.developPackage {
-    name = "zero-to-nix-haskell";
+  packages.default = pkgs.haskellPackages.mkDerivation {
+    pname = "zero-to-nix-haskell";
+    version = "0.1.0";
     src = self;
+    license = "cc-by-nc-sa-40";
   };
 }
 ```
