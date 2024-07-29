@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  site-test:
+  test:
     runs-on: ubuntu-22.04
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,7 +48,7 @@ jobs:
 
   build-pkg-templates:
     runs-on: ${{ matrix.systems.runner }}
-    needs: site-test
+    needs: test
     permissions:
       id-token: "write"
       contents: "read"
