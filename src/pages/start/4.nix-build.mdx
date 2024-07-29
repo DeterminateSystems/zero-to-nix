@@ -196,9 +196,14 @@ Here's the package definition that builds our Haskell package:
 
 ```nix filename=flake.nix
 {
-  packages.default = pkgs.haskellPackages.developPackage {
-    name = "zero-to-nix-haskell";
-    root = ./.;
+  packages.default = pkgs.haskellPackages.mkDerivation {
+    pname = "zero-to-nix-haskell";
+    version = "0.1.0";
+    src = self;
+    license = pkgs.lib.licenses.cc-by-sa-40;
+    executableHaskellDepends = with pkgs.haskellPackages; [
+      base
+    ];
   };
 }
 ```
@@ -233,7 +238,7 @@ Here's the package definition that builds our JavaScript package:
     ];
 
     # The code sources for the package
-    src = ./.;
+    src = self;
     npmDepsHash = "sha256-8Bj7nPZBAU+SnVTeKeArcjYnfZV4z/4I7fX+l0V+v04=";
 
     # How the output of the build phase
@@ -258,10 +263,8 @@ Here's the package definition that enables us to build our Python package:
 ```nix filename=flake.nix
  packages.default = python.pkgs.buildPythonApplication {
   name = "zero-to-nix-python";
-
+  src = self;
   buildInputs = with python.pkgs; [ pip ];
-
-  src = ./.;
 };
 ```
 
@@ -287,7 +290,7 @@ Here's the package definition that enables us to build this Go package:
 ```nix filename=flake.nix
 packages.default = pkgs.buildGoModule {
   name = "zero-to-nix-go";
-  src = ./.;
+  src = self;
   vendorSha256 = "sha256-fwJTg/HqDAI12mF1u/BlnG52yaAlaIMzsILDDZuETrI=";
 };
 ```
@@ -310,7 +313,7 @@ Here's the package definition that enables us to build this Rust package:
 ```nix filename=flake.nix
  packages.default = pkgs.rustPlatform.buildRustPackage {
   name = "zero-to-nix-rust";
-  src = ./.;
+  src = self;
   cargoLock = {
     lockFile = ./Cargo.lock;
   };
@@ -361,7 +364,7 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [derivation]: /concepts/derivations
 [flake]: /concepts/flakes
 [flake-cpp]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/cpp/flake.nix
-[flake-go]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/go/flake.nix
+[flake-go]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/golang/flake.nix
 [flake-haskell]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/haskell/flake.nix
 [flake-js]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/javascript/flake.nix
 [flake-py]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/python/flake.nix

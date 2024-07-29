@@ -1,7 +1,7 @@
 {
   description = "Zero to Nix: Your guide to learning Nix and flakes";
 
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.*.tar.gz";
+  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
 
   outputs =
     { self
@@ -39,7 +39,6 @@
           let
             common = with pkgs; [
               # CI
-              cachix
               direnv
               nix-direnv
 
@@ -195,7 +194,7 @@
         };
 
         go-pkg = {
-          path = ./nix/templates/pkg/go;
+          path = ./nix/templates/pkg/golang;
           description = "Go package starter template for Zero to Nix";
         };
 

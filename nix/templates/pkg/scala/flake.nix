@@ -46,9 +46,13 @@
           '';
           startScript = ''
             #!${pkgs.runtimeShell}
-            exec ${pkgs.openjdk_headless}/bin/java ''${JAVA_OPTS:-} -cp "${
-              placeholder "out"
-            }/share/${name}/lib/*" ${nixpkgs.lib.escapeShellArg mainClass} "$@"
+
+            exec ${pkgs.openjdk_headless}/bin/java \
+              ''${JAVA_OPTS:-} \
+              -cp \
+              "${placeholder "out"}/share/${name}/lib/*" \
+              ${nixpkgs.lib.escapeShellArg mainClass} \
+              "$@"
           '';
           buildPhase = ''
             sbt stage
