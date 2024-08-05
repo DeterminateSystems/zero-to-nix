@@ -159,7 +159,7 @@
         };
 
         go-dev = {
-          path = ./nix/templates/dev/go;
+          path = ./nix/templates/dev/golang;
           description = "Go dev environment template for Zero to Nix";
         };
 
