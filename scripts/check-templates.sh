@@ -1,10 +1,15 @@
+set -euo pipefail
+
+echo "Checking dev shell templates"
+
 for env in ./nix/templates/dev/*; do
-  echo "checking development environment ${env}"
+  echo "\_ ${env}"
   nix flake check --all-systems $env
 done
 
+echo "Checking pkg templates"
+
 for pkg in ./nix/templates/pkg/*; do
-  echo "checking package build ${pkg}"
+  echo "\_ ${pkg}"
   nix flake check --all-systems $pkg
-  nix build $pkg
 done

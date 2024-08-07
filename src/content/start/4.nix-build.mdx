@@ -18,7 +18,7 @@ Let's start by building [bat], a syntax-highlighted version of [cat] written in 
 
 ```shell
 mkdir build-nix-package && cd build-nix-package
-nix build "nixpkgs#bat"
+nix build "https://flakehub.com/f/NixOS/nixpkgs/*#bat"
 ```
 
 Here, `nixpkgs` is a [flake reference][ref] to the [NixOS/nixpkgs][nixpkgs-repo] repository on GitHub, while `#bat` indicates that we're building the `bat` output from the Nixpkgs flake.
@@ -123,10 +123,11 @@ nix build "nixpkgs#scalafmt"
 While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a package from a different repo, this time the package for [Home Manager][hm], a popular Nix tool for configuring home environments:
 
 ```shell
-nix build "github:nix-community/home-manager"
+nix build "https://flakehub.com/f/nix-community/home-manager/*"
 ```
 
-Here, `github:nix-community/home-manager` is a flake reference to the [nix-community/home-manager][hm] repo on GitHub. To run Home Manager:
+Here, `https://flakehub.com/f/nix-community/home-manager/*` is a flake reference to the [nix-community/home-manager][hm] repo on FlakeHub.
+To run Home Manager:
 
 ```shell
 ./result/bin/home-manager --help
@@ -200,9 +201,14 @@ Here's the package definition that builds our Haskell package:
 
 ```nix title="flake.nix"
 {
-  packages.default = pkgs.haskellPackages.developPackage {
-    name = "zero-to-nix-haskell";
-    root = ./.;
+  packages.default = pkgs.haskellPackages.mkDerivation {
+    pname = "zero-to-nix-haskell";
+    version = "0.1.0";
+    src = self;
+    license = pkgs.lib.licenses.cc-by-sa-40;
+    executableHaskellDepends = with pkgs.haskellPackages; [
+      base
+    ];
   };
 }
 ```
@@ -238,7 +244,7 @@ Here's the package definition that builds our JavaScript package:
     ];
 
     # The code sources for the package
-    src = ./.;
+    src = self;
     npmDepsHash = "sha256-8Bj7nPZBAU+SnVTeKeArcjYnfZV4z/4I7fX+l0V+v04=";
 
     # How the output of the build phase
@@ -265,10 +271,8 @@ Here's the package definition that enables us to build our Python package:
 {
   packages.default = python.pkgs.buildPythonApplication {
     name = "zero-to-nix-python";
-
+    src = self;
     buildInputs = with python.pkgs; [ pip ];
-
-    src = ./.;
   };
 }
 ```
@@ -327,7 +331,6 @@ Here's the package definition that enables us to build this Rust package:
     cargoLock = {
       lockFile = ./Cargo.lock;
     };
-  };
 }
 ```
 
@@ -377,7 +380,7 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [derivation]: /concepts/derivations
 [flake]: /concepts/flakes
 [flake-cpp]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/cpp/flake.nix
-[flake-go]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/go/flake.nix
+[flake-go]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/golang/flake.nix
 [flake-haskell]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/haskell/flake.nix
 [flake-js]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/javascript/flake.nix
 [flake-py]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/nix/templates/pkg/python/flake.nix

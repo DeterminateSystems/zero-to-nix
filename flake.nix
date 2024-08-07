@@ -1,7 +1,7 @@
 {
   description = "Zero to Nix: Your guide to learning Nix and flakes";
 
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.*.tar.gz";
+  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
 
   outputs =
     { self
@@ -157,7 +157,7 @@
         };
 
         go-dev = {
-          path = ./nix/templates/dev/go;
+          path = ./nix/templates/dev/golang;
           description = "Go dev environment template for Zero to Nix";
         };
 
@@ -192,7 +192,7 @@
         };
 
         go-pkg = {
-          path = ./nix/templates/pkg/go;
+          path = ./nix/templates/pkg/golang;
           description = "Go package starter template for Zero to Nix";
         };
 

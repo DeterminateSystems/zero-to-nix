@@ -14,7 +14,7 @@ Now we can dive in and use Nix to run an actual program.
 Let's try running the delightful [ponysay]:
 
 ```shell title="Pass a string to Ponysay"
-echo "Hello Nix" | nix run "nixpkgs#ponysay"
+echo "Hello Nix" | nix run "https://flakehub.com/f/NixOS/nixpkgs/*#ponysay"
 ```
 
 :rocket: **Success**!

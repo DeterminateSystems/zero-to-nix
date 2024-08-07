@@ -9,8 +9,8 @@ summary:
   ]
 ---
 
-One great thing about Nix is that there are _tons_ of [packages] available in the [Nix ecosystem][ecosystem] that you can use in [Nix development environments][env], in your [NixOS][nixos] installations, and more.
-While [Nixpkgs] is by far the largest Nix package collection&mdash;over 80,000 packages and counting :sunglasses:&mdash;any [Nix flake][flakes] can provide package [outputs].
+One great thing about Nix is that there are *tons* of [packages] available in the [Nix ecosystem][ecosystem] that you can use in [Nix development environments][env], in your [NixOS][nixos] installations, and more.
+While [Nixpkgs] is by far the largest Nix package collection&mdash;over 100,000 packages and counting :sunglasses:&mdash;any [Nix flake][flakes] can provide package [outputs].
 
 But navigating all of this plenty can be tricky, so in this guide we'll learn how to search for packages in Nixpkgs using the [`nix search`][nix-search] command and using the web application at [search.nixos.org][search].
 Then we'll learn how to explore packages in [other flakes](#nix-flake-show).
@@ -22,7 +22,7 @@ Let's start by searching [Nixpkgs], which is where we're mostly likely to find p
 This command will tell us if [cargo] is available in [Nixpkgs]:
 
 ```shell
-nix search nixpkgs cargo
+nix search "https://flakehub.com/f/NixOS/nixpkgs/*" cargo
 ```
 
 In this command, the `nixpkgs` [flake reference][flake-ref] is shorthand for `github:NixOS/nixpkgs`.
@@ -77,7 +77,7 @@ The web interface at [search.nixos.org][search] has a few advantages over the [`
 As an example, let's explore a popular flake for the [Wayland] window system protocol.
 
 ```shell
-nix flake show github:nix-community/nixpkgs-wayland
+nix flake show "github:nix-community/nixpkgs-wayland"
 ```
 
 <Admonition warning title="This could take a while" id="nix-search">
