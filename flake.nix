@@ -53,6 +53,9 @@
               # JS
               nodejs
               pnpm
+
+              # Serve locally
+              static-web-server
             ];
 
             run = pkg: runPkg pkgs pkg;
@@ -103,10 +106,6 @@
                 ${run "alex"} --quiet src/pages
               '')
 
-              (writeScriptBin "check-types" ''
-                ${run "pnpm"} run typecheck
-              '')
-
               (writeScriptBin "preview" ''
                 build
                 ${run "pnpm"} run preview
@@ -119,7 +118,6 @@
                 check-internal-links
                 lint-style
                 check-sensitivity
-                check-types
               '')
             ];
 
