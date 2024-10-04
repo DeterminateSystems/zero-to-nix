@@ -35,7 +35,7 @@ const parseMeta = (s: string): Meta => {
     const filename = maybeFilename.split("=").at(1);
     if (filename === undefined) {
       throw new Error(
-        "Malformed code block; you need to specify a filename like this: filename=foo.txt"
+        "Malformed code block; you need to specify a filename like this: filename=foo.txt",
       );
     } else {
       meta.filename ||= filename;
@@ -48,7 +48,7 @@ const highlightCode = (
   code: string,
   grammar: Grammar,
   lang: string,
-  meta: string
+  meta: string,
 ): string => {
   code = prism.highlight(code, grammar, lang);
   const cls = `language-${lang}`;
@@ -72,7 +72,7 @@ const getGrammar = (lang: string): Grammar | undefined => {
       loadLanguages([lang]);
     } catch (e) {
       console.warn(
-        `[prismjs] Syntax highlight for language "${lang}" is not supported.`
+        `[prismjs] Syntax highlight for language "${lang}" is not supported.`,
       );
     }
   }
