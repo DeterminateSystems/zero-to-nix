@@ -159,18 +159,21 @@ Here's the package definition that builds our C++ package:
 ```nix filename=flake.nix
 {
   packages = forAllSystems ({ pkgs }: {
-    default = pkgs.stdenv.mkDerivation {
-      name = "zero-to-nix-cpp";
-      src = self;
-      buildInputs = with pkgs; [ boost gcc poco ];
-      buildPhase = ''
-        c++ -std=c++17 -o zero-to-nix-cpp ${./main.cpp} -lPocoFoundation -lboost_system
-      '';
-      installPhase = ''
-        mkdir -p $out/bin
-        cp zero-to-nix-cpp $out/bin/
-      '';
-    };
+    default =
+      let
+        binName = "zero-to-nix-cpp";
+        cppDependencies = with pkgs; [ boost gcc poco ];
+      in
+      pkgs.stdenv.mkDerivation {
+        name = "zero-to-nix-cpp";
+        src = self;
+        buildInputs = cppDependencies;
+        buildPhase = "c++ -std=c++17 -o ${binName} ${./main.cpp} -lPocoFoundation -lboost_system";
+        installPhase = ''
+          mkdir -p $out/bin
+          cp ${binName} $out/bin/
+        '';
+      };
   });
 }
 ```
@@ -196,15 +199,17 @@ Here's the package definition that builds our Haskell package:
 
 ```nix filename=flake.nix
 {
-  packages.default = pkgs.haskellPackages.mkDerivation {
-    pname = "zero-to-nix-haskell";
-    version = "0.1.0";
-    src = self;
-    license = pkgs.lib.licenses.cc-by-sa-40;
-    executableHaskellDepends = with pkgs.haskellPackages; [
-      base
-    ];
-  };
+  packages = forAllSystems ({ pkgs }: {
+    default = pkgs.haskellPackages.mkDerivation {
+      pname = "zero-to-nix-haskell";
+      version = "0.1.0";
+      src = self;
+      license = pkgs.lib.licenses.cc-by-sa-40;
+      executableHaskellDepends = with pkgs.haskellPackages; [
+        base
+      ];
+    };
+  });
 }
 ```
 
@@ -229,25 +234,26 @@ Here's the package definition that builds our JavaScript package:
 
 ```nix filename=flake.nix
 {
-  packages.default = pkgs.buildNpmPackage {
-    name = "zero-to-nix-javascript";
+  packages = forAllSystems ({ pkgs }: {
+    default = pkgs.buildNpmPackage {
+      name = "zero-to-nix-javascript";
 
-    # The packages required by the build process
-    buildInputs = [
-      pkgs.nodejs_18
-    ];
+      buildInputs = with pkgs; [
+        nodejs_18
+      ];
 
-    # The code sources for the package
-    src = self;
-    npmDepsHash = "sha256-8Bj7nPZBAU+SnVTeKeArcjYnfZV4z/4I7fX+l0V+v04=";
+      src = self;
 
-    # How the output of the build phase
-    installPhase = ''
-      mkdir $out
-      npm run build
-      cp dist/index.html $out
-    '';
-  }
+      npmDepsHash = "sha256-A/q4C8Ox1InaJ/320+pU9uBUv6zqTKlzzOmJUvzBOnI=";
+
+      npmBuild = "npm run build";
+
+      installPhase = ''
+        mkdir $out
+        cp dist/index.html $out
+      '';
+    };
+  });
 }
 ```
 
@@ -261,11 +267,21 @@ To view that website, open the HTML file at `result/index.html`.
 Here's the package definition that enables us to build our Python package:
 
 ```nix filename=flake.nix
- packages.default = python.pkgs.buildPythonApplication {
-  name = "zero-to-nix-python";
-  src = self;
-  buildInputs = with python.pkgs; [ pip ];
-};
+{
+  packages = forAllSystems ({ pkgs }: {
+    default =
+      let
+        python = pkgs.python39;
+      in
+      python.pkgs.buildPythonApplication {
+        name = "zero-to-nix-python";
+
+        buildInputs = with python.pkgs; [ pip ];
+
+        src = ./.;
+      };
+  });
+}
 ```
 
 For the full flake, see [`flake.nix`][flake-py] on GitHub or run `cat flake.nix`.
@@ -288,11 +304,16 @@ Hello from inside a Python program built with Nix!
 Here's the package definition that enables us to build this Go package:
 
 ```nix filename=flake.nix
-packages.default = pkgs.buildGoModule {
-  name = "zero-to-nix-go";
-  src = self;
-  vendorSha256 = "sha256-fwJTg/HqDAI12mF1u/BlnG52yaAlaIMzsILDDZuETrI=";
-};
+{
+  packages = forAllSystems ({ pkgs }: {
+    default = pkgs.buildGoModule {
+      name = "zero-to-nix-go";
+      src = self;
+      vendorHash = "sha256-Cy1/QqbO2MyYgqJZKxrt1FZzLSgXbhSK3ceFPUlFujw=";
+      subPackages = [ "cmd/zero-to-nix-go" ];
+    };
+  });
+}
 ```
 
 For the full flake, see [`flake.nix`][flake-go] on GitHub or run `cat flake.nix`.
@@ -311,13 +332,24 @@ In another window, run `curl http://localhost:8080` to receive a message from th
 Here's the package definition that enables us to build this Rust package:
 
 ```nix filename=flake.nix
- packages.default = pkgs.rustPlatform.buildRustPackage {
-  name = "zero-to-nix-rust";
-  src = self;
-  cargoLock = {
-    lockFile = ./Cargo.lock;
-  };
-};
+{
+  packages = forAllSystems ({ pkgs }: {
+    default =
+      let
+        rustPlatform = pkgs.makeRustPlatform {
+          cargo = pkgs.rustToolchain;
+          rustc = pkgs.rustToolchain;
+        };
+      in
+      rustPlatform.buildRustPackage {
+        name = "zero-to-nix-rust";
+        src = ./.;
+        cargoLock = {
+          lockFile = ./Cargo.lock;
+        };
+      };
+  });
+}
 ```
 
 For the full flake, see [`flake.nix`][flake-rs] on GitHub or run `cat flake.nix`.
