@@ -53,10 +53,12 @@ externalSources: [
 All of these are closely interrelated and should be thought of as a single tool.
 In this document, we'll go over each of these three aspects of Nix.
 
-<Admonition info open title="Nix as a project" id="nix-oss" client:load>
+<Admonition info open title="Nix and open source" id="nix-oss" client:load>
 The Nix project is fully open source and largely developed within the [`NixOS`][nixos-org] organization on [GitHub].
-It licensed under the generally quite permissive [LGPL 2.1][license].
+It's licensed under [LGPL 2.1][license], which is generally quite permissive regarding commercial use.
+
 We at Determinate Systems have actively contributed to Nix as an open source project in the past&mdash;alongside countless talented individuals&mdash;and will continue to do so as part of our [mission] to make Nix better.
+We have also created [Determinate Nix][det-nix], a downstream distribution of Nix intended for enterprise.
 </Admonition>
 
 ## The Nix CLI \{#cli}
@@ -84,6 +86,7 @@ The *original CLI* for Nix is still the official CLI but, as we mention above, n
 
 The [Determinate Nix Installer][install] enables the [unified CLI](#unified-cli) by default, but leaves the tools from the original CLI accessible.
 
+[det-nix]: https://docs.determinate.systems/determinate-nix
 [ds]: https://determinate.systems
 [env]: /concepts/dev-env
 [flakes]: /concepts/flakes
