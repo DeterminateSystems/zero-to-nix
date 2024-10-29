@@ -2,7 +2,7 @@
 title: Nix
 wip: true
 snippet: |
-  A build tool, [package manager](/concepts/package-management), and [programming language](/concepts/nix-language)
+  A CLI, [package manager](/concepts/package-management), and [programming language](/concepts/nix-language)
 related: ["nix-language", "nixos", "nixpkgs"]
 externalSources: [
   {
@@ -44,11 +44,20 @@ externalSources: [
 ]
 ---
 
-*Nix* refers to a few different things:
+[*Nix*][nix] can be a somewhat confusing term because it refers to multiple things:
 
 1. The pure and functional [programming language][lang]
 2. The [Nix CLI](#cli)
-3. The overall Nix package management system
+3. The overall Nix [package management system][package-management]
+
+All of these are closely interrelated and should be thought of as a single tool.
+In this document, we'll go over each of these three aspects of Nix.
+
+<Admonition info open title="Nix as a project" id="nix-oss" client:load>
+The Nix project is fully open source and largely developed within the [`NixOS`][nixos-org] organization on [GitHub].
+It licensed under the generally quite permissive [LGPL 2.1][license].
+We at Determinate Systems have actively contributed to Nix as an open source project in the past&mdash;alongside countless talented individuals&mdash;and will continue to do so as part of our [mission] to make Nix better.
+</Admonition>
 
 ## The Nix CLI \{#cli}
 
@@ -78,7 +87,13 @@ The [Determinate Nix Installer][install] enables the [unified CLI](#unified-cli)
 [ds]: https://determinate.systems
 [env]: /concepts/dev-env
 [flakes]: /concepts/flakes
+[github]: https://github.com
 [install]: /concepts/nix-installer
 [lang]: /concepts/nix-language
+[license]: https://github.com/nixOS/nix?tab=LGPL-2.1-1-ov-file
+[mission]: https://determinate.systems/posts/we-want-to-make-nix-better
+[nix]: https://nixos.org
+[nixos-org]: https://github.com/NixOS
 [packages]: /concepts/packages
+[package-management]: /concepts/package-management
 [store]: /concepts/nix-store
