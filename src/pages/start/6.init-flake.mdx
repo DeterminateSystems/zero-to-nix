@@ -17,7 +17,7 @@ Turning your own projects into flakes can be somewhat tricky, so we at [Determin
 You can run `fh init` using Nix:
 
 ```shell
-nix run "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz#fh" -- init
+nix run "https://flakehub.com/f/DeterminateSystems/fh/*" -- init
 ```
 
 This will start up an interactive builder that asks you a series of questions and then writes a `flake.nix` file into the root of your project (plus some other files if you say yes to some of those questions).
@@ -62,7 +62,7 @@ We've created an example project that you can use to test out `fh init`:
 ```shell
 git clone https://github.com/DeterminateSystems/fh-init-example-project
 cd fh-init-example-project
-nix run "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz" -- init
+nix run "https://flakehub.com/f/DeterminateSystems/fh/*" -- init
 
 # respond to the prompts
 
