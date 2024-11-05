@@ -6,7 +6,7 @@ The Determinate Nix Installer, from [Determinate Systems][ds], differs from the 
 
 1. It installs Nix with [flake support][flakes] and the [unified CLI][cli] feature already enabled rather than requiring users to enable those features.
 1. It stores a *receipt* for the install process at `/nix/receipt.json`. This receipt enables the Determinate Nix Installer to seamlessly uninstall Nix, whereas the official Nix installation script provides no offboarding path of this kind.
-1. Much like [Terraform], the Determinate Nix Installer enables you to [plan][tf-plan] your installation using the [`plan`][dni-plan] command to see how Nix Installer will change your system. We see this as an improvement over the official Nix installation script, which prompts you to approve changes but doesn't present *all* changes.
+1. Much like [Terraform]/[OpenTofu], the Determinate Nix Installer enables you to [plan][tf-plan] your installation using the [`plan`][dni-plan] command to see how the installer will change your system. We see this as an improvement over the official Nix installation script, which prompts you to approve changes but doesn't present *all* changes.
 1. The Determinate Nix Installer is written in [Rust] rather than a shell scripting language (the official installer is written in [Bash]). This has two key benefits:
     1. It makes the Determinate Nix Installer more portable across platforms.
     1. It enables the Determinate Nix Installer to parallelize CPU-intensive tasks, which can't be achieved in a language like Bash.
@@ -18,6 +18,7 @@ The Determinate Nix Installer, from [Determinate Systems][ds], differs from the 
 [ds]: https://determinate.systems
 [flakes]: /concepts/flakes
 [official]: https://nixos.org/download
+[opentofu]: https://opentofu.org
 [rust]: https://rust-lang.org
 [terraform]: https://terraform.io
 [tf-plan]: https://developer.hashicorp.com/terraform/cli/commands/plan
