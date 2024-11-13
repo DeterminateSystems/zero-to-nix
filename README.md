@@ -93,10 +93,6 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 | [`System`](./src/components/mdx/stateful/System.vue)                     | Displays the currently selected system (Linux vs. macOS)                                                                               |
 | [`Systems`](./src/components/stateful/Systems.vue)                       | Provides a system selector (Linux vs. macOS)                                                                                           |
 
-> **Note**: any time you use one of these components in an [MDX] file, you need to add a `client:load` directive to it.
-> This is one of [îles][iles]' so-called [hydration directives][hydration].
-> There are other directives available, but [`client:load`][client-load] is the one that we need to use, as it ensures that the component is loaded as soon as the user comes to the page.
-
 ## Directory structure
 
 | Directory                             | What it contains                                                               |
