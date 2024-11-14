@@ -3,11 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev --port 3000",
+    "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check",
     "build": "astro check && astro build",
-    "preview": "astro preview --port 3000",
+    "preview": "astro preview",
     "format": "prettier --write .",
     "sync": "astro sync"
   },

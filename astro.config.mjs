@@ -10,7 +10,6 @@ import { defineConfig } from "astro/config";
 import remarkHeadingId from "remark-heading-id";
 
 export default defineConfig({
-  site: "https://zero-to-nix.com",
   integrations: [
     alpinejs({
       entrypoint: "./src/entrypoint",
@@ -31,4 +30,9 @@ export default defineConfig({
     sitemap(),
     tailwind(),
   ],
+  server: {
+    open: true,
+    port: 3000,
+  },
+  site: "https://zero-to-nix.com",
 });

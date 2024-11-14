@@ -1,7 +1,7 @@
 {
   description = "Zero to Nix: Your guide to learning Nix and flakes";
 
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
+  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*";
 
   outputs =
     { self
@@ -9,15 +9,6 @@
     }:
 
     let
-      # Conveniences for Nixpkgs
-      overlays = [
-        (self: super: {
-          nodejs = super.nodejs_18;
-          pnpm = super.nodePackages.pnpm;
-          alex = super.nodePackages.alex;
-        })
-      ];
-
       # Systems supported
       allSystems = [
         "x86_64-linux" # 64-bit Intel/AMD Linux
@@ -27,7 +18,7 @@
       ];
 
       forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit overlays system; };
+        pkgs = import nixpkgs { inherit system; };
       });
 
       # Helper function for scripting
