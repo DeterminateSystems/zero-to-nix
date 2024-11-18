@@ -116,7 +116,7 @@ Now explore the Nix development environment for <Language />:
 <SpecificLanguage lang="C++">
 First, let's see the Nix store path for [CMake]:
 
-```shell title="See the store path for CMake"
+```shell title="Get path information for CMake"
 type cmake
 ```
 
@@ -302,13 +302,13 @@ gcc is /nix/store/nbrvvx1gyq3as3ghmjz62wlgd8f3zfpf-gcc-wrapper-11.3.0/bin/gcc
 Ordinarily when you run `type ghc` on a Unix system, you get a path like `/usr/bin/ghc`.
 Try running it in the Nix development environment:
 
-```shell
+```shell title="Get path information for ghc"
 type ghc
 ```
 
 You should see a (rather strange) path like this:
 
-```shell
+```shell title="Path information for ghc"
 ghc is /nix/store/f3qnvw5gxgxxpr275kf97pfcy2n1gv79-ghc-9.2.4/bin/ghc
 ```
 
@@ -317,13 +317,13 @@ ghc is /nix/store/f3qnvw5gxgxxpr275kf97pfcy2n1gv79-ghc-9.2.4/bin/ghc
 Ordinarily when you run `type node` on a Unix system, you get a path like `/usr/bin/node`.
 Try running it in the Nix development environment:
 
-```shell
+```shell title="Get path information for Node.js"
 type node
 ```
 
 You should see a (rather strange) path like this:
 
-```shell
+```shell title="Path information for Node.js"
 node is /nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
 ```
 
@@ -332,13 +332,13 @@ node is /nix/store/i88kh2fd03f5fsd3a948s19gliggd2wd-nodejs-18.12.1/bin/node
 Ordinarily when you run `type python` on a Unix system, you get a path like `/usr/bin/python`.
 Try running it in the Nix development environment:
 
-```shell
+```shell title="Get path information for Python"
 type python
 ```
 
 You should see a (rather strange) path like this:
 
-```shell
+```shell title="Path information for Python"
 python is /nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
 ```
 
@@ -347,13 +347,13 @@ python is /nix/store/cqbfx55481irqgbl3bw8jwf69vjpbp8r-python3-3.9.15/bin/python
 Ordinarily when you run `type go` on a Unix system, you get a path like `/usr/bin/go`.
 Try running it in the Nix development environment:
 
-```shell
+```shell title="Get path information for Go"
 type go
 ```
 
 You should see a (rather strange) path like this:
 
-```shell
+```shell title="Path information for Go"
 go is /nix/store/5bcx8rv6sy33xsf5dzkp9q8lfdqrsiwa-go-1.19.4/bin/go
 ```
 
@@ -362,13 +362,13 @@ go is /nix/store/5bcx8rv6sy33xsf5dzkp9q8lfdqrsiwa-go-1.19.4/bin/go
 Ordinarily when you run `type cargo` on a Unix system, you get a path like `/usr/bin/cargo`.
 Try running it in the Nix development environment:
 
-```shell
+```shell title="Get path information for cargo"
 type cargo
 ```
 
 You should see a (rather strange) path like this:
 
-```shell
+```shell title="Path information for cargo"
 cargo is /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/cargo
 ```
 
@@ -377,13 +377,13 @@ cargo is /nix/store/zc1nr87147gvmg5nqci8q5cfnzg82vwp-rust-default-1.64.0/bin/car
 Ordinarily when you run `type sbt` on a Unix system, you get a path like `/usr/bin/sbt`.
 Try running it in the Nix development environment:
 
-```shell
+```shell title="Get path information for sbt"
 type sbt
 ```
 
 You should see a (rather strange) path like this:
 
-```shell
+```shell title="Path information for sbt"
 sbt is /nix/store/p0hca7x8g45p5hnh0xjzy5s2bcpy1i9l-sbt-1.7.3/bin/sbt
 ```
 

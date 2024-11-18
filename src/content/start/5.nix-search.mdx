@@ -21,7 +21,7 @@ The [Nix CLI][nix] has a `search` command that you can use to search the package
 Let's start by searching [Nixpkgs], which is where we're mostly likely to find packages we want.
 This command will tell us if [cargo] is available in [Nixpkgs]:
 
-```shell
+```shell title="Search Nixpkgs using cargo as the search term"
 nix search "https://flakehub.com/f/NixOS/nixpkgs/*" cargo
 ```
 
@@ -37,7 +37,7 @@ In this command, the `nixpkgs` [flake reference][flake-ref] is shorthand for `gi
 
 This brings up many results of the form `legacyPackages.{system}.{package}`, the first of which should look like this on an Apple Silicon (`aarch64-darwin`) system:
 
-```shell
+```shell title="Example search result"
 * legacyPackages.aarch64-darwin.cargo (1.65.0)
   Downloads your Rust project's dependencies and builds your project
 ```
@@ -59,8 +59,8 @@ After that first result, you should see many others, including packages like [`c
 
 You can also output search results as JSON using the `--json` flag:
 
-```shell
-nix search nixpkgs cargo --json
+```shell title="Output search results as JSON"
+nix search --json nixpkgs cargo
 ```
 
 This can be useful if you want to parse the output using a tool like [jq].
@@ -76,8 +76,14 @@ The web interface at [search.nixos.org][search] has a few advantages over the [`
 
 As an example, let's explore a popular flake for the [Wayland] window system protocol.
 
-```shell
+```shell title="Display the flake outputs for the nixpkgs-wayland flake"
 nix flake show "github:nix-community/nixpkgs-wayland"
+```
+
+You can also display the outputs as JSON:
+
+```shell title="Display the flake outputs for the nixpkgs-wayland flake as JSON"
+nix flake show --json "github:nix-community/nixpkgs-wayland"
 ```
 
 <Admonition warning title="This could take a while" id="nix-search">

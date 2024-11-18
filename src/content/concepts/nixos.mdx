@@ -130,6 +130,7 @@ The basic anatomy of a module can be seen in this code snippet:
 
 ```nix title="/etc/nixos/configuration.nix"
 { lib, config, pkgs, ... }:
+
 {
   imports = [];
   config = {};
@@ -147,9 +148,8 @@ See the [Nix syntax](/concepts/nix) section for details on what this does.
 Additionally, there is some syntactic sugar around NixOS modules, which allow you to omit the `config` key, if your module does not declare any `options`.
 As an example, these two modules are equivalent to each other.
 
-```nix
+```nix title="Equivalent NixOS modules"
 # Module 1
-
 { ... }:
 {
   imports = [ ./my-fish-config.nix ];
@@ -176,8 +176,9 @@ Instead, you describe the desired outcome of a system, which Nix then produces f
 
 Following is an example of how to setup and configure the [nginx] web server.
 
-```nix
+```nix title="nginx web server example"
 { ... }:
+
 {
   services.nginx = {
     enable = true;

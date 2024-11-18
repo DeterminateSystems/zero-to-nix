@@ -16,7 +16,7 @@ While [Nix] can do many things, [package management][pkg] is the thing that it's
 
 Let's start by building [bat], a syntax-highlighted version of [cat] written in [Rust] that has a Nix package defined in [Nixpkgs], in an empty directory (make sure to run this in a directory where you have write access):
 
-```shell
+```shell title="Build the bat package locally"
 mkdir build-nix-package && cd build-nix-package
 nix build "https://flakehub.com/f/NixOS/nixpkgs/*#bat"
 ```
@@ -25,7 +25,7 @@ Here, `nixpkgs` is a [flake reference][ref] to the [NixOS/nixpkgs][nixpkgs-repo]
 
 When the build is done, run `ls .` and you should see something called `result` in the current directory. `result` is actually a [symlink] to the built package in the [Nix store][store], which you can verify:
 
-```shell
+```shell title="Display the Nix store path for the build result"
 readlink result
 ```
 
@@ -43,7 +43,7 @@ What's happened here is that the Nix CLI has:
 
 You can now run bat:
 
-```shell
+```shell title="Run bat from the local build result"
 ./result/bin/bat --help
 ```
 
@@ -122,14 +122,14 @@ nix build "nixpkgs#scalafmt"
 
 While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a package from a different repo, this time the package for [Home Manager][hm], a popular Nix tool for configuring home environments:
 
-```shell
+```shell title="Build Home Manager"
 nix build "https://flakehub.com/f/nix-community/home-manager/*"
 ```
 
 Here, `https://flakehub.com/f/nix-community/home-manager/*` is a flake reference to the [nix-community/home-manager][hm] repo on FlakeHub.
 To run Home Manager:
 
-```shell
+```shell title="Run Home Manager from the build result"
 ./result/bin/home-manager --help
 ```
 
@@ -150,7 +150,7 @@ To get started in your <Language /> project, create an empty directory and initi
 
 Whichever language you've selected, you can build the [Nix package][packages] defined in the local flake by running:
 
-```shell
+```shell title="Build a Nix package in the local flake"
 nix build
 ```
 

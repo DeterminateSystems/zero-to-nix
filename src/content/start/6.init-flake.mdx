@@ -30,7 +30,7 @@ nix flake show
 
 You should see something like this:
 
-```
+```text title="Flake outputs"
 git+file:///path/to/fh-init-example-project
 ├───devShells
 │   ├───aarch64-darwin
@@ -66,7 +66,7 @@ That is, it only generates a development environment for you, not things like [p
 
 We've created an example project that you can use to test out `fh init`:
 
-```shell
+```shell title="Test out fh init using the example project"
 git clone https://github.com/DeterminateSystems/fh-init-example-project
 cd fh-init-example-project
 nix run "https://flakehub.com/f/DeterminateSystems/fh/*" -- init

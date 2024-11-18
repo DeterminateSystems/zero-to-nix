@@ -71,7 +71,7 @@ _Nix_ is a pure, functional, lazy, declarative, and reproducible programming lan
 As mentioned previously, Nix uses _assignments_ to compute and process data for packages, modules, and other utilities.
 The code below, for example, calls a function called `my_function` with the parameters `2` and `3`, and assigns its output to the `my_value` field.
 
-```nix
+```nix title="Assignments"
 {
   my_value = my_function 2 3;
 }
@@ -79,7 +79,7 @@ The code below, for example, calls a function called `my_function` with the para
 
 Functions are defined using this syntax, where `x` and `y` are attributes passed into the function:
 
-```nix
+```nix title="Functions"
 {
   my_function = x: y: x + y;
 }
@@ -93,7 +93,7 @@ The two most common data structures are _attribute sets_ and _lists_.
 Attribute sets are key-value stores.
 Lists can contain different types of values and don't need to be comma separated.
 
-```nix
+```nix title="Recursive attributes"
 rec {
   number_key = 5;
   list_key = [ number_key true "Hello" ];

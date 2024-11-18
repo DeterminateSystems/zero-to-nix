@@ -32,8 +32,9 @@ _Reproducibility_ is a software design concept, where an operation for the same 
 This is an important property for Nix, because hashes are based on the inputs of a build,
 and thus it must be guaranteed that the same inputs yield in the same build output.
 
-```nix
+```nix title="Example derivation"
 { stdenv, fetchGit }:
+
 stdenv.mkDerivation {
   name = "my-package";
   src = fetchgit {
