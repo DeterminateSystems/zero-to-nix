@@ -31,6 +31,7 @@
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.4",
     "marked": "^12.0.2",
+    "remark-emoji": "^5.0.1",
     "remark-heading-id": "^1.0.1",
     "typescript": "^5.5.4"
   },

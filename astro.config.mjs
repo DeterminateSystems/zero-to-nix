@@ -7,6 +7,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import remarkEmoji from "remark-emoji";
 import remarkHeadingId from "remark-heading-id";
 
 export default defineConfig({
@@ -25,7 +26,7 @@ export default defineConfig({
     icon(),
     mdx({
       //gfm: true,
-      remarkPlugins: [remarkHeadingId],
+      remarkPlugins: [remarkEmoji, remarkHeadingId],
     }),
     sitemap(),
     tailwind(),
