@@ -11,21 +11,17 @@ const { languages } = site;
     Select your language
   </p>
 
-  <div>
-    <ul>
-      {
-        languages.map((lang) => (
-          <li>
-            <button
-              @click=`language = "${lang}"`
-              class="rounded-lg border-1.5 px-1.5 py-1 text-sm font-semibold tracking-tight focus:outline-none md:px-2 md:py-0.5 md:text-base lg:px-3 lg:py-1.5 lg:text-lg"
-              :class=`{ "border-primary bg-pale dark:bg-darker-gray": language == ${lang}, "border-pale hover:text-primary dark:border-dark": language !== ${lang} }`
-            >
-              {lang}
-            </button>
-          </li>
-        ))
-      }
-    </ul>
+  <div role="tablist" aria-orientation="horizontal">
+    {
+      languages.map((lang) => (
+        <button
+          @click=`language = "${lang}"`
+          class="rounded-lg border-1.5 px-1.5 py-1 text-sm font-semibold tracking-tight focus:outline-none md:px-2 md:py-0.5 md:text-base lg:px-3 lg:py-1.5 lg:text-lg"
+          :class=`{ "border-primary bg-pale dark:bg-darker-gray": language == "${lang}", "border-pale hover:text-primary dark:border-dark": language !== "${lang}" }`
+        >
+          {lang}
+        </button>
+      ))
+    }
   </div>
 </div>
