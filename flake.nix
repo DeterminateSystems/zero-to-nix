@@ -35,7 +35,6 @@
 
               # Language
               vale
-              alex
 
               # Link checking
               htmltest
@@ -93,10 +92,6 @@
                 ${run "vale"} src/pages
               '')
 
-              (writeScriptBin "check-sensitivity" ''
-                ${run "alex"} src/pages
-              '')
-
               (writeScriptBin "preview" ''
                 build
                 ${run "pnpm"} run preview
@@ -108,7 +103,6 @@
                 build-ci
                 check-internal-links
                 lint-style
-                check-sensitivity
               '')
             ];
 
