@@ -277,7 +277,7 @@ Once the template has been initialized, run `ls .` to see the contents of the di
 One of the [flake outputs][output] of this Nix [flake][flakes] is a [development environment][dev] for <Language />.
 To enter that development environment:
 
-```shell
+```shell title="Enter a development environment in the current flake"
 nix develop
 ```
 
@@ -287,13 +287,13 @@ Now that we've entered the development environment, we can do some exploring, st
 Ordinarily when you run `type gcc` on a Unix system, you get a path like `/usr/bin/gcc`.
 Try running it in the Nix development environment:
 
-```shell
+```shell title="Get information about the gcc executable"
 type gcc
 ```
 
 You should see a (rather strange) path like this:
 
-```shell
+```shell title="Path information for gcc"
 gcc is /nix/store/nbrvvx1gyq3as3ghmjz62wlgd8f3zfpf-gcc-wrapper-11.3.0/bin/gcc
 ```
 

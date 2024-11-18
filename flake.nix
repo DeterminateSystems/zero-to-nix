@@ -94,7 +94,7 @@
               '')
 
               (writeScriptBin "check-sensitivity" ''
-                ${run "alex"} --quiet src/pages
+                ${run "alex"} src/pages
               '')
 
               (writeScriptBin "preview" ''
