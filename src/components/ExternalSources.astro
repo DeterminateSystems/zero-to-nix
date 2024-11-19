@@ -9,15 +9,10 @@ type Props = {
   links: ExternalSource[];
 };
 
-const { showTitle, links } = Astro.props;
+const { showTitle = false, links } = Astro.props;
 ---
 
-<div
-  class:list={[
-    "space-y-4",
-    showTitle !== undefined && !showTitle && "not-prose remove-underline",
-  ]}
->
+<div class:list={["space-y-4", !showTitle && "not-prose remove-underline"]}>
   {
     showTitle && (
       <p
@@ -32,7 +27,7 @@ const { showTitle, links } = Astro.props;
   <Grid3>
     {
       links.map(({ title, href, source }) => (
-        <HoverableExternalSourceLink title={md(title)} {href} {source} />
+        <HoverableExternalSourceLink {title} {href} {source} />
       ))
     }
   </Grid3>

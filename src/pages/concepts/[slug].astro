@@ -21,20 +21,20 @@ export const getStaticPaths = (async () => {
 
   return conceptPages.map((page) => ({
     params: { slug: page.slug },
-    props: page,
+    props: { page },
   }));
 }) satisfies GetStaticPaths;
 
-const page = Astro.props;
-const { slug } = Astro.params;
-const { data } = page;
-const { title, snippet, externalSources } = data;
+const { page } = Astro.props;
+const {
+  data: { title, snippet, externalSources, related },
+} = page;
 const { Content } = await page.render();
 
 const relatedConceptPages: { title: string; href: string }[] = (
   await getCollection("concepts")
 )
-  .filter(({ data: { related } }) => related.includes(slug))
+  .filter(({ slug }) => related.includes(slug))
   .map(({ slug, data: { title } }) => {
     return { title, href: conceptPagePath(slug) };
   });

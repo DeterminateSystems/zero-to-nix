@@ -23,15 +23,14 @@ export const getStaticPaths = (async () => {
 
   return startPages.map((page) => ({
     params: { slug: page.slug.substring(1) },
-    props: {
-      page,
-    },
+    props: { page },
   }));
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-const { data } = page;
-const { title, summary, order } = data;
+const {
+  data: { title, summary, order },
+} = page;
 const { Content } = await page.render();
 
 const numQuickStartPages = (await getCollection("start")).length;
