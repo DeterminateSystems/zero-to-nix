@@ -29,7 +29,7 @@ const conceptPages = (await getCollection("concepts")).map(
 >
   <HorizontalContainer>
     <div class="flex items-center justify-between">
-      <!-- Navbar "brand" -->
+      {/* Navbar "brand" */}
       <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
         <a
           href="/"
@@ -52,7 +52,7 @@ const conceptPages = (await getCollection("concepts")).map(
         </span>
       </div>
 
-      <!-- Visible only on mobile -->
+      {/* Visible only on mobile */}
       <div class="flex items-center space-x-4 md:hidden">
         <ThemeSwitcher />
 
@@ -66,7 +66,7 @@ const conceptPages = (await getCollection("concepts")).map(
         <DrawerToggler />
       </div>
 
-      <!-- Show only on md or above (invisible on mobile) -->
+      {/* Show only on md or above (invisible on mobile) */}
       <ul class="hidden items-center gap-4 md:flex md:gap-5 lg:gap-6">
         <li>
           <Dropdown text="Quick start" pages={startPages} ordered />
