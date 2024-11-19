@@ -4,17 +4,30 @@
 <div class="flex items-center space-x-2">
   <button
     class="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray px-3 py-2 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
-    @click="submitResponse('positive')"
+    @click="$store.reactions.submit('positive')"
+    x-submit="positive"
   >
     <span>Yes</span>
     <span>👍</span>
   </button>
   <button
     class="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray px-3 py-2 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
-    @click="doSomething()"
-    @click="submitResponse('negative')"
+    @click="$store.reactions.submit('negative')"
   >
     <span>No</span>
     <span>👎</span>
   </button>
 </div>
+
+<script>
+  import Alpine from "alpinejs";
+  import posthog from "posthog-js";
+
+  document.addEventListener("alpine:init", () => {
+    Alpine.store("reactions", {
+      submit(reaction: string) {
+        posthog.capture("page_review", { reaction });
+      },
+    });
+  });
+</script>
