@@ -18,13 +18,16 @@ const { showTitle, links } = Astro.props;
     showTitle !== undefined && !showTitle && "not-prose remove-underline",
   ]}
 >
-  <p
-    v-if="showTitle"
-    class="text-xl font-semibold hover:text-gray dark:hover:text-light-gray md:text-2xl lg:text-3xl"
-    id="external-sources"
-  >
-    <a href="#external-sources">External sources</a>
-  </p>
+  {
+    showTitle && (
+      <p
+        class="text-xl font-semibold hover:text-gray dark:hover:text-light-gray md:text-2xl lg:text-3xl"
+        id="external-sources"
+      >
+        <a href="#external-sources">External sources</a>
+      </p>
+    )
+  }
 
   <Grid3>
     {

@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+
+const links: { text: string; href: string }[] = [
+  {
+    text: "Quick start",
+    href: "/start",
+  },
+  {
+    text: "Concepts",
+    href: "/concepts",
+  },
+  {
+    text: "About",
+    href: "/about",
+  },
+];
+---
+
+<div
+  x-show="drawer"
+  x-transition:enter="transition ease-in-out duration-200"
+  x-transition:enter-start="-translate-x-full"
+  x-transition:enter-end="translate-x-0"
+  x-transition:leave="transition ease-in-out duration-300 transform"
+  x-transition:leave-start="translate-x-0"
+  x-transition:leave-end="-translate-x-full"
+  class="fixed z-40 flex h-full flex-col overflow-y-auto border-r border-t border-light-gray bg-white p-4 shadow-xl dark:border-dark-gray dark:bg-dark"
+  tabindex="-1"
+  id="nav-drawer"
+  aria-labelledby="nav-drawer"
+>
+  <div class="flex justify-end">
+    <button
+      @click="drawer = false"
+      data-drawer-hide="nav-drawer"
+      aria-controls="nav-drawer"
+    >
+      <Icon
+        name="heroicons:x-mark"
+        class="h-4 w-4 dark:text-light-gray dark:hover:text-primary"
+      />
+      <span class="sr-only">Close menu</span>
+    </button>
+  </div>
+
+  <ul class="space-y-1 pr-20">
+    {
+      links.map(({ text, href }) => (
+        <li>
+          <a
+            {href}
+            class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
+            @click="drawer = false"
+          >
+            {text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

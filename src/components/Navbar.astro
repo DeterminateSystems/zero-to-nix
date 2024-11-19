@@ -7,6 +7,7 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
 import Dropdown from "./Dropdown.astro";
 import { getCollection } from "astro:content";
 import { conceptPagePath, startPagePath } from "../lib/utils";
+import Drawer from "./Drawer.astro";
 
 const { title, githubUrl, navbarLinks } = site;
 
@@ -79,7 +80,7 @@ const conceptPages = (await getCollection("concepts")).map(
             <li>
               <a
                 {href}
-                class="text-sm tracking-tight duration-hover hover:text-primary md:text-base lg:text-lg"
+                class="text-sm duration-hover hover:text-primary md:text-base lg:text-lg"
               >
                 {text}
               </a>
@@ -101,3 +102,5 @@ const conceptPages = (await getCollection("concepts")).map(
     </div>
   </HorizontalContainer>
 </nav>
+
+<Drawer />
