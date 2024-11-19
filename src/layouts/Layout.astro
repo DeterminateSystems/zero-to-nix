@@ -1,6 +1,6 @@
 ---
 import Banner from "../components/Banner.astro";
-import CookieConsent from "../components/CookieConsent.astro";
+import CookieConsent from "../components/CookieConsent";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import Modal from "../components/Modal.astro";
@@ -32,7 +32,7 @@ const { title, description } = Astro.props;
     class="flex min-h-full flex-col bg-white font-sans text-dark antialiased dark:bg-dark dark:text-white"
   >
     <Banner />
-    <CookieConsent />
+    <CookieConsent client:load />
     <Modal />
 
     <main class="flex-1">
