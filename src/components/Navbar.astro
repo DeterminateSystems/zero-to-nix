@@ -69,7 +69,7 @@ const conceptPages = (await getCollection("concepts")).map(
       <!-- Show only on md or above (invisible on mobile) -->
       <ul class="hidden items-center gap-4 md:flex md:gap-5 lg:gap-6">
         <li>
-          <Dropdown text="Quick start" pages={startPages} />
+          <Dropdown text="Quick start" pages={startPages} ordered />
         </li>
         <li>
           <Dropdown text="Concepts" pages={conceptPages} />

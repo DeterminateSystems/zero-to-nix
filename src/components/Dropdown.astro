@@ -2,9 +2,10 @@
 type Props = {
   text: string;
   pages: { title: string; href: string }[];
+  ordered?: boolean;
 };
 
-const { text, pages } = Astro.props;
+const { text, pages, ordered = false } = Astro.props;
 ---
 
 <div class="relative inline-flex" x-data="{ open: false }">
@@ -22,12 +23,13 @@ const { text, pages } = Astro.props;
   >
     <ul class="flex flex-col space-y-1.5">
       {
-        pages.map(({ title, href }) => (
+        pages.map(({ title, href }, idx) => (
           <li>
             <a
               {href}
               class="block px-4 py-2 text-xs tracking-tight duration-hover hover:bg-primary hover:text-dark hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-sm lg:text-base"
             >
+              {ordered && <>{idx + 1}.</>}
               {title}
             </a>
           </li>
