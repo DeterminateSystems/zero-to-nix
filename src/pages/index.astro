@@ -37,19 +37,15 @@ const descriptionHtml = await md(description);
           <ul class="inline-flex items-center space-x-3">
             {
               heroButtons.map(({ text, href, highlight }) => (
-                <li
-                  class="rounded-full tracking-tight transition-colors duration-150 md:text-base lg:text-lg"
-                  class:list={[
-                    highlight &&
-                      "lg:py-2.4 bg-primary px-3.5 py-1.5 text-white hover:bg-orange md:px-5 md:py-2 lg:px-6",
-                    !highlight &&
-                      "lg:px-4.5 bg-gray px-3 py-1 text-white hover:bg-light-gray hover:text-dark md:px-3.5 md:py-1.5 lg:py-2",
-                  ]}
-                >
+                <li>
                   <a
                     {href}
                     class:list={[
-                      highlight && "font-bold md:text-lg lg:text-xl",
+                      "rounded-full tracking-tight transition-colors duration-150 md:text-base lg:text-lg",
+                      highlight &&
+                        "lg:py-2.4 bg-primary px-3.5 py-1.5 font-bold text-white hover:bg-orange md:px-5 md:py-2 md:text-lg lg:px-6 lg:text-xl",
+                      !highlight &&
+                        "lg:px-4.5 bg-gray px-3 py-1 text-white hover:bg-light-gray hover:text-dark md:px-3.5 md:py-1.5 lg:py-2",
                     ]}
                   >
                     {text}
