@@ -5,10 +5,20 @@ const CookieConsent = () => {
   const [show, setShow] = useState<boolean>(false);
   const [optionSelected, setOptionSelected] = useState<boolean>(false);
 
-  const posthogKnowsPreference =
-    posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
+  useEffect(() => {
+    posthog.init("phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4", {
+      api_host: "https://app.posthog.com",
+    });
 
-  const hideCookieConsent = posthogKnowsPreference || optionSelected;
+    const posthogKnowsPreference =
+      posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
+
+    const hideCookieConsent = posthogKnowsPreference || optionSelected;
+
+    if (!hideCookieConsent) {
+      setShow(true);
+    }
+  });
 
   const acceptCookies = () => {
     posthog.opt_in_capturing();
@@ -22,20 +32,10 @@ const CookieConsent = () => {
     setOptionSelected(true);
   };
 
-  useEffect(() => {
-    posthog.init("phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4", {
-      api_host: "https://app.posthog.com",
-    });
-
-    if (!hideCookieConsent) {
-      setShow(true);
-    }
-  }, [hideCookieConsent]);
-
   return (
     <>
       {show && (
-        <div v-show="show" className="fixed bottom-6 left-6 z-50 print:hidden">
+        <div className="fixed bottom-6 left-6 z-50 print:hidden">
           <div className="max-w-[225px] bg-soft-gray shadow-lg dark:text-dark">
             <p className="content m-0 px-6 py-4 text-[16px]">
               We use a single, first-party analytics cookie to focus our limited
