@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import PageSurvey from "../components/PageSurvey.astro";
+import PageSurvey from "./PageSurvey";
 import { site } from "../site";
 
 const { githubUrl } = site;
@@ -14,7 +14,7 @@ const editUrl = `${githubUrl}/edit/main/src/content${filename}.mdx`;
 ---
 
 <div class="flex items-center justify-between print:hidden">
-  <PageSurvey />
+  <PageSurvey client:visible />
 
   <div class="space-y-3 text-sm md:text-base lg:text-lg">
     <span class="flex items-center space-x-3">
