@@ -6,7 +6,7 @@ const CookieConsent = () => {
   const [optionSelected, setOptionSelected] = useState<boolean>(false);
 
   useEffect(() => {
-    posthog.init("phc_OPJtdGL4gAGdo8VKLsHz4LmKfoOMKkrza1BsBNeUdx4", {
+    posthog.init("phc_qZk1aHPpXUq0ohRcTjFL5w8Tpo5Asht9UhFBjzruBFD", {
       api_host: "https://app.posthog.com",
     });
 
