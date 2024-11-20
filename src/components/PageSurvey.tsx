@@ -72,8 +72,8 @@ const PageSurvey = () => {
           </h3>
 
           <textarea
-            className="w-full resize-none rounded-lg border-1.5 border-soft-gray p-1.5 text-sm shadow-sm dark:border-gray dark:bg-dark md:p-3 md:text-base lg:p-2.5"
-            cols={50}
+            className="w-full resize-none rounded-lg border-1.5 border-soft-gray p-3 text-sm shadow-sm dark:border-gray dark:bg-dark md:p-4 md:text-base lg:p-2.5"
+            cols={25}
             rows={5}
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
