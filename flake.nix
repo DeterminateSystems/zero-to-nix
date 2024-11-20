@@ -29,10 +29,6 @@
         ({ pkgs }:
           let
             common = with pkgs; [
-              # CI
-              direnv
-              nix-direnv
-
               # Language
               vale
 
