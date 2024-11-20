@@ -6,30 +6,45 @@ const CookieConsent = () => {
   const [optionSelected, setOptionSelected] = useState<boolean>(false);
 
   useEffect(() => {
-    posthog.init("phc_qZk1aHPpXUq0ohRcTjFL5w8Tpo5Asht9UhFBjzruBFD", {
-      api_host: "https://app.posthog.com",
-    });
+    if (typeof window !== "undefined") {
+      posthog.init("phc_qZk1aHPpXUq0ohRcTjFL5w8Tpo5Asht9UhFBjzruBFD", {
+        api_host: "https://app.posthog.com",
+      });
+    }
 
-    const posthogKnowsPreference =
-      posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
+    const posthogKnowsPreference = (): boolean => {
+      return typeof window === "undefined"
+        ? false
+        : posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
+    };
 
-    const hideCookieConsent = posthogKnowsPreference || optionSelected;
+    const hideCookieConsent = (): boolean => {
+      return typeof window === "undefined"
+        ? false
+        : posthogKnowsPreference()
+          ? true
+          : optionSelected;
+    };
 
-    if (!hideCookieConsent) {
+    if (!hideCookieConsent()) {
       setShow(true);
     }
-  });
+  }, [optionSelected, setShow]);
 
   const acceptCookies = () => {
-    posthog.opt_in_capturing();
-    setShow(false);
-    setOptionSelected(true);
+    if (typeof window !== "undefined") {
+      posthog.opt_in_capturing();
+      setShow(false);
+      setOptionSelected(true);
+    }
   };
 
   const declineCookies = () => {
-    posthog.opt_out_capturing();
-    setShow(false);
-    setOptionSelected(true);
+    if (typeof window !== "undefined") {
+      posthog.opt_out_capturing();
+      setShow(false);
+      setOptionSelected(true);
+    }
   };
 
   return (

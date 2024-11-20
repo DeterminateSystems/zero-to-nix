@@ -44,7 +44,7 @@ type Site = {
   heroButtons: ButtonProps[];
   features: Feature[];
   nixTerms: Term[];
-  mailingListTags: string[];
+  mailingListTags: string;
 };
 
 export const site: Site = {
@@ -149,5 +149,5 @@ export const site: Site = {
   ],
   mailingListTags: [
     "294258", // zero-to-nix
-  ],
+  ].join(","),
 };
