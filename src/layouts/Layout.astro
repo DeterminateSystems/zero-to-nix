@@ -22,7 +22,6 @@ const { title, description } = Astro.props;
   x-data={`{ quickStart: $persist(true), drawer: false, banner: $persist(true), dark: $persist(false), language: $persist("${defaultLanguage}") }`}
   @toggle-dark="dark = !dark"
   :class="{ 'dark': dark, 'light': !dark }"
-  x-cloak
 >
   <head>
     <Head {title} {description} />

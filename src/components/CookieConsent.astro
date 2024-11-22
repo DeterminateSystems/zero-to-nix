@@ -1,6 +1,8 @@
 <div
   class="fixed bottom-6 left-6 z-50 print:hidden"
-  x-show="!(posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing()) "
+  x-data="{ show: !(posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing()) }"
+  x-show="show"
+  x-cloak
 >
   <div class="max-w-[225px] bg-soft-gray shadow-lg dark:text-dark">
     <p class="content m-0 px-6 py-4 text-[16px]">
@@ -20,13 +22,13 @@
     >
       <button
         class="py-2.5 font-bold hover:bg-green hover:text-dark"
-        @click="posthog.opt_in_capturing()"
+        @click="posthog.opt_in_capturing(); show = false;"
       >
         Accept
       </button>
       <button
         class="py-2.5 font-bold hover:bg-red hover:text-white"
-        @click="posthog.opt_out_capturing()"
+        @click="posthog.opt_out_capturing(); show = false;"
       >
         Decline
       </button>
