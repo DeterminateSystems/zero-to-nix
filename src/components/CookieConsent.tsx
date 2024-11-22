@@ -3,33 +3,22 @@ import { useEffect, useState } from "react";
 
 const CookieConsent = () => {
   const [show, setShow] = useState<boolean>(false);
-  const [optionSelected, setOptionSelected] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(posthog.has_opted_in_capturing());
-
     const posthogKnowsPreference =
       posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
 
-    const hideCookieConsent = posthogKnowsPreference || optionSelected;
-
-    setShow(!hideCookieConsent);
-  }, [optionSelected, setShow]);
+    setShow(!posthogKnowsPreference);
+  }, [setShow]);
 
   const acceptCookies = () => {
-    if (typeof window !== "undefined") {
-      posthog.opt_in_capturing();
-      setShow(false);
-      setOptionSelected(true);
-    }
+    posthog.opt_in_capturing();
+    setShow(false);
   };
 
   const declineCookies = () => {
-    if (typeof window !== "undefined") {
-      posthog.opt_out_capturing();
-      setShow(false);
-      setOptionSelected(true);
-    }
+    posthog.opt_out_capturing();
+    setShow(false);
   };
 
   return (
