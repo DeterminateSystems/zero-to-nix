@@ -283,7 +283,7 @@ What you see here is a [derivation] that defines how to build the package, more 
 The resulting package is an executable that prints to the terminal.
 To run the package:
 
-```shell
+```shell title="Run the built executable"
 ./result/bin/zero-to-nix-python
 ```
 
@@ -339,7 +339,7 @@ What you see here is a [derivation] that defines how to build the package, more 
 
 To run the resulting package, which is an executable that prints to the terminal:
 
-```shell
+```shell title="Run the compiled binary"
 ./result/bin/zero-to-nix-rust
 ```
 
@@ -357,7 +357,7 @@ Fortunately, there's a third-party project called [`sbt-derivation`][sbt-derivat
 For the full flake behind this package, see [`flake.nix`][flake-scala] on GitHub or run `cat flake.nix`.
 To run the resulting package, which is an executable that prints to the terminal:
 
-```shell
+```shell title="Run the built executable"
 ./result/bin/zero-to-nix-scala
 ```
 
@@ -366,7 +366,6 @@ You should see this terminal output:
 ```text
 Hello from Nix + Scala!
 ```
-
 </SpecificLanguage>
 
 We won't delve too much deeper into [derivations][derivation] and creating your own packages here, but we hope that this guide shows you how Nix code gets turned into real build output.
