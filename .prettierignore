@@ -5,4 +5,4 @@
 pnpm-lock.yaml
 *.d.ts
 **/*.mdx
-
+src/components/Posthog.astro

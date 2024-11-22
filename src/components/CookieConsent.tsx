@@ -6,29 +6,14 @@ const CookieConsent = () => {
   const [optionSelected, setOptionSelected] = useState<boolean>(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      posthog.init("phc_qZk1aHPpXUq0ohRcTjFL5w8Tpo5Asht9UhFBjzruBFD", {
-        api_host: "https://app.posthog.com",
-      });
-    }
+    console.log(posthog.has_opted_in_capturing());
 
-    const posthogKnowsPreference = (): boolean => {
-      return typeof window === "undefined"
-        ? false
-        : posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
-    };
+    const posthogKnowsPreference =
+      posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing();
 
-    const hideCookieConsent = (): boolean => {
-      return typeof window === "undefined"
-        ? false
-        : posthogKnowsPreference()
-          ? true
-          : optionSelected;
-    };
+    const hideCookieConsent = posthogKnowsPreference || optionSelected;
 
-    if (!hideCookieConsent()) {
-      setShow(true);
-    }
+    setShow(!hideCookieConsent);
   }, [optionSelected, setShow]);
 
   const acceptCookies = () => {

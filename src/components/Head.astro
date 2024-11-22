@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 import { site } from "../site";
+import Posthog from "./Posthog.astro";
 
 type Props = {
   title?: string;
@@ -16,6 +17,8 @@ const { title: siteTitle, description: siteDescription } = site;
 
 const { title, description, tags } = Astro.props;
 ---
+
+<Posthog />
 
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta
