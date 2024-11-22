@@ -6,6 +6,6 @@ type Props = {
 const { lang } = Astro.props;
 ---
 
-<div x-show={`language == "${lang}"`}>
+<div x-cloak x-show={`language == "${lang}"`}>
   <slot />
 </div>

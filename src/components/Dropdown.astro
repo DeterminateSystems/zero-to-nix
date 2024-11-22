@@ -16,6 +16,7 @@ const { text, pages, ordered = false } = Astro.props;
   >
 
   <div
+    x-cloak
     x-show="open"
     @click.away="open = false"
     x-transition:enter.duration.200ms
