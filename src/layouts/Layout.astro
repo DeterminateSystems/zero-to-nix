@@ -19,9 +19,8 @@ const { title, description } = Astro.props;
 
 <html
   class="h-screen"
-  x-data={`{ quickStart: $persist(true), drawer: false, banner: $persist(true), dark: $persist(false), language: $persist("${defaultLanguage}") }`}
-  @toggle-dark="dark = !dark"
-  :class="{ 'dark': dark, 'light': !dark }"
+  x-data={`{ quickStart: $persist(true), drawer: false, banner: $persist(true), language: $persist("${defaultLanguage}") }`}
+  x-cloak
 >
   <head>
     <Head {title} {description} />

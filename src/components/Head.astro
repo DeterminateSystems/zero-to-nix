@@ -18,6 +18,23 @@ const { title: siteTitle, description: siteDescription } = site;
 const { title, description, tags } = Astro.props;
 ---
 
+<script is:inline>
+  const handleColors = () => {
+    const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+    const stored = localStorage.getItem("mode") || "auto";
+
+    const useDark = (stored == "auto" && prefersDark) || stored == "dark";
+
+    document.documentElement.classList.toggle("dark", useDark);
+  };
+
+  handleColors();
+
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (_) => {
+    handleColors();
+  });
+</script>
+
 <Posthog />
 
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
