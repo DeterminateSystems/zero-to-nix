@@ -14,7 +14,7 @@ type Props = {
 const { breadcrumb, order, total } = Astro.props;
 ---
 
-<div class="flex items-center justify-between">
+<div x-cloak x-show="breadcrumb" class="flex items-center justify-between">
   <div
     class="flex items-center space-x-2 text-sm md:space-x-2.5 md:text-base lg:space-x-3 lg:text-lg"
   >

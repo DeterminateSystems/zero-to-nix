@@ -7,3 +7,7 @@
   background: inherit;
   clear: left;
 }
+
+[x-cloak] {
+  display: none !important;
+}

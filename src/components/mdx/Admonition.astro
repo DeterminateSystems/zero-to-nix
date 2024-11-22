@@ -32,11 +32,11 @@ const {
     success && "border-green",
     warning && "border-yellow",
   ]}
-  x-cloak
 >
   {
     id && (
       <div
+        x-cloak
         x-data={`{ open: $persist(${open}).as('zero-to-nix:callout-${id}'), buttonHover: false, toggle() { this.open = !this.open; } }`}
       >
         {title && (
@@ -99,6 +99,7 @@ const {
         )}
 
         <div
+          x-cloak
           x-show="open"
           x-transition.duration.250ms
           class="content px-3 py-1.5 text-sm md:px-3.5 md:py-2 md:text-base lg:px-4 lg:py-3 lg:text-lg"

@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 
 <div class="flex">
   <button
+    x-cloak
     x-show="!drawer"
     class="text-gray hover:text-dark-gray dark:text-light-gray dark:hover:text-gray"
     @click="drawer = true"
@@ -18,6 +19,7 @@ import { Icon } from "astro-icon/components";
 
   <button x-show="drawer">
     <Icon
+      x-cloak
       @click="drawer = false"
       name="heroicons:x-mark"
       class="size-4 dark:text-light-gray dark:hover:text-primary"

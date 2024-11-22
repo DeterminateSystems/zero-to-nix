@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 
 <button>
   <Icon
+    x-cloak
     x-data="{ show: document.documentElement.classList.contains('dark') }"
     x-init=`
       const observer = new MutationObserver(() => {
@@ -18,6 +19,7 @@ import { Icon } from "astro-icon/components";
   />
 
   <Icon
+    x-cloak
     x-data="{ show: !document.documentElement.classList.contains('dark') }"
     x-init=`
       const observer = new MutationObserver(() => {

@@ -1,9 +1,9 @@
 <div
-  class="fixed bottom-6 left-6 z-50 print:hidden"
+  x-cloak
   x-data="{ show: false }"
   x-show="show"
   x-init="show = !(posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing())"
-  x-cloak
+  class="fixed bottom-6 left-6 z-50 print:hidden"
 >
   <div class="max-w-[225px] bg-soft-gray shadow-lg dark:text-dark">
     <p class="content m-0 px-6 py-4 text-[16px]">
