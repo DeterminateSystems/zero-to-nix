@@ -23,6 +23,10 @@ export default defineConfig({
         showLineNumbers: false,
       },
       plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+      styleOverrides: {
+        codeFontSize: "1rem",
+        uiFontSize: "1rem",
+      },
     }),
     icon(),
     mdx({
