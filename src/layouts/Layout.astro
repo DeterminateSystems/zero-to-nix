@@ -18,7 +18,6 @@ const { title, description } = Astro.props;
 ---
 
 <html
-  x-cloak
   x-data={`{ quickStart: $persist(true), drawer: false, banner: $persist(true), language: $persist("${defaultLanguage}") }`}
   class="h-screen"
 >
