@@ -108,9 +108,11 @@ Select one of these programming languages:
 
 Now explore the Nix development environment for <Language />:
 
-<NixDevelop />
-
 <SpecificLanguage lang="C++">
+```shell title="Explore a development environment for C++"
+nix develop "github:DeterminateSystems/zero-to-nix#cpp"
+```
+
 First, let's see the Nix store path for [CMake]:
 
 ```shell title="Get path information for CMake"
@@ -125,6 +127,10 @@ cmake --version
 
 </SpecificLanguage>
 <SpecificLanguage lang="Haskell">
+```shell title="Explore a development environment for Haskell"
+nix develop "github:DeterminateSystems/zero-to-nix#haskell"
+```
+
 First, let's see the Nix store path for the [Glasgow Haskell Compiler][ghc] (GHC):
 
 ```shell title="See the store path for GHC"
@@ -139,6 +145,10 @@ ghc --version
 
 </SpecificLanguage>
 <SpecificLanguage lang="JavaScript">
+```shell title="Explore a development environment for JavaScript"
+nix develop "github:DeterminateSystems/zero-to-nix#javascript"
+```
+
 First, let's see the Nix store path for [Node.js]:
 
 ```shell title="See the store path for Node.js"
@@ -153,6 +163,10 @@ node --eval "console.log('1 + 1 = ' + (1 + 1))"
 
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
+```shell title="Explore a development environment for Python"
+nix develop "github:DeterminateSystems/zero-to-nix#python"
+```
+
 First, let's see the Nix store path for Python:
 
 ```shell title="See the store path for Python"
@@ -167,6 +181,10 @@ python -c "print(1 + 1)"
 
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
+```shell title="Explore a development environment for Go"
+nix develop "github:DeterminateSystems/zero-to-nix#go"
+```
+
 First, let's see the Nix store path for the [Go] CLI:
 
 ```shell title="See the store path for Go"
@@ -182,6 +200,10 @@ go version
 You should get 1.22.5.
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
+```shell title="Explore a development environment for Rust"
+nix develop "github:DeterminateSystems/zero-to-nix#rust"
+```
+
 First, let's see the Nix store path for [cargo]:
 
 ```shell title="See the store path for Cargo"
@@ -200,6 +222,10 @@ You should see `Hello, world!`.
 
 </SpecificLanguage>
 <SpecificLanguage lang="Scala">
+```shell title="Explore a development environment for Scala"
+nix develop "github:DeterminateSystems/zero-to-nix#scala"
+```
+
 First, let's see the Nix store path for [sbt]:
 
 ```shell title="See the store path for sbt"
