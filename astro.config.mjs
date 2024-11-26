@@ -8,7 +8,6 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
-import { prefetch } from "astro/virtual-modules/prefetch.js";
 import remarkEmoji from "remark-emoji";
 import remarkHeadingId from "remark-heading-id";
 
