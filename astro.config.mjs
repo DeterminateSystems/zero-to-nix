@@ -8,6 +8,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import rehypeExternalLinks from "rehype-external-links";
 import remarkEmoji from "remark-emoji";
 import remarkHeadingId from "remark-heading-id";
 
@@ -31,6 +32,12 @@ export default defineConfig({
     icon(),
     mdx({
       //gfm: true,
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          { rel: ["nofollow noopener noreferrer"], target: "_blank" },
+        ],
+      ],
       remarkPlugins: [remarkEmoji, remarkHeadingId],
     }),
     sitemap(),
