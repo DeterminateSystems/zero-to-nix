@@ -1,0 +1,114 @@
+---
+title: The Nix language
+wip: true
+snippet: |
+  The language you use to define Nix [package builds](/concepts/packages), [development environments](/concepts/dev-env), [NixOS configurations](/concepts/nixos), and more.
+related: ["declarative", "nix", "nixos", "nixpkgs"]
+externalSources:
+  [
+    {
+      title: "Nix language basics",
+      href: "https://nix.dev/tutorials/nix-language",
+      source: { title: "nix.dev", href: "https://nix.dev" },
+    },
+    {
+      title: "Overview of the Nix language",
+      href: "https://wiki.nixos.org/wiki/Overview_of_the_Nix_Language",
+      source: { title: "The NixOS wiki", href: "https://wiki.nixos.org" },
+    },
+    {
+      title: "Nix language",
+      href: "https://nixos.org/manual/nix/stable/language",
+      source:
+        {
+          title: "The Nix manual",
+          href: "https://nixos.org/manual/nix/stable",
+        },
+    },
+    {
+      title: "Learn nix in Y minutes",
+      href: "https://learnxinyminutes.com/docs/nix",
+      source:
+        { title: "Learn X in Y minutes", href: "https://learnxinyminutes.com" },
+    },
+    {
+      title: "Nix: a one pager",
+      href: "https://github.com/tazjin/nix-1p",
+      source: { title: "GitHub", href: "https://github.com" },
+    },
+  ]
+---
+
+Nix is the _programming language_ that powers the Nix _packaging system_.
+
+## Why a programming language?
+
+You might ask yourself why Nix even _needs_ a programming language.
+Why can't packages be declared via some JSON, YAML, or TOML schema?
+The problem with that lies in the dynamic nature of how Nix configures packages and allows them to be combined.
+Nix as a _programming language_ can be thought of as a kind of "JSON, but with functions".
+All statements are [declarative], meaning that there's no sequential flow of instructions that makes up a Nix package.
+Instead functions are called that assign values to fields in _attribute sets_, which in turn may get assigned to other values.
+
+## How does Nix work?
+
+Nix uses a few important characteristics in programming language design to work.
+Some of these terms can seem daunting, when you're not already familiar with what they mean and how they work with each other.
+So first, let's cover these principles:
+
+_Nix_ is a pure, functional, lazy, declarative, and reproducible programming language.
+
+| Concept                                   | Description                                                                                                                                     |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pure                                      | A programming-language design concept by which functions can not cause _side effects_. The only result is the one a function returns            |
+| Functional                                | A programming-language design concept by which _functions_ can be passed as function arguments, and returned as results                         |
+| Lazy                                      | A programming-language design concept by which functions and data collections are not evaluated until they are needed to complete a computation |
+| Declarative                               | Describing a system outcome, instead of instructing the computer _how_ to achieve the outcome                                                   |
+| [Reproducible](/concepts/reproducibility) | An operation that is performed twice yields the same result. The same inputs map to the same outputs                                            |
+
+## Syntax basics
+
+As mentioned previously, Nix uses _assignments_ to compute and process data for packages, modules, and other utilities.
+The code below, for example, calls a function called `my_function` with the parameters `2` and `3`, and assigns its output to the `my_value` field.
+
+```nix title="Assignments"
+{
+  my_value = my_function 2 3;
+}
+```
+
+Functions are defined using this syntax, where `x` and `y` are attributes passed into the function:
+
+```nix title="Functions"
+{
+  my_function = x: y: x + y;
+}
+```
+
+The body of the function automatically returns the result of the function.
+As you can see in the example above, functions are called by spaces between it and its parameters.
+No commas are needed to separate parameters.
+
+The two most common data structures are _attribute sets_ and _lists_.
+Attribute sets are key-value stores.
+Lists can contain different types of values and don't need to be comma separated.
+
+```nix title="Recursive attributes"
+rec {
+  number_key = 5;
+  list_key = [ number_key true "Hello" ];
+}
+```
+
+The `rec` keyword allows the attribute set to reference itself.
+
+For a more detailed breakdown of syntax, check out the [Nix language](https://nixos.org/manual/nix/stable/language) manual section.
+
+## Derivations
+
+One thing that sets Nix apart from other programming languages&mdash;and makes it much more than just a configuration language&mdash;is the `derivation` function.
+This is a built-in function that you use to define the build process for packages.
+See the [derivations] concept doc for more info.
+
+[declarative]: /concepts/declarative
+[derivations]: /concepts/derivations

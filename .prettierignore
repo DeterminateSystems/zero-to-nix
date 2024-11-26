@@ -1,3 +1,8 @@
+/.astro/
 /.direnv/
+/.vscode/
+/dist/
+pnpm-lock.yaml
 *.d.ts
-/nix/
+**/*.mdx
+src/components/Posthog.astro

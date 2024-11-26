@@ -1,4 +1,13 @@
 @import "variables.css";
 @import "prose.css";
-@import "highlight.css";
 @import "tailwind.css";
+
+/* Mailchimp embed styling */
+#mc_embed_signup {
+  background: inherit;
+  clear: left;
+}
+
+[x-cloak] {
+  display: none !important;
+}

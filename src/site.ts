@@ -1,14 +1,18 @@
-import { ButtonProps } from "./logic/content";
+type NavLink = {
+  text: string;
+  href: string;
+};
+
+type ButtonProps = {
+  text: string;
+  href: string;
+  highlight?: boolean;
+};
 
 export type Feature = {
   title: string;
   description: string;
   links: NavLink[];
-};
-
-export type NavLink = {
-  text: string;
-  href: string;
 };
 
 export type Term = {
@@ -17,41 +21,48 @@ export type Term = {
   href: string;
 };
 
-export type Site = {
+type Language =
+  | "C++"
+  | "Go"
+  | "Haskell"
+  | "JavaScript"
+  | "Python"
+  | "Rust"
+  | "Scala";
+
+type Site = {
   title: string;
   description: string;
-  rootUrl: string;
-  canonical: string;
   githubUrl: string;
-  languageCode: string;
-  features: Feature[];
-  navbarLinks: NavLink[];
-  heroButtons: ButtonProps[];
-  systems: string[];
-  languages: string[];
-  nixTerms: Term[];
+  languages: Language[];
+  defaultLanguage: Language;
   banner: {
     text: string;
     generation: number;
   };
-  mailingListTags: string[];
+  navbarLinks: NavLink[];
+  heroButtons: ButtonProps[];
+  features: Feature[];
+  nixTerms: Term[];
+  mailingListTags: string;
 };
 
-const site: Site = {
+export const site: Site = {
   title: "Zero to Nix",
   description: "Your guide to learning Nix and flakes",
-  rootUrl: "https://zero-to-nix.com",
-  canonical: "zero-to-nix.com",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
-  languageCode: "en",
+  languages: ["C++", "Go", "Haskell", "JavaScript", "Python", "Rust", "Scala"],
+  defaultLanguage: "JavaScript",
+  banner: {
+    text: "Check out <strong><a target='_blank' href='https://FlakeHub.com'>FlakeHub</a></strong> &mdash; the best place to discover and publish Nix flakes, from Determinate Systems.",
+    generation: 2,
+  },
   navbarLinks: [{ text: "About", href: "/about" }],
   heroButtons: [
     { text: "Quick start", href: "/start/install", highlight: true },
     { text: "Concepts", href: "/concepts" },
     { text: "About", href: "/about" },
   ],
-
-  // TODO: make this automated rather than manual
   features: [
     {
       title: "Declarative, reproducible development environments",
@@ -110,12 +121,6 @@ const site: Site = {
       ],
     },
   ],
-
-  // User interactions
-  systems: ["Linux", "macOS"],
-  languages: ["JavaScript", "Python", "Go", "Rust", "C++", "Haskell", "Scala"],
-
-  // Nix stuff
   nixTerms: [
     {
       title: "Nix",
@@ -142,15 +147,7 @@ const site: Site = {
       href: "/concepts/nixpkgs",
     },
   ],
-
-  banner: {
-    text: "Check out <strong><a target='_blank' href='https://FlakeHub.com'>FlakeHub</a></strong> - the best place to discover and publish Nix flakes, from Determinate Systems.",
-    generation: 2,
-  },
-
   mailingListTags: [
     "294258", // zero-to-nix
-  ],
+  ].join(","),
 };
-
-export default site;

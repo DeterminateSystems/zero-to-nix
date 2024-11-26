@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import HorizontalContainer from "../../components/HorizontalContainer.astro";
+import Grid2 from "../../components/Grid2.astro";
+import HoverableLink from "../../components/HoverableLink.astro";
+import { startPagePath } from "../../lib/utils";
+
+const title = "Start";
+const heroTitle = "Quick start";
+const description =
+  "Get a taste of Nix's power and learn key concepts along the way";
+
+const startPages = await getCollection("start");
+---
+
+<Layout {title} {description}>
+  <HorizontalContainer>
+    <Hero title={heroTitle} {description} />
+
+    <Grid2>
+      {
+        startPages.map(({ slug, data: { title, order } }) => (
+          <HoverableLink
+            text={title}
+            {order}
+            href={startPagePath(slug)}
+            size="normal"
+          />
+        ))
+      }
+    </Grid2>
+  </HorizontalContainer>
+</Layout>
