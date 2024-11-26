@@ -8,7 +8,7 @@ type Props = {
 const { text, pages, ordered = false } = Astro.props;
 ---
 
-<div class="relative inline-flex" x-data="{ open: false }" x-cloak>
+<div class="relative inline-flex" x-data="{ open: false }">
   <button
     @click="open = !open"
     class="text-sm duration-hover hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 md:text-base lg:text-lg"
@@ -17,6 +17,7 @@ const { text, pages, ordered = false } = Astro.props;
 
   <div
     x-show="open"
+    x-cloak
     @click.away="open = false"
     x-transition:enter.duration.200ms
     class="absolute right-0 top-10 max-h-[75vh] w-72 origin-top-right overflow-scroll bg-white shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-gray dark:bg-dark"
