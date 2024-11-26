@@ -8,6 +8,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import rehypeExternalLinks from "rehype-external-links";
 import remarkEmoji from "remark-emoji";
 import remarkHeadingId from "remark-heading-id";
 
@@ -37,6 +38,14 @@ export default defineConfig({
     tailwind(),
     react(),
   ],
+  markdown: {
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        { rel: ["nofollow noopener noreferrer"], target: "_blank" },
+      ],
+    ],
+  },
   server: {
     open: true,
     port: 3000,
