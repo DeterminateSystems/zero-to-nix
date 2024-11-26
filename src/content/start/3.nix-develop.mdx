@@ -267,7 +267,48 @@ First, tell us which language you prefer:
 
 To get started in your <Language /> project, create an empty directory and initialize a [flake template][templates]:
 
-<Shell kind="dev" />
+<SpecificLanguage lang="C++">
+```shell title="Initialize a flake template for C++"
+mkdir nix-cpp-dev && cd nix-cpp-dev
+nix flake init --template "github:DeterminateSystems/zero-to-nix#cpp-dev"
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Haskell">
+```shell title="Initialize a flake template for Haskell"
+mkdir nix-haskell-dev && cd nix-haskell-dev
+nix flake init --template "github:DeterminateSystems/zero-to-nix#haskell-dev"
+```
+</SpecificLanguage>
+<SpecificLanguage lang="JavaScript">
+```shell title="Initialize a flake template for JavaScript"
+mkdir nix-javascript-dev && cd nix-javascript-dev
+nix flake init --template "github:DeterminateSystems/zero-to-nix#javascript-dev"
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Python">
+```shell title="Initialize a flake template for Python"
+mkdir nix-python-dev && cd nix-python-dev
+nix flake init --template "github:DeterminateSystems/zero-to-nix#python-dev"
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Go">
+```shell title="Initialize a flake template for Go"
+mkdir nix-go-dev && cd nix-go-dev
+nix flake init --template "github:DeterminateSystems/zero-to-nix#go-dev"
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Rust">
+```shell title="Initialize a flake template for Rust"
+mkdir nix-rust-dev && cd nix-rust-dev
+nix flake init --template "github:DeterminateSystems/zero-to-nix#rust-dev"
+```
+</SpecificLanguage>
+<SpecificLanguage lang="Scala">
+```shell title="Initialize a flake template for Scala"
+mkdir nix-scala-dev && cd nix-scala-dev
+nix flake init --template "github:DeterminateSystems/zero-to-nix#scala-dev"
+```
+</SpecificLanguage>
 
 Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
 
