@@ -32,20 +32,18 @@ export default defineConfig({
     icon(),
     mdx({
       //gfm: true,
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          { rel: ["nofollow noopener noreferrer"], target: "_blank" },
+        ],
+      ],
       remarkPlugins: [remarkEmoji, remarkHeadingId],
     }),
     sitemap(),
     tailwind(),
     react(),
   ],
-  markdown: {
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        { rel: ["nofollow noopener noreferrer"], target: "_blank" },
-      ],
-    ],
-  },
   server: {
     open: true,
     port: 3000,
