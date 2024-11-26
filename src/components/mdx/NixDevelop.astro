@@ -1,8 +1,20 @@
----
-import { Code } from "astro-expressive-code/components";
----
-
-<div class="language-shell" data-lang="shell">
-  <pre
-    class="language-shell"><code>nix develop <span class="token string">"github:DeterminateSystems/zero-to-nix#LANG"</span></code></pre>
+<div class="expressive-code">
+  <figure class="frame is-terminal has-title">
+    <figcaption class="header">
+      <span class="title"
+        >Explore a development environment for <span x-text="language"
+        ></span></span
+      >
+    </figcaption><pre
+      data-language="shell"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">nix</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">develop</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"github:DeterminateSystems/zero-to-nix#<span x-text="language.toLowerCase()" />"</span></div></div></code></pre><div
+      class="copy"
+    >
+      <button
+        title="Copy to clipboard"
+        data-copied="Copied!"
+        data-code='nix develop "github:DeterminateSystems/zero-to-nix#scala"'
+        ><div></div></button
+      >
+    </div>
+  </figure>
 </div>

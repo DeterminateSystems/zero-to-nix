@@ -6,6 +6,7 @@ import ExternalSources from "../../components/ExternalSources.astro";
 import Language from "../../components/mdx/Language.astro";
 import Languages from "../../components/mdx/Languages.astro";
 import Layout from "../../layouts/Layout.astro";
+import NixDevelop from "../../components/mdx/NixDevelop.astro";
 import NixStorePath from "../../components/mdx/NixStorePath.astro";
 import Shell from "../../components/mdx/Shell.astro";
 import SpecificLanguage from "../../components/mdx/SpecificLanguage.astro";
@@ -61,6 +62,7 @@ const numQuickStartPages = (await getCollection("start")).length;
             ExternalSources,
             Language,
             Languages,
+            NixDevelop,
             NixStorePath,
             Shell,
             SpecificLanguage,
