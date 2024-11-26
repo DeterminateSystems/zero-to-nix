@@ -17,6 +17,7 @@ const { text, pages, ordered = false } = Astro.props;
 
   <div
     x-show="open"
+    x-cloak
     @click.away="open = false"
     x-transition:enter.duration.200ms
     class="absolute right-0 top-10 max-h-[75vh] w-72 origin-top-right overflow-scroll bg-white shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-gray dark:bg-dark"

@@ -37,6 +37,10 @@ export default defineConfig({
     tailwind(),
     react(),
   ],
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "hover",
+  },
   server: {
     open: true,
     port: 3000,
