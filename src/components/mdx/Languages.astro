@@ -1,0 +1,29 @@
+---
+import { site } from "../../site";
+
+const { languages } = site;
+---
+
+<div
+  class="not-prose inline-flex items-center space-x-6 rounded-lg border-1.5 border-light-gray py-2.5 pl-6 pr-4 text-base dark:border-gray dark:bg-inherit"
+>
+  <p class="text-base font-semibold tracking-tight md:text-lg lg:text-xl">
+    Select your language
+  </p>
+
+  <div role="tablist" aria-orientation="horizontal">
+    {
+      languages.map((lang) => (
+        <button
+          @click={`language = "${lang}"`}
+          class="rounded-lg border-1.5 px-1.5 py-1 text-sm font-semibold tracking-tight focus:outline-none md:px-2 md:py-0.5 md:text-base lg:px-3 lg:py-1.5 lg:text-lg"
+          class:list={[]}
+
+          :class=`{ "border-primary bg-pale dark:bg-darker-gray": language == "${lang}", "border-pale hover:text-primary dark:border-dark": language !== "${lang}" }`
+        >
+          {lang}
+        </button>
+      ))
+    }
+  </div>
+</div>

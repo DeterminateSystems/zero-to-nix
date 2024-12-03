@@ -4,17 +4,14 @@
 # Nix artifacts
 result
 
-# Tailwind artifacts
-.temp.*.tailwind.config.cjs
-
 # htmltest artifacts
 /tmp/
 
 # Lychee cache
 .lycheecache
 
-# îles artifacts
-/.iles-ssg-temp/
+# Astro artifacts
+/.astro/
+
+# Site build
 /dist/
-__unconfig_iles.config.ts
-.direnv

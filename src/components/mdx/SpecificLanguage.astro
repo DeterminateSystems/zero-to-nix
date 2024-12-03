@@ -1,0 +1,11 @@
+---
+type Props = {
+  lang: string;
+};
+
+const { lang } = Astro.props;
+---
+
+<div x-cloak x-show={`language == "${lang}"`}>
+  <slot />
+</div>

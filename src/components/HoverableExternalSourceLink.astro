@@ -1,0 +1,50 @@
+---
+import { Icon } from "astro-icon/components";
+import { md } from "../lib/utils";
+
+type Props = {
+  title: string;
+  href: string;
+  source?: {
+    title: string;
+    href: string;
+  };
+};
+
+const { title, href: externalSourceHref, source } = Astro.props;
+---
+
+<div
+  class="rounded-lg border-1.5 border-light-gray px-3 py-1.5 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:px-4 md:py-2 lg:px-5 lg:py-2.5"
+>
+  <div class="flex flex-col space-y-1.5">
+    <a
+      href={externalSourceHref}
+      class="inline-flex items-start justify-between gap-2 text-lg leading-snug hover:text-primary dark:hover:text-light-blue md:text-xl lg:text-2xl"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span>
+        <span class="content" set:html={md(title)} />
+      </span>
+
+      <Icon
+        name="fa:external-link"
+        class="h-3 w-3 text-primary md:h-4 md:w-4"
+      />
+    </a>
+
+    {
+      source && (
+        <a
+          href={source.href}
+          class="content block text-base font-light tracking-tight hover:text-primary dark:hover:text-light-blue md:text-lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {source.title}
+        </a>
+      )
+    }
+  </div>
+</div>

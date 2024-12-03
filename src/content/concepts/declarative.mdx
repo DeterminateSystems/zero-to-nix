@@ -1,0 +1,39 @@
+---
+title: Declarative programming
+wip: true
+snippet: |
+  A programming paradigm used by [Nix](/concepts/nix) that emphasizes *what* you want to build rather than *how* things are built
+related: ["reproducibility"]
+externalSources:
+  [
+    {
+      title: "Declarative programming",
+      href: "https://en.wikipedia.org/wiki/Declarative_programming",
+      source: { title: "Wikipedia", href: "https://wikipedia.org" },
+    },
+    {
+      title: "Declarative vs. imperative programming",
+      href: "https://dev.to/ruizb/declarative-vs-imperative-4a7l",
+      source: { title: "Benoit Ruiz's blog", href: "https://dev.to/ruizb" },
+    },
+    {
+      title: "Declarative vs imperative programming: 5 key differences",
+      href: "https://educative.io/blog/declarative-vs-imperative-programming",
+      source: { title: "educative", href: "https://educative.io/" },
+    },
+  ]
+---
+
+In _declarative programming_ a user instructs the computer _what_ to do, not _how_ to do it.
+
+The result of this is that often a final system is described as it _should exist_.
+A management program (in this case Nix) can then construct a path towards the final output
+and do the necessary steps in the required order, without a user having to worry about what exactly is happening and when.
+
+Nix follows declarative principles in the way that package definitions (or [derivations](/concepts/derivations)) are constructed with some minor exceptions.
+
+Under the hood, some parts of packages still have to be written imperatively, but by wrapping these parts in declarative layers,
+users of the upper layers don't have to be aware of what is happening below the surface.
+
+Essentially: one user can solve a problem _once_,
+and many people can then benefit from that solution without needing to know how exactly it works (unless they want to).
