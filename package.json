@@ -11,14 +11,14 @@
     "sync": "astro sync"
   },
   "dependencies": {
-    "@alpinejs/persist": "^3.14.3",
+    "@alpinejs/persist": "^3.14.6",
     "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.7.0",
-    "@astrojs/mdx": "^3.1.9",
+    "@astrojs/mdx": "^4.0.0",
     "@astrojs/react": "^3.6.3",
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/tailwind": "^5.1.3",
     "@expressive-code/plugin-collapsible-sections": "^0.35.6",
     "@expressive-code/plugin-line-numbers": "^0.35.6",
     "@iconify-json/fa": "^1.2.0",
@@ -26,29 +26,29 @@
     "@iconify-json/heroicons": "^1.2.1",
     "@iconify-json/radix-icons": "^1.2.1",
     "@tailwindcss/typography": "^0.5.15",
-    "@types/alpinejs": "^3.13.10",
+    "@types/alpinejs": "^3.13.11",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "alpinejs": "^3.14.3",
-    "astro": "^4.16.14",
-    "astro-expressive-code": "^0.35.6",
-    "astro-icon": "^1.1.2",
+    "alpinejs": "^3.14.6",
+    "astro": "^5.0.1",
+    "astro-expressive-code": "^0.38.3",
+    "astro-icon": "^1.1.4",
     "astro-seo": "^0.8.4",
     "marked": "^12.0.2",
-    "posthog-js": "=1.95.1",
+    "posthog-js": "^1.95.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rehype-external-links": "^3.0.0",
     "remark-emoji": "^5.0.1",
     "remark-heading-id": "^1.0.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/alpinejs__persist": "^3.13.4",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "tailwindcss": "^3.4.15"
+    "tailwindcss": "^3.4.16"
   }
 }
