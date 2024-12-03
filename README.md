@@ -81,21 +81,17 @@ Zero to Nix's "stack" 🥞:
 
 The site uses a number of custom [MDX] components to spice up the usual Markdown content.
 
-| Component                                                                | What it does                                                                                                                            |
-| :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| Component                                                                | What it does                                                                                                                           |
+| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /><br />Adding an `id` makes it a stateful callout dropdown. |
-| [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                  |
-| [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                             |
-| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                              |
-| [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                                                                          |
-| [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                                                                                   |
-| [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language                                                         |
-| [`System`](./src/components/mdx/stateful/System.vue)                     | Displays the currently selected system (Linux vs. macOS)                                                                                |
-| [`Systems`](./src/components/stateful/Systems.vue)                       | Provides a system selector (Linux vs. macOS)                                                                                            |
-
-> **Note**: any time you use one of these components in an [MDX] file, you need to add a `client:load` directive to it.
-> This is one of [îles][iles]' so-called [hydration directives][hydration].
-> There are other directives available, but [`client:load`][client-load] is the one that we need to use, as it ensures that the component is loaded as soon as the user comes to the page.
+| [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                 |
+| [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                            |
+| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                             |
+| [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                                                                         |
+| [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                                                                                  |
+| [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language                                                        |
+| [`System`](./src/components/mdx/stateful/System.vue)                     | Displays the currently selected system (Linux vs. macOS)                                                                               |
+| [`Systems`](./src/components/stateful/Systems.vue)                       | Provides a system selector (Linux vs. macOS)                                                                                           |
 
 ## Directory structure
 
@@ -152,7 +148,7 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
     "editor.formatOnSave": false,
     // This is a nice helper for longer sentences
     "editor.wordWrapColumn": 100,
-    "editor.wordWrap": "wordWrapColumn"
+    "editor.wordWrap": "wordWrapColumn",
   },
   // Format everything using the Prettier config
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -164,8 +160,8 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
     "dist": true,
     "pnpm-lock.yaml": true,
     "*.d.ts": true,
-    "tmp": true
-  }
+    "tmp": true,
+  },
 }
 ```
 

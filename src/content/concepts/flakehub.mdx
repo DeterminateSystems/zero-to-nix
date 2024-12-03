@@ -1,0 +1,70 @@
+---
+title: FlakeHub
+snippet: |
+  A service that does fun stuff
+related: ["ecosystem", "flakes", "pinning"]
+externalSources:
+  [
+    {
+      title: "FlakeHub documentation",
+      href: "https://flakehub.com/docs",
+      source: { title: "FlakeHub", href: "https://flakehub.com" },
+    },
+    {
+      title: "Introducing FlakeHub",
+      href: "https://determinate.systems/posts/introducing-flakehub",
+      source:
+        {
+          title: "The Determinate Systems blog",
+          href: "https://determinate.systems/posts",
+        },
+    },
+    {
+      title: "`fh`: the CLI for FlakeHub",
+      href: "https://determinate.systems/posts/flakehub-cli",
+      source:
+        {
+          title: "The Determinate Systems blog",
+          href: "https://determinate.systems/posts",
+        },
+    },
+  ]
+---
+
+[FlakeHub] is a platform for discovering and publishing [Nix flakes][flakes] built by [Determinate Systems][detsys].
+It offers a wide variety of features that Nix on its own does not:
+
+- [Semantic versioning][semver] for flakes, including version modifiers like `~` (flexible patch) and `=` (exact match).
+- The ability to explore the Nix flake landscape in a variety of ways:
+  - Plaintext search
+  - [All flakes][all-flakes]
+  - [All organizations][all-orgs]
+  - Via labels such as [`nixos`][label-nixos] or [`rust`][label-rust]
+- Automated flake [publishing] with GitHub Actions, including a user-friendly [wizard] to help you construct an Actions configuration for your project.
+
+FlakeHub also offers a CLI tool called [`fh`][fh] that you can use to perform a variety of actions against the FlakeHub API.
+
+<Admonition info open title="FlakeHub is a proprietary platform">
+Although we at [Determinate Systems][detsys] believe that FlakeHub makes important aspects of using [Nix flakes][flakes] more straightforward&mdash;and fun!&mdash;it is a proprietary platform and mostly not open source.
+Most of FlakeHub's features are free, including [semantic versioning][semver] and publishing [public flakes][visibility]
+
+In other words, you can use [Nix] and [Nix flakes][flakes] without using FlakeHub just as you can use [Git] without using [GitHub].
+
+</Admonition>
+
+[all-flakes]: https://flakehub.com/flakes
+[all-orgs]: https://flakehub.com/orgs
+[detsys]: https://determinate.systems
+[docs]: https://flakehub.com/docs
+[fh]: https://github.com/DeterminateSystems/fh
+[flakehub]: https://flakehub.com
+[flakes]: /concepts/flakes
+[git]: https://git-scm.com
+[github]: https://github.com
+[label-nixos]: https://flakehub.com/label/nixos
+[label-rust]: https://flakehub.com/label/rust
+[nix]: /concepts/nix
+[publishing]: https://determinate.systems/posts/introducing-flakehub#publish
+[semver]: https://flakehub.com/docs/concepts/semver
+[visibility]: https://flakehub.com/docs/concepts/visibility
+[wizard]: https://flakehub.com/new

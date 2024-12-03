@@ -4,7 +4,7 @@
     @apply rounded border-light-gray bg-pale px-1.5 py-0.5 dark:border-none dark:bg-dark-gray;
   }
 
-  /* This class is applied to snippets of text that are renderd from Markdown but not covered by .prose */
+  /* This class is applied to snippets of text that are rendered from Markdown but not covered by .prose */
   .content {
     a {
       @apply font-medium underline hover:text-primary dark:hover:text-primary;
@@ -20,6 +20,24 @@
   }
 
   .prose {
+    /* Headings */
+    h2,
+    h3,
+    h4 {
+      &::before {
+        display: block;
+        content: " ";
+        margin-top: -5rem;
+        height: 5rem;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      &.heading a {
+        @apply font-semibold no-underline;
+      }
+    }
+
     /* Hide footnotes heading */
     .footnotes {
       @apply mt-12 p-0;
@@ -51,39 +69,6 @@
 
     a {
       @apply underline hover:text-primary dark:hover:text-light-blue;
-
-      /* Hoverable heading links */
-      &.heading-anchor {
-        @apply float-left text-2xl text-primary no-underline opacity-0;
-
-        margin-top: 0.125em;
-        margin-left: -1em;
-        padding-right: 0.25em;
-
-        &::before {
-          content: "#";
-        }
-      }
-    }
-
-    .heading {
-      @apply tracking-tight;
-
-      &::before {
-        display: block;
-        content: " ";
-        margin-top: -5rem;
-        height: 5rem;
-        visibility: hidden;
-        pointer-events: none;
-      }
-
-      &:focus,
-      &:hover {
-        a.heading-anchor {
-          @apply text-primary opacity-100;
-        }
-      }
     }
 
     code {

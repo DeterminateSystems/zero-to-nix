@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  href: string;
+  order?: number;
+  text: string;
+  size?: "normal" | "sm";
+};
+
+const { href, order, text, size } = Astro.props;
+
+const normalLink = size === "normal";
+const smallLink = size === "sm";
+---
+
+<a
+  {href}
+  class:list={[
+    "rounded-lg border-1.5 border-light-gray transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray",
+    normalLink &&
+      "px-3 py-1.5 text-lg tracking-tight md:px-4 md:py-2 md:text-xl lg:px-5 lg:py-2.5 lg:text-2xl",
+    smallLink &&
+      "px-3 py-1.5 text-base md:px-4 md:py-2 md:text-lg lg:px-5 lg:py-2.5 lg:text-xl",
+  ]}
+>
+  {
+    order && (
+      <div class="flex items-center justify-between">
+        <span class="flex space-x-2 md:space-x-3 lg:space-x-4">
+          <span>{order}.</span>
+          <span>{text}</span>
+        </span>
+
+        <Icon name="fa:link" class="size-3 text-primary md:size-4" />
+      </div>
+    )
+  }
+
+  {
+    !order && (
+      <span class="flex items-center justify-between">
+        <span>{text}</span>
+        <Icon name="fa:link" class="size-3 text-primary md:size-4" />
+      </span>
+    )
+  }
+</a>

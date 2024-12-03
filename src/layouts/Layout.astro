@@ -1,0 +1,47 @@
+---
+import Banner from "../components/Banner.astro";
+import CookieConsent from "../components/CookieConsent.astro";
+import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro";
+import Navbar from "../components/Navbar.astro";
+import "../assets/css/main.css";
+import { site } from "../site";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { defaultLanguage } = site;
+
+const { title, description } = Astro.props;
+---
+
+<html
+  x-data={`{ quickStart: $persist(true), drawer: false, banner: $persist(true), language: $persist("${defaultLanguage}") }`}
+  class="h-screen"
+>
+  <head>
+    <Head {title} {description} />
+  </head>
+  <body
+    class="flex min-h-full flex-col bg-white font-sans text-dark antialiased dark:bg-dark dark:text-white"
+  >
+    <Banner />
+    <CookieConsent />
+
+    <main class="flex-1">
+      <Navbar />
+
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      console.log(
+        "Welcome to Zero to Nix ❄️! Brought to you by your friends at Determinate Systems.",
+      );
+    </script>
+  </body>
+</html>

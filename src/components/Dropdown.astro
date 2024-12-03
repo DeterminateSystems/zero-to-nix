@@ -1,0 +1,41 @@
+---
+type Props = {
+  text: string;
+  pages: { title: string; href: string }[];
+  ordered?: boolean;
+};
+
+const { text, pages, ordered = false } = Astro.props;
+---
+
+<div class="relative inline-flex" x-data="{ open: false }">
+  <button
+    @click="open = !open"
+    class="text-sm duration-hover hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 md:text-base lg:text-lg"
+    >{text}</button
+  >
+
+  <div
+    x-show="open"
+    x-cloak
+    @click.away="open = false"
+    x-transition:enter.duration.200ms
+    class="absolute right-0 top-10 max-h-[75vh] w-72 origin-top-right overflow-scroll bg-white shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-gray dark:bg-dark"
+  >
+    <ul class="flex flex-col space-y-1.5">
+      {
+        pages.map(({ title, href }, idx) => (
+          <li>
+            <a
+              {href}
+              class="block px-4 py-2 text-xs tracking-tight duration-hover hover:bg-primary hover:text-dark hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-sm lg:text-base"
+            >
+              {ordered && <>{idx + 1}.</>}
+              {title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

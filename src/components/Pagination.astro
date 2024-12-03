@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import { startPagePath } from "../lib/utils";
+
+type Props = {
+  order: number;
+};
+
+const { order } = Astro.props;
+
+const startPages = await getCollection("start");
+const previousPage = startPages.find(
+  ({ data: { order: pageOrder } }) => pageOrder === order - 1,
+);
+const nextPage = startPages.find(
+  ({ data: { order: pageOrder } }) => pageOrder === order + 1,
+);
+---
+
+<div
+  class="flex flex-col-reverse gap-3 tracking-tight md:flex-row md:items-center md:justify-between md:gap-0 md:space-y-0 md:text-lg lg:text-xl"
+>
+  {/* Previous page */}
+  <div>
+    {
+      previousPage && (
+        <a
+          href={startPagePath(previousPage.slug)}
+          class="flex space-x-3 rounded-lg font-semibold"
+        >
+          <span class="text-gray">&larr;</span>
+          <span class="tracking-tight hover:text-gray dark:hover:text-light-gray">
+            {previousPage.data.title}
+          </span>
+        </a>
+      )
+    }
+  </div>
+
+  {/* Next page */}
+  <div>
+    {
+      nextPage && (
+        <a
+          href={startPagePath(nextPage.slug)}
+          class="flex justify-between space-x-3 rounded-full border-1.5 border-primary px-4 py-2 font-semibold hover:bg-pale dark:hover:bg-darker-gray md:px-5 md:py-3"
+        >
+          <span class="tracking-tight">{nextPage.data.title}</span>
+          <span class="text-primary">&rarr;</span>
+        </a>
+      )
+    }
+  </div>
+</div>
