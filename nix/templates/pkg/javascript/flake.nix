@@ -26,12 +26,12 @@
           name = "zero-to-nix-javascript";
 
           buildInputs = with pkgs; [
-            nodejs_18
+            nodejs_latest
           ];
 
           src = self;
 
-          npmDepsHash = "sha256-A/q4C8Ox1InaJ/320+pU9uBUv6zqTKlzzOmJUvzBOnI=";
+          npmDepsHash = "sha256-RR0uypDfVTJ/EMOxUnxdLnBbEZasHO+LqLkRAb2mDyg=";
 
           npmBuild = "npm run build";
 
