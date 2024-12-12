@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import { getCollection } from "astro:content";
 import { startPagePath } from "../lib/utils";
 
@@ -24,7 +25,7 @@ const nextPage = startPages.find(
   <div>
     {
       previousPage && (
-        <a
+        <Link
           href={startPagePath(previousPage.slug)}
           class="flex space-x-3 rounded-lg font-semibold"
         >
@@ -32,7 +33,7 @@ const nextPage = startPages.find(
           <span class="tracking-tight hover:text-gray dark:hover:text-light-gray">
             {previousPage.data.title}
           </span>
-        </a>
+        </Link>
       )
     }
   </div>
@@ -41,13 +42,13 @@ const nextPage = startPages.find(
   <div>
     {
       nextPage && (
-        <a
+        <Link
           href={startPagePath(nextPage.slug)}
           class="flex justify-between space-x-3 rounded-full border-1.5 border-primary px-4 py-2 font-semibold hover:bg-pale dark:hover:bg-darker-gray md:px-5 md:py-3"
         >
           <span class="tracking-tight">{nextPage.data.title}</span>
           <span class="text-primary">&rarr;</span>
-        </a>
+        </Link>
       )
     }
   </div>

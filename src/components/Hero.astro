@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import { md } from "../lib/utils";
 import Breadcrumb from "./Breadcrumb.astro";
 
@@ -96,7 +97,7 @@ const largeHero = heroSize === "lg";
     buttons && (
       <div class="flex items-center space-x-4 pt-2">
         {buttons.map(({ text, href, highlight }) => (
-          <a
+          <Link
             {href}
             class:list={[
               "rounded-full px-4 py-2 font-bold shadow-md transition-colors duration-150 hover:bg-dark-gray hover:text-white",
@@ -105,7 +106,7 @@ const largeHero = heroSize === "lg";
             ]}
           >
             {text}
-          </a>
+          </Link>
         ))}
       </div>
     )

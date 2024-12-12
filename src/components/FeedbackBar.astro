@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import { Icon } from "astro-icon/components";
 import PageSurvey from "./PageSurvey";
 import { site } from "../site";
@@ -23,14 +24,14 @@ const editUrl = `${githubUrl}/edit/main/src/content${filename}.mdx`;
         class="size-3 text-dark dark:text-light-gray md:size-4 lg:size-5"
       />
 
-      <a
+      <Link
         href={editUrl}
         class="tracking-tight text-dark-gray hover:text-primary dark:text-light-gray dark:hover:text-primary"
         target="_blank"
         rel="noopener noreferrer"
       >
         Edit this page
-      </a>
+      </Link>
     </span>
 
     <span class="flex items-center space-x-3">
@@ -39,14 +40,14 @@ const editUrl = `${githubUrl}/edit/main/src/content${filename}.mdx`;
         class="size-3 text-dark dark:text-light-gray md:size-4 lg:size-5"
       />
 
-      <a
+      <Link
         href={issueUrl}
         class="tracking-tight text-dark-gray hover:text-primary dark:text-light-gray dark:hover:text-primary"
         target="_blank"
         rel="noopener noreferrer"
       >
         File an issue
-      </a>
+      </Link>
     </span>
   </div>
 </div>

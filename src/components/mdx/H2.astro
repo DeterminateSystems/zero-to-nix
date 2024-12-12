@@ -1,9 +1,10 @@
 ---
+import Link from "../Link.astro";
 const { id } = Astro.props;
 ---
 
 <h2 {id} class="heading">
-  <a href={`#${id}`}>
+  <Link href={`#${id}`}>
     <slot />
-  </a>
+  </Link>
 </h2>

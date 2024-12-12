@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import HorizontalContainer from "./HorizontalContainer.astro";
 
 const year = new Date().getFullYear();
@@ -11,9 +12,9 @@ const year = new Date().getFullYear();
         class="tracking-tight text-gray dark:text-gray md:text-base lg:text-lg"
       >
         Copyright &copy; {year}
-        <a href="https://determinate.systems" class="hover:text-primary">
+        <Link href="https://determinate.systems" class="hover:text-primary">
           Determinate Systems, Inc.
-        </a>
+        </Link>
       </p>
     </div>
   </HorizontalContainer>

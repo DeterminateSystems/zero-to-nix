@@ -1,6 +1,7 @@
 ---
 import HorizontalContainer from "../components/HorizontalContainer.astro";
 import Features from "../components/Features.astro";
+import Link from "../components/Link.astro";
 import VerticalContainer from "../components/VerticalContainer.astro";
 import Layout from "../layouts/Layout.astro";
 import { md } from "../lib/utils";
@@ -38,7 +39,7 @@ const descriptionHtml = await md(description);
             {
               heroButtons.map(({ text, href, highlight }) => (
                 <li>
-                  <a
+                  <Link
                     {href}
                     class:list={[
                       "rounded-full tracking-tight transition-colors duration-150 md:text-base lg:text-lg",
@@ -49,7 +50,7 @@ const descriptionHtml = await md(description);
                     ]}
                   >
                     {text}
-                  </a>
+                  </Link>
                 </li>
               ))
             }
@@ -66,7 +67,7 @@ const descriptionHtml = await md(description);
           class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
           id="features"
         >
-          <a href="#features">What the Nix ecosystem offers</a>
+          <Link href="#features">What the Nix ecosystem offers</Link>
         </h2>
 
         <Features />
@@ -76,7 +77,7 @@ const descriptionHtml = await md(description);
           class="text-2xl tracking-tight hover:text-gray dark:hover:text-light-gray md:text-3xl lg:text-4xl"
           id="key-terms"
         >
-          <a href="#key-terms">Core Nix components</a>
+          <Link href="#key-terms">Core Nix components</Link>
         </h2>
 
         <NixTerms />
