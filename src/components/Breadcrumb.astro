@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 type Props = {
   breadcrumb: {
     back: {
@@ -19,9 +20,9 @@ const { breadcrumb, order, total } = Astro.props;
     class="flex items-center space-x-2 text-sm md:space-x-2.5 md:text-base lg:space-x-3 lg:text-lg"
   >
     <span>
-      <a href={breadcrumb.back.href} class="hover:text-primary">
+      <Link href={breadcrumb.back.href} class="hover:text-primary">
         {breadcrumb.back.title}
-      </a>
+      </Link>
     </span>
     <span class="text-lg font-bold text-primary md:text-xl lg:text-2xl">
       /

@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import { Icon } from "astro-icon/components";
 
 const links: { text: string; href: string }[] = [
@@ -49,13 +50,13 @@ const links: { text: string; href: string }[] = [
     {
       links.map(({ text, href }) => (
         <li>
-          <a
+          <Link
             {href}
             class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
             @click="drawer = false"
           >
             {text}
-          </a>
+          </Link>
         </li>
       ))
     }

@@ -1,0 +1,31 @@
+---
+import Link from "../Link.astro";
+
+const { href } = Astro.props;
+
+let phid = false;
+
+try {
+  const to = new URL(href);
+
+  if (
+    to &&
+    to.hostname != "status.determinate.systems" &&
+    to.hostname != "trust.determinate.systems" &&
+    (to.hostname == "flakehub.com" ||
+      to.hostname == "determinate.systems" ||
+      to.hostname.endsWith(".determinate.systems"))
+  ) {
+    phid = true;
+  }
+} catch {
+  // that's fine
+}
+
+const external = href.startsWith("http");
+
+const rel = external && !phid ? "noopener noreferrer" : undefined;
+const target = external ? "_blank" : undefined;
+---
+
+<Link {href} {target} {rel} {...Astro.props}><slot /></Link>

@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import Grid2 from "./Grid2.astro";
 import { site } from "../site";
 import { md } from "../lib/utils";
@@ -23,12 +24,12 @@ const { features } = site;
           {links.map(({ text, href }) => (
             <li class="flex items-center space-x-2 md:text-lg lg:text-xl">
               <span>&rarr;</span>
-              <a
+              <Link
                 {href}
                 class="text-dark underline hover:text-primary dark:text-light-gray dark:hover:text-light-blue"
               >
                 {text}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

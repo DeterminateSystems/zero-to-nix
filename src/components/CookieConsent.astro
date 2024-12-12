@@ -1,3 +1,7 @@
+---
+import Link from "./Link.astro";
+---
+
 <div
   x-cloak
   x-data="{ show: false }"
@@ -9,13 +13,13 @@
     <p class="content m-0 px-6 py-4 text-[16px]">
       We use a single, first-party analytics cookie to focus our limited time
       and energy on the most important documentation. Check out our
-      <a
+      <Link
         href="https://determinate.systems/policies/privacy"
         class="underline"
         target="_blank"
       >
         privacy policy
-      </a>
+      </Link>
       .
     </p>
     <div
