@@ -5,13 +5,13 @@ try {
   const to = new URL(Astro.props.href);
 
   if (
-            to &&
-            to.hostname != "status.determinate.systems" &&
-            to.hostname != "trust.determinate.systems" &&
-            (to.hostname == "flakehub.com" ||
-              to.hostname == "determinate.systems" ||
-              to.hostname.endsWith(".determinate.systems"))
-          ) {
+    to &&
+    to.hostname != "status.determinate.systems" &&
+    to.hostname != "trust.determinate.systems" &&
+    (to.hostname == "flakehub.com" ||
+      to.hostname == "determinate.systems" ||
+      to.hostname.endsWith(".determinate.systems"))
+  ) {
     phid = true;
   }
 } catch {
