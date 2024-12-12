@@ -28,4 +28,4 @@ const rel = external && !phid ? "noopener noreferrer" : undefined;
 const target = external ? "_blank" : undefined;
 ---
 
-<Link {href} {target} {rel}><slot /></Link>
+<Link {href} {target} {rel} {...Astro.props}><slot /></Link>
