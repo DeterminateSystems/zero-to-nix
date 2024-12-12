@@ -1,0 +1,73 @@
+---
+let phid = false;
+
+try {
+  const to = new URL(Astro.props.href);
+
+  if (
+            to &&
+            to.hostname != "status.determinate.systems" &&
+            to.hostname != "trust.determinate.systems" &&
+            (to.hostname == "flakehub.com" ||
+              to.hostname == "determinate.systems" ||
+              to.hostname.endsWith(".determinate.systems"))
+          ) {
+    phid = true;
+  }
+} catch {
+  // that's fine
+}
+
+const external = (Astro.props.href || "").startsWith("http");
+
+const rel = external && !phid ? "noopener noreferrer" : undefined;
+const target = external ? "_blank" : undefined;
+---
+
+{
+  phid ? (
+    <ph-id>
+      <a {rel} {target} {...Astro.props}>
+        <slot />
+      </a>
+    </ph-id>
+  ) : (
+    <a {rel} {target} {...Astro.props}>
+      <slot />
+    </a>
+  )
+}
+
+<script>
+  class Phid extends HTMLElement {
+    connectedCallback() {
+      try {
+        const link = this.querySelector("a");
+        if (!link) {
+          return;
+        }
+
+        const to = new URL(link.href);
+        const params = to.searchParams;
+
+        link.addEventListener("mouseover", () => {
+          if (!window.posthog) {
+            return;
+          }
+
+          const ogHref = link.href;
+          setTimeout(() => {
+            link.href = ogHref;
+          }, 500);
+
+          params.set("phid", window.posthog.get_distinct_id());
+
+          link.href = to.toString();
+        });
+      } catch {
+        // that's fine
+      }
+    }
+  }
+  customElements.define("ph-id", Phid);
+</script>
