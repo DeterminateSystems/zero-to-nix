@@ -50,7 +50,7 @@ const target = external ? "_blank" : undefined;
         const to = new URL(link.href);
         const params = to.searchParams;
 
-        link.addEventListener("mouseover", () => {
+        link.addEventListener("click", () => {
           if (!window.posthog) {
             return;
           }
