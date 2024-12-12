@@ -6,4 +6,17 @@
   });
 
   window.posthog = posthog;
+
+  (() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const phid = urlParams.get("phid");
+
+    if (phid) {
+      if (window.posthog) {
+        window.posthog.alias(phid)
+      }
+      urlParams.delete("phid");
+      window.location.search = urlParams.toString();
+    }
+  })();
 </script>
