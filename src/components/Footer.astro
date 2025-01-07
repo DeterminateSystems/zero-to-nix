@@ -2,7 +2,7 @@
 import Link from "./Link.astro";
 import HorizontalContainer from "./HorizontalContainer.astro";
 
-const year = new Date().getFullYear();
+const currentYear = new Date().getFullYear();
 ---
 
 <footer>
@@ -11,7 +11,7 @@ const year = new Date().getFullYear();
       <p
         class="tracking-tight text-gray dark:text-gray md:text-base lg:text-lg"
       >
-        Copyright &copy; {year}
+        Copyright &copy; {currentYear}
         <Link href="https://determinate.systems" class="hover:text-primary">
           Determinate Systems, Inc.
         </Link>
