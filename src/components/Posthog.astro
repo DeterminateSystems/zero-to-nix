@@ -8,15 +8,16 @@
   window.posthog = posthog;
 
   (() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const phid = urlParams.get("phid");
+    const newUrl = new URL(window.location.toString());
+    const phid = newUrl.searchParams.get('phid');
 
     if (phid) {
       if (window.posthog) {
         window.posthog.alias(phid)
       }
-      urlParams.delete("phid");
-      window.location.search = urlParams.toString();
+
+      newUrl.searchParams.delete('phid');
+      window.history.replaceState(window.history.state, '', newUrl);
     }
   })();
 </script>
