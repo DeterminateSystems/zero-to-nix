@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"a">;
@@ -10,9 +11,9 @@ const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === "/" + subpath?.[0];
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<Link href={href} class:list={[className, { active: isActive }]} {...props}>
   <slot />
-</a>
+</Link>
 <style>
   a {
     display: inline-block;

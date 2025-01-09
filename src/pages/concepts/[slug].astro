@@ -12,6 +12,7 @@ import Related from "../../components/Related.astro";
 import ExternalSources from "../../components/ExternalSources.astro";
 import Separator from "../../components/Separator.astro";
 import FeedbackBar from "../../components/FeedbackBar.astro";
+import A from "../../components/mdx/A.astro";
 import H2 from "../../components/mdx/H2.astro";
 import H3 from "../../components/mdx/H3.astro";
 import H4 from "../../components/mdx/H4.astro";
@@ -54,6 +55,7 @@ const relatedConceptPages: { title: string; href: string }[] = (
       <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
         <Content
           components={{
+            a: A,
             h2: H2,
             h3: H3,
             h4: H4,

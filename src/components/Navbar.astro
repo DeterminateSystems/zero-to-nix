@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import { site } from "../site";
 import { Icon } from "astro-icon/components";
 import DrawerToggler from "./DrawerToggler.astro";
@@ -31,24 +32,24 @@ const conceptPages = (await getCollection("concepts")).map(
     <div class="flex items-center justify-between">
       {/* Navbar "brand" */}
       <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
-        <a
+        <Link
           href="/"
           class="text-2xl font-semibold tracking-tight duration-hover hover:text-primary dark:hover:text-light-gray md:text-3xl lg:text-4xl"
         >
           {title}
-        </a>
+        </Link>
 
         <span
           class="flex items-center space-x-1.5 text-sm font-light md:text-base lg:text-lg"
         >
           <span>from</span>
-          <a
+          <Link
             href="https://determinate.systems"
             class="font-semibold duration-hover hover:text-primary dark:hover:text-light-blue"
             target="_blank"
           >
             Determinate Systems
-          </a>
+          </Link>
         </span>
       </div>
 
@@ -56,12 +57,12 @@ const conceptPages = (await getCollection("concepts")).map(
       <div class="flex items-center space-x-4 md:hidden">
         <ThemeSwitcher />
 
-        <a href={githubUrl} target="_blank">
+        <Link href={githubUrl} target="_blank">
           <Icon
             name="radix-icons:github-logo"
             class="size-4 transition duration-hover hover:text-gray dark:hover:text-light-gray md:size-5 lg:size-6"
           />
-        </a>
+        </Link>
 
         <DrawerToggler />
       </div>
@@ -78,12 +79,12 @@ const conceptPages = (await getCollection("concepts")).map(
         {
           navbarLinks.map(({ text, href }) => (
             <li>
-              <a
+              <Link
                 {href}
                 class="text-sm duration-hover hover:text-primary md:text-base lg:text-lg"
               >
                 {text}
-              </a>
+              </Link>
             </li>
           ))
         }
@@ -91,12 +92,12 @@ const conceptPages = (await getCollection("concepts")).map(
         <li class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
           <ThemeSwitcher />
 
-          <a href={githubUrl} target="_blank">
+          <Link href={githubUrl} target="_blank">
             <Icon
               name="radix-icons:github-logo"
               class="size-4 duration-hover hover:text-gray dark:hover:text-light-gray md:size-5 lg:size-6"
             />
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

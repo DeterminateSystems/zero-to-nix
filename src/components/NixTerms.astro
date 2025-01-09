@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import Grid2 from "./Grid2.astro";
 import { site } from "../site";
 
@@ -8,7 +9,7 @@ const { nixTerms } = site;
 <Grid2>
   {
     nixTerms.map(({ title, description, href }) => (
-      <a
+      <Link
         {href}
         class="rounded border-1.5 border-light-gray p-3 transition-colors duration-150 hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:p-5 lg:p-7"
       >
@@ -18,7 +19,7 @@ const { nixTerms } = site;
             {description}
           </h2>
         </div>
-      </a>
+      </Link>
     ))
   }
 </Grid2>

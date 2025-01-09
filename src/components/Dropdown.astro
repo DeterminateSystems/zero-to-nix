@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 type Props = {
   text: string;
   pages: { title: string; href: string }[];
@@ -26,13 +27,13 @@ const { text, pages, ordered = false } = Astro.props;
       {
         pages.map(({ title, href }, idx) => (
           <li>
-            <a
+            <Link
               {href}
               class="block px-4 py-2 text-xs tracking-tight duration-hover hover:bg-primary hover:text-dark hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-sm lg:text-base"
             >
               {ordered && <>{idx + 1}.</>}
               {title}
-            </a>
+            </Link>
           </li>
         ))
       }
