@@ -7,7 +7,7 @@ import Separator from "../components/Separator.astro";
 import FeedbackBar from "../components/FeedbackBar.astro";
 import Brief from "../components/mdx/Brief.astro";
 
-const page = await getEntry("plain", "about");
+const page = await getEntry("plain", "about")!;
 
 const {
   data: { title, description },
