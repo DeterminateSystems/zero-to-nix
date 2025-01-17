@@ -16,6 +16,8 @@ const canonical = new URL(Astro.url.pathname, root);
 const { title: siteTitle, description: siteDescription } = site;
 
 const { title, description, tags } = Astro.props;
+
+const image = `${root}favicon.png`;
 ---
 
 <script is:inline>
@@ -51,6 +53,21 @@ const { title, description, tags } = Astro.props;
   title={title ?? siteTitle}
   description={description ?? siteDescription}
   {canonical}
+  openGraph={{
+    basic: {
+      title: title ?? siteTitle,
+      type: "website",
+      url: canonical,
+      image,
+    },
+  }}
+  twitter={{
+    site: root,
+    title: title ?? siteTitle,
+    description,
+    image,
+    card: "summary"
+  }}
 />
 
 <link
