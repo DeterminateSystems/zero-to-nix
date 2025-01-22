@@ -8,11 +8,15 @@ const {
 } = site;
 ---
 
-<section class="bg-primary py-1.5 md:py-2 lg:py-2.5" x-show="banner" x-cloak>
+<section
+  class="bg-dark py-1.5 text-white dark:bg-white dark:text-dark md:py-2 lg:py-2.5"
+  x-show="banner"
+  x-cloak
+>
   <HorizontalContainer>
     <div class="flex items-center justify-between">
       <p
-        class="text-sm font-light text-white md:text-base lg:text-lg"
+        class="text-sm font-light md:text-base lg:text-lg"
         set:html={md(text)}
       />
 
@@ -23,7 +27,7 @@ const {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="h-4 w-4 stroke-2 text-white hover:text-black md:h-5 md:w-5 lg:h-6 lg:w-6"
+          class="h-4 w-4 stroke-2 text-white duration-hover hover:text-nix-light-blue dark:text-dark dark:hover:text-nix-light-blue md:h-5 md:w-5 lg:h-6 lg:w-6"
         >
           <path
             stroke-linecap="round"

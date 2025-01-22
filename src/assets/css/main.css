@@ -11,3 +11,7 @@
 [x-cloak] {
   display: none !important;
 }
+
+.banner-link {
+  @apply font-semibold duration-hover hover:text-nix-light-blue;
+}
