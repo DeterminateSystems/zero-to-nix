@@ -15,6 +15,8 @@
       echo "Run \"exit\" to exit this environment."
       echo "Then run \"nix develop github:DeterminateSystems/zero-to-nix#hook\" again to re-trigger this hook."
     '';
+
+    FUNNY_JOKE = "What kind of phone does a turtle use? A shell phone!";
   };
 
   cpp = pkgs.mkShell {
