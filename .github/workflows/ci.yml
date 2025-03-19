@@ -28,7 +28,7 @@ jobs:
           key: lychee-link-check
           restore-keys: cache-lychee-
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
       - name: Run Nix CI suite
         run: nix develop --command ci
       - name: Check external links
@@ -64,7 +64,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
 
       - name: Build packages in pkg templates
         run: ./scripts/build-pkg-templates.sh
