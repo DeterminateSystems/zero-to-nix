@@ -31,7 +31,7 @@
 
           src = self;
 
-          npmDepsHash = "sha256-RR0uypDfVTJ/EMOxUnxdLnBbEZasHO+LqLkRAb2mDyg=";
+          npmDepsHash = "sha256-udv3w6o1n6cvYEGGXteOWt2CXFxKQKGXiLG96i1gqMg=";
 
           npmBuild = "npm run build";
 
