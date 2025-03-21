@@ -8,23 +8,21 @@ jobs:
   push-dev-shell-to-flakehub-cache:
     runs-on: ${{ matrix.systems.runner }}
     permissions:
-      id-token: "write"
-      contents: "read"
+      id-token: write
+      contents: read
     strategy:
       matrix:
         systems:
-          - nix-system: "aarch64-darwin"
-            runner: "macos-latest-xlarge"
-          - nix-system: "x86_64-darwin"
-            runner: "macos-13-large"
-          - nix-system: "x86_64-linux"
-            runner: "ubuntu-22.04"
+          - nix-system: aarch64-darwin
+            runner: macos-latest-xlarge
+          - nix-system: x86_64-darwin
+            runner: macos-latest-xlarge
+          - nix-system: x86_64-linux
+            runner: UbuntuLatest32Cores128G
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
-        with:
-          use-flakehub: true
       - name: Build dev shell for ${{ matrix.systems.nix-system }} on ${{ matrix.systems.runner }}
         run: |
           nix build .#devShells.${{ matrix.systems.nix-system }}.default
