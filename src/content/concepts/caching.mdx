@@ -48,7 +48,7 @@ Here's what Nix does whenever it realises a derivation:
    If so, it uses that rather than building it.
    If not...
 
-1. It checks a if the store path exists in a configured [binary cache](#binary-caches).
+1. It checks if the store path exists in a configured [binary cache](#binary-caches).
 
 1. If the store path exists neither in a configured [Nix store][store] nor in a configured [binary cache](#binary-caches), Nix builds the derivation from scratch, recursively following all of the steps in this list, using already-realised packages whenever possible and building only what is necessary.
 
