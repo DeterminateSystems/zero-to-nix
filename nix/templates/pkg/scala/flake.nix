@@ -5,7 +5,9 @@
 
   # Flake inputs
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.491812.tar.gz";
+    # Latest stable Nixpkgs
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    # Helper library for Scala
     sbt = {
       url = "github:zaninime/sbt-derivation";
       inputs.nixpkgs.follows = "nixpkgs";
