@@ -288,9 +288,11 @@ Here's the package definition that builds our JavaScript package:
 
       src = self;
 
-      npmDepsHash = "sha256-A/q4C8Ox1InaJ/320+pU9uBUv6zqTKlzzOmJUvzBOnI=";
+      npmDeps = pkgs.importNpmLock {
+        npmRoot = ./.;
+      };
 
-      npmBuild = "npm run build";
+      npmConfigHook = pkgs.importNpmLock.npmConfigHook;
 
       installPhase = ''
         mkdir $out
