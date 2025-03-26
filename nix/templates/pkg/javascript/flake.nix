@@ -31,7 +31,9 @@
 
           src = self;
 
-          npmDepsHash = "sha256-wfuvrCG5H4/Igqt6pyrKPHBblgGdkGNOHWu7i6DTWEE=";
+          npmDeps = pkgs.importNpmLock {
+            npmRoot = ./.;
+          };
 
           npmConfigHook = pkgs.importNpmLock.npmConfigHook;
 
