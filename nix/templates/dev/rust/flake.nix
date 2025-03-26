@@ -3,8 +3,10 @@
 
   # Flake inputs
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
-    rust-overlay.url = "github:oxalica/rust-overlay"; # A helper for Rust + Nix
+    # Latest stable Nixpkgs
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    # A helper library for Rust + Nix
+    rust-overlay.url = "https://flakehub.com/f/oxalica/rust-overlay/*";
   };
 
   # Flake outputs
@@ -16,8 +18,8 @@
         (import rust-overlay)
         # Provides a `rustToolchain` attribute for Nixpkgs that we can use to
         # create a Rust environment
-        (self: super: {
-          rustToolchain = super.rust-bin.stable.latest.default;
+        (final: prev: {
+          rustToolchain = prev.rust-bin.stable.latest.default;
         })
       ];
 

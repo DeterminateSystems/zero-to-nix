@@ -2,9 +2,10 @@
   description = "Rust example flake for Zero to Nix";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
-    # Provides helpers for Rust toolchains
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    # Latest stable Nixpkgs
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    # A helper library for Rust + Nix
+    rust-overlay.url = "https://flakehub.com/f/oxalica/rust-overlay/*";
   };
 
   outputs = { self, nixpkgs, rust-overlay }:
