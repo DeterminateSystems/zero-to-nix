@@ -2,6 +2,7 @@
   description = "Go example flake for Zero to Nix";
 
   inputs = {
+    # Latest stable Nixpkgs
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
   };
 
