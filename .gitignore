@@ -2,7 +2,7 @@
 /node_modules/
 
 # Nix artifacts
-result
+result*
 
 # htmltest artifacts
 /tmp/
