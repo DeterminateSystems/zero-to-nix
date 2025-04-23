@@ -53,7 +53,7 @@ jobs:
     needs: test
     permissions:
       id-token: "write"
-      contents: "read"
+      contents: "write"
     strategy:
       matrix:
         systems:
@@ -72,3 +72,24 @@ jobs:
 
       - name: Build packages in pkg templates
         run: ./scripts/build-pkg-templates.sh
+
+      - name: Fix hash mismatches
+        if: failure() && github.event_name == 'pull_request'
+        id: fix-hashes
+        run: |
+          git stash --include-untracked
+          git fetch --depth=1 origin "$GITHUB_HEAD_REF"
+          git checkout -B "$GITHUB_HEAD_REF" "${{ github.event.pull_request.head.sha }}"
+
+          determinate-nixd fix hashes --auto-apply
+
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add --update --ignore-removal .
+            git commit -m "[dependabot skip] Automatically fix Nix hashes"
+            git push origin "$GITHUB_HEAD_REF"
+          fi
+
+          git checkout -
+          git stash pop || true
