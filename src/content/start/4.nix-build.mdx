@@ -283,14 +283,16 @@ Here's the package definition that builds our JavaScript package:
       name = "zero-to-nix-javascript";
 
       buildInputs = with pkgs; [
-        nodejs_18
+        nodejs_latest
       ];
 
       src = self;
 
-      npmDepsHash = "sha256-A/q4C8Ox1InaJ/320+pU9uBUv6zqTKlzzOmJUvzBOnI=";
+      npmDeps = pkgs.importNpmLock {
+        npmRoot = ./.;
+      };
 
-      npmBuild = "npm run build";
+      npmConfigHook = pkgs.importNpmLock.npmConfigHook;
 
       installPhase = ''
         mkdir $out
@@ -355,7 +357,8 @@ Here's the package definition that enables us to build this Go package:
     default = pkgs.buildGoModule {
       name = "zero-to-nix-go";
       src = self;
-      vendorHash = "sha256-Cy1/QqbO2MyYgqJZKxrt1FZzLSgXbhSK3ceFPUlFujw=";
+      vendorHash = "sha256-Ay1/QqbO2MyYgqJZKxrt1FZzLSgXbhSK3ceFPUlFujw=";
+      goSum = ./go.sum;
       subPackages = [ "cmd/zero-to-nix-go" ];
     };
   });

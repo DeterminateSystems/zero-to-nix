@@ -31,9 +31,11 @@
 
           src = self;
 
-          npmDepsHash = "sha256-wfuvrCG5H4/Igqt6pyrKPHBblgGdkGNOHWu7i6DTWEE=";
+          npmDeps = pkgs.importNpmLock {
+            npmRoot = ./.;
+          };
 
-          npmBuild = "npm run build";
+          npmConfigHook = pkgs.importNpmLock.npmConfigHook;
 
           installPhase = ''
             mkdir $out
