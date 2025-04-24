@@ -357,7 +357,8 @@ Here's the package definition that enables us to build this Go package:
     default = pkgs.buildGoModule {
       name = "zero-to-nix-go";
       src = self;
-      vendorHash = "sha256-Cy1/QqbO2MyYgqJZKxrt1FZzLSgXbhSK3ceFPUlFujw=";
+      vendorHash = "sha256-Ay1/QqbO2MyYgqJZKxrt1FZzLSgXbhSK3ceFPUlFujw=";
+      goSum = ./go.sum;
       subPackages = [ "cmd/zero-to-nix-go" ];
     };
   });
