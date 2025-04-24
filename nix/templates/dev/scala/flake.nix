@@ -3,7 +3,8 @@
 
   # Flake inputs
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
+    # Latest stable Nixpkgs
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
   };
 
   # Flake outputs
@@ -11,8 +12,8 @@
     let
       # Overlays enable you to customize the Nixpkgs attribute set
       overlays = [
-        (self: super:
-          let jdk = super.openjdk17; in
+        (final: prev:
+          let jdk = prev.openjdk17; in
           # sets jre/jdk overrides that use the openjdk17 package
           {
             jre = jdk;
