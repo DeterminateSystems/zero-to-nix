@@ -8,12 +8,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: UbuntuLatest32Cores128G
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
-      id-token: "write"
-      contents: "read"
+      id-token: write
+      contents: read
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -52,17 +52,17 @@ jobs:
     runs-on: ${{ matrix.systems.runner }}
     needs: test
     permissions:
-      id-token: "write"
-      contents: "write"
+      id-token: write
+      contents: write
     strategy:
       matrix:
         systems:
-          - nix-system: "aarch64-darwin"
-            runner: "macos-latest-xlarge"
-          - nix-system: "x86_64-darwin"
-            runner: "macos-13-large"
-          - nix-system: "x86_64-linux"
-            runner: "ubuntu-22.04"
+          - nix-system: aarch64-darwin
+            runner: macos-latest-xlarge
+          - nix-system: x86_64-darwin
+            runner: macos-latest-xlarge
+          - nix-system: x86_64-linux
+            runner: UbuntuLatest32Cores128G
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
