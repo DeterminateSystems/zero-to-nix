@@ -42,7 +42,7 @@
   };
 
   python = pkgs.mkShell {
-    packages = with pkgs; [ python39 ];
+    packages = with pkgs; [ python313 ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for Python!"
