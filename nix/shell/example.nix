@@ -74,7 +74,7 @@
   };
 
   multi = pkgs.mkShell {
-    packages = with pkgs; [ python39 kubectl openssl opentofu ];
+    packages = with pkgs; [ python313 kubectl openssl opentofu ];
 
     shellHook = ''
       echo "Welcome to a very mixed Nix development environment!"
