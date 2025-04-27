@@ -48,6 +48,31 @@ jobs:
         run: |
           ./scripts/check-templates.sh
 
+  build-example-dev-shells:
+    runs-on: ${{ matrix.systems.runner }}
+    needs: test
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      matrix:
+        systems:
+          - nix-system: aarch64-darwin
+            runner: macos-latest-xlarge
+          - nix-system: x86_64-darwin
+            runner: macos-latest-xlarge
+          - nix-system: x86_64-linux
+            runner: UbuntuLatest32Cores128G
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          determinate: true
+      - uses: DeterminateSystems/flakehub-cache-action@main
+
+      - name: Build example dev shells
+        run: ./scripts/build-example-dev-shells.sh
+
   build-pkg-templates:
     runs-on: ${{ matrix.systems.runner }}
     needs: test
