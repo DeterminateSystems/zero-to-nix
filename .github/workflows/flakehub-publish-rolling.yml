@@ -3,18 +3,18 @@ name: "Publish every Git push to main to FlakeHub"
 on:
   push:
     branches:
-      - "main"
+      - main
 
 jobs:
   flakehub-publish:
-    runs-on: "UbuntuLatest32Cores128G"
+    runs-on: UbuntuLatest32Cores128G
     permissions:
-      id-token: "write"
-      contents: "read"
+      id-token: write
+      contents: read
     steps:
-      - uses: "actions/checkout@v4"
-      - uses: "DeterminateSystems/nix-installer-action@main"
-      - uses: "DeterminateSystems/flakehub-push@main"
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/determinate-nix-action@main
+      - uses: DeterminateSystems/flakehub-push@main
         with:
           rolling: true
-          visibility: "public"
+          visibility: public
