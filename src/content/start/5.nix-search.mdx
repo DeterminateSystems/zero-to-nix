@@ -69,7 +69,7 @@ This can be useful if you want to parse the output using a tool like [jq].
 
 The web interface at [search.nixos.org][search] has a few advantages over the [`nix search`](#nix-search-command) command:
 
-- It enables you to select a release channel for [Nixpkgs], such as [22.11] and [unstable]
+- It enables you to select a release channel for [Nixpkgs], such as [25.05] and [unstable]
 - It enables you to search across a range of [public flakes][public-flakes] beyond Nixpkgs (those flakes are listed [here][flakes-list])
 
 ## Exploring a flake with the `nix flake show` command \{#nix-flake-show}
@@ -110,7 +110,7 @@ One thing you'll notice about the search output for `nix search`, [search.nixos.
 That's because Nix works in a fundamentally [system-specific] way.
 The `cargo` package on a Linux machine is considered a _different package_ from `cargo` on a non-Linux system.
 
-[22.11]: https://github.com/nixOS/nixpkgs/tree/22.11
+[25.05]: https://github.com/nixOS/nixpkgs/tree/25.05
 [cargo]: https://github.com/rust-lang/cargo
 [cargo-about]: https://github.com/EmbarkStudios/cargo-about
 [cargo-audit]: https://github.com/RustSec/rustsec/tree/main/cargo-audit
