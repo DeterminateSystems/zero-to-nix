@@ -29,7 +29,7 @@
         default = pkgs.mkShell {
           # The Nix packages provided in the environment
           packages = with pkgs; [
-            nodejs_18 # Node.js 18, plus npm, npx, and corepack
+            nodejs_20 # Node.js 20, plus npm, npx, and corepack
           ];
         };
       });
