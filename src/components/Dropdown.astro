@@ -31,7 +31,7 @@ const { text, pages, ordered = false } = Astro.props;
               {href}
               class="block px-4 py-2 text-xs tracking-tight duration-hover hover:bg-primary hover:text-dark hover:text-white dark:hover:bg-white dark:hover:text-dark md:text-sm lg:text-base"
             >
-              {ordered && <>{idx + 1}.</>}
+              {ordered && <>{idx + 1}.&nbsp;</>}
               {title}
             </Link>
           </li>
