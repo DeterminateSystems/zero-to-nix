@@ -22,7 +22,7 @@ And that configurability runs quite deep, including things like the system's [bo
 
 In addition to being a fundamentally [configurable](#configuration) distribution, Nix provides NixOS with a variety of unique [features](#features), such as [atomic system updates](#atomicity), [system rollbacks](#rollbacks), and robust [multi-user support](#multi-user).
 
-## The role of Nix \{#nix}
+## The role of Nix
 
 Everything in a NixOS system is configured using the [Nix language][lang] and the NixOS [module system](#modules).
 Rather than installing [packages] and setting up your system in an ad-hoc way, you can [declare][declarative] which specific system you'd like to have&mdash;networking stack, filesystem, users, and more&mdash;and Nix builds the system for you from the ground up, installing all the required [packages], providing necessary configuration files, and making other declared changes.
@@ -38,7 +38,7 @@ Unlike other Linux distributions, updates to NixOS system state constitute atomi
 Each time you run `nixos-rebuild switch` to apply your desired [system configuration](#configuration), Nix increments the generation.
 One of the core advantages of generations is that you can switch between [atomic versions](#atomicity) of your system state at will.
 
-### Atomic system updates \{#atomicity}
+### Atomic system updates
 
 Any time you change your NixOS [configuration](#configuration), you can apply that configuration by running [`nixos-rebuild switch`][rebuild].
 When you do that, NixOS installs or upgrades any [packages] that need to be installed or upgraded according to your system configuration.
@@ -49,7 +49,7 @@ And as is always the case with Nix, each package is [realised] from scratch and 
 As with [system updates](#atomicity), NixOS enables you to roll your system back to a previous generation using `nixos-rebuild switch --rollback`.
 Rollbacks are fully [atomic](#atomicity) and include [packages], system configuration, and anything else specified in the NixOS configuration.
 
-### Multi-user support \{#multi-user}
+### Multi-user support
 
 NixOS doesn't follow the [Filesystem Hierarchy Standard][fhs], instead using the [Nix store][store] for everything, including not just [packages] but also [derivations] and other artifacts.
 This enables NixOS to support an indefinite number of user _profiles_ in an elegant way.

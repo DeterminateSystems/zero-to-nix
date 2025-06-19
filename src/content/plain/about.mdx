@@ -1,25 +1,25 @@
 ---
-title: About Zero to Nix
-description: What it is, why we made it, and how it fits into the [Nix](/concepts/nix) ecosystem
+제목: Zero to Nix 소개
+설명: Zero to Nix란 무엇이며, 왜 만들었고, [Nix](/concepts/nix) 생태계에 어떻게 적용되는지
 ---
 
-[**Zero to Nix**](/) is a highly opinionated learning resource for [Nix] created by Determinate Systems. We believe Zero to Nix fills a major gap for two reasons:
+[**Zero to Nix**](/)는 Determinate Systems에서 만든 [Nix] 학습 자료입니다. 저희는 Zero to Nix가 두 가지 이유로 Nix의 주요 공백을 메운다고 생각합니다.
 
-1. We find most of the existing [Nix] documentation to be difficult to navigate for beginners.
-  Sources like the [Nixpkgs manual][manual], the [official website][nix], [Nix Pills][pills], and semi-official sources like [nix.dev] are all great once you have a strong sense of how Nix works and what it provides.
-  We encourage you to explore them and we even link them in many places in Zero to Nix.
-  But together they can be daunting to the uninitiated, and we wanted to provide a gentle "front end" to the official documentation sources.
-1. We strongly believe that [flakes] are the future of Nix and that people onboarding into Nix should use them from the get-go.
-  But flakes are currently marked as an experimental feature of Nix and are thus not discussed in any of the official Nix documentation sources (with the exception of the [Wiki entry][wiki] for flakes).
+1. 기존 [Nix] 문서의 대부분은 초보자가 탐색하기 어렵다고 생각합니다.
+[Nixpkgs 매뉴얼][manual], [공식 웹사이트][nix], [Nix Pills][pills], 그리고 [nix.dev]와 같은 준공식 자료는 Nix의 작동 방식과 기능을 제대로 이해하면 매우 유용합니다.
+이러한 자료들을 탐색해 보시기를 권장하며, Zero to Nix의 여러 곳에 링크를 걸어두었습니다.
+하지만 이러한 자료들을 함께 살펴보는 것은 초보자에게는 어려울 수 있으므로, 공식 문서 자료에 대한 간편한 "프런트엔드"를 제공하고자 했습니다.
+1. 저희는 [플레이크]가 Nix의 미래라고 확신하며, Nix에 온보딩하는 사람들은 처음부터 플레이크를 사용해야 한다고 생각합니다.
+하지만 플레이크는 현재 Nix의 실험적 기능으로 표시되어 있으며, 따라서 공식 Nix 문서 어디에서도 논의되지 않습니다(플레이크 관련 [위키 항목][위키]는 예외).
 
-## What's opinionated about Zero to Nix
+## Zero to Nix에 대한 의견
 
-First, as mentioned above, Zero to Nix is opinionated because it advocates learning and using [flakes] and treating [channels] as deprecated. But Zero to Nix also deviates from official recommendations in that it recommends installing Nix using the [Determinate Nix Installer][nix-installer] rather than the [official Nix installation script][install].
+우선, 위에서 언급했듯이 Zero to Nix는 [플레이크]를 배우고 사용하고 [채널]은 더 이상 지원되지 않는다고 주장하기 때문에 의견이 분분합니다. 하지만 Zero to Nix는 [공식 Nix 설치 스크립트][install]가 아닌 [확정 Nix 설치 프로그램][nix-installer]를 사용하여 Nix를 설치할 것을 권장한다는 점에서 공식 권장 사항과 다릅니다.
 
 <Brief id="nix-installer-differences" />
 
-There's nothing *wrong* with the official Nix installation script&mdash;far from it!&mdash;and we don't dissuade you from using it.
-But we feel pretty strongly that the Determinate Nix Installer is more likely to offer a smooth experience for newcomers.
+공식 Nix 설치 스크립트 자체에는 *문제*가 전혀 없으며, 사용을 권장하지도 않습니다.
+하지만 확정 Nix 설치 프로그램이 초보자에게 더 원활한 경험을 제공할 가능성이 높다고 생각합니다.
 
 [channels]: /concepts/channels
 [flakes]: /concepts/flakes

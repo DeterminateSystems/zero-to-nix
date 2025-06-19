@@ -51,7 +51,7 @@ We at Determinate Systems have actively contributed to Nix as an open source pro
 We have also created [Determinate Nix][det-nix], a downstream distribution of Nix intended for enterprise.
 </Admonition>
 
-## The Nix CLI \{#cli}
+## The Nix CLI
 
 There are two different Nix CLIs currently active:
 
@@ -59,7 +59,7 @@ There are two different Nix CLIs currently active:
   It wraps all Nix functionality into a single `nix` executable and supports [flakes]
 - The [original Nix CLI](#original-cli), which is currently standard but, from the standpoint of [Determinate Systems][ds], _not_ recommended for using Nix.
 
-### The unified CLI \{#unified-cli}
+### The unified CLI
 
 The _unified CLI_ is a still-experimental way of using Nix that involves just one executable called `nix`.
 _All_ Nix functionality is wrapped into this tool, including commands like `nix build` for building [packages] instead of the old `nix-build` tool, `nix develop` for activating Nix [development environments][env] instead of the old `nix-shell` tool, `nix store` for managing the [Nix store][store] instead of the old `nix-store` tool, and more.
@@ -67,7 +67,7 @@ Because the unified CLI isn't yet official, it needs to be explicitly enabled in
 
 We won't cover setting up the unified CLI here because the [Determinate Nix Installer][install] both installs it and enables it in your Nix configuration.
 
-### The original CLI \{#original-cli}
+### The original CLI
 
 The _original CLI_ for Nix is still the official CLI but, as we mention above, not recommended for new Nix users for two reasons:
 

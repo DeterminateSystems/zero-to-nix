@@ -1,20 +1,20 @@
 ---
-title: Build a package using Nix
+title: Nix를 사용하여 패키지 빌드
 order: 4
 summary:
   [
-    "Build a Nix [package](/concepts/packages) defined in [Nixpkgs](/concepts/nixpkgs)",
-    "Run the package from the local directory",
-    "Initialize a [flake template](/concepts/flakes#templates) in your preferred programming language",
-    "Build a [Nix package](/concepts/packages) from the `flake.nix` in the template",
+    "[Nixpkgs](/concepts/nixpkgs)에 정의된 Nix [패키지](/concepts/packages)를 빌드합니다.",
+    "로컬 디렉터리에서 패키지를 실행합니다.",
+    "원하는 프로그래밍 언어로 [플레이크 템플릿](/concepts/flakes#templates)을 초기화합니다.",
+    "템플릿의 `flake.nix`에서 [Nix 패키지](/concepts/packages)를 빌드합니다.",
   ]
 ---
+[Nix]는 다양한 기능을 제공하지만, [패키지 관리][pkg]는 아마도 가장 잘 알려진 기능일 것입니다. 이 튜토리얼에서는 [설치된 Nix CLI][install]를 사용하여 [Nixpkgs]에 포함된 Nix [패키지]를 빌드하고 실행해 보겠습니다. 이 가이드의 후반부에서는 로컬 [flake]에 정의된 Nix 패키지를 빌드하고 실행해 보겠습니다.
 
-While [Nix] can do many things, [package management][pkg] is the thing that it's perhaps best known for. In this tutorial, we'll use our [installed Nix CLI][install] to build and run some Nix [packages] included in [Nixpkgs]. Later in the guide we'll build and run a Nix package defined in a local [flake].
+## Nixpkgs에서 패키지 빌드
 
-## Build a package from Nixpkgs \{#nixpkgs}
+먼저 [bat]을 빌드해 보겠습니다. [bat]은 [Rust]로 작성된 [cat]의 구문 강조 버전이며, [Nixpkgs]에 정의된 Nix 패키지가 포함되어 있습니다. 빈 디렉터리에 빌드합니다(쓰기 권한이 있는 디렉터리에서 실행해야 합니다).
 
-Let's start by building [bat], a syntax-highlighted version of [cat] written in [Rust] that has a Nix package defined in [Nixpkgs], in an empty directory (make sure to run this in a directory where you have write access):
 
 ```shell title="Build the bat package locally"
 mkdir build-nix-package && cd build-nix-package
@@ -50,8 +50,7 @@ You can now run bat:
 :rocket: **Success**!
 You've built and run a package using Nix.
 
-### Build a package for tools written in `$LANGUAGE` \{#language-specific}
-
+### Build a package for tools written in `$LANGUAGE`
 One of the great things about Nix is that package builds are extremely flexible, which enables you to create packages for things written in just about any programming language. In this section, we'll explore that by building and running packages for tools written in a variety of languages. Select one below to see some examples:
 
 <Languages />
@@ -132,7 +131,7 @@ To run Home Manager:
 
 Upstreaming your packages to Nixpkgs is always an option, but it's good to bear in mind that with Nix you can distribute packages via any public Git repository with a [`flake.nix`][flake].
 
-## Build a package in a local flake \{#flake}
+## Build a package in a local flake
 
 [Earlier](#nixpkgs) in this guide, we built a Nix package defined in [Nixpkgs] to get a sense of some of the mechanics of that process.
 In this guide, we'll dig a bit deeper and build a Nix package defined in a local [Nix flake][flake].

@@ -1,44 +1,47 @@
 ---
-title: Get Nix running on your system
+title: 시스템에서 Nix를 실행하기
 order: 1
 summary:
   [
-    "Get [Nix](/concepts/nix) running on your Linux or macOS system using [nix-installer](/concepts/nix-installer)",
-    "Verify that your installed Nix is working as expected",
+    "[nix-installer](/concepts/nix-installer)를 사용하여 Linux 또는 macOS 시스템에서 [Nix](/concepts/nix)를 실행하기.",
+    "설치된 Nix가 예상대로 작동하는지 확인하기.",
   ]
 ---
 
-<Admonition success open title="The target audience for the quick start" id="quick-start-audience">
-We wrote this [Zero to Nix][z2n] quick start with one specific audience in mind: people who have heard about [Nix] but don't yet know much about it and aren't quite sure where to start with the learning process.
-It's intended less as a how-to guide for using Nix in your everyday workflows and more to provide a glimpse into Nix's feature set and to provide some of those "a-ha!" moments that make you feel empowered to go further.
+<Admonition success open title="빠른 시작을 위한 타겟층" id="quick-start-audience">
 
-If you're already fairly familiar with Nix and are looking for specific guidance on using it in your day job, you may still get some value out of the quick start but you may be better served with more practical, guide-driven resources like [nix.dev].
+이 [Zero to Nix][z2n] 빠른 시작 가이드는 [Nix]에 대해 들어봤지만 아직 잘 모르고 어디서부터 시작해야 할지 모르는 분들을 위해 작성되었습니다.
+이 가이드는 일상적인 워크플로우에서 Nix를 사용하는 방법을 안내하는 가이드라기보다는, Nix의 기능을 간략하게 살펴보고, 더 나아가도록 힘을 실어주는 "아하!" 순간을 선사하기 위해 제작되었습니다.
+
+Nix에 대해 이미 어느 정도 알고 있고 일상 업무에 사용하기 위한 구체적인 지침을 찾고 있다면 빠른 시작을 통해 어느 정도 가치를 얻을 수 있지만 [nix.dev]와 같이 보다 실용적이고 가이드 중심의 리소스를 활용하는 것이 더 나을 수 있습니다.
+
 </Admonition>
 
-**Welcome**!
-It's great to see that you're interested in [Nix].
-In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
+**환영합니다**!
+[Nix]에 관심을 가져주셔서 감사합니다.
+이 [빠른 시작][시작]에서는 시스템에 Nix를 설치하고, Nix를 사용하여 [개발 환경 구축][dev] 및 [패키지 빌드][build]와 같은 몇 가지 실질적인 작업을 수행하여 Nix의 기능을 간략하게 살펴보겠습니다.
 
-We recommend installing Nix using the [Determinate Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system.
-The installer supports these platforms:
+[Determinate Systems][detsys]에서 제공하는 [Determinate Nix 설치 프로그램][nix-installer]를 사용하여 Nix를 설치하는 것을 권장합니다. 이 도구는 사용자 시스템에 맞게 설치 프로세스를 조정합니다.
+설치 프로그램은 다음 플랫폼을 지원합니다.
 
-- macOS on 64-bit ARM and 64-bit AMD/Intel
-- Linux on 64-bit ARM and 64-bit AMD/Intel
-- [Windows Subsystem for Linux][wsl] (WSL) on 64-bit ARM and 64-bit AMD/Intel
-- [Podman] Linux containers
-- [Docker] containers
+- 64비트 ARM 및 64비트 AMD/Intel 기반 macOS
+- 64비트 ARM 및 64비트 AMD/Intel 기반 Linux
+- 64비트 ARM 및 64비트 AMD/Intel 기반 [Windows Subsystem for Linux][wsl] (WSL)
+- [Podman] Linux 컨테이너
+- [Docker] 컨테이너
 - [Valve Steam Deck][steamdeck] (SteamOS)
 
-## Run the installer \{#run}
+## 설치 프로그램을 실행하기.
 
 ```shell title="One command to install Nix"
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-If you have concerns about the "curl to Bash" approach you have two options:
+"curl to Bash" 방식에 대해 우려 사항이 있으시면 두 가지 옵션이 있습니다.
 
-1. You can download a binary for the most recent version of the Determinate Nix Installer directly from the [releases] page and run it.
-1. You can examine the installation script [here][script] then download and run it:
+1. [releases] 페이지에서 최신 버전의 Determinate Nix 설치 프로그램 바이너리를 직접 다운로드하여 실행할 수 있습니다.
+1. 설치 스크립트를 [여기][script]에서 확인한 후 다운로드하여 실행할 수 있습니다.
+
 
    ```shell title="Inspect the script, then install"
    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix > nix-installer.sh
@@ -46,35 +49,34 @@ If you have concerns about the "curl to Bash" approach you have two options:
    ./nix-installer.sh install
    ```
 
-<Admonition info title="Why aren't we using the official Nix installation script here?" id="why-nix-installer">
-We believe that the Determinate Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
-Unlike many tools, Nix needs to make several changes to your system in order to work properly, such as creating a new `/nix` directory, configuring your shell profile, and creating several new system users and groups.
+<Admonition info title="여기서 공식 Nix 설치 스크립트를 사용하지 않는 이유?" id="why-nix-installer">
+Determinate Nix Installer는 Nix를 처음 사용하는 사용자에게 [공식 Nix 설치 스크립트][공식]보다 더욱 원활한 환경을 제공한다고 생각합니다.
+다른 많은 도구와 달리 Nix는 제대로 작동하려면 새 `/nix` 디렉터리 생성, 셸 프로필 구성, 여러 개의 새 시스템 사용자 및 그룹 생성 등 시스템에 여러 가지 변경 작업을 수행해야 합니다.
 
-The Determinate Nix Installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by the installation process.
-It also installs Nix with [Nix flakes][flakes] enabled while the official installer requires you to enable flakes manually.
+Determinate Nix Installer는 공식 Nix 설치 스크립트보다 개선되어 설치 과정에서 발생한 모든 시스템 변경 사항을 단 하나의 명령으로 취소할 수 있습니다.
+또한 공식 설치 프로그램에서는 flakes를 수동으로 활성화해야 하지만, Determinate Nix Installer는 [Nix flakes][flakes]를 활성화하여 Nix를 설치합니다.
 
-See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Determinate Nix Installer][nix-installer] concept doc if you'd like more background.
+Nix를 제거해야 하는 경우 [Nix 제거][제거] 가이드를 참조하고, 더 자세한 배경 정보는 [Determinate Nix Installer][nix-installer] 개념 문서를 참조하세요.
 
 </Admonition>
 
-Validate the displayed plan and approve it to begin the installation process.
-Once the installer has finished, you should see `Nix was installed successfully!` in your terminal.
+표시된 계획을 확인하고 승인하여 설치 프로세스를 시작하세요.
+설치 프로그램이 완료되면 터미널에 `Nix가 성공적으로 설치되었습니다!`라는 메시지가 표시됩니다.
 
-Open a new terminal session and the `nix` executable should be in your `$PATH`.
-To verify that:
+새 터미널 세션을 열면 `nix` 실행 파일이 `$PATH`에 있을 것입니다. 확인 방법:
+
 
 ```shell title="Display the Nix version"
 nix --version
 ```
 
-This should print the version information for Nix.
+Nix 버전 정보가 출력됩니다.
 
-:rocket: **Success**!
-You now have Nix installed and ready to go on your system.
+:rocket: **성공**!
+이제 Nix가 설치되었고 시스템에 사용할 준비가 되었습니다.
 
-<Admonition info title="How to contribute to Zero to Nix" id="contributing">
-  If you're interested in contributing to Zero to Nix, see the
-  [manual][contributing] in the project [repo] for some suggestions.
+<Admonition info title="Zero to Nix에 기여하는 방법" id="contributing">
+  Zero to Nix에 기여하고 싶으시다면 프로젝트 [저장소]의 [매뉴얼][기여]에서 몇 가지 제안을 참조하세요.
 </Admonition>
 
 [apfs]: https://es.wikipedia.org/wiki/Apple_File_System

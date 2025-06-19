@@ -1,53 +1,49 @@
 ---
-title: Search for Nix packages
+title: Nix 패키지 검색
 order: 5
 summary:
   [
-    "Use the `nix search` command to find packages in [Nixpkgs](/concepts/nixpkgs)",
-    "Explore the [search.nixos.org](https://search.nixos.org) web interface",
-    "Use the `nix flake show` command to explore packages output by [flakes](/concepts/flakes)",
-  ]
+    "`nix search` 명령을 사용하여 [Nixpkgs](/concepts/nixpkgs)에서 패키지를 찾으세요.",
+    "[search.nixos.org](https://search.nixos.org) 웹 인터페이스를 살펴보세요.",
+    "`nix flake show` 명령을 사용하여 [flakes](/concepts/flakes)에서 출력된 패키지를 살펴보세요.",
+]
 ---
 
-One great thing about Nix is that there are *tons* of [packages] available in the [Nix ecosystem][ecosystem] that you can use in [Nix development environments][env], in your [NixOS][nixos] installations, and more.
-While [Nixpkgs] is by far the largest Nix package collection&mdash;over 100,000 packages and counting :sunglasses:&mdash;any [Nix flake][flakes] can provide package [outputs].
+Nix의 장점 중 하나는 [Nix 생태계][생태계]에 *엄청나게* 많은 [패키지]가 있으며, [Nix 개발 환경][env], [NixOS][nixos] 설치 등에서 사용할 수 있다는 것입니다.
+[Nixpkgs]는 단연코 가장 큰 Nix 패키지 컬렉션으로, 10만 개가 넘는 패키지가 있으며 그 수는 계속 늘어나고 있습니다. :sunglasses:] 모든 [Nix 플레이크][플레이크]는 패키지 [출력]을 제공할 수 있습니다.
 
-But navigating all of this plenty can be tricky, so in this guide we'll learn how to search for packages in Nixpkgs using the [`nix search`][nix-search] command and using the web application at [search.nixos.org][search].
-Then we'll learn how to explore packages in [other flakes](#nix-flake-show).
+하지만 이 모든 것을 탐색하는 것은 까다로울 수 있으므로, 이 가이드에서는 [`nix search`][nix-search] 명령과 [search.nixos.org][search] 웹 애플리케이션을 사용하여 Nixpkgs에서 패키지를 검색하는 방법을 알아보겠습니다.
+그런 다음 [다른 플레이크](#nix-flake-show)에서 패키지를 탐색하는 방법을 알아보겠습니다.
 
-## The `nix search` command \{#nix-search-command}
+## `nix 검색` 명령어
 
-The [Nix CLI][nix] has a `search` command that you can use to search the packages in a flake based on a search term.
-Let's start by searching [Nixpkgs], which is where we're mostly likely to find packages we want.
-This command will tell us if [cargo] is available in [Nixpkgs]:
+[Nix CLI][nix]에는 플레이크에서 검색어를 기반으로 패키지를 검색할 수 있는 `search` 명령어가 있습니다.
+원하는 패키지를 찾을 가능성이 가장 높은 [Nixpkgs]부터 검색해 보겠습니다.
+다음 명령어는 [Nixpkgs]에서 [cargo]를 사용할 수 있는지 여부를 알려줍니다.
 
-```shell title="Search Nixpkgs using cargo as the search term"
-nix search "https://flakehub.com/f/NixOS/nixpkgs/*" cargo
+```shell title="검색어로 cargo를 사용하여 Nixpkgs 검색"
+nix 검색 "https://flakehub.com/f/NixOS/nixpkgs/*" cargo
 ```
 
-In this command, the `nixpkgs` [flake reference][flake-ref] is shorthand for `github:NixOS/nixpkgs`.
+이 명령에서 `nixpkgs` [플레이크 참조][플레이크-참조]는 `github:NixOS/nixpkgs`의 약어입니다.
 
-<Admonition warning title="This could take a while" id="nix-search">
-  The first time you run `nix search`, the Nix CLI needs to download the full
-  Nix code contents of [Nixpkgs]&mdash;or whichever flake you're
-  searching&mdash;and then cache it. Future `nix search` runs for Nixpkgs should
-  be much speedier. Furthermore, Nixpkgs is the largest flake in existence and
-  running `nix search` on other flakes should be much faster in general.
+<Admonition warning title="시간이 좀 걸릴 수 있습니다" id="nix-search">
+  `nix search`를 처음 실행할 때 Nix CLI는 [Nixpkgs](또는 검색 중인 플레이크)의 전체 Nix 코드 내용을 다운로드한 다음 캐시해야 합니다. 향후 Nixpkgs에 대한 `nix search` 실행 속도는 훨씬 빨라질 것입니다. 더욱이 Nixpkgs는 현존하는 가장 큰 플레이크이며, 다른 플레이크에서 `nix search`를 실행하는 속도는 전반적으로 훨씬 빨라질 것입니다.
 </Admonition>
 
-This brings up many results of the form `legacyPackages.{system}.{package}`, the first of which should look like this on an Apple Silicon (`aarch64-darwin`) system:
+이렇게 하면 `legacyPackages.{system}.{package}` 형식의 결과가 많이 나오는데, 그 중 첫 번째 결과는 Apple Silicon(`aarch64-darwin`) 시스템에서 다음과 같이 표시되어야 합니다.
 
 ```shell title="Example search result"
 * legacyPackages.aarch64-darwin.cargo (1.65.0)
   Downloads your Rust project's dependencies and builds your project
 ```
 
-The system attribute [varies](#system-specificity) on other platforms (you may see `x86_64-linux` or something else).
-After that first result, you should see many others, including packages like [`cargo-about`][cargo-about] and [`cargo-audit`][cargo-audit].
+다른 플랫폼에서는 시스템 속성이 [다릅니다](#시스템별 특성). `x86_64-linux` 또는 다른 이름이 표시될 수 있습니다.
+첫 번째 결과 이후에는 [`cargo-about`][cargo-about] 및 [`cargo-audit`][cargo-audit]와 같은 패키지를 포함한 다른 여러 결과가 표시될 것입니다.
 
 <Admonition
   warning
-  title="`legacyPackages` isn't legacy software"
+  title="`legacyPackages`는 레거시 소프트웨어가 아닙니다"
   id="legacy-packages"
 >
   The `legacyPackages` attribute that you see in the search output is a bit
@@ -57,58 +53,54 @@ After that first result, you should see many others, including packages like [`c
   [here][legacy-comment].
 </Admonition>
 
-You can also output search results as JSON using the `--json` flag:
+`--json` 플래그를 사용하여 검색 결과를 JSON으로 출력할 수도 있습니다.
 
 ```shell title="Output search results as JSON"
 nix search --json nixpkgs cargo
 ```
 
-This can be useful if you want to parse the output using a tool like [jq].
+[jq]와 같은 도구를 사용하여 출력을 구문 분석하려는 경우 유용할 수 있습니다.
 
-## search.nixos.org \{#web}
+## search.nixos.org
 
-The web interface at [search.nixos.org][search] has a few advantages over the [`nix search`](#nix-search-command) command:
+[search.nixos.org][search] 웹 인터페이스는 [`nix search`](#nix-search-command) 명령어에 비해 몇 가지 장점이 있습니다.
 
-- It enables you to select a release channel for [Nixpkgs], such as [25.05] and [unstable]
-- It enables you to search across a range of [public flakes][public-flakes] beyond Nixpkgs (those flakes are listed [here][flakes-list])
+- [25.05] 및 [unstable]과 같은 [Nixpkgs]의 릴리스 채널을 선택할 수 있습니다.
+- Nixpkgs 외에도 다양한 [공개 플레이크][공개 플레이크]를 검색할 수 있습니다(해당 플레이크는 [여기][플레이크 목록]에 나열되어 있습니다).
 
-## Exploring a flake with the `nix flake show` command \{#nix-flake-show}
-
-As an example, let's explore a popular flake for the [Wayland] window system protocol.
+## `nix flake show` 명령어를 사용하여 플레이크 탐색하기
+예를 들어, [Wayland] 윈도우 시스템 프로토콜에서 널리 사용되는 플레이크를 살펴보겠습니다.
 
 ```shell title="Display the flake outputs for the nixpkgs-wayland flake"
 nix flake show "github:nix-community/nixpkgs-wayland"
 ```
 
-You can also display the outputs as JSON:
+출력을 JSON으로 표시할 수도 있습니다.
 
 ```shell title="Display the flake outputs for the nixpkgs-wayland flake as JSON"
 nix flake show --json "github:nix-community/nixpkgs-wayland"
 ```
 
-<Admonition warning title="This could take a while" id="nix-search">
-  The first time you run `nix flake show`, the Nix CLI needs to download the
-  full contents of [`nixpkgs-wayland`][nixpkgs-wayland]&mdash;or whichever flake
-  you're running `nix flake show` on&mdash;and then cache it. Future `nix flake
-  show` runs for the same [flake reference][flake-ref] should be much speedier.
+<Admonition warning title="시간이 좀 걸릴 수 있습니다" id="nix-search">
+  `nix flake show`를 처음 실행할 때 Nix CLI는 [`nixpkgs-wayland`][nixpkgs-wayland] 또는 `nix flake show`를 실행 중인 플레이크의 전체 내용을 다운로드한 다음 캐시해야 합니다. 이후 동일한 [flake reference][flake-ref]에 대한 `nix flake show` 실행은 훨씬 더 빨라질 것입니다.
 </Admonition>
 
 <Admonition
   info
-  title="When to use `nix search` vs. `nix flake show`"
+  title="`nix search`와 `nix flake show`를 사용할 때"
   id="which-search-command"
 >
-  Should you use `nix flake show` or `nix search`? A good rule of thumb is to
-  always use `nix search` with Nixpkgs and to initially use `nix flake show`
-  with other flakes. If the package outputs for `nix flake show` are big enough
-  to be tricky to navigate, use `nix search` for that flake instead.
+  `nix flake show`와 `nix search` 중 무엇을 사용해야 할까요? 좋은 경험 법칙은
+Nixpkgs에서는 항상 `nix search`를 사용하고, 다른 플레이크에서는 처음에는 `nix flake show`를 사용하는 것입니다.
+`nix flake show`의 패키지 출력이 너무 커서 탐색하기 어려운 경우,
+해당 플레이크에 대해 `nix search`를 대신 사용하세요.
 </Admonition>
 
-## System specificity
+## 시스템 특정성
 
-One thing you'll notice about the search output for `nix search`, [search.nixos.org][search], and `nix flake show` is that all the packages listed in the query results are for your current system (`x86_64-linux` for an AMD/Intel Linux system, `aarch64-darwin` for an Apple Silicon system, and so on).
-That's because Nix works in a fundamentally [system-specific] way.
-The `cargo` package on a Linux machine is considered a _different package_ from `cargo` on a non-Linux system.
+`nix search`, [search.nixos.org][search], `nix flake show` 검색 결과에서 눈에 띄는 점 하나는 쿼리 결과에 나열된 모든 패키지가 현재 시스템용이라는 것입니다(AMD/Intel Linux 시스템의 경우 `x86_64-linux`, Apple Silicon 시스템의 경우 `aarch64-darwin` 등).
+이는 Nix가 근본적으로 [시스템 특정적] 방식으로 작동하기 때문입니다.
+Linux 시스템의 `cargo` 패키지는 Linux가 아닌 시스템의 `cargo`와 _다른 패키지_로 간주됩니다.
 
 [25.05]: https://github.com/nixOS/nixpkgs/tree/25.05
 [cargo]: https://github.com/rust-lang/cargo

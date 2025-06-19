@@ -1,27 +1,27 @@
 ---
-title: Learn more
+title: 더 알아보기
 order: 8
 ---
 
-This completes your Zero to Nix journey!
-You just accomplished a great deal:
+이것으로 Zero to Nix 여정이 끝났습니다!
+여러분은 방금 많은 것을 이루셨습니다.
 
-- You [installed Nix][install] on your machine
-- You ran some [programs] using Nix
-- You explored some [Nix development environments][env]
-- You [searched] for packages in [Nixpkgs] and elsewhere in the Nix [ecosystem]
-- You built some [Nix packages][pkg]
+- 컴퓨터에 Nix를 [설치][install]했습니다.
+- Nix를 사용하여 [프로그램]을 실행했습니다.
+- [Nix 개발 환경][env]을 탐색했습니다.
+- [Nixpkgs] 및 Nix [생태계]의 다른 곳에서 패키지를 [검색]했습니다.
+- [Nix 패키지][pkg]를 빌드했습니다.
 
-And that's just to name a few.
-We're thrilled that you've taken the time and made the effort.
-But we hope that your Nix journey continues onward.
-This guide suggests some areas beyond the scope of the quick start where you can apply your newly won Nix knowledge.
+이것들은 몇 가지 예시일 뿐입니다.
+여러분이 시간을 내어 노력해 주셔서 정말 감사합니다.
+하지만 여러분의 Nix 여정이 계속 이어지기를 바랍니다.
+이 가이드에서는 빠른 시작 가이드의 범위를 넘어 새롭게 습득한 Nix 지식을 적용할 수 있는 몇 가지 영역을 제안합니다.
 
-## Build container images \{#containers}
+## 컨테이너 이미지 빌드
 
-[Nix] can build [packages] for many things, from standard tools like [curl] and [Git] to [Vim] plugins to [Visual Studio Code][code] extensions to web services that you write in your preferred language and far beyond.
-We've covered a few of these package types here in the [quick start][start].
-Another powerful Nix feature is that you can use it to build [OCI]-compliant container images and thereby replace tools like [Docker] and [Podman] (at least when it comes to building images).
+[Nix]는 [curl] 및 [Git]과 같은 표준 도구부터 [Vim] 플러그인, [Visual Studio Code][code] 확장 프로그램, 선호하는 언어로 작성하는 웹 서비스 등 다양한 [패키지]를 빌드할 수 있습니다.
+[빠른 시작][시작]에서 이러한 패키지 유형 중 몇 가지를 다루었습니다.
+Nix의 또 다른 강력한 기능은 [OCI] 호환 컨테이너 이미지를 빌드하여 [Docker] 및 [Podman]과 같은 도구를 대체할 수 있다는 것입니다(적어도 이미지 빌드 측면에서는).
 
 <ExternalSources
   showTitle={false}
@@ -53,9 +53,9 @@ Another powerful Nix feature is that you can use it to build [OCI]-compliant con
   ]}
 />
 
-## Use NixOS as your operating system \{#nixos}
+## NixOS를 운영 체제로 사용하세요
 
-[NixOS] is a [Linux] distribution built on Nix and its core principles, such as [reproducibility] and [declarative configuration][declarative].
+[NixOS]는 Nix와 [재현성] 및 [선언적 구성][선언적]과 같은 핵심 원칙을 기반으로 구축된 [Linux] 배포판입니다.
 
 <ExternalSources
   showTitle={false}
@@ -87,9 +87,9 @@ Another powerful Nix feature is that you can use it to build [OCI]-compliant con
   ]}
 />
 
-## Configure your home environment \{#home-environment}
+## 홈 환경 구성하기
 
-[Home Manager][home] is a plugin-based tool built on Nix that you can use to configure a wide range of tools in your home environment, including [Vim], [tmux], [Visual Studio Code][code], [Git], [gpg], and shells like [Bash], [zsh], and [fish].
+[홈 매니저][홈]은 Nix 기반으로 구축된 플러그인 기반 도구로, [Vim], [tmux], [Visual Studio Code][code], [Git], [gpg] 및 [Bash], [zsh], [fish]와 같은 셸을 포함하여 홈 환경에서 다양한 도구를 구성하는 데 사용할 수 있습니다.
 
 <ExternalSources
   showTitle={false}
@@ -121,10 +121,10 @@ Another powerful Nix feature is that you can use it to build [OCI]-compliant con
   ]}
 />
 
-## Continuous integration \{#ci}
+## 지속적 통합
 
-You learned about [Nix development environments][env] earlier in the quick start.
-Because Nix development environments are both cross platform and fully [reproducible][reproducibility], they're quite useful in [continuous integration][ci] environments.
+빠른 시작 과정에서 [Nix 개발 환경][env]에 대해 알아보았습니다.
+Nix 개발 환경은 크로스 플랫폼이며 완벽하게 [재현 가능][재현성]하기 때문에 [지속적 통합][ci] 환경에서 매우 유용합니다.
 
 <ExternalSources
   showTitle={false}
