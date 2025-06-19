@@ -1,71 +1,68 @@
 ---
-title: Caching
+title: 캐싱
 wip: true
 snippet: |
-  The mechanism whereby [Nix](/concepts/nix) uses already-built artifacts rather than building some artifacts unnecessarily
+  [Nix](/concepts/nix)가 일부 아티팩트를 불필요하게 빌드하는 대신 이미 빌드된 아티팩트를 사용하는 메커니즘입니다.
 related: ["closures", "derivations", "nix-store"]
 externalSources:
   [
     {
-      title: "Binary cache",
+      title: "바이너리 캐시",
       href: "https://wiki.nixos.org/wiki/Binary_Cache",
-      source: { title: "The NixOS Wiki", href: "https://wiki.nixos.org" },
+      source: { title: "NixOS 위키", href: "https://wiki.nixos.org" },
     },
     {
-      title: "Setting up a private Nix cache for fun and profit",
+      title: "재미와 수익을 위한 개인 Nix 캐시 설정",
       href: "https://channable.com/tech/setting-up-a-private-nix-cache-for-fun-and-profit",
       source:
-        { title: "The Channable blog", href: "https://www.channable.com/tech" },
+        { title: "Channable 블로그", href: "https://www.channable.com/tech" },
     },
     {
-      title: "Serving a Nix store via HTTP",
+      title: "HTTP를 통해 Nix 스토어 제공",
       href: "https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter",
       source:
         {
-          title: "The Nix manual",
+          title: "Nix 매뉴얼",
           href: "https://nixos.org/manual/nix/stable",
         },
     },
   ]
 ---
 
-By default, Nix uses _caching_ to make [building packages][packages] faster and more efficient.
-This in turn makes other Nix operations that involve building packages, like creating [development environments][dev] and standing up [NixOS] environments, faster and more efficient as well.
+기본적으로 Nix는 _캐싱_을 사용하여 [패키지 빌드][packages]를 더 빠르고 효율적으로 만듭니다.
+이는 결과적으로 [개발 환경][dev] 생성 및 [NixOS] 환경 구축과 같이 패키지 빌드와 관련된 다른 Nix 작업을 더 빠르고 효율적으로 만듭니다.
 
-## Building vs. caching
+## 빌드 대 캐싱
 
-Whenever Nix builds a [package][packages] by [realising] the package's [derivation], it needs to realise the entire [closure] of the derivation, which means that it needs to realise all of the derivations required to build the package's derivation, plus the derivations required to build those derivations, and so on.
-Some packages have tiny closures (dependency trees) while others have massive closures involving thousands of derivations, which makes build efficiency a primary concern in Nix.
+Nix가 패키지의 [파생][derivation]을 [실현][realising]하여 [패키지][packages]를 빌드할 때마다 파생의 전체 [클로저][closure]를 실현해야 합니다. 즉, 패키지의 파생을 빌드하는 데 필요한 모든 파생과 해당 파생을 빌드하는 데 필요한 파생 등을 실현해야 합니다.
+일부 패키지에는 작은 클로저(종속성 트리)가 있는 반면 다른 패키지에는 수천 개의 파생이 포함된 거대한 클로저가 있어 빌드 효율성이 Nix의 주요 관심사입니다.
 
-Here's what Nix does whenever it realises a derivation:
+Nix가 파생을 실현할 때마다 수행하는 작업은 다음과 같습니다.
 
-1. It computes a hash for the derivation and, using that hash, a [Nix store path][store-paths] of this form (for a hypothetical Git package):
+1. 파생에 대한 해시를 계산하고 해당 해시를 사용하여 다음과 같은 형식의 [Nix 스토어 경로][store-paths]를 계산합니다(가상 Git 패키지의 경우).
 
    <NixStorePath pkg="git-2.37.0" hash="f8f72p3xxr20k111mpg4kk93i4cp74qb" />
 
-1. With a store path in hand, Nix determines whether the derivation has already been built.
-   First, Nix checks the configured [Nix store][store] to see if the path `/nix/store/f8f72p3xxr20k111mpg4kk93i4cp74qb/git-2.37.0` already exists.
-   If so, it uses that rather than building it.
-   If not...
+1. 스토어 경로를 확보하면 Nix는 파생이 이미 빌드되었는지 확인합니다.
+   먼저 Nix는 구성된 [Nix 스토어][store]를 확인하여 `/nix/store/f8f72p3xxr20k111mpg4kk93i4cp74qb/git-2.37.0` 경로가 이미 있는지 확인합니다.
+   그렇다면 빌드하는 대신 해당 경로를 사용합니다.
+   그렇지 않으면...
 
-1. It checks if the store path exists in a configured [binary cache](#binary-caches).
+1. 구성된 [바이너리 캐시](#binary-caches)에 스토어 경로가 있는지 확인합니다.
 
-1. If the store path exists neither in a configured [Nix store][store] nor in a configured [binary cache](#binary-caches), Nix builds the derivation from scratch, recursively following all of the steps in this list, using already-realised packages whenever possible and building only what is necessary.
+1. 스토어 경로가 구성된 [Nix 스토어][store]나 구성된 [바이너리 캐시](#binary-caches)에 모두 없으면 Nix는 이 목록의 모든 단계를 재귀적으로 따르고 가능한 경우 이미 실현된 패키지를 사용하고 필요한 것만 빌드하여 처음부터 파생을 빌드합니다.
 
-<Admonition success title="Nix without caching">
-  Without caching, [realisation][realising] would involve always building
-  everything from scratch every single time, which would make Nix a much less
-  efficient&mdash;and thereby much less compelling!&mdash;package manager and
-  build tool.
+<Admonition success title="캐싱 없는 Nix">
+  캐싱이 없으면 [실현][realising]에는 매번 모든 것을 처음부터 빌드하는 작업이 포함되어 Nix의 효율성이 훨씬 떨어지고 결과적으로 패키지 관리자 및 빌드 도구로서의 매력이 훨씬 떨어집니다!
 </Admonition>
 
-## Binary caches
+## 바이너리 캐시
 
-In addition to the local [Nix store][store], you can also cache Nix artifacts using remote Nix stores called _binary caches_ that serve pre-built binaries via HTTP.
-For the most part, binary caches work just like the Nix store, enabling Nix to quickly determine whether something has already been built on the basis of a derivation's Nix store path.
+로컬 [Nix 스토어][store] 외에도 HTTP를 통해 미리 빌드된 바이너리를 제공하는 _바이너리 캐시_라는 원격 Nix 스토어를 사용하여 Nix 아티팩트를 캐시할 수도 있습니다.
+대부분의 경우 바이너리 캐시는 Nix 스토어와 마찬가지로 작동하므로 Nix는 파생의 Nix 스토어 경로를 기반으로 항목이 이미 빌드되었는지 신속하게 확인할 수 있습니다.
 
-By default, Nix uses [cache.nixos.org][cache] as a binary cache, which is open to all and populated by continuous integration systems.
-In addition to this community cache, you can also [run your own][run] or use a third-party binary cache service like [Cachix].
+기본적으로 Nix는 [cache.nixos.org][cache]를 바이너리 캐시로 사용하며, 이 캐시는 모든 사람에게 공개되고 지속적인 통합 시스템에 의해 채워집니다.
+이 커뮤니티 캐시 외에도 [자체적으로 실행][run]하거나 [Cachix]와 같은 타사 바이너리 캐시 서비스를 사용할 수도 있습니다.
 
 [binary-cache]: https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter
 [cache]: http://cache.nixos.org

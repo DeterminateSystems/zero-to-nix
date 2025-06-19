@@ -1,31 +1,31 @@
 ---
-title: Derivations
+title: 파생
 wip: true
 snippet: |
-  Build instructions for Nix [packages](/concepts/packages) expressed using the [Nix language](/concepts/nix-language)
+  [Nix 언어](/concepts/nix-language)를 사용하여 표현된 Nix [패키지](/concepts/packages)에 대한 빌드 지침입니다.
 related: ["caching", "nix-store", "packages", "realisation"]
 externalSources:
   [
     {
-      title: "Derivations",
+      title: "파생",
       href: "https://nixos.org/manual/nix/stable/language/derivations",
       source:
         {
-          title: "The Nix manual",
+          title: "Nix 매뉴얼",
           href: "https://nixos.org/manual/nix/stable",
         },
     },
     {
-      title: "How to learn Nix, part 13: derivations",
+      title: "Nix 배우기, 13부: 파생",
       href: "https://ianthehenry.com/posts/how-to-learn-nix/derivations",
       source:
         {
-          title: "Ian Henry's blog",
+          title: "Ian Henry의 블로그",
           href: "https://ianthehenry.com/posts/how-to-learn-nix",
         },
     },
     {
-      title: "Our first derivation",
+      title: "우리의 첫 번째 파생",
       href: "https://nixos.org/guides/nix-pills/our-first-derivation",
       source:
         { title: "Nix Pills", href: "https://nixos.org/guides/nix-pills" },
@@ -33,33 +33,32 @@ externalSources:
   ]
 ---
 
-A _derivation_ is an instruction that Nix uses to [_realise_][realisation] a Nix package.
-They're created using a special `derivation` function in the [Nix language](#nix-language).
-They can depend on any number of other derivations and produce one or more final [outputs](#outputs).
-A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a [closure].
+_파생_은 Nix가 Nix 패키지를 [_실현_][realisation]하는 데 사용하는 지침입니다.
+[Nix 언어](#nix-language)의 특수 `derivation` 함수를 사용하여 만들어집니다.
+다른 여러 파생에 의존할 수 있으며 하나 이상의 최종 [출력](#outputs)을 생성할 수 있습니다.
+파생과 이를 빌드하는 데 필요한 모든 종속성(직접 종속성 및 해당 종속성의 모든 종속성 등)을 [클로저][closure]라고 합니다.
 
-## Derivation outputs \{#outputs}
+## 파생 출력 {#outputs}
 
-The most common outputs:
+가장 일반적인 출력:
 
-- `out`, the most generic one
-- `lib`, for library outputs
-- `dev`, general development resources such as header files
-- `man`, for manual pages
+- `out`, 가장 일반적인 출력
+- `lib`, 라이브러리 출력용
+- `dev`, 헤더 파일과 같은 일반적인 개발 리소스
+- `man`, 매뉴얼 페이지용
 
-A derivation and all of the dependencies required to build it&mdash;direct dependencies, and all dependencies of those dependencies, etc&mdash;is called a _package closure_.
+파생과 이를 빌드하는 데 필요한 모든 종속성(직접 종속성 및 해당 종속성의 모든 종속성 등)을 _패키지 클로저_라고 합니다.
 
-<Admonition success title="Mental model">
-  You may find it helpful to think of a derivation as the *plan* or *blueprint*
-  for a Nix package.
+<Admonition success title="멘탈 모델">
+  파생을 Nix 패키지의 *계획* 또는 *청사진*으로 생각하면 도움이 될 수 있습니다.
 </Admonition>
 
-## Derivations in the Nix language \{#nix-language}
+## Nix 언어의 파생 {#nix-language}
 
-In the [Nix language][lang], derivations are created using the [`derivation`][func] function.
-Here's the type signature for `derivation` expressed as a [Haskell]-ish signature:[^1]
+[Nix 언어][lang]에서 파생은 [`derivation`][func] 함수를 사용하여 만들어집니다.
+다음은 [Haskell]과 유사한 시그니처로 표현된 `derivation`의 유형 시그니처입니다.[^1]
 
-```haskell title="Derivation type signature" disableClipboard
+```haskell title="파생 유형 시그니처" disableClipboard
 derivation ::
     { system   : String
     , name     : String
@@ -69,28 +68,28 @@ derivation ::
     } -> Derivation
 ```
 
-Here's an example derivation:
+다음은 예제 파생입니다.
 
-```nix title="Example derivation"
+```nix title="예제 파생"
 derivation {
-  # A name for the derivation (whatever you choose)
+  # 파생 이름 (원하는 대로 선택)
   name = "hello-text";
-  # The system realising the derivation
+  # 파생을 실현하는 시스템
   system = "x86_64-linux";
-  # The program realising the derivation
+  # 파생을 실현하는 프로그램
   builder = "bash";
-  # Arguments passed to the builder program
+  # 빌더 프로그램에 전달되는 인수
   args = ["-c" "mkdir $out && echo Hello world > $out/hello.txt"]
 };
 ```
 
-And that's it!
-The `derivation` function takes only these arguments.
-But derivations can be far less straightforward, because the scripting logic that you pass via `args` can be arbitrarily complex.
+이것이 전부입니다!
+`derivation` 함수는 이러한 인수만 사용합니다.
+그러나 `args`를 통해 전달하는 스크립팅 논리가 임의로 복잡할 수 있기 때문에 파생은 훨씬 덜 간단할 수 있습니다.
 
-### String interpolation
+### 문자열 보간
 
-If Nix sees this string...
+Nix가 이 문자열을 보면...
 
 ```nix title="my-file.nix"
 {
@@ -100,42 +99,42 @@ If Nix sees this string...
 }
 ```
 
-The string output of a derivation is always a [Nix store path][store]
+파생의 문자열 출력은 항상 [Nix 스토어 경로][store]입니다.
 
-## Derivation outputs
+## 파생 출력
 
-## Realisation
+## 실현
 
-### Special variables
+### 특수 변수
 
-There are two special variables to be aware of when writing derivations:
+파생을 작성할 때 알아야 할 두 가지 특수 변수가 있습니다.
 
-- `$out` represents the root of the directory structure for build output.
-- `$src` represents the build sources.
+- `$out`은 빌드 출력의 디렉터리 구조 루트를 나타냅니다.
+- `$src`는 빌드 소스를 나타냅니다.
 
-## The standard environment \{#stdenv}
+## 표준 환경 {#stdenv}
 
-Most derivations in the Nix ecosystem are based on the [`mkDerivation`][mk] function from the [standard environment][stdenv].
+Nix 생태계의 대부분의 파생은 [표준 환경][stdenv]의 [`mkDerivation`][mk] 함수를 기반으로 합니다.
 
-While you _can_ create derivations using the raw `derivation` function, it's far more common to use a wrapper function around it.
-Perhaps the most commonly used wrapper function is [`stdenv.mkDerivation`][mk].
-Arguments:
+원시 `derivation` 함수를 사용하여 파생을 만들 수도 있지만 이를 둘러싼 래퍼 함수를 사용하는 것이 훨씬 일반적입니다.
+아마도 가장 일반적으로 사용되는 래퍼 함수는 [`stdenv.mkDerivation`][mk]일 것입니다.
+인수:
 
-- The `name` of the package. If you specify `pname` and `version` instead, the `name` ends up `${pname}-${version}`.
+- 패키지의 `name`입니다. 대신 `pname`과 `version`을 지정하면 `name`은 `${pname}-${version}`이 됩니다.
 
-## Other derivation functions
+## 기타 파생 함수
 
-Outside of `stdenv.mkDerivation`, there are many custom derivation wrappers for specific languages, frameworks, and more (and many of those actually wrap `stdenv.mkDerivation`).
-Some examples:
+`stdenv.mkDerivation` 외에도 특정 언어, 프레임워크 등을 위한 많은 사용자 지정 파생 래퍼가 있으며 그 중 다수는 실제로 `stdenv.mkDerivation`을 래핑합니다.
+몇 가지 예:
 
-- [`buildGoModule`][buildgomodule] for [Go]
-- [`buildRustPackage`][buildrustpackage] for [Rust]
-- [`buildPythonApplication`][buildpythonapplication] for [Python]
+- [Go]용 [`buildGoModule`][buildgomodule]
+- [Rust]용 [`buildRustPackage`][buildrustpackage]
+- [Python]용 [`buildPythonApplication`][buildpythonapplication]
 
-You're likely to encounter many more in the Nix ecosystem.
-And you're always free to create your own derivation functions and even wrap helper functions like `buildPythonApplication`.
+Nix 생태계에서 훨씬 더 많은 것을 접하게 될 것입니다.
+그리고 언제든지 자신만의 파생 함수를 만들고 `buildPythonApplication`과 같은 도우미 함수를 래핑할 수도 있습니다.
 
-[^1]: Kudos to [Ian Henry][ian] for this idea.
+[^1]: 이 아이디어에 대해 [Ian Henry][ian]에게 찬사를 보냅니다.
 
 [buildgomodule]: https://nixos.org/manual/nixpkgs/stable/#sec-language-go
 [buildpythonapplication]: https://nixos.org/manual/nixpkgs/stable/#python

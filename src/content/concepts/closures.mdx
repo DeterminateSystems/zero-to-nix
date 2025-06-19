@@ -1,32 +1,32 @@
 ---
-title: Closures
+title: 클로저
 wip: true
-snippet: A Nix package's dependency tree
+snippet: Nix 패키지의 종속성 트리
 related: ["derivations", "packages"]
 ---
 
-In Nix, a [package]'s _closure_ encapsulates all of the packages required to [build or run](#build-vs-run) it (as well as the packages required to build those packages, and so on).
-A package can have zero packages in its closure, because no other packages are required to build it, or it can have many.
-Whenever you build a package, Nix always [realises] its entire closure in a [sandboxed] environment.
+Nix에서 [패키지]의 _클로저_는 해당 패키지를 [빌드 또는 실행](#build-vs-run)하는 데 필요한 모든 패키지(그리고 해당 패키지를 빌드하는 데 필요한 패키지 등)를 캡슐화합니다.
+패키지는 빌드하는 데 다른 패키지가 필요하지 않기 때문에 클로저에 패키지가 없을 수도 있고 많을 수도 있습니다.
+패키지를 빌드할 때마다 Nix는 항상 [샌드박스] 환경에서 전체 클로저를 [실현][realises]합니다.
 
-## Build-time and runtime closures \{#build-vs-run}
+## 빌드 시간 및 런타임 클로저 {#build-vs-run}
 
-Nix closures come in two different types:
+Nix 클로저에는 두 가지 유형이 있습니다.
 
-- _Build-time_ closures include everything necessary to build the package.
-- _Runtime_ closures include everything necessary to run the package.
+- _빌드 시간_ 클로저에는 패키지를 빌드하는 데 필요한 모든 것이 포함됩니다.
+- _런타임_ 클로저에는 패키지를 실행하는 데 필요한 모든 것이 포함됩니다.
 
-To give an example, let's say that you're using Nix to build [Firefox] because you want to install and run it on your machine.
-The build-time closure for Firefox would include [GCC] because you can't build Firefox without it.
-The runtime closure, however, would not include GCC&mdash;Firefox has already been built!&mdash;but it would include [GTK], which Firefox needs for its user interface.
+예를 들어, 시스템에 설치하고 실행하기 위해 Nix를 사용하여 [Firefox]를 빌드한다고 가정해 보겠습니다.
+Firefox의 빌드 시간 클로저에는 [GCC]가 포함됩니다. GCC 없이는 Firefox를 빌드할 수 없기 때문입니다.
+그러나 런타임 클로저에는 GCC가 포함되지 않습니다(Firefox는 이미 빌드되었습니다!). 하지만 사용자 인터페이스에 필요한 [GTK]는 포함됩니다.
 
-When you see mentions of Nix closures in Nix documentation and other places, runtime closures are usually what's meant.
+Nix 설명서 및 기타 자료에서 Nix 클로저에 대한 언급을 볼 때 일반적으로 런타임 클로저를 의미합니다.
 
-## Closure bloat
+## 클로저 비대화
 
-If you include things that a package doesn't need in its closure, you end up with a waste of resources&mdash;time, disk space, and network bandwidth&mdash;known as _closure bloat_.
-Nix always [realises] whatever you tell it to and doesn't have any built-in mechanisms to prevent closure bloat.
-The solution to closure bloat is vigilance&mdash;you should always vet the [derivations] you create to ensure that every package you include in a derivation is truly required to build or run the desired package.
+패키지에 필요하지 않은 항목을 클로저에 포함하면 _클로저 비대화_라고 하는 리소스(시간, 디스크 공간 및 네트워크 대역폭) 낭비가 발생합니다.
+Nix는 항상 지시한 내용을 [실현][realises]하며 클로저 비대화를 방지하는 기본 제공 메커니즘이 없습니다.
+클로저 비대화에 대한 해결책은 주의를 기울이는 것입니다. 즉, 생성하는 [파생][derivations]을 항상 검토하여 파생에 포함하는 모든 패키지가 원하는 패키지를 빌드하거나 실행하는 데 정말로 필요한지 확인해야 합니다.
 
 [derivations]: /concepts/derivations
 [firefox]: https://mozilla.org/firefox

@@ -1,39 +1,39 @@
 ---
-title: Declarative programming
+title: 선언형 프로그래밍
 wip: true
 snippet: |
-  A programming paradigm used by [Nix](/concepts/nix) that emphasizes *what* you want to build rather than *how* things are built
+  [Nix](/concepts/nix)에서 사용하는 프로그래밍 패러다임으로, 빌드 방식보다는 빌드하려는 *내용*을 강조합니다.
 related: ["reproducibility"]
 externalSources:
   [
     {
-      title: "Declarative programming",
+      title: "선언형 프로그래밍",
       href: "https://en.wikipedia.org/wiki/Declarative_programming",
-      source: { title: "Wikipedia", href: "https://wikipedia.org" },
+      source: { title: "위키백과", href: "https://wikipedia.org" },
     },
     {
-      title: "Declarative vs. imperative programming",
+      title: "선언형 프로그래밍 대 명령형 프로그래밍",
       href: "https://dev.to/ruizb/declarative-vs-imperative-4a7l",
-      source: { title: "Benoit Ruiz's blog", href: "https://dev.to/ruizb" },
+      source: { title: "Benoit Ruiz의 블로그", href: "https://dev.to/ruizb" },
     },
     {
-      title: "Declarative vs imperative programming: 5 key differences",
+      title: "선언형 프로그래밍 대 명령형 프로그래밍: 5가지 주요 차이점",
       href: "https://educative.io/blog/declarative-vs-imperative-programming",
       source: { title: "educative", href: "https://educative.io/" },
     },
   ]
 ---
 
-In _declarative programming_ a user instructs the computer _what_ to do, not _how_ to do it.
+_선언형 프로그래밍_에서 사용자는 컴퓨터에 작업을 수행하는 _방법_이 아니라 _무엇_을 할 것인지 지시합니다.
 
-The result of this is that often a final system is described as it _should exist_.
-A management program (in this case Nix) can then construct a path towards the final output
-and do the necessary steps in the required order, without a user having to worry about what exactly is happening and when.
+그 결과 최종 시스템은 종종 _존재해야 하는_ 방식으로 설명됩니다.
+그런 다음 관리 프로그램(이 경우 Nix)은 최종 출력으로 가는 경로를 구성하고
+사용자가 정확히 무슨 일이 언제 발생하는지 걱정할 필요 없이 필요한 순서대로 필요한 단계를 수행할 수 있습니다.
 
-Nix follows declarative principles in the way that package definitions (or [derivations](/concepts/derivations)) are constructed with some minor exceptions.
+Nix는 패키지 정의(또는 [파생](/concepts/derivations))가 몇 가지 사소한 예외를 제외하고 구성되는 방식에서 선언적 원칙을 따릅니다.
 
-Under the hood, some parts of packages still have to be written imperatively, but by wrapping these parts in declarative layers,
-users of the upper layers don't have to be aware of what is happening below the surface.
+내부적으로 패키지의 일부 부분은 여전히 명령형으로 작성해야 하지만 이러한 부분을 선언적 계층으로 래핑함으로써
+상위 계층 사용자는 표면 아래에서 무슨 일이 일어나고 있는지 알 필요가 없습니다.
 
-Essentially: one user can solve a problem _once_,
-and many people can then benefit from that solution without needing to know how exactly it works (unless they want to).
+본질적으로: 한 명의 사용자가 문제를 _한 번_ 해결할 수 있고,
+그러면 많은 사람들이 그 해결책이 정확히 어떻게 작동하는지 알 필요 없이(원하지 않는 한) 혜택을 누릴 수 있습니다.

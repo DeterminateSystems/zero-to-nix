@@ -1,32 +1,32 @@
 ---
-title: Incremental builds
+title: 증분 빌드
 wip: true
 snippet: |
-  Package builds that cut out unnecessary steps (and thus unnecessary build resources and time)
+  불필요한 단계(따라서 불필요한 빌드 리소스 및 시간)를 생략하는 패키지 빌드입니다.
 related: ["caching", "realisation", "nix-store"]
 externalSources:
   [
     {
-      title: "Incremental build model",
+      title: "증분 빌드 모델",
       href: "https://en.wikipedia.org/wiki/Incremental_build_model",
-      source: { title: "Wikipedia", href: "https://wikipedia.org" },
+      source: { title: "위키백과", href: "https://wikipedia.org" },
     },
   ]
 ---
 
-_Incremental builds_ are build processes that don't need to build the entire dependency tree of a software artifact every time because they use mechanisms like intelligent [caching] to avoid rebuilding artifacts that are already available.
-Nix is one of several available build systems that offers incremental builds.
+_증분 빌드_는 지능형 [캐싱][caching]과 같은 메커니즘을 사용하여 이미 사용 가능한 아티팩트를 다시 빌드하는 것을 방지하므로 매번 소프트웨어 아티팩트의 전체 종속성 트리를 빌드할 필요가 없는 빌드 프로세스입니다.
+Nix는 증분 빌드를 제공하는 여러 사용 가능한 빌드 시스템 중 하나입니다.
 
-## How Nix provides incremental builds \{#how}
+## Nix가 증분 빌드를 제공하는 방법 {#how}
 
-Nix is one of several build systems that offers incremental builds for [Nix packages][packages] by storing all build results in the [Nix store][store].
+Nix는 모든 빌드 결과를 [Nix 스토어][store]에 저장하여 [Nix 패키지][packages]에 대한 증분 빌드를 제공하는 여러 빌드 시스템 중 하나입니다.
 
-Whenever Nix builds a [package][packages], it builds the entire [closure], or dependency tree, of that package.
+Nix가 [패키지][packages]를 빌드할 때마다 해당 패키지의 전체 [클로저][closure] 또는 종속성 트리를 빌드합니다.
 
 <NixStorePath pkg="git-2.27.3" />
 
-The hash portion enables Nix to "know" what doesn't need to be built.
-If the package `super-important-dependency` is necessary to build the package `final-production-artifact`, Nix can inspect the [derivation] for `super-important-dependency` and calculate a hash for that dependency and, thus, a Nix store path for it, something like this:
+해시 부분을 통해 Nix는 빌드할 필요가 없는 것을 "알" 수 있습니다.
+`final-production-artifact` 패키지를 빌드하는 데 `super-important-dependency` 패키지가 필요한 경우 Nix는 `super-important-dependency`에 대한 [파생][derivation]을 검사하고 해당 종속성에 대한 해시를 계산하여 다음과 같은 Nix 스토어 경로를 계산할 수 있습니다.
 
 <NixStorePath
   pkg="super-important-dependency"
@@ -34,19 +34,19 @@ If the package `super-important-dependency` is necessary to build the package `f
   valueOnly
 />
 
-With that information in hand, Nix can then check to see if one of these places already has the artifact:
+해당 정보를 확보하면 Nix는 다음 위치 중 하나에 이미 아티팩트가 있는지 확인할 수 있습니다.
 
-- The local [Nix store][store]
-- One of your configured [binary caches][binary] (if any)
+- 로컬 [Nix 스토어][store]
+- 구성된 [바이너리 캐시][binary] 중 하나 (있는 경우)
 
-Nix builds a given derivation only if it fails to discover a realised artifact in one of these places.
-This can make a huge difference when building large [closures][closure].
+Nix는 이러한 위치 중 하나에서 실현된 아티팩트를 발견하지 못한 경우에만 특정 파생을 빌드합니다.
+이는 큰 [클로저][closure]를 빌드할 때 큰 차이를 만들 수 있습니다.
 
-## Consequences of incremental builds in Nix \{#consequences}
+## Nix에서 증분 빌드의 결과 {#consequences}
 
-[Packages] are in many ways the central organizing artifact in Nix.
-[Nix development environments][env] make packages available in a hermetically sealed way, [NixOS] is built with Nix packages as its basis, and so on.
-What that means is that incremental builds in Nix make pretty much everything associated with Nix much faster and less resource intensive.
+[패키지][packages]는 여러 면에서 Nix의 중심 조직 아티팩트입니다.
+[Nix 개발 환경][env]은 패키지를 밀폐된 방식으로 사용할 수 있도록 만들고, [NixOS]는 Nix 패키지를 기반으로 빌드되는 등입니다.
+이는 Nix의 증분 빌드가 Nix와 관련된 거의 모든 것을 훨씬 빠르고 리소스 집약도를 낮춘다는 것을 의미합니다.
 
 [binary]: /concepts/caching#binary-caches
 [caching]: /concepts/caching

@@ -1,79 +1,79 @@
 ---
-title: Channels
+title: 채널
 wip: true
 snippet: |
-  Nix's original but no longer recommended system for discovering and depending on [Nix expressions](/concepts/nix-language)
+  [Nix 표현식](/concepts/nix-language)을 검색하고 의존하는 데 사용되는 Nix의 기존 시스템이지만 더 이상 권장되지 않습니다.
 related: ["flakes", "pinning"]
 externalSources: [
   {
-    title: "Channel branches",
+    title: "채널 브랜치",
     href: "https://wiki.nixos.org/wiki/Channel_branches",
     source: {
-      title: "The NixOS wiki",
+      title: "NixOS 위키",
       href: "https://wiki.nixos.org"
     }
   },
   {
-    title: "How to learn Nix, part 8: channels",
+    title: "Nix 배우기, 8부: 채널",
     href: "https://ianthehenry.com/posts/how-to-learn-nix/channels",
     source: {
-      title: "Ian Henry's blog",
+      title: "Ian Henry의 블로그",
       href: "https://ianthehenry.com/posts/how-to-learn-nix"
     }
   },
   {
-    title: "Nix channels",
+    title: "Nix 채널",
     href: "https://jorel.dev/NixOS4Noobs/channels",
     source: {
-      title: "NixOS 4 noobs",
+      title: "NixOS 초보자용",
       href: "https://jorel.dev/NixOS4Noobs"
     }
   }
 ]
 ---
 
-A _Nix channel_ is a mechanism used by the legacy Nix CLI to keep [Nixpkgs] up to date.
-In the new Nix CLI, channels have been replaced by [flakes].
+_Nix 채널_은 레거시 Nix CLI에서 [Nixpkgs]를 최신 상태로 유지하는 데 사용되는 메커니즘입니다.
+새로운 Nix CLI에서는 채널이 [플레이크][flakes]로 대체되었습니다.
 
-## How do channels work?
+## 채널은 어떻게 작동하나요?
 
-A channel is a URL that points to some Nix code, such as `https://nixos.org/channels/nixos-unstable`.
-As a convenience, you can also use the URL syntax `channel:{name}`, which is expanded by Nix to `https://nixos.org/channels/{name}`.
+채널은 `https://nixos.org/channels/nixos-unstable`과 같이 일부 Nix 코드를 가리키는 URL입니다.
+편의를 위해 `channel:{name}` URL 구문을 사용할 수도 있으며, 이는 Nix에 의해 `https://nixos.org/channels/{name}`으로 확장됩니다.
 
-You can configure Nix to fetch a channel automatically:
+Nix가 채널을 자동으로 가져오도록 구성할 수 있습니다.
 
-```shell title="Add a channel"
+```shell title="채널 추가"
 nix-channel --add https://nixos.org/channels/nixos-unstable
 ```
 
-You can then run this to have Nix fetch all channels that you've configured:
+그런 다음 이를 실행하여 구성한 모든 채널을 Nix가 가져오도록 할 수 있습니다.
 
-```shell title="Update all channels"
+```shell title="모든 채널 업데이트"
 nix-channel --update
 ```
 
-The Nix code in the channels is unpacked into `~/.nix-defexpr/channels` where it can be found by legacy CLI commands such as `nix-env`.
+채널의 Nix 코드는 `~/.nix-defexpr/channels`에 압축 해제되어 `nix-env`와 같은 레거시 CLI 명령에서 찾을 수 있습니다.
 
-You can find more information about channels in the [Nix manual][manual].
+채널에 대한 자세한 정보는 [Nix 매뉴얼][manual]에서 찾을 수 있습니다.
 
-## Examples of channels
+## 채널 예시
 
-| Channel URL                    | Release date                                                               | Description                                                                                                                                                                                                                        |
+| 채널 URL                    | 릴리스 날짜                                                               | 설명                                                                                                                                                                                                                        |
 | ------------------------------ | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `channel:nixos-22.11`          | Initially released in November of 2022 and updated for 6 months afterwards | A stable version of NixOS, released in November of 2022. Security patches and updates will be backported, but no new applications, or breaking changes will be applied                                                             |
-| `channel:nixos-unstable`       | Frequently updated                                                         | A rolling release channel of NixOS, which is updated whenever a set of important packages builds on Hydra. Security updates, new packages, and new modules will frequently appear on your computer, and breaking changes may occur |
-| `channel:nixos-unstable-small` | Same as `nixos-unstable`, but even more frequently                         | A rolling release channel similar to `nixos-unstable` but with a smaller set of packages that are tested. This means this channel is updated more frequently, but may have some broken packages on it as well                      |
+| `channel:nixos-22.11`          | 2022년 11월에 처음 릴리스되었으며 이후 6개월 동안 업데이트되었습니다. | 2022년 11월에 릴리스된 안정적인 NixOS 버전입니다. 보안 패치 및 업데이트는 백포트되지만 새로운 애플리케이션이나 주요 변경 사항은 적용되지 않습니다.                                                             |
+| `channel:nixos-unstable`       | 자주 업데이트됨                                                         | NixOS의 롤링 릴리스 채널로, Hydra에서 중요한 패키지 세트가 빌드될 때마다 업데이트됩니다. 보안 업데이트, 새로운 패키지 및 새로운 모듈이 컴퓨터에 자주 나타나며 주요 변경 사항이 발생할 수 있습니다. |
+| `channel:nixos-unstable-small` | `nixos-unstable`과 동일하지만 훨씬 더 자주 업데이트됩니다.                         | `nixos-unstable`과 유사한 롤링 릴리스 채널이지만 테스트되는 패키지 세트가 더 작습니다. 즉, 이 채널은 더 자주 업데이트되지만 일부 손상된 패키지가 있을 수도 있습니다.                      |
 
-## The problem with `nix-channel`
+## `nix-channel`의 문제점
 
-The problem with channels is that they do not provide any guarantees about what inputs are actually used in a particular build.
-A channel URL such as `channel:nixos-22.11` can contain different Nix code at different points in time.
-As such source [pinning] and rollbacks are much harder with channels.
+채널의 문제점은 특정 빌드에서 실제로 어떤 입력이 사용되는지에 대한 보장을 제공하지 않는다는 것입니다.
+`channel:nixos-22.11`과 같은 채널 URL은 서로 다른 시점에 서로 다른 Nix 코드를 포함할 수 있습니다.
+따라서 소스 [고정][pinning] 및 롤백은 채널을 사용하면 훨씬 더 어렵습니다.
 
-This means that while Nix is [reproducible] in theory, in practise inputs to builds can frequently change, and a build may fail because of this.
-This can cause you to be unable to update your NixOS system, or build a package that previously could be built.
+이는 Nix가 이론적으로 [재현 가능][reproducible]하지만 실제로는 빌드에 대한 입력이 자주 변경될 수 있으며 이로 인해 빌드가 실패할 수 있음을 의미합니다.
+이로 인해 NixOS 시스템을 업데이트하거나 이전에 빌드할 수 있었던 패키지를 빌드하지 못할 수 있습니다.
 
-**Because of this the use of Nix channels is highly discouraged!**
+**이 때문에 Nix 채널 사용은 매우 권장되지 않습니다!**
 
 [flakes]: /concepts/flakes
 [manual]: https://nixos.org/manual/nix/stable/command-ref/nix-channel

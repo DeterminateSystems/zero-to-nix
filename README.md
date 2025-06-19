@@ -2,137 +2,137 @@
 
 [![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/DeterminateSystems/zero-to-nix/badge)](https://flakehub.com/flake/DeterminateSystems/zero-to-nix)
 
-[Zero to Nix][site] is your guide to learning [Nix] and [flakes].
-It was created and is maintained by [Determinate Systems][detsys].
+[Zero to Nix][site]는 [Nix]와 [플레이크][flakes]를 배우는 여러분의 안내서입니다.
+[Determinate Systems][detsys]에서 만들고 유지보수합니다.
 
-## Setup
+## 설정
 
-Make sure that you have Nix and [direnv] installed, then:
+Nix와 [direnv]가 설치되어 있는지 확인한 후 다음을 수행합니다.
 
 ```shell
-# Activate Nix development environment
+# Nix 개발 환경 활성화
 direnv allow
 
-# Recommended
+# 권장
 alias npm=pnpm
 ```
 
-## Developing the site
+## 사이트 개발
 
-### Run locally
+### 로컬에서 실행
 
-To run the site in development mode (with live reload when you make changes):
+개발 모드에서 사이트를 실행하려면 (변경 시 실시간 새로고침):
 
 ```shell
 dev
 ```
 
-To run the site in preview mode (with a static web server and no live reload):
+미리보기 모드에서 사이트를 실행하려면 (정적 웹 서버 사용, 실시간 새로고침 없음):
 
 ```shell
 preview
 
-# Alternatively
+# 또는
 nix run
 ```
 
-Then open your browser to http://localhost:3000.
+그런 다음 브라우저에서 http://localhost:3000을 엽니다.
 
-### Run checks locally
+### 로컬에서 검사 실행
 
-The site has some [CI checks][ci] that run in [GitHub Actions][gha], like link checking.
-To run the whole CI suite locally:
+이 사이트에는 링크 검사와 같이 [GitHub Actions][gha]에서 실행되는 몇 가지 [CI 검사][ci]가 있습니다.
+전체 CI 제품군을 로컬에서 실행하려면:
 
 ```shell
 ci
 ```
 
-### Build locally
+### 로컬에서 빌드
 
-To ensure that the site can build properly in response to changes:
+변경 사항에 따라 사이트가 제대로 빌드될 수 있도록 하려면:
 
 ```shell
 build
 ```
 
-As an alternative, you can [run the whole CI suite](#run-checks-locally), which also builds the site.
+또는 사이트도 빌드하는 [전체 CI 제품군을 실행](#run-checks-locally)할 수 있습니다.
 
-### Format code
+### 코드 서식 지정
 
-To ensure that everything is properly formatted:
+모든 항목의 서식이 올바르게 지정되었는지 확인하려면:
 
 ```shell
 format
 ```
 
-## Publishing
+## 게시
 
-The Zero to Nix site is automatically published on [Vercel], which also provides deploy previews for pull requests.
+Zero to Nix 사이트는 풀 리퀘스트에 대한 배포 미리보기도 제공하는 [Vercel]에 자동으로 게시됩니다.
 
-## Technologies
+## 기술
 
-Zero to Nix's "stack" 🥞:
+Zero to Nix의 "스택" 🥞:
 
-- [îles][iles] for content management and site generation
-- [Vue] for templating
-- [MDX] for content
-- [Tailwind] for CSS
+- 콘텐츠 관리 및 사이트 생성을 위한 [îles][iles]
+- 템플릿을 위한 [Vue]
+- 콘텐츠를 위한 [MDX]
+- CSS를 위한 [Tailwind]
 
-## MDX components
+## MDX 구성 요소
 
-The site uses a number of custom [MDX] components to spice up the usual Markdown content.
+이 사이트는 일반적인 Markdown 콘텐츠를 더욱 풍부하게 만들기 위해 여러 사용자 지정 [MDX] 구성 요소를 사용합니다.
 
-| Component                                                                | What it does                                                                                                                           |
+| 구성 요소                                                                | 기능                                                                                                                               |
 | :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
-| [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /><br />Adding an `id` makes it a stateful callout dropdown. |
-| [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                 |
-| [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                            |
-| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                             |
-| [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                                                                         |
-| [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                                                                                  |
-| [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language                                                        |
-| [`System`](./src/components/mdx/stateful/System.vue)                     | Displays the currently selected system (Linux vs. macOS)                                                                               |
-| [`Systems`](./src/components/stateful/Systems.vue)                       | Provides a system selector (Linux vs. macOS)                                                                                           |
+| [`Admonition`](./src/components/mdx/Admonition.vue)                      | `danger`, `info`, `success` 또는 `warning` 유형의 경고 블록입니다.<br /><br />`id`를 추가하면 상태 저장 콜아웃 드롭다운이 됩니다. |
+| [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | 개념에 대한 마우스오버 가능한 도구 설명을 추가합니다.                                                                                                 |
+| [`Language`](./src/components/mdx/stateful/Language.vue)                 | 사용자가 선택한 (프로그래밍) 언어를 표시합니다.                                                                            |
+| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | (프로그래밍) 언어 선택기를 제공합니다.                                                                                             |
+| [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Nix 저장소 경로 구성 요소를 다채롭게 시각화하여 보여줍니다.                                                                         |
+| [`Shell`](./src/components/code/Shell.vue)                               | 언어 및 시스템별 셸 명령을 제공합니다.                                                                                  |
+| [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | 사용자가 특정 언어를 선택한 경우에만 동봉된 콘텐츠를 표시합니다.                                                        |
+| [`System`](./src/components/mdx/stateful/System.vue)                     | 현재 선택된 시스템 (Linux vs. macOS)을 표시합니다.                                                                               |
+| [`Systems`](./src/components/stateful/Systems.vue)                       | 시스템 선택기 (Linux vs. macOS)를 제공합니다.                                                                                           |
 
-## Directory structure
+## 디렉터리 구조
 
-| Directory                             | What it contains                                                               |
+| 디렉터리                             | 내용                                                               |
 | :------------------------------------ | :----------------------------------------------------------------------------- |
-| [`src/assets`](./src/assets/)         | Assets to be processed (only CSS for now)                                      |
-| [`src/components`](./src/components/) | [Vue] components used throughout the site                                      |
-| [`src/layouts`](./src/layouts/)       | [Vue] layouts for specific page types                                          |
-| [`src/logic`](./src/logic/)           | TypeScript helper stuff for state and content management                       |
-| [`src/pages`](./src/pages/)           | The content of the site (all [MDX]) plus some Vue templates for specific pages |
-| [`public`](./public/)                 | Assets that won't be processed (favicon, etc.)                                 |
+| [`src/assets`](./src/assets/)         | 처리할 자산 (현재는 CSS만 해당)                                      |
+| [`src/components`](./src/components/) | 사이트 전체에서 사용되는 [Vue] 구성 요소                                      |
+| [`src/layouts`](./src/layouts/)       | 특정 페이지 유형에 대한 [Vue] 레이아웃                                          |
+| [`src/logic`](./src/logic/)           | 상태 및 콘텐츠 관리를 위한 TypeScript 도우미 자료                       |
+| [`src/pages`](./src/pages/)           | 사이트 콘텐츠 (모든 [MDX]) 및 특정 페이지에 대한 일부 Vue 템플릿 |
+| [`public`](./public/)                 | 처리되지 않을 자산 (파비콘 등)                                 |
 
-## Page metadata
+## 페이지 메타데이터
 
-For [quick start pages](./src/pages/start/):
-
-- `title`
-- `summary` (an array of things that the user will accomplish in the guide)
-- `order` (ascending)
-
-For [concept pages](./src/pages/concepts/):
+[빠른 시작 페이지](./src/pages/start/)의 경우:
 
 - `title`
-- `snippet` (a brief explanation of the concept that appears in pop-ups)
-- `related` (an array of IDs representing concept pages, like `flakes` or `nix-store`)
-- `externalSources` (an array of links to external sources, such as official docs)
+- `summary` (사용자가 가이드에서 수행할 작업 배열)
+- `order` (오름차순)
 
-## Site logic
+[개념 페이지](./src/pages/concepts/)의 경우:
 
-There are a few other important files you should be aware of when working on the site:
+- `title`
+- `snippet` (팝업에 표시되는 개념에 대한 간략한 설명)
+- `related` (`flakes` 또는 `nix-store`와 같이 개념 페이지를 나타내는 ID 배열)
+- `externalSources` (공식 문서와 같은 외부 소스에 대한 링크 배열)
 
-- [`src/app.ts`](./src/app.ts) defines global page metadata
-- [`src/site.ts`](./src/site.ts) defines site-level values, like the title, description, navbar links, and more.
-- [`src/logic/content.ts`](./src/logic/content.ts) provides the content management logic for the site (type-safe page frontmatter, functions to fetch and sort documents, and more)
-- [`src/logic/state.ts`](./src/logic/state.ts) defines all stateful logic using the [nanostores] library
-- [`src/logic/theme.ts`](./src/logic/theme.ts) provides logic for the light/dark theme switcher
+## 사이트 로직
 
-## Suggested VS Code settings
+사이트에서 작업할 때 알아야 할 몇 가지 중요한 파일이 더 있습니다.
 
-If you happen to use VS Code as your editor, we recommend adding these extensions:
+- [`src/app.ts`](./src/app.ts)는 전역 페이지 메타데이터를 정의합니다.
+- [`src/site.ts`](./src/site.ts)는 제목, 설명, 탐색 모음 링크 등과 같은 사이트 수준 값을 정의합니다.
+- [`src/logic/content.ts`](./src/logic/content.ts)는 사이트에 대한 콘텐츠 관리 로직 (형식 안전 페이지 머리말, 문서 가져오기 및 정렬 기능 등)을 제공합니다.
+- [`src/logic/state.ts`](./src/logic/state.ts)는 [nanostores] 라이브러리를 사용하여 모든 상태 저장 로직을 정의합니다.
+- [`src/logic/theme.ts`](./src/logic/theme.ts)는 밝은/어두운 테마 전환기에 대한 로직을 제공합니다.
+
+## 권장 VS Code 설정
+
+VS Code를 편집기로 사용하는 경우 다음 확장을 추가하는 것이 좋습니다.
 
 - [`Vue.volar`][vsc-vue]
 - [`unifiedjs.vscode-mdx`][vsc-mdx]
@@ -140,20 +140,20 @@ If you happen to use VS Code as your editor, we recommend adding these extension
 - [`esbenp.prettier-vscode`][vsc-prettier]
 - [`vscode.vscode-typescript-next`][vsc-tsc]
 
-We also recommend adding these settings to your local `.vscode/settings.json`:
+로컬 `.vscode/settings.json`에 다음 설정을 추가하는 것도 좋습니다.
 
 ```jsonc
 {
   "[mdx]": {
-    // By default, this extension overwrites our one-sentence-per-line policy
+    // 기본적으로 이 확장은 한 줄에 한 문장 정책을 덮어씁니다.
     "editor.formatOnSave": false,
-    // This is a nice helper for longer sentences
+    // 긴 문장에 유용한 도우미입니다.
     "editor.wordWrapColumn": 100,
     "editor.wordWrap": "wordWrapColumn",
   },
-  // Format everything using the Prettier config
+  // Prettier 구성을 사용하여 모든 항목 서식 지정
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // Keep junk out of your search results
+  // 검색 결과에서 정크 제외
   "search.exclude": {
     "**/.direnv": true,
     "**/.git": true,

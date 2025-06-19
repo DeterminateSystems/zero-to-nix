@@ -1,114 +1,114 @@
 ---
-title: The Nix language
+title: Nix 언어
 wip: true
 snippet: |
-  The language you use to define Nix [package builds](/concepts/packages), [development environments](/concepts/dev-env), [NixOS configurations](/concepts/nixos), and more.
+  Nix [패키지 빌드](/concepts/packages), [개발 환경](/concepts/dev-env), [NixOS 구성](/concepts/nixos) 등을 정의하는 데 사용하는 언어입니다.
 related: ["declarative", "nix", "nixos", "nixpkgs"]
 externalSources:
   [
     {
-      title: "Nix language basics",
+      title: "Nix 언어 기초",
       href: "https://nix.dev/tutorials/nix-language",
       source: { title: "nix.dev", href: "https://nix.dev" },
     },
     {
-      title: "Overview of the Nix language",
+      title: "Nix 언어 개요",
       href: "https://wiki.nixos.org/wiki/Overview_of_the_Nix_Language",
-      source: { title: "The NixOS wiki", href: "https://wiki.nixos.org" },
+      source: { title: "NixOS 위키", href: "https://wiki.nixos.org" },
     },
     {
-      title: "Nix language",
+      title: "Nix 언어",
       href: "https://nixos.org/manual/nix/stable/language",
       source:
         {
-          title: "The Nix manual",
+          title: "Nix 매뉴얼",
           href: "https://nixos.org/manual/nix/stable",
         },
     },
     {
-      title: "Learn nix in Y minutes",
+      title: "Y분 안에 Nix 배우기",
       href: "https://learnxinyminutes.com/docs/nix",
       source:
-        { title: "Learn X in Y minutes", href: "https://learnxinyminutes.com" },
+        { title: "X를 Y분 안에 배우기", href: "https://learnxinyminutes.com" },
     },
     {
-      title: "Nix: a one pager",
+      title: "Nix: 한 페이지 요약",
       href: "https://github.com/tazjin/nix-1p",
       source: { title: "GitHub", href: "https://github.com" },
     },
   ]
 ---
 
-Nix is the _programming language_ that powers the Nix _packaging system_.
+Nix는 Nix _패키징 시스템_을 구동하는 _프로그래밍 언어_입니다.
 
-## Why a programming language?
+## 왜 프로그래밍 언어인가?
 
-You might ask yourself why Nix even _needs_ a programming language.
-Why can't packages be declared via some JSON, YAML, or TOML schema?
-The problem with that lies in the dynamic nature of how Nix configures packages and allows them to be combined.
-Nix as a _programming language_ can be thought of as a kind of "JSON, but with functions".
-All statements are [declarative], meaning that there's no sequential flow of instructions that makes up a Nix package.
-Instead functions are called that assign values to fields in _attribute sets_, which in turn may get assigned to other values.
+Nix에 프로그래밍 언어가 왜 필요한지 궁금할 수 있습니다.
+JSON, YAML 또는 TOML 스키마를 통해 패키지를 선언할 수 없는 이유는 무엇일까요?
+문제는 Nix가 패키지를 구성하고 결합하는 방식의 동적 특성에 있습니다.
+_프로그래밍 언어_로서의 Nix는 일종의 "함수가 있는 JSON"으로 생각할 수 있습니다.
+모든 문은 [선언적][declarative]이므로 Nix 패키지를 구성하는 순차적인 명령 흐름이 없습니다.
+대신 함수가 호출되어 _속성 집합_의 필드에 값을 할당하고, 이는 다시 다른 값에 할당될 수 있습니다.
 
-## How does Nix work?
+## Nix는 어떻게 작동하는가?
 
-Nix uses a few important characteristics in programming language design to work.
-Some of these terms can seem daunting, when you're not already familiar with what they mean and how they work with each other.
-So first, let's cover these principles:
+Nix는 프로그래밍 언어 설계에서 몇 가지 중요한 특성을 사용하여 작동합니다.
+이러한 용어 중 일부는 이미 의미와 서로 작동하는 방식을 잘 모르는 경우 어렵게 느껴질 수 있습니다.
+따라서 먼저 이러한 원칙을 다루겠습니다.
 
-_Nix_ is a pure, functional, lazy, declarative, and reproducible programming language.
+_Nix_는 순수하고, 함수형이며, 지연 평가되고, 선언적이며, 재현 가능한 프로그래밍 언어입니다.
 
-| Concept                                   | Description                                                                                                                                     |
+| 개념                                   | 설명                                                                                                                                     |
 | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pure                                      | A programming-language design concept by which functions can not cause _side effects_. The only result is the one a function returns            |
-| Functional                                | A programming-language design concept by which _functions_ can be passed as function arguments, and returned as results                         |
-| Lazy                                      | A programming-language design concept by which functions and data collections are not evaluated until they are needed to complete a computation |
-| Declarative                               | Describing a system outcome, instead of instructing the computer _how_ to achieve the outcome                                                   |
-| [Reproducible](/concepts/reproducibility) | An operation that is performed twice yields the same result. The same inputs map to the same outputs                                            |
+| 순수                                      | 함수가 _부작용_을 일으킬 수 없는 프로그래밍 언어 설계 개념입니다. 유일한 결과는 함수가 반환하는 것입니다.            |
+| 함수형                                | _함수_를 함수 인수로 전달하고 결과로 반환할 수 있는 프로그래밍 언어 설계 개념입니다.                         |
+| 지연 평가                                      | 함수와 데이터 컬렉션이 계산을 완료하는 데 필요할 때까지 평가되지 않는 프로그래밍 언어 설계 개념입니다. |
+| 선언적                                | 컴퓨터에 결과를 달성하는 _방법_을 지시하는 대신 시스템 결과를 설명합니다.                                                   |
+| [재현 가능](/concepts/reproducibility) | 두 번 수행된 작업은 동일한 결과를 산출합니다. 동일한 입력이 동일한 출력에 매핑됩니다.                                            |
 
-## Syntax basics
+## 구문 기초
 
-As mentioned previously, Nix uses _assignments_ to compute and process data for packages, modules, and other utilities.
-The code below, for example, calls a function called `my_function` with the parameters `2` and `3`, and assigns its output to the `my_value` field.
+앞서 언급했듯이 Nix는 패키지, 모듈 및 기타 유틸리티에 대한 데이터를 계산하고 처리하기 위해 _할당_을 사용합니다.
+예를 들어 아래 코드는 `my_function`이라는 함수를 매개변수 `2`와 `3`으로 호출하고 해당 출력을 `my_value` 필드에 할당합니다.
 
-```nix title="Assignments"
+```nix title="할당"
 {
   my_value = my_function 2 3;
 }
 ```
 
-Functions are defined using this syntax, where `x` and `y` are attributes passed into the function:
+함수는 다음 구문을 사용하여 정의되며, 여기서 `x`와 `y`는 함수에 전달되는 속성입니다.
 
-```nix title="Functions"
+```nix title="함수"
 {
   my_function = x: y: x + y;
 }
 ```
 
-The body of the function automatically returns the result of the function.
-As you can see in the example above, functions are called by spaces between it and its parameters.
-No commas are needed to separate parameters.
+함수의 본문은 자동으로 함수의 결과를 반환합니다.
+위 예에서 볼 수 있듯이 함수는 함수와 매개변수 사이의 공백으로 호출됩니다.
+매개변수를 구분하는 데 쉼표가 필요하지 않습니다.
 
-The two most common data structures are _attribute sets_ and _lists_.
-Attribute sets are key-value stores.
-Lists can contain different types of values and don't need to be comma separated.
+가장 일반적인 두 가지 데이터 구조는 _속성 집합_과 _목록_입니다.
+속성 집합은 키-값 저장소입니다.
+목록에는 다양한 유형의 값이 포함될 수 있으며 쉼표로 구분할 필요가 없습니다.
 
-```nix title="Recursive attributes"
+```nix title="재귀 속성"
 rec {
   number_key = 5;
   list_key = [ number_key true "Hello" ];
 }
 ```
 
-The `rec` keyword allows the attribute set to reference itself.
+`rec` 키워드를 사용하면 속성 집합이 자신을 참조할 수 있습니다.
 
-For a more detailed breakdown of syntax, check out the [Nix language](https://nixos.org/manual/nix/stable/language) manual section.
+구문에 대한 자세한 내용은 [Nix 언어](https://nixos.org/manual/nix/stable/language) 매뉴얼 섹션을 확인하십시오.
 
-## Derivations
+## 파생
 
-One thing that sets Nix apart from other programming languages&mdash;and makes it much more than just a configuration language&mdash;is the `derivation` function.
-This is a built-in function that you use to define the build process for packages.
-See the [derivations] concept doc for more info.
+Nix를 다른 프로그래밍 언어와 구별하고 단순한 구성 언어 이상으로 만드는 한 가지는 `derivation` 함수입니다.
+이는 패키지의 빌드 프로세스를 정의하는 데 사용하는 기본 제공 함수입니다.
+자세한 내용은 [파생][derivations] 개념 문서를 참조하십시오.
 
 [declarative]: /concepts/declarative
 [derivations]: /concepts/derivations
