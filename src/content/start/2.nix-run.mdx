@@ -1,59 +1,54 @@
 ---
-title: Run a program with Nix
+title: Nix로 프로그램 실행
 order: 2
 summary:
   [
-    "Use the `nix run` command to run a program from [Nixpkgs](/concepts/nixpkgs)",
-    "Learn about Nix flakes and packages",
-    "Download and run a program from Nixpkgs",
+    "[Nixpkgs](/concepts/nixpkgs)에서 프로그램을 실행하려면 `nix run` 명령을 사용하세요",
+    "Nix 플레이크와 패키지에 대해 알아보세요",
+    "Nixpkgs에서 프로그램을 다운로드하고 실행하세요",
   ]
 ---
 
-In the last section, we installed Nix using the [Determinate Nix Installer][nix-installer].
-Now we can dive in and use Nix to run an actual program.
-Let's try running the delightful [ponysay]:
+지난 섹션에서는 [Determinate Nix Installer][nix-installer]를 사용하여 Nix를 설치했습니다.
+이제 본격적으로 Nix를 사용하여 실제 프로그램을 실행해 보겠습니다.
+멋진 [ponysay]를 실행해 보겠습니다.
 
 ```shell title="Pass a string to Ponysay"
 echo "Hello Nix" | nix run "https://flakehub.com/f/NixOS/nixpkgs/*#ponysay"
 ```
 
-:rocket: **Success**!
-You should see a charming equine greeting in your console.
+:rocket: **성공**!
+콘솔에 매력적인 말의 인사가 표시될 것입니다.
 
-<Admonition warning title="This could take a while" id="nix-run-loading">
-  The first time you run a program using `nix run` it's likely to be a slow
-  operation. That's because Nix needs to build the program's [package][packages]
-  from scratch&mdash;or download it from a known [cache]&mdash;and store it in
-  the [Nix store][store]. This is in contrast to most [package managers][pkg],
-  which install things more quickly because they download pre-built archives
-  like tarballs. Future `nix run` invocations should be instantaneous, as Nix
-  doesn't need to build the package again.
+<Admonition warning title="시간이 좀 걸릴 수 있습니다" id="nix-run-loading">
+  `nix run`을 사용하여 프로그램을 처음 실행할 때는 속도가 느릴 가능성이 높습니다.
+  Nix가 프로그램의 [패키지][패키지]를 처음부터 빌드하거나 알려진 [캐시]에서 다운로드하여 [Nix 저장소][저장소]에 저장해야 하기 때문입니다. 이는 대부분의 [패키지 관리자][pkg]와는 대조적입니다.
+  대부분의 [패키지 관리자][pkg]는 tarball과 같은 미리 빌드된 아카이브를 다운로드하기 때문에 더 빠르게 설치합니다. Nix가 패키지를 다시 빌드할 필요가 없으므로 향후 `nix run` 호출은 즉시 실행됩니다.
 </Admonition>
+## 설명
 
-## Explanation
+무슨 일이 일어났을까요? [Nix] CLI는 몇 가지 작업을 수행했습니다.
 
-What happened here? The [Nix] CLI did a few things:
+- `nixpkgs` [플레이크 참조][참조]를 사용하여 Nix 코드를 가져오고 `ponysay` [플레이크 출력][출력]을 대상으로 했습니다(나중에 자세히 설명).
+- [`ponysay` 패키지][ponysay]를 빌드하고 결과를 [Nix 저장소][저장소]에 저장했습니다.
+- `ponysay` 패키지에서 `bin/ponysay`에 있는 실행 파일을 실행했습니다.
 
-- It used the `nixpkgs` [flake reference][ref] to pull in some Nix code and targeted the `ponysay` [flake output][output] (more on this later).
-- It built the [`ponysay` package][ponysay] and stored the result in the [Nix store][store].
-- It ran the executable at `bin/ponysay` from the `ponysay` package.
+Nix에서 모든 프로그램은 [패키지][패키지]의 일부입니다.
+패키지는 [Nix 언어][파생 언어]를 사용하여 빌드됩니다.
+`ponysay` 패키지에는 단일 프로그램(`ponysay`라고도 함)이 있지만, 패키지에는 여러 프로그램뿐 아니라 매뉴얼 페이지, 구성 파일 등이 포함될 수 있습니다.
+예를 들어 [`ffmpeg`][ffmpeg-pkg] 패키지는 [ffmpeg]와 [ffprobe]를 모두 제공합니다.
 
-In Nix, every program is part of a [package][packages].
-Packages are built using the [Nix language][derivations].
-The `ponysay` package has a single program (also called `ponysay`) but packages can contain multiple programs as well as man pages, configuration files, and more.
-The [`ffmpeg`][ffmpeg-pkg] package, for example, provides both [ffmpeg] and [ffprobe].
+<Admonition success open title="한 명령으로 설치 및 실행" id="nix-run-no-install">
+[`nix run`][nix-run]은 `nix install` 명령과 같은 다른 명령어를 필요로 하지 않는다는 것을 눈치채셨을 것입니다.
+이는 셸 스크립팅이나 개발 중인 도구를 실험하는 등의 사용 사례에 유용합니다.
 
-<Admonition success open title="Install and run in one command" id="nix-run-no-install">
-You may have noticed that [`nix run`][nix-run] doesn't require anything like a `nix install` command.
-This makes it handy for use cases like shell scripting or experimenting with in-progress tools.
-
-For more on `nix run`, see [Using Nix to run software with no installation steps][nix-run-post] on the [Determinate Systems blog][blog].
+`nix run`에 대한 자세한 내용은 [Determinate Systems 블로그][블로그]의 [Nix를 사용하여 설치 단계 없이 소프트웨어 실행][nix-run-post]를 참조하세요.
 
 </Admonition>
 
-**Congrats**!
-You've just run a program using the Nix CLI and learned a little bit about some core Nix concepts.
-You're now ready to explore Nix development environments.
+**축하합니다**!
+Nix CLI를 사용하여 프로그램을 실행하고 Nix의 핵심 개념에 대해 간략하게 알아보았습니다.
+이제 Nix 개발 환경을 살펴볼 준비가 되었습니다.
 
 [blog]: https://determinate.systems/posts
 [cache]: /concepts/caching

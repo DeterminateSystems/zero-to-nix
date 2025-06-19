@@ -1,125 +1,122 @@
 ---
-title: Explore Nix development environments
+title: Nix 개발 환경 탐색
 order: 3
 summary: [
-  "Use the `nix develop` command to activate a Nix development environment",
-  "Run a command inside a development environment without actually entering that environment",
-  "Explore Nix development environments tailored to specific programming languages",
-  "Explore a more mixed development environment",
-  "Use `nix develop` to activate an environment defined in a local [flake](/concepts/flakes)"
+  "`nix develop` 명령을 사용하여 Nix 개발 환경을 활성화하세요",
+  "개발 환경에 실제로 들어가지 않고도 해당 환경 내에서 명령을 실행하세요",
+  "특정 프로그래밍 언어에 맞춰진 Nix 개발 환경을 살펴보세요",
+  "더욱 다양한 개발 환경을 살펴보세요",
+  "`nix develop` 명령을 사용하여 로컬 [플레이크](/concepts/flakes)에 정의된 환경을 활성화하세요"
 ]
 ---
 
-One of Nix's key features for developing software is Nix [development environments][dev].
-You can define development environments of any complexity using the [Nix language][language].
-We'll cover that a bit later, but for now let's get a feel for what a Nix development environment is and how it works.
+Nix의 소프트웨어 개발 핵심 기능 중 하나는 Nix [개발 환경][dev]입니다.
+[Nix 언어][언어]를 사용하여 어떤 복잡성의 개발 환경이든 정의할 수 있습니다.
+이 부분에 대해서는 나중에 자세히 다루겠지만, 지금은 Nix 개발 환경이 무엇이고 어떻게 작동하는지 살펴보겠습니다.
 
-The [`nix develop`][nix-develop] command activates a Nix environment:
+[`nix develop`][nix-develop] 명령은 Nix 환경을 활성화합니다.
 
 ```shell title="Enter a Nix development environment defined in an external flake"
 nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example"
 ```
 
-<Admonition warning title="This could take a while" id="nix-develop-loading">
-  The first time you activate a Nix development environment using `nix develop`
-  it's likely to be a slow operation. That's because Nix needs to build every
-  [package][packages] included in the environment from scratch. This is in
-  contrast to most [package managers][pkg], which install things more quickly
-  because they download pre-built archives like tarballs. Future `nix develop`
-  invocations should be much faster, as Nix doesn't need to build the packages
-  again.
+<Admonition warning title="시간이 좀 걸릴 수 있습니다" id="nix-develop-loading">
+  `nix develop`를 사용하여 Nix 개발 환경을 처음 활성화할 때는
+작업 속도가 느릴 수 있습니다. Nix가 환경에 포함된 모든
+[패키지][패키지]를 처음부터 빌드해야 하기 때문입니다. 이는
+대부분의 [패키지 관리자][pkg]와는 대조적입니다. 대부분의 [패키지 관리자][pkg]는 tarball과 같은 미리 빌드된 아카이브를 다운로드하기 때문에 더 빠르게 설치됩니다.
+앞으로는 Nix가 패키지를 다시 빌드할 필요가 없으므로 `nix develop` 호출 속도가 훨씬 빨라질 것입니다.
 </Admonition>
 
-You should be greeted by a new shell prompt, something like this:
+다음과 같은 새로운 셸 프롬프트가 표시됩니다.
 
 ```shell title="Shell prompt in the Nix development environment"
 (nix:zero-to-nix-env) bash-5.2$
 ```
 
-:rocket: **Success**!
-You're now in a [Bash] environment that includes [curl] and [Git].
-You may already have both in your environment, but run these commands to see that something new is happening:
+:rocket: **성공**!
+이제 [curl]과 [Git]이 포함된 [Bash] 환경에 있습니다.
+이미 두 환경이 모두 설치되어 있을 수도 있지만, 다음 명령을 실행하여 새로운 기능이 추가되었는지 확인하세요.
 
 ```shell title="Ensure that curl and Git are installed"
 type curl
 type git
 ```
 
-For curl, for example, you should see a strange path like this (the hash part should be different on your machine):
+예를 들어 curl의 경우 이와 같은 이상한 경로가 표시되어야 합니다(해시 부분은 사용자 컴퓨터에서 달라야 합니다).
 
 <NixStorePath pkg="curl-8.1.1-bin" bin="curl" />
+여기서 무슨 일이 일어났을까요? [Nix] CLI는 몇 가지 작업을 수행했습니다.
 
-What happened here? The [Nix] CLI did a few things:
+- `https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example` [플레이크 참조][플레이크]를 사용하여 Nix 코드를 가져와 특정 [플레이크 출력][출력]을 빌드했습니다(나중에 자세히 설명).
+- 환경 설정에 지정된 [패키지]를 빌드했습니다(나중에 자세히 설명).
+- `git` 및 `curl` 패키지가 [Nix 저장소][저장소]에서 검색될 수 있도록 [`PATH`][경로]를 사용하여 환경을 설정했습니다.
 
-- It used the `https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example` [flake reference][flakes] to pull in some Nix code and built a specific [flake output][output] (more on this later).
-- It built the [packages] specified in the environment configuration (again, more on this later).
-- It set up an environment with a [`PATH`][path] that enables the `git` and `curl` packages to be discovered in the [Nix store][store].
+Nix 개발 환경에서 제공할 수 있는 두 가지 추가 기능은 다음과 같습니다.
 
-Two other things that you can provide in Nix development environments:
+1. 이 예제에는 포함되어 있지 않지만, 환경이 시작될 때마다 실행되는 임의의 셸 코드인 _셸 후크_를 정의할 수 있습니다.
+셸 훅의 몇 가지 사용 사례는 다음과 같습니다.
 
-1. Although this example doesn't include one, you can define _shell hooks_, which are arbitrary shell code that runs whenever the environment starts up.
-   Some example use cases for shell hooks:
+- 환경이 활성화될 때마다 환경 정보를 콘솔에 `echo`합니다.
+- 체크 및 린터와 같은 작업을 실행합니다.
+- [Git 훅][훅]과 같은 다른 원하는 훅이 제대로 설정되었는지 확인합니다.
+셸 훅의 예를 보려면 다음을 실행합니다.
 
-   - `echo` information about the environment to the console whenever the environment is activated
-   - Run things like checks and linters
-   - Ensure that other desired hooks, like [Git hooks][hooks], are properly set up.
-     Run this to see an example shell hook:
+```shell title="셸 훅 실행"
+nix develop "github:DeterminateSystems/zero-to-nix#hook"
+```
 
-     ```shell title="Run a shell hook"
-     nix develop "github:DeterminateSystems/zero-to-nix#hook"
-     ```
+1. Nix 개발 환경도 환경 변수를 지원합니다.
+`echo $FUNNY_JOKE`를 실행하면 Nix 환경에서만 사용할 수 있는 (우스꽝스러운) 값에 접근할 수 있습니다.
+환경 변수의 몇 가지 사용 사례는 다음과 같습니다.
+- `LOG_LEVEL` 또는 사용 중인 도구에 적합한 옵션을 사용하여 로깅 수준을 설정합니다.
+- `NODE_ENV`([Node.js]의 경우)와 같은 변수를 사용하여 환경을 `development`, `dev` 등으로 설정합니다.
 
-1. Nix development environments support environment variables as well.
-   Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
-   Some example use cases for environment variables:
-   - Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
-   - Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
+다음 섹션을 준비하기 위해 Nix 개발 환경을 떠나보겠습니다.
 
-Let's leave the Nix development environment to prepare for the next section:
 
 ```shell title="Leave the environment"
 exit
 ```
+[Git]이 설치되어 있다면 `type git` 명령어를 사용하여 `PATH`에서 Git을 확인하세요.
+`/usr/bin/git`처럼 전역 경로에 있어야 합니다.
+`echo $FUNNY_JOKE` 명령어를 다시 실행하면 빈 문자열이 반환될 것입니다(물론 컴퓨터에 해당 변수가 설정되어 있지 않은 한!).
 
-If you have [Git] installed, check your `PATH` for it using `type git`.
-It should be at a global path like `/usr/bin/git`.
-And if you run `echo $FUNNY_JOKE` again you should get an empty string (unless you happen to have that variable set on your machine!).
+## 개발 환경 내에서 명령어 실행하기
 
-## Run commands inside the development environment
-
-While it's fun to explore the environment, you don't always want to be inside the environment to use it.
-The `nix develop` command provides a `--command` (or `-c`) flag that you can use to run commands that _use_ the environment but _from_ your current environment.
-Here are some examples for the environment we used earlier:
+개발 환경을 탐색하는 것은 재미있지만, 항상 환경 내부에 있어야만 사용할 수 있는 것은 아닙니다.
+`nix develop` 명령어는 `--command`(또는 `-c`) 플래그를 제공하며, 이 플래그를 사용하면 현재 환경에서 해당 환경을 _사용_하는 명령어를 실행할 수 있습니다.
+앞서 사용한 환경의 몇 가지 예시는 다음과 같습니다.
 
 ```shell title="Layer multiple environments"
 nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example" --command git help
 nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#example" --command curl https://example.com
 ```
+두 경우 모두 [Nix 저장소][store]에서 패키지를 실행하고 전역 환경에서는 아무것도 실행하지 않습니다.
+보시다시피, Nix 개발 환경은 주변 환경(환경 변수 및 `/bin` 및 `/usr/bin`과 같은 경로)과 격리되어 있다는 점에서 [_밀폐형_][밀폐성]을 갖습니다.
 
-In both cases, you're running a package in the [Nix store][store] and nothing from your global environment.
-As you can see, Nix development environments are [_hermetic_][hermeticity] in that they're isolated from the surrounding environment (such as your environment variables and paths like `/bin` and `/usr/bin`).
+## 언어별 환경
 
-## Language-specific environments
-
-As we did in the [last section][last], let's get a bit more specific and explore how Nix can benefit more specific programming environments.
-Select one of these programming languages:
+[마지막 섹션][마지막]에서 살펴본 것처럼, 이제 좀 더 구체적으로 살펴보고 Nix가 특정 프로그래밍 환경에 어떤 이점을 제공하는지 살펴보겠습니다.
+다음 프로그래밍 언어 중 하나를 선택하세요.
 
 <Languages />
 
-Now explore the Nix development environment for <Language />:
+이제 Nix 개발 환경을 탐색해보세요.
+<Language />:
 
 <SpecificLanguage lang="C++">
 ```shell title="Explore a development environment for C++"
 nix develop "github:DeterminateSystems/zero-to-nix#cpp"
 ```
 
-First, let's see the Nix store path for [CMake]:
+먼저 [CMake]에 대한 Nix 저장소 경로를 살펴보겠습니다.
 
 ```shell title="Get path information for CMake"
 type cmake
 ```
 
-Check the current CMake version:
+현재 CMake 버전을 확인하세요:
 
 ```shell title="Check CMake's version"
 cmake --version
@@ -453,11 +450,11 @@ sbt is /nix/store/p0hca7x8g45p5hnh0xjzy5s2bcpy1i9l-sbt-1.7.3/bin/sbt
 
 </SpecificLanguage>
 
-Probably not what you expected! What happened here? A few things:
+예상과 다르시겠죠! 무슨 일이 일어났을까요? 몇 가지 이유가 있습니다.
 
-- Nix looked at the `devShells` [flake outputs][output] in `flake.nix` to figure out which [Nix packages][packages] to include in the development environment (Nix specifically looked at the `packages` array).
-- Nix built the packages specified under `packages` and stored them in the
-  [Nix store][store] under `/nix/store`.
+- Nix는 `flake.nix`의 `devShells` [플레이크 출력][출력]을 확인하여 개발 환경에 포함할 [Nix 패키지][패키지]를 파악했습니다(특히 `packages` 배열을 확인했습니다).
+- Nix는 `packages`에 지정된 패키지를 빌드하여
+`/nix/store` 아래의 [Nix 저장소][저장소]에 저장했습니다.
 
 [bash]: https://gnu.org/software/bash
 [blog]: https://determinate.systems/posts

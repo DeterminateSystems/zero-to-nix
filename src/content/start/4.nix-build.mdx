@@ -20,38 +20,36 @@ summary:
 mkdir build-nix-package && cd build-nix-package
 nix build "https://flakehub.com/f/NixOS/nixpkgs/*#bat"
 ```
+여기서 `nixpkgs`는 GitHub의 [NixOS/nixpkgs][nixpkgs-repo] 저장소에 대한 [플레이크 참조][참조]이고, `#bat`는 Nixpkgs 플레이크에서 `bat` 출력을 빌드하고 있음을 나타냅니다.
 
-Here, `nixpkgs` is a [flake reference][ref] to the [NixOS/nixpkgs][nixpkgs-repo] repository on GitHub, while `#bat` indicates that we're building the `bat` output from the Nixpkgs flake.
-
-When the build is done, run `ls .` and you should see something called `result` in the current directory. `result` is actually a [symlink] to the built package in the [Nix store][store], which you can verify:
+빌드가 완료되면 `ls .`를 실행하면 현재 디렉터리에 `result`라는 파일이 표시됩니다. `result`는 실제로 [Nix store][store]에 있는 빌드된 패키지에 대한 [심볼릭 링크]이며, 다음에서 확인할 수 있습니다.
 
 ```shell title="Display the Nix store path for the build result"
 readlink result
 ```
 
-You should see a path like this (it's likely to be a bit different on your machine):
+다음과 같은 경로가 표시되어야 합니다(사용자의 컴퓨터에서는 약간 다를 수 있음).
 
 <NixStorePath pkg="bat-0.22.1" />
 
-What's happened here is that the Nix CLI has:
+여기서 발생한 문제는 Nix CLI가 다음과 같은 작업을 수행했기 때문입니다.
 
-- Downloaded the Nix code in [Nixpkgs]
-- Found a package definition with the name `bat` (code [here][nixpkgs-bat])
-- Used the build instructions for `bat` to build the [package][packages]
-- Stored the result in the [Nix store][store] using Nix's hash-based path system
-  {/* TODO: add substitution here and link to future caching doc */}
+- [Nixpkgs]에서 Nix 코드를 다운로드했습니다.
+- `bat`이라는 이름의 패키지 정의를 찾았습니다(코드는 [여기][nixpkgs-bat] 참조).
+- `bat` 빌드 지침을 사용하여 [패키지][패키지]를 빌드했습니다.
+- Nix의 해시 기반 경로 시스템을 사용하여 [Nix 저장소][저장소]에 결과를 저장했습니다.
+* TODO: 여기에 대체 코드를 추가하고 향후 캐싱 문서에 대한 링크를 추가하세요. */}
 
-You can now run bat:
+이제 bat을 실행할 수 있습니다.
 
 ```shell title="Run bat from the local build result"
 ./result/bin/bat --help
 ```
+:rocket: **성공**!
+Nix를 사용하여 패키지를 빌드하고 실행했습니다.
 
-:rocket: **Success**!
-You've built and run a package using Nix.
-
-### Build a package for tools written in `$LANGUAGE`
-One of the great things about Nix is that package builds are extremely flexible, which enables you to create packages for things written in just about any programming language. In this section, we'll explore that by building and running packages for tools written in a variety of languages. Select one below to see some examples:
+### `$LANGUAGE`로 작성된 도구용 패키지 빌드
+Nix의 가장 큰 장점 중 하나는 패키지 빌드가 매우 유연하여 거의 모든 프로그래밍 언어로 작성된 패키지에 대한 패키지를 만들 수 있다는 것입니다. 이 섹션에서는 다양한 언어로 작성된 도구용 패키지를 빌드하고 실행하여 이를 살펴보겠습니다. 아래에서 하나를 선택하여 몇 가지 예를 확인해 보세요.
 
 <Languages />
 
@@ -79,7 +77,7 @@ nix build "nixpkgs#nodePackages.npm"
 ./result/bin/npm --help
 ```
 
-If you run `ls result/bin` you'll notice that the package also includes [npx].
+`ls result/bin`을 실행하면 패키지에 [npx]도 ​​포함되어 있는 것을 알 수 있습니다.
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
 Let's build and run [pip]:
@@ -114,9 +112,9 @@ nix build "nixpkgs#scalafmt"
 ```
 </SpecificLanguage>
 
-### Beyond Nixpkgs
+### Nixpkgs를 넘어
 
-While [Nixpkgs] is by far the largest Nix package repository in the known universe, any [Nix flake][flake] can include package [outputs]. Let's build a package from a different repo, this time the package for [Home Manager][hm], a popular Nix tool for configuring home environments:
+[Nixpkgs]는 알려진 우주에서 가장 큰 Nix 패키지 저장소이지만, 모든 [Nix flake][flake]는 패키지 [outputs]를 포함할 수 있습니다. 다른 저장소에서 패키지를 빌드해 보겠습니다. 이번에는 홈 환경 구성에 널리 사용되는 Nix 도구인 [Home Manager][hm]용 패키지를 빌드해 보겠습니다.
 
 ```shell title="Build Home Manager"
 nix build "https://flakehub.com/f/nix-community/home-manager/*"
@@ -129,14 +127,14 @@ To run Home Manager:
 ./result/bin/home-manager --help
 ```
 
-Upstreaming your packages to Nixpkgs is always an option, but it's good to bear in mind that with Nix you can distribute packages via any public Git repository with a [`flake.nix`][flake].
+패키지를 Nixpkgs로 업스트림하는 것은 항상 가능한 옵션이지만, Nix를 사용하면 [`flake.nix`][flake]를 사용하여 모든 공개 Git 저장소를 통해 패키지를 배포할 수 있다는 점을 기억하는 것이 좋습니다.
 
-## Build a package in a local flake
+## 로컬 플레이크에서 패키지 빌드
 
-[Earlier](#nixpkgs) in this guide, we built a Nix package defined in [Nixpkgs] to get a sense of some of the mechanics of that process.
-In this guide, we'll dig a bit deeper and build a Nix package defined in a local [Nix flake][flake].
+이 가이드의 [앞서](#nixpkgs)에서는 프로세스의 메커니즘을 파악하기 위해 [Nixpkgs]에 정의된 Nix 패키지를 빌드했습니다.
+이 가이드에서는 좀 더 자세히 살펴보고 로컬 [Nix 플레이크][flake]에 정의된 Nix 패키지를 빌드해 보겠습니다.
 
-As above, select a preferred language:
+위와 같이 원하는 언어를 선택하세요.
 
 <Languages />
 
@@ -310,7 +308,7 @@ To view that website, open the HTML file at `result/index.html`.
 
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
-Here's the package definition that enables us to build our Python package:
+Python 패키지를 빌드할 수 있는 패키지 정의는 다음과 같습니다.
 
 ```nix title="flake.nix"
 {
@@ -330,17 +328,16 @@ Here's the package definition that enables us to build our Python package:
 }
 ```
 
-For the full flake, see [`flake.nix`][flake-py] on GitHub or run `cat flake.nix`.
-What you see here is a [derivation] that defines how to build the package, more specifically the [`buildPythonApplication`][buildpythonapplication] function, which is a wrapper around Nix's built-in `derivation` function.
+전체 플레이크는 GitHub에서 [`flake.nix`][flake-py]를 참조하거나 `cat flake.nix`를 실행하세요.
+여기 보이는 것은 패키지 빌드 방법을 정의하는 [derivation]입니다. 더 구체적으로는 Nix의 내장 `derivation` 함수를 감싸는 [`buildPythonApplication`][buildpythonapplication] 함수입니다.
 
-The resulting package is an executable that prints to the terminal.
-To run the package:
+결과 패키지는 터미널에 출력하는 실행 파일입니다.
+패키지를 실행하려면 다음을 수행하세요.
 
 ```shell title="Run the built executable"
 ./result/bin/zero-to-nix-python
 ```
-
-You should see this terminal output:
+다음과 같은 터미널 출력이 표시됩니다.
 
 ```text
 Hello from inside a Python program built with Nix!
@@ -348,7 +345,7 @@ Hello from inside a Python program built with Nix!
 
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
-Here's the package definition that enables us to build this Go package:
+다음은 Go 패키지를 빌드할 수 있게 해주는 패키지 정의입니다.
 
 ```nix title="flake.nix"
 {
@@ -364,21 +361,21 @@ Here's the package definition that enables us to build this Go package:
 }
 ```
 
-For the full flake, see [`flake.nix`][flake-go] on GitHub or run `cat flake.nix`.
-What you see here is a [derivation] that defines how to build the package, more specifically the [`buildGoModule`][buildgomodule] function, which is a wrapper around Nix's built-in `derivation` function.
+전체 플레이크는 GitHub에서 [`flake.nix`][flake-go]를 참조하거나 `cat flake.nix`를 실행하세요.
+여기 보이는 것은 패키지 빌드 방법을 정의하는 [derivation]입니다. 더 구체적으로는 Nix의 내장 `derivation` 함수를 감싸는 [`buildGoModule`][buildgomodule] 함수입니다.
 
-The package that results when you run `nix build` is a web server built using the [Gin] framework.
-To run the package:
+`nix build`를 실행하면 [Gin] 프레임워크를 사용하여 빌드된 웹 서버 패키지가 생성됩니다.
+패키지를 실행하려면 다음을 수행하세요.
 
 ```shell title="Run the compiled binary"
 ./result/bin/zero-to-nix-go
 ```
 
-In another window, run `curl http://localhost:8080` to receive a message from the server.
+다른 창에서 `curl http://localhost:8080`을 실행하여 서버로부터 메시지를 받습니다.
 
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
-Here's the package definition that enables us to build this Rust package:
+Rust 패키지를 빌드할 수 있게 해주는 패키지 정의는 다음과 같습니다.
 
 ```nix title="flake.nix"
 {
@@ -401,10 +398,10 @@ Here's the package definition that enables us to build this Rust package:
 }
 ```
 
-For the full flake, see [`flake.nix`][flake-rs] on GitHub or run `cat flake.nix`.
-What you see here is a [derivation] that defines how to build the package, more specifically the [`buildRustPackage`][buildrustpackage] function, which is a wrapper around Nix's built-in `derivation` function.
+전체 플레이크는 GitHub에서 [`flake.nix`][flake-rs]를 참조하거나 `cat flake.nix`를 실행하세요.
+여기 보이는 것은 패키지 빌드 방법을 정의하는 [derivation]입니다. 더 구체적으로는 Nix의 내장 `derivation` 함수를 감싸는 [`buildRustPackage`][buildrustpackage] 함수입니다.
 
-To run the resulting package, which is an executable that prints to the terminal:
+터미널에 출력되는 실행 파일인 결과 패키지를 실행하려면 다음을 실행하세요.
 
 ```shell title="Run the compiled binary"
 ./result/bin/zero-to-nix-rust
@@ -418,11 +415,11 @@ Hello from Nix + Rust!
 
 </SpecificLanguage>
 <SpecificLanguage lang="Scala">
-We're not gonna lie to you: packaging [Scala] is pretty tricky.
-Fortunately, there's a third-party project called [`sbt-derivation`][sbt-derivation] that provides some nice helpers, including a handy function called `mkSbtDerivation`, which is a wrapper around Nix's built-in `derivation` function.
+거짓말은 하지 않겠습니다. [Scala] 패키징은 꽤 까다롭습니다.
+다행히도 [`sbt-derivation`][sbt-derivation]이라는 서드파티 프로젝트가 있는데, 이 프로젝트는 Nix의 내장 `derivation` 함수를 감싸는 편리한 `mkSbtDerivation` 함수를 포함하여 유용한 도우미들을 제공합니다.
 
-For the full flake behind this package, see [`flake.nix`][flake-scala] on GitHub or run `cat flake.nix`.
-To run the resulting package, which is an executable that prints to the terminal:
+이 패키지의 전체 구성 요소는 GitHub에서 [`flake.nix`][flake-scala]를 참조하거나 `cat flake.nix`를 실행하세요.
+터미널에 출력되는 실행 파일인 최종 패키지를 실행하려면 다음을 실행하세요.
 
 ```shell title="Run the built executable"
 ./result/bin/zero-to-nix-scala
@@ -435,7 +432,7 @@ Hello from Nix + Scala!
 ```
 </SpecificLanguage>
 
-We won't delve too much deeper into [derivations][derivation] and creating your own packages here, but we hope that this guide shows you how Nix code gets turned into real build output.
+여기서는 [derivations][derivation] 과 사용자 정의 패키지 생성에 대해 너무 깊이 다루지 않겠지만, 이 가이드를 통해 Nix 코드가 실제 빌드 출력으로 변환되는 과정을 살펴보겠습니다.
 
 [bat]: https://github.com/sharkdp/bat
 [buildgomodule]: https://nixos.org/manual/nixpkgs/stable/#ssec-language-go

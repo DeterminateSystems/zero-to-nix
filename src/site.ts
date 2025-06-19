@@ -48,13 +48,13 @@ type Site = {
 };
 
 export const site: Site = {
-  title: "Zero to Nix",
-  description: "Your guide to learning Nix and flakes",
+  title: "제로 투 닉스",
+  description: "Nix와 플레이크를 배우기 위한 가이드",
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languages: ["C++", "Go", "Haskell", "JavaScript", "Python", "Rust", "Scala"],
   defaultLanguage: "JavaScript",
   banner: {
-    text: "Check out <strong><a target='_blank' class='banner-link' href='https://flakehub.com'>FlakeHub</a></strong>, the best place to discover and publish Nix flakes, brought to you by <strong><a target='_blank' class='banner-link' href='https://determinate.systems'>Determinate Systems</a></strong>.",
+    text: "<strong><a target='_blank' class='banner-link' href='https://flakehub.com'>FlakeHub</a></strong>를 확인해 보세요. <strong><a target='_blank' class='banner-link' href='https://determinate.systems'>Determinate Systems</a></strong>에서 제공하는 Nix 플레이크를 발견하고 게시할 수 있는 최고의 장소입니다.",
     generation: 2,
   },
   navbarLinks: [{ text: "About", href: "/about" }],
@@ -65,57 +65,57 @@ export const site: Site = {
   ],
   features: [
     {
-      title: "Declarative, reproducible development environments",
+      title: "선언적이고 재현 가능한 개발 환경",
       description:
-        'No more "works on my machine." Create environments that work seamlessly and are easily sharable across platforms.',
+        '더 이상 "내 컴퓨터에서만 작동"이라는 생각은 버리세요. 원활하게 작동하고 여러 플랫폼에서 쉽게 공유할 수 있는 환경을 구축하세요.',
       links: [
         {
-          text: "Explore a Nix development environment",
+          text: "Nix 개발 환경 탐색",
           href: "/start/nix-develop",
         },
         {
-          text: "Create a development environment",
+          text: "개발 환경 만들기",
           href: "/start/nix-develop",
         },
         {
-          text: "How Nix development environments work",
+          text: "Nix 개발 환경의 작동 방식",
           href: "/concepts/dev-env",
         },
       ],
     },
     {
-      title: "Declarative, reproducible package builds",
+      title: "선언적이고 재현 가능한 패키지 빌드",
       description:
-        "No more broken builds or mysterious installation processes. Nix builds packages from scratch every time.",
+        "더 이상 빌드 오류나 알 수 없는 설치 과정은 없습니다. Nix는 항상 패키지를 처음부터 빌드합니다.",
       links: [
         {
-          text: "Build a Nix package",
+          text: "Nix 패키지 빌드",
           href: "/start/nix-build",
         },
         {
-          text: "How Nix packages work",
+          text: "Nix 패키지 작동 방식",
           href: "/concepts/packages",
         },
       ],
     },
     {
-      title: "The largest package repository in existence",
+      title: "현존하는 가장 큰 패키지 저장소",
       description:
-        "Nixpkgs offers over 80,000 packages and continues to grow every day.",
+        "Nixpkgs는 80,000개가 넘는 패키지를 제공하고 있으며 매일 성장하고 있습니다.",
       links: [
         {
-          text: "How Nixpkgs works",
+          text: "Nixpkgs 작동 방식",
           href: "/concepts/nixpkgs",
         },
       ],
     },
     {
-      title: "Declarative Linux systems",
+      title: "선언적 Linux 시스템",
       description:
-        "NixOS is a unique Linux distribution that you can declaratively configure using the Nix language and Nix packages.",
+        "NixOS는 Nix 언어와 Nix 패키지를 사용하여 선언적으로 구성할 수 있는 고유한 Linux 배포판입니다.",
       links: [
         {
-          text: "How NixOS works",
+          text: "NixOS 작동 방식",
           href: "/concepts/nixos",
         },
       ],
@@ -125,25 +125,25 @@ export const site: Site = {
     {
       title: "Nix",
       description:
-        "A build tool and package manager used to create declarative, reproducible software systems.",
+        "선언적이고 재현 가능한 소프트웨어 시스템을 만드는 데 사용되는 빌드 도구 및 패키지 관리자입니다.",
       href: "/concepts/nix",
     },
     {
       title: "Nix language",
       description:
-        "A language for instructing Nix how to build packages, environments, and systems.",
+        "Nix에게 패키지, 환경, 시스템을 빌드하는 방법을 알려주는 언어입니다.",
       href: "/concepts/nix-language",
     },
     {
       title: "NixOS",
       description:
-        "A Linux distribution built on Nix with its core principles in mind.",
+        "Nix의 핵심 원칙을 염두에 두고 구축된 Linux 배포판입니다.",
       href: "/concepts/nixos",
     },
     {
       title: "Nixpkgs",
       description:
-        "A vast collection of Nix packages, libraries, and helper functions.",
+        "Nix 패키지, 라이브러리, 도우미 함수의 방대한 컬렉션입니다.",
       href: "/concepts/nixpkgs",
     },
   ],

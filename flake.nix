@@ -1,5 +1,5 @@
 {
-  description = "Zero to Nix: Your guide to learning Nix and flakes";
+  description = "제로 투 닉스: 닉스와 플레이크를 배우기 위한 가이드";
 
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*";
 
