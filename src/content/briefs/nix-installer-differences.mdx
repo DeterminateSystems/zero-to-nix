@@ -2,15 +2,15 @@
 id: nix-installer-differences
 ---
 
-The Determinate Nix Installer, from [Determinate Systems][ds], differs from the [official Nix installation script][official] in several important ways:
+[Determinate Systems][ds]의 Determinate Nix Installer는 다음과 같은 몇 가지 중요한 측면에서 [공식 Nix 설치 스크립트][official]와 다릅니다.
 
-1. It installs Nix with [flake support][flakes] and the [unified CLI][cli] feature already enabled rather than requiring users to enable those features.
-1. It stores a *receipt* for the install process at `/nix/receipt.json`. This receipt enables the Determinate Nix Installer to seamlessly uninstall Nix, whereas the official Nix installation script provides no offboarding path of this kind.
-1. Much like [Terraform]/[OpenTofu], the Determinate Nix Installer enables you to [plan][tf-plan] your installation using the [`plan`][dni-plan] command to see how the installer will change your system. We see this as an improvement over the official Nix installation script, which prompts you to approve changes but doesn't present *all* changes.
-1. The Determinate Nix Installer is written in [Rust] rather than a shell scripting language (the official installer is written in [Bash]). This has two key benefits:
-    1. It makes the Determinate Nix Installer more portable across platforms.
-    1. It enables the Determinate Nix Installer to parallelize CPU-intensive tasks, which can't be achieved in a language like Bash.
-1. If the installation fails along the way for some reason, the Determinate Nix Installer can use its receipt to revert the changes that it has made, minimizing the likelihood that the Nix installation process leaves your system in an undesirable state.
+1. 사용자가 해당 기능을 활성화하도록 요구하는 대신 [플레이크 지원][flakes] 및 [통합 CLI][cli] 기능이 이미 활성화된 상태로 Nix를 설치합니다.
+1. 설치 프로세스에 대한 *영수증*을 `/nix/receipt.json`에 저장합니다. 이 영수증을 사용하면 Determinate Nix Installer가 Nix를 원활하게 제거할 수 있지만 공식 Nix 설치 스크립트는 이러한 종류의 오프보딩 경로를 제공하지 않습니다.
+1. [Terraform]/[OpenTofu]와 마찬가지로 Determinate Nix Installer를 사용하면 [`plan`][dni-plan] 명령을 사용하여 설치를 [계획][tf-plan]하여 설치 프로그램이 시스템을 어떻게 변경하는지 확인할 수 있습니다. 공식 Nix 설치 스크립트는 변경 사항을 승인하라는 메시지를 표시하지만 *모든* 변경 사항을 제시하지는 않는다는 점에서 개선된 것으로 간주합니다.
+1. Determinate Nix Installer는 셸 스크립팅 언어가 아닌 [Rust]로 작성되었습니다 (공식 설치 프로그램은 [Bash]로 작성됨). 여기에는 두 가지 주요 이점이 있습니다.
+    1. Determinate Nix Installer의 플랫폼 간 이식성이 향상됩니다.
+    1. Determinate Nix Installer가 CPU 집약적인 작업을 병렬화할 수 있도록 하며, 이는 Bash와 같은 언어에서는 달성할 수 없습니다.
+1. 어떤 이유로든 설치가 실패하면 Determinate Nix Installer는 영수증을 사용하여 변경 사항을 되돌릴 수 있으므로 Nix 설치 프로세스로 인해 시스템이 바람직하지 않은 상태로 남을 가능성을 최소화합니다.
 
 [bash]: https://gnu.org/software/bash
 [cli]: /concepts/nix#unified-cli
