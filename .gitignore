@@ -3,6 +3,7 @@
 
 # Nix artifacts
 result*
+.direnv
 
 # htmltest artifacts
 /tmp/
