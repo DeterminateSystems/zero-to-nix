@@ -32,7 +32,7 @@ jobs:
       - name: Run Nix CI suite
         run: nix develop --command ci
       - name: Check external links
-        uses: lycheeverse/lychee-action@v1.8.0
+        uses: lycheeverse/lychee-action@v2.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
