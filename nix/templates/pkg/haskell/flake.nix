@@ -6,7 +6,8 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -17,21 +18,29 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
     in
     {
-      packages = forAllSystems ({ pkgs }: {
-        default = pkgs.haskellPackages.mkDerivation {
-          pname = "zero-to-nix-haskell";
-          version = "0.1.0";
-          src = self;
-          license = pkgs.lib.licenses.cc-by-sa-40;
-          executableHaskellDepends = with pkgs.haskellPackages; [
-            base
-          ];
-        };
-      });
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          default = pkgs.haskellPackages.mkDerivation {
+            pname = "zero-to-nix-haskell";
+            version = "0.1.0";
+            src = self;
+            license = pkgs.lib.licenses.cc-by-sa-40;
+            executableHaskellDepends = with pkgs.haskellPackages; [
+              base
+            ];
+          };
+        }
+      );
     };
 }

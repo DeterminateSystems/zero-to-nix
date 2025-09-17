@@ -4,8 +4,9 @@
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*";
 
   outputs =
-    { self
-    , nixpkgs
+    {
+      self,
+      nixpkgs,
     }:
 
     let
@@ -17,103 +18,135 @@
         "aarch64-darwin" # 64-bit ARM macOS
       ];
 
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
 
       # Helper function for scripting
       runPkg = pkgs: pkg: "${pkgs.${pkg}}/bin/${pkg}";
     in
     {
-      devShells = forAllSystems
-        ({ pkgs }:
-          let
-            common = with pkgs; [
-              # Language
-              vale
+      devShells = forAllSystems (
+        { pkgs }:
+        let
+          common = with pkgs; [
+            # Language
+            vale
 
-              # Link checking
-              htmltest
-              lychee
+            # Link checking
+            htmltest
+            lychee
 
-              # JS
-              nodejs
-              pnpm
+            # JS
+            nodejs
+            pnpm
 
-              # Serve locally
-              static-web-server
-            ];
+            # Serve locally
+            static-web-server
 
-            run = pkg: runPkg pkgs pkg;
+            self.formatter.${system}
+          ];
 
-            scripts = with pkgs; [
-              (writeScriptBin "clean" ''
-                rm -rf dist
-              '')
+          run = pkg: runPkg pkgs pkg;
 
-              (writeScriptBin "setup" ''
-                clean
-                ${run "pnpm"} install
-              '')
+          scripts = with pkgs; [
+            (writeScriptBin "clean" ''
+              rm -rf dist
+            '')
 
-              (writeScriptBin "build" ''
-                setup
-                ${run "pnpm"} run build
-              '')
+            (writeScriptBin "setup" ''
+              clean
+              ${run "pnpm"} install
+            '')
 
-              (writeScriptBin "build-ci" ''
-                setup
-                ENV=ci ${run "pnpm"} run build
-              '')
+            (writeScriptBin "build" ''
+              setup
+              ${run "pnpm"} run build
+            '')
 
-              (writeScriptBin "dev" ''
-                setup
-                ${run "pnpm"} run dev
-              '')
+            (writeScriptBin "build-ci" ''
+              setup
+              ENV=ci ${run "pnpm"} run build
+            '')
 
-              (writeScriptBin "format" ''
-                setup
-                ${run "pnpm"} run format
-              '')
+            (writeScriptBin "dev" ''
+              setup
+              ${run "pnpm"} run dev
+            '')
 
-              (writeScriptBin "check-internal-links" ''
-                ${run "htmltest"} --conf ./.htmltest.internal.yml
-              '')
+            (writeScriptBin "format" ''
+              setup
+              ${run "pnpm"} run format
+            '')
 
-              (writeScriptBin "check-external-links" ''
-                ${run "htmltest"} --conf ./.htmltest.external.yml
-              '')
+            (writeScriptBin "check-internal-links" ''
+              ${run "htmltest"} --conf ./.htmltest.internal.yml
+            '')
 
-              (writeScriptBin "lint-style" ''
-                ${run "vale"} src/pages
-              '')
+            (writeScriptBin "check-external-links" ''
+              ${run "htmltest"} --conf ./.htmltest.external.yml
+            '')
 
-              (writeScriptBin "preview" ''
-                build
-                ${run "pnpm"} run preview
-              '')
+            (writeScriptBin "lint-style" ''
+              ${run "vale"} src/pages
+            '')
 
-              # Run this to see if CI will pass
-              (writeScriptBin "ci" ''
-                set -e
-                build-ci
-                check-internal-links
-                lint-style
-              '')
-            ];
+            (writeScriptBin "preview" ''
+              build
+              ${run "pnpm"} run preview
+            '')
 
-            exampleShells = import ./nix/shell/example.nix { inherit pkgs; };
-          in
-          {
-            inherit (exampleShells) example cpp haskell hook javascript python go rust scala multi;
-          } // {
-            default = pkgs.mkShell
-              {
-                packages = common ++ scripts;
-              };
-          });
+            (writeScriptBin "check-nix-formatting" ''
+              git ls-files -z '*.nix' | xargs -0 -r nix develop --command nixfmt --check
+            '')
 
-      apps = forAllSystems ({ pkgs }:
+            (writeScriptBin "format-nix" ''
+              git ls-files -z '*.nix' | xargs -0 -r nix fmt
+            '')
+
+            # Run this to see if CI will pass
+            (writeScriptBin "ci" ''
+              set -e
+
+              check-nix-formatting
+              build-ci
+              check-internal-links
+              lint-style
+            '')
+          ];
+
+          exampleShells = import ./nix/shell/example.nix { inherit pkgs; };
+        in
+        {
+          inherit (exampleShells)
+            example
+            cpp
+            haskell
+            hook
+            javascript
+            python
+            go
+            rust
+            scala
+            multi
+            ;
+        }
+        // {
+          default = pkgs.mkShellNoCC {
+            packages = common ++ scripts;
+          };
+        }
+      );
+
+      formatter = forAllSystems ({ pkgs }: pkgs.nixfmt-rfc-style);
+
+      apps = forAllSystems (
+        { pkgs }:
         let
           run = pkg: runPkg pkgs pkg;
 
@@ -129,7 +162,8 @@
             type = "app";
             program = "${runLocal}/bin/run-local";
           };
-        });
+        }
+      );
 
       templates = {
         cpp-dev = {

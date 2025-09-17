@@ -8,7 +8,12 @@
     rust-overlay.url = "https://flakehub.com/f/oxalica/rust-overlay/*";
   };
 
-  outputs = { self, nixpkgs, rust-overlay }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      rust-overlay,
+    }:
     let
       # Systems supported
       allSystems = [
@@ -19,17 +24,22 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            # Provides Nixpkgs with a rust-bin attribute for building Rust toolchains
-            rust-overlay.overlays.default
-            # Uses the rust-bin attribute to select a Rust toolchain
-            self.overlays.default
-          ];
-        };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs {
+              inherit system;
+              overlays = [
+                # Provides Nixpkgs with a rust-bin attribute for building Rust toolchains
+                rust-overlay.overlays.default
+                # Uses the rust-bin attribute to select a Rust toolchain
+                self.overlays.default
+              ];
+            };
+          }
+        );
     in
     {
       overlays.default = final: prev: {
@@ -37,21 +47,24 @@
         rustToolchain = final.rust-bin.stable.latest.default;
       };
 
-      packages = forAllSystems ({ pkgs }: {
-        default =
-          let
-            rustPlatform = pkgs.makeRustPlatform {
-              cargo = pkgs.rustToolchain;
-              rustc = pkgs.rustToolchain;
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          default =
+            let
+              rustPlatform = pkgs.makeRustPlatform {
+                cargo = pkgs.rustToolchain;
+                rustc = pkgs.rustToolchain;
+              };
+            in
+            rustPlatform.buildRustPackage {
+              name = "zero-to-nix-rust";
+              src = ./.;
+              cargoLock = {
+                lockFile = ./Cargo.lock;
+              };
             };
-          in
-          rustPlatform.buildRustPackage {
-            name = "zero-to-nix-rust";
-            src = ./.;
-            cargoLock = {
-              lockFile = ./Cargo.lock;
-            };
-          };
-      });
+        }
+      );
     };
 }

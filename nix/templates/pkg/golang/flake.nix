@@ -5,7 +5,8 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -16,19 +17,27 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
     in
     {
-      packages = forAllSystems ({ pkgs }: {
-        default = pkgs.buildGoModule {
-          name = "zero-to-nix-go";
-          src = self;
-          vendorHash = "sha256-JQ3vwk2F8aPy89I9E+phfUwCqe+ZeAJGPLpJ1ksiR18=";
-          goSum = ./go.sum;
-          subPackages = [ "cmd/zero-to-nix-go" ];
-        };
-      });
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          default = pkgs.buildGoModule {
+            name = "zero-to-nix-go";
+            src = self;
+            vendorHash = "sha256-JQ3vwk2F8aPy89I9E+phfUwCqe+ZeAJGPLpJ1ksiR18=";
+            goSum = ./go.sum;
+            subPackages = [ "cmd/zero-to-nix-go" ];
+          };
+        }
+      );
     };
 }

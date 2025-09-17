@@ -6,7 +6,8 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -17,23 +18,31 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
     in
     {
-      packages = forAllSystems ({ pkgs }: {
-        default =
-          let
-            python = pkgs.python39;
-          in
-          python.pkgs.buildPythonApplication {
-            name = "zero-to-nix-python";
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          default =
+            let
+              python = pkgs.python39;
+            in
+            python.pkgs.buildPythonApplication {
+              name = "zero-to-nix-python";
 
-            buildInputs = with python.pkgs; [ pip ];
+              buildInputs = with python.pkgs; [ pip ];
 
-            src = ./.;
-          };
-      });
+              src = ./.;
+            };
+        }
+      );
     };
 }
