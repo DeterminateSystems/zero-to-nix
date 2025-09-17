@@ -80,10 +80,6 @@
                 ${run "htmltest"} --conf ./.htmltest.internal.yml
               '')
 
-              (writeScriptBin "check-external-links" ''
-                ${run "htmltest"} --conf ./.htmltest.external.yml
-              '')
-
               (writeScriptBin "lint-style" ''
                 ${run "vale"} src/pages
               '')
