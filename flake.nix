@@ -10,19 +10,20 @@
     }:
 
     let
-      # Systems supported
-      allSystems = [
+      # Nix systems supported
+      supportedSystems = [
         "x86_64-linux" # 64-bit Intel/AMD Linux
         "aarch64-linux" # 64-bit ARM Linux
         "x86_64-darwin" # 64-bit Intel macOS
         "aarch64-darwin" # 64-bit ARM macOS
       ];
 
-      forAllSystems =
+      forEachSupportedSystem =
         f:
-        nixpkgs.lib.genAttrs allSystems (
+        nixpkgs.lib.genAttrs supportedSystems (
           system:
           f {
+            inherit system;
             pkgs = import nixpkgs { inherit system; };
           }
         );
@@ -31,8 +32,8 @@
       runPkg = pkgs: pkg: "${pkgs.${pkg}}/bin/${pkg}";
     in
     {
-      devShells = forAllSystems (
-        { pkgs }:
+      devShells = forEachSupportedSystem (
+        { pkgs, system }:
         let
           common = with pkgs; [
             # Language
@@ -136,7 +137,7 @@
         }
       );
 
-      formatter = forAllSystems ({ pkgs }: pkgs.nixfmt-rfc-style);
+      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
 
       templates = {
         cpp-dev = {
