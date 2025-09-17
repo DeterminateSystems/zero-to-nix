@@ -318,7 +318,7 @@ Here's the package definition that enables us to build our Python package:
   packages = forAllSystems ({ pkgs }: {
     default =
       let
-        python = pkgs.python39;
+        python = pkgs.python3;
       in
       python.pkgs.buildPythonApplication {
         name = "zero-to-nix-python";

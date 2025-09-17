@@ -33,7 +33,7 @@
         {
           default =
             let
-              python = pkgs.python39;
+              python = pkgs.python3;
             in
             python.pkgs.buildPythonApplication {
               name = "zero-to-nix-python";

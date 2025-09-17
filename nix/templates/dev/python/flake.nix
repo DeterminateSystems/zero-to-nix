@@ -36,8 +36,8 @@
         {
           default =
             let
-              # Use Python 3.11
-              python = pkgs.python311;
+              # Use Python 3.*
+              python = pkgs.python3;
             in
             pkgs.mkShell {
               # The Nix packages provided in the environment

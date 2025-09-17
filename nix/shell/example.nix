@@ -52,7 +52,7 @@
   };
 
   python = pkgs.mkShell {
-    packages = with pkgs; [ python313 ];
+    packages = with pkgs; [ python3 ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for Python!"
@@ -88,7 +88,7 @@
 
   multi = pkgs.mkShell {
     packages = with pkgs; [
-      python313
+      python3
       kubectl
       openssl
       opentofu
