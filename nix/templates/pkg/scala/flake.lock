@@ -43,11 +43,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1675083208,
-        "narHash": "sha256-+sSFhSpV2jckr1qYlX/SaxQ6IdpagD6o4rru/3HAl0I=",
+        "lastModified": 1698464090,
+        "narHash": "sha256-Pnej7WZIPomYWg8f/CZ65sfW85IfIUjYhphMMg7/LT0=",
         "owner": "zaninime",
         "repo": "sbt-derivation",
-        "rev": "92d6d6d825e3f6ae5642d1cce8ff571c3368aaf7",
+        "rev": "6762cf2c31de50efd9ff905cbcc87239995a4ef9",
         "type": "github"
       },
       "original": {
