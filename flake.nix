@@ -52,65 +52,58 @@
             self.formatter.${system}
           ];
 
-          run = pkg: runPkg pkgs pkg;
+          script =
+            name: runtimeInputs: text:
+            pkgs.writeShellApplication {
+              inherit name runtimeInputs text;
+            };
 
           scripts = with pkgs; [
-            (writeScriptBin "clean" ''
-              rm -rf dist
-            '')
+            (script "setup" [ pnpm ] "pnpm install")
 
-            (writeScriptBin "setup" ''
-              clean
-              ${run "pnpm"} install
-            '')
-
-            (writeScriptBin "build" ''
+            (script "build" [ pnpm ] ''
               setup
-              ${run "pnpm"} run build
+              pnpm run build
             '')
 
-            (writeScriptBin "build-ci" ''
+            (script "build-ci" [ pnpm ] ''
               setup
-              ENV=ci ${run "pnpm"} run build
+              ENV=ci pnpm run build
             '')
 
-            (writeScriptBin "dev" ''
+            (script "dev" [ pnpm ] ''
               setup
-              ${run "pnpm"} run dev
+              pnpm run dev
             '')
 
-            (writeScriptBin "format" ''
+            (script "format" [ pnpm ] ''
               setup
-              ${run "pnpm"} run format
+              pnpm run format
             '')
 
-            (writeScriptBin "check-internal-links" ''
-              ${run "htmltest"} --conf ./.htmltest.internal.yml
+            (script "check-internal-links" [ htmltest ] ''
+              htmltest --conf ./.htmltest.internal.yml
             '')
 
-            (writeScriptBin "check-external-links" ''
-              ${run "htmltest"} --conf ./.htmltest.external.yml
+            (script "lint-style" [ vale ] ''
+              vale src/pages
             '')
 
-            (writeScriptBin "lint-style" ''
-              ${run "vale"} src/pages
-            '')
-
-            (writeScriptBin "preview" ''
+            (script "preview" [ pnpm ] ''
               build
-              ${run "pnpm"} run preview
+              pnpm run preview
             '')
 
-            (writeScriptBin "check-nix-formatting" ''
-              git ls-files -z '*.nix' | xargs -0 -r nix develop --command nixfmt --check
+            (script "check-nix-formatting" [ nixfmt-rfc-style ] ''
+              git ls-files -z '*.nix' | xargs -0 -r nixfmt --check
             '')
 
-            (writeScriptBin "format-nix" ''
+            (script "format-nix" [ ] ''
               git ls-files -z '*.nix' | xargs -0 -r nix fmt
             '')
 
             # Run this to see if CI will pass
-            (writeScriptBin "ci" ''
+            (script "ci" [ ] ''
               set -e
 
               check-nix-formatting
@@ -144,26 +137,6 @@
       );
 
       formatter = forAllSystems ({ pkgs }: pkgs.nixfmt-rfc-style);
-
-      apps = forAllSystems (
-        { pkgs }:
-        let
-          run = pkg: runPkg pkgs pkg;
-
-          runLocal = pkgs.writeScriptBin "run-local" ''
-            rm -rf dist
-            ${run "pnpm"} install
-            ${run "pnpm"} run build
-            ${run "pnpm"} run preview
-          '';
-        in
-        {
-          default = {
-            type = "app";
-            program = "${runLocal}/bin/run-local";
-          };
-        }
-      );
 
       templates = {
         cpp-dev = {
