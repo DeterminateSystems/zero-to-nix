@@ -2,4 +2,7 @@ exclude = [
   'https://flakehub.com\.*',
   'https://github.com\.*',   # TODO: remove this when we figure out a way around GitHub's rate limits
   'file://*',
+  'https://gnu.org/software/bash',
+  'https://gcc.gnu.org',
+  'https://guix.gnu.org',
 ]
