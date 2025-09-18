@@ -47,10 +47,8 @@
             npmConfigHook = pkgs.importNpmLock.npmConfigHook;
 
             installPhase = ''
-              runHook preInstall
               mkdir -p "$out/share"
               cp -R dist/. "$out/share"/
-              runHook postInstall
             '';
           };
         }

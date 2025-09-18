@@ -212,8 +212,8 @@ Here's the package definition that builds our C++ package:
         buildInputs = cppDependencies;
         buildPhase = "c++ -std=c++17 -o ${binName} ${./main.cpp} -lPocoFoundation -lboost_system";
         installPhase = ''
-          mkdir -p $out/bin
-          cp ${binName} $out/bin/
+          mkdir -p "$out/share"
+          cp -R dist/. "$out/share"/
         '';
       };
   });
