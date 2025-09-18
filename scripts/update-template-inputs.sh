@@ -1,20 +1,21 @@
+#!/usr/bin/env bash
+
 set -euo pipefail
 
-echo "Updating flake inputs for dev shell templates"
+root=$(git rev-parse --show-toplevel)
 
-for template in ./nix/templates/dev/*; do
-  (
-    echo "\_ updating ${template}"
-    cd $template
-    nix flake update
-  )
+echo "Updating flake inputs for dev and pkg templates"
+
+for kind in dev pkg; do
+  for template in ${root}/nix/templates/${kind}/*; do
+    (
+      echo "\_ updating ${template}"
+      cd $template
+      nix flake update
+      nix flake check --all-systems
+      echo "\_ updated ${template} ✅"
+    )
+  done
 done
 
-echo "Updating flake inputs for package build templates"
-
-for template in ./nix/templates/pkg/*; do
-  (
-    cd $template
-    nix flake update
-  )
-done
+echo "Successfully updated flake inputs for all dev and pkg shell templates ✅"

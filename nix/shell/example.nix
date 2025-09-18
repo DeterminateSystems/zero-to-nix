@@ -4,7 +4,11 @@
   example = pkgs.mkShell {
     name = "zero-to-nix";
 
-    packages = with pkgs; [ curl jq git ];
+    packages = with pkgs; [
+      curl
+      jq
+      git
+    ];
 
     FUNNY_JOKE = "What kind of phone does a turtle use? A shell phone!";
   };
@@ -18,7 +22,10 @@
   };
 
   cpp = pkgs.mkShell {
-    packages = with pkgs; [ gcc cmake ];
+    packages = with pkgs; [
+      gcc
+      cmake
+    ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for C++!"
@@ -26,7 +33,10 @@
   };
 
   haskell = pkgs.mkShell {
-    packages = with pkgs.haskellPackages; [ stack ghc ];
+    packages = with pkgs.haskellPackages; [
+      stack
+      ghc
+    ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for Haskell!"
@@ -42,7 +52,7 @@
   };
 
   python = pkgs.mkShell {
-    packages = with pkgs; [ python313 ];
+    packages = with pkgs; [ python3 ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for Python!"
@@ -58,7 +68,10 @@
   };
 
   rust = pkgs.mkShell {
-    packages = with pkgs; [ cargo rustc ];
+    packages = with pkgs; [
+      cargo
+      rustc
+    ];
 
     shellHook = ''
       echo "Welcome to a Nix development environment for Rust!"
@@ -74,7 +87,12 @@
   };
 
   multi = pkgs.mkShell {
-    packages = with pkgs; [ python313 kubectl openssl opentofu ];
+    packages = with pkgs; [
+      python3
+      kubectl
+      openssl
+      opentofu
+    ];
 
     shellHook = ''
       echo "Welcome to a very mixed Nix development environment!"

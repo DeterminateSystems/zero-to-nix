@@ -212,8 +212,8 @@ Here's the package definition that builds our C++ package:
         buildInputs = cppDependencies;
         buildPhase = "c++ -std=c++17 -o ${binName} ${./main.cpp} -lPocoFoundation -lboost_system";
         installPhase = ''
-          mkdir -p $out/bin
-          cp ${binName} $out/bin/
+          mkdir -p "$out/share"
+          cp -R dist/. "$out/share"/
         '';
       };
   });
@@ -307,7 +307,7 @@ For the full flake, see [`flake.nix`][flake-js] on GitHub or run `cat flake.nix`
 What you see here is a [derivation] that defines how to build the package, more specifically the `buildNpmPackage` function, which is a wrapper around Nix's built-in derivation function.
 
 The package that results when you run `nix build` is a website built using the [Vite] framework.
-To view that website, open the HTML file at `result/index.html`.
+To view that website, open the HTML file at `result/share/index.html`.
 
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
@@ -318,7 +318,7 @@ Here's the package definition that enables us to build our Python package:
   packages = forAllSystems ({ pkgs }: {
     default =
       let
-        python = pkgs.python39;
+        python = pkgs.python3;
       in
       python.pkgs.buildPythonApplication {
         name = "zero-to-nix-python";

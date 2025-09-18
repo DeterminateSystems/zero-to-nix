@@ -8,7 +8,8 @@
   };
 
   # Flake outputs
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -19,20 +20,28 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
     in
     {
       # Development environment output
-      devShells = forAllSystems ({ pkgs }: {
-        default = pkgs.mkShell {
-          # The Nix packages provided in the environment
-          packages = with pkgs; [
-            boost # The Boost libraries
-            gcc # The GNU Compiler Collection
-          ];
-        };
-      });
+      devShells = forAllSystems (
+        { pkgs }:
+        {
+          default = pkgs.mkShell {
+            # The Nix packages provided in the environment
+            packages = with pkgs; [
+              boost # The Boost libraries
+              gcc # The GNU Compiler Collection
+            ];
+          };
+        }
+      );
     };
 }

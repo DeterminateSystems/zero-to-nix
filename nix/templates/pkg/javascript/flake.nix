@@ -6,7 +6,8 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -17,32 +18,40 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
     in
     {
-      packages = forAllSystems ({ pkgs }: {
-        default = pkgs.buildNpmPackage {
-          name = "zero-to-nix-javascript";
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          default = pkgs.buildNpmPackage {
+            name = "zero-to-nix-javascript";
 
-          buildInputs = with pkgs; [
-            nodejs_latest
-          ];
+            buildInputs = with pkgs; [
+              nodejs_latest
+            ];
 
-          src = self;
+            src = self;
 
-          npmDeps = pkgs.importNpmLock {
-            npmRoot = ./.;
+            npmDeps = pkgs.importNpmLock {
+              npmRoot = self;
+            };
+
+            npmConfigHook = pkgs.importNpmLock.npmConfigHook;
+
+            installPhase = ''
+              mkdir -p "$out/share"
+              cp -R dist/. "$out/share"/
+            '';
           };
-
-          npmConfigHook = pkgs.importNpmLock.npmConfigHook;
-
-          installPhase = ''
-            mkdir $out
-            cp dist/index.html $out
-          '';
-        };
-      });
+        }
+      );
     };
 }

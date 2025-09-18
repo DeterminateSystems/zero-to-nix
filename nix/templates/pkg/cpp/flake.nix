@@ -6,7 +6,8 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -17,27 +18,39 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
     in
     {
-      packages = forAllSystems ({ pkgs }: {
-        default =
-          let
-            binName = "zero-to-nix-cpp";
-            cppDependencies = with pkgs; [ boost gcc poco ];
-          in
-          pkgs.stdenv.mkDerivation {
-            name = "zero-to-nix-cpp";
-            src = self;
-            buildInputs = cppDependencies;
-            buildPhase = "c++ -std=c++17 -o ${binName} ${./main.cpp} -lPocoFoundation -lboost_system";
-            installPhase = ''
-              mkdir -p $out/bin
-              cp ${binName} $out/bin/
-            '';
-          };
-      });
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          default =
+            let
+              binName = "zero-to-nix-cpp";
+              cppDependencies = with pkgs; [
+                boost
+                gcc
+                poco
+              ];
+            in
+            pkgs.stdenv.mkDerivation {
+              name = "zero-to-nix-cpp";
+              src = self;
+              buildInputs = cppDependencies;
+              buildPhase = "c++ -std=c++17 -o ${binName} ${./main.cpp} -lPocoFoundation -lboost_system";
+              installPhase = ''
+                mkdir -p $out/bin
+                cp ${binName} $out/bin/
+              '';
+            };
+        }
+      );
     };
 }

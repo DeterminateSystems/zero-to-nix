@@ -8,7 +8,8 @@
   };
 
   # Flake outputs
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
       # Systems supported
       allSystems = [
@@ -19,28 +20,38 @@
       ];
 
       # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
     in
     {
       # Development environment output
-      devShells = forAllSystems ({ pkgs }: {
-        default =
-          let
-            # Use Python 3.11
-            python = pkgs.python311;
-          in
-          pkgs.mkShell {
-            # The Nix packages provided in the environment
-            packages = [
-              # Python plus helper tools
-              (python.withPackages (ps: with ps; [
-                virtualenv # Virtualenv
-                pip # The pip installer
-              ]))
-            ];
-          };
-      });
+      devShells = forAllSystems (
+        { pkgs }:
+        {
+          default =
+            let
+              # Use Python 3.*
+              python = pkgs.python3;
+            in
+            pkgs.mkShell {
+              # The Nix packages provided in the environment
+              packages = [
+                # Python plus helper tools
+                (python.withPackages (
+                  ps: with ps; [
+                    virtualenv # Virtualenv
+                    pip # The pip installer
+                  ]
+                ))
+              ];
+            };
+        }
+      );
     };
 }
