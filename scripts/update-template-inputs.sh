@@ -2,7 +2,7 @@ set -euo pipefail
 
 root=$(git rev-parse --show-toplevel)
 
-echo "Updating flake inputs for dev shell templates"
+echo "Updating flake inputs for dev and pkg templates"
 
 for kind in dev pkg; do
   for template in ${root}/nix/templates/${kind}/*; do
@@ -15,3 +15,5 @@ for kind in dev pkg; do
     )
   done
 done
+
+echo "Successfully updated flake inputs for all dev and pkg shell templates ✅"
