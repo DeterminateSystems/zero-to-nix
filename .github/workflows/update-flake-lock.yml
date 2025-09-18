@@ -39,6 +39,7 @@ jobs:
         run: |
           ./scripts/update-template-inputs.sh
       - name: Detect potential changes
+        id: detect-changes
         run: |
           if git diff --quiet && git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -46,7 +47,7 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Create pull request for changes
-        if: ${{ steps.update.outputs.changed == 'true' }}
+        if: ${{ steps.detect-changes.outputs.changed == 'true' }}
         uses: peter-evans/create-pull-request@v7
         with:
           base: main
