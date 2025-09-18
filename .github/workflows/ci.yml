@@ -16,7 +16,7 @@ jobs:
       contents: read
     steps:
       - name: git checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Check Nixpkgs input
         uses: DeterminateSystems/flake-checker-action@main
         with:
@@ -62,7 +62,7 @@ jobs:
           - nix-system: x86_64-linux
             runner: UbuntuLatest32Cores128G
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
 
@@ -85,7 +85,7 @@ jobs:
           - nix-system: x86_64-linux
             runner: UbuntuLatest32Cores128G
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
 

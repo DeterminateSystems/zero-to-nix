@@ -3,7 +3,7 @@ name: "Flake.lock: update Nix dependencies"
 on:
   workflow_dispatch: # allows manual triggering
   schedule:
-    - cron: "0 0 * * 0" # runs weekly on Sunday at 00:00
+    - cron: "30 1 1,15 * *" # runs roughly every two weeks
 
 jobs:
   nix-flake-update:
@@ -14,7 +14,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: DeterminateSystems/determinate-nix-action@v3
       - uses: DeterminateSystems/update-flake-lock@main
         with:
@@ -22,3 +22,48 @@ jobs:
           pr-labels: | # Labels to be set on the PR
             dependencies
             automated
+
+  nix-flake-update-templates:
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - name: Update template flake.lock files
+        id: update
+        run: |
+          ./scripts/update-template-inputs.sh
+      - name: Detect potential changes
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Create pull request for changes
+        if: ${{ steps.update.outputs.changed == 'true' }}
+        uses: peter-evans/create-pull-request@v7
+        with:
+          base: main
+          branch: flake-template-input-update
+          delete-branch: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "[Automated] Update template flake inputs"
+          commit-message: "Every-other-weekly template flake input update"
+          committer: github-actions[bot] github-actions[bot]@users.noreply.github.com
+          assignees: lucperkins
+          reviewers: lucperkins
+          labels:
+            automated
+            templates
+            update
+          body: |
+            This PR was created by an automated process that updates the flake inputs for the various flake
+            templates in Zero to Nix.
+
+            You can see the logic behind this in `.github/workflows/update-flake-lock.yml`.
