@@ -46,30 +46,7 @@ jobs:
         run: |
           ./scripts/check-templates.sh
 
-  build-example-dev-shells:
-    runs-on: ${{ matrix.systems.runner }}
-    needs: test
-    permissions:
-      id-token: write
-      contents: read
-    strategy:
-      matrix:
-        systems:
-          - nix-system: aarch64-darwin
-            runner: macos-latest-xlarge
-          - nix-system: x86_64-darwin
-            runner: macos-latest-xlarge
-          - nix-system: x86_64-linux
-            runner: UbuntuLatest32Cores128G
-    steps:
-      - uses: actions/checkout@v5
-      - uses: DeterminateSystems/determinate-nix-action@main
-      - uses: DeterminateSystems/flakehub-cache-action@main
-
-      - name: Build example dev shells
-        run: ./scripts/build-example-dev-shells.sh
-
-  build-pkg-templates:
+  build-shells-and-templates:
     runs-on: ${{ matrix.systems.runner }}
     needs: test
     permissions:
@@ -88,6 +65,12 @@ jobs:
       - uses: actions/checkout@v5
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
+
+      - name: Build example dev shells
+        run: ./scripts/build-example-dev-shells.sh
+
+      - name: Build dev shells in templates
+        run: ./scripts/build-dev-templates.sh
 
       - name: Build packages in pkg templates
         run: ./scripts/build-pkg-templates.sh
