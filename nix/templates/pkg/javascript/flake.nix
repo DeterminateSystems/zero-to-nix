@@ -41,14 +41,16 @@
             src = self;
 
             npmDeps = pkgs.importNpmLock {
-              npmRoot = ./.;
+              npmRoot = self;
             };
 
             npmConfigHook = pkgs.importNpmLock.npmConfigHook;
 
             installPhase = ''
-              mkdir $out
-              cp dist/index.html $out
+              runHook preInstall
+              mkdir -p "$out/share"
+              cp -R dist/. "$out/share"/
+              runHook postInstall
             '';
           };
         }
