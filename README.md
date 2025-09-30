@@ -88,8 +88,6 @@ The site uses a number of custom [MDX] components to spice up the usual Markdown
 | [`Languages`](./src/components/mdx/Languages.astro)               | Provides a (programming) language selector                                                                                             |
 | [`NixStorePath`](./src/components/mdx/NixStorePath.astro)             | Provides a colorful visualization of Nix store path components                                                                         |
 | [`SpecificLanguage`](./src/components/mdx/SpecificLanguage.astro) | Displays the enclosed content only if the user has selected a specific language                                                        |
-| [`System`](./src/components/mdx/System.vue)                     | Displays the currently selected system (Linux vs. macOS)                                                                               |
-| [`Systems`](./src/components/Systems.vue)                       | Provides a system selector (Linux vs. macOS)                                                                                           |
 
 ## Directory structure
 
