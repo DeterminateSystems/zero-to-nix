@@ -6,4 +6,5 @@ exclude = [
   'https://gnu.org/software/bash',
   'https://gcc.gnu.org',
   'https://guix.gnu.org',
+  'https://wiki.nixos.org\.*'
 ]
