@@ -1,4 +1,3 @@
-//import { conceptPagePath, startPagePath } from "../lib/utils";
 import { site } from "../site";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";

@@ -17,7 +17,7 @@ const pagePath = (collection: string, slug: string): string => {
 };
 
 export const formatDate = (date: Date): string => {
-  return date.toLocaleDateString("en-us", {
+  return date.toLocaleDateString("en-USs", {
     year: "numeric",
     month: "long",
     day: "numeric",
