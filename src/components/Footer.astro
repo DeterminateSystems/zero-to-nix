@@ -7,15 +7,39 @@ const currentYear = new Date().getFullYear();
 
 <footer>
   <HorizontalContainer>
-    <div class="flex justify-end pb-16 pt-12">
-      <p
-        class="tracking-tight text-gray dark:text-gray md:text-base lg:text-lg"
-      >
-        Copyright &copy; {currentYear}
-        <Link href="https://determinate.systems" class="hover:text-primary">
-          Determinate Systems, Inc.
-        </Link>
-      </p>
+    <div class="pb-16 pt-12">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <strong>AI tools</strong>
+          <ul class="flex items-center gap-2">
+            {
+              ["llms.txt", "llms-small.txt", "llms-full.txt"].map((file) => (
+                <li>
+                  <a
+                    href={`/${file}`}
+                    class="text-sm text-gray duration-hover hover:text-nix-light-blue dark:hover:text-orange"
+                  >
+                    <code>{file}</code>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <p
+            class="tracking-tight text-gray dark:text-gray md:text-base lg:text-lg"
+          >
+            Copyright &copy; {currentYear}
+            <Link
+              href="https://determinate.systems"
+              class="duration-hover hover:text-primary dark:hover:text-orange"
+            >
+              Determinate Systems, Inc.
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   </HorizontalContainer>
 </footer>
