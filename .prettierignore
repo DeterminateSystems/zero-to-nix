@@ -7,3 +7,4 @@ pnpm-lock.yaml
 **/*.mdx
 src/components/Posthog.astro
 **/*.lock
+**/*.hbs

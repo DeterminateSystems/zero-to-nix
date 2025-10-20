@@ -1,0 +1,55 @@
+<SYSTEM>{{system}}</SYSTEM>
+
+<INSTRUCTIONS>{{instructions}}</INSTRUCTIONS>
+
+# {{title}}
+
+> {{tagline}}
+
+{{description}}
+
+## Start pages
+
+---
+
+{{#each startPages}}
+**{{{this.title}}}**
+
+Published: {{this.date}}
+URL: {{this.href}}
+
+{{{this.content}}}
+
+{{#unless @last}}
+---
+
+{{/unless}}
+{{/each}}
+---
+
+## Concept pages
+
+---
+
+{{#each conceptPages}}
+**{{{this.title}}}**
+
+Published: {{this.date}}
+URL: {{this.href}}
+
+{{{this.content}}}
+
+{{#unless @last}}
+---
+
+{{/unless}}
+{{/each}}
+---
+
+## Other formats
+
+For other documentation formats, see also:
+
+{{#each otherFormats}}
+- [`{{this.file}}`]({{root}}/{{this.file}}) ({{this.description}})
+{{/each}}
