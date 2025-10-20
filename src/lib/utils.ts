@@ -15,3 +15,11 @@ export const startPagePath = (slug: string): string => {
 const pagePath = (collection: string, slug: string): string => {
   return `/${collection}/${slug}`;
 };
+
+export const formatDate = (date: Date): string => {
+  return date.toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};

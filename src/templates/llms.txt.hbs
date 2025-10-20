@@ -1,0 +1,25 @@
+# {{title}}
+
+> {{tagline}}
+
+{{description}}
+
+## Start pages
+
+{{#each startPages}}
+- [{{this.title}}]({{this.href}})
+{{/each}}
+
+## Concept pages
+
+{{#each conceptPages}}
+- [{{this.title}}]({{this.href}})
+{{/each}}
+
+## Other formats
+
+For more detailed documentation, see also:
+
+{{#each otherFormats}}
+- [`{{this.file}}`]({{root}}/{{this.file}}) ({{this.description}})
+{{/each}}

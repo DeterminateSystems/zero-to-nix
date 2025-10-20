@@ -34,6 +34,7 @@
     "astro-expressive-code": "^0.38.3",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
+    "handlebars": "^4.7.8",
     "marked": "^12.0.2",
     "posthog-js": "^1.266.0",
     "react": "^18.3.1",
