@@ -45,6 +45,13 @@ export const GET: APIRoute = async () => {
     title,
     tagline,
     description: llms.description,
+    projects: [
+      {
+        title: "",
+        description: "",
+        href: "https://determinate.systems/llms.txt",
+      },
+    ],
     startPages: startPages.map(({ data: { title }, slug }) => ({
       title,
       href: `${root}/${startPagePath(slug)}`,
