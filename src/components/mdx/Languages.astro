@@ -16,9 +16,8 @@ const { languages } = site;
       languages.map((lang) => (
         <button
           @click={`language = "${lang}"`}
-          class="rounded-lg dark:border-1.5 px-1.5 py-1 text-sm font-semibold tracking-tight focus:outline-none md:px-2 md:py-0.5 md:text-base lg:px-3 lg:py-1.5 lg:text-lg"
-
-          :class=`{ "border-primary bg-soft-gray dark:bg-darker-gray": language == "${lang}", "border-pale hover:text-primary dark:border-dark": language !== "${lang}" }`
+          class="rounded-lg px-1.5 py-1 text-sm font-semibold tracking-tight focus:outline-none dark:border-1.5 md:px-2 md:py-0.5 md:text-base lg:px-3 lg:py-1.5 lg:text-lg"
+          x-bind:class='{ "border-primary bg-soft-gray dark:bg-darker-gray": language == "${lang}", "border-pale hover:text-primary dark:border-dark": language !== "${lang}" }'
         >
           {lang}
         </button>
