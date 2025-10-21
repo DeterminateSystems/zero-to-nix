@@ -1,4 +1,5 @@
 import { site } from "../site";
+import { FORMATS } from "./llms.txt";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import Handlebars from "handlebars";
@@ -28,18 +29,7 @@ export const GET: APIRoute = async () => {
     conceptPages: conceptPages.map(({ data: { title } }) => ({
       title,
     })),
-    otherFormats: [
-      {
-        root,
-        file: "llms.txt",
-        description: "the main version",
-      },
-      {
-        root,
-        file: "llms-full.txt",
-        description: "complete content in one file",
-      },
-    ],
+    otherFormats: [FORMATS.standard, FORMATS.full],
   });
 
   return new Response(content, {

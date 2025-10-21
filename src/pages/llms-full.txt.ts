@@ -1,5 +1,6 @@
 import { conceptPagePath, startPagePath } from "../lib/utils";
 import { site } from "../site";
+import { FORMATS } from "./llms.txt";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import Handlebars from "handlebars";
@@ -38,18 +39,7 @@ export const GET: APIRoute = async () => {
       href: `${root}/${conceptPagePath(slug)}`,
       content: body,
     })),
-    otherFormats: [
-      {
-        root,
-        file: "llms.txt",
-        description: "the main version",
-      },
-      {
-        root,
-        file: "llms-full.txt",
-        description: "complete content in one file",
-      },
-    ],
+    otherFormats: [FORMATS.small, FORMATS.standard],
   });
 
   return new Response(content, {

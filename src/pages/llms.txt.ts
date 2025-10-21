@@ -8,6 +8,27 @@ import path from "node:path";
 
 const { url: root, title, description: tagline, llms } = site;
 
+export const FORMATS: Record<
+  string,
+  { root: string; file: string; description: string }
+> = {
+  standard: {
+    root,
+    file: "llms.txt",
+    description: "the main version",
+  },
+  small: {
+    root,
+    file: "llms-small.txt",
+    description: "compact structure-only version",
+  },
+  full: {
+    root,
+    file: "llms-full.txt",
+    description: "complete content in one file",
+  },
+};
+
 const templateFile = fs.readFileSync(
   path.join(process.cwd(), "src/templates/llms.txt.hbs"),
   "utf-8",
@@ -32,18 +53,7 @@ export const GET: APIRoute = async () => {
       title,
       href: `${root}/${conceptPagePath(slug)}`,
     })),
-    otherFormats: [
-      {
-        root,
-        file: "llms-small.txt",
-        description: "compact structure-only version",
-      },
-      {
-        root,
-        file: "llms-full.txt",
-        description: "complete content in one file",
-      },
-    ],
+    otherFormats: [FORMATS.small, FORMATS.full],
   });
 
   return new Response(content, {

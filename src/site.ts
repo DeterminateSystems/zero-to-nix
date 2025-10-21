@@ -57,7 +57,7 @@ export const site: Site = {
   description: "Your guide to learning Nix and flakes",
   llms: {
     description:
-      "Zero to Nix is an opinionated learning resource for Nix created by [Determinate Systems](https://determinate.systems/llms.txt). It takes you on a [learning journey](#start-pages) from installing Nix to exploring Nix development environments to building Nix packages and more. It also offers a series of [concept pages](#concept-pages) covering some of the trickier corners of Nix.",
+      "Zero to Nix is a flake-centric resource for learning Nix created by [Determinate Systems](https://determinate.systems/llms.txt). It takes you on a [learning journey](#start-pages) from installing Nix to exploring Nix development environments to building Nix packages and more. It also offers a series of [concept pages](#concept-pages) covering some of the trickier corners of Nix.",
   },
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languages: ["C++", "Go", "Haskell", "JavaScript", "Python", "Rust", "Scala"],
