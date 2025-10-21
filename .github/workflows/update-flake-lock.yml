@@ -59,7 +59,7 @@ jobs:
           committer: github-actions[bot] github-actions[bot]@users.noreply.github.com
           assignees: lucperkins
           reviewers: lucperkins
-          labels:
+          labels: |
             automated
             templates
             update

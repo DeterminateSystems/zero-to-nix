@@ -32,7 +32,11 @@ type Language =
 
 type Site = {
   title: string;
+  url: string;
   description: string;
+  llms: {
+    description: string;
+  };
   githubUrl: string;
   languages: Language[];
   defaultLanguage: Language;
@@ -49,7 +53,12 @@ type Site = {
 
 export const site: Site = {
   title: "Zero to Nix",
+  url: "https://zero-to-nix.com",
   description: "Your guide to learning Nix and flakes",
+  llms: {
+    description:
+      "Zero to Nix is a flake-centric resource for learning Nix created by [Determinate Systems](https://determinate.systems/llms.txt). It takes you on a [learning journey](#start-pages) from installing Nix to exploring Nix development environments to building Nix packages and more. It also offers a series of [concept pages](#concept-pages) covering some of the trickier corners of Nix.",
+  },
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languages: ["C++", "Go", "Haskell", "JavaScript", "Python", "Rust", "Scala"],
   defaultLanguage: "JavaScript",

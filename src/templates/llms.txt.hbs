@@ -1,0 +1,31 @@
+# {{title}}
+
+> {{tagline}}
+
+{{description}}
+
+## Start pages
+
+These pages take you on a Nix journey from installing Nix through
+accomplishing meaningful tasks with Nix:
+
+{{#each startPages}}
+- [{{this.title}}]({{this.href}})
+{{/each}}
+
+## Concept pages
+
+These pages provide a more theoretical take on some of the
+trickier corners of Nix:
+
+{{#each conceptPages}}
+- [{{this.title}}]({{this.href}})
+{{/each}}
+
+## Other formats
+
+For additional LLM-oriented manifests, see also:
+
+{{#each otherFormats}}
+- [`{{this.file}}`]({{root}}/{{this.file}}) ({{this.description}})
+{{/each}}
