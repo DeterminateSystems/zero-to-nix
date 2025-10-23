@@ -1,7 +1,7 @@
 ---
 import Link from "./Link.astro";
-import { getCollection } from "astro:content";
 import { startPagePath } from "../lib/utils";
+import { getStartPagesByOrderParam } from "../content/collections";
 
 type Props = {
   order: number;
@@ -9,7 +9,8 @@ type Props = {
 
 const { order } = Astro.props;
 
-const startPages = await getCollection("start");
+const startPages = await getStartPagesByOrderParam();
+
 const previousPage = startPages.find(
   ({ data: { order: pageOrder } }) => pageOrder === order - 1,
 );

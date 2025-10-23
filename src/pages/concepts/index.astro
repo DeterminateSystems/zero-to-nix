@@ -1,5 +1,4 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import HorizontalContainer from "../../components/HorizontalContainer.astro";
 import Hero from "../../components/Hero.astro";
@@ -7,12 +6,13 @@ import QuickStart from "../../components/QuickStart.astro";
 import Grid3 from "../../components/Grid3.astro";
 import HoverableLink from "../../components/HoverableLink.astro";
 import { conceptPagePath } from "../../lib/utils";
+import { getStartPagesByOrderParam } from "../../content/collections";
 
 const title = "Concepts";
 const heroTitle = "Nix concepts";
 const description = "The whys and the hows of Nix";
 
-const conceptPages = await getCollection("concepts");
+const conceptPages = await getStartPagesByOrderParam();
 ---
 
 <Layout {title} {description}>

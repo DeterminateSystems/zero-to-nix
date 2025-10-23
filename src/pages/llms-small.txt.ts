@@ -1,7 +1,10 @@
+import {
+  getConceptPagesAlphabetical,
+  getStartPagesByOrderParam,
+} from "../content/collections";
 import { site } from "../site";
 import { FORMATS } from "./llms.txt";
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
 import Handlebars from "handlebars";
 import fs from "node:fs";
 import path from "node:path";
@@ -16,8 +19,8 @@ const templateFile = fs.readFileSync(
 const template = Handlebars.compile(templateFile);
 
 export const GET: APIRoute = async () => {
-  const startPages = await getCollection("start");
-  const conceptPages = await getCollection("concepts");
+  const startPages = await getStartPagesByOrderParam();
+  const conceptPages = await getConceptPagesAlphabetical();
 
   const content = template({
     root,
