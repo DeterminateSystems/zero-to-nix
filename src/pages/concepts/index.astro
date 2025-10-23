@@ -6,13 +6,13 @@ import QuickStart from "../../components/QuickStart.astro";
 import Grid3 from "../../components/Grid3.astro";
 import HoverableLink from "../../components/HoverableLink.astro";
 import { conceptPagePath } from "../../lib/utils";
-import { getStartPagesByOrderParam } from "../../content/collections";
+import { getConceptPagesAlphabetical } from "../../content/collections";
 
 const title = "Concepts";
 const heroTitle = "Nix concepts";
 const description = "The whys and the hows of Nix";
 
-const conceptPages = await getStartPagesByOrderParam();
+const conceptPages = await getConceptPagesAlphabetical();
 ---
 
 <Layout {title} {description}>

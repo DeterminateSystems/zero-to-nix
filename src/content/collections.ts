@@ -7,6 +7,6 @@ export const getStartPagesByOrderParam = async () => {
   );
 };
 
-export const getConceptPagesAlphabetical = async () => {
-  return await getCollection("concepts");
+export const getConceptPagesAlphabetical = () => {
+  return getCollection("concepts");
 };
