@@ -40,6 +40,7 @@ export const GET: APIRoute = async () => {
       content: body,
     })),
     otherFormats: [FORMATS.small, FORMATS.standard],
+    projects: llms.otherProjects,
   });
 
   return new Response(content, {

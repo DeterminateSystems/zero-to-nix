@@ -54,6 +54,7 @@ export const GET: APIRoute = async () => {
       href: `${root}/${conceptPagePath(slug)}`,
     })),
     otherFormats: [FORMATS.small, FORMATS.full],
+    projects: llms.otherProjects,
   });
 
   return new Response(content, {

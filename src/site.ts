@@ -36,6 +36,7 @@ type Site = {
   description: string;
   llms: {
     description: string;
+    otherProjects: { title: string; description: string; href: string }[];
   };
   githubUrl: string;
   languages: Language[];
@@ -58,6 +59,26 @@ export const site: Site = {
   llms: {
     description:
       "Zero to Nix is a flake-centric resource for learning Nix created by [Determinate Systems](https://determinate.systems/llms.txt). It takes you on a [learning journey](#start-pages) from installing Nix to exploring Nix development environments to building Nix packages and more. It also offers a series of [concept pages](#concept-pages) covering some of the trickier corners of Nix.",
+    otherProjects: [
+      {
+        title: "FlakeHub",
+        description:
+          "FlakeHub is a platform for publishing and discovering Nix flakes and Nix artifacts, featuring semantic versioning, private flakes with federated, JWT-based authentication, flake discovery via search, labels, and other means, and next-generation Nix binary caching with FlakeHub Cache.",
+        href: "https://flakehub.com/llms.txt",
+      },
+      {
+        title: "Determinate documentation",
+        description:
+          "Determinate is Nix for teams: Stop wrestling with binary caches, reinventing deploy scripts, and figuring out access controls. Confidently adopt and scale Nix across teams of any size.",
+        href: "https://docs.determinate.systems/llms.txt",
+      },
+      {
+        title: "Determinate Systems website",
+        description:
+          "Our goal for Determinate is to enable fearless innovation by bringing Nix to teams, providing a complete Nix-based workflow from installation through collaboration and CI to deployment.",
+        href: "https://determinate.systems/llms.txt",
+      },
+    ],
   },
   githubUrl: "https://github.com/DeterminateSystems/zero-to-nix",
   languages: ["C++", "Go", "Haskell", "JavaScript", "Python", "Rust", "Scala"],
