@@ -1,6 +1,5 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
 import Admonition from "../../components/mdx/Admonition.astro";
 import ExternalSources from "../../components/ExternalSources.astro";
 import Language from "../../components/mdx/Language.astro";
@@ -17,11 +16,10 @@ import H4 from "../../components/mdx/H4.astro";
 import Pagination from "../../components/Pagination.astro";
 import Separator from "../../components/Separator.astro";
 import FeedbackBar from "../../components/FeedbackBar.astro";
+import { getStartPagesByOrderParam } from "../../content/collections";
 
 export const getStaticPaths = (async () => {
-  const startPages = await getCollection("start");
-
-  return startPages.map((page) => ({
+  return (await getStartPagesByOrderParam()).map((page) => ({
     params: { slug: page.slug.substring(1) },
     props: { page },
   }));
@@ -33,7 +31,7 @@ const {
 } = page;
 const { Content } = await page.render();
 
-const numQuickStartPages = (await getCollection("start")).length;
+const numQuickStartPages = (await getStartPagesByOrderParam()).length;
 ---
 
 <Layout {title}>

@@ -6,19 +6,22 @@ import DrawerToggler from "./DrawerToggler.astro";
 import HorizontalContainer from "./HorizontalContainer.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 import Dropdown from "./Dropdown.astro";
-import { getCollection } from "astro:content";
+import {
+  getConceptPagesAlphabetical,
+  getStartPagesByOrderParam,
+} from "../content/collections";
 import { conceptPagePath, startPagePath } from "../lib/utils";
 import Drawer from "./Drawer.astro";
 
 const { title, githubUrl, navbarLinks } = site;
 
-const startPages = (await getCollection("start")).map(
+const startPages = (await getStartPagesByOrderParam()).map(
   ({ slug, data: { title } }) => {
     return { title, href: startPagePath(slug) };
   },
 );
 
-const conceptPages = (await getCollection("concepts")).map(
+const conceptPages = (await getConceptPagesAlphabetical()).map(
   ({ slug, data: { title } }) => {
     return { title, href: conceptPagePath(slug) };
   },
