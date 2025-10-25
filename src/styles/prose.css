@@ -1,0 +1,123 @@
+@layer base {
+  .inline-code {
+    border-radius: 0.25rem;
+    border: 1px solid var(--light-gray);
+    background-color: var(--pale);
+    padding: 0.125rem 0.375rem;
+
+    .dark & {
+      border: none;
+      background-color: var(--dark-gray);
+    }
+  }
+
+  .content {
+    a {
+      font-weight: 500;
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+
+    p + p {
+      margin-top: 0.5rem;
+
+      @media (min-width: 768px) {
+        margin-top: 0.625rem;
+      }
+
+      @media (min-width: 1024px) {
+        margin-top: 0.75rem;
+      }
+    }
+
+    code {
+      border-radius: 0.25rem;
+      border: 1px solid var(--light-gray);
+      background-color: var(--pale);
+      padding: 0.125rem 0.375rem;
+
+      .dark & {
+        border: none;
+        background-color: var(--dark-gray);
+      }
+    }
+  }
+
+  .prose {
+    h2,
+    h3,
+    h4 {
+      &::before {
+        display: block;
+        content: " ";
+        margin-top: -5rem;
+        height: 5rem;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+
+    .footnotes {
+      margin-top: 3rem;
+      padding: 0;
+
+      h2#footnote-label {
+        font-size: 1.125rem;
+
+        @media (min-width: 768px) {
+          font-size: 1.25rem;
+        }
+
+        @media (min-width: 1024px) {
+          font-size: 1.5rem;
+        }
+      }
+
+      .data-footnote-backref {
+        text-decoration: none;
+      }
+    }
+
+    .remove-underline {
+      a {
+        text-decoration: none;
+      }
+    }
+
+    p,
+    .content,
+    h2,
+    h3 {
+      code {
+        border-radius: 0.25rem;
+        border: 1px solid var(--light-gray);
+        background-color: var(--pale);
+        padding: 0.125rem 0.375rem;
+
+        .dark & {
+          border: none;
+          background-color: var(--dark-gray);
+        }
+      }
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--primary);
+
+        .dark & {
+          color: var(--light-blue);
+        }
+      }
+    }
+
+    .admonition {
+      margin: 1rem 0;
+    }
+  }
+}

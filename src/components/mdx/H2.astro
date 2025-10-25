@@ -3,7 +3,7 @@ import Link from "../Link.astro";
 const { id } = Astro.props;
 ---
 
-<h2 {id} class="heading">
+<h2 {id} class="no-underline">
   <Link href={`#${id}`}>
     <slot />
   </Link>

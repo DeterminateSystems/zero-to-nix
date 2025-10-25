@@ -47,7 +47,9 @@ const numQuickStartPages = (await getStartPagesByOrderParam()).length;
     <div class="space-y-6">
       {summary && summary.length > 0 && <Summary items={summary} />}
 
-      <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
+      <div
+        class="prose dark:prose-invert lg:prose-lg xl:prose-xl in-prose-headings:no-underline max-w-none"
+      >
         <Content
           components={{
             h2: H2,

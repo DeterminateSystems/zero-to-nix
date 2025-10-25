@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
 
 <footer>
   <HorizontalContainer>
-    <div class="pb-16 pt-12">
+    <div class="pt-12 pb-16">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-4">
           <strong>AI tools</strong>
@@ -17,7 +17,7 @@ const currentYear = new Date().getFullYear();
                 <li>
                   <a
                     href={`/${file}`}
-                    class="text-sm text-gray duration-hover hover:text-nix-light-blue dark:hover:text-orange"
+                    class="text-gray duration-hover hover:text-nix-light-blue dark:hover:text-orange text-sm"
                   >
                     <code>{file}</code>
                   </a>
@@ -28,7 +28,7 @@ const currentYear = new Date().getFullYear();
         </div>
         <div>
           <p
-            class="tracking-tight text-gray dark:text-gray md:text-base lg:text-lg"
+            class="text-gray dark:text-gray tracking-tight md:text-base lg:text-lg"
           >
             Copyright &copy; {currentYear}
             <Link
