@@ -27,7 +27,7 @@ const links: { text: string; href: string }[] = [
   x-transition:leave="transition ease-in-out duration-300 transform"
   x-transition:leave-start="translate-x-0"
   x-transition:leave-end="-translate-x-full"
-  class="fixed z-40 flex h-full flex-col overflow-y-auto border-r border-t border-light-gray bg-white p-4 shadow-xl dark:border-dark-gray dark:bg-dark"
+  class="border-light-gray dark:border-dark-gray dark:bg-dark fixed z-40 flex h-full flex-col overflow-y-auto border-t border-r bg-white p-4 shadow-xl"
   tabindex="-1"
   id="nav-drawer"
   aria-labelledby="nav-drawer"
@@ -40,7 +40,7 @@ const links: { text: string; href: string }[] = [
     >
       <Icon
         name="heroicons:x-mark"
-        class="h-4 w-4 dark:text-light-gray dark:hover:text-primary"
+        class="dark:text-light-gray dark:hover:text-primary h-4 w-4"
       />
       <span class="sr-only">Close menu</span>
     </button>
@@ -52,7 +52,7 @@ const links: { text: string; href: string }[] = [
         <li>
           <Link
             {href}
-            class="text-lg font-light tracking-tight hover:text-primary md:text-base lg:text-lg"
+            class="hover:text-primary text-lg font-light tracking-tight md:text-base lg:text-lg"
             @click="drawer = false"
           >
             {text}

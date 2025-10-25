@@ -4,6 +4,8 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import typography from "@tailwindcss/typography";
+import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
@@ -53,4 +55,7 @@ export default defineConfig({
     port: 3000,
   },
   site: "https://zero-to-nix.com",
+  vite: {
+    plugins: [tailwindcss({ plugins: [typography] })],
+  },
 });

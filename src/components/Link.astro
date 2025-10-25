@@ -27,12 +27,12 @@ const target = external ? "_blank" : undefined;
 {
   phid ? (
     <ph-id>
-      <a {rel} {target} {...Astro.props}>
+      <a {rel} {target} {...Astro.props} class="no-underline">
         <slot />
       </a>
     </ph-id>
   ) : (
-    <a {rel} {target} {...Astro.props}>
+    <a {rel} {target} {...Astro.props} class="no-underline">
       <slot />
     </a>
   )

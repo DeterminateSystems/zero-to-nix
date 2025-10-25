@@ -24,12 +24,13 @@
     "@iconify-json/fa-solid": "^1.2.2",
     "@iconify-json/heroicons": "^1.2.2",
     "@iconify-json/radix-icons": "^1.2.5",
-    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/typography": "0.5.0-alpha.3",
+    "@tailwindcss/vite": "^4.1.16",
     "@types/alpinejs": "^3.13.11",
     "@types/react": "^18.3.24",
     "@types/react-dom": "^18.3.7",
     "alpinejs": "^3.15.0",
-    "astro": "^5.14.3",
+    "astro": "^5.15.1",
     "astro-expressive-code": "^0.38.3",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
@@ -49,6 +50,6 @@
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.1.16"
   }
 }
