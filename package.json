@@ -18,7 +18,6 @@
     "@astrojs/react": "^4.3.1",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/tailwind": "^5.1.5",
     "@expressive-code/plugin-collapsible-sections": "^0.35.6",
     "@expressive-code/plugin-line-numbers": "^0.35.6",
     "@iconify-json/fa": "^1.2.2",
