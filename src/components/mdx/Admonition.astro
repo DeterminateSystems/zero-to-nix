@@ -26,7 +26,7 @@ const {
 
 <div
   class:list={[
-    "admonition not-prose rounded border-1.5 dark:bg-inherit",
+    "admonition not-prose border-1.5 rounded dark:bg-inherit",
     danger && "border-red",
     info && "border-blue",
     success && "border-green",
@@ -42,7 +42,7 @@ const {
         {title && (
           <div
             class:list={[
-              "flex items-center justify-between px-3 py-1.5 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:px-3.5 md:py-2 lg:px-4 lg:py-3",
+              "hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray flex items-center justify-between px-3 py-1.5 hover:cursor-pointer md:px-3.5 md:py-2 lg:px-4 lg:py-3",
               open && "rounded-t",
               !open && "rounded",
               danger && "border-b-red bg-pale-red hover:bg-middle-red",
@@ -55,29 +55,29 @@ const {
             @mouseleave="buttonHover = false"
             @click="toggle()"
           >
-            <span class="flex items-center space-x-2 font-semibold leading-snug tracking-tight md:space-x-3 md:text-lg lg:space-x-4 lg:text-xl">
+            <span class="flex items-center space-x-2 leading-snug font-semibold tracking-tight md:space-x-3 md:text-lg lg:space-x-4 lg:text-xl">
               {danger && (
                 <Icon
                   name="heroicons:bolt"
-                  class="size-3 text-red md:size-4 lg:size-5"
+                  class="text-red size-3 md:size-4 lg:size-5"
                 />
               )}
               {info && (
                 <Icon
                   name="heroicons:information-circle"
-                  class="size-3 text-blue md:size-4 lg:size-5"
+                  class="text-blue size-3 md:size-4 lg:size-5"
                 />
               )}
               {warning && (
                 <Icon
                   name="heroicons:exclamation-triangle"
-                  class="size-3 text-yellow md:size-4 lg:size-5"
+                  class="text-yellow size-3 md:size-4 lg:size-5"
                 />
               )}
               {success && (
                 <Icon
                   name="heroicons:check"
-                  class="size-3 text-green md:size-4 lg:size-5"
+                  class="text-green size-3 md:size-4 lg:size-5"
                 />
               )}
               <span class="content" set:html={md(title)} />
@@ -114,20 +114,20 @@ const {
       <div>
         {title && (
           <span class="flex items-center space-x-4 px-3 py-1.5 font-semibold tracking-tight md:px-3.5 md:py-2 lg:px-4 lg:py-3">
-            {danger && <Icon name="heroicons:bolt" class="size-4 text-red" />}
+            {danger && <Icon name="heroicons:bolt" class="text-red size-4" />}
             {info && (
               <Icon
                 name="heroicons:information-circle"
-                class="size-4 text-blue"
+                class="text-blue size-4"
               />
             )}
             {success && (
-              <Icon name="heroicons:check" class="size-4 text-green" />
+              <Icon name="heroicons:check" class="text-green size-4" />
             )}
             {warning && (
               <Icon
                 name="heroicons:exclamation-triangle"
-                class="size-4 text-yellow"
+                class="text-yellow size-4"
               />
             )}
             <span set:html={md(title)} />
