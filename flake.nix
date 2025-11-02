@@ -64,7 +64,7 @@
               exit 1
             '')
 
-            (script "setup" [ nodejs_latest ] "npm install")
+            (script "setup" [ nodejs_latest ] "npm ci")
 
             (script "build" [ nodejs_latest ] ''
               setup
