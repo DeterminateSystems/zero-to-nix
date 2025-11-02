@@ -1,5 +1,5 @@
 [build]
-command = "./scripts/netlify-redirects.sh >> netlify.toml && pnpm run build"
+command = "./scripts/netlify-redirects.sh >> netlify.toml && npm run build"
 publish = "dist"
 
 [context.production]

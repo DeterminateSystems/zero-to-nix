@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import "./prose.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -94,8 +95,6 @@
   /* Custom breakpoint */
   --breakpoint-print: print;
 }
-
-@import "./prose.css";
 
 @layer components {
   .prose code {

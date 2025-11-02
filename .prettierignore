@@ -2,7 +2,7 @@
 /.direnv/
 /.vscode/
 /dist/
-pnpm-lock.yaml
+package-lock.json
 *.d.ts
 **/*.mdx
 src/components/Posthog.astro

@@ -12,9 +12,6 @@ Make sure that you have Nix and [direnv] installed, then:
 ```shell
 # Activate Nix development environment
 direnv allow
-
-# Recommended
-alias npm=pnpm
 ```
 
 ## Developing the site
@@ -159,7 +156,6 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
     "**/.git": true,
     "**/node_modules": true,
     "dist": true,
-    "pnpm-lock.yaml": true,
     "*.d.ts": true,
     "tmp": true,
   },

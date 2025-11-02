@@ -44,8 +44,7 @@
             lychee
 
             # JS
-            nodejs
-            pnpm
+            nodejs_latest
 
             # Serve locally
             static-web-server
@@ -60,26 +59,31 @@
             };
 
           scripts = with pkgs; [
-            (script "setup" [ pnpm ] "pnpm install")
-
-            (script "build" [ pnpm ] ''
-              setup
-              pnpm run build
+            (script "pnpm" [ ] ''
+              echo "pnpm is no longer used in this repo; use npm instead"
+              exit 1
             '')
 
-            (script "build-ci" [ pnpm ] ''
+            (script "setup" [ nodejs_latest ] "npm install")
+
+            (script "build" [ nodejs_latest ] ''
               setup
-              ENV=ci pnpm run build
+              npm run build
             '')
 
-            (script "dev" [ pnpm ] ''
+            (script "build-ci" [ nodejs_latest ] ''
               setup
-              pnpm run dev
+              ENV=ci npm run build
             '')
 
-            (script "format" [ pnpm ] ''
+            (script "dev" [ nodejs_latest ] ''
               setup
-              pnpm run format
+              npm run dev
+            '')
+
+            (script "format" [ nodejs_latest ] ''
+              setup
+              npm run format
             '')
 
             (script "check-internal-links" [ htmltest ] ''
@@ -90,9 +94,9 @@
               vale src/pages
             '')
 
-            (script "preview" [ pnpm ] ''
+            (script "preview" [ nodejs_latest ] ''
               build
-              pnpm run preview
+              npm run preview
             '')
 
             (script "check-nix-formatting" [ nixfmt-rfc-style ] ''
