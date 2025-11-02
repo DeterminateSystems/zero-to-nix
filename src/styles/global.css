@@ -95,6 +95,8 @@
   --breakpoint-print: print;
 }
 
+@import "./prose.css";
+
 @layer components {
   .prose code {
     &::before,
@@ -103,8 +105,6 @@
     }
   }
 }
-
-@import "./prose.css";
 
 /* Mailchimp embed styling */
 #mc_embed_signup {

@@ -87,7 +87,7 @@ const PageSurvey = () => {
 
           {feedback && (
             <button
-              className="hoverName:text-pale bg-light-gray text-dark hover:bg-gray active:bg-rose dark:bg-gray dark:text-pale dark:hover:bg-dark-gray rounded-lg px-3 py-2 font-semibold hover:cursor-pointer"
+              className="hover:text-pale bg-light-gray text-dark hover:bg-gray active:bg-rose dark:bg-gray dark:text-pale dark:hover:bg-dark-gray rounded-lg px-3 py-2 font-semibold hover:cursor-pointer"
               onClick={submitFeedback}
             >
               Send feedback
