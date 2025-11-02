@@ -62,7 +62,7 @@
   --color-blue: var(--blue);
   --color-pale-green: var(--pale-green);
   --color-middle-green: var(--middle-green);
-  --color-green: #22c55e; /* green-500 */
+  --color-green: var(--green);
   --color-pale-red: var(--pale-red);
   --color-middle-red: var(--middle-red);
   --color-red: var(--red);
