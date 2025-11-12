@@ -102,6 +102,10 @@
               git ls-files -z '*.nix' | xargs -0 -r nixfmt --check
             '')
 
+            (script "lint-markdown" [ rumdl ] ''
+              rumdl check
+            '')
+
             (script "format-nix" [ ] ''
               git ls-files -z '*.nix' | xargs -0 -r nix fmt
             '')
@@ -114,6 +118,7 @@
               build-ci
               check-internal-links
               lint-style
+              lint-markdown
             '')
           ];
 
