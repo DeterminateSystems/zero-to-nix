@@ -63,6 +63,7 @@ Let's build and run [CMake]:
 nix build "nixpkgs#cmake"
 ./result/bin/cmake --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Haskell">
 Let's build and run [Pandoc]:
@@ -71,6 +72,7 @@ Let's build and run [Pandoc]:
 nix build "nixpkgs#pandoc"
 ./result/bin/pandoc --version
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="JavaScript">
 Let's build and run [npm]:
@@ -89,6 +91,7 @@ Let's build and run [pip]:
 nix build "nixpkgs#python3Packages.pip"
 ./result/bin/pip --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
 Let's build and run [kubectl]:
@@ -97,6 +100,7 @@ Let's build and run [kubectl]:
 nix build "nixpkgs#kubectl"
 ./result/bin/kubectl --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
 Let's build and run [ripgrep]:
@@ -105,6 +109,7 @@ Let's build and run [ripgrep]:
 nix build "nixpkgs#ripgrep"
 ./result/bin/rg --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Scala">
 Let's build and run [scalafmt]:
@@ -113,6 +118,7 @@ Let's build and run [scalafmt]:
 nix build "nixpkgs#scalafmt"
 ./result/bin/scalafmt --version
 ```
+
 </SpecificLanguage>
 
 ### Beyond Nixpkgs
@@ -144,46 +150,60 @@ As above, select a preferred language:
 To get started in your <Language /> project, create an empty directory and initialize a [flake template][templates]:
 
 <SpecificLanguage lang="C++">
+
 ```shell title="Initialize a flake template for C++"
 mkdir nix-cpp-pkg && cd nix-cpp-pkg
 nix flake init --template "github:DeterminateSystems/zero-to-nix#cpp-pkg"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Haskell">
+
 ```shell title="Initialize a flake template for Haskell"
 mkdir nix-haskell-pkg && cd nix-haskell-pkg
 nix flake init --template "github:DeterminateSystems/zero-to-nix#haskell-pkg"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="JavaScript">
+
 ```shell title="Initialize a flake template for JavaScript"
 mkdir nix-javascript-pkg && cd nix-javascript-pkg
 nix flake init --template "github:DeterminateSystems/zero-to-nix#javascript-pkg"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
+
 ```shell title="Initialize a flake template for Python"
 mkdir nix-python-pkg && cd nix-python-pkg
 nix flake init --template "github:DeterminateSystems/zero-to-nix#python-pkg"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
+
 ```shell title="Initialize a flake template for Go"
 mkdir nix-go-pkg && cd nix-go-pkg
 nix flake init --template "github:DeterminateSystems/zero-to-nix#go-pkg"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
+
 ```shell title="Initialize a flake template for Rust"
 mkdir nix-rust-pkg && cd nix-rust-pkg
 nix flake init --template "github:DeterminateSystems/zero-to-nix#rust-pkg"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Scala">
+
 ```shell title="Initialize a flake template for Scala"
 mkdir nix-scala-pkg && cd nix-scala-pkg
 nix flake init --template "github:DeterminateSystems/zero-to-nix#scala-pkg"
 ```
+
 </SpecificLanguage>
 
 Whichever language you've selected, you can build the [Nix package][packages] defined in the local flake by running:
@@ -434,6 +454,7 @@ You should see this terminal output:
 ```text
 Hello from Nix + Scala!
 ```
+
 </SpecificLanguage>
 
 We won't delve too much deeper into [derivations][derivation] and creating your own packages here, but we hope that this guide shows you how Nix code gets turned into real build output.
@@ -475,8 +496,8 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [sbt-derivation]: https://github.com/zaninime/sbt-derivation
 [scala]: https://scala-lang.org
 [scalafmt]: https://scalameta.org/scalafmt
-[start]: /start
 [stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
 [store]: /concepts/nix-store
 [symlink]: https://en.wikipedia.org/wiki/Symbolic_link
 [templates]: /concepts/flakes#templates
+[vite]: https://vite.dev

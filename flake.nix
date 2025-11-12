@@ -1,13 +1,13 @@
 {
   description = "Zero to Nix: Your guide to learning Nix and flakes";
 
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*";
+  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
 
   outputs =
     {
       self,
-      nixpkgs,
-    }:
+      ...
+    }@inputs:
 
     let
       # Nix systems supported
@@ -20,11 +20,11 @@
 
       forEachSupportedSystem =
         f:
-        nixpkgs.lib.genAttrs supportedSystems (
+        inputs.nixpkgs.lib.genAttrs supportedSystems (
           system:
           f {
             inherit system;
-            pkgs = import nixpkgs { inherit system; };
+            pkgs = import inputs.nixpkgs { inherit system; };
           }
         );
 
@@ -46,6 +46,9 @@
             # JS
             nodejs
             pnpm
+
+            # Markdown linting
+            rumdl
 
             # Serve locally
             static-web-server
