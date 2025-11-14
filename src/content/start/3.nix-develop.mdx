@@ -70,10 +70,11 @@ Two other things that you can provide in Nix development environments:
      ```
 
 1. Nix development environments support environment variables as well.
-   Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
-   Some example use cases for environment variables:
-   - Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
-   - Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
+    Run `echo $FUNNY_JOKE` to access a (hilarious) value that's available only in the Nix environment.
+    Some example use cases for environment variables:
+
+        - Set logging levels using `LOG_LEVEL` or whatever is appropriate for the tools you're using.
+        - Set the environment using variables like `NODE_ENV` (for [Node.js]) to `development`, `dev`, and so on.
 
 Let's leave the Nix development environment to prepare for the next section:
 
@@ -109,6 +110,7 @@ Select one of these programming languages:
 Now explore the Nix development environment for <Language />:
 
 <SpecificLanguage lang="C++">
+
 ```shell title="Explore a development environment for C++"
 nix develop "github:DeterminateSystems/zero-to-nix#cpp"
 ```
@@ -127,6 +129,7 @@ cmake --version
 
 </SpecificLanguage>
 <SpecificLanguage lang="Haskell">
+
 ```shell title="Explore a development environment for Haskell"
 nix develop "github:DeterminateSystems/zero-to-nix#haskell"
 ```
@@ -145,6 +148,7 @@ ghc --version
 
 </SpecificLanguage>
 <SpecificLanguage lang="JavaScript">
+
 ```shell title="Explore a development environment for JavaScript"
 nix develop "github:DeterminateSystems/zero-to-nix#javascript"
 ```
@@ -163,6 +167,7 @@ node --eval "console.log('1 + 1 = ' + (1 + 1))"
 
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
+
 ```shell title="Explore a development environment for Python"
 nix develop "github:DeterminateSystems/zero-to-nix#python"
 ```
@@ -181,6 +186,7 @@ python -c "print(1 + 1)"
 
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
+
 ```shell title="Explore a development environment for Go"
 nix develop "github:DeterminateSystems/zero-to-nix#go"
 ```
@@ -196,8 +202,10 @@ Now check the Go version:
 ```shell title="Check the Go version"
 go version
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
+
 ```shell title="Explore a development environment for Rust"
 nix develop "github:DeterminateSystems/zero-to-nix#rust"
 ```
@@ -220,6 +228,7 @@ You should see `Hello, world!`.
 
 </SpecificLanguage>
 <SpecificLanguage lang="Scala">
+
 ```shell title="Explore a development environment for Scala"
 nix develop "github:DeterminateSystems/zero-to-nix#scala"
 ```
@@ -252,10 +261,10 @@ nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#multi"
 
 This Nix environment has several tools available:
 
-* [Python]
-* [kubectl]
-* [OpenTofu]
-* [OpenSSL]
+- [Python]
+- [kubectl]
+- [OpenTofu]
+- [OpenSSL]
 
 As in the previous examples, you can run commands like `type python` and `type kubectl` to see that these tools are all discoverable in the [Nix store][store] and not somewhere like `/usr/bin`.
 This list could easily include 100 packages.
@@ -289,46 +298,60 @@ First, tell us which language you prefer:
 To get started in your <Language /> project, create an empty directory and initialize a [flake template][templates]:
 
 <SpecificLanguage lang="C++">
+
 ```shell title="Initialize a flake template for C++"
 mkdir nix-cpp-dev && cd nix-cpp-dev
 nix flake init --template "github:DeterminateSystems/zero-to-nix#cpp-dev"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Haskell">
+
 ```shell title="Initialize a flake template for Haskell"
 mkdir nix-haskell-dev && cd nix-haskell-dev
 nix flake init --template "github:DeterminateSystems/zero-to-nix#haskell-dev"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="JavaScript">
+
 ```shell title="Initialize a flake template for JavaScript"
 mkdir nix-javascript-dev && cd nix-javascript-dev
 nix flake init --template "github:DeterminateSystems/zero-to-nix#javascript-dev"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Python">
+
 ```shell title="Initialize a flake template for Python"
 mkdir nix-python-dev && cd nix-python-dev
 nix flake init --template "github:DeterminateSystems/zero-to-nix#python-dev"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
+
 ```shell title="Initialize a flake template for Go"
 mkdir nix-go-dev && cd nix-go-dev
 nix flake init --template "github:DeterminateSystems/zero-to-nix#go-dev"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
+
 ```shell title="Initialize a flake template for Rust"
 mkdir nix-rust-dev && cd nix-rust-dev
 nix flake init --template "github:DeterminateSystems/zero-to-nix#rust-dev"
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Scala">
+
 ```shell title="Initialize a flake template for Scala"
 mkdir nix-scala-dev && cd nix-scala-dev
 nix flake init --template "github:DeterminateSystems/zero-to-nix#scala-dev"
 ```
+
 </SpecificLanguage>
 
 Once the template has been initialized, run `ls .` to see the contents of the directory, which should include two important files:
@@ -472,7 +495,6 @@ Probably not what you expected! What happened here? A few things:
 [hermeticity]: /concepts/hermeticity
 [hooks]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
 [inputs]: /concepts/flakes#inputs
-[installer]: /concepts/nix-installer
 [kubectl]: https://kubernetes.io/docs/reference/kubectl
 [language]: /concepts/nix-language
 [last]: /start/nix-run
@@ -480,7 +502,6 @@ Probably not what you expected! What happened here? A few things:
 [nix-develop]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop
 [nix-direnv]: https://determinate.systems/posts/nix-direnv
 [node.js]: https://nodejs.org
-[npm]: https://npmjs.com
 [openssl]: https://openssl.org
 [opentofu]: https://opentofu.org
 [output]: /concepts/flakes#outputs
@@ -495,4 +516,3 @@ Probably not what you expected! What happened here? A few things:
 [sbt]: https://scala-sbt.org
 [store]: /concepts/nix-store
 [templates]: /concepts/flakes#templates
-

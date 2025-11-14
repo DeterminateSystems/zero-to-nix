@@ -16,3 +16,6 @@ result*
 
 # Site build
 /dist/
+
+# Markdown linting
+.rumdl-cache/

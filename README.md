@@ -73,7 +73,7 @@ The Zero to Nix site is automatically published on [Vercel], which also provides
 
 Zero to Nix's "stack" 🥞:
 
-- [îles][iles] for content management and site generation
+- [Astro] for content management and site generation
 - [Vue] for templating
 - [MDX] for content
 - [Tailwind] for CSS
@@ -166,14 +166,12 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
 }
 ```
 
+[astro]: https://astro.build
 [ci]: ./.github/workflows/test.yml
-[client-load]: https://iles.pages.dev/guide/hydration#clientload
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
 [flakes]: https://zero-to-nix.com/concepts/flakes
 [gha]: https://github.com/features/actions
-[hydration]: https://iles.pages.dev/guide/hydration#hydration-directives
-[iles]: https://github.com/elMassimo/iles
 [mdx]: https://mdxjs.com
 [nanostores]: https://github.com/nanostores/nanostores
 [nix]: https://nixos.org
