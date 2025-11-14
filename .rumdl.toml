@@ -8,22 +8,14 @@ disable = [
   "MD007",
   # remove line length restriction (due to our one-sentence-per-line rule)
   "MD013",
-  # allow headings to end with punctuation
-  "MD026",
   # allow inline HTML (<kbd>, etc)
   "MD033",
   # allow email addresses without angle bracket or link formatting
   "MD034",
-  # allow emphasis instead of a heading
-  "MD036",
-  # allow code blocks with no language
-  "MD040",
-  # allow first heading in a file to not be h1
+  # allow first heading in a file to not be a heading
   "MD041",
   # for some reason required for MDX components
   "MD046",
-  # allow emphasis with *
-  "MD049",
   # for some reason required for tables
   "MD055",
   "MD056",
