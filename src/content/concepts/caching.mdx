@@ -65,13 +65,13 @@ In addition to the local [Nix store][store], you can also cache Nix artifacts us
 For the most part, binary caches work just like the Nix store, enabling Nix to quickly determine whether something has already been built on the basis of a derivation's Nix store path.
 
 By default, Nix uses [cache.nixos.org][cache] as a binary cache, which is open to all and populated by continuous integration systems.
-In addition to this community cache, you can also [run your own][run] or use a third-party binary cache service like [Cachix].
+In addition to this community cache, you can also [run your own][run] or use a binary cache service like [FlakeHub Cache][flakehub-cache].
 
 [cache]: http://cache.nixos.org
-[cachix]: https://www.cachix.org
 [closure]: /concepts/closures
 [derivation]: /concepts/derivations
 [dev]: /concepts/dev-env
+[flakehub-cache]: https://flakehub.com/cache
 [nixos]: /concepts/nixos
 [packages]: /concepts/packages
 [realising]: /concepts/realisation
