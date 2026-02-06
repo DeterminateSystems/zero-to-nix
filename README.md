@@ -73,68 +73,15 @@ The Zero to Nix site is automatically published on [Vercel], which also provides
 
 Zero to Nix's "stack" 🥞:
 
-- [îles][iles] for content management and site generation
-- [Vue] for templating
+- [Astro] for content management and site generation
 - [MDX] for content
 - [Tailwind] for CSS
-
-## MDX components
-
-The site uses a number of custom [MDX] components to spice up the usual Markdown content.
-
-| Component                                                                | What it does                                                                                                                           |
-| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
-| [`Admonition`](./src/components/mdx/Admonition.vue)                      | An admonition block of type `danger`, `info`, `success`, or `warning`.<br /><br />Adding an `id` makes it a stateful callout dropdown. |
-| [`Concept`](./src/components/mdx/concepts/Concept.vue)                   | Add a hoverable tool tip for a concept                                                                                                 |
-| [`Language`](./src/components/mdx/stateful/Language.vue)                 | Displays which (programming) language the user has selected                                                                            |
-| [`Languages`](./src/components/mdx/stateful/Languages.vue)               | Provides a (programming) language selector                                                                                             |
-| [`NixStorePath`](./src/components/concepts/NixStorePath.vue)             | Provides a colorful visualization of Nix store path components                                                                         |
-| [`Shell`](./src/components/code/Shell.vue)                               | Provides language- and system-specific shell commands                                                                                  |
-| [`SpecificLanguage`](./src/components/mdx/stateful/SpecificLanguage.vue) | Displays the enclosed content only if the user has selected a specific language                                                        |
-| [`System`](./src/components/mdx/stateful/System.vue)                     | Displays the currently selected system (Linux vs. macOS)                                                                               |
-| [`Systems`](./src/components/stateful/Systems.vue)                       | Provides a system selector (Linux vs. macOS)                                                                                           |
-
-## Directory structure
-
-| Directory                             | What it contains                                                               |
-| :------------------------------------ | :----------------------------------------------------------------------------- |
-| [`src/assets`](./src/assets/)         | Assets to be processed (only CSS for now)                                      |
-| [`src/components`](./src/components/) | [Vue] components used throughout the site                                      |
-| [`src/layouts`](./src/layouts/)       | [Vue] layouts for specific page types                                          |
-| [`src/logic`](./src/logic/)           | TypeScript helper stuff for state and content management                       |
-| [`src/pages`](./src/pages/)           | The content of the site (all [MDX]) plus some Vue templates for specific pages |
-| [`public`](./public/)                 | Assets that won't be processed (favicon, etc.)                                 |
-
-## Page metadata
-
-For [quick start pages](./src/pages/start/):
-
-- `title`
-- `summary` (an array of things that the user will accomplish in the guide)
-- `order` (ascending)
-
-For [concept pages](./src/pages/concepts/):
-
-- `title`
-- `snippet` (a brief explanation of the concept that appears in pop-ups)
-- `related` (an array of IDs representing concept pages, like `flakes` or `nix-store`)
-- `externalSources` (an array of links to external sources, such as official docs)
-
-## Site logic
-
-There are a few other important files you should be aware of when working on the site:
-
-- [`src/app.ts`](./src/app.ts) defines global page metadata
-- [`src/site.ts`](./src/site.ts) defines site-level values, like the title, description, navbar links, and more.
-- [`src/logic/content.ts`](./src/logic/content.ts) provides the content management logic for the site (type-safe page frontmatter, functions to fetch and sort documents, and more)
-- [`src/logic/state.ts`](./src/logic/state.ts) defines all stateful logic using the [nanostores] library
-- [`src/logic/theme.ts`](./src/logic/theme.ts) provides logic for the light/dark theme switcher
 
 ## Suggested VS Code settings
 
 If you happen to use VS Code as your editor, we recommend adding these extensions:
 
-- [`Vue.volar`][vsc-vue]
+- [`astro-build.astro-vscode`][vsc-astro]
 - [`unifiedjs.vscode-mdx`][vsc-mdx]
 - [`bradlc.vscode-tailwindcss`][vsc-tailwind]
 - [`esbenp.prettier-vscode`][vsc-prettier]
@@ -166,23 +113,19 @@ We also recommend adding these settings to your local `.vscode/settings.json`:
 }
 ```
 
-[ci]: ./.github/workflows/test.yml
-[client-load]: https://iles.pages.dev/guide/hydration#clientload
+[astro]: https://astro.build
+[ci]: ./.github/workflows/ci.yml
 [detsys]: https://determinate.systems
 [direnv]: https://direnv.net
 [flakes]: https://zero-to-nix.com/concepts/flakes
 [gha]: https://github.com/features/actions
-[hydration]: https://iles.pages.dev/guide/hydration#hydration-directives
-[iles]: https://github.com/elMassimo/iles
 [mdx]: https://mdxjs.com
-[nanostores]: https://github.com/nanostores/nanostores
 [nix]: https://nixos.org
 [site]: https://zero-to-nix.com/
 [tailwind]: https://tailwindcss.com
 [vercel]: https://vercel.com
+[vsc-astro]: https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode
 [vsc-mdx]: https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx
 [vsc-prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 [vsc-tailwind]: https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 [vsc-tsc]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next
-[vsc-vue]: https://marketplace.visualstudio.com/items?itemName=Vue.volar
-[vue]: https://vuejs.org

@@ -36,7 +36,7 @@ You should see a path like this (it's likely to be a bit different on your machi
 What's happened here is that the Nix CLI has:
 
 - Downloaded the Nix code in [Nixpkgs]
-- Found a package definition with the name `bat` (code [here][nixpkgs-bat])
+- Found a package definition with the name `bat` (code [in this repo][nixpkgs-bat])
 - Used the build instructions for `bat` to build the [package][packages]
 - Stored the result in the [Nix store][store] using Nix's hash-based path system
   {/* TODO: add substitution here and link to future caching doc */}
@@ -63,6 +63,7 @@ Let's build and run [CMake]:
 nix build "nixpkgs#cmake"
 ./result/bin/cmake --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Haskell">
 Let's build and run [Pandoc]:
@@ -71,6 +72,7 @@ Let's build and run [Pandoc]:
 nix build "nixpkgs#pandoc"
 ./result/bin/pandoc --version
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="JavaScript">
 Let's build and run [npm]:
@@ -89,6 +91,7 @@ Let's build and run [pip]:
 nix build "nixpkgs#python3Packages.pip"
 ./result/bin/pip --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Go">
 Let's build and run [kubectl]:
@@ -97,6 +100,7 @@ Let's build and run [kubectl]:
 nix build "nixpkgs#kubectl"
 ./result/bin/kubectl --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
 Let's build and run [ripgrep]:
@@ -105,6 +109,7 @@ Let's build and run [ripgrep]:
 nix build "nixpkgs#ripgrep"
 ./result/bin/rg --help
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Scala">
 Let's build and run [scalafmt]:
@@ -113,6 +118,7 @@ Let's build and run [scalafmt]:
 nix build "nixpkgs#scalafmt"
 ./result/bin/scalafmt --version
 ```
+
 </SpecificLanguage>
 
 ### Beyond Nixpkgs
@@ -434,6 +440,7 @@ You should see this terminal output:
 ```text
 Hello from Nix + Scala!
 ```
+
 </SpecificLanguage>
 
 We won't delve too much deeper into [derivations][derivation] and creating your own packages here, but we hope that this guide shows you how Nix code gets turned into real build output.
@@ -475,7 +482,6 @@ We won't delve too much deeper into [derivations][derivation] and creating your 
 [sbt-derivation]: https://github.com/zaninime/sbt-derivation
 [scala]: https://scala-lang.org
 [scalafmt]: https://scalameta.org/scalafmt
-[start]: /start
 [stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
 [store]: /concepts/nix-store
 [symlink]: https://en.wikipedia.org/wiki/Symbolic_link
