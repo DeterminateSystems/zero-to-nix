@@ -9,18 +9,24 @@ summary:
 ---
 
 <Admonition success open title="The target audience for the quick start" id="quick-start-audience">
-We wrote this [Zero to Nix][z2n] quick start with one specific audience in mind: people who have heard about [Nix] but don't yet know much about it and aren't quite sure where to start with the learning process.
-It's intended less as a how-to guide for using Nix in your everyday workflows and more to provide a glimpse into Nix's feature set and to provide some of those "a-ha!" moments that make you feel empowered to go further.
+We wrote this Zero to Nix quick start with one specific audience in mind: people who have heard about [Nix] but don't yet know much about it and aren't quite sure where to start.
+We intend it less as a how-to guide for using Nix in your everyday workflows and more to provide you a glimpse into Nix's feature set and some of those initial "a-ha!" moments that make you feel empowered to go further.
 
-If you're already fairly familiar with Nix and are looking for specific guidance on using it in your day job, you may still get some value out of the quick start but you may be better served with more practical, guide-driven resources like [nix.dev].
+If you're already familiar with Nix and are looking for guidance on using it in your day job, you may still get some value out of the quick start but you may be better served with more practical, guide-driven resources like [nix.dev].
 </Admonition>
 
 **Welcome**!
 It's great to see that you're interested in [Nix].
-In this [quick start][start], we'll get Nix installed on your system and provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
+In this [quick start][start], we'll get [Determinate Nix][det-nix] installed on your system.
+Then we'll provide you with a small taste of Nix's feature set by accomplishing some practical things, such as [creating a development environment][dev] and [building a package][build] using Nix.
 
-We recommend installing Nix using the [Determinate Nix installer][nix-installer], a tool from [Determinate Systems][detsys] that tailors the installation process to your system.
-The installer supports these platforms:
+<Admonition info title="Determinate Nix versus upstream Nix" id="determinate-vs-upstream">
+[Determinate Nix][det-nix] is [Determinate Systems][detsys]' downstream distribution of the [upstream Nix project][upstream].
+It offers a variety of features not available in the upstream version, such as [lazy trees][lazy-trees], [parallel evaluation][parallel-eval], and the [native Linux builder][linux-builder].
+</Admonition>
+
+We'll install Determinate Nix using [Determinate Nix Installer][nix-installer], a tool that tailors the installation process to your system.
+It supports these platforms:
 
 - macOS on 64-bit ARM and 64-bit AMD/Intel
 - Linux on 64-bit ARM and 64-bit AMD/Intel
@@ -38,7 +44,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 If you have concerns about the "curl to Bash" approach you have two options:
 
 1. You can download a binary for the most recent version of the Determinate Nix Installer directly from the [releases] page and run it.
-1. You can examine the installation script [here][script] then download and run it:
+1. You can examine the [installation script][script] then download and run it:
 
    ```shell title="Inspect the script, then install"
    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix > nix-installer.sh
@@ -73,31 +79,29 @@ This should print the version information for Nix.
 You now have Nix installed and ready to go on your system.
 
 <Admonition info title="How to contribute to Zero to Nix" id="contributing">
-  If you're interested in contributing to Zero to Nix, see the
-  [manual][contributing] in the project [repo] for some suggestions.
+  If you're interested in contributing to Zero to Nix, see the [manual][contributing] in the project [repo] for some suggestions.
 </Admonition>
 
-[apfs]: https://es.wikipedia.org/wiki/Apple_File_System
 [build]: /start/nix-build
 [contributing]: https://github.com/DeterminateSystems/zero-to-nix/tree/main/CONTRIBUTING.md
+[det-nix]: https://docs.determinate.systems/determinate-nix
 [detsys]: https://determinate.systems
 [dev]: /start/nix-develop
 [docker]: https://docker.com
 [flakes]: /concepts/flakes
-[json]: https://json.org
-[multi]: https://nixos.org/manual/nix/stable/installation/multi-user
+[lazy-trees]: https://docs.determinate.systems/determinate-nix/#lazy-trees
+[linux-builder]: https://docs.determinate.systems/determinate-nix/#linux-builder
 [nix]: https://nixos.org
 [nix-installer]: /concepts/nix-installer
 [nix.dev]: https://nix.dev
 [official]: https://nixos.org/download
+[parallel-eval]: https://docs.determinate.systems/determinate-nix/#parallel-evaluation
 [podman]: https://podman.io
 [releases]: https://github.com/DeterminateSystems/nix-installer/releases
 [repo]: https://github.com/DeterminateSystems/zero-to-nix
 [script]: https://raw.githubusercontent.com/DeterminateSystems/nix-installer/main/nix-installer.sh
 [start]: /start
 [steamdeck]: https://steamdeck.com
-[store]: /concepts/nix-store
-[systemd]: https://systemd.io
 [uninstall]: /start/uninstall
+[upstream]: https://github.com/NixOS/nix
 [wsl]: https://learn.microsoft.com/windows/wsl
-[z2n]: /

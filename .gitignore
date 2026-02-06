@@ -16,3 +16,6 @@ result*
 
 # Site build
 /dist/
+
+# rumdl
+/.rumdl-cache/

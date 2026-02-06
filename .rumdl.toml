@@ -1,0 +1,17 @@
+[global]
+include = ["README.md", "src/content/**/*.mdx"]
+
+disable = [
+  # remove line length restriction (due to our one-sentence-per-line rule)
+  "MD013",
+  # allow email addresses without angle bracket or link formatting
+  "MD034",
+  # allow first heading in a file to not be a heading
+  "MD041",
+  # for some reason required for MDX components
+  "MD046",
+  # for some reason required for tables
+  "MD058",
+]
+
+respect-gitignore = true

@@ -196,6 +196,7 @@ Now check the Go version:
 ```shell title="Check the Go version"
 go version
 ```
+
 </SpecificLanguage>
 <SpecificLanguage lang="Rust">
 ```shell title="Explore a development environment for Rust"
@@ -252,10 +253,10 @@ nix develop "https://flakehub.com/f/DeterminateSystems/zero-to-nix/*#multi"
 
 This Nix environment has several tools available:
 
-* [Python]
-* [kubectl]
-* [OpenTofu]
-* [OpenSSL]
+- [Python]
+- [kubectl]
+- [OpenTofu]
+- [OpenSSL]
 
 As in the previous examples, you can run commands like `type python` and `type kubectl` to see that these tools are all discoverable in the [Nix store][store] and not somewhere like `/usr/bin`.
 This list could easily include 100 packages.
@@ -472,7 +473,6 @@ Probably not what you expected! What happened here? A few things:
 [hermeticity]: /concepts/hermeticity
 [hooks]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
 [inputs]: /concepts/flakes#inputs
-[installer]: /concepts/nix-installer
 [kubectl]: https://kubernetes.io/docs/reference/kubectl
 [language]: /concepts/nix-language
 [last]: /start/nix-run
@@ -480,7 +480,6 @@ Probably not what you expected! What happened here? A few things:
 [nix-develop]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop
 [nix-direnv]: https://determinate.systems/posts/nix-direnv
 [node.js]: https://nodejs.org
-[npm]: https://npmjs.com
 [openssl]: https://openssl.org
 [opentofu]: https://opentofu.org
 [output]: /concepts/flakes#outputs
@@ -495,4 +494,3 @@ Probably not what you expected! What happened here? A few things:
 [sbt]: https://scala-sbt.org
 [store]: /concepts/nix-store
 [templates]: /concepts/flakes#templates
-

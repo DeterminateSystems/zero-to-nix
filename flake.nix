@@ -23,7 +23,6 @@
         nixpkgs.lib.genAttrs supportedSystems (
           system:
           f {
-            inherit system;
             pkgs = import nixpkgs { inherit system; };
           }
         );
@@ -33,7 +32,7 @@
     in
     {
       devShells = forEachSupportedSystem (
-        { pkgs, system }:
+        { pkgs }:
         let
           common = with pkgs; [
             # Language
@@ -50,7 +49,11 @@
             # Serve locally
             static-web-server
 
-            self.formatter.${system}
+            # Markdown linting
+            rumdl
+
+            # Nix formatter
+            self.formatter.${pkgs.stdenv.hostPlatform.system}
           ];
 
           script =
@@ -83,7 +86,7 @@
             '')
 
             (script "check-internal-links" [ htmltest ] ''
-              htmltest --conf ./.htmltest.internal.yml
+              htmltest
             '')
 
             (script "lint-style" [ vale ] ''
@@ -95,7 +98,7 @@
               pnpm run preview
             '')
 
-            (script "check-nix-formatting" [ nixfmt-rfc-style ] ''
+            (script "check-nix-formatting" [ nixfmt ] ''
               git ls-files -z '*.nix' | xargs -0 -r nixfmt --check
             '')
 
@@ -103,10 +106,15 @@
               git ls-files -z '*.nix' | xargs -0 -r nix fmt
             '')
 
+            (script "lint-markdown" [ rumdl ] ''
+              rumdl check
+            '')
+
             # Run this to see if CI will pass
             (script "ci" [ ] ''
               set -e
 
+              lint-markdown
               check-nix-formatting
               build-ci
               check-internal-links
@@ -137,7 +145,7 @@
         }
       );
 
-      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
+      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt);
 
       templates = {
         cpp-dev = {
