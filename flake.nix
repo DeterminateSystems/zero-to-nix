@@ -114,6 +114,7 @@
             (script "ci" [ ] ''
               set -e
 
+              lint-markdown
               check-nix-formatting
               build-ci
               check-internal-links

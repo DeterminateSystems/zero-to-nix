@@ -2,8 +2,6 @@
 include = ["README.md", "src/content/**/*.mdx"]
 
 disable = [
-  # allow h2 to be the first header
-  "MD002",
   # don't required 3 spaces for indentation
   "MD007",
   # remove line length restriction (due to our one-sentence-per-line rule)
