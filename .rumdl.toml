@@ -2,12 +2,8 @@
 include = ["README.md", "src/content/**/*.mdx"]
 
 disable = [
-  # don't required 3 spaces for indentation
-  "MD007",
   # remove line length restriction (due to our one-sentence-per-line rule)
   "MD013",
-  # allow inline HTML (<kbd>, etc)
-  "MD033",
   # allow email addresses without angle bracket or link formatting
   "MD034",
   # allow first heading in a file to not be a heading
@@ -15,8 +11,6 @@ disable = [
   # for some reason required for MDX components
   "MD046",
   # for some reason required for tables
-  "MD055",
-  "MD056",
   "MD058",
 ]
 
