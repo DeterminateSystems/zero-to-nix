@@ -83,7 +83,7 @@
             '')
 
             (script "check-internal-links" [ htmltest ] ''
-              htmltest --conf ./.htmltest.internal.yml
+              htmltest
             '')
 
             (script "lint-style" [ vale ] ''
