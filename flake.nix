@@ -95,7 +95,7 @@
               pnpm run preview
             '')
 
-            (script "check-nix-formatting" [ nixfmt-rfc-style ] ''
+            (script "check-nix-formatting" [ nixfmt ] ''
               git ls-files -z '*.nix' | xargs -0 -r nixfmt --check
             '')
 
@@ -137,7 +137,7 @@
         }
       );
 
-      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
+      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt);
 
       templates = {
         cpp-dev = {
