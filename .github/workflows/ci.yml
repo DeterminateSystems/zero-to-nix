@@ -23,12 +23,6 @@ jobs:
         with:
           fail-mode: true
 
-      - name: Restore Lychee cache
-        uses: actions/cache@v5
-        with:
-          path: .lycheecache
-          key: lychee-link-check
-          restore-keys: cache-lychee-
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
 
@@ -45,11 +39,11 @@ jobs:
             npm-cache
 
       - name: Restore Lychee cache
-        if: success() || failure()
-        uses: actions/cache/restore@v5
+        uses: actions/cache@v5
         with:
           path: .lycheecache
-          key: ${{ runner.os }}-${{ hashFiles('.lycheecache') }}
+          key: lychee-cache-${{ github.sha }}
+          restore-keys: lychee-cache-
 
       - name: Run Nix CI suite
         run: nix develop --command ci
@@ -68,10 +62,10 @@ jobs:
 
       - name: Save Lychee cache
         if: success() || failure()
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: .lycheecache
-          key: ${{ runner.os }}-${{ hashFiles('.lycheecache') }}
+          key: cache-lychee-${{ github.sha }}
 
       - name: Check templates
         run: |
