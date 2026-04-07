@@ -29,13 +29,13 @@ externalSources:
   ]
 ---
 
-<Admonition warning open title="Flakes are experimental but nonetheless strongly recommended" id="flakes-warning">
-Nix flakes are currently an **experimental feature** in Nix and there is currently no specific timeline for making flakes official.
-While the user interface around flakes is unlikely to change drastically while they remain experimental, there may be breaking changes along the way.
+<Admonition warning open title="Flakes are experimental in upstream Nix but stable in Determinate Nix" id="flakes-status">
+In the [upstream Nix project][upstream], flakes are **still considered an experimental feature**, and there is currently no concrete timeline for declaring them stable.
+Because of this, if you use upstream Nix you can only use flakes if you explicitly [enable them][enable-flakes].
 
-[Channels] will continue be the "official" way of using Nix for the foreseeable future.
-We strongly recommend, however, that you learn to use flakes if you're already a Nix user or to begin your Nix journey with flakes rather than channels if you're just getting started with Nix.
+In [Determinate Nix][det-nix], the downstream distribution of Nix from [Determinate Systems][detsys] that you install at the begin of the [quick start][quick-start], flakes are [**considered stable**][stable-flakes], enabling you to use them out of the box.
 
+Whether you opt for upstream Nix or Determinate Nix, we strongly recommend that you either learn to use flakes if you're already a Nix user or begin your Nix journey with flakes if you're just [getting started][quick-start].
 </Admonition>
 
 A Nix _flake_ is a directory with a `flake.nix` and [`flake.lock`](#lockfile) at the root that [outputs](#outputs) Nix expressions that others can use to do things like [build packages][packages], [run programs][run], use [development environments][env], or stand up [NixOS] systems.
@@ -92,9 +92,7 @@ This is done via the `inputs.<input>.follows` attribute.
 
 ```nix title="flake.nix"
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
 }
 ```
 
@@ -138,9 +136,7 @@ If this `flake.lock` were alongside a `flake.nix` with this [input block](#input
 
 ```nix title="flake.nix"
 {
-  inputs = {
-    nixpkgs.url = "nixpkgs";
-  };
+  inputs.nixpkgs.url = "nixpkgs";
 
   outputs = { self, nixpkgs }: {
     # Define outputs here
@@ -287,9 +283,12 @@ If you ran `nix flake init --template <reference>` against this template definit
 
 [22-11]: https://github.com/nixOS/nixpkgs/tree/release-22.11
 [branch]: https://github.com/nixos/nixpkgs/tree/nixos-24.05
-[channels]: /concepts/channels
+[det-nix]: https://docs.determinate.systems/determinate-nix
+[detsys]: https://determinate.systems
+[enable-flakes]: https://wiki.nixos.org/wiki/Flakes#Setup
 [env]: /concepts/dev-env
 [fh-nixpkgs]: https://flakehub.com/flake/NixOS/nixpkgs
+[flake-checker]: https://github.com/DeterminateSystems/flake-checker
 [flake-utils]: https://github.com/numtide/flake-utils
 [flakehub]: https://flakehub.com
 [functions]: /concepts/nix-language
@@ -308,7 +307,9 @@ If you ran `nix flake init --template <reference>` against this template definit
 [refs-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake#flake-references
 [registry-json]: https://github.com/NixOS/flake-registry/blob/master/flake-registry.json
 [registry-official]: https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry
-[flake-checker]: https://github.com/DeterminateSystems/flake-checker
+[quick-start]: /start
 [run]: /start/nix-run
 [specificity]: /concepts/system-specificity
+[stable-flakes]: https://determinate.systems/blog/determinate-nix-30
 [unstable]: https://github.com/NixOS/nixpkgs/tree/nixpkgs-unstable
+[upstream]: https://github.com/NixOS/nix
