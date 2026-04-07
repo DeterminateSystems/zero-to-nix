@@ -37,14 +37,16 @@ const {
     id && (
       <div
         x-cloak
-        x-data={`{ open: $persist(${open}).as('zero-to-nix:callout-${id}'), buttonHover: false, toggle() { this.open = !this.open; } }`}
+        x-data={
+          id
+            ? `{ open: $persist(${open}).as('callout-${id}'), toggle() { this.open = !this.open } }`
+            : `{ open: ${open}, toggle() { this.open = !this.open } }`
+        }
       >
         {title && (
           <div
             class:list={[
-              "flex items-center justify-between px-3 py-1.5 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:px-3.5 md:py-2 lg:px-4 lg:py-3",
-              open && "rounded-t",
-              !open && "rounded",
+              "flex items-center justify-between rounded px-3 py-1.5 hover:cursor-pointer hover:text-dark dark:bg-dark dark:hover:bg-darker-gray dark:hover:text-light-gray md:px-3.5 md:py-2 lg:px-4 lg:py-3",
               danger && "border-b-red bg-pale-red hover:bg-middle-red",
               info && "border-b-blue bg-pale-blue hover:bg-middle-blue",
               success && "border-b-green bg-pale-green hover:bg-middle-green",
