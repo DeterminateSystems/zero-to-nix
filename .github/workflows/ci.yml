@@ -16,21 +16,44 @@ jobs:
       contents: read
     steps:
       - name: git checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
+
       - name: Check Nixpkgs input
         uses: DeterminateSystems/flake-checker-action@main
         with:
           fail-mode: true
+
       - name: Restore Lychee cache
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: .lycheecache
           key: lychee-link-check
           restore-keys: cache-lychee-
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
+
+      - name: Get npm cache directory
+        run: |
+          echo "NPM_CACHE_DIRECTORY=$(nix develop --command npm config get cache | tr -d '\n')" >> $GITHUB_ENV
+
+      - name: Set up npm cache
+        uses: actions/cache@v5
+        with:
+          path: ${{ env.NPM_CACHE_DIRECTORY }}
+          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-cache
+
+      - name: Restore Lychee cache
+        if: success() || failure()
+        uses: actions/cache/restore@v5
+        with:
+          path: .lycheecache
+          key: ${{ runner.os }}-${{ hashFiles('.lycheecache') }}
+
       - name: Run Nix CI suite
         run: nix develop --command ci
+
       - name: Check external links
         uses: lycheeverse/lychee-action@v2
         env:
@@ -42,6 +65,14 @@ jobs:
             --no-progress
             ./dist
           fail: false
+
+      - name: Save Lychee cache
+        if: success() || failure()
+        uses: actions/cache/save@v4
+        with:
+          path: .lycheecache
+          key: ${{ runner.os }}-${{ hashFiles('.lycheecache') }}
+
       - name: Check templates
         run: |
           ./scripts/check-templates.sh
@@ -62,7 +93,7 @@ jobs:
           - nix-system: x86_64-linux
             runner: UbuntuLatest32Cores128G
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
 
