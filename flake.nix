@@ -44,7 +44,6 @@
 
             # JS
             nodejs
-            pnpm
 
             # Serve locally
             static-web-server
@@ -63,26 +62,26 @@
             };
 
           scripts = with pkgs; [
-            (script "setup" [ pnpm ] "pnpm install")
+            (script "setup" [ nodejs ] "npm install")
 
-            (script "build" [ pnpm ] ''
+            (script "build" [ nodejs ] ''
               setup
-              pnpm run build
+              npm run build
             '')
 
-            (script "build-ci" [ pnpm ] ''
+            (script "build-ci" [ nodejs ] ''
               setup
-              ENV=ci pnpm run build
+              ENV=ci npm run build
             '')
 
-            (script "dev" [ pnpm ] ''
+            (script "dev" [ nodejs ] ''
               setup
-              pnpm run dev
+              npm run dev
             '')
 
-            (script "format" [ pnpm ] ''
+            (script "format" [ nodejs ] ''
               setup
-              pnpm run format
+              npm run format
             '')
 
             (script "check-internal-links" [ htmltest ] ''
@@ -93,9 +92,9 @@
               vale src/pages
             '')
 
-            (script "preview" [ pnpm ] ''
+            (script "preview" [ nodejs ] ''
               build
-              pnpm run preview
+              npm run preview
             '')
 
             (script "check-nix-formatting" [ nixfmt ] ''
@@ -120,24 +119,15 @@
               check-internal-links
               lint-style
             '')
-          ];
 
-          exampleShells = import ./nix/shell/example.nix { inherit pkgs; };
+            # Keep people from accidentally running pnpm
+            (writeScriptBin "pnpm" ''
+              echo "pnpm is no longer used in this repo; use npm instead"
+              exit 1
+            '')
+          ];
         in
-        {
-          inherit (exampleShells)
-            example
-            cpp
-            haskell
-            hook
-            javascript
-            python
-            go
-            rust
-            scala
-            multi
-            ;
-        }
+        (import ./nix/shell/example.nix { inherit pkgs; })
         // {
           default = pkgs.mkShellNoCC {
             packages = common ++ scripts;

@@ -13,5 +13,3 @@ disable = [
   # for some reason required for tables
   "MD058",
 ]
-
-respect-gitignore = true
