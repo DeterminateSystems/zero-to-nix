@@ -62,7 +62,7 @@
             };
 
           scripts = with pkgs; [
-            (script "setup" [ nodejs ] "npm install")
+            (script "setup" [ nodejs ] "npm ci")
 
             (script "build" [ nodejs ] ''
               setup
