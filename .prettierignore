@@ -1,5 +1,6 @@
 /.astro/
 /.direnv/
+/.rumdl_cache/
 /.vscode/
 /dist/
 package-lock.json
