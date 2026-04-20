@@ -3,20 +3,25 @@ import { Code } from "astro-expressive-code/components";
 ---
 
 <div
-  x-data="{
-    os: (() => {
-      const ua = navigator.userAgent;
-      const platform = navigator.userAgentData?.platform || navigator.platform || '';
-      if (/Mac|iPhone|iPad|iPod/i.test(platform) || /Mac OS X/i.test(ua)) return 'macos';
-      if (/Win/i.test(platform)) return 'windows';
-      if (/Android/i.test(ua)) return 'android';
-      if (/Linux/i.test(platform)) return 'linux';
-      return 'unknown';
-    })()
-  }"
-  class="not-prose rounded-xl border border-light-gray p-6 dark:border-dark-gray md:p-8"
+  x-cloak
+  class="not-prose rounded-lg border border-light-gray p-4 dark:border-dark-gray md:p-6"
 >
-  <div x-show="os === 'macos'" class="flex flex-col gap-6">
+  <div class="flex items-center gap-4">
+    <button
+      @click="$store.system.choose('macos')"
+      :class="$store.system.os === 'macos' && 'font-bold'">macOS</button
+    >
+    <button
+      @click="$store.system.choose('linux')"
+      :class="$store.system.os === 'linux' && 'font-bold'">Linux</button
+    >
+    <button
+      @click="$store.system.choose('windows')"
+      :class="$store.system.os === 'windows' && 'font-bold'">Windows</button
+    >
+  </div>
+
+  <div x-show="$store.system.os === 'macos'" class="flex flex-col gap-6">
     <p>On macOS, we recommend using the package installer</p>
 
     <p>But if you prefer:</p>
@@ -24,15 +29,23 @@ import { Code } from "astro-expressive-code/components";
     <Code
       code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
       lang="shell"
-      title="One command to install Nix"
+      title="One command to install Nix on macOS"
     />
   </div>
 
-  <div x-show="[].contains(os)">
+  <div x-show="$store.system.os === 'linux'" class="flex flex-col gap-6">
     <Code
       code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
       lang="shell"
-      title="One command to install Nix"
+      title="One command to install Nix on Linux"
+    />
+  </div>
+
+  <div x-show="$store.system.os === 'windows'" class="flex flex-col gap-6">
+    <Code
+      code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
+      lang="shell"
+      title="One command to install Nix on Windows Subsystem for Linux"
     />
   </div>
 </div>
