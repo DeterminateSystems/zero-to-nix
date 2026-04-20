@@ -1,52 +1,32 @@
 ---
-import type { AstroComponentFactory } from "astro/dist/runtime/server";
-import type { ComponentProps } from "astro/types";
 import { Icon } from "astro-icon/components";
+import { site } from "../../site";
 
-type Platform = {
-  title: string;
-  specs?: string | undefined;
-  icon: string;
-};
-
-const platforms: Platform[] = [
-  {
-    title: "macOS",
-    specs: "64-bit ARM and 64-bit AMD/Intel",
-    icon: "fa:apple",
-  },
-  {
-    title: "Linux",
-    specs: "64-bit ARM and 64-bit AMD/Intel",
-    icon: "fa:linux",
-  },
-  {
-    title: "Windows Subsystem for Linux (WSL)",
-    specs: "64-bit ARM and 64-bit AMD/Intel",
-    icon: "fa:windows",
-  },
-  {
-    title: "Podman Linux containers",
-    icon: "simple-icons:podman",
-  },
-  {
-    title: "Docker containers",
-    icon: "simple-icons:docker",
-  },
-  {
-    title: "Valve Steam Deck (SteamOS)",
-    icon: "simple-icons:steamdeck",
-  },
-];
+const { platforms } = site;
 ---
 
-<div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+<div class="not-prose grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
   {
-    platforms.map(({ title, specs, icon }) => (
-      <div class="flex items-center justify-between gap-2 rounded-lg border px-6 py-4">
-        {title}
-        {specs}
-        <Icon name={icon} class="size-4" />
+    platforms.map(({ title, specs, href, icon }) => (
+      <div class="flex flex-col justify-between gap-3.5 rounded border border-light-gray p-4 dark:border-gray md:p-5">
+        <Icon name={icon} class="size-6" />
+
+        <div class="flex flex-col gap-2">
+          {href ? (
+            <a
+              {href}
+              class="text-lg font-semibold !no-underline duration-hover md:text-xl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {title}
+            </a>
+          ) : (
+            <p class="text-lg font-semibold md:text-xl">{title}</p>
+          )}
+
+          {specs && <p class="text-xs font-light md:text-sm">{specs}</p>}
+        </div>
       </div>
     ))
   }
