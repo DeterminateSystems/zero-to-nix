@@ -1,0 +1,38 @@
+---
+import { Code } from "astro-expressive-code/components";
+---
+
+<div
+  x-data="{
+    os: (() => {
+      const ua = navigator.userAgent;
+      const platform = navigator.userAgentData?.platform || navigator.platform || '';
+      if (/Mac|iPhone|iPad|iPod/i.test(platform) || /Mac OS X/i.test(ua)) return 'macos';
+      if (/Win/i.test(platform)) return 'windows';
+      if (/Android/i.test(ua)) return 'android';
+      if (/Linux/i.test(platform)) return 'linux';
+      return 'unknown';
+    })()
+  }"
+  class="not-prose rounded-xl border border-light-gray p-6 dark:border-dark-gray md:p-8"
+>
+  <div x-show="os === 'macos'" class="flex flex-col gap-6">
+    <p>On macOS, we recommend using the package installer</p>
+
+    <p>But if you prefer:</p>
+
+    <Code
+      code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
+      lang="shell"
+      title="One command to install Nix"
+    />
+  </div>
+
+  <div x-show="[].contains(os)">
+    <Code
+      code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
+      lang="shell"
+      title="One command to install Nix"
+    />
+  </div>
+</div>
