@@ -1,0 +1,53 @@
+---
+import type { AstroComponentFactory } from "astro/dist/runtime/server";
+import type { ComponentProps } from "astro/types";
+import { Icon } from "astro-icon/components";
+
+type Platform = {
+  title: string;
+  specs?: string | undefined;
+  icon: string;
+};
+
+const platforms: Platform[] = [
+  {
+    title: "macOS",
+    specs: "64-bit ARM and 64-bit AMD/Intel",
+    icon: "fa:apple",
+  },
+  {
+    title: "Linux",
+    specs: "64-bit ARM and 64-bit AMD/Intel",
+    icon: "fa:linux",
+  },
+  {
+    title: "Windows Subsystem for Linux (WSL)",
+    specs: "64-bit ARM and 64-bit AMD/Intel",
+    icon: "fa:windows",
+  },
+  {
+    title: "Podman Linux containers",
+    icon: "simple-icons:podman",
+  },
+  {
+    title: "Docker containers",
+    icon: "simple-icons:docker",
+  },
+  {
+    title: "Valve Steam Deck (SteamOS)",
+    icon: "simple-icons:steamdeck",
+  },
+];
+---
+
+<div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+  {
+    platforms.map(({ title, specs, icon }) => (
+      <div class="flex items-center justify-between gap-2 rounded-lg border px-6 py-4">
+        {title}
+        {specs}
+        <Icon name={icon} class="size-4" />
+      </div>
+    ))
+  }
+</div>
