@@ -3,28 +3,32 @@ import { Code } from "astro-expressive-code/components";
 import { Icon } from "astro-icon/components";
 ---
 
-<div
-  x-cloak
-  class="not-prose rounded-lg border border-light-gray p-4 dark:border-dark-gray md:p-6"
->
-  <div class="flex items-center gap-4">
+<div x-cloak class="not-prose dark:border-dark-gray">
+  <nav class="flex items-center gap-6">
     <button
       @click="$store.system.choose('macos')"
-      :class="$store.system.os === 'macos' && 'font-bold'">macOS</button
+      class="flex items-center gap-2 duration-hover hover:text-orange"
+      :class="$store.system.os === 'macos' && 'font-bold'"
     >
+      macOS <Icon name="fa:apple" class="size-4" />
+    </button>
     <button
       @click="$store.system.choose('linux')"
-      :class="$store.system.os === 'linux' && 'font-bold'">Linux</button
+      class="flex items-center gap-2 duration-hover hover:text-orange"
+      :class="$store.system.os === 'linux' && 'font-bold'"
     >
+      Linux <Icon name="fa:linux" class="size-4" />
+    </button>
     <button
       @click="$store.system.choose('windows')"
-      :class="$store.system.os === 'windows' && 'font-bold'">Windows</button
+      class="flex items-center gap-2 duration-hover hover:text-orange"
+      :class="$store.system.os === 'windows' && 'font-bold'"
     >
-  </div>
+      Windows <Icon name="fa:windows" class="size-4" />
+    </button>
+  </nav>
 
-  <div x-show="$store.system.os === 'macos'" class="flex flex-col gap-6">
-    <Icon name="fa:apple" class="size-6" />
-
+  <div x-show="$store.system.os === 'macos'" class="flex flex-col gap-4">
     <p>On macOS, we recommend using the package installer</p>
 
     <p>But if you prefer:</p>
@@ -37,8 +41,6 @@ import { Icon } from "astro-icon/components";
   </div>
 
   <div x-show="$store.system.os === 'linux'" class="flex flex-col gap-6">
-    <Icon name="fa:linux" class="size-6" />
-
     <Code
       code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
       lang="shell"
@@ -47,8 +49,6 @@ import { Icon } from "astro-icon/components";
   </div>
 
   <div x-show="$store.system.os === 'windows'" class="flex flex-col gap-6">
-    <Icon name="fa:windows" class="size-6" />
-
     <Code
       code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
       lang="shell"

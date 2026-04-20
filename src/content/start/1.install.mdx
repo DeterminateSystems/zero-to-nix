@@ -28,6 +28,8 @@ It offers a variety of features not available in the upstream version, such as [
 We'll install Determinate Nix using [Determinate Nix Installer][nix-installer], a tool that tailors the installation process to your system.
 It supports these platforms:
 
+<Platforms />
+
 - macOS on 64-bit ARM and 64-bit AMD/Intel
 - Linux on 64-bit ARM and 64-bit AMD/Intel
 - [Windows Subsystem for Linux][wsl] (WSL) on 64-bit ARM and 64-bit AMD/Intel
@@ -39,28 +41,11 @@ It supports these platforms:
 
 <Install />
 
-<hr />
-
+<Admonition warning title="Issues with curl to Bash?" id="foo">
 If you have concerns about the "curl to Bash" approach you have two options:
 
 1. You can download a binary for the most recent version of the Determinate Nix Installer directly from the [releases] page and run it.
-1. You can examine the [installation script][script] then download and run it:
-
-   ```shell title="Inspect the script, then install"
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix > nix-installer.sh
-   chmod +x nix-installer.sh
-   ./nix-installer.sh install
-   ```
-
-<Admonition info title="Why aren't we using the official Nix installation script here?" id="why-nix-installer">
-We believe that the Determinate Nix Installer provides a smoother experience for people who are new to Nix than the [official Nix installation script][official].
-Unlike many tools, Nix needs to make several changes to your system in order to work properly, such as creating a new `/nix` directory, configuring your shell profile, and creating several new system users and groups.
-
-The Determinate Nix Installer improves on the official Nix installation script by enabling you to undo, with a single command, all of the system changes introduced by the installation process.
-It also installs Nix with [Nix flakes][flakes] enabled while the official installer requires you to enable flakes manually.
-
-See the [Uninstalling Nix][uninstall] guide if you need to uninstall Nix or the [Determinate Nix Installer][nix-installer] concept doc if you'd like more background.
-
+1. You can examine the [installation script][script] and then download and run it.
 </Admonition>
 
 Validate the displayed plan and approve it to begin the installation process.
@@ -88,13 +73,11 @@ You now have Nix installed and ready to go on your system.
 [detsys]: https://determinate.systems
 [dev]: /start/nix-develop
 [docker]: https://docker.com
-[flakes]: /concepts/flakes
 [lazy-trees]: https://docs.determinate.systems/determinate-nix/#lazy-trees
 [linux-builder]: https://docs.determinate.systems/determinate-nix/#linux-builder
 [nix]: https://nixos.org
 [nix-installer]: /concepts/nix-installer
 [nix.dev]: https://nix.dev
-[official]: https://nixos.org/download
 [parallel-eval]: https://docs.determinate.systems/determinate-nix/#parallel-evaluation
 [podman]: https://podman.io
 [releases]: https://github.com/DeterminateSystems/nix-installer/releases
@@ -102,6 +85,5 @@ You now have Nix installed and ready to go on your system.
 [script]: https://raw.githubusercontent.com/DeterminateSystems/nix-installer/main/nix-installer.sh
 [start]: /start
 [steamdeck]: https://steamdeck.com
-[uninstall]: /start/uninstall
 [upstream]: https://github.com/NixOS/nix
 [wsl]: https://learn.microsoft.com/windows/wsl
