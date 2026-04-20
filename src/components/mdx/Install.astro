@@ -1,5 +1,6 @@
 ---
 import { Code } from "astro-expressive-code/components";
+import { Icon } from "astro-icon/components";
 ---
 
 <div
@@ -22,6 +23,8 @@ import { Code } from "astro-expressive-code/components";
   </div>
 
   <div x-show="$store.system.os === 'macos'" class="flex flex-col gap-6">
+    <Icon name="fa:apple" class="size-6" />
+
     <p>On macOS, we recommend using the package installer</p>
 
     <p>But if you prefer:</p>
@@ -34,6 +37,8 @@ import { Code } from "astro-expressive-code/components";
   </div>
 
   <div x-show="$store.system.os === 'linux'" class="flex flex-col gap-6">
+    <Icon name="fa:linux" class="size-6" />
+
     <Code
       code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
       lang="shell"
@@ -42,6 +47,8 @@ import { Code } from "astro-expressive-code/components";
   </div>
 
   <div x-show="$store.system.os === 'windows'" class="flex flex-col gap-6">
+    <Icon name="fa:windows" class="size-6" />
+
     <Code
       code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
       lang="shell"
