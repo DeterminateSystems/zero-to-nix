@@ -12,6 +12,16 @@ NODE_VERSION = "24.13.0" # Keep this in step with `nix develop --command node --
 [context.production]
 environment = { ENV = "production" }
 
+[[edge_functions]]
+function = "markdown"
+path = "/concepts/*"
+excludedPath = ["/concepts/*.md"]
+
+[[edge_functions]]
+function = "markdown"
+path = "/start/*"
+excludedPath = ["/start/*.md"]
+
 [[redirects]]
 from = "/quick-start"
 to = "/start.html"
