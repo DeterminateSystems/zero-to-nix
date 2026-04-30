@@ -1,7 +1,7 @@
 ---
-import Link from "./Link.astro";
 import { Icon } from "astro-icon/components";
 import { md } from "../lib/utils";
+import Link from "./Link.astro";
 
 type Props = {
   title: string;
@@ -29,10 +29,7 @@ const { title, href: externalSourceHref, source } = Astro.props;
         <span class="content" set:html={md(title)} />
       </span>
 
-      <Icon
-        name="fa:external-link"
-        class="h-3 w-3 text-primary md:h-4 md:w-4"
-      />
+      <Icon name="fa:external-link" class="size-3 text-primary md:size-4" />
     </Link>
 
     {

@@ -21,6 +21,13 @@ export type Term = {
   href: string;
 };
 
+type Platform = {
+  title: string;
+  specs?: string | undefined;
+  href?: string | undefined;
+  icon: string;
+};
+
 type Language =
   | "C++"
   | "Go"
@@ -34,6 +41,7 @@ type Site = {
   title: string;
   url: string;
   description: string;
+  platforms: Platform[];
   llms: {
     description: string;
     otherProjects: { title: string; description: string; href: string }[];
@@ -56,6 +64,39 @@ export const site: Site = {
   title: "Zero to Nix",
   url: "https://zero-to-nix.com",
   description: "Your guide to learning Nix and flakes",
+  platforms: [
+    {
+      title: "macOS",
+      specs: "64-bit ARM and 64-bit AMD/Intel",
+      icon: "fa:apple",
+    },
+    {
+      title: "Linux",
+      specs: "64-bit ARM and 64-bit AMD/Intel",
+      icon: "fa:linux",
+    },
+    {
+      title: "Windows Subsystem for Linux (WSL)",
+      specs: "64-bit ARM and 64-bit AMD/Intel",
+      icon: "fa:windows",
+      href: "https://learn.microsoft.com/windows/wsl",
+    },
+    {
+      title: "Podman Linux containers",
+      icon: "simple-icons:podman",
+      href: "https://podman.io",
+    },
+    {
+      title: "Docker containers",
+      icon: "simple-icons:docker",
+      href: "https://docker.com",
+    },
+    {
+      title: "Valve Steam Deck (SteamOS)",
+      icon: "simple-icons:steamdeck",
+      href: "https://steamdeck.com",
+    },
+  ],
   llms: {
     description:
       "Zero to Nix is a flake-centric resource for learning Nix created by [Determinate Systems](https://determinate.systems/llms.txt). It takes you on a [learning journey](#start-pages) from installing Nix to exploring Nix development environments to building Nix packages and more. It also offers a series of [concept pages](#concept-pages) covering some of the trickier corners of Nix.",
