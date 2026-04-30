@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import { Code } from "astro-expressive-code/components";
+import { Icon } from "astro-icon/components";
+import pkgImg from "../../assets/img/pkg.png";
+import Link from "../Link.astro";
+---
+
+<div
+  x-cloak
+  class="not-prose mb-4 rounded border border-light-gray p-4 dark:border-gray md:mb-6 md:p-5"
+>
+  <div class="flex flex-col gap-4">
+    <nav class="flex items-center gap-4 md:gap-6 lg:gap-8">
+      <button
+        @click="$store.system.choose('macos')"
+        class="flex items-center gap-2 duration-hover hover:text-orange"
+        :class="$store.system.os === 'macos' && 'font-extrabold'"
+      >
+        macOS <Icon name="fa:apple" class="size-4" />
+      </button>
+      <button
+        @click="$store.system.choose('linux')"
+        class="flex items-center gap-2 duration-hover hover:text-orange"
+        :class="$store.system.os === 'linux' && 'font-extrabold'"
+      >
+        Linux <Icon name="fa:linux" class="size-4" />
+      </button>
+      <button
+        @click="$store.system.choose('windows')"
+        class="flex items-center gap-2 duration-hover hover:text-orange"
+        :class="$store.system.os === 'windows' && 'font-extrabold'"
+      >
+        WSL <Icon name="fa:windows" class="size-4" />
+      </button>
+    </nav>
+
+    <div x-show="$store.system.os === 'macos'" class="flex flex-col gap-4">
+      <p>On macOS, we recommend using our package installer:</p>
+
+      <Link
+        href="https://install.determinate.systems/determinate-pkg/stable/Universal"
+      >
+        <Image
+          src={pkgImg}
+          alt="Logo for graphical installer"
+          class="size-16 md:size-20 lg:size-24"
+          loading="eager"
+        />
+      </Link>
+
+      <p>Or if you prefer the command line:</p>
+
+      <Code
+        code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
+        lang="shell"
+        title="One command to install Nix on macOS"
+      />
+    </div>
+
+    <div x-show="$store.system.os === 'linux'" class="flex flex-col gap-6">
+      <p>
+        On Linux, we recommend installing using the <Link
+          href="https://github.com/DeterminateSystems/nix-installer"
+          >Determinate Nix Installer</Link
+        > CLI:
+      </p>
+
+      <Code
+        code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
+        lang="shell"
+        title="One command to install Nix on Linux"
+      />
+    </div>
+
+    <div x-show="$store.system.os === 'windows'" class="flex flex-col gap-6">
+      <p>
+        On Windows Subsystem for Linux, we recommend installing using the <Link
+          href="https://github.com/DeterminateSystems/nix-installer"
+          >Determinate Nix Installer</Link
+        > CLI:
+      </p>
+
+      <Code
+        code="curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install"
+        lang="shell"
+        title="One command to install Nix on Windows Subsystem for Linux"
+      />
+    </div>
+
+    <p>
+      Installation is also available via several <Link
+        href="https://docs.determinate.systems/guides/mdm"
+        >Mobile Device Management</Link
+      > (MDM) platforms.
+    </p>
+  </div>
+</div>

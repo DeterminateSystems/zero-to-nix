@@ -3,8 +3,6 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
-import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
@@ -17,18 +15,7 @@ export default defineConfig({
     alpinejs({
       entrypoint: "./src/entrypoint",
     }),
-    expressiveCode({
-      themes: ["github-dark"],
-      emitExternalStylesheet: true,
-      defaultProps: {
-        showLineNumbers: false,
-      },
-      plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
-      styleOverrides: {
-        codeFontSize: "1rem",
-        uiFontSize: "1rem",
-      },
-    }),
+    expressiveCode(),
     icon(),
     mdx({
       //gfm: true,
