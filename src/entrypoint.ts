@@ -25,9 +25,7 @@ export default (Alpine: Alpine) => {
       if (/Mac|iPhone|iPad|iPod/i.test(platform) || /Mac OS X/i.test(ua))
         return "macos";
       if (/Win/i.test(platform)) return "windows";
-      if (/Android/i.test(ua)) return "android";
-      if (/Linux/i.test(platform)) return "linux";
-      return "unknown";
+      return "linux"; // Most reasonable default
     })(),
 
     selected: persisted<OS | null>(Alpine, null, "selected-os"),
