@@ -2,7 +2,6 @@
 import type { GetStaticPaths } from "astro";
 import ExternalSources from "../../components/ExternalSources.astro";
 import FeedbackBar from "../../components/FeedbackBar.astro";
-import GraphicalInstallerButton from "../../components/GraphicalInstallerButton.astro";
 import Hero from "../../components/Hero.astro";
 import HorizontalContainer from "../../components/HorizontalContainer.astro";
 import Admonition from "../../components/mdx/Admonition.astro";
@@ -59,7 +58,6 @@ const numQuickStartPages = (await getStartPagesByOrderParam()).length;
 
             Admonition,
             ExternalSources,
-            GraphicalInstallerButton,
             Install,
             Language,
             Languages,

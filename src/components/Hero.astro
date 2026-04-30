@@ -1,7 +1,7 @@
 ---
-import Link from "./Link.astro";
 import { md } from "../lib/utils";
 import Breadcrumb from "./Breadcrumb.astro";
+import Link from "./Link.astro";
 
 type BreadcrumbProps = {
   back: {
@@ -81,7 +81,7 @@ const largeHero = heroSize === "lg";
       <div class="bg:light-orange rounded border-1.5 border-orange px-3 py-1.5 text-xs md:px-3.5 md:py-2 md:text-sm lg:px-4 lg:py-3 lg:text-base">
         <div class="bg:light-orange rounded border-1.5 border-orange px-3 py-1.5 text-xs md:px-3.5 md:py-2 md:text-sm lg:px-4 lg:py-3 lg:text-base">
           <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
-            {/* }<IconFaSolidHammer class="h-3 w-3 text-orange md:h-4 md:w-4" /> */}
+            {/* }<IconFaSolidHammer class="size-3 text-orange md:size-4" /> */}
             <p>
               This document is a work in progress. It's intended to provide a
               brief definition or overview and nothing more. We'll be iterating
