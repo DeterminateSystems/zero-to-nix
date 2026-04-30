@@ -8,9 +8,11 @@ import Admonition from "../../components/mdx/Admonition.astro";
 import H2 from "../../components/mdx/H2.astro";
 import H3 from "../../components/mdx/H3.astro";
 import H4 from "../../components/mdx/H4.astro";
+import Install from "../../components/mdx/Install.astro";
 import Language from "../../components/mdx/Language.astro";
 import Languages from "../../components/mdx/Languages.astro";
 import NixStorePath from "../../components/mdx/NixStorePath.astro";
+import Platforms from "../../components/mdx/Platforms.astro";
 import SpecificLanguage from "../../components/mdx/SpecificLanguage.astro";
 import Pagination from "../../components/Pagination.astro";
 import Separator from "../../components/Separator.astro";
@@ -56,9 +58,11 @@ const numQuickStartPages = (await getStartPagesByOrderParam()).length;
 
             Admonition,
             ExternalSources,
+            Install,
             Language,
             Languages,
             NixStorePath,
+            Platforms,
             SpecificLanguage,
           }}
         />

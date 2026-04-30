@@ -1,15 +1,17 @@
 ---
 let phid = false;
 
+const href = Astro.props.href;
+
 try {
-  const to = new URL(Astro.props.href);
+  const to = new URL(href);
 
   if (
     to &&
-    to.hostname != "status.determinate.systems" &&
-    to.hostname != "trust.determinate.systems" &&
-    (to.hostname == "flakehub.com" ||
-      to.hostname == "determinate.systems" ||
+    to.hostname !== "status.determinate.systems" &&
+    to.hostname !== "trust.determinate.systems" &&
+    (to.hostname === "flakehub.com" ||
+      to.hostname === "determinate.systems" ||
       to.hostname.endsWith(".determinate.systems"))
   ) {
     phid = true;
@@ -18,7 +20,7 @@ try {
   // that's fine
 }
 
-const external = (Astro.props.href || "").startsWith("http");
+const external = (href || "").startsWith("http");
 
 const rel = external && !phid ? "noopener noreferrer" : undefined;
 const target = external ? "_blank" : undefined;
