@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import { Code } from "astro-expressive-code/components";
 import { Icon } from "astro-icon/components";
+import pkgImg from "../../assets/img/pkg.png";
+import Link from "../Link.astro";
 ---
 
 <div x-cloak class="not-prose dark:border-dark-gray">
@@ -29,6 +32,17 @@ import { Icon } from "astro-icon/components";
   </nav>
 
   <div x-show="$store.system.os === 'macos'" class="flex flex-col gap-4">
+    <Link
+      href="https://install.determinate.systems/determinate-pkg/stable/Universal"
+    >
+      <Image
+        src={pkgImg}
+        alt="Logo for graphical installer"
+        class="h-12 w-12"
+        loading="eager"
+      />
+    </Link>
+
     <p>On macOS, we recommend using the package installer</p>
 
     <p>But if you prefer:</p>
