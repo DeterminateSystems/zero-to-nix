@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { plainText } from "../lib/utils";
 import { site } from "../site";
 import Posthog from "./Posthog.astro";
 
@@ -52,7 +53,7 @@ const image = `${root}favicon.png`;
 <SEO
   charset="utf-8"
   title={title ?? siteTitle}
-  description={description ?? siteDescription}
+  description={description ? plainText(description) : siteDescription}
   {canonical}
   openGraph={{
     basic: {
@@ -79,6 +80,10 @@ const image = `${root}favicon.png`;
 
 {
   markdownNegotiation && (
-    <link rel="alternate" type="text/markdown" href={`${canonical.href}.md`} />
+    <link
+      rel="alternate"
+      type="text/markdown"
+      href={`${canonical.pathname.replace(/\/$/, "")}.md`}
+    />
   )
 }
