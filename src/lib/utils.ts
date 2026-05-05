@@ -1,4 +1,6 @@
 import { marked } from "marked";
+import { remark } from "remark";
+import strip from 'strip-markdown';
 
 export const conceptPagePath = (slug: string): string => {
   return pagePath("concepts", slug);
@@ -10,6 +12,11 @@ export const md = async (md: string): Promise<string> => {
 
 export const startPagePath = (slug: string): string => {
   return pagePath("start", slug.substring(1));
+};
+
+export const plainText = async (md: string): Promise<string> => {
+  const file = await remark().use(strip).process(md);
+  return String(file).trim();
 };
 
 const pagePath = (collection: string, slug: string): string => {
