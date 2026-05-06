@@ -10,11 +10,12 @@ import { site } from "../site";
 type Props = {
   title?: string;
   description?: string;
+  markdownNegotiation?: boolean;
 };
 
 const { defaultLanguage } = site;
 
-const { title, description } = Astro.props;
+const { title, description, markdownNegotiation = false } = Astro.props;
 ---
 
 <html
@@ -22,7 +23,7 @@ const { title, description } = Astro.props;
   class="h-screen"
 >
   <head>
-    <Head {title} {description} />
+    <Head {title} {description} {markdownNegotiation} />
   </head>
   <body
     class="flex min-h-full flex-col bg-white font-sans text-dark antialiased dark:bg-dark dark:text-white"

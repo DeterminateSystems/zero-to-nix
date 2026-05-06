@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { plainText } from "../lib/utils";
 import { site } from "../site";
 import Posthog from "./Posthog.astro";
 
@@ -8,6 +9,7 @@ type Props = {
   description?: string;
   tags?: string[];
   author?: string;
+  markdownNegotiation?: boolean;
 };
 
 const root = Astro.site!.toString();
@@ -15,7 +17,11 @@ const canonical = new URL(Astro.url.pathname, root);
 
 const { title: siteTitle, description: siteDescription } = site;
 
-const { title, description, tags } = Astro.props;
+const { title, description, tags, markdownNegotiation = false } = Astro.props;
+
+const plainDescription = description
+  ? (await plainText(description)).trim()
+  : siteDescription;
 
 const image = `${root}favicon.png`;
 ---
@@ -51,7 +57,7 @@ const image = `${root}favicon.png`;
 <SEO
   charset="utf-8"
   title={title ?? siteTitle}
-  description={description ?? siteDescription}
+  description={plainDescription}
   {canonical}
   openGraph={{
     basic: {
@@ -64,9 +70,19 @@ const image = `${root}favicon.png`;
   twitter={{
     site: root,
     title: title ?? siteTitle,
-    description,
+    description: plainDescription,
     image,
     card: "summary",
+  }}
+  extend={{
+    link: markdownNegotiation
+      ? [
+          {
+            rel: "alternate",
+            href: `${canonical.origin}${canonical.pathname.replace(/\/$/, "")}.md`,
+          },
+        ]
+      : [],
   }}
 />
 

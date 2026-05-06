@@ -36,7 +36,7 @@ const { Content } = await page.render();
 const numQuickStartPages = (await getStartPagesByOrderParam()).length;
 ---
 
-<Layout {title}>
+<Layout {title} markdownNegotiation>
   <HorizontalContainer>
     <Hero
       {title}

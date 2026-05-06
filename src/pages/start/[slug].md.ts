@@ -5,12 +5,10 @@ export const prerender = true;
 
 type Props = { entry: CollectionEntry<"start"> };
 
-const stripExt = (id: string) => id.replace(/\.(md|mdx)$/i, "");
-
 export const getStaticPaths = (async () => {
   const entries = await getCollection("start");
   return entries.map((entry) => ({
-    params: { slug: stripExt(entry.id) },
+    params: { slug: entry.slug.substring(1) },
     props: { entry },
   }));
 }) satisfies GetStaticPaths;
@@ -19,7 +17,7 @@ export const GET: APIRoute<Props> = async ({ props, params }) => {
   let entry: CollectionEntry<"start"> | undefined = props?.entry;
   if (!entry && typeof params.slug === "string") {
     const all = await getCollection("start");
-    entry = all.find((e) => stripExt(e.id) === params.slug);
+    entry = all.find((e) => e.slug.substring(1) === params.slug);
   }
   if (!entry) {
     return new Response("Not Found", { status: 404 });
