@@ -7,7 +7,7 @@ publish = "dist"
 # only want to run `npm ci`, which actually uses the `package-lock.json` lockfile.
 # Source: https://answers.netlify.com/t/how-can-i-use-npm-ci-instead-of-npm-install/12570/14
 NPM_FLAGS = "--version"
-NODE_VERSION = "24.13.0" # Keep this in step with `nix develop --command node --version`
+NODE_VERSION = "24.14.0" # Keep this in step with `nix develop --command node --version`
 
 [context.production]
 environment = { ENV = "production" }
