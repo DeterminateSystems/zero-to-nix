@@ -1,6 +1,6 @@
 import { marked } from "marked";
 import { remark } from "remark";
-import strip from 'strip-markdown';
+import strip from "strip-markdown";
 
 export const conceptPagePath = (slug: string): string => {
   return pagePath("concepts", slug);
