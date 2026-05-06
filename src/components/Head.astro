@@ -74,6 +74,16 @@ const image = `${root}favicon.png`;
     image,
     card: "summary",
   }}
+  extend={{
+    link: markdownNegotiation
+      ? [
+          {
+            rel: "alternate",
+            href: `${canonical.origin}${canonical.pathname.replace(/\/$/, "")}.md`,
+          },
+        ]
+      : [],
+  }}
 />
 
 <link
@@ -81,13 +91,3 @@ const image = `${root}favicon.png`;
   type="text/css"
   href="//cdn-images.mailchimp.com/embedcode/classic-071822.css"
 />
-
-{
-  markdownNegotiation && (
-    <link
-      rel="alternate"
-      type="text/markdown"
-      href={`${canonical.pathname.replace(/\/$/, "")}.md`}
-    />
-  )
-}
