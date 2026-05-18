@@ -1,18 +1,19 @@
 ---
-import { getEntry } from "astro:content";
-import Layout from "../layouts/Layout.astro";
+import { getEntry, render } from "astro:content";
+import FeedbackBar from "../components/FeedbackBar.astro";
 import Hero from "../components/Hero.astro";
 import HorizontalContainer from "../components/HorizontalContainer.astro";
-import Separator from "../components/Separator.astro";
-import FeedbackBar from "../components/FeedbackBar.astro";
 import Brief from "../components/mdx/Brief.astro";
+import Prose from "../components/Prose.astro";
+import Separator from "../components/Separator.astro";
+import Layout from "../layouts/Layout.astro";
 
 const page = await getEntry("plain", "about")!;
 
 const {
   data: { title, description },
 } = page;
-const { Content } = await page.render();
+const { Content } = await render(page);
 ---
 
 <Layout {title} {description}>
@@ -20,9 +21,9 @@ const { Content } = await page.render();
     <Hero {title} {description} />
 
     <div class="space-y-8 md:space-y-10 lg:space-y-12">
-      <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
+      <Prose>
         <Content components={{ Brief }} />
-      </div>
+      </Prose>
 
       <div class="mt-16 space-y-12">
         <Separator />

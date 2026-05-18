@@ -9,7 +9,7 @@ import Link from "./Link.astro";
   x-init="show = !(posthog.has_opted_out_capturing() || posthog.has_opted_in_capturing())"
   class="fixed bottom-6 left-6 z-50 print:hidden"
 >
-  <div class="max-w-[225px] bg-soft-gray shadow-lg dark:text-dark">
+  <div class="bg-soft-gray dark:text-dark max-w-[225px] shadow-lg">
     <p class="content m-0 px-6 py-4 text-[16px]">
       We use a single, first-party analytics cookie to focus our limited time
       and energy on the most important documentation. Check out our
@@ -23,16 +23,16 @@ import Link from "./Link.astro";
       .
     </p>
     <div
-      class="grid grid-cols-2 divide-x-1.5 divide-light-gray border-t-1.5 border-light-gray"
+      class="divide-x-1.5 divide-light-gray border-t-1.5 border-light-gray grid grid-cols-2"
     >
       <button
-        class="py-2.5 font-bold hover:bg-green hover:text-dark"
+        class="hover:bg-green hover:text-dark py-2.5 font-bold"
         @click="posthog.opt_in_capturing(); show = false;"
       >
         Accept
       </button>
       <button
-        class="py-2.5 font-bold hover:bg-red hover:text-white"
+        class="hover:bg-red py-2.5 font-bold hover:text-white"
         @click="posthog.opt_out_capturing(); show = false;"
       >
         Decline

@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import ExternalSources from "../../components/ExternalSources.astro";
 import FeedbackBar from "../../components/FeedbackBar.astro";
@@ -10,6 +11,7 @@ import H2 from "../../components/mdx/H2.astro";
 import H3 from "../../components/mdx/H3.astro";
 import H4 from "../../components/mdx/H4.astro";
 import NixStorePath from "../../components/mdx/NixStorePath.astro";
+import Prose from "../../components/Prose.astro";
 import QuickStart from "../../components/QuickStart.astro";
 import Related from "../../components/Related.astro";
 import Separator from "../../components/Separator.astro";
@@ -19,7 +21,7 @@ import { conceptPagePath } from "../../lib/utils";
 
 export const getStaticPaths = (async () => {
   return (await getConceptPagesAlphabetical()).map((page) => ({
-    params: { slug: page.slug },
+    params: { id: page.id },
     props: { page },
   }));
 }) satisfies GetStaticPaths;
@@ -28,14 +30,14 @@ const { page } = Astro.props;
 const {
   data: { title, snippet, externalSources, related },
 } = page;
-const { Content } = await page.render();
+const { Content } = await render(page);
 
 const relatedConceptPages: { title: string; href: string }[] = (
   await getConceptPagesAlphabetical()
 )
-  .filter(({ slug }) => related.includes(slug))
-  .map(({ slug, data: { title } }) => {
-    return { title, href: conceptPagePath(slug) };
+  .filter(({ id }) => related.includes(id))
+  .map(({ id, data: { title } }) => {
+    return { title, href: conceptPagePath(id) };
   });
 ---
 
@@ -50,7 +52,7 @@ const relatedConceptPages: { title: string; href: string }[] = (
     <QuickStart />
 
     <div class="space-y-8 md:space-y-10 lg:space-y-12">
-      <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
+      <Prose>
         <Content
           components={{
             a: A,
@@ -63,7 +65,7 @@ const relatedConceptPages: { title: string; href: string }[] = (
             NixStorePath,
           }}
         />
-      </div>
+      </Prose>
 
       {
         relatedConceptPages.length > 0 && (

@@ -1,8 +1,8 @@
 ---
-import Link from "./Link.astro";
+import HoverableExternalSourceLink from "../components/HoverableExternalSourceLink.astro";
 import type { ExternalSource } from "../lib/content";
 import Grid3 from "./Grid3.astro";
-import HoverableExternalSourceLink from "../components/HoverableExternalSourceLink.astro";
+import Link from "./Link.astro";
 
 type Props = {
   showTitle?: boolean;
@@ -16,7 +16,7 @@ const { showTitle = false, links } = Astro.props;
   {
     showTitle && (
       <p
-        class="text-xl font-semibold hover:text-gray dark:hover:text-light-gray md:text-2xl lg:text-3xl"
+        class="hover:text-gray dark:hover:text-light-gray text-xl font-semibold md:text-2xl lg:text-3xl"
         id="external-sources"
       >
         <Link href="#external-sources">External sources</Link>

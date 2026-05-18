@@ -8,27 +8,27 @@ import Link from "../Link.astro";
 
 <div
   x-cloak
-  class="not-prose mb-4 rounded border border-light-gray p-4 dark:border-gray md:mb-6 md:p-5"
+  class="not-prose border-light-gray dark:border-gray mb-4 rounded border p-4 md:mb-6 md:p-5"
 >
   <div class="flex flex-col gap-4">
     <nav class="flex items-center gap-4 md:gap-6 lg:gap-8">
       <button
         @click="$store.system.choose('macos')"
-        class="flex items-center gap-2 duration-hover hover:text-orange"
+        class="duration-hover hover:text-orange flex items-center gap-2"
         :class="$store.system.os === 'macos' && 'font-extrabold'"
       >
         macOS <Icon name="fa:apple" class="size-4" />
       </button>
       <button
         @click="$store.system.choose('linux')"
-        class="flex items-center gap-2 duration-hover hover:text-orange"
+        class="duration-hover hover:text-orange flex items-center gap-2"
         :class="$store.system.os === 'linux' && 'font-extrabold'"
       >
         Linux <Icon name="fa:linux" class="size-4" />
       </button>
       <button
         @click="$store.system.choose('windows')"
-        class="flex items-center gap-2 duration-hover hover:text-orange"
+        class="duration-hover hover:text-orange flex items-center gap-2"
         :class="$store.system.os === 'windows' && 'font-extrabold'"
       >
         WSL <Icon name="fa:windows" class="size-4" />

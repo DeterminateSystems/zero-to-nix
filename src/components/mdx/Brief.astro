@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 
 type Props = {
   id: string;
@@ -13,7 +13,7 @@ if (page === undefined) {
   throw new Error(`No brief with id ${id} was found`);
 }
 
-const { Content } = await page.render();
+const { Content } = await render(page);
 ---
 
 <Content />

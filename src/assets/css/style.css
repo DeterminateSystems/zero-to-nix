@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+/* darkMode: "class" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ---- Colors ---- */
+  --color-pale: #f8fafc;
+  --color-dark: rgb(10, 10, 10);
+  --color-pale-yellow: #fefce8;
+  --color-middle-yellow: #fef08a;
+  --color-yellow: #eab308;
+  --color-dark-yellow: #ca8a04;
+  --color-soft-gray: #e2e8f0;
+  --color-light-gray: #cbd5e1;
+  --color-gray: #64748b;
+  --color-dark-gray: #334155;
+  --color-darker-gray: #1e293b;
+  --color-pale-blue: #eff6ff;
+  --color-middle-blue: #bfdbfe;
+  --color-light-blue: #93c5fd;
+  --color-blue: #3b82f6;
+  --color-pale-green: #f0fdf4;
+  --color-middle-green: #bbf7d0;
+  --color-green: #22c55e;
+  --color-pale-red: #fef2f2;
+  --color-middle-red: #fecaca;
+  --color-red: #ef4444;
+  --color-cerulean: #0ea5e9;
+  --color-lilac: #a855f7;
+  --color-rose: #f43f5e;
+  --color-orange: #f97316;
+  --color-light-orange: #fff7ed;
+  --color-primary: rgb(80, 116, 191);
+  --color-nix-dark-blue: #536db0;
+  --color-nix-light-blue: #5a76be;
+
+  /* ---- Border widths ---- */
+  --border-width-1_5: 1.5px;
+  --border-width-2_5: 2.5px;
+
+  /* ---- Transition durations ---- */
+  --transition-duration-hover: 200ms;
+
+  /* ---- Max width ---- */
+  --max-width-8xl: 90rem;
+
+  /* ---- Font families ---- */
+  --font-sans:
+    -apple-system, ui-sans-serif, system-ui, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono:
+    ui-monospace, Menlo, Consolas, SFMono-Regular, Monaco, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+/* Mailchimp embed styling */
+#mc_embed_signup {
+  background: inherit;
+  clear: left;
+}
+
+/* AlpineJS */
+[x-cloak] {
+  display: none !important;
+}
+
+@utility banner-link {
+  @apply duration-hover hover:text-nix-light-blue font-semibold;
+}
+
+@utility inline-code {
+  @apply border-light-gray bg-pale dark:bg-dark-gray rounded px-1.5 py-0.5 dark:border-none;
+}
+
+@layer base {
+  /* This class is applied to snippets of text that are rendered from Markdown but not covered by .prose */
+  .content {
+    a {
+      @apply hover:text-primary dark:hover:text-primary font-medium underline;
+    }
+
+    p + p {
+      @apply mt-2 md:mt-2.5 lg:mt-3;
+    }
+
+    code {
+      @apply inline-code;
+    }
+  }
+
+  .prose {
+    /* Hide footnotes heading */
+    .footnotes {
+      @apply mt-12 p-0;
+
+      h2#footnote-label {
+        @apply text-lg md:text-xl lg:text-2xl;
+      }
+
+      .data-footnote-backref {
+        @apply no-underline;
+      }
+    }
+
+    /* Needed by a few components */
+    .remove-underline {
+      a {
+        @apply no-underline;
+      }
+    }
+
+    p,
+    .content,
+    h2,
+    h3 {
+      code {
+        @apply inline-code;
+      }
+    }
+
+    a {
+      @apply hover:text-primary dark:hover:text-light-blue;
+    }
+
+    code {
+      &::before,
+      &::after {
+        content: none !important;
+      }
+    }
+
+    .admonition {
+      @apply my-4;
+    }
+  }
+}

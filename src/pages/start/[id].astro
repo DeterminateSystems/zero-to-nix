@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import ExternalSources from "../../components/ExternalSources.astro";
 import FeedbackBar from "../../components/FeedbackBar.astro";
@@ -15,6 +16,7 @@ import NixStorePath from "../../components/mdx/NixStorePath.astro";
 import Platforms from "../../components/mdx/Platforms.astro";
 import SpecificLanguage from "../../components/mdx/SpecificLanguage.astro";
 import Pagination from "../../components/Pagination.astro";
+import Prose from "../../components/Prose.astro";
 import Separator from "../../components/Separator.astro";
 import Summary from "../../components/Summary.astro";
 import { getStartPagesByOrderParam } from "../../content/collections";
@@ -22,7 +24,7 @@ import Layout from "../../layouts/Layout.astro";
 
 export const getStaticPaths = (async () => {
   return (await getStartPagesByOrderParam()).map((page) => ({
-    params: { slug: page.slug.substring(1) },
+    params: { id: page.id.substring(1) },
     props: { page },
   }));
 }) satisfies GetStaticPaths;
@@ -31,7 +33,7 @@ const { page } = Astro.props;
 const {
   data: { title, summary, order },
 } = page;
-const { Content } = await page.render();
+const { Content } = await render(page);
 
 const numQuickStartPages = (await getStartPagesByOrderParam()).length;
 ---
@@ -49,7 +51,7 @@ const numQuickStartPages = (await getStartPagesByOrderParam()).length;
     <div class="space-y-6">
       {summary && summary.length > 0 && <Summary items={summary} />}
 
-      <div class="prose max-w-none dark:prose-invert lg:prose-lg xl:prose-xl">
+      <Prose>
         <Content
           components={{
             h2: H2,
@@ -66,7 +68,7 @@ const numQuickStartPages = (await getStartPagesByOrderParam()).length;
             SpecificLanguage,
           }}
         />
-      </div>
+      </Prose>
 
       <div class="mt-16 space-y-12">
         <Pagination {order} />
