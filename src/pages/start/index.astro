@@ -21,11 +21,11 @@ const startPages = await getStartPagesByOrderParam();
 
     <Grid2>
       {
-        startPages.map(({ slug, data: { title, order } }) => (
+        startPages.map(({ id, data: { title, order } }) => (
           <HoverableLink
             text={title}
             {order}
-            href={startPagePath(slug)}
+            href={startPagePath(id)}
             size="normal"
           />
         ))

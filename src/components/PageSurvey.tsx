@@ -45,7 +45,7 @@ const PageSurvey = () => {
           </h3>
           <div className="flex items-center space-x-2">
             <button
-              className="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray px-3 py-2 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
+              className="border-1.5 border-light-gray hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray flex items-center justify-between space-x-3 rounded-lg px-3 py-2 text-sm font-semibold tracking-tight hover:shadow-sm md:text-base"
               onClick={() => submitResponse("positive")}
             >
               <span>Yes</span>
@@ -53,7 +53,7 @@ const PageSurvey = () => {
             </button>
 
             <button
-              className="flex items-center justify-between space-x-3 rounded-lg border-1.5 border-light-gray px-3 py-2 text-sm font-semibold tracking-tight hover:border-primary hover:bg-pale hover:shadow-sm dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray md:text-base"
+              className="border-1.5 border-light-gray hover:border-primary hover:bg-pale dark:border-gray dark:hover:border-primary dark:hover:bg-darker-gray flex items-center justify-between space-x-3 rounded-lg px-3 py-2 text-sm font-semibold tracking-tight hover:shadow-sm md:text-base"
               onClick={() => submitResponse("negative")}
             >
               <span>No</span>
@@ -72,7 +72,7 @@ const PageSurvey = () => {
           </h3>
 
           <textarea
-            className="w-full resize-none rounded-lg border-1.5 border-soft-gray p-3 text-sm shadow-sm dark:border-gray dark:bg-dark md:p-4 md:text-base lg:p-2.5"
+            className="border-1.5 border-soft-gray dark:border-gray dark:bg-dark w-full resize-none rounded-lg p-3 text-sm shadow-sm md:p-4 md:text-base lg:p-2.5"
             cols={25}
             rows={5}
             value={feedback}
@@ -87,7 +87,7 @@ const PageSurvey = () => {
 
           {feedback && (
             <button
-              className="hoverName:text-pale rounded-lg bg-light-gray px-3 py-2 font-semibold text-dark hover:cursor-pointer hover:bg-gray active:bg-rose dark:bg-gray dark:text-pale dark:hover:bg-dark-gray"
+              className="hoverName:text-pale bg-light-gray text-dark hover:bg-gray active:bg-rose dark:bg-gray dark:text-pale dark:hover:bg-dark-gray rounded-lg px-3 py-2 font-semibold hover:cursor-pointer"
               onClick={submitFeedback}
             >
               Send feedback

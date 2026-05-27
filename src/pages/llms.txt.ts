@@ -48,13 +48,13 @@ export const GET: APIRoute = async () => {
     title,
     tagline,
     description: llms.description,
-    startPages: startPages.map(({ data: { title }, slug }) => ({
+    startPages: startPages.map(({ data: { title }, id }) => ({
       title,
-      href: `${root}/${startPagePath(slug)}`,
+      href: `${root}/${startPagePath(id)}`,
     })),
-    conceptPages: conceptPages.map(({ data: { title }, slug }) => ({
+    conceptPages: conceptPages.map(({ data: { title }, id }) => ({
       title,
-      href: `${root}/${conceptPagePath(slug)}`,
+      href: `${root}/${conceptPagePath(id)}`,
     })),
     otherFormats: [FORMATS.small, FORMATS.full],
     projects: llms.otherProjects,

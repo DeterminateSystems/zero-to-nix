@@ -32,14 +32,14 @@ export const GET: APIRoute = async () => {
       "Learning journey (start) and concept page items begin and end with a --- and all page titles are in bold.",
     tagline,
     description: llms.description,
-    startPages: startPages.map(({ data: { title }, slug, body }) => ({
+    startPages: startPages.map(({ data: { title }, id, body }) => ({
       title,
-      href: `${root}/${startPagePath(slug)}`,
+      href: `${root}/${startPagePath(id)}`,
       content: body,
     })),
-    conceptPages: conceptPages.map(({ data: { title }, slug, body }) => ({
+    conceptPages: conceptPages.map(({ data: { title }, id, body }) => ({
       title,
-      href: `${root}/${conceptPagePath(slug)}`,
+      href: `${root}/${conceptPagePath(id)}`,
       content: body,
     })),
     otherFormats: [FORMATS.small, FORMATS.standard],

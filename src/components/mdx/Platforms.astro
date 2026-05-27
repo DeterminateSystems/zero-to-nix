@@ -8,14 +8,14 @@ const { platforms } = site;
 <div class="not-prose grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
   {
     platforms.map(({ title, specs, href, icon }) => (
-      <div class="flex flex-col justify-between gap-3.5 rounded border border-light-gray p-4 dark:border-gray md:p-5">
+      <div class="border-light-gray dark:border-gray flex flex-col justify-between gap-3.5 rounded border p-4 md:p-5">
         <Icon name={icon} class="size-6" />
 
         <div class="flex flex-col gap-2">
           {href ? (
             <a
               {href}
-              class="text-lg font-semibold !no-underline duration-hover md:text-xl"
+              class="duration-hover text-lg font-semibold !no-underline md:text-xl"
               target="_blank"
               rel="noopener noreferrer"
             >

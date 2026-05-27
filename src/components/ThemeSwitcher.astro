@@ -14,7 +14,7 @@ import { Icon } from "astro-icon/components";
     `
     x-show="show"
     name="heroicons:sun"
-    class="size-4 text-yellow duration-hover hover:text-dark-yellow md:size-5 lg:size-6"
+    class="text-yellow duration-hover hover:text-dark-yellow size-4 md:size-5 lg:size-6"
     @click="document.documentElement.classList.toggle('dark', false); localStorage.setItem('mode', 'light');"
   />
 
@@ -29,7 +29,7 @@ import { Icon } from "astro-icon/components";
     `
     x-show="show"
     name="heroicons:moon"
-    class="size-4 text-light-blue duration-hover hover:text-blue dark:hidden md:size-5 lg:size-6"
+    class="text-light-blue duration-hover hover:text-blue size-4 md:size-5 lg:size-6 dark:hidden"
     @click="document.documentElement.classList.toggle('dark', true); localStorage.setItem('mode', 'dark');"
   />
 </button>

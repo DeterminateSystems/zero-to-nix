@@ -10,16 +10,16 @@ const stripExt = (id: string) => id.replace(/\.(md|mdx)$/i, "");
 export const getStaticPaths = (async () => {
   const entries = await getCollection("start");
   return entries.map((entry) => ({
-    params: { slug: stripExt(entry.id) },
+    params: { id: stripExt(entry.id) },
     props: { entry },
   }));
 }) satisfies GetStaticPaths;
 
 export const GET: APIRoute<Props> = async ({ props, params }) => {
   let entry: CollectionEntry<"start"> | undefined = props?.entry;
-  if (!entry && typeof params.slug === "string") {
+  if (!entry && typeof params.id === "string") {
     const all = await getCollection("start");
-    entry = all.find((e) => stripExt(e.id) === params.slug);
+    entry = all.find((e) => stripExt(e.id) === params.id);
   }
   if (!entry) {
     return new Response("Not Found", { status: 404 });

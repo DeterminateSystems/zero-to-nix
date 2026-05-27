@@ -12,4 +12,6 @@ disable = [
   "MD046",
   # for some reason required for tables
   "MD058",
+  # list indentations
+  "MD077",
 ]

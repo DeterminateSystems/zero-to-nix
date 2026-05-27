@@ -1,14 +1,16 @@
-import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+import { defineCollection } from "astro:content";
 
 const briefs = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/briefs" }),
   schema: z.object({
     id: z.string(),
   }),
 });
 
 const concepts = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/concepts" }),
   schema: z.object({
     title: z.string(),
     snippet: z.string(),
@@ -19,11 +21,11 @@ const concepts = defineCollection({
       .array(
         z.object({
           title: z.string(),
-          href: z.string().url(),
+          href: z.url(),
           source: z
             .object({
               title: z.string(),
-              href: z.string().url(),
+              href: z.url(),
             })
             .optional(),
         }),
@@ -34,7 +36,7 @@ const concepts = defineCollection({
 
 // Top-level pages like /about
 const plain = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/plain" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -42,7 +44,7 @@ const plain = defineCollection({
 });
 
 const start = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/start" }),
   schema: z.object({
     title: z.string(),
     order: z.number(),

@@ -8,13 +8,13 @@ const { mailingListTags } = site;
   x-cloak
   x-show="modal"
   x-transition:enter.duration.100ms
-  class="relative z-50 text-dark dark:text-dark"
+  class="text-dark dark:text-dark relative z-50"
 >
   <div class="fixed inset-0 bg-black/40" aria-hidden="true"></div>
 
   <div class="fixed inset-0 flex items-center justify-center">
     <div
-      class="flex w-full max-w-sm flex-col space-y-6 rounded-lg bg-pale px-6 py-4"
+      class="bg-pale flex w-full max-w-sm flex-col space-y-6 rounded-lg px-6 py-4"
       @click.away="modal = false"
     >
       <div id="mc_embed_signup">
@@ -103,7 +103,7 @@ const { mailingListTags } = site;
                 value="Subscribe"
                 name="subscribe"
                 id="mc-embedded-subscribe"
-                class="button !bg-light-gray text-lg !font-bold !text-dark hover:!bg-primary hover:!text-white"
+                class="button !bg-light-gray !text-dark hover:!bg-primary text-lg !font-bold hover:!text-white"
               />
             </div>
           </div>

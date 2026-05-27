@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import HorizontalContainer from "../../components/HorizontalContainer.astro";
-import Hero from "../../components/Hero.astro";
-import QuickStart from "../../components/QuickStart.astro";
 import Grid3 from "../../components/Grid3.astro";
+import Hero from "../../components/Hero.astro";
+import HorizontalContainer from "../../components/HorizontalContainer.astro";
 import HoverableLink from "../../components/HoverableLink.astro";
-import { conceptPagePath } from "../../lib/utils";
+import QuickStart from "../../components/QuickStart.astro";
 import { getConceptPagesAlphabetical } from "../../content/collections";
+import Layout from "../../layouts/Layout.astro";
+import { conceptPagePath } from "../../lib/utils";
 
 const title = "Concepts";
 const heroTitle = "Nix concepts";
@@ -23,10 +23,10 @@ const conceptPages = await getConceptPagesAlphabetical();
 
     <Grid3>
       {
-        conceptPages.map(({ slug, data: { title } }) => (
+        conceptPages.map(({ id, data: { title } }) => (
           <HoverableLink
             text={title}
-            href={conceptPagePath(slug)}
+            href={conceptPagePath(id)}
             size="normal"
           />
         ))

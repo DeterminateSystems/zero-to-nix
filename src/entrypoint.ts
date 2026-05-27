@@ -11,14 +11,14 @@ interface SystemStore {
   reset(): void;
 }
 
-function persisted<T>(Alpine: Alpine, initial: T, key: string): T {
-  return Alpine.$persist(initial).as(key) as unknown as T;
+function persisted<T>(alpine: Alpine, initial: T, key: string): T {
+  return alpine.$persist(initial).as(key) as unknown as T;
 }
 
-export default (Alpine: Alpine) => {
-  Alpine.plugin(persist);
+export default (alpine: Alpine) => {
+  alpine.plugin(persist);
 
-  Alpine.store("system", {
+  alpine.store("system", {
     detected: (() => {
       const ua = navigator.userAgent;
       const platform = (navigator as Navigator).userAgent ?? "";
@@ -28,7 +28,7 @@ export default (Alpine: Alpine) => {
       return "linux"; // Most reasonable default
     })(),
 
-    selected: persisted<OS | null>(Alpine, null, "selected-os"),
+    selected: persisted<OS | null>(alpine, null, "selected-os"),
 
     get os(): OS {
       return this.selected ?? this.detected;
