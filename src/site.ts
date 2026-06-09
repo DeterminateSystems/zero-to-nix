@@ -172,7 +172,7 @@ export const site: Site = {
     {
       title: "The largest package repository in existence",
       description:
-        "Nixpkgs offers over 80,000 packages and continues to grow every day.",
+        "Nixpkgs offers well over 100,000 packages and continues to grow every day.",
       links: [
         {
           text: "How Nixpkgs works",
