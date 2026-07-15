@@ -32,7 +32,7 @@
           default = pkgs.buildGoModule {
             name = "zero-to-nix-go";
             src = self;
-            vendorHash = "sha256-vF/8KPlqfL1JF816XX1q+oo5uT1xMa3U6co5iZLfdiE=";
+            vendorHash = "sha256-YUUVArLYFjfra3MEvx5pfPC+BcdBVvsFvJooUXoHJyc=";
             goSum = ./go.sum;
             subPackages = [ "cmd/zero-to-nix-go" ];
           };
