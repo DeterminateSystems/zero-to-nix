@@ -15,8 +15,6 @@ jobs:
         systems:
           - nix-system: aarch64-darwin
             runner: macos-latest-xlarge
-          - nix-system: x86_64-darwin
-            runner: macos-latest-xlarge
           - nix-system: x86_64-linux
             runner: UbuntuLatest32Cores128G
     steps:
