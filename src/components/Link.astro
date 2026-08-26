@@ -1,24 +1,9 @@
 ---
-let phid = false;
+import { isSiblingProperty } from "../lib/siblings";
 
 const href = Astro.props.href;
 
-try {
-  const to = new URL(href);
-
-  if (
-    to &&
-    to.hostname !== "status.determinate.systems" &&
-    to.hostname !== "trust.determinate.systems" &&
-    (to.hostname === "flakehub.com" ||
-      to.hostname === "determinate.systems" ||
-      to.hostname.endsWith(".determinate.systems"))
-  ) {
-    phid = true;
-  }
-} catch {
-  // that's fine
-}
+const phid = isSiblingProperty(href ?? "");
 
 const external = (href || "").startsWith("http");
 
