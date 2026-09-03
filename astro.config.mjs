@@ -1,4 +1,5 @@
 import alpinejs from "@astrojs/alpinejs";
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -17,20 +18,23 @@ export default defineConfig({
     }),
     expressiveCode(),
     icon(),
-    mdx({
-      //gfm: true,
-      remarkPlugins: [remarkEmoji, remarkHeadingId],
-    }),
+    mdx(),
     sitemap(),
     react(),
   ],
   markdown: {
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        { rel: ["nofollow noopener noreferrer"], target: "_blank" },
+    // Astro 7.1+ defaults to the Sätteri Markdown processor. This site relies
+    // on remark/rehype plugins (custom heading IDs, emoji, external links), so
+    // it uses the unified processor explicitly. MDX inherits these plugins.
+    processor: unified({
+      remarkPlugins: [remarkEmoji, remarkHeadingId],
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          { rel: ["nofollow noopener noreferrer"], target: "_blank" },
+        ],
       ],
-    ],
+    }),
   },
   prefetch: {
     prefetchAll: true,
