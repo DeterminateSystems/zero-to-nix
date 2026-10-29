@@ -26,7 +26,7 @@
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/radix-icons": "^1.2.6",
     "@netlify/edge-functions": "^3.0.6",
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.4",
     "@types/alpinejs": "^3.13.11",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
