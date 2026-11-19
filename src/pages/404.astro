@@ -1,0 +1,31 @@
+---
+import Grid3 from "../components/Grid3.astro";
+import Hero from "../components/Hero.astro";
+import HorizontalContainer from "../components/HorizontalContainer.astro";
+import HoverableLink from "../components/HoverableLink.astro";
+import Layout from "../layouts/Layout.astro";
+
+const title = "Page not found";
+const description =
+  "We couldn't find that page, but these are good places to pick up your Nix journey";
+
+const links = [
+  { text: "Quick start", href: "/start" },
+  { text: "Concepts", href: "/concepts" },
+  { text: "Home", href: "/" },
+];
+---
+
+<Layout {title} {description} noindex>
+  <HorizontalContainer>
+    <Hero {title} {description} />
+
+    <Grid3>
+      {
+        links.map(({ text, href }) => (
+          <HoverableLink {text} {href} size="normal" />
+        ))
+      }
+    </Grid3>
+  </HorizontalContainer>
+</Layout>

@@ -2,15 +2,22 @@
 import SignupModal from "./SignupModal.astro";
 ---
 
+<!-- Styles for the Mailchimp signup form, loaded only where the form is used -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn-images.mailchimp.com/embedcode/classic-071822.css"
+/>
+
 <div x-cloak x-data="{ modal: false }">
   <div
     class="border-1.5 border-light-gray bg-pale dark:border-gray dark:bg-dark-gray rounded p-4 transition-colors duration-150 md:p-6 lg:p-8"
   >
     <div class="items-center justify-between space-y-4 md:flex md:space-y-0">
-      <h1 class="text-lg leading-snug font-light md:text-xl lg:text-2xl">
+      <h2 class="text-lg leading-snug font-light md:text-xl lg:text-2xl">
         Stay up to date with what we're up to at{" "}
         <span class="font-semibold">Determinate Systems</span>
-      </h1>
+      </h2>
 
       <button
         @click="modal = true"
