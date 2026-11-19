@@ -1,13 +1,13 @@
 // Open Graph image generation. Images follow the Determinate Systems social
 // card design (as on security.determinate.systems): dark background with a
 // faint grid and glows, the Determinate Systems logo, a bold Work Sans title,
-// a blue pill, and a gradient bar along the bottom edge.
+// the domain, and a gradient bar along the bottom edge.
 import {
   getConceptPagesAlphabetical,
   getStartPagesByOrderParam,
 } from "../content/collections";
 import { site } from "../site";
-import { conceptPagePath, startPagePath } from "./utils";
+import { conceptPagePath, plainText, startPagePath } from "./utils";
 import { getEntry } from "astro:content";
 import fs from "node:fs";
 import path from "node:path";
@@ -22,19 +22,9 @@ export type OgPage = {
   path: string;
   title: string;
   description: string;
-  // Shown above the title, after "Zero to Nix"
+  // Section label shown above the title, such as "Concepts"
   section?: string;
-  // Text of the pill
-  cta: string;
 };
-
-// Plain text for the image: drop Markdown links, code, and emphasis
-const plain = (markdown: string): string =>
-  markdown
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
-    .replace(/[`*_]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
 
 const trimSlashes = (p: string): string => p.replace(/^\/+|\/+$/g, "");
 
@@ -47,16 +37,15 @@ export const getOgPages = async (): Promise<OgPage[]> => {
     {
       path: "",
       title: site.title,
-      description: "Your guide to learning Nix and flakes, from zero to Nix",
-      cta: "Start learning Nix",
+      description:
+        "A flake-centric guide to learning Nix, from installation to building your own packages",
     },
     ...(about
       ? [
           {
             path: "about",
             title: about.data.title,
-            description: plain(about.data.description),
-            cta: "Read more",
+            description: plainText(about.data.description),
           },
         ]
       : []),
@@ -65,30 +54,23 @@ export const getOgPages = async (): Promise<OgPage[]> => {
       title: "Quick start",
       description:
         "Get a taste of Nix's power and learn key concepts along the way",
-      cta: "Start the quick start",
     },
-    ...startPages.map(({ id, data: { title, order, summary } }) => ({
+    ...startPages.map(({ id, data: { title, description } }) => ({
       path: trimSlashes(startPagePath(id)),
       title,
-      // The first item of the page's "In this quick start guide" summary
-      description: summary?.[0]
-        ? plain(summary[0])
-        : "Part of the Zero to Nix quick start",
+      description: plainText(description),
       section: "Quick start",
-      cta: `Step ${order} of ${startPages.length}`,
     })),
     {
       path: "concepts",
       title: "Nix concepts",
       description: "The whys and the hows of Nix",
-      cta: "Explore the concepts",
     },
     ...conceptPages.map(({ id, data: { title, snippet } }) => ({
       path: trimSlashes(conceptPagePath(id)),
       title,
-      description: plain(snippet),
+      description: plainText(snippet),
       section: "Concepts",
-      cta: "Read the concept",
     })),
   ];
 };
@@ -104,8 +86,6 @@ const colors = {
   title: "#ffffff",
   description: "#c8c8d0",
   muted: "#9a9aa6",
-  blue: "#1e9fd9",
-  pillText: "#0b0b10",
 };
 
 const assetPath = (...segments: string[]) =>
@@ -232,10 +212,9 @@ export const renderOgImage = async (page: OgPage): Promise<Buffer> => {
       h(
         "div",
         { style: { display: "flex", flexDirection: "column", marginTop: 48 } },
-        // Omitted on the home page, where the title is already "Zero to Nix"
-        ...(page.title === site.title
-          ? []
-          : [
+        // The section label, shown only on pages within a section
+        ...(page.section
+          ? [
               h(
                 "div",
                 {
@@ -247,23 +226,10 @@ export const renderOgImage = async (page: OgPage): Promise<Buffer> => {
                     marginBottom: 14,
                   },
                 },
-                ...(page.section
-                  ? [
-                      "Zero to Nix",
-                      h(
-                        "span",
-                        {
-                          style: {
-                            margin: "0 12px",
-                          },
-                        },
-                        "/",
-                      ),
-                      page.section,
-                    ]
-                  : ["Zero to Nix"]),
+                page.section,
               ),
-            ]),
+            ]
+          : []),
         h(
           "div",
           {
@@ -299,37 +265,12 @@ export const renderOgImage = async (page: OgPage): Promise<Buffer> => {
           {
             style: {
               display: "flex",
-              alignItems: "center",
               marginTop: 36,
+              fontSize: 24,
+              color: colors.muted,
             },
           },
-          h(
-            "div",
-            {
-              style: {
-                display: "flex",
-                padding: "10px 24px",
-                borderRadius: 999,
-                backgroundColor: colors.blue,
-                color: colors.pillText,
-                fontSize: 22,
-                fontWeight: 700,
-              },
-            },
-            page.cta,
-          ),
-          h(
-            "div",
-            {
-              style: {
-                display: "flex",
-                marginLeft: 22,
-                fontSize: 22,
-                color: colors.muted,
-              },
-            },
-            domain,
-          ),
+          domain,
         ),
       ),
     ),

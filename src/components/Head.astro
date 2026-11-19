@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 import { getOgPages, OG_HEIGHT, OG_WIDTH, ogImagePath } from "../lib/og";
+import { plainText } from "../lib/utils";
 import { site } from "../site";
 import Posthog from "./Posthog.astro";
 
@@ -16,7 +17,10 @@ const canonical = new URL(Astro.url.pathname, root);
 
 const { title: siteTitle, description: siteDescription } = site;
 
-const { title, description, tags } = Astro.props;
+const { title, tags } = Astro.props;
+const description = Astro.props.description
+  ? plainText(Astro.props.description)
+  : undefined;
 
 // Use the page's generated Open Graph image, or the home page's if this page
 // doesn't have one

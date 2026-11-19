@@ -48,6 +48,7 @@ const start = defineCollection({
   schema: z.object({
     title: z.string(),
     order: z.number(),
+    description: z.string(),
     summary: z.array(z.string()).optional(),
   }),
 });
