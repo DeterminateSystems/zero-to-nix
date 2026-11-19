@@ -83,8 +83,20 @@
               npm run format
             '')
 
+            # Pages build to files like concepts/flakes.html and are served at
+            # /concepts/flakes, which htmltest can't resolve, so check a copy of
+            # the build in which every page is also a directory index
             (script "check-internal-links" [ htmltest ] ''
-              htmltest
+              dir="$(mktemp -d)"
+              trap 'rm -rf "$dir"' EXIT
+              cp -R dist/. "$dir"
+              find "$dir" -name '*.html' ! -name 'index.html' -print0 |
+                while IFS= read -r -d "" page; do
+                  mkdir -p "''${page%.html}"
+                  cp "$page" "''${page%.html}/index.html"
+                done
+              sed "s|^DirectoryPath:.*|DirectoryPath: $dir|" .htmltest.yml >"$dir/.htmltest.yml"
+              htmltest --conf "$dir/.htmltest.yml"
             '')
 
             (script "lint-style" [ vale ] ''
