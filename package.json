@@ -21,6 +21,7 @@
     "@astrojs/sitemap": "^3.7.2",
     "@expressive-code/plugin-collapsible-sections": "^0.42.0",
     "@expressive-code/plugin-line-numbers": "^0.42.0",
+    "@fontsource/work-sans": "^5.3.0",
     "@iconify-json/fa": "^1.2.2",
     "@iconify-json/fa-solid": "^1.2.2",
     "@iconify-json/heroicons": "^1.2.3",
@@ -43,6 +44,8 @@
     "rehype-external-links": "^3.0.0",
     "remark-emoji": "^5.0.2",
     "remark-heading-id": "^1.0.1",
+    "satori": "^0.63.2",
+    "sharp": "^0.35.5",
     "typescript": "^5.9.3"
   },
   "devDependencies": {

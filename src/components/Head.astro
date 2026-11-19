@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { getOgPages, OG_HEIGHT, OG_WIDTH, ogImagePath } from "../lib/og";
 import { site } from "../site";
 import Posthog from "./Posthog.astro";
 
@@ -17,7 +18,12 @@ const { title: siteTitle, description: siteDescription } = site;
 
 const { title, description, tags } = Astro.props;
 
-const image = `${root}favicon.png`;
+// Use the page's generated Open Graph image, or the home page's if this page
+// doesn't have one
+const pagePath = Astro.url.pathname.replace(/^\/+|\/+$/g, "");
+const hasOgImage = (await getOgPages()).some(({ path }) => path === pagePath);
+const image = new URL(ogImagePath(hasOgImage ? pagePath : ""), root).toString();
+const imageAlt = title ?? siteTitle;
 ---
 
 <script is:inline>
@@ -60,13 +66,20 @@ const image = `${root}favicon.png`;
       url: canonical,
       image,
     },
+    image: {
+      type: "image/png",
+      width: OG_WIDTH,
+      height: OG_HEIGHT,
+      alt: imageAlt,
+    },
   }}
   twitter={{
     site: root,
     title: title ?? siteTitle,
     description,
     image,
-    card: "summary",
+    imageAlt,
+    card: "summary_large_image",
   }}
 />
 
