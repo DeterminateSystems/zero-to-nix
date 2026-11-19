@@ -1,5 +1,7 @@
 ---
 import { SEO } from "astro-seo";
+import { getOgPages, OG_HEIGHT, OG_WIDTH, ogImagePath } from "../lib/og";
+import { plainText } from "../lib/utils";
 import { site } from "../site";
 import Posthog from "./Posthog.astro";
 
@@ -8,16 +10,100 @@ type Props = {
   description?: string;
   tags?: string[];
   author?: string;
+  noindex?: boolean;
 };
 
 const root = Astro.site!.toString();
-const canonical = new URL(Astro.url.pathname, root);
+// Pages build to files like concepts/flakes.html but are served at
+// /concepts/flakes, so drop the extension (and a trailing /index)
+const pathname =
+  Astro.url.pathname.replace(/\.html$/, "").replace(/\/index$/, "") || "/";
+const canonical = new URL(pathname, root);
 
 const { title: siteTitle, description: siteDescription } = site;
 
-const { title, description, tags } = Astro.props;
+const { title, tags, noindex = false } = Astro.props;
+const description = Astro.props.description
+  ? plainText(Astro.props.description)
+  : undefined;
 
-const image = `${root}favicon.png`;
+// "Nix flakes | Zero to Nix", but "About Zero to Nix" stays as it is
+const fullTitle = !title
+  ? siteTitle
+  : title.includes(siteTitle)
+    ? title
+    : `${title} | ${siteTitle}`;
+const pageTitle = title ?? siteTitle;
+
+// Use the page's generated Open Graph image, or the home page's if this page
+// doesn't have one
+const pagePath = pathname.replace(/^\/+|\/+$/g, "");
+const ogPage = (await getOgPages()).find(({ path }) => path === pagePath);
+const image = new URL(ogImagePath(ogPage ? pagePath : ""), root).toString();
+const imageAlt = pageTitle;
+
+// Pages inside a section (concepts, quick start steps) are articles
+const isArticle = Boolean(ogPage?.section);
+
+const publisher = {
+  "@type": "Organization",
+  name: "Determinate Systems",
+  url: "https://determinate.systems",
+  sameAs: [
+    "https://github.com/DeterminateSystems",
+    "https://x.com/DeterminateSys",
+  ],
+};
+
+// Structured data: the site and its publisher on the home page, and
+// breadcrumbs plus an article on pages inside a section
+const structuredData: object[] = [];
+
+if (pagePath === "") {
+  structuredData.push({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteTitle,
+    url: root,
+    description: siteDescription,
+    inLanguage: "en",
+    publisher,
+  });
+}
+
+if (ogPage?.section) {
+  const sectionPath = pagePath.split("/")[0] ?? "";
+  structuredData.push(
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { name: siteTitle, url: root },
+        { name: ogPage.section, url: new URL(sectionPath, root).toString() },
+        { name: pageTitle, url: canonical.toString() },
+      ].map(({ name, url }, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name,
+        item: url,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      headline: pageTitle,
+      description: description ?? siteDescription,
+      url: canonical.toString(),
+      image,
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", name: siteTitle, url: root },
+      publisher,
+    },
+  );
+}
+
+// Escape "<" so that content can't close the script tag early
+const jsonLd = (data: object) => JSON.stringify(data).replace(/</g, "\\u003c");
 ---
 
 <script is:inline>
@@ -50,28 +136,41 @@ const image = `${root}favicon.png`;
 
 <SEO
   charset="utf-8"
-  title={title ?? siteTitle}
+  title={fullTitle}
   description={description ?? siteDescription}
   {canonical}
+  {noindex}
   openGraph={{
     basic: {
-      title: title ?? siteTitle,
-      type: "website",
+      title: pageTitle,
+      type: isArticle ? "article" : "website",
       url: canonical,
       image,
     },
+    optional: {
+      description: description ?? siteDescription,
+      siteName: siteTitle,
+      locale: "en_US",
+    },
+    image: {
+      type: "image/png",
+      width: OG_WIDTH,
+      height: OG_HEIGHT,
+      alt: imageAlt,
+    },
   }}
   twitter={{
-    site: root,
-    title: title ?? siteTitle,
-    description,
+    site: "@DeterminateSys",
+    title: pageTitle,
+    description: description ?? siteDescription,
     image,
-    card: "summary",
+    imageAlt,
+    card: "summary_large_image",
   }}
 />
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="//cdn-images.mailchimp.com/embedcode/classic-071822.css"
-/>
+{
+  structuredData.map((data) => (
+    <script is:inline type="application/ld+json" set:html={jsonLd(data)} />
+  ))
+}

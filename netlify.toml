@@ -30,22 +30,22 @@ excludedPath = ["/start/*.md"]
 
 [[redirects]]
 from = "/quick-start"
-to = "/start.html"
+to = "/start"
 status = 301
 
 [[redirects]]
 from = "/quickstart"
-to = "/start.html"
+to = "/start"
 status = 301
 
 [[redirects]]
 from = "/get-started"
-to = "/start.html"
+to = "/start"
 status = 301
 
 [[redirects]]
 from = "/getting-started"
-to = "/start.html"
+to = "/start"
 status = 301
 
 [[redirects]]

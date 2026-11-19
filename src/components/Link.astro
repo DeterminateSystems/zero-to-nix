@@ -1,25 +1,28 @@
 ---
 import { isSiblingProperty } from "../lib/siblings";
 
-const href = Astro.props.href;
+const { rel: relProp, target: targetProp, ...props } = Astro.props;
+const href = props.href;
 
 const phid = isSiblingProperty(href ?? "");
 
 const external = (href || "").startsWith("http");
 
-const rel = external && !phid ? "noopener noreferrer" : undefined;
-const target = external ? "_blank" : undefined;
+// Explicit props win; otherwise external links open in a new tab, and only
+// links to non-Determinate sites drop the referrer
+const rel = relProp ?? (external && !phid ? "noopener noreferrer" : undefined);
+const target = targetProp ?? (external ? "_blank" : undefined);
 ---
 
 {
   phid ? (
     <ph-id>
-      <a {rel} {target} {...Astro.props}>
+      <a {...props} {rel} {target}>
         <slot />
       </a>
     </ph-id>
   ) : (
-    <a {rel} {target} {...Astro.props}>
+    <a {...props} {rel} {target}>
       <slot />
     </a>
   )

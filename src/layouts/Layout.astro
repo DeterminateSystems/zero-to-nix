@@ -10,19 +10,22 @@ import { site } from "../site";
 type Props = {
   title?: string;
   description?: string;
+  // Keep the page out of search results
+  noindex?: boolean;
 };
 
 const { defaultLanguage } = site;
 
-const { title, description } = Astro.props;
+const { title, description, noindex } = Astro.props;
 ---
 
 <html
+  lang="en"
   x-data={`{ quickStart: $persist(true), drawer: false, banner: $persist(true), language: $persist("${defaultLanguage}") }`}
   class="h-screen"
 >
   <head>
-    <Head {title} {description} />
+    <Head {title} {description} {noindex} />
   </head>
   <body
     class="text-dark dark:bg-dark flex min-h-full flex-col bg-white font-sans antialiased dark:text-white"

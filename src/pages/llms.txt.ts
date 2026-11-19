@@ -50,11 +50,11 @@ export const GET: APIRoute = async () => {
     description: llms.description,
     startPages: startPages.map(({ data: { title }, id }) => ({
       title,
-      href: `${root}/${startPagePath(id)}`,
+      href: new URL(startPagePath(id), root).toString(),
     })),
     conceptPages: conceptPages.map(({ data: { title }, id }) => ({
       title,
-      href: `${root}/${conceptPagePath(id)}`,
+      href: new URL(conceptPagePath(id), root).toString(),
     })),
     otherFormats: [FORMATS.small, FORMATS.full],
     projects: llms.otherProjects,

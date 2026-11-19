@@ -31,14 +31,14 @@ export const getStaticPaths = (async () => {
 
 const { page } = Astro.props;
 const {
-  data: { title, summary, order },
+  data: { title, description, summary, order },
 } = page;
 const { Content } = await render(page);
 
 const numQuickStartPages = (await getStartPagesByOrderParam()).length;
 ---
 
-<Layout {title}>
+<Layout {title} {description}>
   <HorizontalContainer>
     <Hero
       {title}

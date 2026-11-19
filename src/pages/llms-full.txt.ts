@@ -34,12 +34,12 @@ export const GET: APIRoute = async () => {
     description: llms.description,
     startPages: startPages.map(({ data: { title }, id, body }) => ({
       title,
-      href: `${root}/${startPagePath(id)}`,
+      href: new URL(startPagePath(id), root).toString(),
       content: body,
     })),
     conceptPages: conceptPages.map(({ data: { title }, id, body }) => ({
       title,
-      href: `${root}/${conceptPagePath(id)}`,
+      href: new URL(conceptPagePath(id), root).toString(),
       content: body,
     })),
     otherFormats: [FORMATS.small, FORMATS.standard],
